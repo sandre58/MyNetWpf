@@ -1,0 +1,118 @@
+﻿<my:NavigationPage x:Class="MyNet.Wpf.TestApp.Views.TypographyView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:my="http://mynet.com/xaml/themes"
+                   xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
+                   xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+                   Title="{my:Resource Typography}"
+                   d:DesignHeight="450"
+                   d:DesignWidth="800"
+                   mc:Ignorable="d">
+    <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}">
+        <my:SimpleStackPanel>
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.TextBlock">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <smtx:XamlDisplay UniqueKey="tb_0_0_0">
+                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Header}" Text="MyNet.Styles.TextBlock.Header" />
+                    </smtx:XamlDisplay>
+                    <smtx:XamlDisplay UniqueKey="tb_0_0_1">
+                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Title}" Text="MyNet.Styles.TextBlock.Title" />
+                    </smtx:XamlDisplay>
+                    <smtx:XamlDisplay UniqueKey="tb_0_0_2">
+                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Caption}" Text="MyNet.Styles.TextBlock.Caption" />
+                    </smtx:XamlDisplay>
+                    <smtx:XamlDisplay UniqueKey="tb_0_0_3">
+                        <TextBlock Text="Default" />
+                    </smtx:XamlDisplay>
+                    <smtx:XamlDisplay UniqueKey="tb_0_0_4">
+                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Principal}" Text="MyNet.Styles.TextBlock.Principal" />
+                    </smtx:XamlDisplay>
+                    <smtx:XamlDisplay UniqueKey="tb_0_0_5">
+                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Disablable}" Text="MyNet.Styles.TextBlock.Disablable" />
+                    </smtx:XamlDisplay>
+                    <smtx:XamlDisplay UniqueKey="tb_0_0_6">
+                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}" Text="MyNet.Styles.TextBlock.Secondary" />
+                    </smtx:XamlDisplay>
+                    <smtx:XamlDisplay UniqueKey="tb_0_0_7">
+                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Ghost}" Text="MyNet.Styles.TextBlock.Ghost" />
+                    </smtx:XamlDisplay>
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.Label">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="tb_1_0_0">
+                            <my:Badged Badge="{my:Resource Default}">
+                                <Label Style="{StaticResource MyNet.Styles.Label.Elevation}" Content="Content" />
+                            </my:Badged>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_0_1">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Elevation.Application}" Content="Content" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_0_2">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Elevation.Primary}" Content="Content" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_0_3">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Elevation.Accent}" Content="Content" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_0_4">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Elevation.Foreground}" Content="Content" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_0_5">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Elevation.Custom}" Background="{DynamicResource MyNet.Brushes.Positive}" Content="Content" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_0_6">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Elevation.Custom}" Background="{DynamicResource MyNet.Brushes.Negative}" Content="Content" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_0_7">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Elevation.Custom}" Background="{DynamicResource MyNet.Brushes.Information}" Content="Content" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="tb_1_1_0">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Outlined}" Content="Content" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.Label.Rounded">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="tb_2_0_0">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Elevation}" Content="B" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_0_1">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Elevation.Application}" Content="12" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_0_2">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Elevation.Primary}" Content="{my:MediumIcon Kind=Heart}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_0_3">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Elevation.Accent}" Content="{my:MediumIcon Kind=Heart}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_0_4">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Elevation.Foreground}" Content="{my:MediumIcon Kind=Heart}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_0_5">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Elevation.Custom}" Background="{DynamicResource MyNet.Brushes.Positive}" Content="{my:MediumIcon Kind=Success}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_0_6">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Elevation.Custom}" Background="{DynamicResource MyNet.Brushes.Negative}" Content="{my:MediumIcon Kind=Cancel}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_0_7">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Elevation.Custom}" Background="{DynamicResource MyNet.Brushes.Information}" Content="{my:MediumIcon Kind=Information}" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+                </my:SimpleStackPanel>
+            </Expander>
+        </my:SimpleStackPanel>
+    </my:DynamicScrollViewer>
+</my:NavigationPage>

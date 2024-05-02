@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="MyNet.Wpf.Presentation.Views.FileHistory.RecentFilesDefaultView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:my="http://mynet.com/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:providers="clr-namespace:MyNet.UI.Services.Providers;assembly=MyNet.UI"
+             xmlns:viewmodels="clr-namespace:MyNet.UI.ViewModels.FileHistory;assembly=MyNet.UI"
+             xmlns:views="clr-namespace:MyNet.Wpf.Presentation.Views.FileHistory"
+             d:DataContext="{d:DesignInstance Type=viewmodels:RecentFilesViewModel}"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <my:BindingProxy x:Key="Proxy" Data="{Binding}" />
+
+        <DataTemplate DataType="{x:Type providers:RecentFilesFilters}">
+            <TextBox Style="{StaticResource MyNet.Styles.TextBox.Outlined}"
+                     HorizontalAlignment="Stretch"
+                     my:HintAssist.Hint="{my:Resource Search}"
+                     my:IconAssist.Icon="{my:Icon Kind=Search}"
+                     Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type providers:RecentFilesSorting}">
+            <my:SimpleStackPanel Orientation="Horizontal">
+
+                <!--  Direction  -->
+                <ToggleButton Style="{StaticResource MyNet.Styles.Button.Icon}" IsChecked="{Binding IsAscending}">
+                    <ToggleButton.ContentTemplate>
+                        <DataTemplate>
+                            <my:PackIcon x:Name="Icon"
+                                         Width="24"
+                                         Height="24"
+                                         Kind="SortAscending"
+                                         ToolTip="{my:Resource AscendingSort}" />
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}}}" Value="False">
+                                    <Setter TargetName="Icon" Property="Kind" Value="SortDescending" />
+                                    <Setter TargetName="Icon" Property="ToolTip" Value="{my:Resource DescendingSort}" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ToggleButton.ContentTemplate>
+                </ToggleButton>
+
+                <!--  Property  -->
+                <ListBox Style="{StaticResource MyNet.Styles.ListBox.Toggle}"
+                         DisplayMemberPath="Display"
+                         DockPanel.Dock="Right"
+                         ItemsSource="{my:EnumSource EnumType={x:Type providers:RecentFilesSortingProperty}}"
+                         SelectedValue="{Binding SortingProperty, Mode=TwoWay}"
+                         SelectedValuePath="Value" />
+            </my:SimpleStackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <views:RecentFilesView />
+</UserControl>

@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="MyNet.Wpf.Presentation.Views.Shell.PreferencesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:my="http://mynet.com/xaml/themes"
+             xmlns:vm="clr-namespace:MyNet.UI.ViewModels.Shell;assembly=MyNet.UI"
+             d:DataContext="{d:DesignInstance Type=vm:PreferencesViewModelBase}"
+             mc:Ignorable="d">
+    <DockPanel Margin="{StaticResource MyNet.Margins.Medium}">
+
+        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Header}"
+                   Margin="{StaticResource MyNet.Margins.Huge.Vertical}"
+                   DockPanel.Dock="Top"
+                   Text="{my:Resource Preferences}" />
+        <my:SimpleStackPanel Margin="{StaticResource MyNet.Margins.Large.Bottom}"
+                             HorizontalAlignment="Right"
+                             DockPanel.Dock="Top"
+                             Orientation="Horizontal">
+            <Button Style="{StaticResource MyNet.Styles.Button.Elevation.Foreground}"
+                    my:IconAssist.Icon="{my:ToolIcon Kind=Refresh}"
+                    Command="{Binding RefreshCommand}"
+                    Content="{my:Resource Refresh}" />
+            <Button Style="{StaticResource MyNet.Styles.Button.Text.Foreground}"
+                    my:IconAssist.Icon="{my:ToolIcon Kind=Restore}"
+                    Command="{Binding ResetCommand}"
+                    Content="{my:Resource Reset}" />
+        </my:SimpleStackPanel>
+
+        <ItemsControl Focusable="False" ItemsSource="{Binding SubWorkspaces}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Expander Style="{StaticResource MyNet.Styles.Expander.Bordered.Foreground}"
+                              Margin="{StaticResource MyNet.Margins.Huge.Bottom}"
+                              Padding="15 10 0 0"
+                              Header="{my:Translation Title,
+                                                      Casing=AllCaps}"
+                              IsExpanded="True">
+                        <ContentControl Content="{Binding Converter={x:Static my:ViewModelToViewConverter.Default}}" DataContext="{Binding}" />
+                    </Expander>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+    </DockPanel>
+</UserControl>

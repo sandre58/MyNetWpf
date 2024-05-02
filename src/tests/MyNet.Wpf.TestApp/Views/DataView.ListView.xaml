@@ -1,0 +1,304 @@
+﻿<my:NavigationPage x:Class="MyNet.Wpf.TestApp.Views.DataListViewView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:data="clr-namespace:MyNet.Wpf.TestApp.Data"
+                   xmlns:dd="urn:gong-wpf-dragdrop"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+                   xmlns:my="http://mynet.com/xaml/themes"
+                   xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
+                   xmlns:samplepages="clr-namespace:MyNet.Wpf.TestApp.Views.SamplePages"
+                   xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+                   xmlns:viewmodels="clr-namespace:MyNet.Wpf.TestApp.ViewModels"
+                   d:DataContext="{d:DesignInstance Type=viewmodels:DataListViewViewModel}"
+                   d:DesignHeight="450"
+                   d:DesignWidth="800"
+                   my:ViewModelAssist.AutoWire="True"
+                   mc:Ignorable="d">
+    <my:NavigationPage.Resources>
+        <my:BindingProxy x:Key="Proxy" Data="{Binding}" />
+
+    </my:NavigationPage.Resources>
+
+    <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}" HorizontalScrollBarVisibility="Disabled">
+        <my:SimpleStackPanel>
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.ListView">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <smtx:XamlDisplay HorizontalAlignment="Stretch" UniqueKey="lv_0_0_0">
+                        <samplepages:ListViewSample Style="{StaticResource MyNet.Styles.ListView}"
+                                                    Height="500"
+                                                    my:ListViewAssist.AutoResizeIsEnabled="True"
+                                                    ItemsSource="{x:Static data:Collections.CountriesDetails}">
+                            <samplepages:ListViewSample.ItemContainerStyle>
+                                <Style BasedOn="{StaticResource MyNet.Styles.ListViewItem}" TargetType="{x:Type ListViewItem}">
+                                    <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+                                </Style>
+                            </samplepages:ListViewSample.ItemContainerStyle>
+                        </samplepages:ListViewSample>
+                    </smtx:XamlDisplay>
+
+                    <smtx:XamlDisplay HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" UniqueKey="lv_0_0_1">
+                        <samplepages:ListViewSample Style="{StaticResource MyNet.Styles.ListView.Accent}"
+                                                    Height="500"
+                                                    my:ListViewAssist.AutoResizeIsEnabled="True"
+                                                    ItemsSource="{x:Static data:Collections.CountriesDetails}">
+                            <samplepages:ListViewSample.ItemContainerStyle>
+                                <Style BasedOn="{StaticResource MyNet.Styles.ListViewItem}" TargetType="{x:Type ListViewItem}">
+                                    <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+                                </Style>
+                            </samplepages:ListViewSample.ItemContainerStyle>
+                        </samplepages:ListViewSample>
+                    </smtx:XamlDisplay>
+
+                    <smtx:XamlDisplay HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" UniqueKey="lv_0_0_2">
+                        <samplepages:ListViewSample Style="{StaticResource MyNet.Styles.ListView.Foreground}"
+                                                    Height="500"
+                                                    my:ListViewAssist.AutoResizeIsEnabled="True"
+                                                    ItemsSource="{x:Static data:Collections.CountriesDetails}">
+                            <samplepages:ListViewSample.ItemContainerStyle>
+                                <Style BasedOn="{StaticResource MyNet.Styles.ListViewItem}" TargetType="{x:Type ListViewItem}">
+                                    <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+                                </Style>
+                            </samplepages:ListViewSample.ItemContainerStyle>
+                        </samplepages:ListViewSample>
+                    </smtx:XamlDisplay>
+
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="Extended ListView">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <smtx:XamlDisplay HorizontalAlignment="Stretch" UniqueKey="lv_1_0_0">
+                        <DockPanel Height="800">
+
+                            <ToolBar DockPanel.Dock="Top">
+                                <GroupBox Header="{my:Resource Edition}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button my:IconAssist.Icon="{my:MediumIcon Kind=PlusThick}"
+                                                Command="{Binding CountrieListViewModel.AddCommand}"
+                                                Content="{my:Resource New}"
+                                                ToolTip="Ctrl+N" />
+                                        <Button my:IconAssist.Icon="{my:MediumIcon Kind=Edit}"
+                                                Command="{Binding CountrieListViewModel.EditSelectedItemCommand}"
+                                                Content="{my:Resource Edit}"
+                                                ToolTip="Ctrl+E" />
+                                        <Button my:IconAssist.Icon="{my:MediumIcon Kind=Trash}"
+                                                Command="{Binding CountrieListViewModel.RemoveSelectedItemsCommand}"
+                                                Content="{my:Resource Remove}"
+                                                ToolTip="{my:Resource Delete}" />
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <Separator />
+
+                                <GroupBox Header="{my:Resource Items}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+
+                                            <!--  Selected Count  -->
+                                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Clean.Bottom}"
+                                                      Grid.RowSpan="2"
+                                                      HorizontalAlignment="Center"
+                                                      HorizontalContentAlignment="Center"
+                                                      my:HeaderAssist.Padding="0"
+                                                      Content="{Binding CountrieListViewModel.SelectedWrappers.Count}"
+                                                      FontSize="{StaticResource MyNet.Font.Size.Title}"
+                                                      Foreground="{DynamicResource MyNet.Brushes.Primary}"
+                                                      Visibility="{Binding CountrieListViewModel.SelectedWrappers.Count, Converter={x:Static my:CountToVisibilityConverter.CollapsedIfNotMany}}">
+                                                <GroupBox.Header>
+                                                    <StackPanel>
+                                                        <TextBlock HorizontalAlignment="Center"
+                                                                   FontSize="{StaticResource MyNet.Font.Size}"
+                                                                   Text="{my:Translation CountrieListViewModel.SelectedWrappers.Count,
+                                                                                         Format=Item,
+                                                                                         Plural=True}"
+                                                                   Typography.Capitals="AllSmallCaps" />
+                                                        <TextBlock HorizontalAlignment="Center"
+                                                                   FontSize="{StaticResource MyNet.Font.Size}"
+                                                                   Text="{my:Translation CountrieListViewModel.SelectedWrappers.Count,
+                                                                                         Format=Selected,
+                                                                                         Plural=True,
+                                                                                         Casing=LowerCase}"
+                                                                   Typography.Capitals="AllSmallCaps" />
+                                                    </StackPanel>
+                                                </GroupBox.Header>
+                                            </GroupBox>
+
+                                            <!--  Count  -->
+                                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Clean.Bottom}"
+                                                      Grid.RowSpan="2"
+                                                      HorizontalAlignment="Center"
+                                                      HorizontalContentAlignment="Center"
+                                                      my:HeaderAssist.Padding="0"
+                                                      FontSize="25"
+                                                      Header="{my:Translation CountrieListViewModel.WrappersSource.Count,
+                                                                              Format=Item,
+                                                                              Plural=True}"
+                                                      Visibility="{Binding CountrieListViewModel.SelectedWrappers.Count, Converter={x:Static my:CountToVisibilityConverter.CollapsedIfMany}}">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding CountrieListViewModel.Wrappers.Count}" Visibility="{Binding CountrieListViewModel.IsFiltered, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+                                                    <TextBlock Text="/" Visibility="{Binding CountrieListViewModel.IsFiltered, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+                                                    <TextBlock Text="{Binding CountrieListViewModel.WrappersSource.Count}" />
+                                                </StackPanel>
+                                            </GroupBox>
+
+                                            <!--  Select all  -->
+                                            <Button Grid.Column="1"
+                                                    Padding="{StaticResource MyNet.Margins.Medium.Horizontal}"
+                                                    HorizontalContentAlignment="Left"
+                                                    my:IconAssist.Alignment="Left"
+                                                    my:IconAssist.Icon="{my:ToolIcon Kind=CheckAll}"
+                                                    my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Right}"
+                                                    Command="{Binding CountrieListViewModel.SelectAllCommand}"
+                                                    Content="{my:Resource SelectAll}"
+                                                    ToolTip="Ctrl+A" />
+
+                                            <!--  Unselect all  -->
+                                            <Button Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    Padding="{StaticResource MyNet.Margins.Medium.Horizontal}"
+                                                    HorizontalContentAlignment="Left"
+                                                    my:IconAssist.Alignment="Left"
+                                                    my:IconAssist.Icon="{my:ToolIcon Kind=CloseCircleMultiple}"
+                                                    my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Right}"
+                                                    Command="{Binding CountrieListViewModel.UnselectAllCommand}"
+                                                    Content="{my:Resource ClearSelection}"
+                                                    ToolTip="Ctrl+Maj+A" />
+
+                                        </Grid>
+
+                                        <!--  Sort  -->
+                                        <my:ExtendedSortingView Grid.Column="1" DataContext="{Binding CountrieListViewModel.Sorting}" />
+
+                                        <!--  Filter  -->
+                                        <TextBox Grid.Column="2"
+                                                 Width="{StaticResource MyNet.Widths.Control.VeryLarge}"
+                                                 my:HintAssist.Hint="{my:Resource Search}"
+                                                 my:IconAssist.Icon="{my:MediumIcon Kind=Filter}"
+                                                 Text="{Binding CountrieListViewModel.Filters.Value, UpdateSourceTrigger=PropertyChanged}" />
+                                    </Grid>
+                                </GroupBox>
+                            </ToolBar>
+
+                            <ListView x:Name="Countries"
+                                      Margin="{StaticResource MyNet.Margins.Medium.Top}"
+                                      dd:DragDrop.DropHandler="{Binding}"
+                                      dd:DragDrop.IsDragSource="True"
+                                      dd:DragDrop.IsDropTarget="True"
+                                      dd:DragDrop.UseDefaultDragAdorner="True"
+                                      my:ListAssist.SynchronizedList="{Binding}"
+                                      my:ListViewAssist.ColumnLayouts="{Binding Data.CountrieListViewModel.Display.Mode.ColumnLayouts, Source={StaticResource Proxy}}"
+                                      my:ListViewAssist.ItemMinHeight="40"
+                                      DataContext="{Binding CountrieListViewModel}"
+                                      ItemsSource="{Binding Wrappers, IsAsync=True}">
+                                <ListView.ItemContainerStyle>
+                                    <Style BasedOn="{StaticResource MyNet.Styles.ListViewItem}" TargetType="{x:Type ListViewItem}">
+                                        <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+                                        <Setter Property="IsEnabled" Value="{Binding IsSelectable}" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn my:GridViewColumnAssist.CanBeHidden="False" my:GridViewColumnAssist.CanSort="False" my:GridViewColumnAssist.Width="70">
+                                            <GridViewColumn.HeaderTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox x:Name="SelectAllCheckBox"
+                                                              Margin="{StaticResource MyNet.Margins.Small.Left}"
+                                                              HorizontalAlignment="Center"
+                                                              IsChecked="{Binding Data.CountrieListViewModel.AreAllSelected, Source={StaticResource Proxy}}"
+                                                              ToolTip="{my:Resource SelectAll}" />
+                                                    <DataTemplate.Triggers>
+                                                        <Trigger SourceName="SelectAllCheckBox" Property="IsChecked" Value="True">
+                                                            <Setter TargetName="SelectAllCheckBox" Property="ToolBar.ToolTip" Value="{my:Resource UnselectAll}" />
+                                                        </Trigger>
+                                                    </DataTemplate.Triggers>
+                                                </DataTemplate>
+                                            </GridViewColumn.HeaderTemplate>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+
+                                                    <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Action.Primary}"
+                                                                  Width="30"
+                                                                  Height="30"
+                                                                  Margin="{StaticResource MyNet.Margins.Default}"
+                                                                  HorizontalAlignment="Center"
+                                                                  IsChecked="{Binding IsSelected}">
+                                                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Principal}" Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" Text="{my:Translation Item.Alpha2, Casing=AllCaps}" />
+                                                    </ToggleButton>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn my:GridViewColumnAssist.PropertyName="Name" my:GridViewColumnAssist.Width="5*" Header="Name">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Width="24"
+                                                               Height="24"
+                                                               Margin="{StaticResource MyNet.Margins.Default.Horizontal}"
+                                                               VerticalAlignment="Center"
+                                                               Source="{Binding Item.Country, Converter={x:Static my:CountryToFlagConverter.To24}}" />
+                                                        <TextBlock VerticalAlignment="Center" Text="{Binding Item.Name}" TextWrapping="Wrap" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn my:GridViewColumnAssist.PropertyName="Alpha2" my:GridViewColumnAssist.Width="*" Header="Alpha2">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{my:Translation Item.Alpha2, Casing=AllCaps}" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn my:GridViewColumnAssist.PropertyName="Alpha3" my:GridViewColumnAssist.Width="*" Header="Alpha3">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{my:Translation Item.Alpha3, Casing=AllCaps}" />
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn my:GridViewColumnAssist.CanBeHidden="False"
+                                                        my:GridViewColumnAssist.CanSort="False"
+                                                        my:GridViewColumnAssist.Width="120"
+                                                        HeaderTemplate="{StaticResource MyNet.DataTemplates.ListView.ColumnsVisibility}">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ToolBar>
+                                                        <Button Command="{Binding Data.CountrieListViewModel.EditCommand, Source={StaticResource Proxy}}"
+                                                                CommandParameter="{Binding Item}"
+                                                                Content="{my:ToolIcon Kind=Edit}"
+                                                                ToolTip="{my:Resource Edit}" />
+                                                        <Button Command="{Binding Data.CountrieListViewModel.RemoveCommand, Source={StaticResource Proxy}}"
+                                                                CommandParameter="{Binding Item}"
+                                                                Content="{my:ToolIcon Kind=Trash}"
+                                                                ToolTip="{my:Resource Remove}" />
+                                                    </ToolBar>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </DockPanel>
+                    </smtx:XamlDisplay>
+                </my:SimpleStackPanel>
+            </Expander>
+        </my:SimpleStackPanel>
+    </my:DynamicScrollViewer>
+</my:NavigationPage>

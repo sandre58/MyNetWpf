@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Offers a robust set of tools for seamlessly integrating drag-and-drop functionality into WPF applications.</Description>
+    <PackageTags>MyNet;UI;Xaml;Drag;Drop;Wpf</PackageTags>
+    <VersionPrefix>1.0.1</VersionPrefix>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="gong-wpf-dragdrop" Version="3.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyNet.Wpf\MyNet.Wpf.csproj" />
+  </ItemGroup>
+
+</Project>

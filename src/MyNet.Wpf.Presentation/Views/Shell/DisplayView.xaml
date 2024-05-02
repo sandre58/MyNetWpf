@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="MyNet.Wpf.Presentation.Views.Shell.DisplayView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:my="http://mynet.com/xaml/themes"
+             xmlns:theme="clr-namespace:MyNet.UI.Theming;assembly=MyNet.UI"
+             xmlns:vm="clr-namespace:MyNet.UI.ViewModels.Shell;assembly=MyNet.UI"
+             d:DataContext="{d:DesignInstance Type=vm:DisplayViewModel}"
+             mc:Ignorable="d">
+    <my:SimpleStackPanel Spacing="{StaticResource MyNet.Margin.Large}">
+
+        <!--  Base  -->
+        <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=InvertColors}">
+            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Toggle.Foreground}"
+                     my:ListBoxItemAssist.IsSelectedBackground="{my:BrushBinding InheritPath=(TextElement.Foreground),
+                                                                                 Opacity={StaticResource MyNet.Opacity.Checked}}"
+                     my:ListBoxItemAssist.IsSelectedForeground="{my:BrushBinding InheritPath=(TextElement.Foreground)}"
+                     Background="{my:BrushBinding InheritPath=(TextElement.Foreground),
+                                                  Opacity={StaticResource MyNet.Opacity.Filled}}"
+                     Foreground="{my:BrushBinding InheritPath=(TextElement.Foreground)}"
+                     SelectedValue="{Binding ThemeBase}"
+                     SelectedValuePath="DataContext">
+                <ListBoxItem my:IconAssist.Icon="{my:ToolIcon Kind=WeatherSunny}"
+                             my:ListBoxItemAssist.IsSelectedBackground="{DynamicResource MyNet.Brushes.White}"
+                             my:ListBoxItemAssist.IsSelectedForeground="{DynamicResource MyNet.Brushes.Black}"
+                             Content="{my:Resource Light}"
+                             DataContext="{x:Static theme:ThemeBase.Light}" />
+                <ListBoxItem my:IconAssist.Icon="{my:ToolIcon Kind=ThemeLightDark}" Content="{my:Resource System}" DataContext="{x:Static theme:ThemeBase.Inherit}" />
+                <ListBoxItem my:IconAssist.Icon="{my:ToolIcon Kind=NightSky}"
+                             my:ListBoxItemAssist.IsSelectedBackground="{DynamicResource MyNet.Brushes.Black}"
+                             my:ListBoxItemAssist.IsSelectedForeground="{DynamicResource MyNet.Brushes.White}"
+                             Content="{my:Resource Dark}"
+                             DataContext="{x:Static theme:ThemeBase.Dark}" />
+            </ListBox>
+        </GroupBox>
+
+        <!--  Primary  -->
+        <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Clean.Caption}" my:HeaderAssist.HorizontalAlignment="Left" Header="{my:Resource PrimaryColor}">
+            <my:SimpleStackPanel>
+                <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=FormatColorFill}">
+                    <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Foreground}"
+                                    Width="{StaticResource MyNet.Widths.Control.Medium}"
+                                    my:HintAssist.Hint="{my:Resource Background}"
+                                    my:HintAssist.IsFloating="True"
+                                    SelectedColor="{Binding PrimaryColor, Delay=50, Mode=TwoWay}" />
+                </GroupBox>
+                <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=FormatColorText}">
+                    <my:SimpleStackPanel Orientation="Horizontal" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
+                        <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Foreground}"
+                                        Width="{StaticResource MyNet.Widths.Control.Medium}"
+                                        my:HintAssist.Hint="{my:Resource Foreground}"
+                                        my:HintAssist.IsFloating="True"
+                                        IsEnabled="{Binding AutoPrimaryForegroundColor, Converter={x:Static my:NotBooleanConverter.Default}}"
+                                        SelectedColor="{Binding PrimaryForegroundColor, Delay=50, Mode=TwoWay}" />
+                        <StackPanel Orientation="Horizontal">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Switch.Foreground}" Margin="{StaticResource MyNet.Margins.Default.Right}" IsChecked="{Binding AutoPrimaryForegroundColor}" />
+                            <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Disablable}" IsEnabled="{Binding AutoPrimaryForegroundColor}" Text="{my:Resource Automatic}" />
+                        </StackPanel>
+                    </my:SimpleStackPanel>
+                </GroupBox>
+            </my:SimpleStackPanel>
+        </GroupBox>
+
+        <!--  Accent  -->
+        <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Clean.Caption}" my:HeaderAssist.HorizontalAlignment="Left" Header="{my:Resource AccentColor}">
+            <my:SimpleStackPanel>
+                <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=FormatColorFill}">
+                    <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Foreground}"
+                                    Width="{StaticResource MyNet.Widths.Control.Medium}"
+                                    my:HintAssist.Hint="{my:Resource Background}"
+                                    my:HintAssist.IsFloating="True"
+                                    SelectedColor="{Binding AccentColor, Delay=50, Mode=TwoWay}" />
+                </GroupBox>
+                <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=FormatColorText}">
+                    <my:SimpleStackPanel Orientation="Horizontal" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
+                        <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Foreground}"
+                                        Width="{StaticResource MyNet.Widths.Control.Medium}"
+                                        my:HintAssist.Hint="{my:Resource Foreground}"
+                                        my:HintAssist.IsFloating="True"
+                                        IsEnabled="{Binding AutoAccentForegroundColor, Converter={x:Static my:NotBooleanConverter.Default}}"
+                                        SelectedColor="{Binding AccentForegroundColor, Delay=50, Mode=TwoWay}" />
+                        <StackPanel Orientation="Horizontal">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Switch.Foreground}" Margin="{StaticResource MyNet.Margins.Default.Right}" IsChecked="{Binding AutoAccentForegroundColor}" />
+                            <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Disablable}" IsEnabled="{Binding AutoAccentForegroundColor}" Text="{my:Resource Automatic}" />
+                        </StackPanel>
+                    </my:SimpleStackPanel>
+                </GroupBox>
+            </my:SimpleStackPanel>
+        </GroupBox>
+    </my:SimpleStackPanel>
+</UserControl>

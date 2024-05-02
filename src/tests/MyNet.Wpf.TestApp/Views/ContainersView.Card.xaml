@@ -1,0 +1,165 @@
+﻿<my:NavigationPage x:Class="MyNet.Wpf.TestApp.Views.ContainersCardsView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:contents="clr-namespace:MyNet.Wpf.TestApp.Views.Contents"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:my="http://mynet.com/xaml/themes"
+                   xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
+                   xmlns:samples="clr-namespace:MyNet.Wpf.TestApp.Views.Samples"
+                   xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+                   d:DesignHeight="450"
+                   d:DesignWidth="800"
+                   mc:Ignorable="d">
+    <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}">
+        <my:SimpleStackPanel>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.Card.Elevation">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="c_0_0_0">
+                            <my:Badged Badge="{my:Resource Default}">
+                                <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation}">
+                                    <contents:SmallContent />
+                                </my:Card>
+                            </my:Badged>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="c_0_0_1">
+                            <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Application}">
+                                <contents:SmallContent />
+                            </my:Card>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="c_0_0_2">
+                            <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Primary}">
+                                <contents:SmallContent />
+                            </my:Card>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="c_0_0_3">
+                            <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Accent}">
+                                <contents:SmallContent />
+                            </my:Card>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="c_0_0_4">
+                            <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Foreground}">
+                                <contents:SmallContent />
+                            </my:Card>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="c_0_0_5">
+                            <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Custom}" Background="{DynamicResource MyNet.Brushes.Positive}">
+                                <contents:SmallContent />
+                            </my:Card>
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.Flipper">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="c_1_0_0">
+                            <my:Flipper Style="{StaticResource MyNet.Styles.Flipper.Card}">
+                                <my:Flipper.FrontContent>
+                                    <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+                                            Width="184"
+                                            Height="35"
+                                            Command="{x:Static my:Flipper.FlipCommand}"
+                                            Content="FLIPPABLZ!" />
+                                </my:Flipper.FrontContent>
+                                <my:Flipper.BackContent>
+                                    <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+                                            Width="184"
+                                            Height="35"
+                                            Command="{x:Static my:Flipper.FlipCommand}"
+                                            Content="GO BACK" />
+                                </my:Flipper.BackContent>
+                            </my:Flipper>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="c_1_0_1">
+                            <my:Flipper Style="{StaticResource MyNet.Styles.Flipper.Card}" Padding="0">
+                                <my:Flipper.FrontContent>
+                                    <Grid Width="200" Height="256">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="160" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Border VerticalAlignment="Stretch" Background="{DynamicResource MyNet.Brushes.Accent}" TextElement.Foreground="{DynamicResource MyNet.Brushes.Accent.Foreground}">
+                                            <my:PackIcon Width="128"
+                                                         Height="128"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"
+                                                         Kind="AccountCircle" />
+                                        </Border>
+                                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock Text="James Willock" />
+                                            <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+                                                    Margin="0 4 0 0"
+                                                    HorizontalAlignment="Stretch"
+                                                    Command="{x:Static my:Flipper.FlipCommand}"
+                                                    Content="EDIT" />
+                                        </StackPanel>
+                                    </Grid>
+                                </my:Flipper.FrontContent>
+                                <my:Flipper.BackContent>
+                                    <Grid Width="200" Height="256">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Border Padding="6" Background="{DynamicResource MyNet.Brushes.Accent}" TextElement.Foreground="{DynamicResource MyNet.Brushes.Accent.Foreground}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Style="{StaticResource MyNet.Styles.Button.Icon.Tool}" HorizontalAlignment="Left" Command="{x:Static my:Flipper.FlipCommand}">
+                                                    <my:PackIcon HorizontalAlignment="Right" Kind="ArrowLeft" />
+                                                </Button>
+                                                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER" />
+                                            </StackPanel>
+                                        </Border>
+                                        <Grid Grid.Row="1"
+                                              Width="172"
+                                              Margin="0 6 0 0"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Top">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <TextBox Margin="0 12 0 0"
+                                                     my:HintAssist.Hint="First name"
+                                                     my:HintAssist.IsFloating="True"
+                                                     Text="James" />
+                                            <TextBox Grid.Row="1"
+                                                     Margin="0 12 0 0"
+                                                     my:HintAssist.Hint="Last name"
+                                                     my:HintAssist.IsFloating="True"
+                                                     Text="Willock" />
+                                            <StackPanel Grid.Row="2"
+                                                        Margin="0 12 0 0"
+                                                        HorizontalAlignment="Right"
+                                                        Orientation="Horizontal">
+                                                <TextBlock VerticalAlignment="Center" Text="Email Contact" />
+                                                <ToggleButton Margin="8 0 0 0" />
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="3"
+                                                        Margin="0 12 0 0"
+                                                        HorizontalAlignment="Right"
+                                                        Orientation="Horizontal">
+                                                <TextBlock VerticalAlignment="Center" Text="Telephone Contact" />
+                                                <ToggleButton Margin="8 0 0 0" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </my:Flipper.BackContent>
+                            </my:Flipper>
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                </my:SimpleStackPanel>
+            </Expander>
+        </my:SimpleStackPanel>
+    </my:DynamicScrollViewer>
+</my:NavigationPage>

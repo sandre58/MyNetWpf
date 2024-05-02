@@ -1,0 +1,57 @@
+﻿<my:NavigationPage x:Class="MyNet.Wpf.TestApp.Views.InputsImagePickersView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:my="http://mynet.com/xaml/themes"
+                   xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
+                   xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+                   d:DesignHeight="450"
+                   d:DesignWidth="800"
+                   mc:Ignorable="d">
+    <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}">
+        <my:SimpleStackPanel>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.ImagePicker.Alternate">
+
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay VerticalAlignment="Center" UniqueKey="ip_0_0">
+                            <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Alternate}" SelectedImage="pack://application:,,,/MyNet.Wpf.TestApp;component/Images/kylian-mbappe.jpg" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay VerticalAlignment="Center" UniqueKey="ip_0_1">
+                            <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Alternate}">
+                                <my:IconAssist.Icon>
+                                    <my:GeometryIcon Width="85"
+                                                     Height="85"
+                                                     Margin="0 0 0 -18"
+                                                     Data="{StaticResource MyNet.Geometries.Male}" />
+                                </my:IconAssist.Icon>
+                            </my:ImagePicker>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay VerticalAlignment="Center" UniqueKey="ip_0_2">
+                            <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Alternate}" my:IconAssist.Icon="SA" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay VerticalAlignment="Center" UniqueKey="ip_0_3">
+                            <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Alternate}"
+                                            Width="40"
+                                            Height="40"
+                                            SelectedImage="pack://application:,,,/MyNet.Wpf.TestApp;component/Images/kylian-mbappe.jpg" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay VerticalAlignment="Center" UniqueKey="ip_0_4">
+                            <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Alternate}"
+                                            Width="40"
+                                            Height="40"
+                                            my:IconAssist.Icon="{my:Icon Kind=Settings,
+                                                                         Size=25}" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+                </my:SimpleStackPanel>
+            </Expander>
+        </my:SimpleStackPanel>
+    </my:DynamicScrollViewer>
+</my:NavigationPage>

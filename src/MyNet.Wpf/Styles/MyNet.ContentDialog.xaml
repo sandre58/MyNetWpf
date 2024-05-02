@@ -1,0 +1,80 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:MyNet.Wpf.Converters"
+                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters"
+                    xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
+                    xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.Button.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="MyNet.Styles.ContentDialog" TargetType="{x:Type ctrl:ContentDialog}">
+        <Setter Property="HeaderHeight" Value="30" />
+        <Setter Property="HeaderPadding" Value="{StaticResource MyNet.Margins.Default}" />
+        <Setter Property="FooterPadding" Value="{StaticResource MyNet.Margins.Medium}" />
+        <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
+        <Setter Property="HeaderBackground" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+        <Setter Property="HeaderForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="HeaderFontSize" Value="{StaticResource MyNet.Font.Size}" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ctrl:ContentDialog}">
+                    <Grid p:BusyAssist.AttachService="{TemplateBinding BusyService}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!--  Header  -->
+                        <Grid DockPanel.Dock="Top">
+                            <ctrl:Card Height="{TemplateBinding HeaderHeight}"
+                                       Padding="{TemplateBinding HeaderPadding}"
+                                       Background="{TemplateBinding HeaderBackground}"
+                                       FontSize="{TemplateBinding HeaderFontSize}"
+                                       Foreground="{TemplateBinding HeaderForeground}"
+                                       UniformCornerRadius="0"
+                                       Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                                <ContentControl Content="{TemplateBinding Header}"
+                                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                                Focusable="False" />
+                            </ctrl:Card>
+
+                            <!--  Close Button  -->
+                            <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+                                    Width="20"
+                                    Height="20"
+                                    Margin="{StaticResource MyNet.Margins.Default}"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    Command="{x:Static ctrl:OverlayDialogControl.CloseDialogCommand}"
+                                    Content="{me:Icon Kind=Close}"
+                                    Focusable="False"
+                                    ToolTip="{me:Resource Close}"
+                                    Visibility="{Binding ShowCloseButton, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+                        </Grid>
+
+                        <!--  Content  -->
+                        <ContentPresenter Grid.Row="1" Margin="{TemplateBinding Padding}" Focusable="False" />
+
+                        <!--  Footer  -->
+                        <ContentControl Grid.Row="2"
+                                        Margin="{TemplateBinding FooterPadding}"
+                                        Content="{TemplateBinding Footer}"
+                                        ContentTemplate="{TemplateBinding FooterTemplate}"
+                                        Focusable="False" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

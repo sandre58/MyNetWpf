@@ -1,0 +1,213 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:MyNet.Wpf.Converters"
+                    xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
+                    xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions"
+                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.ToolBar.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="MyNet.Styles.SelectionCommandsBar" BasedOn="{StaticResource MyNet.Styles.ToolBar}" TargetType="{x:Type ctrl:SelectionCommandsBar}">
+        <Style.Resources>
+            <Style BasedOn="{StaticResource MyNet.Styles.Button.ToolBar}" TargetType="{x:Type Button}">
+                <Setter Property="Padding" Value="8 3" />
+                <Setter Property="MinWidth" Value="0" />
+                <Setter Property="Margin" Value="2 0" />
+            </Style>
+            <Style BasedOn="{StaticResource MyNet.Styles.ToggleButton.ToolBar}" TargetType="{x:Type ToggleButton}">
+                <Setter Property="Padding" Value="8 3" />
+                <Setter Property="MinWidth" Value="0" />
+                <Setter Property="Margin" Value="2 0" />
+            </Style>
+            <Style BasedOn="{StaticResource MyNet.Styles.DropDownButton.ToolBar}" TargetType="{x:Type ctrl:DropDownButton}">
+                <Setter Property="Padding" Value="8 3" />
+                <Setter Property="MinWidth" Value="0" />
+                <Setter Property="Margin" Value="2 0" />
+            </Style>
+            <Style BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar}" TargetType="{x:Type ctrl:SplitButton}">
+                <Setter Property="Padding" Value="8 3" />
+                <Setter Property="MinWidth" Value="0" />
+                <Setter Property="Margin" Value="2 0" />
+            </Style>
+            <Style BasedOn="{StaticResource MyNet.Styles.ComboBox.ToolBar}" TargetType="{x:Type ComboBox}">
+                <Setter Property="Padding" Value="8 3" />
+                <Setter Property="MinWidth" Value="0" />
+                <Setter Property="Margin" Value="2 0" />
+            </Style>
+            <Style BasedOn="{StaticResource MyNet.Styles.ListBox.ToolBar}" TargetType="{x:Type ListBox}" />
+            <Style BasedOn="{StaticResource MyNet.Styles.MultiComboBox.ToolBar}" TargetType="{x:Type ctrl:MultiComboBox}">
+                <Setter Property="Padding" Value="8 3" />
+                <Setter Property="MinWidth" Value="0" />
+                <Setter Property="Margin" Value="2 0" />
+            </Style>
+            <Style x:Key="{x:Static ToolBar.ButtonStyleKey}" BasedOn="{StaticResource MyNet.Styles.Button.ToolBar}" TargetType="{x:Type Button}">
+                <Setter Property="Padding" Value="8 3" />
+                <Setter Property="MinWidth" Value="0" />
+                <Setter Property="Margin" Value="2 0" />
+            </Style>
+            <Style x:Key="{x:Static ToolBar.ToggleButtonStyleKey}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.ToolBar}" TargetType="{x:Type ToggleButton}">
+                <Setter Property="Padding" Value="8 3" />
+                <Setter Property="MinWidth" Value="0" />
+                <Setter Property="Margin" Value="2 0" />
+            </Style>
+        </Style.Resources>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="MinHeight" Value="0" />
+        <Setter Property="Padding" Value="10 5 10 5" />
+        <Setter Property="p:IconAssist.Alignment" Value="Left" />
+        <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ctrl:SelectionCommandsBar}">
+                    <ctrl:Card Padding="{TemplateBinding Padding}"
+                               p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}"
+                               Background="{TemplateBinding Background}"
+                               BorderBrush="{TemplateBinding BorderBrush}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               ClipContent="False"
+                               UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
+                        <Grid KeyboardNavigation.TabIndex="1" KeyboardNavigation.TabNavigation="Local">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="115" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" MinWidth="30" />
+                                <ColumnDefinition Width="115" />
+                            </Grid.ColumnDefinitions>
+
+                            <Thumb x:Name="ToolBarThumb"
+                                   Style="{StaticResource MyNet.Styles.Thumb.Embedded.ToolBar}"
+                                   Width="10"
+                                   Margin="-3 -1 4 0"
+                                   Padding="6 5 1 3" />
+
+                            <ctrl:SimpleStackPanel Grid.Column="1"
+                                                   VerticalAlignment="Center"
+                                                   Orientation="Horizontal"
+                                                   Spacing="{StaticResource MyNet.Margin.Default}"
+                                                   TextBlock.FontWeight="SemiBold"
+                                                   TextBlock.Foreground="{DynamicResource MyNet.Brushes.Primary}">
+                                <ctrl:PackIcon Kind="Check" />
+                                <TextBlock Text="{me:Translation Path=SelectedCount, RelativeSource={RelativeSource TemplatedParent}, Format=XSelected, Plural=True}" Typography.Capitals="AllSmallCaps" />
+                            </ctrl:SimpleStackPanel>
+
+                            <!--  Header  -->
+                            <ContentPresenter x:Name="ToolBarHeader"
+                                              Grid.Column="2"
+                                              Margin="{StaticResource MyNet.Margins.Default.Right}"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              ContentSource="Header"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+
+                            <!--  Content  -->
+                            <Grid Grid.Column="3" HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <ToolBarPanel x:Name="PART_ToolBarPanel"
+                                              Grid.Column="0"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              IsItemsHost="true"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+
+                                <!--  Overflow  -->
+                                <Grid x:Name="OverflowGrid" Grid.Column="1">
+                                    <ToggleButton x:Name="OverflowButton"
+                                                  Style="{StaticResource MyNet.Styles.Button.Icon}"
+                                                  Background="{TemplateBinding Background}"
+                                                  ClickMode="Press"
+                                                  Content="{me:ToolIcon Kind=DotsHorizontal}"
+                                                  FocusVisualStyle="{x:Null}"
+                                                  Foreground="{TemplateBinding Foreground}"
+                                                  IsChecked="{Binding IsOverflowOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HasOverflowItems, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+                                    <Popup x:Name="OverflowPopup"
+                                           Margin="1"
+                                           AllowsTransparency="true"
+                                           Focusable="false"
+                                           IsOpen="{Binding IsOverflowOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                           Placement="Bottom"
+                                           PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}"
+                                           StaysOpen="false">
+                                        <Popup.CacheMode>
+                                            <BitmapCache EnableClearType="True" />
+                                        </Popup.CacheMode>
+                                        <Grid>
+                                            <Border Background="White" Opacity="0.002" />
+                                            <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Popup}" Background="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource Mode=TemplatedParent}}" Foreground="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource Mode=TemplatedParent}}">
+                                                <ToolBarOverflowPanel x:Name="PART_ToolBarOverflowPanel"
+                                                                      Margin="2"
+                                                                      FocusVisualStyle="{x:Null}"
+                                                                      Focusable="true"
+                                                                      KeyboardNavigation.DirectionalNavigation="Cycle"
+                                                                      KeyboardNavigation.TabNavigation="Cycle"
+                                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                                      WrapWidth="150" />
+                                            </ctrl:Card>
+                                        </Grid>
+                                    </Popup>
+                                </Grid>
+                            </Grid>
+
+                            <!--  Unselect all  -->
+                            <Button Style="{StaticResource MyNet.Styles.Button.Icon}"
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Command="{TemplateBinding UnselectAllCommand}"
+                                    Content="{me:ToolIcon Kind=Close}"
+                                    ToolTip="{me:ShortcutResource UnselectAll,
+                                                                  ShortcutKey='Ctrl+Maj+A'}"
+                                    Visibility="{Binding UnselectAllCommand, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+                        </Grid>
+                    </ctrl:Card>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsOverflowOpen" Value="true">
+                            <Setter TargetName="ToolBarThumb" Property="IsEnabled" Value="false" />
+                        </Trigger>
+                        <Trigger Property="Header" Value="{x:Null}">
+                            <Setter TargetName="ToolBarHeader" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="ToolBarTray.IsLocked" Value="true">
+                            <Setter TargetName="ToolBarThumb" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="SelectedCount" Value="0">
+                <Setter Property="Visibility" Value="{Binding VisibilityWhenEmpty, RelativeSource={RelativeSource Self}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MyNet.Styles.SelectionCommandsBar.Alternate" BasedOn="{StaticResource MyNet.Styles.SelectionCommandsBar}" TargetType="{x:Type ctrl:SelectionCommandsBar}">
+        <Style.Resources>
+            <Style BasedOn="{StaticResource MyNet.Styles.Button.ToolBar}" TargetType="{x:Type Button}" />
+            <Style BasedOn="{StaticResource MyNet.Styles.ToggleButton.ToolBar}" TargetType="{x:Type ToggleButton}" />
+            <Style BasedOn="{StaticResource MyNet.Styles.DropDownButton.ToolBar}" TargetType="{x:Type ctrl:DropDownButton}" />
+            <Style BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar}" TargetType="{x:Type ctrl:SplitButton}" />
+            <Style BasedOn="{StaticResource MyNet.Styles.ComboBox.ToolBar}" TargetType="{x:Type ComboBox}" />
+            <Style BasedOn="{StaticResource MyNet.Styles.ListBox.ToolBar}" TargetType="{x:Type ListBox}" />
+            <Style BasedOn="{StaticResource MyNet.Styles.MultiComboBox.ToolBar}" TargetType="{x:Type ctrl:MultiComboBox}" />
+            <Style x:Key="{x:Static ToolBar.ButtonStyleKey}" BasedOn="{StaticResource MyNet.Styles.Button.ToolBar}" TargetType="{x:Type Button}" />
+            <Style x:Key="{x:Static ToolBar.ToggleButtonStyleKey}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.ToolBar}" TargetType="{x:Type ToggleButton}" />
+        </Style.Resources>
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="VisibilityWhenEmpty" Value="Visible" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+</ResourceDictionary>

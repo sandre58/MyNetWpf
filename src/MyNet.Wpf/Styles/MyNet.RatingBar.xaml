@@ -1,0 +1,287 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:MyNet.Wpf.Converters"
+                    xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
+                    xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions"
+                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="MyNet.Styles.RatingBar" TargetType="{x:Type ctrl:RatingBar}">
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ctrl:RatingBar}">
+                    <ItemsControl Margin="{TemplateBinding Padding}"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RatingButtons}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=Orientation}" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ValueItemContainerButtonStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type ctrl:RatingBarButton}">
+                    <Style.Setters>
+                        <Setter Property="Command" Value="{x:Static ctrl:RatingBar.SelectRatingCommand}" />
+                        <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}, Path=Value}" />
+                        <Setter Property="p:RippleAssist.ClipToBounds" Value="False" />
+                        <Setter Property="p:RippleAssist.RippleSizeMultiplier" Value="0.5" />
+                        <Setter Property="Tag" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type ctrl:RatingBar}}}" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ctrl:RatingBarButton}">
+                                    <Grid>
+                                        <ctrl:Ripple Padding="{TemplateBinding Padding}"
+                                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                     Content="{TemplateBinding Content}"
+                                                     ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                     Focusable="False"
+                                                     RenderTransformOrigin=".5, .5"
+                                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                            <TextBlock.Foreground>
+                                                <MultiBinding Converter="{x:Static c:RatingForegroundConverter.Default}">
+                                                    <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                    <Binding Path="Orientation" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                    <Binding Path="Value" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                    <Binding Path="Value" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                </MultiBinding>
+                                            </TextBlock.Foreground>
+                                            <ctrl:Ripple.RenderTransform>
+                                                <RotateTransform x:Name="RotateTransform" />
+                                            </ctrl:Ripple.RenderTransform>
+                                        </ctrl:Ripple>
+                                        <Canvas>
+                                            <Grid x:Name="previewValueHorizontal"
+                                                  Height="36"
+                                                  IsHitTestVisible="False"
+                                                  Visibility="Collapsed">
+                                                <Grid.RenderTransform>
+                                                    <TransformGroup>
+                                                        <TranslateTransform>
+                                                            <TranslateTransform.X>
+                                                                <MultiBinding Converter="{x:Static c:RatingPreviewIndicatorTransformXConverter.Default}">
+                                                                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                    <Binding ElementName="previewValueHorizontal" Path="ActualWidth" />
+                                                                    <!--<Binding Path="Orientation" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                                    <Binding Path="IsFractionalValueEnabled" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                                    <Binding Path="PreviewValue" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />-->
+                                                                    <Binding Path="Value" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                    <Binding Path="IsMouseOver" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                    <Binding Path="Tag" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                </MultiBinding>
+                                                            </TranslateTransform.X>
+                                                            <TranslateTransform.Y>
+                                                                <MultiBinding Converter="{x:Static c:RatingPreviewIndicatorTransformYConverter.Default}">
+                                                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                    <Binding ElementName="previewValueHorizontal" Path="ActualHeight" />
+                                                                    <!--<Binding Path="Orientation" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                                    <Binding Path="IsFractionalValueEnabled" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                                    <Binding Path="PreviewValue" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />-->
+                                                                    <Binding Path="Value" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                    <Binding Path="IsMouseOver" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                    <Binding Path="Tag" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                </MultiBinding>
+                                                            </TranslateTransform.Y>
+                                                        </TranslateTransform>
+                                                    </TransformGroup>
+                                                </Grid.RenderTransform>
+                                                <AdornerDecorator>
+                                                    <AdornerDecorator.CacheMode>
+                                                        <BitmapCache SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                    </AdornerDecorator.CacheMode>
+                                                    <Grid Effect="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}">
+                                                        <Rectangle Margin="0 0 0 5"
+                                                                   Fill="{DynamicResource MyNet.Brushes.Popup.Background}"
+                                                                   RadiusX="2"
+                                                                   RadiusY="2" />
+                                                        <Polygon HorizontalAlignment="Center"
+                                                                 VerticalAlignment="Bottom"
+                                                                 Fill="{DynamicResource MyNet.Brushes.Popup.Background}"
+                                                                 Points="0,0 4.5,5 9,0" />
+                                                    </Grid>
+                                                </AdornerDecorator>
+                                                <TextBlock x:Name="previewValueTextHorizontal"
+                                                           Margin="12 0 12 5"
+                                                           VerticalAlignment="Center"
+                                                           Foreground="{DynamicResource MyNet.Brushes.Application.Foreground}"
+                                                           Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=PreviewValue}"
+                                                           TextAlignment="Center" />
+                                            </Grid>
+                                            <Grid x:Name="previewValueVertical"
+                                                  Height="31"
+                                                  IsHitTestVisible="False"
+                                                  Visibility="Collapsed">
+                                                <Grid.RenderTransform>
+                                                    <TransformGroup>
+                                                        <TranslateTransform>
+                                                            <TranslateTransform.X>
+                                                                <MultiBinding Converter="{x:Static c:RatingPreviewIndicatorTransformXConverter.Default}">
+                                                                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                    <Binding ElementName="previewValueVertical" Path="ActualWidth" />
+                                                                    <!--<Binding Path="Orientation" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                                    <Binding Path="IsFractionalValueEnabled" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                                    <Binding Path="PreviewValue" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />-->
+                                                                    <Binding Path="Value" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                    <Binding Path="IsMouseOver" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                    <Binding Path="Tag" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                </MultiBinding>
+                                                            </TranslateTransform.X>
+                                                            <TranslateTransform.Y>
+                                                                <MultiBinding Converter="{x:Static c:RatingPreviewIndicatorTransformYConverter.Default}">
+                                                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                    <Binding ElementName="previewValueVertical" Path="ActualHeight" />
+                                                                    <!--<Binding Path="Orientation" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                                    <Binding Path="IsFractionalValueEnabled" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                                    <Binding Path="PreviewValue" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />-->
+                                                                    <Binding Path="Value" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                    <Binding Path="IsMouseOver" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                    <Binding Path="Tag" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                                </MultiBinding>
+                                                            </TranslateTransform.Y>
+                                                        </TranslateTransform>
+                                                    </TransformGroup>
+                                                </Grid.RenderTransform>
+                                                <AdornerDecorator>
+                                                    <AdornerDecorator.CacheMode>
+                                                        <BitmapCache SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                    </AdornerDecorator.CacheMode>
+                                                    <Grid Effect="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}">
+                                                        <Rectangle Margin="0 0 5 0"
+                                                                   Fill="{DynamicResource MyNet.Brushes.Popup.Background}"
+                                                                   RadiusX="2"
+                                                                   RadiusY="2" />
+                                                        <Polygon HorizontalAlignment="Right"
+                                                                 VerticalAlignment="Center"
+                                                                 Fill="{DynamicResource MyNet.Brushes.Popup.Background}"
+                                                                 Points="0,0 6,5 0,10" />
+                                                    </Grid>
+                                                </AdornerDecorator>
+                                                <TextBlock x:Name="previewValueTextVertical"
+                                                           Margin="12 0 17 0"
+                                                           VerticalAlignment="Center"
+                                                           Foreground="{DynamicResource MyNet.Brushes.Application.Foreground}"
+                                                           Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=PreviewValue}"
+                                                           TextAlignment="Center" />
+                                            </Grid>
+                                        </Canvas>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=Orientation}" Value="Horizontal" />
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=IsPreviewValueEnabled}" Value="True" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter TargetName="previewValueHorizontal" Property="Visibility" Value="Visible" />
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=Orientation}" Value="Horizontal" />
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=IsPreviewValueEnabled}" Value="True" />
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=IsFractionalValueEnabled}" Value="True" />
+                                            </MultiDataTrigger.Conditions>
+                                            <!--  When fractional values are enabled, always show the preview with 2 decimal places  -->
+                                            <Setter TargetName="previewValueTextHorizontal" Property="Text" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=PreviewValue, StringFormat=' {0:N2}'}" />
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=Orientation}" Value="Vertical" />
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=IsPreviewValueEnabled}" Value="True" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter TargetName="previewValueVertical" Property="Visibility" Value="Visible" />
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=Orientation}" Value="Vertical" />
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=IsPreviewValueEnabled}" Value="True" />
+                                                <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=IsFractionalValueEnabled}" Value="True" />
+                                            </MultiDataTrigger.Conditions>
+                                            <!--  When fractional values are enabled, always show the preview with 2 decimal places  -->
+                                            <Setter TargetName="previewValueTextVertical" Property="Text" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=PreviewValue, StringFormat=' {0:N2}'}" />
+                                        </MultiDataTrigger>
+                                        <EventTrigger RoutedEvent="Click">
+                                            <EventTrigger.Actions>
+                                                <BeginStoryboard>
+                                                    <Storyboard TargetProperty="Angle" TargetName="RotateTransform">
+                                                        <DoubleAnimationUsingKeyFrames>
+                                                            <SplineDoubleKeyFrame KeyTime="0" Value="0" />
+                                                            <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="360">
+                                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                                    <SineEase EasingMode="EaseInOut" />
+                                                                </EasingDoubleKeyFrame.EasingFunction>
+                                                            </EasingDoubleKeyFrame>
+                                                        </DoubleAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger.Actions>
+                                        </EventTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style.Setters>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsReadOnly, RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}}" Value="True">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ctrl:RatingBarButton}">
+                                        <ctrl:Ripple Padding="{TemplateBinding Padding}"
+                                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                     Content="{TemplateBinding Content}"
+                                                     ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                     Focusable="False"
+                                                     IsEnabled="False"
+                                                     RenderTransformOrigin=".5, .5"
+                                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                            <TextBlock.Foreground>
+                                                <MultiBinding Converter="{x:Static c:RatingForegroundConverter.Default}">
+                                                    <Binding Path="Foreground" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                    <Binding Path="Orientation" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                    <Binding Path="Value" RelativeSource="{RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}" />
+                                                    <Binding Path="Value" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                </MultiBinding>
+                                            </TextBlock.Foreground>
+                                        </ctrl:Ripple>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ValueItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Viewbox Width="24" Height="24">
+                        <Canvas Width="24" Height="24">
+                            <Path Data="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Control}, Path=Foreground}" />
+                        </Canvas>
+                    </Viewbox>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

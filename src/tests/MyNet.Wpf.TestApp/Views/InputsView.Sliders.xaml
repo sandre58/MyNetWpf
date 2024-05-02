@@ -1,0 +1,525 @@
+﻿<my:NavigationPage x:Class="MyNet.Wpf.TestApp.Views.InputsSlidersView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:my="http://mynet.com/xaml/themes"
+                   xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
+                   xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+                   xmlns:viewmodels="clr-namespace:MyNet.Wpf.TestApp.ViewModels"
+                   d:DataContext="{d:DesignInstance Type=viewmodels:InputsSlidersViewModel}"
+                   d:DesignHeight="450"
+                   d:DesignWidth="800"
+                   my:ViewModelAssist.AutoWire="True"
+                   mc:Ignorable="d">
+    <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}">
+        <my:SimpleStackPanel>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.Slider">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="s_0_0_0">
+                            <my:Badged Badge="{my:Resource Default}">
+                                <Slider Style="{StaticResource MyNet.Styles.Slider}"
+                                        Width="300"
+                                        Maximum="50"
+                                        Minimum="0"
+                                        Value="35" />
+                            </my:Badged>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="s_0_0_1">
+                            <Slider Style="{StaticResource MyNet.Styles.Slider}"
+                                    Width="300"
+                                    IsSelectionRangeEnabled="True"
+                                    Maximum="50"
+                                    Minimum="0"
+                                    Orientation="Horizontal"
+                                    SelectionEnd="20"
+                                    SelectionStart="0"
+                                    TickFrequency="5"
+                                    TickPlacement="BottomRight"
+                                    Value="10" />
+                        </smtx:XamlDisplay>
+
+                        <my:SimpleStackPanel Orientation="Horizontal">
+                            <smtx:XamlDisplay UniqueKey="s_0_0_2">
+                                <Slider Style="{StaticResource MyNet.Styles.Slider}"
+                                        Width="300"
+                                        IsDirectionReversed="True"
+                                        Maximum="50"
+                                        Minimum="0"
+                                        Value="10" />
+                            </smtx:XamlDisplay>
+                        </my:SimpleStackPanel>
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="s_0_1_0">
+                            <Slider Style="{StaticResource MyNet.Styles.Slider}"
+                                    Height="300"
+                                    Maximum="50"
+                                    Minimum="0"
+                                    Orientation="Vertical"
+                                    Value="25" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="s_0_1_1">
+                            <Slider Style="{StaticResource MyNet.Styles.Slider}"
+                                    Height="300"
+                                    IsSelectionRangeEnabled="True"
+                                    Maximum="50"
+                                    Minimum="0"
+                                    Orientation="Vertical"
+                                    SelectionEnd="50"
+                                    SelectionStart="30"
+                                    Value="10" />
+                        </smtx:XamlDisplay>
+
+                        <my:SimpleStackPanel Orientation="Horizontal">
+                            <smtx:XamlDisplay UniqueKey="s_0_1_2">
+                                <Slider Style="{StaticResource MyNet.Styles.Slider}"
+                                        Height="300"
+                                        IsDirectionReversed="True"
+                                        Maximum="50"
+                                        Minimum="0"
+                                        Orientation="Vertical"
+                                        Value="10" />
+                            </smtx:XamlDisplay>
+                        </my:SimpleStackPanel>
+                    </my:SimpleStackPanel>
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.Slider.Discrete">
+                <DockPanel>
+                    <GroupBox Width="300"
+                              Margin="{StaticResource MyNet.Margins.Medium}"
+                              my:IconAssist.Icon="{my:Icon Kind=Settings}"
+                              DockPanel.Dock="Right"
+                              Header="{my:Resource Options}">
+                        <my:SimpleStackPanel>
+                            <my:NumericUpDown HorizontalAlignment="Stretch"
+                                              my:HintAssist.Hint="Maximum (Hor.)"
+                                              my:HintAssist.IsFloating="True"
+                                              Maximum="500"
+                                              Value="{Binding DiscreteHorizontal.Maximum, UpdateSourceTrigger=PropertyChanged}" />
+                            <my:NumericUpDown HorizontalAlignment="Stretch"
+                                              my:HintAssist.Hint="Tick Frequency (Hor.)"
+                                              my:HintAssist.IsFloating="True"
+                                              Maximum="20"
+                                              Value="{Binding DiscreteHorizontal.TickFrequency, UpdateSourceTrigger=PropertyChanged}" />
+                            <my:NumericUpDown HorizontalAlignment="Stretch"
+                                              my:HintAssist.Hint="Maximum (Vert.)"
+                                              my:HintAssist.IsFloating="True"
+                                              Maximum="1000000"
+                                              Value="{Binding DiscreteVertical.Maximum, UpdateSourceTrigger=PropertyChanged}" />
+                            <my:NumericUpDown HorizontalAlignment="Stretch"
+                                              my:HintAssist.Hint="Tick Frequency (Vert.)"
+                                              my:HintAssist.IsFloating="True"
+                                              Maximum="20000"
+                                              Value="{Binding DiscreteVertical.TickFrequency, UpdateSourceTrigger=PropertyChanged}" />
+                        </my:SimpleStackPanel>
+
+                    </GroupBox>
+
+                    <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                        <my:SimpleStackPanel Orientation="Horizontal">
+                            <smtx:XamlDisplay UniqueKey="s_1_0_0">
+                                <Slider Style="{StaticResource MyNet.Styles.Slider.Discrete}"
+                                        Width="300"
+                                        Maximum="{Binding DiscreteHorizontal.Maximum}"
+                                        Minimum="0"
+                                        TickFrequency="{Binding DiscreteHorizontal.TickFrequency}"
+                                        TickPlacement="BottomRight"
+                                        Value="40" />
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_1_0_1">
+                                <Slider Style="{StaticResource MyNet.Styles.Slider.Discrete}"
+                                        Width="300"
+                                        IsSelectionRangeEnabled="True"
+                                        Maximum="{Binding DiscreteHorizontal.Maximum}"
+                                        Minimum="0"
+                                        SelectionEnd="90"
+                                        SelectionStart="70"
+                                        TickFrequency="{Binding DiscreteHorizontal.TickFrequency}"
+                                        TickPlacement="TopLeft"
+                                        Value="20" />
+                            </smtx:XamlDisplay>
+
+                            <my:SimpleStackPanel Orientation="Horizontal">
+                                <smtx:XamlDisplay UniqueKey="s_1_0_2">
+                                    <Slider Style="{StaticResource MyNet.Styles.Slider.Discrete}"
+                                            Width="300"
+                                            Maximum="{Binding DiscreteHorizontal.Maximum}"
+                                            Minimum="0"
+                                            TickFrequency="{Binding DiscreteHorizontal.TickFrequency}"
+                                            TickPlacement="Both"
+                                            Value="60" />
+                                </smtx:XamlDisplay>
+                            </my:SimpleStackPanel>
+                        </my:SimpleStackPanel>
+
+                        <my:SimpleStackPanel Orientation="Horizontal">
+                            <smtx:XamlDisplay UniqueKey="s_1_1_0">
+                                <Slider Style="{StaticResource MyNet.Styles.Slider.Discrete}"
+                                        Height="300"
+                                        Maximum="{Binding DiscreteVertical.Maximum}"
+                                        Minimum="0"
+                                        Orientation="Vertical"
+                                        TickFrequency="{Binding DiscreteVertical.TickFrequency}"
+                                        TickPlacement="BottomRight"
+                                        Value="70000" />
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_1_1_1">
+                                <Slider Style="{StaticResource MyNet.Styles.Slider.Discrete}"
+                                        Height="300"
+                                        IsSelectionRangeEnabled="True"
+                                        Maximum="{Binding DiscreteVertical.Maximum}"
+                                        Minimum="0"
+                                        Orientation="Vertical"
+                                        SelectionEnd="90000"
+                                        SelectionStart="60000"
+                                        TickFrequency="{Binding DiscreteVertical.TickFrequency}"
+                                        TickPlacement="TopLeft"
+                                        Value="30000" />
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_1_1_2">
+                                <Slider Style="{StaticResource MyNet.Styles.Slider.Discrete}"
+                                        Height="300"
+                                        Maximum="{Binding DiscreteVertical.Maximum}"
+                                        Minimum="0"
+                                        Orientation="Vertical"
+                                        TickFrequency="{Binding DiscreteVertical.TickFrequency}"
+                                        TickPlacement="Both"
+                                        Value="90000" />
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_1_1_3">
+                                <Slider Style="{StaticResource MyNet.Styles.Slider.Discrete}"
+                                        Height="300"
+                                        IsDirectionReversed="True"
+                                        Maximum="{Binding DiscreteVertical.Maximum}"
+                                        Minimum="0"
+                                        Orientation="Vertical"
+                                        TickFrequency="{Binding DiscreteVertical.TickFrequency}"
+                                        TickPlacement="BottomRight"
+                                        Value="50000" />
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_1_1_4">
+                                <Slider Style="{StaticResource MyNet.Styles.Slider.Discrete}"
+                                        Height="300"
+                                        my:SliderAssist.OnlyShowFocusVisualWhileDragging="True"
+                                        Maximum="{Binding DiscreteVertical.Maximum}"
+                                        Minimum="0"
+                                        Orientation="Vertical"
+                                        TickFrequency="{Binding DiscreteVertical.TickFrequency}"
+                                        TickPlacement="BottomRight"
+                                        Value="70000" />
+
+                            </smtx:XamlDisplay>
+                        </my:SimpleStackPanel>
+                    </my:SimpleStackPanel>
+                </DockPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.Slider.Colors">
+                <DockPanel>
+                    <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                        <my:SimpleStackPanel Orientation="Horizontal">
+                            <smtx:XamlDisplay UniqueKey="s_2_0_0">
+                                <Slider x:Name="HueSlider"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.Hue}"
+                                        Width="300"
+                                        my:SliderAssist.BarSize="15"
+                                        Value="40" />
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_2_0_1">
+                                <Slider x:Name="SaturationSlider"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.Saturation}"
+                                        Width="300"
+                                        Value="0.4">
+                                    <Slider.Background>
+                                        <MultiBinding Converter="{x:Static my:HSVToGradientBrushConverter.Saturation}">
+                                            <Binding ElementName="HueSlider" Path="Value" />
+                                            <Binding ElementName="ValueSlider" Path="Value" />
+                                        </MultiBinding>
+                                    </Slider.Background>
+                                    <my:SliderAssist.ThumbBackground>
+                                        <MultiBinding Converter="{x:Static my:HSVToSolidBrushConverter.Default}">
+                                            <Binding ElementName="HueSlider" Path="Value" />
+                                            <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                                            <Binding ElementName="ValueSlider" Path="Value" />
+                                        </MultiBinding>
+                                    </my:SliderAssist.ThumbBackground>
+                                </Slider>
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_2_0_2">
+                                <Slider x:Name="ValueSlider"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.Value}"
+                                        Width="300"
+                                        Value="0.4">
+                                    <Slider.Background>
+                                        <MultiBinding Converter="{x:Static my:HSVToGradientBrushConverter.Value}">
+                                            <Binding ElementName="HueSlider" Path="Value" />
+                                            <Binding ElementName="SaturationSlider" Path="Value" />
+                                        </MultiBinding>
+                                    </Slider.Background>
+                                    <my:SliderAssist.ThumbBackground>
+                                        <MultiBinding Converter="{x:Static my:HSVToSolidBrushConverter.Default}">
+                                            <Binding ElementName="HueSlider" Path="Value" />
+                                            <Binding ElementName="SaturationSlider" Path="Value" />
+                                            <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                                        </MultiBinding>
+                                    </my:SliderAssist.ThumbBackground>
+                                </Slider>
+                            </smtx:XamlDisplay>
+                        </my:SimpleStackPanel>
+
+                        <my:SimpleStackPanel Orientation="Horizontal">
+                            <smtx:XamlDisplay UniqueKey="s_2_1_0">
+                                <Slider x:Name="RSlider"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.ARGB}"
+                                        Width="300"
+                                        Value="140">
+                                    <Slider.Background>
+                                        <MultiBinding Converter="{x:Static my:RGBAToGradientBrushConverter.Red}">
+                                            <Binding ElementName="GSlider" Path="Value" />
+                                            <Binding ElementName="BSlider" Path="Value" />
+                                        </MultiBinding>
+                                    </Slider.Background>
+                                    <my:SliderAssist.ThumbBackground>
+                                        <MultiBinding Converter="{x:Static my:RGBAToSolidBrushConverter.Default}">
+                                            <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                                            <Binding ElementName="GSlider" Path="Value" />
+                                            <Binding ElementName="BSlider" Path="Value" />
+                                        </MultiBinding>
+                                    </my:SliderAssist.ThumbBackground>
+                                </Slider>
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_2_1_1">
+                                <Slider x:Name="GSlider"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.ARGB}"
+                                        Width="300"
+                                        Value="40">
+                                    <Slider.Background>
+                                        <MultiBinding Converter="{x:Static my:RGBAToGradientBrushConverter.Green}">
+                                            <Binding ElementName="RSlider" Path="Value" />
+                                            <Binding ElementName="BSlider" Path="Value" />
+                                        </MultiBinding>
+                                    </Slider.Background>
+                                    <my:SliderAssist.ThumbBackground>
+                                        <MultiBinding Converter="{x:Static my:RGBAToSolidBrushConverter.Default}">
+                                            <Binding ElementName="RSlider" Path="Value" />
+                                            <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                                            <Binding ElementName="BSlider" Path="Value" />
+                                        </MultiBinding>
+                                    </my:SliderAssist.ThumbBackground>
+                                </Slider>
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_2_1_2">
+                                <Slider x:Name="BSlider"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.ARGB}"
+                                        Width="300"
+                                        Value="170">
+                                    <Slider.Background>
+                                        <MultiBinding Converter="{x:Static my:RGBAToGradientBrushConverter.Blue}">
+                                            <Binding ElementName="RSlider" Path="Value" />
+                                            <Binding ElementName="GSlider" Path="Value" />
+                                        </MultiBinding>
+                                    </Slider.Background>
+                                    <my:SliderAssist.ThumbBackground>
+                                        <MultiBinding Converter="{x:Static my:RGBAToSolidBrushConverter.Default}">
+                                            <Binding ElementName="RSlider" Path="Value" />
+                                            <Binding ElementName="GSlider" Path="Value" />
+                                            <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                                        </MultiBinding>
+                                    </my:SliderAssist.ThumbBackground>
+                                </Slider>
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_2_1_3">
+                                <Slider x:Name="ASlider"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.ARGB}"
+                                        Width="300"
+                                        Value="255">
+                                    <Slider.Background>
+                                        <MultiBinding Converter="{x:Static my:RGBAToGradientBrushConverter.Alpha}">
+                                            <Binding ElementName="RSlider" Path="Value" />
+                                            <Binding ElementName="GSlider" Path="Value" />
+                                            <Binding ElementName="BSlider" Path="Value" />
+                                        </MultiBinding>
+                                    </Slider.Background>
+                                    <my:SliderAssist.ThumbBackground>
+                                        <MultiBinding Converter="{x:Static my:RGBAToSolidBrushConverter.Default}">
+                                            <Binding ElementName="RSlider" Path="Value" />
+                                            <Binding ElementName="GSlider" Path="Value" />
+                                            <Binding ElementName="BSlider" Path="Value" />
+                                            <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                                        </MultiBinding>
+                                    </my:SliderAssist.ThumbBackground>
+                                </Slider>
+                            </smtx:XamlDisplay>
+                        </my:SimpleStackPanel>
+
+                        <my:SimpleStackPanel Orientation="Horizontal">
+                            <smtx:XamlDisplay UniqueKey="s_2_2_0">
+                                <Slider x:Name="HueSlider2"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.Hue}"
+                                        Height="300"
+                                        Orientation="Vertical"
+                                        Value="40" />
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_2_2_1">
+                                <Slider x:Name="SaturationSlider2"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.Saturation}"
+                                        Height="300"
+                                        Orientation="Vertical"
+                                        Value="0.4">
+                                    <Slider.Background>
+                                        <MultiBinding Converter="{x:Static my:HSVToGradientBrushConverter.SaturationVertical}">
+                                            <Binding ElementName="HueSlider2" Path="Value" />
+                                            <Binding ElementName="ValueSlider2" Path="Value" />
+                                        </MultiBinding>
+                                    </Slider.Background>
+                                    <my:SliderAssist.ThumbBackground>
+                                        <MultiBinding Converter="{x:Static my:HSVToSolidBrushConverter.Default}">
+                                            <Binding ElementName="HueSlider2" Path="Value" />
+                                            <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                                            <Binding ElementName="ValueSlider2" Path="Value" />
+                                        </MultiBinding>
+                                    </my:SliderAssist.ThumbBackground>
+                                </Slider>
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_2_2_2">
+                                <Slider x:Name="ValueSlider2"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.Value}"
+                                        Height="300"
+                                        Orientation="Vertical"
+                                        Value="0.4">
+                                    <Slider.Background>
+                                        <MultiBinding Converter="{x:Static my:HSVToGradientBrushConverter.ValueVertical}">
+                                            <Binding ElementName="HueSlider2" Path="Value" />
+                                            <Binding ElementName="SaturationSlider2" Path="Value" />
+                                        </MultiBinding>
+                                    </Slider.Background>
+                                    <my:SliderAssist.ThumbBackground>
+                                        <MultiBinding Converter="{x:Static my:HSVToSolidBrushConverter.Default}">
+                                            <Binding ElementName="HueSlider2" Path="Value" />
+                                            <Binding ElementName="SaturationSlider2" Path="Value" />
+                                            <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                                        </MultiBinding>
+                                    </my:SliderAssist.ThumbBackground>
+                                </Slider>
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_2_2_3">
+                                <Slider x:Name="RSlider2"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.ARGB}"
+                                        Height="300"
+                                        Orientation="Vertical"
+                                        Value="140">
+                                    <Slider.Background>
+                                        <MultiBinding Converter="{x:Static my:RGBAToGradientBrushConverter.RedVertical}">
+                                            <Binding ElementName="GSlider2" Path="Value" />
+                                            <Binding ElementName="BSlider2" Path="Value" />
+                                        </MultiBinding>
+                                    </Slider.Background>
+                                    <my:SliderAssist.ThumbBackground>
+                                        <MultiBinding Converter="{x:Static my:RGBAToSolidBrushConverter.Default}">
+                                            <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                                            <Binding ElementName="GSlider2" Path="Value" />
+                                            <Binding ElementName="BSlider2" Path="Value" />
+                                        </MultiBinding>
+                                    </my:SliderAssist.ThumbBackground>
+                                </Slider>
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_2_2_4">
+                                <Slider x:Name="GSlider2"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.ARGB}"
+                                        Height="300"
+                                        Orientation="Vertical"
+                                        Value="40">
+                                    <Slider.Background>
+                                        <MultiBinding Converter="{x:Static my:RGBAToGradientBrushConverter.GreenVertical}">
+                                            <Binding ElementName="RSlider2" Path="Value" />
+                                            <Binding ElementName="BSlider2" Path="Value" />
+                                        </MultiBinding>
+                                    </Slider.Background>
+                                    <my:SliderAssist.ThumbBackground>
+                                        <MultiBinding Converter="{x:Static my:RGBAToSolidBrushConverter.Default}">
+                                            <Binding ElementName="RSlider2" Path="Value" />
+                                            <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                                            <Binding ElementName="BSlider2" Path="Value" />
+                                        </MultiBinding>
+                                    </my:SliderAssist.ThumbBackground>
+                                </Slider>
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_2_2_5">
+                                <Slider x:Name="BSlider2"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.ARGB}"
+                                        Height="300"
+                                        Orientation="Vertical"
+                                        Value="170">
+                                    <Slider.Background>
+                                        <MultiBinding Converter="{x:Static my:RGBAToGradientBrushConverter.BlueVertical}">
+                                            <Binding ElementName="RSlider2" Path="Value" />
+                                            <Binding ElementName="GSlider2" Path="Value" />
+                                        </MultiBinding>
+                                    </Slider.Background>
+                                    <my:SliderAssist.ThumbBackground>
+                                        <MultiBinding Converter="{x:Static my:RGBAToSolidBrushConverter.Default}">
+                                            <Binding ElementName="RSlider2" Path="Value" />
+                                            <Binding ElementName="GSlider2" Path="Value" />
+                                            <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                                        </MultiBinding>
+                                    </my:SliderAssist.ThumbBackground>
+                                </Slider>
+                            </smtx:XamlDisplay>
+
+                            <smtx:XamlDisplay UniqueKey="s_2_2_6">
+                                <Slider x:Name="ASlider2"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.ARGB}"
+                                        Height="300"
+                                        Orientation="Vertical"
+                                        Value="255">
+                                    <Slider.Background>
+                                        <MultiBinding Converter="{x:Static my:RGBAToGradientBrushConverter.AlphaVertical}">
+                                            <Binding ElementName="RSlider2" Path="Value" />
+                                            <Binding ElementName="GSlider2" Path="Value" />
+                                            <Binding ElementName="BSlider2" Path="Value" />
+                                        </MultiBinding>
+                                    </Slider.Background>
+                                    <my:SliderAssist.ThumbBackground>
+                                        <MultiBinding Converter="{x:Static my:RGBAToSolidBrushConverter.Default}">
+                                            <Binding ElementName="RSlider2" Path="Value" />
+                                            <Binding ElementName="GSlider2" Path="Value" />
+                                            <Binding ElementName="BSlider2" Path="Value" />
+                                            <Binding Path="Value" RelativeSource="{RelativeSource Self}" />
+                                        </MultiBinding>
+                                    </my:SliderAssist.ThumbBackground>
+                                </Slider>
+                            </smtx:XamlDisplay>
+
+                        </my:SimpleStackPanel>
+                    </my:SimpleStackPanel>
+                </DockPanel>
+            </Expander>
+        </my:SimpleStackPanel>
+    </my:DynamicScrollViewer>
+</my:NavigationPage>

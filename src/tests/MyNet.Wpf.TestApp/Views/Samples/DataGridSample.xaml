@@ -1,0 +1,29 @@
+﻿<DataGrid x:Class="MyNet.Wpf.TestApp.Views.SamplePages.DataGridSample"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+          xmlns:data="clr-namespace:MyNet.Wpf.TestApp.Data"
+          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          xmlns:my="http://mynet.com/xaml/themes"
+          d:DesignHeight="450"
+          d:DesignWidth="800"
+          mc:Ignorable="d">
+    <DataGrid.Columns>
+        <DataGridCheckBoxColumn Binding="{Binding IsSelected}" />
+        <DataGridTemplateColumn Header="Image">
+            <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                    <Image Width="24"
+                           Height="24"
+                           VerticalAlignment="Center"
+                           Source="{Binding Item, Converter={x:Static my:CountryToFlagConverter.To24}}" />
+                </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        <DataGridTextColumn Binding="{Binding Item, Converter={x:Static my:CountryToStringConverter.ToDisplayName}, Mode=OneWay}" Header="Country" />
+        <DataGridTextColumn Binding="{Binding DisplayName}" Header="DisplayName" />
+        <DataGridComboBoxColumn Header="Order" ItemsSource="{x:Static data:Collections.Integers}" SelectedItemBinding="{Binding Order}" />
+        <my:DataGridNumericColumn Binding="{Binding Iso}" Header="Iso" />
+        <my:DataGridDateColumn Binding="{Binding CreatedDate}" Header="CreatedDate" />
+    </DataGrid.Columns>
+</DataGrid>

@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="MyNet.Wpf.Presentation.Views.Edition.StringListEditionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:my="http://mynet.com/xaml/themes"
+             xmlns:v="clr-namespace:MyNet.Wpf.Presentation.Views.Edition"
+             xmlns:vm="clr-namespace:MyNet.UI.ViewModels.Edition;assembly=MyNet.UI"
+             d:DataContext="{d:DesignInstance Type=vm:StringListEditionViewModel}"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <ItemsControl ItemsSource="{Binding Items}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <my:SimpleStackPanel Orientation="Vertical" Spacing="{StaticResource MyNet.Margin.Default}" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemContainerStyle>
+            <Style TargetType="{x:Type ContentPresenter}">
+                <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+            </Style>
+        </ItemsControl.ItemContainerStyle>
+
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=ChevronRight}">
+                    <Grid Validation.ErrorTemplate="{x:Null}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="3" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="Value"
+                                 Width="Auto"
+                                 HorizontalAlignment="Stretch"
+                                 my:FocusAssist.IsDefault="True"
+                                 my:HintAssist.IsFloating="False"
+                                 my:ValidationAssist.UsePopup="True"
+                                 Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <Button Style="{StaticResource MyNet.Styles.Button.Icon.Remove}"
+                                Grid.Column="2"
+                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type v:StringListEditionView}}, Path=DataContext.RemoveCommand}"
+                                CommandParameter="{Binding}"
+                                Visibility="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled, Converter={x:Static my:BooleanToVisibilityConverter.HiddenIfFalse}}" />
+
+                        <Button Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
+                                Grid.Column="4"
+                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type v:StringListEditionView}}, Path=DataContext.AddCommand}"
+                                CommandParameter="{Binding}"
+                                Content="{my:ToolIcon Kind=AddCircle}"
+                                ToolTip="{my:Resource Add}"
+                                Validation.ErrorTemplate="{x:Null}"
+                                Visibility="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled, Converter={x:Static my:BooleanToVisibilityConverter.HiddenIfFalse}}" />
+                    </Grid>
+                </GroupBox>
+
+                <DataTemplate.Triggers>
+                    <DataTrigger Binding="{Binding Value, Converter={x:Static my:NullToBooleanConverter.TrueIfNull}}" Value="True">
+                        <Setter TargetName="Value" Property="my:HintAssist.HelperText" Value="{my:Resource WillBeDeletedItem}" />
+                    </DataTrigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</UserControl>

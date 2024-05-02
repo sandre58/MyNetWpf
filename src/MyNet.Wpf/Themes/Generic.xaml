@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
+                    xmlns:wpf="clr-namespace:MyNet.Wpf">
+
+    <ResourceDictionary.MergedDictionaries>
+        <wpf:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.Styles.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style BasedOn="{StaticResource MyNet.Styles.ApplicationIcon}" TargetType="{x:Type ctrl:ApplicationIcon}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.AutoSuggestBox}" TargetType="{x:Type ctrl:AutoSuggestBox}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Badged}" TargetType="{x:Type ctrl:Badged}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.BusyControl}" TargetType="{x:Type ctrl:BusyControl}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByMonth}" TargetType="{x:Type ctrl:CalendarDaysByMonth}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByYear}" TargetType="{x:Type ctrl:CalendarDaysByYear}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Calendar.DaysRange}" TargetType="{x:Type ctrl:CalendarDaysRange}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByWeek}" TargetType="{x:Type ctrl:CalendarHoursByWeek}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByDay}" TargetType="{x:Type ctrl:CalendarHoursByDay}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Card.Elevation}" TargetType="{x:Type ctrl:Card}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Chip}" TargetType="{x:Type ctrl:Chip}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Clock}" TargetType="{x:Type ctrl:Clock}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.CodeBlock}" TargetType="{x:Type ctrl:CodeBlock}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.ColorCanvas}" TargetType="{x:Type ctrl:ColorCanvas}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.ColorEyeDropper}" TargetType="{x:Type ctrl:ColorEyeDropper}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.ColorHSVPicker}" TargetType="{x:Type ctrl:ColorHSVPicker}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.ColorPicker}" TargetType="{x:Type ctrl:ColorPicker}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.ContentDialog}" TargetType="{x:Type ctrl:ContentDialog}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.ContentExpander}" TargetType="{x:Type ctrl:ContentExpander}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.CommandsBar}" TargetType="{x:Type ctrl:CommandsBar}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.ExtendedWindow}" TargetType="{x:Type ctrl:ExtendedWindow}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.ExtendedWindowDialog}" TargetType="{x:Type ctrl:ExtendedWindowDialog}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.DrawerHost}" TargetType="{x:Type ctrl:DrawerHost}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}" TargetType="{x:Type ctrl:DropDownButton}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.DynamicScrollBar.Foreground}" TargetType="{x:Type ctrl:DynamicScrollBar}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.DynamicScrollViewer.Foreground}" TargetType="{x:Type ctrl:DynamicScrollViewer}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Flipper}" TargetType="{x:Type ctrl:Flipper}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.GeometryIcon}" TargetType="{x:Type ctrl:GeometryIcon}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.GhostControl}" TargetType="{x:Type ctrl:GhostControl}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.ImagePicker}" TargetType="{x:Type ctrl:ImagePicker}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.ListSortDirectionIndicator}" TargetType="{x:Type ctrl:ListSortDirectionIndicator}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.LoadingIndicator}" TargetType="{x:Type ctrl:LoadingIndicator}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.MessageView}" TargetType="{x:Type ctrl:MessageView}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.MultiComboBox}" TargetType="{x:Type ctrl:MultiComboBox}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.MultiComboBoxItem}" TargetType="{x:Type ctrl:MultiComboBoxItem}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.NavigationFrame}" TargetType="{x:Type ctrl:NavigationFrame}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.NavigationPage}" TargetType="{x:Type ctrl:NavigationPage}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.NavigationView}" TargetType="{x:Type ctrl:NavigationView}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.NavigationViewItem}" TargetType="{x:Type ctrl:NavigationViewItem}" />
+    <Style BasedOn="{StaticResource MyNet.Style.NavigationViewItemHeader}" TargetType="{x:Type ctrl:NavigationViewItemHeader}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Separator.Horizontal}" TargetType="{x:Type ctrl:NavigationViewItemSeparator}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.NumericUpDown}" TargetType="{x:Type ctrl:NumericUpDown}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.OverlayDialogControl}" TargetType="{x:Type ctrl:OverlayDialogControl}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.PackIcon}" TargetType="{x:Type ctrl:PackIcon}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.PictureControl}" TargetType="{x:Type ctrl:PictureControl}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.PopupEx}" TargetType="{x:Type ctrl:PopupEx}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.RevealPasswordBox}" TargetType="{x:Type ctrl:RevealPasswordBox}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.RatingBar}" TargetType="{x:Type ctrl:RatingBar}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.RichTextEditor}" TargetType="{x:Type ctrl:RichTextEditor}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Ripple}" TargetType="{x:Type ctrl:Ripple}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.SelectionCommandsBar}" TargetType="{x:Type ctrl:SelectionCommandsBar}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.SimpleStackPanel}" TargetType="{x:Type ctrl:SimpleStackPanel}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.SmartHint}" TargetType="{x:Type ctrl:SmartHint}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" TargetType="{x:Type ctrl:SplitButton}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Menu.Embedded}" TargetType="{x:Type ctrl:Submenu}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Menu.SubMenu}" TargetType="{x:Type ctrl:TextContextMenu}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.TimePicker}" TargetType="{x:Type ctrl:TimePicker}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.ToastItem}" TargetType="{x:Type ctrl:ToastItem}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.TransitioningContent}" TargetType="{x:Type ctrl:TransitioningContent}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.Underline}" TargetType="{x:Type ctrl:Underline}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.VirtualizingGridView}" TargetType="{x:Type ctrl:VirtualizingGridView}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.VirtualizingItemsControl}" TargetType="{x:Type ctrl:VirtualizingItemsControl}" />
+    <Style BasedOn="{StaticResource MyNet.Styles.VirtualizingWrapPanel}" TargetType="{x:Type ctrl:VirtualizingWrapPanel}" />
+</ResourceDictionary>

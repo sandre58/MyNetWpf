@@ -1,0 +1,328 @@
+﻿<my:NavigationPage x:Class="MyNet.Wpf.TestApp.Views.CalendarsCalendarsView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:my="http://mynet.com/xaml/themes"
+                   xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
+                   xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+                   xmlns:system="clr-namespace:System;assembly=System.Runtime"
+                   xmlns:viewmodels="clr-namespace:MyNet.Wpf.TestApp.ViewModels"
+                   d:DataContext="{d:DesignInstance Type=viewmodels:CalendarsCalendarsViewModel}"
+                   d:DesignHeight="800"
+                   d:DesignWidth="800"
+                   my:ViewModelAssist.AutoWire="true"
+                   mc:Ignorable="d">
+
+    <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}" HorizontalScrollBarVisibility="Disabled">
+        <my:SimpleStackPanel>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="Default">
+                <DockPanel>
+                    <GroupBox Width="300"
+                              Margin="{StaticResource MyNet.Margins.Medium}"
+                              my:IconAssist.Icon="{my:Icon Kind=Settings}"
+                              DockPanel.Dock="Right"
+                              Header="{my:Resource Options}">
+                        <my:SimpleStackPanel>
+                            <ComboBox x:Name="mode"
+                                      HorizontalAlignment="Stretch"
+                                      my:HintAssist.Hint="Display Mode"
+                                      my:HintAssist.IsFloating="True"
+                                      SelectedIndex="1">
+                                <ComboBoxItem Content="Week" />
+                                <ComboBoxItem Content="Month" />
+                                <ComboBoxItem Content="Year" />
+                                <ComboBoxItem Content="Range" />
+                                <ComboBoxItem Content="Days" />
+                            </ComboBox>
+                            <DatePicker x:Name="StartDate"
+                                        HorizontalAlignment="Stretch"
+                                        my:HintAssist.Hint="Start Date"
+                                        my:HintAssist.IsFloating="True"
+                                        SelectedDate="{Binding StartDate}" />
+                            <DatePicker x:Name="EndDate"
+                                        HorizontalAlignment="Stretch"
+                                        my:HintAssist.Hint="End Date"
+                                        my:HintAssist.IsFloating="True"
+                                        SelectedDate="{Binding EndDate}" />
+                            <DatePicker x:Name="DisplayDate"
+                                        HorizontalAlignment="Stretch"
+                                        my:HintAssist.Hint="Display Date"
+                                        my:HintAssist.IsFloating="True"
+                                        SelectedDate="{Binding DisplayDate}" />
+                            <ComboBox x:Name="FirstDayOfWeek"
+                                      HorizontalAlignment="Stretch"
+                                      my:HintAssist.Hint="First day of week"
+                                      my:HintAssist.IsFloating="True"
+                                      DisplayMemberPath="Display"
+                                      ItemsSource="{my:EnumSource {x:Type system:DayOfWeek}}"
+                                      SelectedValue="{x:Static system:DayOfWeek.Monday}"
+                                      SelectedValuePath="Value" />
+                            <ComboBox x:Name="DatesSelectionMode"
+                                      HorizontalAlignment="Stretch"
+                                      my:HintAssist.Hint="Selection Mode"
+                                      my:HintAssist.IsFloating="True"
+                                      DisplayMemberPath="Display"
+                                      ItemsSource="{my:EnumSource {x:Type CalendarSelectionMode}}"
+                                      SelectedValue="{x:Static CalendarSelectionMode.MultipleRange}"
+                                      SelectedValuePath="Value" />
+                            <ComboBox x:Name="SelectionMode"
+                                      HorizontalAlignment="Stretch"
+                                      my:HintAssist.Hint="Selection Mode"
+                                      my:HintAssist.IsFloating="True"
+                                      DisplayMemberPath="Display"
+                                      ItemsSource="{my:EnumSource {x:Type SelectionMode}}"
+                                      SelectedValue="{x:Static SelectionMode.Extended}"
+                                      SelectedValuePath="Value" />
+                            <ComboBox x:Name="DisplayMode"
+                                      HorizontalAlignment="Stretch"
+                                      my:HintAssist.Hint="Appointments Display Mode"
+                                      my:HintAssist.IsFloating="True"
+                                      DisplayMemberPath="Display"
+                                      ItemsSource="{my:EnumSource {x:Type my:AppointmentsDisplayMode}}"
+                                      SelectedValue="{x:Static my:AppointmentsDisplayMode.Range}"
+                                      SelectedValuePath="Value" />
+                            <CheckBox x:Name="showHeader" Content="ShowHeader" IsChecked="True" />
+                        </my:SimpleStackPanel>
+
+                    </GroupBox>
+
+                    <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                        <smtx:XamlDisplay Height="850"
+                                          HorizontalAlignment="Stretch"
+                                          UniqueKey="cal_0_0_0"
+                                          Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=0}">
+                            <my:CalendarHoursByWeek Appointments="{Binding Appointments}"
+                                                    AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
+                                                    DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
+                                                    DisplayDate="{Binding DisplayDate}"
+                                                    FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek, Mode=OneWay}"
+                                                    MaximumDate="{Binding EndDate}"
+                                                    MinimumDate="{Binding StartDate}"
+                                                    SelectionMode="{Binding SelectedValue, ElementName=SelectionMode, Mode=OneWay}"
+                                                    ShowHeader="{Binding IsChecked, ElementName=showHeader, Mode=OneWay}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay Height="850"
+                                          HorizontalAlignment="Stretch"
+                                          UniqueKey="cal_0_0_1"
+                                          Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=1}">
+                            <my:CalendarDaysByMonth Appointments="{Binding Appointments}"
+                                                    AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
+                                                    DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
+                                                    DisplayDate="{Binding DisplayDate}"
+                                                    FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek, Mode=OneWay}"
+                                                    MaximumDate="{Binding EndDate}"
+                                                    MinimumDate="{Binding StartDate}"
+                                                    SelectionMode="{Binding SelectedValue, ElementName=SelectionMode, Mode=OneWay}"
+                                                    ShowHeader="{Binding IsChecked, ElementName=showHeader, Mode=OneWay}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay Height="850"
+                                          HorizontalAlignment="Stretch"
+                                          UniqueKey="cal_0_0_2"
+                                          Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=2}">
+                            <my:CalendarDaysByYear Appointments="{Binding Appointments}"
+                                                   AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
+                                                   DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
+                                                   DisplayDate="{Binding DisplayDate}"
+                                                   FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek, Mode=OneWay}"
+                                                   LastDayOfWeekIsHighlighted="True"
+                                                   MaximumDate="{Binding EndDate}"
+                                                   MinimumDate="{Binding StartDate}"
+                                                   SelectionMode="{Binding SelectedValue, ElementName=SelectionMode, Mode=OneWay}"
+                                                   ShowHeader="{Binding IsChecked, ElementName=showHeader, Mode=OneWay}" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay Height="300"
+                                          HorizontalAlignment="Stretch"
+                                          UniqueKey="cal_0_0_3"
+                                          Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=3}">
+                            <my:CalendarDaysRange Appointments="{Binding Appointments}"
+                                                  AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
+                                                  DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
+                                                  DisplayDate="{Binding DisplayDate}"
+                                                  FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek2, Mode=OneWay}"
+                                                  MaximumDate="{Binding EndDate}"
+                                                  MinimumDate="{Binding StartDate}"
+                                                  SelectionMode="{Binding SelectedValue, ElementName=SelectionMode2, Mode=OneWay}"
+                                                  ShowHeader="{Binding IsChecked, ElementName=showHeader2, Mode=OneWay}" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay Height="850"
+                                          HorizontalAlignment="Stretch"
+                                          UniqueKey="cal_0_0_4"
+                                          Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=4}">
+                            <my:CalendarHoursByWeek Appointments="{Binding Appointments}"
+                                                    AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
+                                                    DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
+                                                    DisplayDate="{Binding DisplayDate}"
+                                                    FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek, Mode=OneWay}"
+                                                    MaximumDate="{Binding EndDate}"
+                                                    MinimumDate="{Binding StartDate}"
+                                                    SelectionMode="{Binding SelectedValue, ElementName=SelectionMode, Mode=OneWay}"
+                                                    ShowHeader="{Binding IsChecked, ElementName=showHeader, Mode=OneWay}" />
+                        </smtx:XamlDisplay>
+
+                    </my:SimpleStackPanel>
+                </DockPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="Alternate">
+                <DockPanel>
+                    <GroupBox Width="300"
+                              Margin="{StaticResource MyNet.Margins.Medium}"
+                              my:IconAssist.Icon="{my:Icon Kind=Settings}"
+                              DockPanel.Dock="Right"
+                              Header="{my:Resource Options}">
+                        <my:SimpleStackPanel>
+                            <ComboBox x:Name="mode2"
+                                      HorizontalAlignment="Stretch"
+                                      my:HintAssist.Hint="Display Mode"
+                                      my:HintAssist.IsFloating="True"
+                                      SelectedIndex="1">
+                                <ComboBoxItem Content="Week" />
+                                <ComboBoxItem Content="Month" />
+                                <ComboBoxItem Content="Year" />
+                                <ComboBoxItem Content="Range" />
+                                <ComboBoxItem Content="Days" />
+                            </ComboBox>
+                            <DatePicker x:Name="StartDate2"
+                                        HorizontalAlignment="Stretch"
+                                        my:HintAssist.Hint="Start Date"
+                                        my:HintAssist.IsFloating="True"
+                                        SelectedDate="{Binding StartDate}" />
+                            <DatePicker x:Name="EndDate2"
+                                        HorizontalAlignment="Stretch"
+                                        my:HintAssist.Hint="End Date"
+                                        my:HintAssist.IsFloating="True"
+                                        SelectedDate="{Binding EndDate}" />
+                            <DatePicker x:Name="DisplayDate2"
+                                        HorizontalAlignment="Stretch"
+                                        my:HintAssist.Hint="Display Date"
+                                        my:HintAssist.IsFloating="True"
+                                        SelectedDate="{Binding DisplayDate}" />
+                            <ComboBox x:Name="FirstDayOfWeek2"
+                                      HorizontalAlignment="Stretch"
+                                      my:HintAssist.Hint="First day of week"
+                                      my:HintAssist.IsFloating="True"
+                                      DisplayMemberPath="Display"
+                                      ItemsSource="{my:EnumSource {x:Type system:DayOfWeek}}"
+                                      SelectedValue="{x:Static system:DayOfWeek.Monday}"
+                                      SelectedValuePath="Value" />
+                            <ComboBox x:Name="DatesSelectionMode2"
+                                      HorizontalAlignment="Stretch"
+                                      my:HintAssist.Hint="Selection Mode"
+                                      my:HintAssist.IsFloating="True"
+                                      DisplayMemberPath="Display"
+                                      ItemsSource="{my:EnumSource {x:Type CalendarSelectionMode}}"
+                                      SelectedValue="{x:Static CalendarSelectionMode.MultipleRange}"
+                                      SelectedValuePath="Value" />
+                            <ComboBox x:Name="SelectionMode2"
+                                      HorizontalAlignment="Stretch"
+                                      my:HintAssist.Hint="Selection Mode"
+                                      my:HintAssist.IsFloating="True"
+                                      DisplayMemberPath="Display"
+                                      ItemsSource="{my:EnumSource {x:Type SelectionMode}}"
+                                      SelectedValue="{x:Static SelectionMode.Extended}"
+                                      SelectedValuePath="Value" />
+                            <ComboBox x:Name="DisplayMode2"
+                                      HorizontalAlignment="Stretch"
+                                      my:HintAssist.Hint="Appointments Display Mode"
+                                      my:HintAssist.IsFloating="True"
+                                      DisplayMemberPath="Display"
+                                      ItemsSource="{my:EnumSource {x:Type my:AppointmentsDisplayMode}}"
+                                      SelectedValue="{x:Static my:AppointmentsDisplayMode.Range}"
+                                      SelectedValuePath="Value" />
+                            <CheckBox x:Name="showHeader2" Content="ShowHeader" IsChecked="True" />
+                        </my:SimpleStackPanel>
+
+                    </GroupBox>
+
+                    <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                        <smtx:XamlDisplay Height="850"
+                                          HorizontalAlignment="Stretch"
+                                          UniqueKey="cal_1_0_0"
+                                          Visibility="{Binding SelectedIndex, ElementName=mode2, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=0}">
+                            <my:CalendarHoursByWeek Style="{StaticResource MyNet.Styles.Calendar.HoursByWeek.Alternate}"
+                                                    Appointments="{Binding Appointments}"
+                                                    AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
+                                                    DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
+                                                    DisplayDate="{Binding DisplayDate}"
+                                                    FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek2, Mode=OneWay}"
+                                                    MaximumDate="{Binding EndDate}"
+                                                    MinimumDate="{Binding StartDate}"
+                                                    SelectionMode="{Binding SelectedValue, ElementName=SelectionMode2, Mode=OneWay}"
+                                                    ShowHeader="{Binding IsChecked, ElementName=showHeader2, Mode=OneWay}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay Height="850"
+                                          HorizontalAlignment="Stretch"
+                                          UniqueKey="cal_1_0_1"
+                                          Visibility="{Binding SelectedIndex, ElementName=mode2, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=1}">
+                            <my:CalendarDaysByMonth Style="{StaticResource MyNet.Styles.Calendar.DaysByMonth.Alternate}"
+                                                    Appointments="{Binding Appointments}"
+                                                    AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
+                                                    DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
+                                                    DisplayDate="{Binding DisplayDate}"
+                                                    FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek2, Mode=OneWay}"
+                                                    MaximumDate="{Binding EndDate}"
+                                                    MinimumDate="{Binding StartDate}"
+                                                    SelectionMode="{Binding SelectedValue, ElementName=SelectionMode2, Mode=OneWay}"
+                                                    ShowHeader="{Binding IsChecked, ElementName=showHeader2, Mode=OneWay}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay Height="850"
+                                          HorizontalAlignment="Stretch"
+                                          UniqueKey="cal_1_0_2"
+                                          Visibility="{Binding SelectedIndex, ElementName=mode2, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=2}">
+                            <my:CalendarDaysByYear Style="{StaticResource MyNet.Styles.Calendar.DaysByYear.Alternate}"
+                                                   Appointments="{Binding Appointments}"
+                                                   AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
+                                                   DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
+                                                   DisplayDate="{Binding DisplayDate}"
+                                                   FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek2, Mode=OneWay}"
+                                                   LastDayOfWeekIsHighlighted="True"
+                                                   MaximumDate="{Binding EndDate}"
+                                                   MinimumDate="{Binding StartDate}"
+                                                   SelectionMode="{Binding SelectedValue, ElementName=SelectionMode2, Mode=OneWay}"
+                                                   ShowHeader="{Binding IsChecked, ElementName=showHeader2, Mode=OneWay}" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay Height="300"
+                                          HorizontalAlignment="Stretch"
+                                          UniqueKey="cal_1_0_3"
+                                          Visibility="{Binding SelectedIndex, ElementName=mode2, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=3}">
+                            <my:CalendarDaysRange Style="{StaticResource MyNet.Styles.Calendar.DaysRange.Alternate}"
+                                                  Appointments="{Binding Appointments}"
+                                                  AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
+                                                  DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
+                                                  DisplayDate="{Binding DisplayDate}"
+                                                  FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek2, Mode=OneWay}"
+                                                  MaximumDate="{Binding EndDate}"
+                                                  MinimumDate="{Binding StartDate}"
+                                                  SelectionMode="{Binding SelectedValue, ElementName=SelectionMode2, Mode=OneWay}"
+                                                  ShowHeader="{Binding IsChecked, ElementName=showHeader2, Mode=OneWay}" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay Height="850"
+                                          HorizontalAlignment="Stretch"
+                                          UniqueKey="cal_1_0_4"
+                                          Visibility="{Binding SelectedIndex, ElementName=mode2, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=4}">
+                            <my:CalendarHoursByWeek Style="{StaticResource MyNet.Styles.Calendar.HoursByWeek.Alternate}"
+                                                    Appointments="{Binding Appointments}"
+                                                    AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
+                                                    DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
+                                                    DisplayDate="{Binding DisplayDate}"
+                                                    FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek2, Mode=OneWay}"
+                                                    MaximumDate="{Binding EndDate}"
+                                                    MinimumDate="{Binding StartDate}"
+                                                    SelectionMode="{Binding SelectedValue, ElementName=SelectionMode2, Mode=OneWay}"
+                                                    ShowHeader="{Binding IsChecked, ElementName=showHeader2, Mode=OneWay}" />
+                        </smtx:XamlDisplay>
+
+                    </my:SimpleStackPanel>
+                </DockPanel>
+            </Expander>
+        </my:SimpleStackPanel>
+    </my:DynamicScrollViewer>
+</my:NavigationPage>

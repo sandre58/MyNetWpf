@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>A comprehensive collection of controls, graphical elements, and views designed for accelerating WPF application development.</Description>
+    <PackageTags>MyNet;UI;Xaml;Presentation;Wpf</PackageTags>
+    <VersionPrefix>1.0.1</VersionPrefix>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="gong-wpf-dragdrop" Version="3.2.1" />
+    <PackageReference Include="Fody" Version="6.8.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="MyNet.Utilities.Geography.Extensions" Version="1.0.1" />
+    <PackageReference Include="MyNet.Utilities.Localization.Extensions" Version="1.0.1" />
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="MyNet.Xaml.Merger.MSBuild" Version="0.1.0-pre.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\MyNet.Wpf\MyNet.Wpf.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <XAMLColorSchemeGeneratorEnabled>False</XAMLColorSchemeGeneratorEnabled>
+    <XAMLCombineEnabled>True</XAMLCombineEnabled>
+    <XAMLCombineImportMergedResourceDictionaryReferences>True</XAMLCombineImportMergedResourceDictionaryReferences>
+    <RemoveXAMLCombineItemsFromPages>False</RemoveXAMLCombineItemsFromPages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <XAMLCombineItems Include="Styles/*.xaml">
+      <TargetFile>Themes/MyNet.Styles.xaml</TargetFile>
+    </XAMLCombineItems>
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(IsBuildingInsideRider)' == 'True'">
+    <DefaultItemExcludes>$(DefaultItemExcludes);Styles\*.xaml</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsBuildingInsideRider)' == 'True'">
+    <Page Include="Styles\*.xaml" />
+  </ItemGroup>
+  
+</Project>

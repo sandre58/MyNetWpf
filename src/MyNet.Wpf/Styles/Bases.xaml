@@ -1,0 +1,281 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters">
+
+    <!--  Font Families  -->
+    <FontFamily x:Key="MyNet.Font.Family.Daggersquare">pack://application:,,,/MyNet.Wpf;component/Fonts/#DAGGERSQUARE</FontFamily>
+    <FontFamily x:Key="MyNet.Font.Family.Jersey">pack://application:,,,/MyNet.Wpf;component/Fonts/#Jersey M54</FontFamily>
+    <FontFamily x:Key="MyNet.Font.Family.Nuvel">pack://application:,,,/MyNet.Wpf;component/Fonts/#Nuvel</FontFamily>
+    <FontFamily x:Key="MyNet.Font.Family.Roboto">pack://application:,,,/MyNet.Wpf;component/Fonts/Roboto/#Roboto</FontFamily>
+    <FontFamily x:Key="MyNet.Font.Family.Noto">pack://application:,,,/MyNet.Wpf;component/Fonts/Noto/#Noto</FontFamily>
+    <FontFamily x:Key="MyNet.Font.Family.Icons">pack://application:,,,/MyNet.Wpf;component/Fonts/#FluentSystemIcons-Regular</FontFamily>
+    <FontFamily x:Key="MyNet.Font.Family.Icons.Filled">pack://application:,,,/MyNet.Wpf;component/Fonts/#FluentSystemIcons-Filled</FontFamily>
+    <FontFamily x:Key="MyNet.Font.Family.FiraCode">pack://application:,,,/MyNet.Wpf;component/Fonts/#Fira Code</FontFamily>
+    <FontFamily x:Key="MyNet.Font.Family.Digital">pack://application:,,,/MyNet.Wpf;component/Fonts/#DS-Digital</FontFamily>
+
+    <!--  Font Sizes  -->
+    <sys:Double x:Key="MyNet.Font.Size.Secondary">10</sys:Double>
+    <sys:Double x:Key="MyNet.Font.Size">12</sys:Double>
+    <sys:Double x:Key="MyNet.Font.Size.Menu">12</sys:Double>
+    <sys:Double x:Key="MyNet.Font.Size.Button">12</sys:Double>
+    <sys:Double x:Key="MyNet.Font.Size.Tab">14</sys:Double>
+    <sys:Double x:Key="MyNet.Font.Size.Caption">16</sys:Double>
+    <sys:Double x:Key="MyNet.Font.Size.Title">20</sys:Double>
+    <sys:Double x:Key="MyNet.Font.Size.Header">30</sys:Double>
+
+    <!-- FontWeight -->
+    <FontWeight x:Key="MyNet.Font.Weight">Normal</FontWeight>
+    <FontWeight x:Key="MyNet.Font.Weight.Button">Normal</FontWeight>
+    <FontWeight x:Key="MyNet.Font.Weight.ToolTip">Normal</FontWeight>
+    <FontWeight x:Key="MyNet.Font.Weight.Header">Medium</FontWeight>
+
+    <!--  Colors  -->
+    <Color x:Key="MyNet.Colors.Red">#F44336</Color>
+    <Color x:Key="MyNet.Colors.White">#FFFFFF</Color>
+    <Color x:Key="MyNet.Colors.Black">#000000</Color>
+    <Color x:Key="MyNet.Colors.Gold">#FFD700</Color>
+    <Color x:Key="MyNet.Colors.Female">#c90076</Color>
+    <Color x:Key="MyNet.Colors.Male">#2986cc</Color>
+
+    <!--  Brushes  -->
+    <SolidColorBrush x:Key="MyNet.Brushes.Red" po:Freeze="true" Color="{StaticResource MyNet.Colors.Red}" />
+    <SolidColorBrush x:Key="MyNet.Brushes.White" po:Freeze="true" Color="{StaticResource MyNet.Colors.White}" />
+    <SolidColorBrush x:Key="MyNet.Brushes.Black" po:Freeze="true" Color="{StaticResource MyNet.Colors.Black}" />
+    <SolidColorBrush x:Key="MyNet.Brushes.Gold" po:Freeze="true" Color="{StaticResource MyNet.Colors.Gold}" />
+    <SolidColorBrush x:Key="MyNet.Brushes.Female" po:Freeze="true" Color="{StaticResource MyNet.Colors.Female}" />
+    <SolidColorBrush x:Key="MyNet.Brushes.Male" po:Freeze="true" Color="{StaticResource MyNet.Colors.Male}" />
+
+    <!--  Opacities  -->
+    <sys:Double x:Key="MyNet.Opacity.Default">1</sys:Double>
+    <sys:Double x:Key="MyNet.Opacity.Secondary">0.7</sys:Double>
+    <sys:Double x:Key="MyNet.Opacity.Medium">0.56</sys:Double>
+    <sys:Double x:Key="MyNet.Opacity.Overlay">0.40</sys:Double>
+    <sys:Double x:Key="MyNet.Opacity.Disabled">0.40</sys:Double>
+    <sys:Double x:Key="MyNet.Opacity.Border">0.35</sys:Double>
+    <sys:Double x:Key="MyNet.Opacity.Checked">0.18</sys:Double>
+    <sys:Double x:Key="MyNet.Opacity.Hovered">0.12</sys:Double>
+    <sys:Double x:Key="MyNet.Opacity.Filled">0.10</sys:Double>
+
+    <!--  Shadows  -->
+    <DropShadowEffect x:Key="MyNet.Shadows.Elevation1"
+                      po:Freeze="True"
+                      BlurRadius="3"
+                      Direction="270"
+                      Opacity="0.45"
+                      RenderingBias="Performance"
+                      ShadowDepth="1"
+                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+    <DropShadowEffect x:Key="MyNet.Shadows.Elevation2"
+                      po:Freeze="True"
+                      BlurRadius="5"
+                      Direction="270"
+                      Opacity="0.45"
+                      RenderingBias="Performance"
+                      ShadowDepth="1.5"
+                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+    <DropShadowEffect x:Key="MyNet.Shadows.Elevation3"
+                      po:Freeze="True"
+                      BlurRadius="7"
+                      Direction="270"
+                      Opacity="0.45"
+                      RenderingBias="Performance"
+                      ShadowDepth="2"
+                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+    <DropShadowEffect x:Key="MyNet.Shadows.Elevation4"
+                      po:Freeze="True"
+                      BlurRadius="9"
+                      Direction="270"
+                      Opacity="0.45"
+                      RenderingBias="Performance"
+                      ShadowDepth="2.5"
+                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+    <DropShadowEffect x:Key="MyNet.Shadows.Elevation5"
+                      po:Freeze="True"
+                      BlurRadius="11"
+                      Direction="270"
+                      Opacity="0.45"
+                      RenderingBias="Performance"
+                      ShadowDepth="3"
+                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+    <DropShadowEffect x:Key="MyNet.Shadows.Elevation6"
+                      po:Freeze="True"
+                      BlurRadius="13"
+                      Direction="270"
+                      Opacity="0.45"
+                      RenderingBias="Performance"
+                      ShadowDepth="3.5"
+                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+    <DropShadowEffect x:Key="MyNet.Shadows.Elevation7"
+                      po:Freeze="True"
+                      BlurRadius="15"
+                      Direction="270"
+                      Opacity="0.45"
+                      RenderingBias="Performance"
+                      ShadowDepth="4"
+                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+    <DropShadowEffect x:Key="MyNet.Shadows.Elevation8"
+                      po:Freeze="True"
+                      BlurRadius="17"
+                      Direction="270"
+                      Opacity="0.45"
+                      RenderingBias="Performance"
+                      ShadowDepth="4.5"
+                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+    <DropShadowEffect x:Key="MyNet.Shadows.Elevation12"
+                      po:Freeze="True"
+                      BlurRadius="25"
+                      Direction="270"
+                      Opacity="0.45"
+                      RenderingBias="Performance"
+                      ShadowDepth="6.5"
+                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+    <DropShadowEffect x:Key="MyNet.Shadows.Elevation16"
+                      po:Freeze="True"
+                      BlurRadius="33"
+                      Direction="270"
+                      Opacity="0.45"
+                      RenderingBias="Performance"
+                      ShadowDepth="8.5"
+                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+    <DropShadowEffect x:Key="MyNet.Shadows.Elevation24"
+                      po:Freeze="True"
+                      BlurRadius="49"
+                      Direction="270"
+                      Opacity="0.45"
+                      RenderingBias="Performance"
+                      ShadowDepth="12.5"
+                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+
+    <!--  Margins  -->
+    <sys:Double x:Key="MyNet.Margin.Small">2</sys:Double>
+    <sys:Double x:Key="MyNet.Margin.Default">5</sys:Double>
+    <sys:Double x:Key="MyNet.Margin.Medium">10</sys:Double>
+    <sys:Double x:Key="MyNet.Margin.Large">15</sys:Double>
+    <sys:Double x:Key="MyNet.Margin.VeryLarge">20</sys:Double>
+    <sys:Double x:Key="MyNet.Margin.Huge">40</sys:Double>
+
+    <Thickness x:Key="MyNet.Margins.Small"
+               Bottom="{StaticResource MyNet.Margin.Small}"
+               Left="{StaticResource MyNet.Margin.Small}"
+               Right="{StaticResource MyNet.Margin.Small}"
+               Top="{StaticResource MyNet.Margin.Small}" />
+    <Thickness x:Key="MyNet.Margins.Small.Horizontal" Left="{StaticResource MyNet.Margin.Small}" Right="{StaticResource MyNet.Margin.Small}" />
+    <Thickness x:Key="MyNet.Margins.Small.Vertical" Bottom="{StaticResource MyNet.Margin.Small}" Top="{StaticResource MyNet.Margin.Small}" />
+    <Thickness x:Key="MyNet.Margins.Small.Left" Left="{StaticResource MyNet.Margin.Small}" />
+    <Thickness x:Key="MyNet.Margins.Small.Right" Right="{StaticResource MyNet.Margin.Small}" />
+    <Thickness x:Key="MyNet.Margins.Small.Top" Top="{StaticResource MyNet.Margin.Small}" />
+    <Thickness x:Key="MyNet.Margins.Small.Bottom" Bottom="{StaticResource MyNet.Margin.Small}" />
+
+    <Thickness x:Key="MyNet.Margins.Default"
+               Bottom="{StaticResource MyNet.Margin.Default}"
+               Left="{StaticResource MyNet.Margin.Default}"
+               Right="{StaticResource MyNet.Margin.Default}"
+               Top="{StaticResource MyNet.Margin.Default}" />
+    <Thickness x:Key="MyNet.Margins.Default.Horizontal" Left="{StaticResource MyNet.Margin.Default}" Right="{StaticResource MyNet.Margin.Default}" />
+    <Thickness x:Key="MyNet.Margins.Default.Vertical" Bottom="{StaticResource MyNet.Margin.Default}" Top="{StaticResource MyNet.Margin.Default}" />
+    <Thickness x:Key="MyNet.Margins.Default.Left" Left="{StaticResource MyNet.Margin.Default}" />
+    <Thickness x:Key="MyNet.Margins.Default.Right" Right="{StaticResource MyNet.Margin.Default}" />
+    <Thickness x:Key="MyNet.Margins.Default.Top" Top="{StaticResource MyNet.Margin.Default}" />
+    <Thickness x:Key="MyNet.Margins.Default.Bottom" Bottom="{StaticResource MyNet.Margin.Default}" />
+
+    <Thickness x:Key="MyNet.Margins.Medium"
+               Bottom="{StaticResource MyNet.Margin.Medium}"
+               Left="{StaticResource MyNet.Margin.Medium}"
+               Right="{StaticResource MyNet.Margin.Medium}"
+               Top="{StaticResource MyNet.Margin.Medium}" />
+    <Thickness x:Key="MyNet.Margins.Medium.Horizontal" Left="{StaticResource MyNet.Margin.Medium}" Right="{StaticResource MyNet.Margin.Medium}" />
+    <Thickness x:Key="MyNet.Margins.Medium.Vertical" Bottom="{StaticResource MyNet.Margin.Medium}" Top="{StaticResource MyNet.Margin.Medium}" />
+    <Thickness x:Key="MyNet.Margins.Medium.Left" Left="{StaticResource MyNet.Margin.Medium}" />
+    <Thickness x:Key="MyNet.Margins.Medium.Right" Right="{StaticResource MyNet.Margin.Medium}" />
+    <Thickness x:Key="MyNet.Margins.Medium.Top" Top="{StaticResource MyNet.Margin.Medium}" />
+    <Thickness x:Key="MyNet.Margins.Medium.Bottom" Bottom="{StaticResource MyNet.Margin.Medium}" />
+
+    <Thickness x:Key="MyNet.Margins.Large"
+               Bottom="{StaticResource MyNet.Margin.Large}"
+               Left="{StaticResource MyNet.Margin.Large}"
+               Right="{StaticResource MyNet.Margin.Large}"
+               Top="{StaticResource MyNet.Margin.Large}" />
+    <Thickness x:Key="MyNet.Margins.Large.Horizontal" Left="{StaticResource MyNet.Margin.Large}" Right="{StaticResource MyNet.Margin.Large}" />
+    <Thickness x:Key="MyNet.Margins.Large.Vertical" Bottom="{StaticResource MyNet.Margin.Large}" Top="{StaticResource MyNet.Margin.Large}" />
+    <Thickness x:Key="MyNet.Margins.Large.Left" Left="{StaticResource MyNet.Margin.Large}" />
+    <Thickness x:Key="MyNet.Margins.Large.Right" Right="{StaticResource MyNet.Margin.Large}" />
+    <Thickness x:Key="MyNet.Margins.Large.Top" Top="{StaticResource MyNet.Margin.Large}" />
+    <Thickness x:Key="MyNet.Margins.Large.Bottom" Bottom="{StaticResource MyNet.Margin.Large}" />
+
+    <Thickness x:Key="MyNet.Margins.VeryLarge"
+               Bottom="{StaticResource MyNet.Margin.VeryLarge}"
+               Left="{StaticResource MyNet.Margin.VeryLarge}"
+               Right="{StaticResource MyNet.Margin.VeryLarge}"
+               Top="{StaticResource MyNet.Margin.VeryLarge}" />
+    <Thickness x:Key="MyNet.Margins.VeryLarge.Bottom" Bottom="{StaticResource MyNet.Margin.VeryLarge}" />
+    <Thickness x:Key="MyNet.Margins.VeryLarge.Top" Top="{StaticResource MyNet.Margin.VeryLarge}" />
+    <Thickness x:Key="MyNet.Margins.VeryLarge.Horizontal"
+               Bottom="0"
+               Left="{StaticResource MyNet.Margin.VeryLarge}"
+               Right="{StaticResource MyNet.Margin.VeryLarge}"
+               Top="0" />
+    <Thickness x:Key="MyNet.Margins.VeryLarge.Vertical" Bottom="{StaticResource MyNet.Margin.VeryLarge}" Top="{StaticResource MyNet.Margin.VeryLarge}" />
+    <Thickness x:Key="MyNet.Margins.VeryLarge.Right" Right="{StaticResource MyNet.Margin.VeryLarge}" />
+    <Thickness x:Key="MyNet.Margins.VeryLarge.Left" Left="{StaticResource MyNet.Margin.VeryLarge}" />
+
+    <Thickness x:Key="MyNet.Margins.Huge.Horizontal" Left="{StaticResource MyNet.Margin.Huge}" Right="{StaticResource MyNet.Margin.Huge}" />
+    <Thickness x:Key="MyNet.Margins.Huge.Vertical" Bottom="{StaticResource MyNet.Margin.Huge}" Top="{StaticResource MyNet.Margin.Huge}" />
+    <Thickness x:Key="MyNet.Margins.Huge"
+               Bottom="{StaticResource MyNet.Margin.Huge}"
+               Left="{StaticResource MyNet.Margin.Huge}"
+               Right="{StaticResource MyNet.Margin.Huge}"
+               Top="{StaticResource MyNet.Margin.Huge}" />
+    <Thickness x:Key="MyNet.Margins.Huge.Bottom" Bottom="{StaticResource MyNet.Margin.Huge}" />
+    <Thickness x:Key="MyNet.Margins.Huge.Top" Top="{StaticResource MyNet.Margin.Huge}" />
+    <Thickness x:Key="MyNet.Margins.Huge.Right" Right="{StaticResource MyNet.Margin.Huge}" Top="0" />
+    <Thickness x:Key="MyNet.Margins.Huge.Left" Left="{StaticResource MyNet.Margin.Huge}" />
+
+    <Thickness x:Key="MyNet.Paddings.TextField.Default"
+               Bottom="4"
+               Left="2"
+               Right="2"
+               Top="4" />
+
+    <!--  Widths  -->
+    <sys:Double x:Key="MyNet.Widths.Control.Huge">400</sys:Double>
+    <sys:Double x:Key="MyNet.Widths.Control.VeryLarge">200</sys:Double>
+    <sys:Double x:Key="MyNet.Widths.Control.Large">150</sys:Double>
+    <sys:Double x:Key="MyNet.Widths.Control.Medium">100</sys:Double>
+
+    <!--  Corner Radius  -->
+    <sys:Double x:Key="MyNet.UniformCornerRadius.Control">2</sys:Double>
+    <sys:Double x:Key="MyNet.UniformCornerRadius.Container">4</sys:Double>
+
+    <CornerRadius x:Key="MyNet.CornerRadius.Control"
+                  BottomLeft="{StaticResource MyNet.UniformCornerRadius.Control}"
+                  BottomRight="{StaticResource MyNet.UniformCornerRadius.Control}"
+                  TopLeft="{StaticResource MyNet.UniformCornerRadius.Control}"
+                  TopRight="{StaticResource MyNet.UniformCornerRadius.Control}" />
+    <CornerRadius x:Key="MyNet.CornerRadius.Control.Top" TopLeft="{StaticResource MyNet.UniformCornerRadius.Control}" TopRight="{StaticResource MyNet.UniformCornerRadius.Control}" />
+    <CornerRadius x:Key="MyNet.CornerRadius.Control.Bottom" BottomLeft="{StaticResource MyNet.UniformCornerRadius.Control}" BottomRight="{StaticResource MyNet.UniformCornerRadius.Control}" />
+    <CornerRadius x:Key="MyNet.CornerRadius.Control.Left" BottomLeft="{StaticResource MyNet.UniformCornerRadius.Control}" TopLeft="{StaticResource MyNet.UniformCornerRadius.Control}" />
+    <CornerRadius x:Key="MyNet.CornerRadius.Control.Right" BottomRight="{StaticResource MyNet.UniformCornerRadius.Control}" TopRight="{StaticResource MyNet.UniformCornerRadius.Control}" />
+    <CornerRadius x:Key="MyNet.CornerRadius.Container"
+                  BottomLeft="{StaticResource MyNet.UniformCornerRadius.Container}"
+                  BottomRight="{StaticResource MyNet.UniformCornerRadius.Container}"
+                  TopLeft="{StaticResource MyNet.UniformCornerRadius.Container}"
+                  TopRight="{StaticResource MyNet.UniformCornerRadius.Container}" />
+    <CornerRadius x:Key="MyNet.CornerRadius.Container.Top" TopLeft="{StaticResource MyNet.UniformCornerRadius.Container}" TopRight="{StaticResource MyNet.UniformCornerRadius.Container}" />
+    <CornerRadius x:Key="MyNet.CornerRadius.Container.Bottom" BottomLeft="{StaticResource MyNet.UniformCornerRadius.Container}" BottomRight="{StaticResource MyNet.UniformCornerRadius.Container}" />
+    <CornerRadius x:Key="MyNet.CornerRadius.Container.Left" BottomLeft="{StaticResource MyNet.UniformCornerRadius.Container}" TopLeft="{StaticResource MyNet.UniformCornerRadius.Container}" />
+    <CornerRadius x:Key="MyNet.CornerRadius.Container.Right" BottomRight="{StaticResource MyNet.UniformCornerRadius.Container}" TopRight="{StaticResource MyNet.UniformCornerRadius.Container}" />
+
+    <!--  Alignments  -->
+    <VerticalAlignment x:Key="MyNet.VerticalAlignment.Control">Center</VerticalAlignment>
+    <HorizontalAlignment x:Key="MyNet.HorizontalAlignment.Control">Left</HorizontalAlignment>
+    <VerticalAlignment x:Key="MyNet.VerticalAlignment.Container">Stretch</VerticalAlignment>
+    <HorizontalAlignment x:Key="MyNet.HorizontalAlignment.Container">Stretch</HorizontalAlignment>
+    
+    <!-- Elevation -->
+    <p:Elevation x:Key="MyNet.Elevation.Container">Dp1</p:Elevation>
+    <p:Elevation x:Key="MyNet.Elevation.Control">Dp2</p:Elevation>
+    <p:Elevation x:Key="MyNet.Elevation.Popup">Dp2</p:Elevation>
+
+</ResourceDictionary>

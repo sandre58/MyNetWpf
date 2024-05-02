@@ -1,0 +1,55 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:MyNet.Wpf.Converters"
+                    xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
+                    xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions"
+                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Base.Icons.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="MyNet.Styles.PictureControl" TargetType="{x:Type ctrl:PictureControl}">
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Medium}}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="40" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="Height" Value="80" />
+        <Setter Property="Stretch" Value="UniformToFill" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Content" Value="{me:Icon Data={StaticResource MyNet.Geometries.Male}, Size=85}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ctrl:PictureControl}">
+                    <ctrl:Card Padding="0"
+                               UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}"
+                               p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}"
+                               Background="{TemplateBinding Background}"
+                               BorderBrush="{TemplateBinding BorderBrush}"
+                               BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            <Image HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Source="{TemplateBinding Image}"
+                                   Stretch="{TemplateBinding Stretch}"
+                                   Visibility="{Binding Image, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+                        </Grid>
+                    </ctrl:Card>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

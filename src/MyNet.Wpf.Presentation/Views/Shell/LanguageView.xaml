@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="MyNet.Wpf.Presentation.Views.Shell.LanguageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:MyNet.Wpf.Presentation.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:my="http://mynet.com/xaml/themes"
+             xmlns:vm="clr-namespace:MyNet.UI.ViewModels.Shell;assembly=MyNet.UI"
+             d:DataContext="{d:DesignInstance Type=vm:LanguageViewModel}"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+
+        <DataTemplate x:Key="LanguageItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="16"
+                       Height="16"
+                       Margin="{StaticResource MyNet.Margins.Default.Horizontal}"
+                       VerticalAlignment="Center"
+                       Source="{Binding Converter={x:Static c:CultureToFlagConverter.Default}}" />
+                <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName, Converter={x:Static my:StringConverter.ToTitle}}" TextWrapping="Wrap" />
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <StackPanel>
+
+        <!--  Language  -->
+        <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=Language}">
+            <ComboBox Width="{StaticResource MyNet.Widths.Control.Large}"
+                      my:FocusAssist.IsDefault="True"
+                      my:HintAssist.IsFloating="True"
+                      my:PopupAssist.Background="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}"
+                      my:PopupAssist.Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Converter={x:Static my:BrushConverter.Contrast}}"
+                      my:TextFieldAssist.HasClearButton="True"
+                      ItemTemplate="{StaticResource LanguageItemTemplate}"
+                      ItemsSource="{Binding Cultures}"
+                      SelectedValue="{Binding SelectedCulture}">
+                <ComboBox.Style>
+                    <Style BasedOn="{StaticResource MyNet.Styles.ComboBox.Foreground}" TargetType="{x:Type ComboBox}">
+                        <Setter Property="my:HintAssist.Hint" Value="{my:Resource Language}" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedCulture}" Value="{x:Null}">
+                                <Setter Property="my:HintAssist.Hint">
+                                    <Setter.Value>
+                                        <StackPanel Orientation="Horizontal">
+                                            <my:PackIcon Width="16"
+                                                         Height="16"
+                                                         Margin="{StaticResource MyNet.Margins.Default.Horizontal}"
+                                                         VerticalAlignment="Center"
+                                                         Kind="Globe" />
+                                            <TextBlock VerticalAlignment="Center" Text="{my:Resource SystemLanguage}" TextWrapping="Wrap" />
+                                        </StackPanel>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ComboBox.Style>
+            </ComboBox>
+        </GroupBox>
+    </StackPanel>
+</UserControl>

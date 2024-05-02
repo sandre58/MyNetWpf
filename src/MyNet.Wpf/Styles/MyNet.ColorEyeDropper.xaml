@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:MyNet.Wpf.Converters"
+                    xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    mc:Ignorable="po d">
+
+    <Cursor x:Key="MyNet.Cursors.EyeDropper">pack://application:,,,/MyNet.Wpf;component/Cursors/EyeDropper.cur</Cursor>
+
+    <Style x:Key="MyNet.Styles.ColorEyeDropper" TargetType="{x:Type ctrl:ColorEyeDropper}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="EyeDropperCursor" Value="{StaticResource MyNet.Cursors.EyeDropper}" />
+        <Setter Property="PreviewContentTemplate">
+            <Setter.Value>
+                <DataTemplate DataType="{x:Type ctrl:ColorEyePreviewData}">
+                    <Grid Width="100" Height="100">
+                        <Ellipse HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Stretch"
+                                 Stroke="{DynamicResource MyNet.Brushes.Application.Foreground}"
+                                 StrokeThickness="2" />
+
+                        <Image x:Name="PART_PreviewImage"
+                               Margin="2"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Clip="{Binding RenderedGeometry, ElementName=ClippingEllipse}"
+                               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                               Source="{Binding PreviewImage}" />
+
+                        <Path Stroke="{DynamicResource MyNet.Brushes.Application.Foreground}" StrokeThickness="2">
+                            <Path.Data>
+                                <PathGeometry po:Freeze="true" Figures=" m 0 50 40 0  m 10 10 0 40  m 10 -50 40 0  m -50 -50 0 40 m -10 0 H40 H60 V60 H40 z" />
+                            </Path.Data>
+                        </Path>
+
+                        <Ellipse x:Name="ClippingEllipse"
+                                 Margin="2"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Stretch"
+                                 Visibility="Hidden" />
+
+                    </Grid>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ctrl:ColorEyeDropper}">
+                    <ContentControl Content="{TemplateBinding Content}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

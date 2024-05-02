@@ -1,0 +1,126 @@
+﻿<my:NavigationPage x:Class="MyNet.Wpf.TestApp.Views.DialogsOverlayView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:my="http://mynet.com/xaml/themes"
+                   xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
+                   xmlns:viewmodels="clr-namespace:MyNet.Wpf.TestApp.ViewModels"
+                   d:DataContext="{d:DesignInstance Type=viewmodels:DialogsOverlayViewModel}"
+                   d:DesignHeight="450"
+                   d:DesignWidth="800"
+                   my:ViewModelAssist.AutoWire="True"
+                   mc:Ignorable="d">
+    <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}">
+        <my:SimpleStackPanel>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MessageBox">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation.Foreground}"
+                                Width="150"
+                                Background="{DynamicResource MyNet.Brushes.Positive}"
+                                Command="{Binding OpenMessageDialogCommand}"
+                                CommandParameter="success"
+                                Content="SUCCESS" />
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation.Foreground}"
+                                Width="150"
+                                Background="{DynamicResource MyNet.Brushes.Negative}"
+                                Command="{Binding OpenMessageDialogCommand}"
+                                CommandParameter="error"
+                                Content="ERROR" />
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation.Foreground}"
+                                Width="150"
+                                Background="{DynamicResource MyNet.Brushes.Warning}"
+                                Command="{Binding OpenMessageDialogCommand}"
+                                CommandParameter="warning"
+                                Content="WARNING" />
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation.Foreground}"
+                                Width="150"
+                                Background="{DynamicResource MyNet.Brushes.Information}"
+                                Command="{Binding OpenMessageDialogCommand}"
+                                CommandParameter="info"
+                                Content="INFORMATION" />
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation.Foreground}"
+                                Width="150"
+                                Background="{DynamicResource MyNet.Brushes.Information}"
+                                Command="{Binding OpenMessageDialogCommand}"
+                                CommandParameter="question"
+                                Content="QUESTION" />
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation}"
+                                Width="150"
+                                Command="{Binding OpenMessageDialogCommand}"
+                                CommandParameter="custom"
+                                Content="MESSAGE" />
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation}"
+                                Width="150"
+                                Command="{Binding OpenMessageDialogCommand}"
+                                CommandParameter="custom2"
+                                Content="CUSTOM" />
+                    </my:SimpleStackPanel>
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="Dialogs">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation}"
+                                Width="150"
+                                Command="{Binding OpenCustomDialogCommand}"
+                                Content="DIALOG" />
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation}"
+                                Width="150"
+                                Command="{Binding OpenCustomNonDialogCommand}"
+                                Content="NON DIALOG" />
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <DockPanel>
+                            <Border Width="200"
+                                    Height="200"
+                                    Margin="{StaticResource MyNet.Margins.Default.Left}"
+                                    BorderBrush="{DynamicResource MyNet.Brushes.Control.Border}"
+                                    BorderThickness="1"
+                                    DockPanel.Dock="Right">
+                                <my:OverlayDialogControl CloseOnClickAway="True" Header="Header" IsOpen="{Binding IsChecked, ElementName=IsOpen1}">
+                                    <TextBlock Text="Dialog Content" />
+                                </my:OverlayDialogControl>
+                            </Border>
+                            <CheckBox x:Name="IsOpen1" Content="Is Open" />
+                        </DockPanel>
+                    </my:SimpleStackPanel>
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="Files dialogs">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation}"
+                                Width="150"
+                                Command="{Binding OpenFileDialogCommand}"
+                                CommandParameter="folder"
+                                Content="FOLDER" />
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation}"
+                                Width="150"
+                                Command="{Binding OpenFileDialogCommand}"
+                                CommandParameter="file"
+                                Content="FILE" />
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation}"
+                                Width="150"
+                                Command="{Binding OpenFileDialogCommand}"
+                                CommandParameter="images"
+                                Content="IMAGE" />
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation}"
+                                Width="150"
+                                Command="{Binding OpenFileDialogCommand}"
+                                CommandParameter="save"
+                                Content="SAVE" />
+                    </my:SimpleStackPanel>
+                </my:SimpleStackPanel>
+            </Expander>
+        </my:SimpleStackPanel>
+    </my:DynamicScrollViewer>
+</my:NavigationPage>

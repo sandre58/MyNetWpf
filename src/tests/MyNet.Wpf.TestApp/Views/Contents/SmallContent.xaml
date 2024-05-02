@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="MyNet.Wpf.TestApp.Views.Contents.SmallContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:my="http://mynet.com/xaml/themes"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <my:SimpleStackPanel>
+
+        <!--  Body  -->
+        <my:SimpleStackPanel>
+
+            <DockPanel>
+
+                <!--  Photo  -->
+                <Border Width="70"
+                        Height="90"
+                        Margin="{StaticResource MyNet.Margins.Default.Right}"
+                        VerticalAlignment="Top"
+                        DockPanel.Dock="Left">
+                    <Image Source="pack://application:,,,/MyNet.Wpf.TestApp;component/Images/kylian-mbappe.jpg" Stretch="UniformToFill" />
+                </Border>
+
+                <my:SimpleStackPanel VerticalAlignment="Top" Orientation="Vertical" Spacing="{StaticResource MyNet.Margin.Default}">
+
+                    <!--  Name  -->
+                    <TextBlock FontSize="{StaticResource MyNet.Font.Size.Caption}" Text="Kylian" />
+                    <TextBlock FontSize="{StaticResource MyNet.Font.Size.Caption}" Text="MBAPPE" />
+
+                    <!--  Country  -->
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20"
+                               Margin="{StaticResource MyNet.Margins.Default.Right}"
+                               Source="pack://application:,,,/MyNet.Wpf.TestApp;component/Images/fr32.png"
+                               ToolTip="{my:Resource France}" />
+                        <TextBlock Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="FRA" />
+                    </StackPanel>
+                </my:SimpleStackPanel>
+
+            </DockPanel>
+
+            <my:SimpleStackPanel>
+                <my:SimpleStackPanel Orientation="Horizontal" Spacing="{StaticResource MyNet.Margin.Default}">
+
+                    <!--  Category  -->
+                    <Grid Width="38" Height="38">
+                        <my:PackIcon x:Name="CategoryIcon"
+                                     Width="38"
+                                     Height="38"
+                                     Kind="Shield" />
+                        <TextBlock x:Name="CategoryText"
+                                   Padding="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontWeight="Bold"
+                                   Foreground="{my:BrushBinding InheritPath=(TextElement.Foreground),
+                                                                Contrast=True}"
+                                   Text="S" />
+                    </Grid>
+
+                    <StackPanel>
+
+                        <!--  Age  -->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="{StaticResource MyNet.Margins.Default.Right}" Text="24 ans" />
+                            <TextBlock Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="(" />
+                            <TextBlock Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="20/12/1998" />
+                            <TextBlock Opacity="{StaticResource MyNet.Opacity.Secondary}" Text=")" />
+                        </StackPanel>
+
+                        <my:SimpleStackPanel Orientation="Horizontal" Spacing="{StaticResource MyNet.Margin.Small}">
+
+                            <!--  Number  -->
+                            <TextBlock Margin="{StaticResource MyNet.Margins.Default.Right}"
+                                       VerticalAlignment="Top"
+                                       DockPanel.Dock="Left"
+                                       FontFamily="{StaticResource MyNet.Font.Family.Jersey}"
+                                       FontSize="{StaticResource MyNet.Font.Size.Caption}"
+                                       Text="10"
+                                       TextWrapping="NoWrap" />
+
+                            <!--  Squad  -->
+                            <TextBlock Text="{my:Resource France}" />
+                        </my:SimpleStackPanel>
+
+                    </StackPanel>
+
+                </my:SimpleStackPanel>
+
+                <my:SimpleStackPanel Orientation="Vertical" Spacing="{StaticResource MyNet.Margin.Default}">
+
+                    <!--  License  -->
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <TextBlock Text="1 547 854 268" />
+                        <Button Style="{StaticResource MyNet.Styles.Button.Icon.Tool}" Content="{my:ToolIcon Kind=ContentCopy}" />
+                    </my:SimpleStackPanel>
+
+                    <StackPanel>
+                        <TextBlock Text="ATT" TextWrapping="NoWrap" />
+                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}" Text="MOG, BT" TextWrapping="NoWrap" />
+                    </StackPanel>
+
+                </my:SimpleStackPanel>
+
+            </my:SimpleStackPanel>
+
+        </my:SimpleStackPanel>
+
+        <!--  Actions  -->
+        <DockPanel VerticalAlignment="Bottom">
+
+            <!--  Selection  -->
+            <CheckBox x:Name="Selection"
+                      Style="{StaticResource MyNet.Styles.CheckBox.Circle}"
+                      HorizontalAlignment="Left"
+                      DockPanel.Dock="Left"
+                      Focusable="False"
+                      IsTabStop="False" />
+
+            <my:SimpleStackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button Style="{StaticResource MyNet.Styles.Button.Icon.Tool}" Content="{my:ToolIcon Kind=Phone}" />
+                <Button Style="{StaticResource MyNet.Styles.Button.Icon.Tool}" Content="{my:ToolIcon Kind=Email}" />
+                <Button Style="{StaticResource MyNet.Styles.Button.Icon.Tool}" Content="{my:ToolIcon Kind=Edit}" />
+            </my:SimpleStackPanel>
+
+        </DockPanel>
+    </my:SimpleStackPanel>
+</UserControl>

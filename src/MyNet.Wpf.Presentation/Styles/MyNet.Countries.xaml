@@ -1,0 +1,59 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:MyNet.Wpf.Presentation.Converters"
+                    xmlns:models="clr-namespace:MyNet.Utilities.Geography;assembly=MyNet.Utilities"
+                    xmlns:my="http://mynet.com/xaml/themes">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.Styles.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate x:Key="MyNet.DataTemplates.ComboBox.Country">
+        <StackPanel Orientation="Horizontal">
+            <Image Width="16"
+                   Height="16"
+                   Margin="{StaticResource MyNet.Margins.Default.Horizontal}"
+                   VerticalAlignment="Center"
+                   Source="{Binding Value, Converter={x:Static c:CountryToFlagConverter.To16}}" />
+            <TextBlock VerticalAlignment="Center" Text="{Binding Display}" TextWrapping="Wrap" />
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MyNet.DataTemplates.ComboBox.Country.Small">
+        <StackPanel Orientation="Horizontal" ToolTip="{Binding Display}">
+            <Image Width="16"
+                   Height="16"
+                   Margin="{StaticResource MyNet.Margins.Default.Horizontal}"
+                   VerticalAlignment="Center"
+                   Source="{Binding Value, Converter={x:Static c:CountryToFlagConverter.To16}}" />
+            <TextBlock VerticalAlignment="Center" Text="{Binding Value, Converter={x:Static c:CountryToStringConverter.ToAlpha3}}" TextWrapping="Wrap" />
+        </StackPanel>
+    </DataTemplate>
+
+    <Style x:Key="MyNet.Styles.ComboBox.Country" BasedOn="{StaticResource MyNet.Styles.ComboBox}" TargetType="{x:Type ComboBox}">
+        <Setter Property="ItemTemplate" Value="{StaticResource MyNet.DataTemplates.ComboBox.Country}" />
+        <Setter Property="ItemsSource" Value="{my:EnumerationSource EnumType={x:Type models:Country}, OrderByDisplay=True}" />
+        <Setter Property="SelectedValuePath" Value="Value" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.ComboBox.Country.Filled" BasedOn="{StaticResource MyNet.Styles.ComboBox.Filled}" TargetType="{x:Type ComboBox}">
+        <Setter Property="ItemTemplate" Value="{StaticResource MyNet.DataTemplates.ComboBox.Country}" />
+        <Setter Property="ItemsSource" Value="{my:EnumerationSource EnumType={x:Type models:Country}, OrderByDisplay=True}" />
+        <Setter Property="my:ComboBoxAssist.ShowUpDownButton" Value="False" />
+        <Setter Property="SelectedValuePath" Value="Value" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.MultiComboBox.Country" BasedOn="{StaticResource MyNet.Styles.MultiComboBox}" TargetType="{x:Type my:MultiComboBox}">
+        <Setter Property="SelectedItemTemplate" Value="{StaticResource MyNet.DataTemplates.ComboBox.Country.Small}" />
+        <Setter Property="ItemTemplate" Value="{StaticResource MyNet.DataTemplates.ComboBox.Country}" />
+        <Setter Property="ItemsSource" Value="{my:EnumerationSource EnumType={x:Type models:Country}, OrderByDisplay=True}" />
+        <Setter Property="SelectedValuePath" Value="Value" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.MultiComboBox.Country.Filled" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Filled}" TargetType="{x:Type my:MultiComboBox}">
+        <Setter Property="SelectedItemTemplate" Value="{StaticResource MyNet.DataTemplates.ComboBox.Country.Small}" />
+        <Setter Property="ItemTemplate" Value="{StaticResource MyNet.DataTemplates.ComboBox.Country}" />
+        <Setter Property="ItemsSource" Value="{my:EnumerationSource EnumType={x:Type models:Country}, OrderByDisplay=True}" />
+        <Setter Property="SelectedValuePath" Value="Value" />
+    </Style>
+</ResourceDictionary>

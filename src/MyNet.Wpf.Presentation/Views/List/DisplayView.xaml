@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="MyNet.Wpf.Presentation.Views.List.DisplayView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:displayVm="clr-namespace:MyNet.UI.ViewModels.Display;assembly=MyNet.UI"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:my="http://mynet.com/xaml/themes"
+             d:DataContext="{d:DesignInstance Type=displayVm:DisplayViewModel}"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <my:BindingProxy x:Key="ProxyDisplay" Data="{Binding}" />
+    </UserControl.Resources>
+
+    <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.ToolBar}"
+                       Padding="7 4"
+                       FontSize="{StaticResource MyNet.Font.Size}"
+                       PopupPadding="0"
+                       ToggleContent="{Binding Mode}"
+                       ToolTip="{Binding Mode.Value}">
+        <my:DropDownButton.Resources>
+            <DataTemplate DataType="{x:Type displayVm:DisplayModeGrid}">
+                <my:PackIcon Width="24"
+                             Height="24"
+                             VerticalAlignment="Center"
+                             Kind="ViewGrid" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type displayVm:DisplayModeList}">
+                <my:PackIcon Width="24"
+                             Height="24"
+                             VerticalAlignment="Center"
+                             Kind="ViewList" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type displayVm:DisplayModeCalendar}">
+                <my:PackIcon Width="24"
+                             Height="24"
+                             VerticalAlignment="Center"
+                             Kind="CalendarMultiselect" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type displayVm:DisplayModeDay}">
+                <my:PackIcon Width="24"
+                             Height="24"
+                             VerticalAlignment="Center"
+                             Kind="CalendarDay" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type displayVm:DisplayModeWeek}">
+                <my:PackIcon Width="24"
+                             Height="24"
+                             VerticalAlignment="Center"
+                             Kind="CalendarWeek" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type displayVm:DisplayModeMonth}">
+                <my:PackIcon Width="24"
+                             Height="24"
+                             VerticalAlignment="Center"
+                             Kind="CalendarMonth" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type displayVm:DisplayModeYear}">
+                <my:PackIcon Width="24"
+                             Height="24"
+                             VerticalAlignment="Center"
+                             Kind="CalendarWeekend" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type displayVm:DisplayModeDetailled}">
+                <my:PackIcon Width="24"
+                             Height="24"
+                             VerticalAlignment="Center"
+                             Kind="ViewSplitVertical" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type displayVm:DisplayModeChart}">
+                <my:PackIcon Width="24"
+                             Height="24"
+                             VerticalAlignment="Center"
+                             Kind="ChartAreaspline" />
+            </DataTemplate>
+        </my:DropDownButton.Resources>
+        <my:Submenu ItemsSource="{Binding AllowedModes}">
+            <my:Submenu.ItemContainerStyle>
+                <Style BasedOn="{StaticResource MyNet.Styles.MenuItem}" TargetType="{x:Type MenuItem}">
+                    <Setter Property="Command" Value="{Binding Data.SetModeCommand, Source={StaticResource ProxyDisplay}}" />
+                    <Setter Property="CommandParameter" Value="{Binding}" />
+                    <Setter Property="Header" Value="{Binding Value}" />
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <my:SimpleStackPanel Orientation="Horizontal" Spacing="{StaticResource MyNet.Margin.Large}">
+                                    <my:PackIcon Kind="Check" Visibility="{Binding IsChecked, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}, Converter={x:Static my:BooleanToVisibilityConverter.HiddenIfFalse}}" />
+                                    <ContentControl Content="{Binding}" />
+                                </my:SimpleStackPanel>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="IsChecked">
+                        <Setter.Value>
+                            <MultiBinding Converter="{x:Static my:EqualityToBooleanConverter.Default}" Mode="OneWay">
+                                <Binding />
+                                <Binding Path="Data.Mode" Source="{StaticResource ProxyDisplay}" />
+                            </MultiBinding>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </my:Submenu.ItemContainerStyle>
+        </my:Submenu>
+    </my:DropDownButton>
+</UserControl>

@@ -1,0 +1,120 @@
+﻿<UserControl x:Class="MyNet.Wpf.Presentation.Views.List.ExtendedGroupingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:groupVm="clr-namespace:MyNet.UI.ViewModels.List.Grouping;assembly=MyNet.UI"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:my="http://mynet.com/xaml/themes"
+             xmlns:v="clr-namespace:MyNet.Wpf.Presentation.Views.List"
+             d:DataContext="{d:DesignInstance Type=groupVm:ExtendedGroupingViewModel}"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <my:BindingProxy x:Key="ProxyGroup" Data="{Binding}" />
+    </UserControl.Resources>
+
+    <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.ToolBar}"
+                       Padding="7 4"
+                       FontSize="{StaticResource MyNet.Font.Size}"
+                       PopupPadding="0"
+                       ToolTip="{my:Translation ActiveGroupingProperty.DisplayName.Value,
+                                                Format=ByX}">
+        <my:DropDownButton.ToggleContent>
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
+                        Command="{Binding ClearCommand}"
+                        Content="{my:ToolIcon Kind=Close}"
+                        ToolTip="{my:Resource Clear}"
+                        Visibility="{Binding ActiveCount, Converter={x:Static my:CountToVisibilityConverter.CollapsedIfNotAny}}" />
+                <Grid>
+                    <my:PackIcon Width="24" Height="24" Kind="FormatListGroup" />
+                    <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Elevation.Custom}"
+                           Width="15"
+                           Height="15"
+                           Margin="0 -4 -4 0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Top"
+                           Background="{DynamicResource MyNet.Brushes.Information}"
+                           Content="{Binding ActiveCount}"
+                           Visibility="{Binding ActiveCount, Converter={x:Static my:CountToVisibilityConverter.CollapsedIfNotAny}}" />
+                </Grid>
+            </StackPanel>
+        </my:DropDownButton.ToggleContent>
+        <my:Submenu ItemsSource="{Binding}">
+            <my:Submenu.ItemContainerStyle>
+                <Style BasedOn="{StaticResource MyNet.Styles.MenuItem}" TargetType="MenuItem">
+                    <Setter Property="Header" Value="{Binding}" />
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding DisplayName.Value}" />
+                                    <Button x:Name="addButton"
+                                            Style="{StaticResource MyNet.Styles.Button.Icon.Foreground}"
+                                            Grid.Column="1"
+                                            Margin="{StaticResource MyNet.Margins.Default.Left}"
+                                            Command="{Binding Data.AddCommand, Source={StaticResource ProxyGroup}}"
+                                            CommandParameter="{Binding PropertyName}"
+                                            Content="{x:Static md:PackIconKind.Plus}"
+                                            ToolTip="{my:Resource AddGroup}"
+                                            Visibility="{Binding ShowActionButton, RelativeSource={RelativeSource AncestorType={x:Type v:ExtendedGroupingView}}, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                                        <Button.ContentTemplate>
+                                            <DataTemplate>
+                                                <my:PackIcon Width="16" Height="16" Kind="{Binding}" />
+                                            </DataTemplate>
+                                        </Button.ContentTemplate>
+                                    </Button>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsEnabled}" Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        <MultiDataTrigger.Setters>
+                                            <Setter TargetName="addButton" Property="Command" Value="{Binding Data.RemoveCommand, Source={StaticResource ProxyGroup}}" />
+                                            <Setter TargetName="addButton" Property="Content" Value="{x:Static md:PackIconKind.Minus}" />
+                                            <Setter TargetName="addButton" Property="ToolTip" Value="{my:Resource RemoveGroup}" />
+                                        </MultiDataTrigger.Setters>
+                                    </MultiDataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="IsChecked" Value="{Binding IsEnabled}" />
+                    <Setter Property="Command" Value="{Binding Data.ApplyCommand, Source={StaticResource ProxyGroup}}" />
+                    <Setter Property="CommandParameter" Value="{Binding PropertyName}" />
+                    <Setter Property="my:MenuAssist.IconTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding IsEnabled, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                                    <TextBlock Margin="1 0 0 -2"
+                                               Padding="0"
+                                               VerticalAlignment="Bottom"
+                                               FontSize="{StaticResource MyNet.Font.Size.Secondary}"
+                                               Text="{Binding Order}"
+                                               Visibility="{Binding Order, Converter={x:Static my:ComparaisonToVisibilityConverter.CollapsedIfIsLessThanTo}, ConverterParameter=2}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding PropertyName, Converter={x:Static my:NullToBooleanConverter.FalseIfNull}}" Value="False">
+                            <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+                            <Setter Property="FontStyle" Value="Italic" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ShowActionButton, RelativeSource={RelativeSource AncestorType={x:Type v:ExtendedGroupingView}}, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}" Value="True">
+                            <Setter Property="Icon" Value="{Binding}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </my:Submenu.ItemContainerStyle>
+        </my:Submenu>
+    </my:DropDownButton>
+</UserControl>

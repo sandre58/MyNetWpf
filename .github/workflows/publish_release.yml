@@ -1,0 +1,46 @@
+# Copyright (c) Stéphane ANDRE.
+# Licensed under the MIT license.
+
+# This continuous integration pipeline is triggered anytime a release is published
+# This pipeline publishes all packages (skips existing packages) from current release on nuget repository
+
+name: Publish Nugets - Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: windows-latest # using windows agent due to nuget can't sign on linux yet
+    env:
+      DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION: true
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+    steps:
+      - uses: robinraju/release-downloader@v1.8
+        with:
+          repository: ${{ github.repository }}
+          tag: ${{ github.event.release.tag_name }}
+          fileName: "*"
+          out-file-path: "Artifacts/"
+          tarBall: false
+          zipBall: false
+          
+      # publish artifacts
+      - name: Publish NuGets
+        uses: dansiegel/publish-nuget@master # https://github.com/marketplace/actions/publish-nuget-packages
+        with:
+          filename: 'Artifacts/*.nupkg'
+          feedUrl: ${{ vars.NUGET_API_SOURCE }}
+          apiKey: ${{ secrets.NUGET_API_KEY }}
+
+      # publish artifacts (symbols)
+      - name: Publish NuGets symbols
+        uses: dansiegel/publish-nuget@master # https://github.com/marketplace/actions/publish-nuget-packages
+        with:
+          filename: 'Artifacts/*.snupkg'
+          feedUrl: ${{ vars.NUGET_API_SOURCE }}
+          apiKey: ${{ secrets.NUGET_API_KEY }}

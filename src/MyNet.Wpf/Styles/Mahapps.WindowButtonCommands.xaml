@@ -1,0 +1,156 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:MyNet.Wpf.Converters"
+                    xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
+                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                    xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions">
+
+    <Style x:Key="MyNet.Styles.Button.MetroWindow" TargetType="{x:Type ButtonBase}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Opacity" Value="0.8" />
+        <Setter Property="Padding" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentControl x:Name="PART_ContentPresenter"
+                                        Padding="{TemplateBinding Padding}"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Content="{TemplateBinding Content}"
+                                        ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static c:BrushConverter.Opacity}, ConverterParameter={StaticResource MyNet.Opacity.Hovered}}" />
+                <Setter Property="Opacity" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MyNet.Styles.Button.MetroWindow.Close" BasedOn="{StaticResource MyNet.Styles.Button.MetroWindow}" TargetType="{x:Type Button}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Red}" />
+                <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.White}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MyNet.Styles.WindowButtonCommands" TargetType="{x:Type mah:WindowButtonCommands}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="DarkMinButtonStyle" Value="{StaticResource MyNet.Styles.Button.MetroWindow}" />
+        <Setter Property="DarkMaxButtonStyle" Value="{StaticResource MyNet.Styles.Button.MetroWindow}" />
+        <Setter Property="DarkCloseButtonStyle" Value="{StaticResource MyNet.Styles.Button.MetroWindow.Close}" />
+        <Setter Property="Maximize" Value="{me:Resource Maximize}" />
+        <Setter Property="Restore" Value="{me:Resource Restore}" />
+        <Setter Property="Minimize" Value="{me:Resource Minimize}" />
+        <Setter Property="Close" Value="{me:Resource Close}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type mah:WindowButtonCommands}">
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="PART_Min"
+                                Style="{TemplateBinding DarkMinButtonStyle}"
+                                Width="46"
+                                AutomationProperties.AutomationId="Minimize"
+                                AutomationProperties.Name="Minimize"
+                                Command="{x:Static SystemCommands.MinimizeWindowCommand}"
+                                Focusable="False"
+                                IsEnabled="{Binding IsMinButtonEnabled, RelativeSource={RelativeSource AncestorType={x:Type ctrl:ExtendedWindow}}}"
+                                ToolTip="{Binding Minimize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                UseLayoutRounding="True"
+                                Visibility="{Binding ShowMinButton, RelativeSource={RelativeSource AncestorType={x:Type ctrl:ExtendedWindow}}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                            <Path Width="10"
+                                  Height="10"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M0,0L10,0 10,1 10,1 1,1 0,1z"
+                                  Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                  RenderOptions.EdgeMode="Aliased"
+                                  SnapsToDevicePixels="True"
+                                  Stretch="Uniform" />
+                        </Button>
+                        <Button x:Name="PART_Max"
+                                Style="{TemplateBinding DarkMaxButtonStyle}"
+                                Width="46"
+                                AutomationProperties.AutomationId="MaximizeRestore"
+                                AutomationProperties.Name="Maximize"
+                                Command="{x:Static SystemCommands.MaximizeWindowCommand}"
+                                Focusable="False"
+                                IsEnabled="{Binding IsMaxRestoreButtonEnabled, RelativeSource={RelativeSource AncestorType={x:Type ctrl:ExtendedWindow}}}"
+                                ToolTip="{Binding Maximize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                UseLayoutRounding="True"
+                                Visibility="{Binding ShowMaxRestoreButton, RelativeSource={RelativeSource AncestorType={x:Type ctrl:ExtendedWindow}}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                            <!--  normal state  -->
+                            <Path x:Name="PART_MaxPath"
+                                  Width="10"
+                                  Height="10"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M1,1L1,11 11,11 11,1z M0,0L12,0 12,12 0,12z"
+                                  Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                  RenderOptions.EdgeMode="Aliased"
+                                  SnapsToDevicePixels="True"
+                                  Stretch="Uniform" />
+                        </Button>
+                        <Button x:Name="PART_Close"
+                                Style="{TemplateBinding DarkCloseButtonStyle}"
+                                Width="46"
+                                AutomationProperties.AutomationId="Close"
+                                AutomationProperties.Name="Close"
+                                Command="{x:Static SystemCommands.CloseWindowCommand}"
+                                Focusable="False"
+                                IsEnabled="{Binding RelativeSource={RelativeSource AncestorType={x:Type ctrl:ExtendedWindow}}, Path=IsCloseButtonEnabled, Mode=OneWay}"
+                                ToolTip="{Binding Close, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                UseLayoutRounding="True">
+                            <Path Width="10"
+                                  Height="10"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="F1M8.583,8L13,12.424 12.424,13 8,8.583 3.576,13 3,12.424 7.417,8 3,3.576 3.576,3 8,7.417 12.424,3 13,3.576z"
+                                  Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                  RenderOptions.EdgeMode="Aliased"
+                                  SnapsToDevicePixels="True"
+                                  Stretch="Uniform" />
+                        </Button>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ctrl:ExtendedWindow}}, Path=IsCloseButtonEnabled}" Value="True" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ctrl:ExtendedWindow}}, Path=IsAnyDialogOpen}" Value="True" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ctrl:ExtendedWindow}}, Path=IsCloseButtonEnabledWithDialog}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PART_Close" Property="IsEnabled" Value="False" />
+                        </MultiDataTrigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ctrl:ExtendedWindow}}, Path=WindowState}" Value="Maximized">
+                            <Setter TargetName="PART_Max" Property="AutomationProperties.Name" Value="Restore" />
+                            <Setter TargetName="PART_Max" Property="Command" Value="{x:Static SystemCommands.RestoreWindowCommand}" />
+                            <Setter TargetName="PART_Max" Property="ToolTip" Value="{Binding Restore, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Setter TargetName="PART_MaxPath" Property="Data" Value="M1,4.56L1,14.56 11,14.56 11,4.56z M4,1L4,3.56 12,3.56 12,11 14,11 14,1z M3,0L15,0 15,12 12,12 12,15.56 0,15.56 0,3.56 3,3.56z" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

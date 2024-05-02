@@ -1,0 +1,63 @@
+﻿<my:ContentDialog x:Class="MyNet.Wpf.TestApp.Views.CountryEditView"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:my="http://mynet.com/xaml/themes"
+                  xmlns:viewmodels="clr-namespace:MyNet.Wpf.TestApp.ViewModels"
+                  Style="{StaticResource MyNet.Styles.ContentDialog}"
+                  d:DataContext="{d:DesignInstance Type=viewmodels:CountryEditViewModel}"
+                  mc:Ignorable="d">
+    <my:ContentDialog.Resources>
+        <my:BindingProxy x:Key="Proxy" Data="{Binding}" />
+    </my:ContentDialog.Resources>
+
+    <my:InputAssist.InputBindings>
+        <InputBindingCollection>
+            <KeyBinding Key="F5" Command="{Binding Data.RefreshCommand, Source={StaticResource Proxy}}" />
+            <KeyBinding Modifiers="Ctrl" Key="S" Command="{Binding Data.SaveAndCloseCommand, Source={StaticResource Proxy}}" />
+            <KeyBinding Key="Esc" Command="{Binding Data.CancelCommand, Source={StaticResource Proxy}}" />
+        </InputBindingCollection>
+    </my:InputAssist.InputBindings>
+
+    <my:ContentDialog.Header>
+        <my:SimpleStackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <my:PackIcon Kind="PlusCircle" />
+            <TextBlock Text="NEW ITEM" />
+        </my:SimpleStackPanel>
+    </my:ContentDialog.Header>
+
+    <my:ContentDialog.Footer>
+        <DockPanel>
+            <Separator Margin="{StaticResource MyNet.Margins.Medium.Horizontal}" DockPanel.Dock="Top" />
+            <ToolBar HorizontalAlignment="Right" Background="Transparent" DockPanel.Dock="Right">
+                <Button Style="{StaticResource MyNet.Styles.Button.ToolBar.Refresh}" MinWidth="67" Command="{Binding RefreshCommand}" />
+                <Button Style="{StaticResource MyNet.Styles.Button.ToolBar.Cancel}" MinWidth="67" Command="{Binding CancelCommand}" />
+                <Button Style="{StaticResource MyNet.Styles.Button.ToolBar.Validate}" MinWidth="67" Command="{Binding SaveAndCloseCommand}" />
+            </ToolBar>
+        </DockPanel>
+    </my:ContentDialog.Footer>
+
+    <Grid Margin="{StaticResource MyNet.Margins.Medium}" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <my:SimpleStackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <my:PackIcon Kind="InformationCircle" />
+            <TextBlock Text="Name : " />
+        </my:SimpleStackPanel>
+
+        <TextBox Style="{StaticResource MyNet.Styles.TextBox.Outlined}"
+                 Grid.Column="1"
+                 HorizontalAlignment="Stretch"
+                 my:FocusAssist.IsDefault="True"
+                 Text="{Binding Item.Name, UpdateSourceTrigger=PropertyChanged}" />
+    </Grid>
+
+</my:ContentDialog>

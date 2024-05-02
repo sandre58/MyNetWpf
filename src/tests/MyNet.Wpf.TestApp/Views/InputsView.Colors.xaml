@@ -1,0 +1,141 @@
+﻿<my:NavigationPage x:Class="MyNet.Wpf.TestApp.Views.InputsColorsView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:my="http://mynet.com/xaml/themes"
+                   xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
+                   xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+                   d:DesignHeight="450"
+                   d:DesignWidth="800"
+                   mc:Ignorable="d">
+    <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}">
+        <my:SimpleStackPanel>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.ColorEyeDropper">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="ced_0_0_0">
+                            <my:Badged Badge="{my:Resource Default}">
+                                <my:ColorEyeDropper x:Name="EyeDropper" Style="{StaticResource MyNet.Styles.ColorEyeDropper}" SelectedColor="{DynamicResource MyNet.Colors.Primary}">
+                                    <Button Style="{StaticResource MyNet.Styles.Button.Rounded.Filled}"
+                                            Background="{Binding SelectedColor, Converter={x:Static my:ColorToBrushConverter.Default}, ElementName=EyeDropper}"
+                                            Content="{my:MediumIcon Kind=Eyedropper}"
+                                            Foreground="{Binding Background, RelativeSource={RelativeSource Self}, Converter={x:Static my:BrushConverter.Contrast}}"
+                                            ToolTip="{Binding SelectedColor, ElementName=EyeDropper}" />
+                                </my:ColorEyeDropper>
+                            </my:Badged>
+                        </smtx:XamlDisplay>
+                        <my:Card Width="300" Height="35" Background="{Binding SelectedColor, Converter={x:Static my:ColorToBrushConverter.Default}, ElementName=EyeDropper, Mode=OneWay}" />
+                    </my:SimpleStackPanel>
+
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.ColorHSVPicker">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="ced_1_0_0">
+                            <my:SimpleStackPanel>
+                                <Slider x:Name="HueSlider"
+                                        Style="{StaticResource MyNet.Styles.Slider.Colors.Hue}"
+                                        Width="300"
+                                        Panel.ZIndex="1"
+                                        Value="40" />
+                                <my:ColorHSVPicker x:Name="ColorHSVPicker"
+                                                   Style="{StaticResource MyNet.Styles.ColorHSVPicker}"
+                                                   Width="300"
+                                                   Height="300"
+                                                   HorizontalAlignment="Left"
+                                                   Hue="{Binding Value, ElementName=HueSlider}"
+                                                   Saturation="0.5" />
+                            </my:SimpleStackPanel>
+                        </smtx:XamlDisplay>
+
+                        <my:Card Width="35" Height="330" Background="{Binding SelectedColor, Converter={x:Static my:ColorToBrushConverter.Default}, ElementName=ColorHSVPicker, Mode=OneWay}" />
+                    </my:SimpleStackPanel>
+
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.ColorCanvas">
+                <DockPanel>
+                    <GroupBox Width="300"
+                              Margin="{StaticResource MyNet.Margins.Medium}"
+                              my:IconAssist.Icon="{my:Icon Kind=Settings}"
+                              DockPanel.Dock="Right"
+                              Header="{my:Resource Options}">
+                        <my:DynamicScrollViewer HorizontalScrollBarVisibility="Disabled">
+                            <my:SimpleStackPanel HorizontalAlignment="Stretch">
+
+                                <CheckBox x:Name="ShowSVPicker" Content="Show SVPicker" IsChecked="True" />
+                                <CheckBox x:Name="ShowRGB" Content="Show RGB" IsChecked="True" />
+                                <CheckBox x:Name="ShowHSV" Content="Show HSV" IsChecked="True" />
+                                <CheckBox x:Name="ShowTransparency" Content="Show Transparency" IsChecked="True" />
+                                <CheckBox x:Name="ShowEyeDropper" Content="Show EyeDropper" IsChecked="True" />
+                                <CheckBox x:Name="ShowHexa" Content="Show Hexa" IsChecked="True" />
+                                <CheckBox x:Name="HexaIsReadOnly" Content="Hexa is ReadOnly" IsChecked="False" />
+                                <ComboBox x:Name="DisplayNameMode"
+                                          HorizontalAlignment="Stretch"
+                                          my:HintAssist.Hint="Name mode"
+                                          my:HintAssist.IsFloating="True"
+                                          DisplayMemberPath="Display"
+                                          ItemsSource="{my:EnumSource {x:Type my:ColorDisplayNameMode}}"
+                                          SelectedValue="{x:Static my:ColorDisplayNameMode.Hexa}"
+                                          SelectedValuePath="Value" />
+                                <CheckBox x:Name="ShowNumericValues" Content="Show Numeric Values" IsChecked="False" />
+                                <CheckBox x:Name="ShowCustomColors1" Content="Show custom colors 1" IsChecked="True" />
+                                <CheckBox x:Name="ShowCustomColors2" Content="Show custom colors 2" IsChecked="True" />
+                                <CheckBox x:Name="ShowRecentColors" Content="Show recent colors" IsChecked="True" />
+
+                            </my:SimpleStackPanel>
+                        </my:DynamicScrollViewer>
+                    </GroupBox>
+
+                    <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+                        <smtx:XamlDisplay UniqueKey="ced_2_0_0">
+                            <my:Card Width="1000">
+                                <my:ColorCanvas Style="{StaticResource MyNet.Styles.ColorCanvas}"
+                                                DisplayNameMode="{Binding SelectedValue, ElementName=DisplayNameMode}"
+                                                HexaIsReadOnly="{Binding IsChecked, ElementName=HexaIsReadOnly}"
+                                                SelectedColor="{DynamicResource MyNet.Colors.Red}"
+                                                ShowCustomColors1="{Binding IsChecked, ElementName=ShowCustomColors1}"
+                                                ShowCustomColors2="{Binding IsChecked, ElementName=ShowCustomColors2}"
+                                                ShowEyeDropper="{Binding IsChecked, ElementName=ShowEyeDropper}"
+                                                ShowHSV="{Binding IsChecked, ElementName=ShowHSV}"
+                                                ShowHexa="{Binding IsChecked, ElementName=ShowHexa}"
+                                                ShowNumericValues="{Binding IsChecked, ElementName=ShowNumericValues}"
+                                                ShowRGB="{Binding IsChecked, ElementName=ShowRGB}"
+                                                ShowRecentColors="{Binding IsChecked, ElementName=ShowRecentColors}"
+                                                ShowSVPicker="{Binding IsChecked, ElementName=ShowSVPicker}"
+                                                ShowTransparency="{Binding IsChecked, ElementName=ShowTransparency}" />
+                            </my:Card>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="ced_2_0_1">
+                            <my:Card Width="300">
+                                <my:ColorCanvas Style="{StaticResource MyNet.Styles.ColorCanvas.Compact}"
+                                                DisplayNameMode="{Binding SelectedValue, ElementName=DisplayNameMode}"
+                                                HexaIsReadOnly="{Binding IsChecked, ElementName=HexaIsReadOnly}"
+                                                SelectedColor="{DynamicResource MyNet.Colors.Red}"
+                                                ShowCustomColors1="{Binding IsChecked, ElementName=ShowCustomColors1}"
+                                                ShowCustomColors2="{Binding IsChecked, ElementName=ShowCustomColors2}"
+                                                ShowEyeDropper="{Binding IsChecked, ElementName=ShowEyeDropper}"
+                                                ShowHSV="{Binding IsChecked, ElementName=ShowHSV}"
+                                                ShowHexa="{Binding IsChecked, ElementName=ShowHexa}"
+                                                ShowNumericValues="{Binding IsChecked, ElementName=ShowNumericValues}"
+                                                ShowRGB="{Binding IsChecked, ElementName=ShowRGB}"
+                                                ShowRecentColors="{Binding IsChecked, ElementName=ShowRecentColors}"
+                                                ShowSVPicker="{Binding IsChecked, ElementName=ShowSVPicker}"
+                                                ShowTransparency="{Binding IsChecked, ElementName=ShowTransparency}" />
+                            </my:Card>
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                </DockPanel>
+            </Expander>
+        </my:SimpleStackPanel>
+    </my:DynamicScrollViewer>
+</my:NavigationPage>

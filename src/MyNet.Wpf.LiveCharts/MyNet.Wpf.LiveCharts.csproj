@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Extends the functionality of the LiveCharts library, enhancing its capabilities for data visualization in .NET applications.</Description>
+    <PackageTags>MyNet;UI;Charts;Wpf;LiveCharts</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+      <PackageReference Include="Fody" Version="6.8.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="PropertyChanged.Fody" Version="4.1.0">
+        <PrivateAssets>all</PrivateAssets>
+      </PackageReference>
+    <PackageReference Include="MyNet.Xaml.Merger.MSBuild" Version="0.1.0-pre.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LiveCharts\LiveCharts.Wpf\LiveCharts.Wpf.csproj" />
+    <ProjectReference Include="..\MyNet.Wpf\MyNet.Wpf.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <XAMLColorSchemeGeneratorEnabled>False</XAMLColorSchemeGeneratorEnabled>
+    <XAMLCombineEnabled>True</XAMLCombineEnabled>
+    <XAMLCombineImportMergedResourceDictionaryReferences>True</XAMLCombineImportMergedResourceDictionaryReferences>
+    <RemoveXAMLCombineItemsFromPages>False</RemoveXAMLCombineItemsFromPages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <XAMLCombineItems Include="Styles/*.xaml">
+      <TargetFile>Themes/MyNet.Styles.xaml</TargetFile>
+    </XAMLCombineItems>
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(IsBuildingInsideRider)' == 'True'">
+    <DefaultItemExcludes>$(DefaultItemExcludes);Styles\*.xaml</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsBuildingInsideRider)' == 'True'">
+    <Page Include="Styles\*.xaml" />
+  </ItemGroup>
+  
+</Project>

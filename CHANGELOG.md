@@ -1,0 +1,4 @@
+# Changelog
+
+## [v1.0.1] - 2024-04-25
+- Initialize repository

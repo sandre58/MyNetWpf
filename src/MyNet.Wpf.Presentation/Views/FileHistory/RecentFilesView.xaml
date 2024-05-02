@@ -1,0 +1,251 @@
+﻿<UserControl x:Class="MyNet.Wpf.Presentation.Views.FileHistory.RecentFilesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:my="http://mynet.com/xaml/themes"
+             xmlns:viewmodels="clr-namespace:MyNet.UI.ViewModels.FileHistory;assembly=MyNet.UI"
+             d:DataContext="{d:DesignInstance Type=viewmodels:RecentFilesViewModel}"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <my:BindingProxy x:Key="Proxy" Data="{Binding}" />
+
+        <Style x:Key="MyNet.Styles.TreeViewItem.RecentFiles.Header" BasedOn="{StaticResource {x:Type TreeViewItem}}" TargetType="{x:Type TreeViewItem}">
+            <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Large.Bottom}" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
+
+        <Style x:Key="MyNet.Styles.TreeViewItem.RecentFiles.File" BasedOn="{StaticResource {x:Type TreeViewItem}}" TargetType="{x:Type TreeViewItem}">
+            <Setter Property="my:CommandsAssist.ClickCommand" Value="{Binding OpenCommand}" />
+            <Setter Property="my:CommandsAssist.EnterCommand" Value="{Binding OpenCommand}" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="ToolTip" Value="{my:Resource Open}" />
+        </Style>
+
+        <Style x:Key="MyNet.Styles.TreeViewItem.RecentFiles.Pinned" BasedOn="{StaticResource MyNet.Styles.TreeViewItem.RecentFiles.File}" TargetType="{x:Type TreeViewItem}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsPinned}" Value="False">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="MyNet.Styles.TreeViewItem.RecentFiles.Recents" BasedOn="{StaticResource MyNet.Styles.TreeViewItem.RecentFiles.File}" TargetType="{x:Type TreeViewItem}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsPinned}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <DataTemplate x:Key="MyClub.DataTemplates.RecentFileViewModel" DataType="{x:Type viewmodels:RecentFileViewModel}">
+            <Grid x:Name="grid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+
+                <!--  Image  -->
+                <Grid Width="25"
+                      Height="25"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Center"
+                      my:BusyAssist.AttachService="{Binding BusyService}"
+                      my:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Small}">
+                    <ContentControl Content="{Binding}">
+                        <ContentControl.Style>
+                            <Style BasedOn="{StaticResource {x:Type ContentControl}}" TargetType="{x:Type ContentControl}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path, Converter={x:Static my:FileToBooleanConverter.TrueIfExist}}" Value="False">
+                                        <Setter Property="ContentTemplate">
+                                            <Setter.Value>
+                                                <DataTemplate>
+                                                    <my:PackIcon x:Name="icon"
+                                                                 Width="25"
+                                                                 Height="25"
+                                                                 Foreground="{DynamicResource MyNet.Brushes.Negative}"
+                                                                 Kind="Remove"
+                                                                 ToolTip="{my:Resource FileNotFound}" />
+                                                </DataTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding Path, Converter={x:Static my:FileToBooleanConverter.TrueIfExist}}" Value="True" />
+                                            <Condition Binding="{Binding Image}" Value="{x:Null}" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="ContentTemplate">
+                                            <Setter.Value>
+                                                <DataTemplate>
+                                                    <my:PackIcon x:Name="icon"
+                                                                 Width="25"
+                                                                 Height="25"
+                                                                 Kind="ShieldCrown"
+                                                                 Opacity="{StaticResource MyNet.Opacity.Secondary}" />
+                                                </DataTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding Path, Converter={x:Static my:FileToBooleanConverter.TrueIfExist}}" Value="True" />
+                                            <Condition Binding="{Binding Image, Converter={x:Static my:NullToBooleanConverter.FalseIfNull}}" Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="ContentTemplate">
+                                            <Setter.Value>
+                                                <DataTemplate>
+                                                    <Image Source="{Binding Image, UpdateSourceTrigger=PropertyChanged, Converter={x:Static my:BytesToImageConverter.Default}}" />
+                                                </DataTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
+                </Grid>
+
+                <my:SimpleStackPanel Grid.Column="1" Spacing="{StaticResource MyNet.Margin.Default}">
+                    <DockPanel>
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Grid.Column="1"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Top"
+                                   Opacity="{StaticResource MyNet.Opacity.Secondary}"
+                                   Text="{my:Translation LastAccessDate,
+                                                         Format=ShortDateTimeFormat}"
+                                   Visibility="{Binding LastAccessDate, Converter={x:Static my:NullToVisibilityConverter.CollapsedIfNull}}" />
+                    </DockPanel>
+                    <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}" Text="{Binding Path}" Visibility="{Binding IsRecoveredFile, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
+                    <Label Style="{StaticResource MyNet.Styles.Label.Elevation.Custom}"
+                           Background="{DynamicResource MyNet.Brushes.Warning}"
+                           Content="{my:Resource AutoSaved}"
+                           FontSize="{StaticResource MyNet.Font.Size.Secondary}"
+                           Typography.Capitals="AllSmallCaps"
+                           Visibility="{Binding IsRecoveredFile, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+                </my:SimpleStackPanel>
+
+                <ToolBar x:Name="toolbar"
+                         Style="{StaticResource MyNet.Styles.ToolBar.Tools}"
+                         Grid.Column="2"
+                         HorizontalAlignment="Right"
+                         Visibility="Hidden">
+                    <Button Command="{Binding PinCommand}" Content="{my:ToolIcon Kind=Pin}" ToolTip="{my:Resource Pin}">
+                        <Button.Visibility>
+                            <MultiBinding Converter="{x:Static my:MultipleBooleanToVisibilityConverter.AndCollapse}">
+                                <Binding Converter="{x:Static my:NotBooleanConverter.Default}" Path="IsPinned" />
+                                <Binding Converter="{x:Static my:NotBooleanConverter.Default}" Path="IsRecoveredFile" />
+                            </MultiBinding>
+                        </Button.Visibility>
+                    </Button>
+                    <Button Command="{Binding PinOffCommand}" Content="{my:ToolIcon Kind=PinOff}" ToolTip="{my:Resource PinOff}">
+                        <Button.Visibility>
+                            <MultiBinding Converter="{x:Static my:MultipleBooleanToVisibilityConverter.AndCollapse}">
+                                <Binding Path="IsPinned" />
+                                <Binding Converter="{x:Static my:NotBooleanConverter.Default}" Path="IsRecoveredFile" />
+                            </MultiBinding>
+                        </Button.Visibility>
+                    </Button>
+                    <my:DropDownButton x:Name="DropDownButton"
+                                       PopupPadding="0"
+                                       ShowDropDownButton="False"
+                                       ToggleContent="{my:ToolIcon Kind=DotsVertical}">
+                        <my:Submenu>
+                            <MenuItem Command="{Binding OpenCommand}" Header="{my:Resource Open}" Icon="{my:ToolIcon Kind=Download}" />
+                            <MenuItem Command="{Binding OpenCopyCommand}"
+                                      Header="{my:Resource OpenCopy}"
+                                      Icon="{my:ToolIcon Kind=FileMultiple}"
+                                      Visibility="{Binding IsRecoveredFile, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
+                            <Separator Style="{StaticResource MyNet.Styles.Separator.Horizontal}" />
+                            <MenuItem Command="{Binding RemoveFileCommand}" Header="{my:Resource RemoveFile}" Icon="{my:ToolIcon Kind=Trash}" />
+                            <Separator Style="{StaticResource MyNet.Styles.Separator.Horizontal}" Visibility="{Binding IsRecoveredFile, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
+                            <MenuItem Command="{Binding OpenFolderLocationCommand}"
+                                      Header="{my:Resource OpenFolderLocation}"
+                                      Icon="{my:ToolIcon Kind=FolderSearch}"
+                                      Visibility="{Binding IsRecoveredFile, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
+                            <MenuItem Command="{x:Static my:AppCommands.CopyInClipboardCommand}"
+                                      CommandParameter="{Binding Path}"
+                                      Header="{my:Resource CopyFilePath}"
+                                      Icon="{my:ToolIcon Kind=ClipboardText}"
+                                      Visibility="{Binding IsRecoveredFile, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
+                            <Separator Style="{StaticResource MyNet.Styles.Separator.Horizontal}" Visibility="{Binding IsRecoveredFile, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
+                            <MenuItem Command="{Binding PinCommand}" Header="{my:Resource Pin}" Icon="{my:ToolIcon Kind=Pin}">
+                                <MenuItem.Visibility>
+                                    <MultiBinding Converter="{x:Static my:MultipleBooleanToVisibilityConverter.AndCollapse}">
+                                        <Binding Converter="{x:Static my:NotBooleanConverter.Default}" Path="IsPinned" />
+                                        <Binding Converter="{x:Static my:NotBooleanConverter.Default}" Path="IsRecoveredFile" />
+                                    </MultiBinding>
+                                </MenuItem.Visibility>
+                            </MenuItem>
+                            <MenuItem Command="{Binding PinOffCommand}" Header="{my:Resource PinOff}" Icon="{my:ToolIcon Kind=PinOff}">
+                                <MenuItem.Visibility>
+                                    <MultiBinding Converter="{x:Static my:MultipleBooleanToVisibilityConverter.AndCollapse}">
+                                        <Binding Path="IsPinned" />
+                                        <Binding Converter="{x:Static my:NotBooleanConverter.Default}" Path="IsRecoveredFile" />
+                                    </MultiBinding>
+                                </MenuItem.Visibility>
+                            </MenuItem>
+                            <MenuItem Background="{DynamicResource MyNet.Brushes.Negative}"
+                                      Command="{Binding RemoveCommand}"
+                                      Foreground="{my:BrushBinding SelfPath=Background,
+                                                                   Contrast=True}"
+                                      Header="{my:Resource RemoveFileFromList}"
+                                      Icon="{my:ToolIcon Kind=Remove}"
+                                      Visibility="{Binding IsRecoveredFile, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
+                        </my:Submenu>
+                    </my:DropDownButton>
+                </ToolBar>
+            </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path, Converter={x:Static my:FileToBooleanConverter.TrueIfExist}}" Value="False">
+                    <Setter TargetName="grid" Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TreeViewItem}}}" Value="True">
+                    <Setter TargetName="toolbar" Property="Visibility" Value="Visible" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Margin="{StaticResource MyNet.Margins.VeryLarge.Bottom}" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MaxWidth="300" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--  Filter And Sort  -->
+            <ContentControl Margin="{StaticResource MyNet.Margins.Large.Right}" VerticalAlignment="Center" Content="{Binding Filters}" />
+            <ContentControl Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Content="{Binding Sorting}"
+                            DockPanel.Dock="Right" />
+        </Grid>
+
+        <TreeView Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <TreeViewItem Style="{StaticResource MyNet.Styles.TreeViewItem.RecentFiles.Header}"
+                          Header="{my:Resource PinnedPlural,
+                                               Casing=AllCaps}"
+                          IsExpanded="True"
+                          ItemContainerStyle="{StaticResource MyNet.Styles.TreeViewItem.RecentFiles.Pinned}"
+                          ItemTemplate="{StaticResource MyClub.DataTemplates.RecentFileViewModel}"
+                          ItemsSource="{Binding Items}" />
+            <TreeViewItem Style="{StaticResource MyNet.Styles.TreeViewItem.RecentFiles.Header}"
+                          Header="{my:Resource Recents,
+                                               Casing=AllCaps}"
+                          IsExpanded="True"
+                          ItemContainerStyle="{StaticResource MyNet.Styles.TreeViewItem.RecentFiles.Recents}"
+                          ItemTemplate="{StaticResource MyClub.DataTemplates.RecentFileViewModel}"
+                          ItemsSource="{Binding Items}" />
+        </TreeView>
+    </Grid>
+</UserControl>

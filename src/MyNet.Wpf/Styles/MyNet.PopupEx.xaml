@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls">
+
+    <Style x:Key="MyNet.Styles.PopupEx" TargetType="{x:Type ctrl:PopupEx}">
+        <Setter Property="Placement" Value="Custom" />
+        <Setter Property="PopupAnimation" Value="Slide" />
+        <Setter Property="AllowsTransparency" Value="True" />
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,561 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:MyNet.Wpf.Converters"
+                    xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
+                    xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions"
+                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.Button.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate x:Key="MyNet.DataTemplates.Icon.TabItem">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <ContentControl x:Name="Icon"
+                            Margin="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Content="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}"
+                            Opacity="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}"
+                            Visibility="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource AncestorType={x:Type TabItem}}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+            <ContentControl x:Name="Content"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Content="{Binding}" />
+        </Grid>
+
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="{x:Static ctrl:Alignment.Left}">
+                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                <Setter TargetName="Content" Property="Grid.Column" Value="1" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="{x:Static ctrl:Alignment.Top}">
+                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Content" Property="Grid.Row" Value="1" />
+                <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="{x:Static ctrl:Alignment.Right}">
+                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="1" />
+                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="{x:Static ctrl:Alignment.Bottom}">
+                <Setter TargetName="Icon" Property="Grid.Row" Value="1" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <Style x:Key="MyNet.Styles.TabItem" TargetType="{x:Type TabItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HeaderTemplate" Value="{StaticResource MyNet.DataTemplates.Icon.TabItem}" />
+        <Setter Property="BorderBrush" Value="{Binding Path=(p:TabControlAssist.IndicatorBrush), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{Binding Path=(p:RippleAssist.Feedback), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
+        <!--  Foreground is for the content, not the header  -->
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Path=(TextElement.Foreground)}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderThickness" Value="0 0 0 2" />
+        <Setter Property="Height" Value="{Binding Path=(p:TabControlAssist.TabItemHeight), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="MinWidth" Value="90" />
+        <Setter Property="Padding" Value="16 12" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <RadioButton x:Name="RadioButton"
+                                 Style="{StaticResource MyNet.Styles.RadioButton.Tab}"
+                                 MinWidth="{TemplateBinding MinWidth}"
+                                 MinHeight="{TemplateBinding MinHeight}"
+                                 Padding="{TemplateBinding Padding}"
+                                 HorizontalContentAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 p:IconAssist.Alignment="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource TemplatedParent}}"
+                                 p:IconAssist.Icon="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}}"
+                                 p:IconAssist.Margin="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource TemplatedParent}}"
+                                 p:IconAssist.Opacity="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource TemplatedParent}}"
+                                 p:RippleAssist.Feedback="{Binding Path=(p:RippleAssist.Feedback), RelativeSource={RelativeSource TemplatedParent}}"
+                                 Background="{TemplateBinding Background}"
+                                 BorderBrush="{TemplateBinding BorderBrush}"
+                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                 Content="{TemplateBinding Header}"
+                                 ContentStringFormat="{TemplateBinding HeaderStringFormat}"
+                                 ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                 ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                 FontSize="{StaticResource MyNet.Font.Size.Tab}"
+                                 FontStretch="Normal"
+                                 FontStyle="Normal"
+                                 FontWeight="{StaticResource MyNet.Font.Weight.Header}"
+                                 Foreground="{Binding Path=(p:TabControlAssist.HeaderForeground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}"
+                                 IsChecked="{Binding IsSelected, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                                 TextOptions.TextFormattingMode="Ideal"
+                                 TextOptions.TextRenderingMode="Auto"
+                                 Typography.Capitals="{TemplateBinding Typography.Capitals}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="RadioButton" Property="Foreground" Value="{Binding BorderBrush, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom">
+                <Setter Property="BorderThickness" Value="0 2 0 0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left">
+                <Setter Property="BorderThickness" Value="0 0 2 0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right">
+                <Setter Property="BorderThickness" Value="2 0 0 0" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MyNet.Styles.TabControl" TargetType="{x:Type TabControl}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:TabControlAssist.HeaderBackground" Value="Transparent" />
+        <Setter Property="p:TabControlAssist.HeaderForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:TabControlAssist.IndicatorBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:TabControlAssist.HeaderForeground)}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="Dp0" />
+        <Setter Property="p:ShadowAssist.ShadowEdges" Value="None" />
+        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="0" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.TabItem}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="p:TabControlAssist.TabItemHeight" Value="48" />
+        <Setter Property="p:TabControlAssist.HasUniformTabWidth" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabControl}">
+                    <DockPanel KeyboardNavigation.TabNavigation="Local">
+                        <ctrl:Card x:Name="PART_HeaderCard"
+                                   Padding="0"
+                                   p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}"
+                                   p:ShadowAssist.ShadowEdges="{TemplateBinding p:ShadowAssist.ShadowEdges}"
+                                   Background="{Binding Path=(p:TabControlAssist.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}}"
+                                   DockPanel.Dock="Top"
+                                   Focusable="False"
+                                   UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}"
+                                   Visibility="{Binding Path=(p:TabControlAssist.ShowHeader), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <ctrl:DynamicScrollViewer x:Name="HeaderScrollViewer"
+                                                          p:ScrollViewerAssist.BubbleVerticalScroll="True"
+                                                          p:ScrollViewerAssist.SupportHorizontalScroll="True"
+                                                          HorizontalScrollBarVisibility="Hidden"
+                                                          VerticalScrollBarVisibility="Hidden">
+                                    <StackPanel>
+                                        <UniformGrid x:Name="CenteredHeaderPanel"
+                                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                     Focusable="False"
+                                                     IsItemsHost="True"
+                                                     KeyboardNavigation.TabIndex="1"
+                                                     Rows="1" />
+                                        <VirtualizingStackPanel x:Name="HeaderPanel"
+                                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                                Focusable="False"
+                                                                IsItemsHost="True"
+                                                                KeyboardNavigation.TabIndex="1"
+                                                                Orientation="Horizontal" />
+                                    </StackPanel>
+                                </ctrl:DynamicScrollViewer>
+                                <ContentControl x:Name="MoreContent"
+                                                Grid.Column="1"
+                                                Margin="{StaticResource MyNet.Margins.Large.Horizontal}"
+                                                HorizontalAlignment="{Binding Path=(p:TabControlAssist.MoreContentHorizontalAlignment), RelativeSource={RelativeSource TemplatedParent}}"
+                                                VerticalAlignment="{Binding Path=(p:TabControlAssist.MoreContentVerticalAlignment), RelativeSource={RelativeSource TemplatedParent}}"
+                                                Content="{Binding Path=(p:TabControlAssist.MoreContent), RelativeSource={RelativeSource TemplatedParent}}"
+                                                Foreground="{Binding Path=(p:TabControlAssist.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}}"
+                                                Visibility="{Binding Path=(p:TabControlAssist.MoreContent), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}">
+                                    <ContentControl.Resources>
+                                        <Style BasedOn="{StaticResource MyNet.Styles.Button.Icon.Foreground}" TargetType="{x:Type Button}">
+                                            <Setter Property="Height" Value="22" />
+                                            <Setter Property="Width" Value="22" />
+                                        </Style>
+                                    </ContentControl.Resources>
+                                </ContentControl>
+                            </Grid>
+                        </ctrl:Card>
+                        <Border x:Name="PART_BorderSelectedContent"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Panel.ZIndex="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(Panel.ZIndex)}"
+                                Background="{x:Null}"
+                                Focusable="False">
+                            <ctrl:TransitioningContent x:Name="PART_SelectedContentHost"
+                                                       Margin="{TemplateBinding Padding}"
+                                                       Content="{TemplateBinding SelectedContent}"
+                                                       ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                                       ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                       ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                                       Focusable="False"
+                                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                    </DockPanel>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HorizontalContentAlignment" Value="Stretch">
+                            <Setter TargetName="CenteredHeaderPanel" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="HeaderPanel" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="HorizontalContentAlignment" Value="Center" />
+                                <Condition Property="p:TabControlAssist.HasUniformTabWidth" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="HeaderPanel" Property="Visibility" Value="Visible" />
+                                <Setter TargetName="CenteredHeaderPanel" Property="Visibility" Value="Collapsed" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="HorizontalContentAlignment" Value="Center" />
+                                <Condition Property="p:TabControlAssist.HasUniformTabWidth" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="HeaderPanel" Property="Visibility" Value="Collapsed" />
+                                <Setter TargetName="CenteredHeaderPanel" Property="Visibility" Value="Visible" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="HorizontalContentAlignment" Value="Left" />
+                                <Condition Property="p:TabControlAssist.HasUniformTabWidth" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="HeaderPanel" Property="Visibility" Value="Visible" />
+                                <Setter TargetName="CenteredHeaderPanel" Property="Visibility" Value="Collapsed" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="HorizontalContentAlignment" Value="Left" />
+                                <Condition Property="p:TabControlAssist.HasUniformTabWidth" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="HeaderPanel" Property="Visibility" Value="Collapsed" />
+                                <Setter TargetName="CenteredHeaderPanel" Property="Visibility" Value="Visible" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="HorizontalContentAlignment" Value="Right" />
+                                <Condition Property="p:TabControlAssist.HasUniformTabWidth" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="HeaderPanel" Property="Visibility" Value="Visible" />
+                                <Setter TargetName="CenteredHeaderPanel" Property="Visibility" Value="Collapsed" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="HorizontalContentAlignment" Value="Right" />
+                                <Condition Property="p:TabControlAssist.HasUniformTabWidth" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="HeaderPanel" Property="Visibility" Value="Collapsed" />
+                                <Setter TargetName="CenteredHeaderPanel" Property="Visibility" Value="Visible" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+
+
+                        <Trigger Property="TabStripPlacement" Value="Bottom">
+                            <Setter TargetName="PART_HeaderCard" Property="DockPanel.Dock" Value="Bottom" />
+                            <Setter Property="p:ShadowAssist.ShadowEdges" Value="Top" />
+                        </Trigger>
+                        <Trigger Property="TabStripPlacement" Value="Left">
+                            <Setter TargetName="PART_HeaderCard" Property="DockPanel.Dock" Value="Left" />
+                            <Setter TargetName="CenteredHeaderPanel" Property="Rows" Value="0" />
+                            <Setter Property="p:ShadowAssist.ShadowEdges" Value="Right" />
+                            <Setter TargetName="CenteredHeaderPanel" Property="Columns" Value="1" />
+                            <Setter TargetName="MoreContent" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="MoreContent" Property="Grid.Column" Value="0" />
+                        </Trigger>
+                        <Trigger Property="TabStripPlacement" Value="Right">
+                            <Setter TargetName="PART_HeaderCard" Property="DockPanel.Dock" Value="Right" />
+                            <Setter Property="p:ShadowAssist.ShadowEdges" Value="Left" />
+                            <Setter TargetName="CenteredHeaderPanel" Property="Rows" Value="0" />
+                            <Setter TargetName="CenteredHeaderPanel" Property="Columns" Value="1" />
+                            <Setter TargetName="MoreContent" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="MoreContent" Property="Grid.Column" Value="0" />
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="MyNet.Styles.TabControl.Accent" BasedOn="{StaticResource MyNet.Styles.TabControl}" TargetType="{x:Type TabControl}">
+        <Setter Property="p:TabControlAssist.IndicatorBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.TabControl.Foreground" BasedOn="{StaticResource MyNet.Styles.TabControl}" TargetType="{x:Type TabControl}">
+        <Setter Property="p:TabControlAssist.IndicatorBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.TabControl.Filled" BasedOn="{StaticResource MyNet.Styles.TabControl}" TargetType="{x:Type TabControl}">
+        <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="p:ShadowAssist.ShadowEdges" Value="Bottom" />
+        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.TabControl.Filled.Primary" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}" TargetType="{x:Type TabControl}">
+        <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:TabControlAssist.HeaderForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:TabControlAssist.IndicatorBrush" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.TabControl.Filled.Accent" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}" TargetType="{x:Type TabControl}">
+        <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:TabControlAssist.HeaderForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:TabControlAssist.IndicatorBrush" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.TabControl.Filled.Foreground" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}" TargetType="{x:Type TabControl}">
+        <Setter Property="p:TabControlAssist.HeaderBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="p:TabControlAssist.HeaderForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:TabControlAssist.IndicatorBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.TabItem.Navigation" BasedOn="{StaticResource MyNet.Styles.TabItem}" TargetType="{x:Type TabItem}">
+        <Setter Property="MinWidth" Value="0" />
+        <Setter Property="Width" Value="60" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="Margin" Value="0 4 0 2" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Secondary}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <SolidColorBrush Opacity="0.0" Color="{DynamicResource MyNet.Colors.Control.Border}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding Path=(p:ThemeAssist.IsMouseOverForeground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding Path=(p:HeaderAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
+        <Setter Property="KeyboardNavigation.IsTabStop" Value="True" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <ControlTemplate.Resources>
+                        <Style TargetType="{x:Type ctrl:PackIcon}">
+                            <Setter Property="FrameworkElement.Width" Value="24" />
+                            <Setter Property="FrameworkElement.Height" Value="24" />
+                        </Style>
+                        <Style TargetType="{x:Type ctrl:GeometryIcon}">
+                            <Setter Property="FrameworkElement.Width" Value="24" />
+                            <Setter Property="FrameworkElement.Height" Value="24" />
+                        </Style>
+                    </ControlTemplate.Resources>
+                    <Border x:Name="MainBorder"
+                            HorizontalAlignment="Stretch"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="{StaticResource MyNet.CornerRadius.Container}">
+                        <Grid>
+                            <Rectangle x:Name="ActiveRectangle"
+                                       Width="4"
+                                       Height="24"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Fill="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                       Opacity="0.0"
+                                       RadiusX="2"
+                                       RadiusY="2" />
+
+                            <ctrl:Ripple Padding="4"
+                                         HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Stretch"
+                                         HorizontalContentAlignment="Stretch"
+                                         VerticalContentAlignment="Stretch"
+                                         Feedback="{TemplateBinding p:HeaderAssist.Foreground}"
+                                         Focusable="False"
+                                         RecognizesAccessKey="False"
+                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                <ctrl:Ripple.Clip>
+                                    <MultiBinding Converter="{x:Static c:GeometryConverter.Border}">
+                                        <Binding ElementName="MainBorder" Path="ActualWidth" />
+                                        <Binding ElementName="MainBorder" Path="ActualHeight" />
+                                        <Binding ElementName="MainBorder" Path="CornerRadius" />
+                                        <Binding ElementName="MainBorder" Path="BorderThickness" />
+                                    </MultiBinding>
+                                </ctrl:Ripple.Clip>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <ContentControl x:Name="Icon"
+                                                    Grid.Row="0"
+                                                    Margin="0"
+                                                    VerticalAlignment="Center"
+                                                    Content="{TemplateBinding p:IconAssist.Icon}"
+                                                    Foreground="{TemplateBinding p:HeaderAssist.Foreground}" />
+
+                                    <Grid x:Name="ContentGrid"
+                                          Grid.Row="1"
+                                          Height="15"
+                                          Margin="0 2 0 0">
+                                        <ContentPresenter x:Name="ElementContentPresenter"
+                                                          HorizontalAlignment="Center"
+                                                          Content="{TemplateBinding Header}"
+                                                          TextElement.FontSize="{TemplateBinding FontSize}"
+                                                          TextElement.Foreground="{TemplateBinding p:HeaderAssist.Foreground}" />
+                                    </Grid>
+                                </Grid>
+                            </ctrl:Ripple>
+                        </Grid>
+
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="ActiveRectangle" Property="Opacity" Value="1.0" />
+                            <Setter TargetName="MainBorder" Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="ElementContentPresenter" Property="Margin" Value="0" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ContentGrid"
+                                                         Storyboard.TargetProperty="Height"
+                                                         From="15"
+                                                         To="0"
+                                                         Duration="0:0:.16" />
+                                        <DoubleAnimation Storyboard.TargetName="ContentGrid"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="1"
+                                                         To="0"
+                                                         Duration="0:0:.16" />
+                                        <DoubleAnimation Storyboard.TargetName="MainBorder"
+                                                         Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Opacity)"
+                                                         From="0"
+                                                         To="0.3"
+                                                         Duration="0:0:.16" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ContentGrid"
+                                                         Storyboard.TargetProperty="Height"
+                                                         From="0"
+                                                         To="15"
+                                                         Duration="0:0:.16" />
+                                        <DoubleAnimation Storyboard.TargetName="ContentGrid"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="0"
+                                                         To="1"
+                                                         Duration="0:0:.16" />
+                                        <DoubleAnimation Storyboard.TargetName="MainBorder"
+                                                         Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Opacity)"
+                                                         From="0.3"
+                                                         To="0"
+                                                         Duration="0:0:.16" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="p:IconAssist.Icon" Value="{x:Null}">
+                            <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MainBorder" Property="Background" Value="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsSelected" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="Icon" Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsMouseOverForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                                <Setter TargetName="ElementContentPresenter" Property="TextElement.Foreground" Value="{Binding Path=(p:ThemeAssist.IsMouseOverForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <Trigger Property="TabStripPlacement" Value="Top">
+                            <Setter TargetName="ActiveRectangle" Property="Width" Value="24" />
+                            <Setter TargetName="ActiveRectangle" Property="Height" Value="4" />
+                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Bottom" />
+                            <Setter TargetName="ActiveRectangle" Property="HorizontalAlignment" Value="Center" />
+                        </Trigger>
+                        <Trigger Property="TabStripPlacement" Value="Bottom">
+                            <Setter TargetName="ActiveRectangle" Property="Width" Value="24" />
+                            <Setter TargetName="ActiveRectangle" Property="Height" Value="4" />
+                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Top" />
+                            <Setter TargetName="ActiveRectangle" Property="HorizontalAlignment" Value="Center" />
+                        </Trigger>
+                        <Trigger Property="TabStripPlacement" Value="Left">
+                            <Setter TargetName="ActiveRectangle" Property="Width" Value="4" />
+                            <Setter TargetName="ActiveRectangle" Property="Height" Value="24" />
+                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Center" />
+                            <Setter TargetName="ActiveRectangle" Property="HorizontalAlignment" Value="Right" />
+                        </Trigger>
+                        <Trigger Property="TabStripPlacement" Value="Right">
+                            <Setter TargetName="ActiveRectangle" Property="Width" Value="4" />
+                            <Setter TargetName="ActiveRectangle" Property="Height" Value="24" />
+                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Center" />
+                            <Setter TargetName="ActiveRectangle" Property="HorizontalAlignment" Value="Left" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MyNet.Styles.TabControl.Navigation" BasedOn="{StaticResource MyNet.Styles.TabControl}" TargetType="{x:Type TabControl}">
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.TabItem.Navigation}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground.Tertiary}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.TabControl.Navigation.Accent" BasedOn="{StaticResource MyNet.Styles.TabControl.Navigation}" TargetType="{x:Type TabControl}">
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.TabControl.Navigation.Foreground" BasedOn="{StaticResource MyNet.Styles.TabControl.Navigation}" TargetType="{x:Type TabControl}">
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    </Style>
+</ResourceDictionary>

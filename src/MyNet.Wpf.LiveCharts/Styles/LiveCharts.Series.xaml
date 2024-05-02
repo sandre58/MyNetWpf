@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:my="http://mynet.com/xaml/themes"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <my:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.Styles.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="MyNet.Styles.Series" TargetType="{x:Type my:Series}">
+        <Setter Property="FontFamily" Value="{my:RobotoFont}" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Caption}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="StrokeThickness" Value="1" />
+    </Style>
+
+</ResourceDictionary>

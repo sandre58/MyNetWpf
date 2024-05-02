@@ -1,0 +1,122 @@
+﻿<Application x:Class="MyNet.Wpf.TestApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+             xmlns:contents="clr-namespace:MyNet.Wpf.TestApp.Views.Contents"
+             xmlns:my="http://mynet.com/xaml/themes"
+             xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+             xmlns:smtxAe="clr-namespace:ShowMeTheXAML.AvalonEdit;assembly=ShowMeTheXAML.AvalonEdit"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             xmlns:viewmodels="clr-namespace:MyNet.Wpf.TestApp.ViewModels">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--  It's only for autocompletion in Design Mode  -->
+                <my:SharedResourceDictionary DesignMode="True" Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.Styles.xaml" />
+
+                <my:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf.Presentation;component/Themes/MyNet.Styles.xaml" />
+                <my:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.DataTemplates.xaml" />
+                <my:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf.Presentation;component/Themes/MyNet.DataTemplates.xaml" />
+                <my:SharedResourceDictionary Source="pack://application:,,,/ShowMeTheXAML.AvalonEdit;component/Themes/xamldisplayer.xaml" />
+                <my:ThemeDictionary />
+            </ResourceDictionary.MergedDictionaries>
+
+            <smtxAe:TextDocumentValueConverter x:Key="TextDocumentValueConverter" />
+
+            <Style x:Key="MyTestApp.Styles.Expander" BasedOn="{StaticResource MyNet.Styles.Expander}" TargetType="{x:Type Expander}">
+                <Setter Property="my:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+                <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
+                <Setter Property="IsExpanded" Value="True" />
+            </Style>
+
+            <Style x:Key="MyTestApp.Styles.GroupBox" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}" TargetType="{x:Type GroupBox}">
+                <Setter Property="my:HeaderAssist.Capitals" Value="AllSmallCaps" />
+                <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Large.Bottom}" />
+            </Style>
+
+            <Style x:Key="MyTestApp.Styles.Card.Primary" BasedOn="{StaticResource MyNet.Styles.Card.Elevation.Primary}" TargetType="{x:Type my:Card}">
+                <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
+            </Style>
+
+            <Style BasedOn="{StaticResource {x:Type smtx:XamlDisplay}}" TargetType="{x:Type smtx:XamlDisplay}">
+                <Setter Property="HorizontalAlignment" Value="Left" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="VerticalContentAlignment" Value="Bottom" />
+                <Setter Property="HorizontalContentAlignment" Value="Right" />
+                <Setter Property="Focusable" Value="False" />
+                <Setter Property="Formatter">
+                    <Setter.Value>
+                        <smtx:XamlFormatter Indent="  " NewLineOnAttributes="True">
+                            <smtx:XamlFormatter.NamespacesToRemove>
+                                <sys:String>http://mynet.com/xaml/themes</sys:String>
+                                <sys:String>clr-namespace:MyNet.Wpf.TestApp.Views.Contents</sys:String>
+                            </smtx:XamlFormatter.NamespacesToRemove>
+                        </smtx:XamlFormatter>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="smtx:XamlDisplay">
+                            <DockPanel>
+                                <my:DropDownButton x:Name="PopupBox"
+                                                   Style="{StaticResource MyNet.Styles.DropDownButton.Icon.Foreground}"
+                                                   Padding="10"
+                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                   DockPanel.Dock="Right"
+                                                   Focusable="False"
+                                                   ShowDropDownButton="False"
+                                                   StaysOpen="True"
+                                                   ToggleContent="{my:ToolIcon Kind=Xml}">
+                                    <Border MaxWidth="800" MaxHeight="600" Padding="{StaticResource MyNet.Margins.Default}">
+                                        <DockPanel>
+                                            <Button Style="{StaticResource MyNet.Styles.Button.Elevation.Primary}"
+                                                    Margin="0 10 0 0"
+                                                    HorizontalAlignment="Right"
+                                                    Command="{x:Static my:AppCommands.CopyInClipboardCommand}"
+                                                    CommandParameter="{Binding Xaml, RelativeSource={RelativeSource TemplatedParent}}"
+                                                    Content="{my:Resource Copy,
+                                                                          Casing=AllCaps}"
+                                                    DockPanel.Dock="Bottom"
+                                                    Tag="{Binding Xaml, RelativeSource={RelativeSource TemplatedParent}}" />
+                                            <avalonEdit:TextEditor Style="{StaticResource AvalonTextEditorXamlDisplay}"
+                                                                   Padding="{StaticResource MyNet.Margins.Small}"
+                                                                   Background="White"
+                                                                   Document="{Binding Xaml, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TextDocumentValueConverter}}" />
+                                        </DockPanel>
+                                    </Border>
+                                </my:DropDownButton>
+                                <Grid>
+                                    <AdornerDecorator>
+                                        <Border Margin="-5" BorderBrush="{DynamicResource MyNet.Brushes.Accent}" Opacity="{StaticResource MyNet.Opacity.Medium}">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="BorderThickness" Value="0" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=PopupBox, Path=IsPopupOpen}" Value="True">
+                                                            <Setter Property="BorderThickness" Value="2" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                        </Border>
+                                    </AdornerDecorator>
+                                    <ContentPresenter />
+                                </Grid>
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <DataTemplate DataType="{x:Type viewmodels:CustomNotification}">
+                <contents:SmallContent />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:CustomMessageBox}">
+                <contents:MediumContent />
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

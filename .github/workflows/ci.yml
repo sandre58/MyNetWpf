@@ -1,0 +1,105 @@
+# Copyright (c) Stéphane ANDRE.
+# Licensed under the MIT license.
+
+# This continuous integration pipeline is triggered anytime a user pushes code to main branch.
+# This pipeline builds the solution and runs unit tests
+
+name: Build
+
+on:
+  push:
+      branches:
+        - main
+      paths:
+        - .github/workflows/ci.yml
+        - .github/GitVersion.yml
+        - 'src/**'
+  workflow_dispatch:
+
+jobs:
+
+  # GitVersion
+  gitversion:
+    timeout-minutes: 5
+    runs-on: windows-latest
+    outputs:
+      full_version: ${{ steps.gitversion.outputs.SemVer }}
+      suffix_label: ${{ steps.gitversion.outputs.PreReleaseLabel }}
+
+    steps:
+
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+        with: 
+          fetch-depth: 0
+
+      # Install Git version
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v1.1.1
+        with:
+          versionSpec: '5.x'
+
+      # Check Git version
+      - name: Check Git Semantic Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v1.1.1 # https://github.com/GitTools/actions/blob/main/docs/examples/github/gitversion/execute/usage-examples.md
+        with:
+          useConfigFile: true
+          configFilePath: .\.github\GitVersion.yml
+          disableNormalization: true
+
+  # Build and test
+  build-and-tests:
+    runs-on: windows-latest
+    name: Build all projects
+    needs: [ gitversion ]
+    env:
+      DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION: true
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET 8.0.201
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.201
+
+      - name: Add NuGet Feed
+        shell: pwsh
+        run: |
+          $userName = "${{ vars.PRIVATE_NUGET_API_USERNAME }}"
+          $token = "${{ secrets.PRIVATE_NUGET_API_KEY }}"
+          if ($userName -eq '' || $token -eq '') {
+            dotnet nuget add source ${{ vars.PRIVATE_NUGET_API_SOURCE }} -n NuGetFeed
+          } else {
+            dotnet nuget add source ${{ vars.PRIVATE_NUGET_API_SOURCE }} -u $userName -p $token -n NuGetFeed
+          }
+
+      - name: NuGet Restore
+        run: dotnet restore .\src\MyNetWpf.sln
+
+      - name: Build Packages
+        run: dotnet build .\src\MyNetWpf.sln -c Release /p:GitVersion=${{ needs.gitversion.outputs.full_version }} /p:VersionSuffix=${{ needs.gitversion.outputs.suffix_label }}
+
+      - name: Run Tests
+        if: ${{ inputs.run-tests }}
+        run: dotnet test .\src\MyNetWpf.sln --configuration Release --logger GitHubActions --no-build --no-restore --blame-crash --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover --no-build
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: NuGet
+          path: ./Artifacts/
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: TestApp
+          path: ./build/MyNet.Wpf.TestApp/Release

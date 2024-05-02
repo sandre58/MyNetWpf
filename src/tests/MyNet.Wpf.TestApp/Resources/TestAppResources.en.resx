@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Buttons" xml:space="preserve">
+    <value>Buttons</value>
+  </data>
+  <data name="Typography" xml:space="preserve">
+    <value>Typography</value>
+  </data>
+  <data name="Toggles" xml:space="preserve">
+    <value>Toggles</value>
+  </data>
+  <data name="DropDownButtons" xml:space="preserve">
+    <value>DropDownButtons</value>
+  </data>
+  <data name="SplitButtons" xml:space="preserve">
+    <value>SplitButtons</value>
+  </data>
+  <data name="Cards" xml:space="preserve">
+    <value>Cards</value>
+  </data>
+  <data name="Containers" xml:space="preserve">
+    <value>Containers</value>
+  </data>
+  <data name="GroupBoxes" xml:space="preserve">
+    <value>GroupBoxes</value>
+  </data>
+  <data name="ScrollViewers" xml:space="preserve">
+    <value>ScrollViewers</value>
+  </data>
+  <data name="TabControls" xml:space="preserve">
+    <value>TabControls</value>
+  </data>
+  <data name="DateAndTimes" xml:space="preserve">
+    <value>Dates and times</value>
+  </data>
+  <data name="Sliders" xml:space="preserve">
+    <value>Sliders</value>
+  </data>
+  <data name="Fields" xml:space="preserve">
+    <value>Fields</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="ProgressBars" xml:space="preserve">
+    <value>ProgressBars</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Icons" xml:space="preserve">
+    <value>Icons</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="SettingsHaveBeenSaved" xml:space="preserve">
+    <value>Settings have been saved.</value>
+  </data>
+  <data name="Calendars" xml:space="preserve">
+    <value>Calendars</value>
+  </data>
+  <data name="Schedulers" xml:space="preserve">
+    <value>Schedulers</value>
+  </data>
+  <data name="Translation" xml:space="preserve">
+    <value>Translation</value>
+  </data>
+  <data name="PositionTypeWinger" xml:space="preserve">
+    <value>Winger</value>
+  </data>
+  <data name="PositionTypeWingBack" xml:space="preserve">
+    <value>Wing back</value>
+  </data>
+  <data name="PositionTypeSweeper" xml:space="preserve">
+    <value>Libero</value>
+  </data>
+  <data name="PositionTypeStriker" xml:space="preserve">
+    <value>Striker</value>
+  </data>
+  <data name="PositionTypeMidfielder" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="PositionTypeGoalKeeper" xml:space="preserve">
+    <value>Goal Keeper</value>
+  </data>
+  <data name="PositionTypeFullBack" xml:space="preserve">
+    <value>Backward</value>
+  </data>
+  <data name="PositionTypeForward" xml:space="preserve">
+    <value>Striker</value>
+  </data>
+  <data name="PositionTypeDefensiveMidfielder" xml:space="preserve">
+    <value>Midfielder</value>
+  </data>
+  <data name="PositionTypeCenterBack" xml:space="preserve">
+    <value>Defending</value>
+  </data>
+  <data name="PositionTypeAttackingMidfielder" xml:space="preserve">
+    <value>Attacking Midfield</value>
+  </data>
+  <data name="PositionSweeperAbbr" xml:space="preserve">
+    <value>SW</value>
+  </data>
+  <data name="PositionSweeper" xml:space="preserve">
+    <value>Sweeper</value>
+  </data>
+  <data name="PositionSideRight" xml:space="preserve">
+    <value>Entitlement</value>
+  </data>
+  <data name="PositionSideLeft" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="PositionSideCenter" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="Positions" xml:space="preserve">
+    <value>Positions</value>
+  </data>
+  <data name="PositionRightWingerAbbr" xml:space="preserve">
+    <value>RF</value>
+  </data>
+  <data name="PositionRightWinger" xml:space="preserve">
+    <value>Right forward</value>
+  </data>
+  <data name="PositionRightWingBackAbbr" xml:space="preserve">
+    <value>RWB</value>
+  </data>
+  <data name="PositionRightWingBack" xml:space="preserve">
+    <value>Right wing back</value>
+  </data>
+  <data name="PositionRightMidfielderAbbr" xml:space="preserve">
+    <value>RM</value>
+  </data>
+  <data name="PositionRightMidfielder" xml:space="preserve">
+    <value>Right midfielder</value>
+  </data>
+  <data name="PositionRightFullBackAbbr" xml:space="preserve">
+    <value>RB</value>
+  </data>
+  <data name="PositionRightFullBack" xml:space="preserve">
+    <value>Right full back</value>
+  </data>
+  <data name="PositionRightForwardAbbr" xml:space="preserve">
+    <value>CF</value>
+  </data>
+  <data name="PositionRightForward" xml:space="preserve">
+    <value>Forward</value>
+  </data>
+  <data name="PositionRightAttackingMidfielderAbbr" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="PositionRightAttackingMidfielder" xml:space="preserve">
+    <value>Right attacking midfielder</value>
+  </data>
+  <data name="PositionRatingVeryGood" xml:space="preserve">
+    <value>Very good</value>
+  </data>
+  <data name="PositionRatingPoor" xml:space="preserve">
+    <value>Uneasy</value>
+  </data>
+  <data name="PositionRatingNatural" xml:space="preserve">
+    <value>Natural</value>
+  </data>
+  <data name="PositionRatingGood" xml:space="preserve">
+    <value>Correct</value>
+  </data>
+  <data name="PositionRatingInefficient" xml:space="preserve">
+    <value>Ineffective</value>
+  </data>
+  <data name="PositionRatingAverage" xml:space="preserve">
+    <value>Unconvincing</value>
+  </data>
+  <data name="PositionOptionalPlural" xml:space="preserve">
+    <value>Position(s)</value>
+  </data>
+  <data name="PositionLeftWingerAbbr" xml:space="preserve">
+    <value>LF</value>
+  </data>
+  <data name="PositionLeftWinger" xml:space="preserve">
+    <value>Left forward</value>
+  </data>
+  <data name="PositionLeftWingBackAbbr" xml:space="preserve">
+    <value>LWB</value>
+  </data>
+  <data name="PositionLeftWingBack" xml:space="preserve">
+    <value>Left wing back</value>
+  </data>
+  <data name="PositionLeftMidfielderAbbr" xml:space="preserve">
+    <value>LM</value>
+  </data>
+  <data name="PositionLeftMidfielder" xml:space="preserve">
+    <value>Left midfielder</value>
+  </data>
+  <data name="PositionLeftFullBackAbbr" xml:space="preserve">
+    <value>LB</value>
+  </data>
+  <data name="PositionLeftFullBack" xml:space="preserve">
+    <value>Left full back</value>
+  </data>
+  <data name="PositionLeftForwardAbbr" xml:space="preserve">
+    <value>CF</value>
+  </data>
+  <data name="PositionLeftForward" xml:space="preserve">
+    <value>Forward</value>
+  </data>
+  <data name="PositionLeftAttackingMidfielderAbbr" xml:space="preserve">
+    <value>LAM</value>
+  </data>
+  <data name="PositionLeftAttackingMidfielder" xml:space="preserve">
+    <value>Left attacking midfielder</value>
+  </data>
+  <data name="PositionGoalKeeperAbbr" xml:space="preserve">
+    <value>GK</value>
+  </data>
+  <data name="PositionGoalKeeper" xml:space="preserve">
+    <value>Goal Keeper</value>
+  </data>
+  <data name="PositionForwardAbbr" xml:space="preserve">
+    <value>ST</value>
+  </data>
+  <data name="PositionForward" xml:space="preserve">
+    <value>Striker</value>
+  </data>
+  <data name="PositionDefensiveRightMidfielderAbbr" xml:space="preserve">
+    <value>DM</value>
+  </data>
+  <data name="PositionDefensiveRightMidfielder" xml:space="preserve">
+    <value>Defensive midfielder</value>
+  </data>
+  <data name="PositionDefensiveMidfielderAbbr" xml:space="preserve">
+    <value>DM</value>
+  </data>
+  <data name="PositionDefensiveMidfielder" xml:space="preserve">
+    <value>Defensive Midfielder</value>
+  </data>
+  <data name="PositionDefensiveLeftMidfielderAbbr" xml:space="preserve">
+    <value>DM</value>
+  </data>
+  <data name="PositionDefensiveLeftMidfielder" xml:space="preserve">
+    <value>Defensive midfielder</value>
+  </data>
+  <data name="PositionCenterRightMidfielderAbbr" xml:space="preserve">
+    <value>CM</value>
+  </data>
+  <data name="PositionCenterRightMidfielder" xml:space="preserve">
+    <value>Central midfielder</value>
+  </data>
+  <data name="PositionCenterRightBackAbbr" xml:space="preserve">
+    <value>CB</value>
+  </data>
+  <data name="PositionCenterRightBack" xml:space="preserve">
+    <value>Central back</value>
+  </data>
+  <data name="PositionCenterRightAttackingMidfielderAbbr" xml:space="preserve">
+    <value>AM</value>
+  </data>
+  <data name="PositionCenterRightAttackingMidfielder" xml:space="preserve">
+    <value>Attacking midfielder</value>
+  </data>
+  <data name="PositionCenterMidfielderAbbr" xml:space="preserve">
+    <value>CM</value>
+  </data>
+  <data name="PositionCenterMidfielder" xml:space="preserve">
+    <value>Central midfielder</value>
+  </data>
+  <data name="PositionCenterLeftMidfielderAbbr" xml:space="preserve">
+    <value>CM</value>
+  </data>
+  <data name="PositionCenterLeftMidfielder" xml:space="preserve">
+    <value>central midfielder</value>
+  </data>
+  <data name="PositionCenterLeftBackAbbr" xml:space="preserve">
+    <value>CB</value>
+  </data>
+  <data name="PositionCenterLeftBack" xml:space="preserve">
+    <value>Central back</value>
+  </data>
+  <data name="PositionCenterLeftAttackingMidfielderAbbr" xml:space="preserve">
+    <value>AM</value>
+  </data>
+  <data name="PositionCenterLeftAttackingMidfielder" xml:space="preserve">
+    <value>Attacking midfielder</value>
+  </data>
+  <data name="PositionCenterBackAbbr" xml:space="preserve">
+    <value>CB</value>
+  </data>
+  <data name="PositionCenterBack" xml:space="preserve">
+    <value>Central back</value>
+  </data>
+  <data name="PositionCenterAttackingMidfielderAbbr" xml:space="preserve">
+    <value>AM</value>
+  </data>
+  <data name="PositionCenterAttackingMidfielder" xml:space="preserve">
+    <value>Attacking midfielder</value>
+  </data>
+</root>

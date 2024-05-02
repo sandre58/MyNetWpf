@@ -1,0 +1,85 @@
+# Copyright (c) Stéphane ANDRE.
+# Licensed under the MIT license.
+
+# This continuous integration pipeline is triggered by user action.
+# This pipeline builds the solution and publishes all packages (skips existing packages) on private nuget repository
+
+name: Publish Nugets - Private
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  # GitVersion
+  gitversion:
+    timeout-minutes: 5
+    runs-on: windows-latest
+    outputs:
+      full_version: ${{ steps.gitversion.outputs.SemVer }}
+      suffix_label: ${{ steps.gitversion.outputs.PreReleaseLabel }}
+
+    steps:
+
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+        with: 
+          fetch-depth: 0
+
+      # Install Git version
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v1.1.1
+        with:
+          versionSpec: '5.x'
+
+      # Check Git version
+      - name: Check Git Semantic Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v1.1.1 # https://github.com/GitTools/actions/blob/main/docs/examples/github/gitversion/execute/usage-examples.md
+        with:
+          useConfigFile: true
+          configFilePath: .\.github\GitVersion.yml
+          disableNormalization: true
+
+  # Build and test
+  build:
+    uses: avantipoint/workflow-templates/.github/workflows/dotnet-build.yml@master # https://github.com/AvantiPoint/workflow-templates/blob/master/.github/workflows/dotnet-build.yml
+    needs: [ gitversion ]
+    with:
+      name: Build all projects
+      build-args: '/p:GitVersion=${{ needs.gitversion.outputs.full_version }} /p:VersionSuffix=${{ needs.gitversion.outputs.suffix_label }}'
+      dotnet-test-logger: GitHubActions --no-build --no-restore
+      solution-path: .\src\MyNetWpf.sln
+      nugetFeedUrl: ${{ vars.PRIVATE_NUGET_API_SOURCE }}
+    secrets:
+      nugetUserName: ${{ vars.PRIVATE_NUGET_API_USERNAME }}
+      nugetToken: ${{ secrets.PRIVATE_NUGET_API_KEY }}
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: [ gitversion, build ]
+
+    steps:
+
+      # Download artifacts
+      - uses: actions/download-artifact@v3
+        with:
+          name: NuGet
+          path: Artifacts/
+      
+      # publish artifacts
+      - name: Publish NuGets
+        uses: dansiegel/publish-nuget@master # https://github.com/marketplace/actions/publish-nuget-packages
+        with:
+          filename: 'Artifacts/*.nupkg'
+          feedUrl: ${{ vars.PRIVATE_NUGET_API_SOURCE }}
+          apiKey: ${{ secrets.PRIVATE_NUGET_API_KEY }}
+
+      # publish artifacts (symbols)
+      - name: Publish NuGets symbols
+        uses: dansiegel/publish-nuget@master # https://github.com/marketplace/actions/publish-nuget-packages
+        with:
+          filename: 'Artifacts/*.snupkg'
+          feedUrl: ${{ vars.PRIVATE_NUGET_API_SOURCE }}
+          apiKey: ${{ secrets.PRIVATE_NUGET_API_KEY }}

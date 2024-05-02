@@ -1,0 +1,125 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_config", "_config", "{5D1BCDF4-BE5F-488D-BF24-64F497C5F1B7}"
+	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
+		Directory.build.props = Directory.build.props
+		MyNetWpf.ruleset = MyNetWpf.ruleset
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Wpf", "MyNet.Wpf\MyNet.Wpf.csproj", "{DA8D78E2-C629-473D-BADB-03259DFACDB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_doc", "_doc", "{EA1558C3-CFA0-44ED-954B-C773044EB6F9}"
+	ProjectSection(SolutionItems) = preProject
+		..\CHANGELOG.md = ..\CHANGELOG.md
+		..\CODE_OF_CONDUCT.md = ..\CODE_OF_CONDUCT.md
+		..\LICENSE = ..\LICENSE
+		..\images\logo.png = ..\images\logo.png
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_github", "_github", "{E1FDB1EB-FB63-409E-8962-2929AD1EE63C}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\ci.yml = ..\.github\workflows\ci.yml
+		..\.github\workflows\create_extension_release.yml = ..\.github\workflows\create_extension_release.yml
+		..\.github\workflows\create_release.yml = ..\.github\workflows\create_release.yml
+		..\.github\GitVersion.yml = ..\.github\GitVersion.yml
+		..\.github\workflows\git_version.yml = ..\.github\workflows\git_version.yml
+		..\.github\workflows\publish_packages.yml = ..\.github\workflows\publish_packages.yml
+		..\.github\workflows\publish_release.yml = ..\.github\workflows\publish_release.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Wpf.DragAndDrop", "MyNet.Wpf.DragAndDrop\MyNet.Wpf.DragAndDrop.csproj", "{674B37E5-8DBE-41FC-A9CF-164A78073BAE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Wpf.Web", "MyNet.Wpf.Web\MyNet.Wpf.Web.csproj", "{0F64BC0F-A672-4594-8559-20D4E5055BEA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Wpf.Presentation", "MyNet.Wpf.Presentation\MyNet.Wpf.Presentation.csproj", "{D362AE6B-31C5-4735-B831-24233E31EEE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LiveCharts", "LiveCharts", "{C0264647-418C-4DA4-9BCA-649355FEFBE6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveCharts", "LiveCharts\LiveCharts\LiveCharts.csproj", "{C97C5B10-CD4A-438E-B213-6A2F3EB64B6A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveCharts.Wpf", "LiveCharts\LiveCharts.Wpf\LiveCharts.Wpf.csproj", "{2B137539-8FD4-4A93-8B19-209034748674}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Wpf.LiveCharts", "MyNet.Wpf.LiveCharts\MyNet.Wpf.LiveCharts.csproj", "{F88C3106-0768-41C9-BC00-94CD76CE1003}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AD801A4D-F116-4880-A1B5-54959DCB4B8E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Wpf.TestApp", "tests\MyNet.Wpf.TestApp\MyNet.Wpf.TestApp.csproj", "{8548BC74-324C-47F9-83B6-B91C1F3AC663}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Mixed|Any CPU = Mixed|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA8D78E2-C629-473D-BADB-03259DFACDB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8D78E2-C629-473D-BADB-03259DFACDB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8D78E2-C629-473D-BADB-03259DFACDB3}.Mixed|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8D78E2-C629-473D-BADB-03259DFACDB3}.Mixed|Any CPU.Build.0 = Debug|Any CPU
+		{DA8D78E2-C629-473D-BADB-03259DFACDB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8D78E2-C629-473D-BADB-03259DFACDB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{674B37E5-8DBE-41FC-A9CF-164A78073BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{674B37E5-8DBE-41FC-A9CF-164A78073BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{674B37E5-8DBE-41FC-A9CF-164A78073BAE}.Mixed|Any CPU.ActiveCfg = Debug|Any CPU
+		{674B37E5-8DBE-41FC-A9CF-164A78073BAE}.Mixed|Any CPU.Build.0 = Debug|Any CPU
+		{674B37E5-8DBE-41FC-A9CF-164A78073BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{674B37E5-8DBE-41FC-A9CF-164A78073BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F64BC0F-A672-4594-8559-20D4E5055BEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F64BC0F-A672-4594-8559-20D4E5055BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F64BC0F-A672-4594-8559-20D4E5055BEA}.Mixed|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F64BC0F-A672-4594-8559-20D4E5055BEA}.Mixed|Any CPU.Build.0 = Debug|Any CPU
+		{0F64BC0F-A672-4594-8559-20D4E5055BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F64BC0F-A672-4594-8559-20D4E5055BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D362AE6B-31C5-4735-B831-24233E31EEE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D362AE6B-31C5-4735-B831-24233E31EEE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D362AE6B-31C5-4735-B831-24233E31EEE1}.Mixed|Any CPU.ActiveCfg = Debug|Any CPU
+		{D362AE6B-31C5-4735-B831-24233E31EEE1}.Mixed|Any CPU.Build.0 = Debug|Any CPU
+		{D362AE6B-31C5-4735-B831-24233E31EEE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D362AE6B-31C5-4735-B831-24233E31EEE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C97C5B10-CD4A-438E-B213-6A2F3EB64B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C97C5B10-CD4A-438E-B213-6A2F3EB64B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C97C5B10-CD4A-438E-B213-6A2F3EB64B6A}.Mixed|Any CPU.ActiveCfg = Debug|Any CPU
+		{C97C5B10-CD4A-438E-B213-6A2F3EB64B6A}.Mixed|Any CPU.Build.0 = Debug|Any CPU
+		{C97C5B10-CD4A-438E-B213-6A2F3EB64B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C97C5B10-CD4A-438E-B213-6A2F3EB64B6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B137539-8FD4-4A93-8B19-209034748674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B137539-8FD4-4A93-8B19-209034748674}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B137539-8FD4-4A93-8B19-209034748674}.Mixed|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B137539-8FD4-4A93-8B19-209034748674}.Mixed|Any CPU.Build.0 = Debug|Any CPU
+		{2B137539-8FD4-4A93-8B19-209034748674}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B137539-8FD4-4A93-8B19-209034748674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F88C3106-0768-41C9-BC00-94CD76CE1003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F88C3106-0768-41C9-BC00-94CD76CE1003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F88C3106-0768-41C9-BC00-94CD76CE1003}.Mixed|Any CPU.ActiveCfg = Debug|Any CPU
+		{F88C3106-0768-41C9-BC00-94CD76CE1003}.Mixed|Any CPU.Build.0 = Debug|Any CPU
+		{F88C3106-0768-41C9-BC00-94CD76CE1003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F88C3106-0768-41C9-BC00-94CD76CE1003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8548BC74-324C-47F9-83B6-B91C1F3AC663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8548BC74-324C-47F9-83B6-B91C1F3AC663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8548BC74-324C-47F9-83B6-B91C1F3AC663}.Mixed|Any CPU.ActiveCfg = Debug|Any CPU
+		{8548BC74-324C-47F9-83B6-B91C1F3AC663}.Mixed|Any CPU.Build.0 = Debug|Any CPU
+		{8548BC74-324C-47F9-83B6-B91C1F3AC663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8548BC74-324C-47F9-83B6-B91C1F3AC663}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C97C5B10-CD4A-438E-B213-6A2F3EB64B6A} = {C0264647-418C-4DA4-9BCA-649355FEFBE6}
+		{2B137539-8FD4-4A93-8B19-209034748674} = {C0264647-418C-4DA4-9BCA-649355FEFBE6}
+		{8548BC74-324C-47F9-83B6-B91C1F3AC663} = {AD801A4D-F116-4880-A1B5-54959DCB4B8E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_ShowErrorsInErrorList = False
+		RESX_CodeReferences = {"Items":[{"Expression":"\\W($File.$Key)\\W","Extensions":".cs,.xaml,.cshtml","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"\\W($File.$Key)\\W","Extensions":".vbhtml","IsCaseSensitive":false,"SingleLineComment":null},{"Expression":"ResourceManager.GetString\\(\"($Key)\"\\)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"typeof\\((\\w+\\.)*($File)\\).+\"($Key)\"|\"($Key)\".+typeof\\((\\w+\\.)*($File)\\)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"\\W($Key)\\W","Extensions":".vb","IsCaseSensitive":false,"SingleLineComment":"'"},{"Expression":"\\W($File::$Key)\\W","Extensions":".cpp,.c,.hxx,.h","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"&lt;%\\$\\s+Resources:\\s*($File)\\s*,\\s*($Key)\\s*%&gt;","Extensions":".aspx,.ascx,.master","IsCaseSensitive":true,"SingleLineComment":null},{"Expression":"StringResourceKey\\.($Key)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"\\.($Key)","Extensions":".ts,.html","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"typeof\\((\\w+\\.)*($File)\\).+nameof\\(($Key)\\)|nameof\\(($Key)\\).+typeof\\((\\w+\\.)*($File)\\)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"{me:Resource (Key=)?($Key).*","Extensions":".xaml","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"{me:Translation .*Format=$Key.*","Extensions":".xaml","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"{my:Resource (Key=)?($Key).*","Extensions":".xaml","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"Format=($Key)","Extensions":".xaml","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"{my:ShortcutResource (Key=)?($Key).*","Extensions":".xaml","IsCaseSensitive":true,"SingleLineComment":"\/\/"}]}
+		SolutionGuid = {4C2A7472-FBCC-4D2C-B21D-0C83E4ADAA1A}
+		RESX_NeutralResourcesLanguage = fr-FR
+		RESX_AutoCreateNewLanguageFiles = True
+		RESX_ConfirmAddLanguageFile = True
+	EndGlobalSection
+EndGlobal

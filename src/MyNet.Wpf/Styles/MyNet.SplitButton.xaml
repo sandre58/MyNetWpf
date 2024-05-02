@@ -1,0 +1,397 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:MyNet.Wpf.Converters"
+                    xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
+                    xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions"
+                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.Menu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.ToggleButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/MyNet.DropDownButton.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="MyNet.Styles.SplitButton.Filled" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+        <Setter Property="p:IconAssist.Alignment" Value="Left" />
+        <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
+        <Setter Property="FontWeight" Value="{StaticResource MyNet.Font.Weight.Button}" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Button}" />
+        <Setter Property="Padding" Value="11 5" />
+        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="ToggleContentTemplate" Value="{StaticResource MyNet.DataTemplates.Icon}" />
+        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
+        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Filled}" />
+        <Setter Property="PlacementMode" Value="BottomAndAlignRightEdges" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="PopupHorizontalOffset" Value="0" />
+        <Setter Property="PopupVerticalOffset" Value="0" />
+        <Setter Property="PopupMode" Value="Click" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ctrl:SplitButton}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Name="Col0" Width="*" />
+                            <ColumnDefinition x:Name="Col1" Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition x:Name="Row0" Height="*" />
+                            <RowDefinition x:Name="Row1" Height="*" />
+                        </Grid.RowDefinitions>
+                        <ToggleButton Name="PART_Button"
+                                      Style="{TemplateBinding ButtonStyle}"
+                                      Padding="{TemplateBinding Padding}"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Stretch"
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      p:IconAssist.Alignment="{TemplateBinding p:IconAssist.Alignment}"
+                                      p:IconAssist.Icon="{TemplateBinding p:IconAssist.Icon}"
+                                      p:IconAssist.Margin="{TemplateBinding p:IconAssist.Margin}"
+                                      p:IconAssist.Opacity="{TemplateBinding p:IconAssist.Opacity}"
+                                      p:RippleAssist.Feedback="{TemplateBinding p:RippleAssist.Feedback}"
+                                      p:ThemeAssist.CornerRadius="{StaticResource MyNet.CornerRadius.Control.Left}"
+                                      p:ThemeAssist.IsCheckedBackground="{TemplateBinding p:ThemeAssist.IsCheckedBackground}"
+                                      p:ThemeAssist.IsCheckedBorderBrush="{TemplateBinding p:ThemeAssist.IsCheckedBorderBrush}"
+                                      p:ThemeAssist.IsCheckedForeground="{TemplateBinding p:ThemeAssist.IsCheckedForeground}"
+                                      p:ThemeAssist.IsMouseOverBackground="{TemplateBinding p:ThemeAssist.IsMouseOverBackground}"
+                                      p:ThemeAssist.IsMouseOverBorderBrush="{TemplateBinding p:ThemeAssist.IsMouseOverBorderBrush}"
+                                      p:ThemeAssist.IsMouseOverForeground="{TemplateBinding p:ThemeAssist.IsMouseOverForeground}"
+                                      Background="{TemplateBinding Background}"
+                                      BorderBrush="{TemplateBinding BorderBrush}"
+                                      BorderThickness="{TemplateBinding BorderThickness}"
+                                      Command="{TemplateBinding Command}"
+                                      CommandParameter="{TemplateBinding CommandParameter}"
+                                      Content="{TemplateBinding ToggleContent}"
+                                      ContentTemplate="{TemplateBinding ToggleContentTemplate}"
+                                      ContentTemplateSelector="{TemplateBinding ToggleContentTemplateSelector}"
+                                      Cursor="{TemplateBinding Cursor}"
+                                      Focusable="{TemplateBinding Focusable}"
+                                      FontSize="{TemplateBinding FontSize}"
+                                      FontWeight="{TemplateBinding FontWeight}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      IsChecked="{Binding IsChecked, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                                      IsTabStop="False"
+                                      TabIndex="{TemplateBinding TabIndex}" />
+                        <ToggleButton Name="PART_Toggle"
+                                      Style="{TemplateBinding ButtonStyle}"
+                                      Grid.Column="1"
+                                      Width="Auto"
+                                      Height="Auto"
+                                      Padding="0"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Stretch"
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      p:RippleAssist.Feedback="{TemplateBinding p:RippleAssist.Feedback}"
+                                      p:ThemeAssist.CornerRadius="{StaticResource MyNet.CornerRadius.Control.Right}"
+                                      p:ThemeAssist.IsCheckedBackground="{TemplateBinding p:ThemeAssist.IsCheckedBackground}"
+                                      p:ThemeAssist.IsCheckedBorderBrush="{TemplateBinding p:ThemeAssist.IsCheckedBorderBrush}"
+                                      p:ThemeAssist.IsCheckedForeground="{TemplateBinding p:ThemeAssist.IsCheckedForeground}"
+                                      p:ThemeAssist.IsMouseOverBackground="{TemplateBinding p:ThemeAssist.IsMouseOverBackground}"
+                                      p:ThemeAssist.IsMouseOverBorderBrush="{TemplateBinding p:ThemeAssist.IsMouseOverBorderBrush}"
+                                      p:ThemeAssist.IsMouseOverForeground="{TemplateBinding p:ThemeAssist.IsMouseOverForeground}"
+                                      Background="{TemplateBinding Background}"
+                                      BorderBrush="{TemplateBinding BorderBrush}"
+                                      BorderThickness="{TemplateBinding BorderThickness}"
+                                      ContentTemplate="{x:Null}"
+                                      Cursor="{TemplateBinding Cursor}"
+                                      Focusable="{TemplateBinding Focusable}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsPopupOpen, Mode=TwoWay}"
+                                      IsTabStop="False"
+                                      TabIndex="{TemplateBinding TabIndex}"
+                                      Visibility="{Binding ShowDropDownButton, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                            <Grid>
+                                <ctrl:PackIcon x:Name="Caret"
+                                               Width="18"
+                                               Height="18"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Kind="ChevronDown"
+                                               RenderTransformOrigin="0.5, 0.5">
+                                    <ctrl:PackIcon.RenderTransform>
+                                        <RotateTransform Angle="0" />
+                                    </ctrl:PackIcon.RenderTransform>
+                                </ctrl:PackIcon>
+                            </Grid>
+                        </ToggleButton>
+                        <ctrl:PopupEx x:Name="PART_Popup"
+                                      Style="{StaticResource MyNet.Styles.PopupEx}"
+                                      CustomPopupPlacementCallback="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PopupPlacementMethod}"
+                                      HorizontalOffset="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PopupHorizontalOffset}"
+                                      IsOpen="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsPopupOpen, Mode=TwoWay}"
+                                      PlacementTarget="{Binding ElementName=PART_Toggle}"
+                                      PopupAnimation="{TemplateBinding PopupAnimation}"
+                                      VerticalOffset="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PopupVerticalOffset}">
+                            <Grid>
+                                <Border Background="White" Opacity="0.002" />
+                                <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Popup}"
+                                           Padding="{TemplateBinding PopupPadding}"
+                                           Background="{TemplateBinding p:PopupAssist.Background}"
+                                           FontSize="{StaticResource MyNet.Font.Size}"
+                                           FontWeight="{StaticResource MyNet.Font.Weight.ToolTip}"
+                                           Foreground="{TemplateBinding p:PopupAssist.Foreground}">
+                                    <ContentControl Content="{TemplateBinding PopupContent}" ContentTemplate="{TemplateBinding PopupContentTemplate}" />
+                                </ctrl:Card>
+                            </Grid>
+                        </ctrl:PopupEx>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPopupOpen" Value="true">
+                            <Setter TargetName="PART_Toggle" Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="PART_Button" Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                        </Trigger>
+                        <Trigger Property="DropDownButtonPosition" Value="Top">
+                            <Setter TargetName="Row0" Property="Height" Value="Auto" />
+                            <Setter TargetName="Row1" Property="Height" Value="*" />
+                            <Setter TargetName="Col0" Property="Width" Value="*" />
+                            <Setter TargetName="Col1" Property="Width" Value="Auto" />
+                            <Setter TargetName="PART_Button" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="PART_Button" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="0" />
+                        </Trigger>
+                        <Trigger Property="DropDownButtonPosition" Value="Right">
+                            <Setter TargetName="Row0" Property="Height" Value="*" />
+                            <Setter TargetName="Row1" Property="Height" Value="Auto" />
+                            <Setter TargetName="Col0" Property="Width" Value="*" />
+                            <Setter TargetName="Col1" Property="Width" Value="Auto" />
+                            <Setter TargetName="PART_Button" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="1" />
+                            <Setter TargetName="PART_Button" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="0" />
+                        </Trigger>
+                        <Trigger Property="DropDownButtonPosition" Value="Bottom">
+                            <Setter TargetName="Row0" Property="Height" Value="*" />
+                            <Setter TargetName="Row1" Property="Height" Value="Auto" />
+                            <Setter TargetName="Col0" Property="Width" Value="*" />
+                            <Setter TargetName="Col1" Property="Width" Value="Auto" />
+                            <Setter TargetName="PART_Button" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="PART_Button" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="1" />
+                        </Trigger>
+                        <Trigger Property="DropDownButtonPosition" Value="Left">
+                            <Setter TargetName="Row0" Property="Height" Value="*" />
+                            <Setter TargetName="Row1" Property="Height" Value="Auto" />
+                            <Setter TargetName="Col0" Property="Width" Value="Auto" />
+                            <Setter TargetName="Col1" Property="Width" Value="*" />
+                            <Setter TargetName="PART_Button" Property="Grid.Column" Value="1" />
+                            <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="PART_Button" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="0" />
+                        </Trigger>
+                        <Trigger Property="DropDownButtonOrientation" Value="Up">
+                            <Setter TargetName="Caret" Property="Kind" Value="ChevronUp" />
+                        </Trigger>
+                        <Trigger Property="DropDownButtonOrientation" Value="Right">
+                            <Setter TargetName="Caret" Property="Kind" Value="ChevronRight" />
+                        </Trigger>
+                        <Trigger Property="DropDownButtonOrientation" Value="Down">
+                            <Setter TargetName="Caret" Property="Kind" Value="ChevronDown" />
+                        </Trigger>
+                        <Trigger Property="DropDownButtonOrientation" Value="Left">
+                            <Setter TargetName="Caret" Property="Kind" Value="ChevronLeft" />
+                        </Trigger>
+                        <Trigger Property="IsPopupOpen" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Caret"
+                                                         Storyboard.TargetProperty="(ctrl:PackIcon.RenderTransform).(RotateTransform.Angle)"
+                                                         From="0"
+                                                         To="180"
+                                                         Duration="00:00:00.167" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Caret"
+                                                         Storyboard.TargetProperty="(ctrl:PackIcon.RenderTransform).(RotateTransform.Angle)"
+                                                         From="180"
+                                                         To="0"
+                                                         Duration="00:00:00.167" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MyNet.Styles.SplitButton.Filled.Custom" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Filled.Primary" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Filled.Accent" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Filled.Foreground" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
+    </Style>
+
+    <!--  Outlined  -->
+    <Style x:Key="MyNet.Styles.SplitButton.Outlined" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Outlined.Primary" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Primary}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Outlined.Accent" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Accent}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Outlined.Custom" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Outlined.Foreground" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Foreground}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    </Style>
+
+    <!--  Text  -->
+    <Style x:Key="MyNet.Styles.SplitButton.Text" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Text.Primary" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Primary}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Text.Accent" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Accent}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Text.Custom" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Text.Foreground" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Foreground}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <!--  Elevation  -->
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+        <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Custom" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Background, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Primary" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Accent" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Foreground" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+        <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Custom" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Primary" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Accent" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Foreground" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
+    </Style>
+
+    <!--  Icon  -->
+    <Style x:Key="MyNet.Styles.SplitButton.Icon" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedForeground), Opacity={StaticResource MyNet.Opacity.Secondary}}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Icon}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsMouseOverForeground)}" />
+            </Trigger>
+            <Trigger Property="IsPopupOpen" Value="True">
+                <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedForeground)}" />
+                <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Default}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Icon.Primary" BasedOn="{StaticResource MyNet.Styles.SplitButton.Icon}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Icon.Accent" BasedOn="{StaticResource MyNet.Styles.SplitButton.Icon}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.Icon.Foreground" BasedOn="{StaticResource MyNet.Styles.SplitButton.Icon}" TargetType="{x:Type ctrl:SplitButton}">
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    </Style>
+</ResourceDictionary>

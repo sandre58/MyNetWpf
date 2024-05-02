@@ -1,0 +1,142 @@
+# Copyright (c) Stéphane ANDRE.
+# Licensed under the MIT license.
+
+# This continuous integration pipeline is triggered anytime a user pushes code to main branch.
+# This pipeline create a release
+
+name: Create Release for specific package
+
+on:  
+  push:
+    tags:
+    - '*-v*.*.*'
+  workflow_dispatch:
+    inputs:
+      package_name:
+        type: choice
+        description: Name of the package
+        options: 
+        - MyNet.Wpf.DragAndDrop
+        - MyNet.Wpf.LiveCharts
+        - MyNet.Wpf.Presentation
+        - MyNet.Wpf.Web
+      package_version: 
+        description: New version of the package. If empty, use version in .csproj.
+
+jobs:
+
+  # Compute parameters
+  compute_parameters:
+    runs-on: ubuntu-latest
+    outputs:
+      build_args: ${{ steps.compute_parameters.outputs.build_args }}
+      package_name: ${{ steps.compute_parameters.outputs.package_name }}
+
+    steps:
+
+      # Find package name and version from tag
+      - uses: olegtarasov/get-tag@v2.1.3 # https://github.com/marketplace/actions/get-tag-name
+        id: tag_name
+        with:
+          tagRegex: "(?<package>.*)-v(?<version>.*)" 
+
+      # Return package name and version
+      - name: Define Build parameters
+        shell: pwsh
+        id: compute_parameters
+        run: |
+          if ('${{ steps.tag_name.outputs.package }}' -eq '' || '${{ steps.tag_name.outputs.version }}' -eq '') {
+            echo "package_name=${{ inputs.package_name }}" >> $Env:GITHUB_OUTPUT
+            if ('${{ inputs.package_version }}' -eq '') {
+                echo "build_args=" >> $Env:GITHUB_OUTPUT
+            } else {
+                echo "build_args=/p:Version=${{ inputs.package_version}}" >> $Env:GITHUB_OUTPUT
+            }
+          } else {
+            echo "package_name=${{ steps.tag_name.outputs.package }}" >> $Env:GITHUB_OUTPUT
+            echo "build_args=/p:Version=${{ steps.tag_name.outputs.version}}" >> $Env:GITHUB_OUTPUT
+          }
+  
+  # Build project
+  build:
+    needs: [ compute_parameters ]
+    uses: avantipoint/workflow-templates/.github/workflows/dotnet-build.yml@master # https://github.com/AvantiPoint/workflow-templates/blob/master/.github/workflows/dotnet-build.yml
+    with:
+      dotnet-test-logger: GitHubActions --no-build --no-restore
+      build-args: ${{ needs.compute_parameters.outputs.buildArgs }}
+      name: Build
+      solution-path: .\src\${{ needs.compute_parameters.outputs.package_name }}\${{ needs.compute_parameters.outputs.package_name }}.csproj
+  
+  # Create release
+  release:
+    runs-on: ubuntu-latest
+    needs: [ compute_parameters, build ]
+    env:
+      DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION: true
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+    permissions:
+      contents: write
+    outputs:
+      version-name: ${{ steps.process-version.outputs.version-name }}
+      release-display-name: ${{ steps.process-version.outputs.release-display-name }}
+      is-preview: ${{ steps.process-version.outputs.is-preview }}
+
+    steps:
+      
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Update CHANGELOG with all conventional commit from previous tag
+      - name: Update CHANGELOG
+        continue-on-error: true
+        id: changelog
+        uses: requarks/changelog-action@v1.10.1 # https://github.com/marketplace/actions/changelog-from-conventional-commits
+        with:
+          token: ${{ github.token }}
+          tag: ${{ github.ref_name }}
+
+      # Commit changes in CHANGELOG and skip CI
+      - name: Commit CHANGELOG.md
+        continue-on-error: true
+        uses: stefanzweifel/git-auto-commit-action@v4 # https://github.com/marketplace/actions/git-auto-commit
+        with:
+          branch: main
+          commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
+          file_pattern: CHANGELOG.md
+
+      # Download artifacts
+      - uses: actions/download-artifact@v3
+        with:
+          name: NuGet
+          path: Artifacts/
+      
+      # Get package version
+      - name: Process Package Version
+        shell: bash
+        id: process_version
+        working-directory: Artifacts/
+        run: |
+          echo "Downloading package version script..."
+          curl -sS -o process-version.pl https://raw.githubusercontent.com/avantipoint/workflow-templates/master/build/process-version.pl
+          echo "Finished downloading package version script."
+          echo "Processing package version..."
+          perl process-version.pl ${{ needs.compute_parameters.outputs.package_name }}
+      
+      # Create release
+      - uses: ncipollo/release-action@main # https://github.com/marketplace/actions/create-release
+        name: Create Release
+        with:
+          artifacts: "Artifacts/*.nupkg,Artifacts/*.snupkg"
+          artifactErrorsFailBuild: true
+          draft: true
+          generateReleaseNotes: false
+          token: ${{ github.token }}
+          name: ${{ needs.compute_parameters.outputs.package_name }} ${{ steps.process_version.outputs.release-display-name }}
+          prerelease: ${{ steps.process_version.outputs.is-preview }}
+          tag: ${{ needs.compute_parameters.outputs.package_name }}-v${{ steps.process_version.outputs.version-name }}
+          body: ${{ steps.changelog.outputs.changes }}

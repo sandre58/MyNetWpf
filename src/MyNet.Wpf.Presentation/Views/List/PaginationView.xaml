@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="MyNet.Wpf.Presentation.Views.List.PaginationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:paging="clr-namespace:MyNet.UI.ViewModels.List.Paging;assembly=MyNet.UI"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:my="http://mynet.com/xaml/themes"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             d:DataContext="{d:DesignInstance Type=paging:PagingViewModel}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <my:BindingProxy x:Key="ProxyPagination" Data="{Binding}" />
+
+        <sys:Int32 x:Key="Five">5</sys:Int32>
+        <sys:Int32 x:Key="Ten">10</sys:Int32>
+        <sys:Int32 x:Key="Fifteen">15</sys:Int32>
+        <sys:Int32 x:Key="Twenty">20</sys:Int32>
+        <sys:Int32 x:Key="TwentyFive">25</sys:Int32>
+        <sys:Int32 x:Key="Thirty">30</sys:Int32>
+        <sys:Int32 x:Key="Fifty">50</sys:Int32>
+        <sys:Int32 x:Key="SeventyFive">75</sys:Int32>
+        <sys:Int32 x:Key="Hundred">100</sys:Int32>
+        <sys:Int32 x:Key="All">2147483647</sys:Int32>
+    </UserControl.Resources>
+
+    <DockPanel>
+        <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation}" Margin="{StaticResource MyNet.Margins.Medium.Left}"
+                           VerticalAlignment="Stretch"
+                           DockPanel.Dock="Right"
+                           PopupPadding="0"
+                           ToggleContent="{Binding PageSize}">
+            <my:DropDownButton.ToggleContentTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <my:SimpleStackPanel VerticalAlignment="Center"
+                                             Orientation="Horizontal"
+                                             Spacing="{StaticResource MyNet.Margin.Default}"
+                                             Visibility="{Binding Converter={x:Static my:ComparaisonToVisibilityConverter.CollapsedIfIsEqualsTo}, ConverterParameter={StaticResource All}}">
+                            <TextBlock FontSize="{StaticResource MyNet.Font.Size.Caption}" Text="{Binding}" />
+                            <TextBlock Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="{my:Resource ItemsByPage}" />
+                        </my:SimpleStackPanel>
+
+                        <TextBlock Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="{my:Resource DisplayAll}" Visibility="{Binding Converter={x:Static my:ComparaisonToVisibilityConverter.CollapsedIfIsNotEqualsTo}, ConverterParameter={StaticResource All}}" />
+                    </Grid>
+                </DataTemplate>
+            </my:DropDownButton.ToggleContentTemplate>
+            <my:Submenu>
+                <MenuItem Command="{Binding SetPageSizeCommand}" CommandParameter="{StaticResource Five}" Header="5" />
+                <MenuItem Command="{Binding SetPageSizeCommand}" CommandParameter="{StaticResource Ten}" Header="10" />
+                <MenuItem Command="{Binding SetPageSizeCommand}" CommandParameter="{StaticResource Fifteen}" Header="15" />
+                <MenuItem Command="{Binding SetPageSizeCommand}" CommandParameter="{StaticResource Twenty}" Header="20" />
+                <MenuItem Command="{Binding SetPageSizeCommand}" CommandParameter="{StaticResource TwentyFive}" Header="25" />
+                <MenuItem Command="{Binding SetPageSizeCommand}" CommandParameter="{StaticResource Thirty}" Header="30" />
+                <MenuItem Command="{Binding SetPageSizeCommand}" CommandParameter="{StaticResource Fifty}" Header="50" />
+                <MenuItem Command="{Binding SetPageSizeCommand}" CommandParameter="{StaticResource SeventyFive}" Header="75" />
+                <MenuItem Command="{Binding SetPageSizeCommand}" CommandParameter="{StaticResource Hundred}" Header="100" />
+                <MenuItem Command="{Binding SetPageSizeCommand}" CommandParameter="{StaticResource All}" Header="{my:Resource AllMales}" />
+            </my:Submenu>
+        </my:DropDownButton>
+
+        <my:Card Padding="1" BorderBrush="{DynamicResource MyNet.Brushes.Control.Border}" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+                        Grid.Column="0"
+                        Padding="5 3"
+                        VerticalAlignment="Stretch"
+                        my:ThemeAssist.CornerRadius="0"
+                        Command="{Binding MoveToFirstPageCommand}"
+                        Content="{my:MediumIcon Kind=PageFirst}" />
+                <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+                        Grid.Column="1"
+                        Padding="5 3"
+                        VerticalAlignment="Stretch"
+                        my:ThemeAssist.CornerRadius="0"
+                        Command="{Binding MoveToPreviousPageCommand}"
+                        Content="{my:MediumIcon Kind=ChevronLeft}" />
+                <ItemsControl Grid.Column="2" ItemsSource="{Binding Pages}" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Text}"
+                                          Width="34"
+                                          Padding="5 3"
+                                          VerticalAlignment="Stretch"
+                                          my:ThemeAssist.CornerRadius="0"
+                                          Command="{Binding Data.MoveToPageCommand, Source={StaticResource ProxyPagination}}"
+                                          CommandParameter="{Binding}"
+                                          Content="{Binding}"
+                                          FontSize="{StaticResource MyNet.Font.Size.Caption}"
+                                          Opacity="{StaticResource MyNet.Opacity.Default}">
+                                <ToggleButton.IsChecked>
+                                    <MultiBinding Converter="{x:Static my:EqualityToBooleanConverter.Default}" Mode="OneWay">
+                                        <Binding />
+                                        <Binding Mode="OneWay" Path="Data.CurrentPage" Source="{StaticResource ProxyPagination}" />
+                                    </MultiBinding>
+                                </ToggleButton.IsChecked>
+                            </ToggleButton>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel IsItemsHost="True" Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+                        Grid.Column="3"
+                        Padding="5 3"
+                        VerticalAlignment="Stretch"
+                        my:ThemeAssist.CornerRadius="0"
+                        Command="{Binding MoveToNextPageCommand}"
+                        Content="{my:MediumIcon Kind=ChevronRight}" />
+                <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+                        Grid.Column="4"
+                        Padding="5 3"
+                        VerticalAlignment="Stretch"
+                        my:ThemeAssist.CornerRadius="0"
+                        Command="{Binding MoveToLastPageCommand}"
+                        Content="{my:MediumIcon Kind=PageLast}" />
+            </Grid>
+        </my:Card>
+    </DockPanel>
+
+</UserControl>

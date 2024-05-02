@@ -1,0 +1,48 @@
+﻿<my:NavigationPage x:Class="MyNet.Wpf.TestApp.Views.DataDataGridView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:data="clr-namespace:MyNet.Wpf.TestApp.Data"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:my="http://mynet.com/xaml/themes"
+                   xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
+                   xmlns:samplepages="clr-namespace:MyNet.Wpf.TestApp.Views.SamplePages"
+                   xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+                   d:DesignHeight="450"
+                   d:DesignWidth="800"
+                   mc:Ignorable="d">
+
+    <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}" HorizontalScrollBarVisibility="Disabled">
+        <my:SimpleStackPanel>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.DataGrid">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <smtx:XamlDisplay HorizontalAlignment="Stretch" UniqueKey="dg_0_0_0">
+                        <my:Badged HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Badge="{my:Resource Default}">
+                            <samplepages:DataGridSample Style="{StaticResource MyNet.Styles.DataGrid}"
+                                                        Height="400"
+                                                        AutoGenerateColumns="False"
+                                                        ItemsSource="{x:Static data:Collections.CountriesDetails}" />
+                        </my:Badged>
+                    </smtx:XamlDisplay>
+
+                    <smtx:XamlDisplay HorizontalAlignment="Stretch" UniqueKey="dg_0_0_1">
+                        <samplepages:DataGridSample Style="{StaticResource MyNet.Styles.DataGrid.Accent}"
+                                                    Height="400"
+                                                    AutoGenerateColumns="False"
+                                                    ItemsSource="{x:Static data:Collections.CountriesDetails}" />
+                    </smtx:XamlDisplay>
+
+                    <smtx:XamlDisplay HorizontalAlignment="Stretch" UniqueKey="dg_0_0_2">
+                        <samplepages:DataGridSample Style="{StaticResource MyNet.Styles.DataGrid.Foreground}"
+                                                    Height="400"
+                                                    AutoGenerateColumns="False"
+                                                    ItemsSource="{x:Static data:Collections.CountriesDetails}" />
+                    </smtx:XamlDisplay>
+
+                </my:SimpleStackPanel>
+            </Expander>
+        </my:SimpleStackPanel>
+    </my:DynamicScrollViewer>
+</my:NavigationPage>

@@ -1,0 +1,146 @@
+﻿<ToolBar x:Class="MyNet.Wpf.TestApp.Views.SamplePages.ToolBarSample3"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:my="http://mynet.com/xaml/themes"
+         d:DesignHeight="800"
+         d:DesignWidth="800"
+         my:IconAssist.Alignment="Top"
+         mc:Ignorable="d">
+    <GroupBox Header="{my:Resource Edition}">
+        <StackPanel Orientation="Horizontal">
+            <Button my:IconAssist.Icon="{my:Icon Kind=PlusThick}" Content="{my:Resource New}" />
+            <Button my:IconAssist.Icon="{my:Icon Kind=Edit}" Content="{my:Resource Edit}" />
+            <Button my:IconAssist.Icon="{my:Icon Kind=Trash}" Content="{my:Resource Remove}" />
+        </StackPanel>
+    </GroupBox>
+    <Separator />
+    <GroupBox Header="{my:Resource Actions}">
+        <StackPanel Orientation="Horizontal">
+            <my:DropDownButton my:IconAssist.Icon="{my:MediumIcon Kind=PersonArrowLeft}" ToggleContent="{my:Resource Move}">
+                <my:Submenu>
+                    <MenuItem Header="Sub menu 1" Icon="{my:ToolIcon Kind=ContentCopy}" InputGestureText="Ctrl+C" />
+                    <MenuItem Header="Sub menu 2" Icon="{my:ToolIcon Kind=ContentPaste}" InputGestureText="Ctrl+V" />
+                    <MenuItem Header="Sub menu 3" Icon="{my:ToolIcon Kind=ContentCut}" />
+                    <Separator />
+                    <MenuItem Header="Sub menu 4" Icon="{my:ToolIcon Kind=ContentSave}">
+                        <MenuItem Header="Sub menu 1" Icon="{my:ToolIcon Kind=ContentSaveAlert}" />
+                        <MenuItem Header="Sub menu 2" Icon="{my:ToolIcon Kind=ContentSaveAll}" />
+                        <MenuItem Header="Sub menu 3" Icon="{my:ToolIcon Kind=ContentSaveCog}" />
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Sub menu 2" Icon="{my:ToolIcon Kind=ContentDuplicate}" IsCheckable="True" />
+                    <MenuItem Header="Sub menu 3" IsCheckable="True" />
+                </my:Submenu>
+            </my:DropDownButton>
+            <Button my:IconAssist.Icon="{my:MediumIcon Kind=AccountArrowRight}" Content="{my:Resource GoOut}" />
+        </StackPanel>
+    </GroupBox>
+    <Separator />
+    <GroupBox Header="{my:Resource Communicate}">
+        <StackPanel Orientation="Horizontal">
+            <Button my:IconAssist.Icon="{my:MediumIcon Kind=EmailSend}" Content="{my:Resource Send}" />
+            <Button my:IconAssist.Icon="{my:MediumIcon Kind=EmailEdit}" Content="{my:Resource Write}" />
+        </StackPanel>
+    </GroupBox>
+    <Separator />
+    <GroupBox Header="{my:Resource Views}">
+        <ListBox my:ListBoxAssist.IsToggle="False">
+            <ListBoxItem my:IconAssist.Icon="{my:MediumIcon Kind=ViewGrid}" Content="{my:Resource DisplayModeGrid}" />
+            <ListBoxItem my:IconAssist.Icon="{my:MediumIcon Kind=ViewList}" Content="{my:Resource DisplayModeList}" />
+            <ListBoxItem my:IconAssist.Icon="{my:MediumIcon Kind=ViewAgenda}" Content="{my:Resource DisplayModeCalendar}" />
+            <ListBoxItem my:IconAssist.Icon="{my:MediumIcon Kind=ViewSplitVertical}" Content="{my:Resource DisplayModeDetailled}" />
+            <ListBoxItem my:IconAssist.Icon="{my:MediumIcon Kind=ChartAreaspline}" Content="{my:Resource DisplayModeChart}" />
+        </ListBox>
+    </GroupBox>
+    <GroupBox Header="{my:Resource ItemPlural}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--  Select all  -->
+                <Button Grid.Column="1"
+                        HorizontalContentAlignment="Left"
+                        my:IconAssist.Alignment="Right"
+                        my:IconAssist.Icon="{my:ToolIcon Kind=CheckAll}"
+                        Content="{my:Resource SelectAll}" />
+
+                <!--  Unselect all  -->
+                <Button Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalContentAlignment="Left"
+                        my:IconAssist.Alignment="Right"
+                        my:IconAssist.Icon="{my:ToolIcon Kind=CloseCircleMultiple}"
+                        Content="{my:Resource ClearSelection}" />
+
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--  Filter  -->
+                <ToggleButton Grid.RowSpan="2" Content="{my:Resource Filter}" IsChecked="True">
+                    <my:IconAssist.Icon>
+                        <Grid>
+                            <my:PackIcon Width="24"
+                                         Height="24"
+                                         Foreground="{DynamicResource MyNet.Brushes.Primary}"
+                                         Kind="Filter" />
+                            <AdornerDecorator>
+                                <Grid Width="16"
+                                      Height="16"
+                                      Margin="0 -3 -12 0"
+                                      HorizontalAlignment="Right"
+                                      VerticalAlignment="Top">
+                                    <Ellipse Fill="{DynamicResource MyNet.Brushes.Primary.Dark}" />
+                                    <TextBlock HorizontalAlignment="Center"
+                                               FontSize="{StaticResource MyNet.Font.Size.Secondary}"
+                                               Foreground="{DynamicResource MyNet.Brushes.Primary.Dark.Foreground}"
+                                               Text="2" />
+                                </Grid>
+                            </AdornerDecorator>
+                        </Grid>
+                    </my:IconAssist.Icon>
+                </ToggleButton>
+
+                <!--  Reset Filters  -->
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalContentAlignment="Left"
+                        my:IconAssist.Alignment="Right"
+                        my:IconAssist.Icon="{my:ToolIcon Kind=Restore}"
+                        Content="{my:Resource Reset}" />
+
+                <!--  Clear Filters  -->
+                <Button Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalContentAlignment="Left"
+                        my:IconAssist.Alignment="Right"
+                        my:IconAssist.Icon="{my:ToolIcon Kind=FilterRemove}"
+                        Content="{my:Resource ClearFilters}" />
+
+            </Grid>
+        </Grid>
+    </GroupBox>
+</ToolBar>

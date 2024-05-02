@@ -1,0 +1,420 @@
+﻿<my:NavigationPage x:Class="MyNet.Wpf.TestApp.Views.DataListBoxesView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:comparaison="clr-namespace:MyNet.Utilities.Comparaison;assembly=MyNet.Utilities"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:models="clr-namespace:MyNet.Utilities.Geography;assembly=MyNet.Utilities"
+                   xmlns:my="http://mynet.com/xaml/themes"
+                   xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
+                   xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+                   d:DesignHeight="450"
+                   d:DesignWidth="800"
+                   mc:Ignorable="d">
+    <my:NavigationPage.Resources>
+        <DataTemplate x:Key="CountryDataTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Width="16"
+                       Height="16"
+                       Margin="{StaticResource MyNet.Margins.Default.Horizontal}"
+                       VerticalAlignment="Center"
+                       Source="{Binding Value, Converter={x:Static my:CountryToFlagConverter.To16}}" />
+                <TextBlock Grid.Column="1"
+                           VerticalAlignment="Center"
+                           Text="{my:Translation Value,
+                                                 Converter={x:Static my:CountryToStringConverter.ToDisplayName}}"
+                           TextWrapping="Wrap" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CountryDataTemplate2">
+            <Grid Width="80" Height="100">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image Width="64" Source="{Binding Value, Converter={x:Static my:CountryToFlagConverter.To64}}" />
+                <TextBlock Grid.Row="1"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Text="{my:Translation Value,
+                                                 Converter={x:Static my:CountryToStringConverter.ToDisplayName}}"
+                           TextWrapping="Wrap"
+                           ToolTip="{my:Translation Value,
+                                                    Converter={x:Static my:CountryToStringConverter.ToDisplayName}}" />
+            </Grid>
+        </DataTemplate>
+    </my:NavigationPage.Resources>
+
+    <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}">
+        <my:SimpleStackPanel>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.ListBox">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="lb_0_0_0">
+                            <my:Badged Badge="{my:Resource Default}">
+                                <ListBox Style="{StaticResource MyNet.Styles.ListBox}"
+                                         Width="280"
+                                         Height="400"
+                                         BorderThickness="1"
+                                         ItemTemplate="{StaticResource CountryDataTemplate}"
+                                         ItemsSource="{my:EnumerationSource EnumType={x:Type models:Country}}"
+                                         SelectedIndex="0" />
+                            </my:Badged>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_0_0_1">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Accent}"
+                                     Width="280"
+                                     Height="400"
+                                     BorderThickness="1"
+                                     ItemTemplate="{StaticResource CountryDataTemplate}"
+                                     ItemsSource="{my:EnumerationSource EnumType={x:Type models:Country}}"
+                                     SelectedIndex="0"
+                                     SelectionMode="Extended" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_0_0_2">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Foreground}"
+                                     Width="280"
+                                     Height="400"
+                                     BorderThickness="1"
+                                     ItemTemplate="{StaticResource CountryDataTemplate}"
+                                     ItemsSource="{my:EnumerationSource EnumType={x:Type models:Country}}"
+                                     SelectedIndex="0"
+                                     SelectionMode="Multiple" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.ListBox.Cards">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="lb_4_0_0">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Cards}"
+                                     Width="500"
+                                     Height="500"
+                                     Padding="{StaticResource MyNet.Margins.Default}"
+                                     BorderThickness="1"
+                                     ItemTemplate="{StaticResource CountryDataTemplate2}"
+                                     ItemsSource="{my:EnumerationSource EnumType={x:Type models:Country}}"
+                                     SelectedIndex="0" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_4_0_1">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Cards.Accent}"
+                                     Width="500"
+                                     Height="500"
+                                     Padding="{StaticResource MyNet.Margins.Default}"
+                                     BorderThickness="1"
+                                     ItemTemplate="{StaticResource CountryDataTemplate2}"
+                                     ItemsSource="{my:EnumerationSource EnumType={x:Type models:Country}}"
+                                     SelectedIndex="0"
+                                     SelectionMode="Extended" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_4_0_2">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Cards.Foreground}"
+                                     Width="500"
+                                     Height="500"
+                                     Padding="{StaticResource MyNet.Margins.Default}"
+                                     BorderThickness="1"
+                                     ItemTemplate="{StaticResource CountryDataTemplate2}"
+                                     ItemsSource="{my:EnumerationSource EnumType={x:Type models:Country}}"
+                                     SelectedIndex="0"
+                                     SelectionMode="Multiple" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.ListBox.Toggle">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="lb_1_0_0">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Toggle}" SelectedIndex="0">
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignLeft}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignCenter}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignRight}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignJustify}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_1_0_1">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Toggle.Accent}"
+                                     ItemsSource="{my:EnumSource comparaison:StringOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_1_0_2">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Toggle.Foreground}"
+                                     ItemsSource="{my:EnumSource comparaison:BinaryOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_1_0_3">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Toggle.Foreground}" SelectedIndex="0">
+                                <ListBoxItem my:IconAssist.Icon="{my:Icon Kind=Check}" my:ListBoxItemAssist.IsSelectedBackground="{DynamicResource MyNet.Brushes.Positive}" Content="{my:Resource Yes}" />
+                                <ListBoxItem my:IconAssist.Icon="{my:Icon Kind=Close}" my:ListBoxItemAssist.IsSelectedBackground="{DynamicResource MyNet.Brushes.Negative}" Content="{my:Resource No}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="lb_1_1_0">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Toggle}" my:ListBoxAssist.Orientation="Vertical" SelectedIndex="0">
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignLeft}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignCenter}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignRight}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignJustify}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_1_1_1">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Toggle.Accent}"
+                                     my:ListBoxAssist.Orientation="Vertical"
+                                     ItemsSource="{my:EnumSource comparaison:StringOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_1_1_2">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Toggle.Foreground}"
+                                     my:ListBoxAssist.Orientation="Vertical"
+                                     ItemsSource="{my:EnumSource comparaison:BinaryOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_1_1_3">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Toggle.Foreground}"
+                                     my:IconAssist.Alignment="Bottom"
+                                     my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Top}"
+                                     my:ListBoxAssist.Orientation="Vertical"
+                                     SelectedIndex="0">
+                                <ListBoxItem my:IconAssist.Icon="{my:Icon Kind=Check}" my:ListBoxItemAssist.IsSelectedBackground="{DynamicResource MyNet.Brushes.Positive}" Content="{my:Resource Yes}" />
+                                <ListBoxItem my:IconAssist.Icon="{my:Icon Kind=Close}" my:ListBoxItemAssist.IsSelectedBackground="{DynamicResource MyNet.Brushes.Negative}" Content="{my:Resource No}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.ListBox.Icon">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="lb_2_0_0">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Icon}" SelectedIndex="0">
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignLeft}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignCenter}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignRight}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignJustify}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_2_0_1">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Icon.Accent}"
+                                     ItemsSource="{my:EnumSource comparaison:StringOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_2_0_2">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Icon.Foreground}" ItemsSource="{my:EnumSource comparaison:BinaryOperator}" SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_2_0_3">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Icon.Foreground}" SelectedIndex="0">
+                                <ListBoxItem my:IconAssist.Icon="{my:Icon Kind=Check}" my:ListBoxItemAssist.IsSelectedForeground="{DynamicResource MyNet.Brushes.Positive}" Content="{my:Resource Yes}" />
+                                <ListBoxItem my:IconAssist.Icon="{my:Icon Kind=Close}" my:ListBoxItemAssist.IsSelectedForeground="{DynamicResource MyNet.Brushes.Negative}" Content="{my:Resource No}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="lb_2_1_0">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Icon}" my:ListBoxAssist.Orientation="Vertical" SelectedIndex="0">
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignLeft}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignCenter}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignRight}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignJustify}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_2_1_1">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Icon.Accent}"
+                                     my:ListBoxAssist.Orientation="Vertical"
+                                     ItemsSource="{my:EnumSource comparaison:StringOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_2_1_2">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Icon.Foreground}"
+                                     my:ListBoxAssist.Orientation="Vertical"
+                                     ItemsSource="{my:EnumSource comparaison:BinaryOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_2_1_3">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Icon.Foreground}"
+                                     my:IconAssist.Alignment="Bottom"
+                                     my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Top}"
+                                     my:ListBoxAssist.Orientation="Vertical"
+                                     SelectedIndex="0">
+                                <ListBoxItem my:IconAssist.Icon="{my:Icon Kind=Check}" my:ListBoxItemAssist.IsSelectedForeground="{DynamicResource MyNet.Brushes.Positive}" Content="{my:Resource Yes}" />
+                                <ListBoxItem my:IconAssist.Icon="{my:Icon Kind=Close}" my:ListBoxItemAssist.IsSelectedForeground="{DynamicResource MyNet.Brushes.Negative}" Content="{my:Resource No}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.ListBox.Tab">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="lb_3_0_0">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Tab}" SelectedIndex="0">
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignLeft}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignCenter}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignRight}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignJustify}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_3_0_1">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Tab.Accent}"
+                                     ItemsSource="{my:EnumSource comparaison:StringOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_3_0_2">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Tab.Foreground}" ItemsSource="{my:EnumSource comparaison:BinaryOperator}" SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="lb_3_1_0">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Tab}" my:ListBoxAssist.Orientation="Vertical" SelectedIndex="0">
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignLeft}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignCenter}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignRight}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignJustify}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_3_1_1">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Tab.Accent}"
+                                     my:ListBoxAssist.Orientation="Vertical"
+                                     ItemsSource="{my:EnumSource comparaison:StringOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_3_1_2">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Tab.Foreground}"
+                                     my:ListBoxAssist.Orientation="Vertical"
+                                     ItemsSource="{my:EnumSource comparaison:BinaryOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                </my:SimpleStackPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.ListBox.Chips">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="lb_5_0_0">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Chips}" SelectedIndex="0">
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignLeft}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignCenter}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignRight}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignJustify}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_5_0_1">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Chips.Accent}"
+                                     ItemsSource="{my:EnumSource comparaison:StringOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_5_0_2">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Chips.Foreground}"
+                                     ItemsSource="{my:EnumSource comparaison:BinaryOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_5_0_3">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Chips.Foreground}" SelectedIndex="0">
+                                <ListBoxItem my:IconAssist.Icon="{my:Icon Kind=Check}" my:ListBoxItemAssist.IsSelectedBackground="{DynamicResource MyNet.Brushes.Positive}" Content="{my:Resource Yes}" />
+                                <ListBoxItem my:IconAssist.Icon="{my:Icon Kind=Close}" my:ListBoxItemAssist.IsSelectedBackground="{DynamicResource MyNet.Brushes.Negative}" Content="{my:Resource No}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="lb_5_1_0">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Chips.Alternate}" SelectedIndex="0">
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignLeft}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignCenter}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignRight}" />
+                                <ListBoxItem Content="{my:Icon Kind=FormatAlignJustify}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_5_1_1">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Chips.Alternate.Accent}"
+                                     ItemsSource="{my:EnumSource comparaison:StringOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_5_1_2">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Chips.Alternate.Foreground}"
+                                     ItemsSource="{my:EnumSource comparaison:BinaryOperator}"
+                                     SelectedIndex="0"
+                                     SelectedValuePath="Value" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="lb_5_1_3">
+                            <ListBox Style="{StaticResource MyNet.Styles.ListBox.Chips.Alternate.Foreground}" SelectedIndex="0">
+                                <ListBoxItem my:IconAssist.Icon="{my:Icon Kind=Check}" my:ListBoxItemAssist.IsSelectedForeground="{DynamicResource MyNet.Brushes.Positive}" Content="{my:Resource Yes}" />
+                                <ListBoxItem my:IconAssist.Icon="{my:Icon Kind=Close}" my:ListBoxItemAssist.IsSelectedForeground="{DynamicResource MyNet.Brushes.Negative}" Content="{my:Resource No}" />
+                            </ListBox>
+                        </smtx:XamlDisplay>
+
+                    </my:SimpleStackPanel>
+
+                </my:SimpleStackPanel>
+            </Expander>
+        </my:SimpleStackPanel>
+    </my:DynamicScrollViewer>
+</my:NavigationPage>

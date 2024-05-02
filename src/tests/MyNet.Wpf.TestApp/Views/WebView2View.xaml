@@ -1,0 +1,62 @@
+﻿<my:NavigationPage x:Class="MyNet.Wpf.TestApp.Views.WebView2View"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:my="http://mynet.com/xaml/themes"
+                   xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
+                   xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+                   xmlns:wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+                   Title="{my:Resource Web}"
+                   d:DesignHeight="800"
+                   d:DesignWidth="800"
+                   Loaded="WorkspaceView_Loaded"
+                   mc:Ignorable="d">
+    <my:NavigationPage.Resources>
+        <my:BindingProxy x:Key="Proxy" Data="{Binding}" />
+    </my:NavigationPage.Resources>
+
+    <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}">
+
+        <my:SimpleStackPanel>
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="GoogleMap">
+                <DockPanel>
+                    <GroupBox Width="300"
+                              Margin="{StaticResource MyNet.Margins.Medium}"
+                              my:IconAssist.Icon="{my:Icon Kind=Settings}"
+                              DockPanel.Dock="Right"
+                              Header="{my:Resource Options}">
+                        <my:SimpleStackPanel>
+                            <TextBox x:Name="Url"
+                                     HorizontalAlignment="Stretch"
+                                     my:HintAssist.Hint="Url"
+                                     my:HintAssist.IsFloating="True"
+                                     Text="https://www.google.com/maps/search/?api=1&amp;query=1+Allee+Martial+Lamotte+63000+Clermont+Ferrand&amp;output=embed"
+                                     TextWrapping="Wrap" />
+                        </my:SimpleStackPanel>
+
+                    </GroupBox>
+
+                    <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+                        <smtx:XamlDisplay HorizontalAlignment="Stretch" UniqueKey="wv_0_0_0">
+                            <my:GoogleMapsWebView Height="400" Url="{Binding Text, ElementName=Url}" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+                </DockPanel>
+            </Expander>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="TextEditor">
+                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+                    <my:WebView x:Name="webView" Height="400" />
+
+                    <my:SimpleStackPanel Grid.Row="1" Margin="{StaticResource MyNet.Margins.Default.Top}" Orientation="Horizontal">
+                        <Button x:Name="getTextButton" Click="GetTextButton_ClickAsync" Content="getText" />
+                        <Button x:Name="GetContentButton" Click="GetContentButton_ClickAsync" Content="getContent" />
+                        <Button x:Name="GetHtmlButton" Click="GetHtmlButton_ClickAsync" Content="getHtml" />
+                    </my:SimpleStackPanel>
+                    <TextBlock x:Name="resultTextBlock" Grid.Row="2" VerticalAlignment="Top" />
+                </my:SimpleStackPanel>
+            </Expander>
+        </my:SimpleStackPanel>
+    </my:DynamicScrollViewer>
+</my:NavigationPage>

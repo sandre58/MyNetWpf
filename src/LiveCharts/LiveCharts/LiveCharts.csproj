@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Fork of LiveCharts Core library.</Description>
+    <RunCodeAnalysis>Never</RunCodeAnalysis>
+    <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
+    <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    <AnalysisLevel>none</AnalysisLevel>
+    <WarningLevel>0</WarningLevel>
+    <NoWarn>$(NoWarn);SYSLIB0013;SYSLIB1054;CS1591;CS1574;IDE0007;IDE0018;IDE0019;IDE0022;IDE0031;IDE0046;IDE0073;IDE0074;S927</NoWarn>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+</Project>
