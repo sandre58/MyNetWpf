@@ -11,6 +11,11 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>None</DebugType>
+  </PropertyGroup>
+
   <ItemGroup>
     <Content Include="config\appsettings.json">
       <TransformOnBuild>true</TransformOnBuild>

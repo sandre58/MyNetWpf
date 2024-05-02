@@ -102,4 +102,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: TestApp
-          path: ./build/MyNet.Wpf.TestApp/Release
+          path: |
+              ./build/MyNet.Wpf.TestApp/Release
+              !./build/MyNet.Wpf.TestApp/Release/*.xml
+              !./build/MyNet.Wpf.TestApp/Release/*.pdb

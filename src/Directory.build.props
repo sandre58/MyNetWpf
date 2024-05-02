@@ -27,11 +27,8 @@
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
     <IsTestProject>$(MSBuildProjectName.Contains('UnitTests'))</IsTestProject>
     <IsTestApp>$(MSBuildProjectName.Contains('TestApp'))</IsTestApp>
-    <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
+    <GenerateDocumentationFile Condition="'$(IsTestApp)' != 'true' And '$(IsTestProject)' != 'true' And '$(Configuration)' == 'Release'">true</GenerateDocumentationFile>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <IncludeSymbols>true</IncludeSymbols>
-    <IncludeSource>True</IncludeSource>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <DeterministicSourcePaths Condition="'$(EnableSourceLink)' == ''">false</DeterministicSourcePaths>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
@@ -40,6 +37,9 @@
 
 <!-- Package -->
   <PropertyGroup>
+    <IncludeSource>True</IncludeSource>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <IncludeSymbols>true</IncludeSymbols>
     <IsPackable Condition="'$(IsTestApp)' != 'true' And '$(IsTestProject)' != 'true'">true</IsPackable>
     <GeneratePackageOnBuild Condition="'$(IsTestApp)' != 'true' And '$(IsTestProject)' != 'true' And '$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/sandre58/MyNetWpf</RepositoryUrl>
