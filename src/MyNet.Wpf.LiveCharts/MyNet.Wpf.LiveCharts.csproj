@@ -5,14 +5,18 @@
     <PackageTags>MyNet;UI;Charts;Wpf;LiveCharts</PackageTags>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+
   <ItemGroup>
-      <PackageReference Include="Fody" Version="6.8.0">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Include="PropertyChanged.Fody" Version="4.1.0">
-        <PrivateAssets>all</PrivateAssets>
-      </PackageReference>
+    <PackageReference Include="Fody" Version="6.8.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="MyNet.Xaml.Merger.MSBuild" Version="0.1.0-pre.16">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -20,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LiveCharts\LiveCharts.Wpf\LiveCharts.Wpf.csproj" />
-    <ProjectReference Include="..\MyNet.Wpf\MyNet.Wpf.csproj" />
+    <ProjectReference Include="..\LiveCharts\LiveCharts.Wpf\LiveCharts.Wpf.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\MyNet.Wpf\MyNet.Wpf.csproj" PrivateAssets="all" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -44,5 +48,10 @@
   <ItemGroup Condition="'$(IsBuildingInsideRider)' == 'True'">
     <Page Include="Styles\*.xaml" />
   </ItemGroup>
-  
+
+  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+    </ItemGroup>
+  </Target>
 </Project>
