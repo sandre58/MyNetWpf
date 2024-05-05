@@ -153,6 +153,10 @@ jobs:
         with:
           name: TestApp
           path: TestApp/
+          
+      # Zip testApp
+      - name: Zip artifact for deployment
+        run: zip Artifacts/TestApp.zip TestApp/** -r
       
       # Get package version
       - name: Process Package Version
@@ -170,7 +174,7 @@ jobs:
       - uses: ncipollo/release-action@main # https://github.com/marketplace/actions/create-release
         name: Create Release
         with:
-          artifacts: "Artifacts/*.nupkg,Artifacts/*.snupkg,TestApp/"
+          artifacts: "Artifacts/*.nupkg,Artifacts/*.snupkg,Artifacts/*.zip"
           artifactErrorsFailBuild: true
           draft: true
           generateReleaseNotes: false
