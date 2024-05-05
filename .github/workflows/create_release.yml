@@ -46,7 +46,7 @@ jobs:
           disableNormalization: true
 
   # Build and test
-  build-and-tests:
+  build:
     runs-on: windows-latest
     name: Build all projects
     needs: [ gitversion ]
