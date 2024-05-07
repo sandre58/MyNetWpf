@@ -89,7 +89,6 @@ jobs:
         run: dotnet build .\src\MyNetWpf.sln -c Release /p:GitVersion=${{ needs.gitversion.outputs.full_version }} /p:VersionSuffix=${{ needs.gitversion.outputs.suffix_label }}
 
       - name: Run Tests
-        if: ${{ inputs.run-tests }}
         run: dotnet test .\src\MyNetWpf.sln --configuration Release --logger GitHubActions --no-build --no-restore --blame-crash --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover --no-build
 
       - name: Upload Artifacts
