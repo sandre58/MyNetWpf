@@ -63,7 +63,7 @@ jobs:
     uses: avantipoint/workflow-templates/.github/workflows/dotnet-build.yml@master # https://github.com/AvantiPoint/workflow-templates/blob/master/.github/workflows/dotnet-build.yml
     with:
       dotnet-test-logger: GitHubActions --no-build --no-restore
-      build-args: ${{ needs.compute_parameters.outputs.buildArgs }}
+      build-args: ${{ needs.compute_parameters.outputs.build_args }}
       name: Build
       solution-path: .\src\${{ needs.compute_parameters.outputs.package_name }}\${{ needs.compute_parameters.outputs.package_name }}.csproj
   
