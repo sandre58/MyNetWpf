@@ -7,7 +7,13 @@
     <Authors>Stéphane ANDRE</Authors>
     <Owners>Stéphane ANDRE</Owners>
     <Copyright>Copyright © 2016-$([System.DateTime]::Now.ToString(yyyy)) - Stéphane ANDRE. All Rights Reserved.</Copyright>
-    <Version>1.0.0-alpha</Version>
+    
+    <!-- Used by main project -->
+    <GitVersion>1.0.0-alpha</GitVersion>
+
+    <!-- Used by other projects -->
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
   </PropertyGroup>
 
 <!-- Configuration -->
