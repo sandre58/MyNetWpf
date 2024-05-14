@@ -3,20 +3,20 @@
   <PropertyGroup>
     <Description>A comprehensive collection of controls, graphical elements, and views designed for accelerating WPF application development.</Description>
     <PackageTags>MyNet;UI;Xaml;Presentation;Wpf</PackageTags>
-    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionPrefix>1.1.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="gong-wpf-dragdrop" Version="3.2.1" />
     <PackageReference Include="Fody" Version="6.8.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MyNet.Utilities.Geography.Extensions" Version="1.0.1" />
-    <PackageReference Include="MyNet.Utilities.Localization.Extensions" Version="1.0.1" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="gong-wpf-dragdrop" Version="3.2.1" />
+    <PackageReference Include="MyNet.Utilities.Geography.Extensions" Version="1.0.1" />
+    <PackageReference Include="MyNet.Utilities.Localization.Extensions" Version="1.0.1" />
     <PackageReference Include="MyNet.Xaml.Merger.MSBuild" Version="2.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

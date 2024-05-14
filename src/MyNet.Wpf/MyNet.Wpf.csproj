@@ -9,10 +9,10 @@
 
   <ItemGroup>
     <PackageReference Include="MahApps.Metro" Version="3.0.0-alpha0492" />
-    <PackageReference Include="MaterialDesignThemes" Version="5.0.1-ci619" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.0.1-ci630" />
     <PackageReference Include="MyNet.Humanizer" Version="1.0.0" />
-    <PackageReference Include="MyNet.Observable" Version="1.1.0" />
-    <PackageReference Include="MyNet.UI" Version="2.0.0" />
+    <PackageReference Include="MyNet.Observable" Version="1.2.0" />
+    <PackageReference Include="MyNet.UI" Version="2.1.0" />
     <PackageReference Include="MyNet.Xaml.Html" Version="1.0.0" />
     <PackageReference Include="MyNet.Xaml.Merger.MSBuild" Version="2.0.0">
       <PrivateAssets>all</PrivateAssets>
