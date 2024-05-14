@@ -10,32 +10,24 @@
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/MyNet.Card.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MyNet.Styles.Card.Popup" BasedOn="{StaticResource MyNet.Styles.Card.Elevation}" TargetType="{x:Type ctrl:Card}">
+    <Style x:Key="MyNet.Styles.Card.Popup" TargetType="{x:Type ctrl:Card}" BasedOn="{StaticResource MyNet.Styles.Card.Elevation}">
         <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Default}" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Popup}" />
     </Style>
 
     <Style x:Key="MyNet.Styles.MenuItem" TargetType="{x:Type MenuItem}">
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="Transparent" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="Transparent" />
-        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
-        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
-        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
-        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Menu}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Padding" Value="24 0 24 0" />
         <Setter Property="ClipToBounds" Value="False" />
-        <Setter Property="Background" Value="Transparent" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
-        <Setter Property="KeyboardNavigation.IsTabStop" Value="True" />
         <Setter Property="Focusable" Value="True" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Menu}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="KeyboardNavigation.IsTabStop" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Padding" Value="24 0 24 0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type MenuItem}">
@@ -122,8 +114,7 @@
                                                    Opacity="{StaticResource MyNet.Opacity.Secondary}"
                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                    Text="{TemplateBinding InputGestureText}"
-                                                   Visibility="{TemplateBinding InputGestureText,
-                                                                                Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+                                                   Visibility="{TemplateBinding InputGestureText, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
                                     </Grid>
                                     <Grid x:Name="SubBlock"
                                           Grid.Column="2"
@@ -166,29 +157,29 @@
                         <!--#region Roles Triggers-->
                         <Trigger Property="Role" Value="TopLevelHeader">
                             <Setter Property="Grid.IsSharedSizeScope" Value="True" />
-                            <Setter Property="Padding" Value="16 0" />
                             <Setter Property="Height" Value="48" />
-                            <Setter TargetName="templateRoot" Property="CornerRadius" Value="{StaticResource MyNet.CornerRadius.Container}" />
+                            <Setter Property="Padding" Value="16 0" />
                             <Setter TargetName="BackgroundRoot" Property="CornerRadius" Value="{StaticResource MyNet.CornerRadius.Container}" />
                             <Setter TargetName="PART_Popup" Property="PopupAnimation" Value="Slide" />
+                            <Setter TargetName="templateRoot" Property="CornerRadius" Value="{StaticResource MyNet.CornerRadius.Container}" />
                         </Trigger>
                         <Trigger Property="Role" Value="TopLevelItem">
-                            <Setter Property="Padding" Value="16 0" />
                             <Setter Property="Height" Value="48" />
-                            <Setter TargetName="templateRoot" Property="CornerRadius" Value="{StaticResource MyNet.CornerRadius.Container}" />
+                            <Setter Property="Padding" Value="16 0" />
                             <Setter TargetName="BackgroundRoot" Property="CornerRadius" Value="{StaticResource MyNet.CornerRadius.Container}" />
+                            <Setter TargetName="templateRoot" Property="CornerRadius" Value="{StaticResource MyNet.CornerRadius.Container}" />
                         </Trigger>
                         <Trigger Property="Role" Value="SubmenuHeader">
-                            <Setter TargetName="SubBlock" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PART_Popup" Property="Placement" Value="Right" />
-                            <Setter TargetName="PART_Popup" Property="VerticalOffset" Value="-16" />
                             <Setter Property="Height" Value="32" />
                             <Setter TargetName="BoldHeaderPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PART_Popup" Property="Placement" Value="Right" />
+                            <Setter TargetName="PART_Popup" Property="VerticalOffset" Value="-16" />
+                            <Setter TargetName="SubBlock" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="Role" Value="SubmenuItem">
                             <Setter Property="Height" Value="32" />
-                            <Setter TargetName="InputGestureTextWrapper" Property="Visibility" Value="Visible" />
                             <Setter TargetName="BoldHeaderPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="InputGestureTextWrapper" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <!--#endregion-->
 
@@ -199,8 +190,8 @@
                             <Setter TargetName="IconWrapper" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
                             <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsCheckable" Value="True">
                             <Setter TargetName="GlyphWrapper" Property="Visibility" Value="Visible" />
@@ -225,6 +216,14 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
+        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="Transparent" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="Transparent" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Style.Triggers>
             <Trigger Property="IsHighlighted" Value="true">
                 <Setter Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsMouseOverForeground), RelativeSource={RelativeSource Mode=Self}}" />
@@ -237,15 +236,13 @@
 
     <Style x:Key="MyNet.Styles.Menu" TargetType="{x:Type MenuBase}">
         <Style.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.MenuItem}" TargetType="{x:Type MenuItem}" />
+            <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MyNet.Styles.MenuItem}" />
         </Style.Resources>
-        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Menu}" />
-        <Setter Property="FontWeight" Value="Regular" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="FontFamily" Value="{me:RobotoFont}" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Menu}" />
+        <Setter Property="FontWeight" Value="Regular" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="UseLayoutRounding" Value="True" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type MenuBase}">
@@ -259,14 +256,16 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.Menu.SubMenu" BasedOn="{StaticResource MyNet.Styles.Menu}" TargetType="{x:Type MenuBase}">
+    <Style x:Key="MyNet.Styles.Menu.SubMenu" TargetType="{x:Type MenuBase}" BasedOn="{StaticResource MyNet.Styles.Menu}">
         <Style.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.MenuItem}" TargetType="{x:Type MenuItem}" />
+            <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MyNet.Styles.MenuItem}" />
         </Style.Resources>
-        <Setter Property="ClipToBounds" Value="False" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
+        <Setter Property="ClipToBounds" Value="False" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -298,7 +297,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="MyNet.Styles.Menu.Embedded" BasedOn="{StaticResource MyNet.Styles.Menu.SubMenu}" TargetType="{x:Type MenuBase}">
+    <Style x:Key="MyNet.Styles.Menu.Embedded" TargetType="{x:Type MenuBase}" BasedOn="{StaticResource MyNet.Styles.Menu.SubMenu}">
         <Setter Property="Margin" Value="0 8" />
         <Setter Property="Template">
             <Setter.Value>
@@ -315,7 +314,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="MyNet.Styles.ContextMenu" BasedOn="{StaticResource MyNet.Styles.Menu.SubMenu}" TargetType="{x:Type ContextMenu}">
+    <Style x:Key="MyNet.Styles.ContextMenu" TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource MyNet.Styles.Menu.SubMenu}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
     </Style>
 

@@ -13,13 +13,13 @@
 
     <DataTemplate x:Key="MyNet.DataTemplates.Icon.ListBoxItem">
         <DataTemplate.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.PackIcon}" TargetType="{x:Type ctrl:PackIcon}">
-                <Setter Property="Width" Value="18" />
+            <Style TargetType="{x:Type ctrl:PackIcon}" BasedOn="{StaticResource MyNet.Styles.PackIcon}">
                 <Setter Property="Height" Value="18" />
+                <Setter Property="Width" Value="18" />
             </Style>
-            <Style BasedOn="{StaticResource MyNet.Styles.GeometryIcon}" TargetType="{x:Type ctrl:GeometryIcon}">
-                <Setter Property="Width" Value="18" />
+            <Style TargetType="{x:Type ctrl:GeometryIcon}" BasedOn="{StaticResource MyNet.Styles.GeometryIcon}">
                 <Setter Property="Height" Value="18" />
+                <Setter Property="Width" Value="18" />
             </Style>
         </DataTemplate.Resources>
         <Grid>
@@ -48,52 +48,42 @@
 
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" Value="{x:Static ctrl:Alignment.Left}">
-                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
-                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
-                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
                 <Setter TargetName="Content" Property="Grid.Column" Value="1" />
+                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
             </DataTrigger>
             <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" Value="{x:Static ctrl:Alignment.Top}">
-                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
-                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
-                <Setter TargetName="Content" Property="Grid.Row" Value="1" />
                 <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Content" Property="Grid.Row" Value="1" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
             </DataTrigger>
             <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" Value="{x:Static ctrl:Alignment.Right}">
-                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
-                <Setter TargetName="Icon" Property="Grid.Column" Value="1" />
-                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
                 <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="1" />
+                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
             </DataTrigger>
             <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" Value="{x:Static ctrl:Alignment.Bottom}">
-                <Setter TargetName="Icon" Property="Grid.Row" Value="1" />
-                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
-                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
                 <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Row" Value="1" />
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
 
     <Style x:Key="MyNet.Styles.ListBoxItem" TargetType="{x:Type ListBoxItem}">
-        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="Padding" Value="16 8" />
-        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
-        <Setter Property="p:ListBoxItemAssist.ShowSelection" Value="{Binding Path=(p:ListBoxItemAssist.ShowSelection), RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{Binding Path=(p:ListBoxItemAssist.IsMouseOverBackground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:ThemeAssist.CornerRadius" Value="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Icon.ListBoxItem}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="Padding" Value="16 8" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -104,34 +94,6 @@
                             ClipToBounds="{TemplateBinding ClipToBounds}"
                             CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                             SnapsToDevicePixels="True">
-                        <Grid>
-                            <Border x:Name="MouseOverBorder"
-                                    Background="{TemplateBinding p:ListBoxItemAssist.IsMouseOverBackground}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                    Opacity="0"
-                                    SnapsToDevicePixels="True" />
-                            <Border x:Name="SelectedBorder"
-                                    Background="{TemplateBinding p:ListBoxItemAssist.IsSelectedBackground}"
-                                    BorderBrush="{TemplateBinding p:ListBoxItemAssist.IsSelectedBorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                    Opacity="0"
-                                    RenderTransformOrigin="0.5,0.5" />
-                            <ctrl:Ripple x:Name="Ripple"
-                                         Padding="{TemplateBinding Padding}"
-                                         HorizontalAlignment="Stretch"
-                                         VerticalAlignment="Stretch"
-                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                         Content="{TemplateBinding Content}"
-                                         ContentTemplate="{TemplateBinding ContentTemplate}"
-                                         ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                         Feedback="{TemplateBinding Foreground}"
-                                         Focusable="False"
-                                         RecognizesAccessKey="False"
-                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -180,6 +142,34 @@
                                 <VisualState Name="Unfocused" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Grid>
+                            <Border x:Name="MouseOverBorder"
+                                    Background="{TemplateBinding p:ListBoxItemAssist.IsMouseOverBackground}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                    Opacity="0"
+                                    SnapsToDevicePixels="True" />
+                            <Border x:Name="SelectedBorder"
+                                    Background="{TemplateBinding p:ListBoxItemAssist.IsSelectedBackground}"
+                                    BorderBrush="{TemplateBinding p:ListBoxItemAssist.IsSelectedBorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                    Opacity="0"
+                                    RenderTransformOrigin="0.5,0.5" />
+                            <ctrl:Ripple x:Name="Ripple"
+                                         Padding="{TemplateBinding Padding}"
+                                         HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Stretch"
+                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         Content="{TemplateBinding Content}"
+                                         ContentTemplate="{TemplateBinding ContentTemplate}"
+                                         ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                         Feedback="{TemplateBinding Foreground}"
+                                         Focusable="False"
+                                         RecognizesAccessKey="False"
+                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
@@ -202,6 +192,16 @@
 
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{Binding Path=(p:ListBoxItemAssist.IsMouseOverBackground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:ListBoxItemAssist.ShowSelection" Value="{Binding Path=(p:ListBoxItemAssist.ShowSelection), RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" />
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="true">
                 <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource Self}}" />
@@ -209,30 +209,25 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="MyNet.Styles.ListBox" TargetType="{x:Type ListBox}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle}" />
-        <Setter Property="p:ListBoxItemAssist.ShowSelection" Value="True" />
-        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
-        <Setter Property="p:IconAssist.Alignment" Value="Left" />
-        <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
-        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle}" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
         <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem}" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel IsVirtualizing="{TemplateBinding VirtualizingPanel.IsVirtualizing}" VirtualizationMode="{TemplateBinding VirtualizingPanel.VirtualizationMode}" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-        <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
-        <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Standard" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
@@ -262,37 +257,36 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="ItemsPanel">
-            <Setter.Value>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel IsVirtualizing="{TemplateBinding VirtualizingPanel.IsVirtualizing}" VirtualizationMode="{TemplateBinding VirtualizingPanel.VirtualizationMode}" />
-                </ItemsPanelTemplate>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
+        <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Standard" />
+        <Setter Property="p:IconAssist.Alignment" Value="Left" />
+        <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
+        <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ListBoxItemAssist.ShowSelection" Value="True" />
+        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Accent" BasedOn="{StaticResource MyNet.Styles.ListBox}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Foreground" BasedOn="{StaticResource MyNet.Styles.ListBox}" TargetType="{x:Type ListBox}">
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Style x:Key="MyNet.Styles.ListBox.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ListBoxItem.Toggle" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}" TargetType="{x:Type ListBoxItem}">
+    <Style x:Key="MyNet.Styles.ListBoxItem.Toggle" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
         <Setter Property="Padding" Value="6 4" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Toggle" BasedOn="{StaticResource MyNet.Styles.ListBox}" TargetType="{x:Type ListBox}">
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Toggle}" />
+    <Style x:Key="MyNet.Styles.ListBox.Toggle" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
         <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
-        <Setter Property="p:ListBoxAssist.IsToggle" Value="False" />
-        <Setter Property="SelectionMode" Value="Single" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Toggle}" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -300,6 +294,7 @@
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="SelectionMode" Value="Single" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
@@ -324,6 +319,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="p:ListBoxAssist.IsToggle" Value="False" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
         <Style.Triggers>
             <Trigger Property="p:ListBoxAssist.Orientation" Value="{x:Static Orientation.Vertical}">
                 <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -338,24 +338,22 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Toggle.Accent" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Toggle.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Toggle.Foreground" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}" TargetType="{x:Type ListBox}">
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Style x:Key="MyNet.Styles.ListBox.Toggle.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Toggle.Foreground.Opacity" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle.Foreground}" TargetType="{x:Type ListBox}">
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Checked}}" />
+    <Style x:Key="MyNet.Styles.ListBox.Toggle.Foreground.Opacity" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle.Foreground}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Checked}}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ListBoxItem.Icon" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}" TargetType="{x:Type ListBoxItem}">
+    <Style x:Key="MyNet.Styles.ListBoxItem.Icon" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
         <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Default}" />
-        <Setter Property="p:RippleAssist.IsCentered" Value="True" />
-        <Setter Property="p:RippleAssist.ClipToBounds" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -400,16 +398,17 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:RippleAssist.ClipToBounds" Value="False" />
+        <Setter Property="p:RippleAssist.IsCentered" Value="True" />
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource Self}}" />
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Icon" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Icon" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Icon}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
@@ -426,22 +425,21 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Icon.Accent" BasedOn="{StaticResource MyNet.Styles.ListBox.Icon}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Icon.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Icon}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Icon.Foreground" BasedOn="{StaticResource MyNet.Styles.ListBox.Icon}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Icon.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Icon}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ListBoxItem.Tab" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}" TargetType="{x:Type ListBoxItem}">
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+    <Style x:Key="MyNet.Styles.ListBoxItem.Tab" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:RippleAssist.Feedback" Value="{Binding Path=(p:RippleAssist.Feedback), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="Padding" Value="16 12" />
         <Setter Property="BorderThickness" Value="0 0 0 2" />
-        <Setter Property="FontWeight" Value="{StaticResource MyNet.Font.Weight.Header}" />
         <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Tab}" />
+        <Setter Property="FontWeight" Value="{StaticResource MyNet.Font.Weight.Header}" />
+        <Setter Property="Padding" Value="16 12" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -482,39 +480,39 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{Binding Path=(p:RippleAssist.Feedback), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBoxItem.Tab.DropDown" BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Tab}" TargetType="{x:Type ListBoxItem}">
-        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
-        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    <Style x:Key="MyNet.Styles.ListBoxItem.Tab.DropDown" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Tab}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
                     <Grid>
                         <RadioButton x:Name="RadioButton"
-                                         Style="{StaticResource MyNet.Styles.RadioButton.Tab}"
-                                         MinWidth="{TemplateBinding MinWidth}"
-                                         MinHeight="{TemplateBinding MinHeight}"
-                                         Padding="{TemplateBinding Padding}"
-                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                         p:IconAssist.Alignment="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource TemplatedParent}}"
-                                         p:IconAssist.Icon="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}}"
-                                         p:IconAssist.Margin="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource TemplatedParent}}"
-                                         p:IconAssist.Opacity="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource TemplatedParent}}"
-                                         p:RippleAssist.Feedback="{Binding Path=(p:RippleAssist.Feedback), RelativeSource={RelativeSource TemplatedParent}}"
-                                         Background="{TemplateBinding Background}"
-                                         BorderBrush="{TemplateBinding BorderBrush}"
-                                         BorderThickness="{TemplateBinding BorderThickness}"
-                                         FontFamily="{TemplateBinding FontFamily}"
-                                         FontSize="{TemplateBinding FontSize}"
-                                         FontStretch="{TemplateBinding FontStretch}"
-                                         FontStyle="{TemplateBinding FontStyle}"
-                                         FontWeight="{TemplateBinding FontWeight}"
-                                         Foreground="{TemplateBinding Foreground}"
-                                         IsChecked="{Binding IsSelected, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
-                                         TextOptions.TextFormattingMode="Ideal"
-                                         TextOptions.TextRenderingMode="Auto"
-                                         Typography.Capitals="{TemplateBinding Typography.Capitals}">
+                                     Style="{StaticResource MyNet.Styles.RadioButton.Tab}"
+                                     MinWidth="{TemplateBinding MinWidth}"
+                                     MinHeight="{TemplateBinding MinHeight}"
+                                     Padding="{TemplateBinding Padding}"
+                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                     p:IconAssist.Alignment="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource TemplatedParent}}"
+                                     p:IconAssist.Icon="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}}"
+                                     p:IconAssist.Margin="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource TemplatedParent}}"
+                                     p:IconAssist.Opacity="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource TemplatedParent}}"
+                                     p:RippleAssist.Feedback="{Binding Path=(p:RippleAssist.Feedback), RelativeSource={RelativeSource TemplatedParent}}"
+                                     Background="{TemplateBinding Background}"
+                                     BorderBrush="{TemplateBinding BorderBrush}"
+                                     BorderThickness="{TemplateBinding BorderThickness}"
+                                     FontFamily="{TemplateBinding FontFamily}"
+                                     FontSize="{TemplateBinding FontSize}"
+                                     FontStretch="{TemplateBinding FontStretch}"
+                                     FontStyle="{TemplateBinding FontStyle}"
+                                     FontWeight="{TemplateBinding FontWeight}"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     IsChecked="{Binding IsSelected, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                                     TextOptions.TextFormattingMode="Ideal"
+                                     TextOptions.TextRenderingMode="Auto"
+                                     Typography.Capitals="{TemplateBinding Typography.Capitals}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition x:Name="Col0" Width="Auto" />
@@ -525,42 +523,42 @@
                                     <RowDefinition x:Name="Row1" Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <ctrl:PackIcon x:Name="Caret"
-                                                 Grid.Row="0"
-                                                 Grid.Column="1"
-                                                 Width="18"
-                                                 Height="18"
-                                                 HorizontalAlignment="Center"
-                                                 VerticalAlignment="Center"
-                                                 Kind="ChevronDown"
-                                                 RenderTransformOrigin="0.5, 0.5">
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               Width="18"
+                                               Height="18"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Kind="ChevronDown"
+                                               RenderTransformOrigin="0.5, 0.5">
                                     <ctrl:PackIcon.RenderTransform>
                                         <RotateTransform Angle="0" />
                                     </ctrl:PackIcon.RenderTransform>
                                 </ctrl:PackIcon>
                                 <ContentControl x:Name="Content"
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    Content="{TemplateBinding Content}"
-                                                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Content="{TemplateBinding Content}"
+                                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
                             </Grid>
                         </RadioButton>
                         <ctrl:PopupEx x:Name="PART_Popup"
-                                        Width="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
-                                        HorizontalOffset="-5"
-                                        IsOpen="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver, Mode=OneWay}"
-                                        Placement="Bottom"
-                                        PlacementTarget="{Binding ElementName=RadioButton}"
-                                        PopupAnimation="Slide"
-                                        VerticalOffset="-5">
+                                      Width="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                      HorizontalOffset="-5"
+                                      IsOpen="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver, Mode=OneWay}"
+                                      Placement="Bottom"
+                                      PlacementTarget="{Binding ElementName=RadioButton}"
+                                      PopupAnimation="Slide"
+                                      VerticalOffset="-5">
                             <Grid>
                                 <Border Background="White" Opacity="0.002" />
                                 <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Popup}"
-                                             Padding="0"
-                                             Background="{TemplateBinding p:PopupAssist.Background}"
-                                             FontSize="{StaticResource MyNet.Font.Size}"
-                                             FontWeight="{StaticResource MyNet.Font.Weight.ToolTip}"
-                                             Foreground="{TemplateBinding p:PopupAssist.Foreground}">
+                                           Padding="0"
+                                           Background="{TemplateBinding p:PopupAssist.Background}"
+                                           FontSize="{StaticResource MyNet.Font.Size}"
+                                           FontWeight="{StaticResource MyNet.Font.Weight.ToolTip}"
+                                           Foreground="{TemplateBinding p:PopupAssist.Foreground}">
                                     <ContentControl Content="{TemplateBinding p:PopupAssist.Content}" ContentTemplate="{TemplateBinding p:PopupAssist.ContentTemplate}" />
                                 </ctrl:Card>
                             </Grid>
@@ -575,10 +573,10 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="Caret"
-                                                             Storyboard.TargetProperty="(ctrl:PackIcon.RenderTransform).(RotateTransform.Angle)"
-                                                             From="0"
-                                                             To="180"
-                                                             Duration="00:00:00.167" />
+                                                         Storyboard.TargetProperty="(ctrl:PackIcon.RenderTransform).(RotateTransform.Angle)"
+                                                         From="0"
+                                                         To="180"
+                                                         Duration="00:00:00.167" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </DataTrigger.EnterActions>
@@ -586,10 +584,10 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="Caret"
-                                                             Storyboard.TargetProperty="(ctrl:PackIcon.RenderTransform).(RotateTransform.Angle)"
-                                                             From="180"
-                                                             To="0"
-                                                             Duration="00:00:00.167" />
+                                                         Storyboard.TargetProperty="(ctrl:PackIcon.RenderTransform).(RotateTransform.Angle)"
+                                                         From="180"
+                                                         To="0"
+                                                         Duration="00:00:00.167" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </DataTrigger.ExitActions>
@@ -598,24 +596,14 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
+        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Tab" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}" TargetType="{x:Type ListBox}">
-        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
+    <Style x:Key="MyNet.Styles.ListBox.Tab" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="SelectedValuePath" Value="" />
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
-        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Tab}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="Dp0" />
-        <Setter Property="p:ShadowAssist.ShadowEdges" Value="None" />
-        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="0" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -623,6 +611,11 @@
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="SelectedValuePath" Value="" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
@@ -655,13 +648,17 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:ElevationAssist.Elevation" Value="Dp0" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ShadowAssist.ShadowEdges" Value="None" />
+        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
+        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="0" />
         <Style.Triggers>
             <Trigger Property="p:ListBoxAssist.Orientation" Value="{x:Static Orientation.Vertical}">
                 <Setter Property="HorizontalAlignment" Value="Stretch" />
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
-                <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
-                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
-                <Setter Property="p:ShadowAssist.ShadowEdges" Value="Right" />
                 <Setter Property="ItemsPanel">
                     <Setter.Value>
                         <ItemsPanelTemplate>
@@ -669,27 +666,27 @@
                         </ItemsPanelTemplate>
                     </Setter.Value>
                 </Setter>
+                <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+                <Setter Property="p:ShadowAssist.ShadowEdges" Value="Right" />
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Tab.Accent" BasedOn="{StaticResource MyNet.Styles.ListBox.Tab}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Tab.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Tab}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Tab.Foreground" BasedOn="{StaticResource MyNet.Styles.ListBox.Tab}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Tab.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Tab}">
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=Foreground}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ListBoxItem.Card" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}" TargetType="{x:Type ListBoxItem}">
-        <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="VerticalContentAlignment" Value="Top" />
+    <Style x:Key="MyNet.Styles.ListBoxItem.Card" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
-        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
-        <Setter Property="BorderThickness" Value="2" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Small}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -701,30 +698,6 @@
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
-                        <Grid>
-                            <Border x:Name="MouseOverBorder"
-                                    Background="{TemplateBinding p:ListBoxItemAssist.IsMouseOverBackground}"
-                                    Opacity="0"
-                                    SnapsToDevicePixels="True" />
-
-                            <Border x:Name="SelectedBorder"
-                                    Background="{TemplateBinding p:ListBoxItemAssist.IsSelectedBackground}"
-                                    BorderBrush="{TemplateBinding p:ListBoxItemAssist.IsSelectedBorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    Opacity="0"
-                                    RenderTransformOrigin="0.5,0.5" />
-
-                            <ctrl:Ripple x:Name="Ripple"
-                                         Padding="{TemplateBinding Padding}"
-                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                         Content="{TemplateBinding Content}"
-                                         ContentTemplate="{TemplateBinding ContentTemplate}"
-                                         ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                         Feedback="{TemplateBinding Foreground}"
-                                         Focusable="False"
-                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -773,6 +746,30 @@
                                 <VisualState Name="Unfocused" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Grid>
+                            <Border x:Name="MouseOverBorder"
+                                    Background="{TemplateBinding p:ListBoxItemAssist.IsMouseOverBackground}"
+                                    Opacity="0"
+                                    SnapsToDevicePixels="True" />
+
+                            <Border x:Name="SelectedBorder"
+                                    Background="{TemplateBinding p:ListBoxItemAssist.IsSelectedBackground}"
+                                    BorderBrush="{TemplateBinding p:ListBoxItemAssist.IsSelectedBorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Opacity="0"
+                                    RenderTransformOrigin="0.5,0.5" />
+
+                            <ctrl:Ripple x:Name="Ripple"
+                                         Padding="{TemplateBinding Padding}"
+                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         Content="{TemplateBinding Content}"
+                                         ContentTemplate="{TemplateBinding ContentTemplate}"
+                                         ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                         Feedback="{TemplateBinding Foreground}"
+                                         Focusable="False"
+                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Grid>
                     </ctrl:Card>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
@@ -794,20 +791,12 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Cards" BasedOn="{StaticResource MyNet.Styles.ListBox}" TargetType="{x:Type ListBox}">
-        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
-        <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue" />
-        <Setter Property="VirtualizingPanel.CacheLengthUnit" Value="Page" />
-        <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel" />
-        <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling" />
+    <Style x:Key="MyNet.Styles.ListBox.Cards" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Card}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="SelectionMode" Value="Extended" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -819,6 +808,10 @@
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="SelectionMode" Value="Extended" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
@@ -851,15 +844,25 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VirtualizingPanel.CacheLengthUnit" Value="Page" />
+        <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel" />
+        <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Cards.Accent" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Cards.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Cards.Foreground" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Cards.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ListBoxItem.Chip" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}" TargetType="{x:Type ListBoxItem}">
+    <Style x:Key="MyNet.Styles.ListBoxItem.Chip" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FocusVisualStyle">
             <Setter.Value>
                 <Style>
@@ -879,14 +882,9 @@
                 </Style>
             </Setter.Value>
         </Setter>
-        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-        <Setter Property="p:ThemeAssist.CornerRadius" Value="16" />
-        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Height" Value="32" />
-        <Setter Property="MinWidth" Value="46" />
         <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Small}" />
-        <Setter Property="p:CheckBoxAssist.ShowCheck" Value="{Binding Path=(p:CheckBoxAssist.ShowCheck), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="MinWidth" Value="46" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -895,44 +893,6 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Border Grid.ColumnSpan="2"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
-                        <Border x:Name="SelectedBackgroundBorder"
-                                Grid.Column="0"
-                                Grid.ColumnSpan="2"
-                                Background="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource TemplatedParent}}"
-                                BorderBrush="{Binding Path=(p:ListBoxItemAssist.IsSelectedBorderBrush), RelativeSource={RelativeSource TemplatedParent}}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
-                        <Border x:Name="MouseOverBorder"
-                                Grid.Column="0"
-                                Grid.ColumnSpan="2"
-                                Background="{Binding Path=(p:ListBoxItemAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                Opacity="0" />
-                        <ctrl:PackIcon x:Name="IconControl"
-                                       Grid.Column="0"
-                                       Width="16"
-                                       Height="16"
-                                       Margin="-16 0 0 0"
-                                       VerticalAlignment="Center"
-                                       IsTabStop="False"
-                                       Kind="Check"
-                                       Visibility="{Binding Path=(p:CheckBoxAssist.ShowCheck), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
-                        <ContentControl x:Name="Content"
-                                        Grid.Column="1"
-                                        Margin="0 0 10 0"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Content="{TemplateBinding Content}"
-                                        ContentStringFormat="{TemplateBinding ContentTemplateSelector}"
-                                        ContentTemplate="{TemplateBinding ContentTemplate}"
-                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                        IsTabStop="False" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -1006,6 +966,44 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Border Grid.ColumnSpan="2"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Border x:Name="SelectedBackgroundBorder"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Background="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderBrush="{Binding Path=(p:ListBoxItemAssist.IsSelectedBorderBrush), RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Border x:Name="MouseOverBorder"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Background="{Binding Path=(p:ListBoxItemAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                Opacity="0" />
+                        <ctrl:PackIcon x:Name="IconControl"
+                                       Grid.Column="0"
+                                       Width="16"
+                                       Height="16"
+                                       Margin="-16 0 0 0"
+                                       VerticalAlignment="Center"
+                                       IsTabStop="False"
+                                       Kind="Check"
+                                       Visibility="{Binding Path=(p:CheckBoxAssist.ShowCheck), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+                        <ContentControl x:Name="Content"
+                                        Grid.Column="1"
+                                        Margin="0 0 10 0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding Content}"
+                                        ContentStringFormat="{TemplateBinding ContentTemplateSelector}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        IsTabStop="False" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
@@ -1018,86 +1016,78 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:CheckBoxAssist.ShowCheck" Value="{Binding Path=(p:CheckBoxAssist.ShowCheck), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="16" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ListBox.Chips" BasedOn="{StaticResource MyNet.Styles.ListBox.Tab}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Chips" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Tab}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Chip}" />
+        <Setter Property="SelectionMode" Value="Multiple" />
+        <Setter Property="p:CheckBoxAssist.ShowCheck" Value="False" />
+        <Setter Property="p:ListBoxAssist.IsToggle" Value="True" />
         <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="SelectionMode" Value="Multiple" />
-        <Setter Property="p:ListBoxAssist.IsToggle" Value="True" />
-        <Setter Property="p:CheckBoxAssist.ShowCheck" Value="False" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Chips.Accent" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Chips.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Chips.Foreground" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Chips.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Contrast=True}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ListBox.Chips.Alternate" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Chips.Alternate" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips}">
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Chip}" TargetType="{x:Type ListBoxItem}">
+                <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Chip}">
                     <Setter Property="BorderThickness" Value="1" />
                 </Style>
             </Setter.Value>
         </Setter>
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding SelfPath=(p:ListBoxItemAssist.IsSelectedForeground), Opacity={StaticResource MyNet.Opacity.Checked}}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ListBoxItemAssist.IsSelectedForeground)}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Chips.Alternate.Accent" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips.Alternate}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Chips.Alternate.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips.Alternate}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Chips.Alternate.Foreground" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips.Alternate}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Chips.Alternate.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips.Alternate}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ListBoxItem.Navigation" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}" TargetType="{x:Type ListBoxItem}">
-        <Setter Property="MinWidth" Value="0" />
-        <Setter Property="Width" Value="60" />
-        <Setter Property="Height" Value="60" />
-        <Setter Property="Margin" Value="0 4 0 2" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Secondary}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Style x:Key="MyNet.Styles.ListBoxItem.Navigation" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush">
             <Setter.Value>
                 <SolidColorBrush Opacity="0.0" Color="{DynamicResource MyNet.Colors.Control.Border}" />
             </Setter.Value>
         </Setter>
-        
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding Path=(p:HeaderAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
-        <Setter Property="p:HeaderAssist.Alignment" Value="Right" />
-        <Setter Property="KeyboardNavigation.IsTabStop" Value="True" />
         <Setter Property="Focusable" Value="True" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Secondary}" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="KeyboardNavigation.IsTabStop" Value="True" />
+        <Setter Property="Margin" Value="0 4 0 2" />
+        <Setter Property="MinWidth" Value="0" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
                     <ControlTemplate.Resources>
                         <Style TargetType="{x:Type ctrl:PackIcon}">
-                            <Setter Property="FrameworkElement.Width" Value="24" />
                             <Setter Property="FrameworkElement.Height" Value="24" />
+                            <Setter Property="FrameworkElement.Width" Value="24" />
                         </Style>
                         <Style TargetType="{x:Type ctrl:GeometryIcon}">
-                            <Setter Property="FrameworkElement.Width" Value="24" />
                             <Setter Property="FrameworkElement.Height" Value="24" />
+                            <Setter Property="FrameworkElement.Width" Value="24" />
                         </Style>
                     </ControlTemplate.Resources>
                     <Border x:Name="MainBorder"
@@ -1164,9 +1154,9 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="ActiveRectangle" Property="Opacity" Value="1.0" />
-                            <Setter TargetName="MainBorder" Property="Background" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                             <Setter TargetName="ElementContentPresenter" Property="Margin" Value="0" />
+                            <Setter TargetName="Icon" Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="MainBorder" Property="Background" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -1227,43 +1217,53 @@
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <Trigger Property="p:HeaderAssist.Alignment" Value="Bottom">
-                            <Setter TargetName="ActiveRectangle" Property="Width" Value="24" />
                             <Setter TargetName="ActiveRectangle" Property="Height" Value="4" />
-                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Bottom" />
                             <Setter TargetName="ActiveRectangle" Property="HorizontalAlignment" Value="Center" />
+                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Bottom" />
+                            <Setter TargetName="ActiveRectangle" Property="Width" Value="24" />
                         </Trigger>
                         <Trigger Property="p:HeaderAssist.Alignment" Value="Top">
-                            <Setter TargetName="ActiveRectangle" Property="Width" Value="24" />
                             <Setter TargetName="ActiveRectangle" Property="Height" Value="4" />
-                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Top" />
                             <Setter TargetName="ActiveRectangle" Property="HorizontalAlignment" Value="Center" />
+                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Top" />
+                            <Setter TargetName="ActiveRectangle" Property="Width" Value="24" />
                         </Trigger>
                         <Trigger Property="p:HeaderAssist.Alignment" Value="Right">
-                            <Setter TargetName="ActiveRectangle" Property="Width" Value="4" />
                             <Setter TargetName="ActiveRectangle" Property="Height" Value="24" />
-                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Center" />
                             <Setter TargetName="ActiveRectangle" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Center" />
+                            <Setter TargetName="ActiveRectangle" Property="Width" Value="4" />
                         </Trigger>
                         <Trigger Property="p:HeaderAssist.Alignment" Value="Left">
-                            <Setter TargetName="ActiveRectangle" Property="Width" Value="4" />
                             <Setter TargetName="ActiveRectangle" Property="Height" Value="24" />
-                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Center" />
                             <Setter TargetName="ActiveRectangle" Property="HorizontalAlignment" Value="Left" />
+                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Center" />
+                            <Setter TargetName="ActiveRectangle" Property="Width" Value="4" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="60" />
+        <Setter Property="p:HeaderAssist.Alignment" Value="Right" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding Path=(p:HeaderAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" />
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Navigation" BasedOn="{StaticResource MyNet.Styles.ListBox}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Navigation" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Navigation}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground.Tertiary}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Navigation.Accent" BasedOn="{StaticResource MyNet.Styles.ListBox.Navigation}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Navigation.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Navigation}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListBox.Navigation.Foreground" BasedOn="{StaticResource MyNet.Styles.ListBox.Navigation}" TargetType="{x:Type ListBox}">
+    <Style x:Key="MyNet.Styles.ListBox.Navigation.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Navigation}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>

@@ -18,7 +18,7 @@
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/MyNet.DropDownButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MyNet.Styles.Thumb.Embedded.GridViewColumnHeader" BasedOn="{StaticResource MyNet.Styles.Thumb}" TargetType="{x:Type Thumb}">
+    <Style x:Key="MyNet.Styles.Thumb.Embedded.GridViewColumnHeader" TargetType="{x:Type Thumb}" BasedOn="{StaticResource MyNet.Styles.Thumb}">
         <Setter Property="Cursor" Value="SizeWE" />
         <Setter Property="Width" Value="8" />
     </Style>
@@ -28,22 +28,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:ListSortDirectionIndicator}">
                     <Viewbox Margin="0 0 0 0">
-                        <Path x:Name="path"
-                              Width="24"
-                              Height="24"
-                              Data="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"
-                              Fill="{TemplateBinding Foreground}"
-                              RenderTransformOrigin="0.5,0.5"
-                              Stretch="Fill">
-                            <Path.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleY="0" />
-                                    <SkewTransform />
-                                    <RotateTransform />
-                                    <TranslateTransform />
-                                </TransformGroup>
-                            </Path.RenderTransform>
-                        </Path>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="Direction">
                                 <VisualStateGroup.Transitions>
@@ -177,17 +161,48 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Path x:Name="path"
+                              Width="24"
+                              Height="24"
+                              Data="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"
+                              Fill="{TemplateBinding Foreground}"
+                              RenderTransformOrigin="0.5,0.5"
+                              Stretch="Fill">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="0" />
+                                    <SkewTransform />
+                                    <RotateTransform />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
                     </Viewbox>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <!--  Specific Headers  -->
-    <Style x:Key="MyNet.Styles.DropDownButton.Specials.PresetColumns" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon.Foreground}" TargetType="{x:Type ctrl:DropDownButton}">
-        <Setter Property="ToolTip" Value="{me:Resource ShowColumns}" />
+    <!-- Specific Headers -->
+    <Style x:Key="MyNet.Styles.DropDownButton.Specials.PresetColumns" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon.Foreground}">
+        <Setter Property="PopupContent" Value="{Binding DataContext.Display.Mode.PresetColumns, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" />
+        <Setter Property="PopupContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <ctrl:Submenu ItemsSource="{Binding}">
+                        <ctrl:Submenu.ItemContainerStyle>
+                            <Style TargetType="MenuItem" BasedOn="{StaticResource MyNet.Styles.MenuItem}">
+                                <Setter Property="Command" Value="{Binding DataContext.Display.Mode.SetDisplayedColumnsCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" />
+                                <Setter Property="CommandParameter" Value="{Binding Item}" />
+                                <Setter Property="Header" Value="{Binding DisplayName.Value}" />
+                            </Style>
+                        </ctrl:Submenu.ItemContainerStyle>
+                    </ctrl:Submenu>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="PopupPadding" Value="0" />
         <Setter Property="ShowDropDownButton" Value="False" />
-        <Setter Property="Visibility" Value="{Binding DataContext.Display.Mode.PresetColumns.Count, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Converter={x:Static c:CountToVisibilityConverter.CollapsedIfNotAny}}" />
         <Setter Property="ToggleContentTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -195,43 +210,17 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="PopupContent" Value="{Binding DataContext.Display.Mode.PresetColumns, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" />
-        <Setter Property="PopupPadding" Value="0" />
-        <Setter Property="PopupContentTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <ctrl:Submenu ItemsSource="{Binding}">
-                        <ctrl:Submenu.ItemContainerStyle>
-                            <Style BasedOn="{StaticResource MyNet.Styles.MenuItem}" TargetType="MenuItem">
-                                <Setter Property="Header" Value="{Binding DisplayName.Value}" />
-                                <Setter Property="Command" Value="{Binding DataContext.Display.Mode.SetDisplayedColumnsCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" />
-                                <Setter Property="CommandParameter" Value="{Binding Item}" />
-                            </Style>
-                        </ctrl:Submenu.ItemContainerStyle>
-                    </ctrl:Submenu>
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Specials.ColumnsVisibility" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon.Foreground}" TargetType="{x:Type ctrl:DropDownButton}">
-        <Setter Property="StaysOpen" Value="True" />
-        <Setter Property="ShowDropDownButton" Value="False" />
         <Setter Property="ToolTip" Value="{me:Resource ShowColumns}" />
-        <Setter Property="ToggleContentTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <ctrl:PackIcon Width="18" Height="18" Kind="DotsVertical" />
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Visibility" Value="{Binding DataContext.Display.Mode.PresetColumns.Count, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Converter={x:Static c:CountToVisibilityConverter.CollapsedIfNotAny}}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.DropDownButton.Specials.ColumnsVisibility" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon.Foreground}">
         <Setter Property="PopupContent" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Path=(p:ListViewAssist.ColumnLayouts)}" />
-        <Setter Property="PopupPadding" Value="0" />
         <Setter Property="PopupContentTemplate">
             <Setter.Value>
                 <DataTemplate>
                     <ctrl:Submenu ItemsSource="{Binding}">
                         <ctrl:Submenu.ItemContainerStyle>
-                            <Style BasedOn="{StaticResource MyNet.Styles.MenuItem}" TargetType="MenuItem">
+                            <Style TargetType="MenuItem" BasedOn="{StaticResource MyNet.Styles.MenuItem}">
                                 <Setter Property="Header" Value="{Binding Column.Header}" />
                                 <Setter Property="IsCheckable" Value="True" />
                                 <Setter Property="IsChecked" Value="{Binding IsVisible}" />
@@ -243,6 +232,17 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="PopupPadding" Value="0" />
+        <Setter Property="ShowDropDownButton" Value="False" />
+        <Setter Property="StaysOpen" Value="True" />
+        <Setter Property="ToggleContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <ctrl:PackIcon Width="18" Height="18" Kind="DotsVertical" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ToolTip" Value="{me:Resource ShowColumns}" />
     </Style>
 
     <DataTemplate x:Key="MyNet.DataTemplates.ListView.ColumnsVisibility">
@@ -259,49 +259,49 @@
         </ctrl:SimpleStackPanel>
     </DataTemplate>
 
-    <!--  Embedded Controls  -->
-    <Style x:Key="MyNet.Styles.ComboBox.Embedded.ListView" BasedOn="{StaticResource MyNet.Styles.ComboBox}" TargetType="{x:Type ComboBox}">
+    <!-- Embedded Controls -->
+    <Style x:Key="MyNet.Styles.ComboBox.Embedded.ListView" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox}">
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" Value="True">
-                <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-                <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
                 <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+                <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+                <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.TextBox.Embedded.ListView" BasedOn="{StaticResource MyNet.Styles.TextBox}" TargetType="{x:Type TextBox}">
+    <Style x:Key="MyNet.Styles.TextBox.Embedded.ListView" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyNet.Styles.TextBox}">
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" Value="True">
+                <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
                 <Setter Property="CaretBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-                <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
                 <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
-                <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+                <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.NumericUpDown.Embedded.ListView" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}" TargetType="{x:Type ctrl:NumericUpDown}">
+    <Style x:Key="MyNet.Styles.NumericUpDown.Embedded.ListView" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}">
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" Value="True">
-                <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-                <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
                 <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+                <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+                <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.ColorPicker.Embedded.ListView" BasedOn="{StaticResource MyNet.Styles.ColorPicker}" TargetType="{x:Type ctrl:ColorPicker}">
+    <Style x:Key="MyNet.Styles.ColorPicker.Embedded.ListView" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker}">
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" Value="True">
-                <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-                <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
                 <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+                <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+                <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.CheckBox.Embedded.ListView" BasedOn="{StaticResource MyNet.Styles.CheckBox}" TargetType="{x:Type CheckBox}">
+    <Style x:Key="MyNet.Styles.CheckBox.Embedded.ListView" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox}">
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" Value="True">
                 <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
@@ -310,20 +310,16 @@
         </Style.Triggers>
     </Style>
 
-    <!--  Header  -->
+    <!-- Header -->
     <Style x:Key="MyNet.Styles.GridViewColumnHeader" TargetType="{x:Type GridViewColumnHeader}">
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="TextBlock.FontWeight" Value="{StaticResource MyNet.Font.Weight.Header}" />
-        <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="p:DataGridAssist.ColumnHeaderPadding" Value="8" />
-        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(p:DataGridAssist.ColumnHeaderPadding)}" />
-        <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="Opacity" Value="{DynamicResource MyNet.Opacity.Secondary}" />
+        <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Path=(p:ListViewAssist.HeaderHeight)}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Margin" Value="1 0" />
-        <Setter Property="p:GridViewColumnHeaderAssist.SortDirection" Value="{x:Null}" />
+        <Setter Property="Opacity" Value="{DynamicResource MyNet.Opacity.Secondary}" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(p:DataGridAssist.ColumnHeaderPadding)}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
@@ -387,12 +383,12 @@
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <Trigger Property="p:GridViewColumnHeaderAssist.CanSort" Value="False">
-                            <Setter Property="Opacity" Value="1" />
                             <Setter Property="Cursor" Value="{x:Null}" />
+                            <Setter Property="Opacity" Value="1" />
                         </Trigger>
                         <DataTrigger Binding="{Binding Path=(p:ListViewAssist.CanSort), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" Value="False">
-                            <Setter Property="Opacity" Value="1" />
                             <Setter Property="Cursor" Value="{x:Null}" />
+                            <Setter Property="Opacity" Value="1" />
                         </DataTrigger>
                         <Trigger SourceName="SortDirectionIndicator" Property="IsNeutral" Value="False">
                             <Trigger.EnterActions>
@@ -407,6 +403,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="TextBlock.FontWeight" Value="{StaticResource MyNet.Font.Weight.Header}" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="p:DataGridAssist.ColumnHeaderPadding" Value="8" />
+        <Setter Property="p:GridViewColumnHeaderAssist.SortDirection" Value="{x:Null}" />
         <Style.Triggers>
             <Trigger Property="Role" Value="Floating">
                 <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
@@ -433,30 +433,22 @@
         </Style.Triggers>
     </Style>
 
-    <!--  List View Item  -->
+    <!-- List View Item -->
     <Style x:Key="MyNet.Styles.ListViewItem" TargetType="{x:Type ListViewItem}">
         <Style.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.ToolBar.Tools}" TargetType="{x:Type ToolBar}">
+            <Style TargetType="{x:Type ToolBar}" BasedOn="{StaticResource MyNet.Styles.ToolBar.Tools}">
                 <Setter Property="Visibility" Value="{Binding IsMouseOver, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
             </Style>
         </Style.Resources>
-        <Setter Property="p:ListBoxItemAssist.ShowSelection" Value="{Binding Path=(p:ListBoxItemAssist.ShowSelection), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{Binding Path=(p:ListBoxItemAssist.IsMouseOverBackground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsMouseOverForeground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="ContextMenu" Value="{Binding Path=(p:ListViewAssist.ItemContextMenu), FallbackValue={x:Null}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="ContextMenu" Value="{Binding Path=(p:ListViewAssist.ItemContextMenu), FallbackValue={x:Null}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" />
         <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="p:ListViewAssist.ListViewItemPadding" Value="0" />
         <Setter Property="Margin" Value="0" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="MinHeight" Value="{Binding Path=(p:ListViewAssist.ItemMinHeight), FallbackValue=0, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListViewItem}">
@@ -466,28 +458,6 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             ClipToBounds="{TemplateBinding ClipToBounds}">
-                        <Grid>
-                            <Border x:Name="MouseOverBorder" Background="{Binding Path=(p:ListBoxItemAssist.IsMouseOverBackground), RelativeSource={RelativeSource TemplatedParent}}" Opacity="0" />
-                            <Border x:Name="SelectedBackgroundBorder" Background="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource TemplatedParent}}" Opacity="0" />
-
-                            <ctrl:Ripple x:Name="Ripple"
-                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                         ContentTemplate="{TemplateBinding ContentTemplate}"
-                                         ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                         Feedback="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-                                         Focusable="False"
-                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                                <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                                    <GridViewRowPresenter.Resources>
-                                        <Style BasedOn="{StaticResource {x:Type TextBlock}}" TargetType="{x:Type TextBlock}">
-                                            <Setter Property="TextWrapping" Value="NoWrap" />
-                                            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
-                                        </Style>
-                                    </GridViewRowPresenter.Resources>
-                                </GridViewRowPresenter>
-                            </ctrl:Ripple>
-                        </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -552,6 +522,28 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Grid>
+                            <Border x:Name="MouseOverBorder" Background="{Binding Path=(p:ListBoxItemAssist.IsMouseOverBackground), RelativeSource={RelativeSource TemplatedParent}}" Opacity="0" />
+                            <Border x:Name="SelectedBackgroundBorder" Background="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource TemplatedParent}}" Opacity="0" />
+
+                            <ctrl:Ripple x:Name="Ripple"
+                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         ContentTemplate="{TemplateBinding ContentTemplate}"
+                                         ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                         Feedback="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                         Focusable="False"
+                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                    <GridViewRowPresenter.Resources>
+                                        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                                            <Setter Property="TextWrapping" Value="NoWrap" />
+                                        </Style>
+                                    </GridViewRowPresenter.Resources>
+                                </GridViewRowPresenter>
+                            </ctrl:Ripple>
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
@@ -566,6 +558,14 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{Binding Path=(p:ListBoxItemAssist.IsMouseOverBackground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsMouseOverForeground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:ListBoxItemAssist.ShowSelection" Value="{Binding Path=(p:ListBoxItemAssist.ShowSelection), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:ListViewAssist.ListViewItemPadding" Value="0" />
         <Style.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
@@ -588,9 +588,8 @@
         </Style.Triggers>
     </Style>
 
-    <!--  List View  -->
+    <!-- List View -->
     <Style x:Key="MyNet.Style.DynamicScrollViewer.Embedded.ListView" TargetType="{x:Type ctrl:DynamicScrollViewer}">
-        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="{Binding Path=(p:ScrollViewerAssist.IsAutoHideEnabled), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:DynamicScrollViewer}">
@@ -650,32 +649,31 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="{Binding Path=(p:ScrollViewerAssist.IsAutoHideEnabled), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" />
     </Style>
 
     <Style x:Key="MyNet.Styles.ListView" TargetType="{x:Type ListView}">
-        <Setter Property="p:ListViewAssist.AutoResizeIsEnabled" Value="True" />
-        <Setter Property="p:ListViewAssist.CanSort" Value="True" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverForeground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.FontSize)}" />
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListViewItem}" />
-        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
-        <Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True" />
-        <Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling" />
-        <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue" />
-        <Setter Property="Focusable" Value="True" />
-        <Setter Property="SelectionMode" Value="Extended" />
         <Setter Property="AlternationCount" Value="2" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.FontSize)}" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListViewItem}" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel IsVirtualizing="{TemplateBinding VirtualizingPanel.IsVirtualizing}" VirtualizationMode="{TemplateBinding VirtualizingPanel.VirtualizationMode}" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="SelectionMode" Value="Extended" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListView}">
@@ -688,28 +686,30 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="ItemsPanel">
-            <Setter.Value>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel IsVirtualizing="{TemplateBinding VirtualizingPanel.IsVirtualizing}" VirtualizationMode="{TemplateBinding VirtualizingPanel.VirtualizationMode}" />
-                </ItemsPanelTemplate>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True" />
+        <Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling" />
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverForeground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ListViewAssist.AutoResizeIsEnabled" Value="True" />
+        <Setter Property="p:ListViewAssist.CanSort" Value="True" />
         <Style.Triggers>
             <Trigger Property="IsGrouping" Value="true">
                 <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.ListView.Accent" BasedOn="{StaticResource MyNet.Styles.ListView}" TargetType="{x:Type ListView}">
+    <Style x:Key="MyNet.Styles.ListView.Accent" TargetType="{x:Type ListView}" BasedOn="{StaticResource MyNet.Styles.ListView}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListView.Foreground" BasedOn="{StaticResource MyNet.Styles.ListView}" TargetType="{x:Type ListView}">
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Style x:Key="MyNet.Styles.ListView.Foreground" TargetType="{x:Type ListView}" BasedOn="{StaticResource MyNet.Styles.ListView}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ListView.Small" BasedOn="{StaticResource MyNet.Styles.ListView}" TargetType="{x:Type ListView}">
+    <Style x:Key="MyNet.Styles.ListView.Small" TargetType="{x:Type ListView}" BasedOn="{StaticResource MyNet.Styles.ListView}">
         <Setter Property="p:ListViewAssist.HeaderHeight" Value="35" />
     </Style>
 </ResourceDictionary>

@@ -11,10 +11,8 @@
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.Menu.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MyNet.Styles.RichTextEditor" BasedOn="{StaticResource MyNet.Styles.TextBox.Outlined}" TargetType="{x:Type ctrl:RichTextEditor}">
+    <Style x:Key="MyNet.Styles.RichTextEditor" TargetType="{x:Type ctrl:RichTextEditor}" BasedOn="{StaticResource MyNet.Styles.TextBox.Outlined}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Top" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:RichTextEditor}">
@@ -63,7 +61,7 @@
                                 <ctrl:DropDownButton ToggleContent="{me:ToolIcon Kind=FormatFont}" ToolTip="{me:Resource FontFamily}">
                                     <ctrl:Submenu x:Name="PART_FontFamilyMenu" MaxHeight="300">
                                         <ctrl:Submenu.ItemContainerStyle>
-                                            <Style BasedOn="{StaticResource MyNet.Styles.MenuItem}" TargetType="{x:Type MenuItem}">
+                                            <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MyNet.Styles.MenuItem}">
                                                 <Setter Property="FontFamily" Value="{Binding}" />
                                                 <Setter Property="ToolTip" Value="{Binding Header, RelativeSource={RelativeSource Self}}" />
                                             </Style>
@@ -73,7 +71,7 @@
                                 <ctrl:DropDownButton ToggleContent="{me:ToolIcon Kind=FormatColorHighlight}" ToolTip="{me:Resource Foreground}">
                                     <ctrl:Submenu x:Name="PART_ColorMenu" MaxHeight="300">
                                         <ctrl:Submenu.ItemContainerStyle>
-                                            <Style BasedOn="{StaticResource MyNet.Styles.MenuItem}" TargetType="{x:Type MenuItem}">
+                                            <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MyNet.Styles.MenuItem}">
                                                 <Setter Property="Header" Value="{Binding}" />
                                                 <Setter Property="HeaderTemplate">
                                                     <Setter.Value>
@@ -155,13 +153,13 @@
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                             <ctrl:DynamicScrollViewer x:Name="PART_ContentHost"
-                                                          Panel.ZIndex="1"
-                                                          p:ScrollViewerAssist.IgnorePadding="True"
-                                                          Focusable="false"
-                                                          HorizontalScrollBarVisibility="Hidden"
-                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                          UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
-                                                          VerticalScrollBarVisibility="Hidden" />
+                                                                      Panel.ZIndex="1"
+                                                                      p:ScrollViewerAssist.IgnorePadding="True"
+                                                                      Focusable="false"
+                                                                      HorizontalScrollBarVisibility="Hidden"
+                                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                                      UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
+                                                                      VerticalScrollBarVisibility="Hidden" />
                                             <ctrl:SmartHint x:Name="Hint"
                                                             Margin="{TemplateBinding p:TextFieldAssist.TextBoxViewMargin}"
                                                             FloatingOffset="{TemplateBinding p:HintAssist.FloatingOffset}"
@@ -181,7 +179,7 @@
                                     </Border>
                                 </AdornerDecorator>
 
-                                <!--  Helper text  -->
+                                <!-- Helper text -->
                                 <Canvas VerticalAlignment="Bottom">
                                     <Grid x:Name="FooterGrid" Canvas.Top="2" Width="{Binding ActualWidth, ElementName=border}">
                                         <TextBlock x:Name="HelperTextTextBlock" Style="{Binding Path=(p:HintAssist.HelperTextStyle), RelativeSource={RelativeSource TemplatedParent}}" />
@@ -192,7 +190,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
 
-                        <!--  IsKeyboardFocused  -->
+                        <!-- IsKeyboardFocused -->
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsKeyboardFocused" Value="True" />
@@ -200,7 +198,7 @@
                             <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
                         </MultiTrigger>
 
-                        <!--  IsMouseOver  -->
+                        <!-- IsMouseOver -->
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="True" />
@@ -209,28 +207,30 @@
                             <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsMouseOverBorderBrush), RelativeSource={RelativeSource Self}}" />
                         </MultiTrigger>
 
-                        <!--  Validation.HasError  -->
+                        <!-- Validation.HasError -->
                         <Trigger Property="Validation.HasError" Value="true">
                             <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Validation.Error}" />
                             <Setter TargetName="FooterGrid" Property="Visibility" Value="Collapsed" />
                         </Trigger>
 
-                        <!--  IsEnabled  -->
+                        <!-- IsEnabled -->
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
                         </Trigger>
 
-                        <!--  IsReadOnly  -->
+                        <!-- IsReadOnly -->
                         <Trigger Property="IsReadOnly" Value="True">
                             <Setter Property="Opacity" Value="1" />
-                            <Setter TargetName="grid" Property="Opacity" Value="1" />
                             <Setter TargetName="border" Property="Opacity" Value="1" />
                             <Setter TargetName="border" Property="ctrl:BottomDashedLineAdorner.IsAttached" Value="False" />
+                            <Setter TargetName="grid" Property="Opacity" Value="1" />
                         </Trigger>
 
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
     </Style>
 </ResourceDictionary>

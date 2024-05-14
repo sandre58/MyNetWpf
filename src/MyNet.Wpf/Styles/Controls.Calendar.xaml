@@ -11,9 +11,8 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.DateDisplayControl" TargetType="{x:Type ctrl:DateDisplayControl}">
-        <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
-        <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:DateDisplayControl}">
@@ -48,11 +47,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
     </Style>
 
     <Style x:Key="MyNet.Styles.Button.Embedded.Calendar.Header" TargetType="{x:Type Button}">
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="FontSize" Value="10.5" />
         <Setter Property="FontWeight" Value="{StaticResource MyNet.Font.Weight.Button}" />
@@ -60,6 +59,13 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid Cursor="Hand">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver" />
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                         <ctrl:DateDisplayControl x:Name="buttonContent"
                                                  Style="{StaticResource MyNet.Styles.DateDisplayControl}"
                                                  p:CalendarAssist.Orientation="{TemplateBinding p:CalendarAssist.Orientation}"
@@ -72,27 +78,18 @@
                                 </MultiBinding>
                             </ctrl:DateDisplayControl.DisplayDate>
                         </ctrl:DateDisplayControl>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver" />
-                                <VisualState x:Name="Disabled" />
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.CalendarButton" BasedOn="{StaticResource MyNet.Styles.Button.Text}" TargetType="{x:Type CalendarButton}">
+    <Style x:Key="MyNet.Styles.CalendarButton" TargetType="{x:Type CalendarButton}" BasedOn="{StaticResource MyNet.Styles.Button.Text}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size}" />
         <Setter Property="Height" Value="48" />
-        <Setter Property="Width" Value="48" />
         <Setter Property="Margin" Value="2" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CalendarButton}">
@@ -132,8 +129,8 @@
                             <Setter TargetName="HighlightBackground" Property="Opacity" Value="1" />
                         </Trigger>
                         <Trigger Property="HasSelectedDays" Value="True">
-                            <Setter TargetName="SelectedBackground" Property="Opacity" Value="1" />
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="SelectedBackground" Property="Opacity" Value="1" />
                         </Trigger>
                         <Trigger Property="IsInactive" Value="True">
                             <Setter TargetName="NormalText" Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
@@ -142,17 +139,16 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
-
-    <Style x:Key="MyNet.Styles.CalendarDayButton" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}" TargetType="{x:Type CalendarDayButton}">
-        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size}" />
-        <Setter Property="Height" Value="28" />
-        <Setter Property="Width" Value="28" />
-        <Setter Property="Margin" Value="2" />
-        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Width" Value="48" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.CalendarDayButton" TargetType="{x:Type CalendarDayButton}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size}" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="Margin" Value="2" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CalendarDayButton}">
@@ -186,8 +182,8 @@
                             <Setter TargetName="HoverEllipse" Property="Opacity" Value="1" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="SelectedBackground" Property="Opacity" Value="1" />
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="SelectedBackground" Property="Opacity" Value="1" />
                         </Trigger>
                         <Trigger Property="IsInactive" Value="True">
                             <Setter TargetName="NormalText" Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
@@ -199,6 +195,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Width" Value="28" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Style.Triggers>
             <Trigger Property="IsBlackedOut" Value="True">
                 <Setter Property="Cursor" Value="Arrow" />
@@ -260,8 +260,7 @@
                                         Margin="20 15"
                                         p:CalendarAssist.Orientation="{TemplateBinding p:CalendarAssist.Orientation}"
                                         Foreground="{TemplateBinding p:HeaderAssist.Foreground}"
-                                        Visibility="{TemplateBinding p:CalendarAssist.IsHeaderVisible,
-                                                                     Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+                                        Visibility="{TemplateBinding p:CalendarAssist.IsHeaderVisible, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
                                 <TextBlock x:Name="CurrentDateTextBlock"
                                            Grid.Row="1"
                                            Grid.Column="1"
@@ -521,29 +520,23 @@
     </Style>
 
     <Style x:Key="MyNet.Styles.Calendar.Portrait" TargetType="{x:Type Calendar}">
-        <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
         <Setter Property="CalendarButtonStyle" Value="{StaticResource MyNet.Styles.CalendarButton}" />
         <Setter Property="CalendarDayButtonStyle" Value="{StaticResource MyNet.Styles.CalendarDayButton}" />
         <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.Portrait}" />
-        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="p:CalendarAssist.Orientation" Value="Vertical" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
-        <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+        <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Calendar}">
                     <CalendarItem x:Name="PART_CalendarItem"
                                   Style="{TemplateBinding CalendarItemStyle}"
-                                  p:HeaderAssist.Background="{TemplateBinding p:HeaderAssist.Background}"
-                                  p:HeaderAssist.Foreground="{TemplateBinding p:HeaderAssist.Foreground}"
                                   p:CalendarAssist.IsHeaderVisible="{TemplateBinding p:CalendarAssist.IsHeaderVisible}"
                                   p:CalendarAssist.Orientation="{TemplateBinding p:CalendarAssist.Orientation}"
                                   p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}"
+                                  p:HeaderAssist.Background="{TemplateBinding p:HeaderAssist.Background}"
+                                  p:HeaderAssist.Foreground="{TemplateBinding p:HeaderAssist.Foreground}"
                                   Background="{TemplateBinding Background}"
                                   BorderBrush="{TemplateBinding BorderBrush}"
                                   BorderThickness="{TemplateBinding BorderThickness}"
@@ -551,5 +544,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+        <Setter Property="p:CalendarAssist.Orientation" Value="Vertical" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
     </Style>
 </ResourceDictionary>

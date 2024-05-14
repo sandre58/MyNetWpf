@@ -265,14 +265,14 @@
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Horizontal">
-                <Setter Property="Width" Value="Auto" />
                 <Setter Property="Height" Value="14" />
                 <Setter Property="Template" Value="{StaticResource MyNet.Templates.DynamicScrollBar.Horizontal}" />
+                <Setter Property="Width" Value="Auto" />
             </Trigger>
             <Trigger Property="Orientation" Value="Vertical">
-                <Setter Property="Width" Value="14" />
                 <Setter Property="Height" Value="Auto" />
                 <Setter Property="Template" Value="{StaticResource MyNet.Templates.DynamicScrollBar.Vertical}" />
+                <Setter Property="Width" Value="14" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
@@ -280,7 +280,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.DynamicScrollBar.Foreground" BasedOn="{StaticResource MyNet.Styles.DynamicScrollBar}" TargetType="{x:Type ctrl:DynamicScrollBar}">
+    <Style x:Key="MyNet.Styles.DynamicScrollBar.Foreground" TargetType="{x:Type ctrl:DynamicScrollBar}" BasedOn="{StaticResource MyNet.Styles.DynamicScrollBar}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 

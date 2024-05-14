@@ -37,44 +37,42 @@
 
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="{x:Static ctrl:Alignment.Left}">
-                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
-                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
-                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
                 <Setter TargetName="Content" Property="Grid.Column" Value="1" />
+                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
             </DataTrigger>
             <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="{x:Static ctrl:Alignment.Top}">
-                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
-                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
-                <Setter TargetName="Content" Property="Grid.Row" Value="1" />
                 <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Content" Property="Grid.Row" Value="1" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
             </DataTrigger>
             <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="{x:Static ctrl:Alignment.Right}">
-                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
-                <Setter TargetName="Icon" Property="Grid.Column" Value="1" />
-                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
                 <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="1" />
+                <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
             </DataTrigger>
             <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type TabItem}}}" Value="{x:Static ctrl:Alignment.Bottom}">
-                <Setter TargetName="Icon" Property="Grid.Row" Value="1" />
-                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
-                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
                 <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
+                <Setter TargetName="Icon" Property="Grid.Row" Value="1" />
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
 
     <Style x:Key="MyNet.Styles.TabItem" TargetType="{x:Type TabItem}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="HeaderTemplate" Value="{StaticResource MyNet.DataTemplates.Icon.TabItem}" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:TabControlAssist.IndicatorBrush), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
-        <Setter Property="p:RippleAssist.Feedback" Value="{Binding Path=(p:RippleAssist.Feedback), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
-        <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
-        <!--  Foreground is for the content, not the header  -->
-        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Path=(TextElement.Foreground)}" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="BorderThickness" Value="0 0 0 2" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
+        <!-- Foreground is for the content, not the header -->
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Path=(TextElement.Foreground)}" />
+        <Setter Property="HeaderTemplate" Value="{StaticResource MyNet.DataTemplates.Icon.TabItem}" />
         <Setter Property="Height" Value="{Binding Path=(p:TabControlAssist.TabItemHeight), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="MinWidth" Value="90" />
         <Setter Property="Padding" Value="16 12" />
         <Setter Property="Template">
@@ -116,6 +114,8 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{Binding Path=(p:RippleAssist.Feedback), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom">
                 <Setter Property="BorderThickness" Value="0 2 0 0" />
@@ -132,19 +132,9 @@
     <Style x:Key="MyNet.Styles.TabControl" TargetType="{x:Type TabControl}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-        <Setter Property="p:TabControlAssist.HeaderBackground" Value="Transparent" />
-        <Setter Property="p:TabControlAssist.HeaderForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-        <Setter Property="p:TabControlAssist.IndicatorBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:TabControlAssist.HeaderForeground)}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="Dp0" />
-        <Setter Property="p:ShadowAssist.ShadowEdges" Value="None" />
-        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.TabItem}" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="p:TabControlAssist.TabItemHeight" Value="48" />
-        <Setter Property="p:TabControlAssist.HasUniformTabWidth" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
@@ -199,7 +189,7 @@
                                                 Foreground="{Binding Path=(p:TabControlAssist.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}}"
                                                 Visibility="{Binding Path=(p:TabControlAssist.MoreContent), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}">
                                     <ContentControl.Resources>
-                                        <Style BasedOn="{StaticResource MyNet.Styles.Button.Icon.Foreground}" TargetType="{x:Type Button}">
+                                        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MyNet.Styles.Button.Icon.Foreground}">
                                             <Setter Property="Height" Value="22" />
                                             <Setter Property="Width" Value="22" />
                                         </Style>
@@ -293,96 +283,98 @@
 
 
                         <Trigger Property="TabStripPlacement" Value="Bottom">
-                            <Setter TargetName="PART_HeaderCard" Property="DockPanel.Dock" Value="Bottom" />
                             <Setter Property="p:ShadowAssist.ShadowEdges" Value="Top" />
+                            <Setter TargetName="PART_HeaderCard" Property="DockPanel.Dock" Value="Bottom" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Left">
-                            <Setter TargetName="PART_HeaderCard" Property="DockPanel.Dock" Value="Left" />
-                            <Setter TargetName="CenteredHeaderPanel" Property="Rows" Value="0" />
                             <Setter Property="p:ShadowAssist.ShadowEdges" Value="Right" />
                             <Setter TargetName="CenteredHeaderPanel" Property="Columns" Value="1" />
-                            <Setter TargetName="MoreContent" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="CenteredHeaderPanel" Property="Rows" Value="0" />
                             <Setter TargetName="MoreContent" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="MoreContent" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="PART_HeaderCard" Property="DockPanel.Dock" Value="Left" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Right">
-                            <Setter TargetName="PART_HeaderCard" Property="DockPanel.Dock" Value="Right" />
                             <Setter Property="p:ShadowAssist.ShadowEdges" Value="Left" />
-                            <Setter TargetName="CenteredHeaderPanel" Property="Rows" Value="0" />
                             <Setter TargetName="CenteredHeaderPanel" Property="Columns" Value="1" />
-                            <Setter TargetName="MoreContent" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="CenteredHeaderPanel" Property="Rows" Value="0" />
                             <Setter TargetName="MoreContent" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="MoreContent" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="PART_HeaderCard" Property="DockPanel.Dock" Value="Right" />
                         </Trigger>
 
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="Dp0" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:TabControlAssist.HeaderForeground)}" />
+        <Setter Property="p:ShadowAssist.ShadowEdges" Value="None" />
+        <Setter Property="p:TabControlAssist.HasUniformTabWidth" Value="True" />
+        <Setter Property="p:TabControlAssist.HeaderBackground" Value="Transparent" />
+        <Setter Property="p:TabControlAssist.HeaderForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:TabControlAssist.IndicatorBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:TabControlAssist.TabItemHeight" Value="48" />
+        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="0" />
     </Style>
-    <Style x:Key="MyNet.Styles.TabControl.Accent" BasedOn="{StaticResource MyNet.Styles.TabControl}" TargetType="{x:Type TabControl}">
+    <Style x:Key="MyNet.Styles.TabControl.Accent" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl}">
         <Setter Property="p:TabControlAssist.IndicatorBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.TabControl.Foreground" BasedOn="{StaticResource MyNet.Styles.TabControl}" TargetType="{x:Type TabControl}">
+    <Style x:Key="MyNet.Styles.TabControl.Foreground" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl}">
         <Setter Property="p:TabControlAssist.IndicatorBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.TabControl.Filled" BasedOn="{StaticResource MyNet.Styles.TabControl}" TargetType="{x:Type TabControl}">
-        <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+    <Style x:Key="MyNet.Styles.TabControl.Filled" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl}">
         <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
         <Setter Property="p:ShadowAssist.ShadowEdges" Value="Bottom" />
+        <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
         <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
     </Style>
-    <Style x:Key="MyNet.Styles.TabControl.Filled.Primary" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}" TargetType="{x:Type TabControl}">
+    <Style x:Key="MyNet.Styles.TabControl.Filled.Primary" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}">
         <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:TabControlAssist.HeaderForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="p:TabControlAssist.IndicatorBrush" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.TabControl.Filled.Accent" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}" TargetType="{x:Type TabControl}">
+    <Style x:Key="MyNet.Styles.TabControl.Filled.Accent" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}">
         <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:TabControlAssist.HeaderForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="p:TabControlAssist.IndicatorBrush" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.TabControl.Filled.Foreground" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}" TargetType="{x:Type TabControl}">
+    <Style x:Key="MyNet.Styles.TabControl.Filled.Foreground" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}">
         <Setter Property="p:TabControlAssist.HeaderBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="p:TabControlAssist.HeaderForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:TabControlAssist.IndicatorBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.TabItem.Navigation" BasedOn="{StaticResource MyNet.Styles.TabItem}" TargetType="{x:Type TabItem}">
-        <Setter Property="MinWidth" Value="0" />
-        <Setter Property="Width" Value="60" />
-        <Setter Property="Height" Value="60" />
-        <Setter Property="Margin" Value="0 4 0 2" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Secondary}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Style x:Key="MyNet.Styles.TabItem.Navigation" TargetType="{x:Type TabItem}" BasedOn="{StaticResource MyNet.Styles.TabItem}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush">
             <Setter.Value>
                 <SolidColorBrush Opacity="0.0" Color="{DynamicResource MyNet.Colors.Control.Border}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding Path=(p:ThemeAssist.IsMouseOverForeground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
-        <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding Path=(p:HeaderAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
-        <Setter Property="KeyboardNavigation.IsTabStop" Value="True" />
         <Setter Property="Focusable" Value="True" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Secondary}" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="KeyboardNavigation.IsTabStop" Value="True" />
+        <Setter Property="Margin" Value="0 4 0 2" />
+        <Setter Property="MinWidth" Value="0" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <ControlTemplate.Resources>
                         <Style TargetType="{x:Type ctrl:PackIcon}">
-                            <Setter Property="FrameworkElement.Width" Value="24" />
                             <Setter Property="FrameworkElement.Height" Value="24" />
+                            <Setter Property="FrameworkElement.Width" Value="24" />
                         </Style>
                         <Style TargetType="{x:Type ctrl:GeometryIcon}">
-                            <Setter Property="FrameworkElement.Width" Value="24" />
                             <Setter Property="FrameworkElement.Height" Value="24" />
+                            <Setter Property="FrameworkElement.Width" Value="24" />
                         </Style>
                     </ControlTemplate.Resources>
                     <Border x:Name="MainBorder"
@@ -449,9 +441,9 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="ActiveRectangle" Property="Opacity" Value="1.0" />
-                            <Setter TargetName="MainBorder" Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
-                            <Setter TargetName="Icon" Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                             <Setter TargetName="ElementContentPresenter" Property="Margin" Value="0" />
+                            <Setter TargetName="Icon" Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="MainBorder" Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -512,49 +504,57 @@
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <Trigger Property="TabStripPlacement" Value="Top">
-                            <Setter TargetName="ActiveRectangle" Property="Width" Value="24" />
                             <Setter TargetName="ActiveRectangle" Property="Height" Value="4" />
-                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Bottom" />
                             <Setter TargetName="ActiveRectangle" Property="HorizontalAlignment" Value="Center" />
+                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Bottom" />
+                            <Setter TargetName="ActiveRectangle" Property="Width" Value="24" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Bottom">
-                            <Setter TargetName="ActiveRectangle" Property="Width" Value="24" />
                             <Setter TargetName="ActiveRectangle" Property="Height" Value="4" />
-                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Top" />
                             <Setter TargetName="ActiveRectangle" Property="HorizontalAlignment" Value="Center" />
+                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Top" />
+                            <Setter TargetName="ActiveRectangle" Property="Width" Value="24" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Left">
-                            <Setter TargetName="ActiveRectangle" Property="Width" Value="4" />
                             <Setter TargetName="ActiveRectangle" Property="Height" Value="24" />
-                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Center" />
                             <Setter TargetName="ActiveRectangle" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Center" />
+                            <Setter TargetName="ActiveRectangle" Property="Width" Value="4" />
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Right">
-                            <Setter TargetName="ActiveRectangle" Property="Width" Value="4" />
                             <Setter TargetName="ActiveRectangle" Property="Height" Value="24" />
-                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Center" />
                             <Setter TargetName="ActiveRectangle" Property="HorizontalAlignment" Value="Left" />
+                            <Setter TargetName="ActiveRectangle" Property="VerticalAlignment" Value="Center" />
+                            <Setter TargetName="ActiveRectangle" Property="Width" Value="4" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="60" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding Path=(p:HeaderAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding Path=(p:ThemeAssist.IsMouseOverForeground), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.TabControl.Navigation" BasedOn="{StaticResource MyNet.Styles.TabControl}" TargetType="{x:Type TabControl}">
+    <Style x:Key="MyNet.Styles.TabControl.Navigation" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.TabItem.Navigation}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground.Tertiary}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground.Tertiary}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.TabControl.Navigation.Accent" BasedOn="{StaticResource MyNet.Styles.TabControl.Navigation}" TargetType="{x:Type TabControl}">
+    <Style x:Key="MyNet.Styles.TabControl.Navigation.Accent" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl.Navigation}">
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.TabControl.Navigation.Foreground" BasedOn="{StaticResource MyNet.Styles.TabControl.Navigation}" TargetType="{x:Type TabControl}">
+    <Style x:Key="MyNet.Styles.TabControl.Navigation.Foreground" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl.Navigation}">
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>

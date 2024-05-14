@@ -583,23 +583,15 @@
                        Height="{TemplateBinding p:SliderAssist.BarSize}"
                        VerticalAlignment="Center"
                        Fill="{DynamicResource MyNet.Brushes.Transparency.Small}"
-                       RadiusX="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}"
-                       RadiusY="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}"
+                       RadiusX="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
+                       RadiusY="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
                        Visibility="{Binding Path=(p:SliderAssist.ShowTransparencyBackground), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
             <Rectangle Grid.Row="1"
                        Height="{TemplateBinding p:SliderAssist.BarSize}"
                        VerticalAlignment="Center"
                        Fill="{TemplateBinding Background}"
-                       RadiusX="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}"
-                       RadiusY="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}" />
+                       RadiusX="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
+                       RadiusY="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}" />
             <Border x:Name="activeTrack"
                     Grid.Row="1"
                     Width="{Binding DecreaseRepeatButton.ActualWidth, ElementName=PART_Track}"
@@ -608,17 +600,13 @@
                     VerticalAlignment="Center"
                     Background="{TemplateBinding Foreground}"
                     CornerRadius="{Binding Path=RadiusX, ElementName=PART_SelectionRange, Converter={x:Static c:DoubleToCornerRadiusConverter.Left}}" />
-            <!--  Selection range must be wrapped in a Canvas for the position to be updated correctly  -->
+            <!-- Selection range must be wrapped in a Canvas for the position to be updated correctly -->
             <Canvas Grid.Row="1" Height="6" VerticalAlignment="Center">
                 <Rectangle x:Name="PART_SelectionRange"
                            Height="{TemplateBinding p:SliderAssist.ActiveBarSize}"
                            Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
-                           RadiusX="{TemplateBinding p:SliderAssist.ActiveBarSize,
-                                                     Converter={x:Static c:MathConverter.Divide},
-                                                     ConverterParameter=2}"
-                           RadiusY="{TemplateBinding p:SliderAssist.ActiveBarSize,
-                                                     Converter={x:Static c:MathConverter.Divide},
-                                                     ConverterParameter=2}"
+                           RadiusX="{TemplateBinding p:SliderAssist.ActiveBarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
+                           RadiusY="{TemplateBinding p:SliderAssist.ActiveBarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
                            Visibility="Collapsed" />
             </Canvas>
             <Track x:Name="PART_Track" Grid.Row="1" Height="20">
@@ -628,7 +616,7 @@
                 <Track.IncreaseRepeatButton>
                     <RepeatButton Style="{StaticResource MyNet.Styles.RepeatButton.Embedded.Slider}" Command="{x:Static Slider.IncreaseLarge}" />
                 </Track.IncreaseRepeatButton>
-                <!--  It's important that the Thumb gets added last in the XAML to make sure it is drawn on top of both repeat buttons  -->
+                <!-- It's important that the Thumb gets added last in the XAML to make sure it is drawn on top of both repeat buttons -->
                 <Track.Thumb>
                     <Thumb Foreground="{TemplateBinding p:SliderAssist.ThumbBackground}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Template="{StaticResource MyNet.Templates.Thumb.Embedded.Slider}" />
                 </Track.Thumb>
@@ -680,23 +668,15 @@
                        Width="{TemplateBinding p:SliderAssist.BarSize}"
                        HorizontalAlignment="Center"
                        Fill="{DynamicResource MyNet.Brushes.Transparency.Small}"
-                       RadiusX="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}"
-                       RadiusY="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}"
+                       RadiusX="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
+                       RadiusY="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
                        Visibility="{Binding Path=(p:SliderAssist.ShowTransparencyBackground), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
             <Rectangle Grid.Column="1"
                        Width="{TemplateBinding p:SliderAssist.BarSize}"
                        HorizontalAlignment="Center"
                        Fill="{TemplateBinding Background}"
-                       RadiusX="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}"
-                       RadiusY="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}" />
+                       RadiusX="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
+                       RadiusY="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}" />
             <Border x:Name="activeTrack"
                     Grid.Column="1"
                     Width="{TemplateBinding p:SliderAssist.ActiveBarSize}"
@@ -705,17 +685,13 @@
                     VerticalAlignment="Bottom"
                     Background="{TemplateBinding Foreground}"
                     CornerRadius="{Binding Path=RadiusX, ElementName=PART_SelectionRange, Converter={x:Static c:DoubleToCornerRadiusConverter.Bottom}}" />
-            <!--  Selection range must be wrapped in a Canvas for the position to be updated correctly  -->
+            <!-- Selection range must be wrapped in a Canvas for the position to be updated correctly -->
             <Canvas Grid.Column="1" Width="6" HorizontalAlignment="Center">
                 <Rectangle x:Name="PART_SelectionRange"
                            Width="{TemplateBinding p:SliderAssist.ActiveBarSize}"
                            Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
-                           RadiusX="{TemplateBinding p:SliderAssist.ActiveBarSize,
-                                                     Converter={x:Static c:MathConverter.Divide},
-                                                     ConverterParameter=2}"
-                           RadiusY="{TemplateBinding p:SliderAssist.ActiveBarSize,
-                                                     Converter={x:Static c:MathConverter.Divide},
-                                                     ConverterParameter=2}"
+                           RadiusX="{TemplateBinding p:SliderAssist.ActiveBarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
+                           RadiusY="{TemplateBinding p:SliderAssist.ActiveBarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
                            Visibility="Collapsed" />
             </Canvas>
             <Track x:Name="PART_Track" Grid.Column="1" Width="20">
@@ -725,7 +701,7 @@
                 <Track.IncreaseRepeatButton>
                     <RepeatButton Style="{StaticResource MyNet.Styles.RepeatButton.Embedded.Slider}" Command="{x:Static Slider.IncreaseLarge}" />
                 </Track.IncreaseRepeatButton>
-                <!--  It's important that the Thumb gets added last in the XAML to make sure it is drawn on top of both repeat buttons  -->
+                <!-- It's important that the Thumb gets added last in the XAML to make sure it is drawn on top of both repeat buttons -->
                 <Track.Thumb>
                     <Thumb Foreground="{TemplateBinding p:SliderAssist.ThumbBackground}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Template="{StaticResource MyNet.Templates.Thumb.Embedded.Slider}" />
                 </Track.Thumb>
@@ -777,23 +753,15 @@
                        Height="{TemplateBinding p:SliderAssist.BarSize}"
                        VerticalAlignment="Center"
                        Fill="{DynamicResource MyNet.Brushes.Transparency.Small}"
-                       RadiusX="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}"
-                       RadiusY="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}"
+                       RadiusX="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
+                       RadiusY="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
                        Visibility="{Binding Path=(p:SliderAssist.ShowTransparencyBackground), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
             <Rectangle Grid.Row="1"
                        Height="{TemplateBinding p:SliderAssist.BarSize}"
                        VerticalAlignment="Center"
                        Fill="{TemplateBinding Background}"
-                       RadiusX="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}"
-                       RadiusY="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}" />
+                       RadiusX="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
+                       RadiusY="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}" />
             <Border x:Name="activeTrack"
                     Grid.Row="1"
                     Width="{Binding DecreaseRepeatButton.ActualWidth, ElementName=PART_Track}"
@@ -802,17 +770,13 @@
                     VerticalAlignment="Center"
                     Background="{TemplateBinding Foreground}"
                     CornerRadius="{Binding Path=RadiusX, ElementName=PART_SelectionRange, Converter={x:Static c:DoubleToCornerRadiusConverter.Left}}" />
-            <!--  Selection range must be wrapped in a Canvas for the position to be updated correctly  -->
+            <!-- Selection range must be wrapped in a Canvas for the position to be updated correctly -->
             <Canvas Grid.Row="1" Height="6" VerticalAlignment="Center">
                 <Rectangle x:Name="PART_SelectionRange"
                            Height="{TemplateBinding p:SliderAssist.ActiveBarSize}"
                            Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
-                           RadiusX="{TemplateBinding p:SliderAssist.ActiveBarSize,
-                                                     Converter={x:Static c:MathConverter.Divide},
-                                                     ConverterParameter=2}"
-                           RadiusY="{TemplateBinding p:SliderAssist.ActiveBarSize,
-                                                     Converter={x:Static c:MathConverter.Divide},
-                                                     ConverterParameter=2}"
+                           RadiusX="{TemplateBinding p:SliderAssist.ActiveBarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
+                           RadiusY="{TemplateBinding p:SliderAssist.ActiveBarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
                            Visibility="Collapsed" />
             </Canvas>
             <Track x:Name="PART_Track" Grid.Row="1" Height="20">
@@ -822,7 +786,7 @@
                 <Track.IncreaseRepeatButton>
                     <RepeatButton Style="{StaticResource MyNet.Styles.RepeatButton.Embedded.Slider}" Command="{x:Static Slider.IncreaseLarge}" />
                 </Track.IncreaseRepeatButton>
-                <!--  It's important that the Thumb gets added last in the XAML to make sure it is drawn on top of both repeat buttons  -->
+                <!-- It's important that the Thumb gets added last in the XAML to make sure it is drawn on top of both repeat buttons -->
                 <Track.Thumb>
                     <Thumb Foreground="{TemplateBinding p:SliderAssist.ThumbBackground}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Template="{StaticResource MyNet.Templates.Thumb.Embedded.Slider.Discrete}" />
                 </Track.Thumb>
@@ -874,23 +838,15 @@
                        Width="{TemplateBinding p:SliderAssist.BarSize}"
                        HorizontalAlignment="Center"
                        Fill="{DynamicResource MyNet.Brushes.Transparency.Small}"
-                       RadiusX="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}"
-                       RadiusY="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}"
+                       RadiusX="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
+                       RadiusY="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
                        Visibility="{Binding Path=(p:SliderAssist.ShowTransparencyBackground), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
             <Rectangle Grid.Column="1"
                        Width="{TemplateBinding p:SliderAssist.BarSize}"
                        HorizontalAlignment="Center"
                        Fill="{TemplateBinding Background}"
-                       RadiusX="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}"
-                       RadiusY="{TemplateBinding p:SliderAssist.BarSize,
-                                                 Converter={x:Static c:MathConverter.Divide},
-                                                 ConverterParameter=2}" />
+                       RadiusX="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
+                       RadiusY="{TemplateBinding p:SliderAssist.BarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}" />
             <Border x:Name="activeTrack"
                     Grid.Column="1"
                     Width="{TemplateBinding p:SliderAssist.ActiveBarSize}"
@@ -899,17 +855,13 @@
                     VerticalAlignment="Bottom"
                     Background="{TemplateBinding Foreground}"
                     CornerRadius="{Binding Path=RadiusX, ElementName=PART_SelectionRange, Converter={x:Static c:DoubleToCornerRadiusConverter.Bottom}}" />
-            <!--  Selection range must be wrapped in a Canvas for the position to be updated correctly  -->
+            <!-- Selection range must be wrapped in a Canvas for the position to be updated correctly -->
             <Canvas Grid.Column="1" Width="6" HorizontalAlignment="Center">
                 <Rectangle x:Name="PART_SelectionRange"
                            Width="{TemplateBinding p:SliderAssist.ActiveBarSize}"
                            Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
-                           RadiusX="{TemplateBinding p:SliderAssist.ActiveBarSize,
-                                                     Converter={x:Static c:MathConverter.Divide},
-                                                     ConverterParameter=2}"
-                           RadiusY="{TemplateBinding p:SliderAssist.ActiveBarSize,
-                                                     Converter={x:Static c:MathConverter.Divide},
-                                                     ConverterParameter=2}"
+                           RadiusX="{TemplateBinding p:SliderAssist.ActiveBarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
+                           RadiusY="{TemplateBinding p:SliderAssist.ActiveBarSize, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=2}"
                            Visibility="Collapsed" />
             </Canvas>
             <Track x:Name="PART_Track" Grid.Column="1" Width="20">
@@ -919,7 +871,7 @@
                 <Track.IncreaseRepeatButton>
                     <RepeatButton Style="{StaticResource MyNet.Styles.RepeatButton.Embedded.Slider}" Command="{x:Static Slider.IncreaseLarge}" />
                 </Track.IncreaseRepeatButton>
-                <!--  It's important that the Thumb gets added last in the XAML to make sure it is drawn on top of both repeat buttons  -->
+                <!-- It's important that the Thumb gets added last in the XAML to make sure it is drawn on top of both repeat buttons -->
                 <Track.Thumb>
                     <Thumb Foreground="{TemplateBinding p:SliderAssist.ThumbBackground}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Template="{StaticResource MyNet.Templates.Thumb.Embedded.Slider.Discrete.Left}" />
                 </Track.Thumb>
@@ -947,20 +899,20 @@
     </ControlTemplate>
 
     <Style x:Key="MyNet.Styles.Slider" TargetType="{x:Type Slider}">
-        <Setter Property="Interval" Value="5" />
-        <Setter Property="SmallChange" Value="1" />
-        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:SliderAssist.ThumbBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
+        <Setter Property="Interval" Value="5" />
         <Setter Property="IsMoveToPointEnabled" Value="True" />
+        <Setter Property="SmallChange" Value="1" />
         <Setter Property="SnapsToDevicePixels" Value="False" />
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
         <Setter Property="Template" Value="{StaticResource MyNet.Templates.Slider.Horizontal}" />
         <Setter Property="UseLayoutRounding" Value="False" />
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+        <Setter Property="p:SliderAssist.ThumbBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Vertical">
                 <Setter Property="Template" Value="{StaticResource MyNet.Templates.Slider.Vertical}" />
@@ -971,7 +923,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.Slider.Discrete" BasedOn="{StaticResource MyNet.Styles.Slider}" TargetType="{x:Type Slider}">
+    <Style x:Key="MyNet.Styles.Slider.Discrete" TargetType="{x:Type Slider}" BasedOn="{StaticResource MyNet.Styles.Slider}">
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
@@ -988,9 +940,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.Slider.Colors.Hue" BasedOn="{StaticResource MyNet.Styles.Slider.Discrete}" TargetType="{x:Type Slider}">
-        <Setter Property="p:SliderAssist.BarSize" Value="6.0" />
-        <Setter Property="p:SliderAssist.ActiveBarSize" Value="{Binding Path=(p:SliderAssist.BarSize), RelativeSource={RelativeSource Self}}" />
+    <Style x:Key="MyNet.Styles.Slider.Colors.Hue" TargetType="{x:Type Slider}" BasedOn="{StaticResource MyNet.Styles.Slider.Discrete}">
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
@@ -1005,6 +955,13 @@
             </Setter.Value>
         </Setter>
         <Setter Property="Foreground" Value="Transparent" />
+        <Setter Property="IsMoveToPointEnabled" Value="True" />
+        <Setter Property="IsSnapToTickEnabled" Value="True" />
+        <Setter Property="Maximum" Value="360" />
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="TickFrequency" Value="1" />
+        <Setter Property="p:SliderAssist.ActiveBarSize" Value="{Binding Path=(p:SliderAssist.BarSize), RelativeSource={RelativeSource Self}}" />
+        <Setter Property="p:SliderAssist.BarSize" Value="6.0" />
         <Setter Property="p:SliderAssist.ThumbBackground">
             <Setter.Value>
                 <MultiBinding Converter="{x:Static c:HSVToSolidBrushConverter.Default}">
@@ -1014,11 +971,6 @@
                 </MultiBinding>
             </Setter.Value>
         </Setter>
-        <Setter Property="Maximum" Value="360" />
-        <Setter Property="Minimum" Value="0" />
-        <Setter Property="IsMoveToPointEnabled" Value="True" />
-        <Setter Property="IsSnapToTickEnabled" Value="True" />
-        <Setter Property="TickFrequency" Value="1" />
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Vertical">
                 <Setter Property="Background">
@@ -1038,7 +990,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.Slider.Colors.Saturation" BasedOn="{StaticResource MyNet.Styles.Slider.Colors.Hue}" TargetType="{x:Type Slider}">
+    <Style x:Key="MyNet.Styles.Slider.Colors.Saturation" TargetType="{x:Type Slider}" BasedOn="{StaticResource MyNet.Styles.Slider.Colors.Hue}">
         <Setter Property="Background">
             <Setter.Value>
                 <MultiBinding Converter="{x:Static c:HSVToGradientBrushConverter.Saturation}">
@@ -1075,7 +1027,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.Slider.Colors.Value" BasedOn="{StaticResource MyNet.Styles.Slider.Colors.Saturation}" TargetType="{x:Type Slider}">
+    <Style x:Key="MyNet.Styles.Slider.Colors.Value" TargetType="{x:Type Slider}" BasedOn="{StaticResource MyNet.Styles.Slider.Colors.Saturation}">
         <Setter Property="Background">
             <Setter.Value>
                 <MultiBinding Converter="{x:Static c:HSVToGradientBrushConverter.Value}">
@@ -1107,10 +1059,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.Slider.Colors.ARGB" BasedOn="{StaticResource MyNet.Styles.Slider.Colors.Hue}" TargetType="{x:Type Slider}">
-        <Setter Property="Maximum" Value="255" />
-        <Setter Property="Minimum" Value="0" />
-        <Setter Property="p:SliderAssist.ShowTransparencyBackground" Value="True" />
+    <Style x:Key="MyNet.Styles.Slider.Colors.ARGB" TargetType="{x:Type Slider}" BasedOn="{StaticResource MyNet.Styles.Slider.Colors.Hue}">
         <Setter Property="Background">
             <Setter.Value>
                 <MultiBinding Converter="{x:Static c:RGBAToGradientBrushConverter.Red}">
@@ -1120,6 +1069,9 @@
             </Setter.Value>
         </Setter>
         <Setter Property="Foreground" Value="Transparent" />
+        <Setter Property="Maximum" Value="255" />
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="p:SliderAssist.ShowTransparencyBackground" Value="True" />
         <Setter Property="p:SliderAssist.ThumbBackground">
             <Setter.Value>
                 <MultiBinding Converter="{x:Static c:RGBAToSolidBrushConverter.Default}">

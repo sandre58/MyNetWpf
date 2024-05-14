@@ -18,7 +18,7 @@
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="MyNet.Xaml.Merger.MSBuild" Version="2.0.0">
+    <PackageReference Include="MyNet.Xaml.Merger.MSBuild" Version="2.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -32,13 +32,13 @@
   <PropertyGroup>
     <XAMLColorSchemeGeneratorEnabled>False</XAMLColorSchemeGeneratorEnabled>
     <XAMLCombineEnabled>True</XAMLCombineEnabled>
-    <XAMLCombineImportMergedResourceDictionaryReferences>True</XAMLCombineImportMergedResourceDictionaryReferences>
     <RemoveXAMLCombineItemsFromPages>False</RemoveXAMLCombineItemsFromPages>
   </PropertyGroup>
 
   <ItemGroup>
     <XAMLCombineItems Include="Styles/*.xaml">
       <TargetFile>Themes/MyNet.Styles.xaml</TargetFile>
+      <ImportMergedResourceDictionaryReferences>True</ImportMergedResourceDictionaryReferences>
     </XAMLCombineItems>
   </ItemGroup>
 

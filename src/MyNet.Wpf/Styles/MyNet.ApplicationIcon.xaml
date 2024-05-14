@@ -10,17 +10,13 @@
 
     <Style x:Key="MyNet.Styles.ApplicationIcon" TargetType="{x:Type ctrl:ApplicationIcon}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="Dp4" />
-        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary.Dark}" />
-        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="FontFamily" Value="{StaticResource MyNet.Font.Family.Nuvel}" />
-        <Setter Property="IconSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.75}" />
-        <Setter Property="TextSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.55}" />
-        <Setter Property="FontSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:FontSizeConverter.Default}, ConverterParameter=0.4}" />
-        <Setter Property="TextBackground" Value="{Binding Background, RelativeSource={RelativeSource Self}, Converter={x:Static c:BrushConverter.Darken}}" />
-        <Setter Property="TextForeground" Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Focusable" Value="False" />
+        <Setter Property="FontFamily" Value="{StaticResource MyNet.Font.Family.Nuvel}" />
+        <Setter Property="FontSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:FontSizeConverter.Default}, ConverterParameter=0.4}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="IconSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.75}" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
@@ -54,5 +50,9 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="TextBackground" Value="{Binding Background, RelativeSource={RelativeSource Self}, Converter={x:Static c:BrushConverter.Darken}}" />
+        <Setter Property="TextForeground" Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="TextSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.55}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="Dp4" />
     </Style>
 </ResourceDictionary>

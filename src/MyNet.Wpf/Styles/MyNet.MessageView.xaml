@@ -14,8 +14,19 @@
 
     <sys:Double x:Key="MyNet.Widths.MessageView.Buttons">105</sys:Double>
 
-    <Style x:Key="MyNet.Styles.MessageView" BasedOn="{StaticResource MyNet.Styles.ContentDialog}" TargetType="{x:Type ctrl:MessageView}">
-        <Setter Property="ShowCloseButton" Value="True" />
+    <Style x:Key="MyNet.Styles.MessageView" TargetType="{x:Type ctrl:MessageView}" BasedOn="{StaticResource MyNet.Styles.ContentDialog}">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <ctrl:DynamicScrollViewer FocusVisualStyle="{x:Null}"
+                                              Focusable="False"
+                                              HorizontalScrollBarVisibility="Disabled"
+                                              VerticalScrollBarVisibility="Auto">
+                        <ContentControl Content="{Binding}" Focusable="False" />
+                    </ctrl:DynamicScrollViewer>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="FooterTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -120,17 +131,6 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="ContentTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <ctrl:DynamicScrollViewer FocusVisualStyle="{x:Null}"
-                                              Focusable="False"
-                                              HorizontalScrollBarVisibility="Disabled"
-                                              VerticalScrollBarVisibility="Auto">
-                        <ContentControl Content="{Binding}" Focusable="False" />
-                    </ctrl:DynamicScrollViewer>
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="ShowCloseButton" Value="True" />
     </Style>
 </ResourceDictionary>

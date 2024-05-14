@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:MyNet.Wpf.Converters"
                     xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
-                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters"
-                    xmlns:c="clr-namespace:MyNet.Wpf.Converters">
+                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters">
 
     <ControlTemplate x:Key="MyNet.Templates.Validation">
         <ControlTemplate.Resources>

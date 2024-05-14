@@ -3,9 +3,9 @@
                     xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls">
 
     <Style x:Key="MyNet.Styles.PopupEx" TargetType="{x:Type ctrl:PopupEx}">
+        <Setter Property="AllowsTransparency" Value="True" />
         <Setter Property="Placement" Value="Custom" />
         <Setter Property="PopupAnimation" Value="Slide" />
-        <Setter Property="AllowsTransparency" Value="True" />
     </Style>
 
 </ResourceDictionary>

@@ -9,25 +9,25 @@
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.Thumb.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MyNet.Styles.Thumb.Embedded.ScrollBar" BasedOn="{StaticResource MyNet.Styles.Thumb}" TargetType="{x:Type Thumb}">
+    <Style x:Key="MyNet.Styles.Thumb.Embedded.ScrollBar" TargetType="{x:Type Thumb}" BasedOn="{StaticResource MyNet.Styles.Thumb}">
         <Setter Property="Border.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Container}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.RepeatButton.Embedded.ScrollBar.Line" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Text}" TargetType="{x:Type RepeatButton}">
-        <Setter Property="Width" Value="12" />
-        <Setter Property="Height" Value="12" />
+    <Style x:Key="MyNet.Styles.RepeatButton.Embedded.ScrollBar.Line" TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Text}">
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Height" Value="12" />
         <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="12" />
     </Style>
 
     <Style x:Key="MyNet.Styles.RepeatButton.Embedded.ScrollBar.Page" TargetType="{x:Type RepeatButton}">
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
@@ -44,6 +44,27 @@
                 <RowDefinition Height="0.00001*" />
                 <RowDefinition Height="Auto" MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}" />
             </Grid.RowDefinitions>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Bg"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1"
+                                             Duration="0:0:0.2" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Bg"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="0.7"
+                                             Duration="0:0:0.2" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
             <Border Grid.Row="1" />
             <RepeatButton x:Name="PART_LineUpButton"
                           Style="{StaticResource MyNet.Styles.RepeatButton.Embedded.ScrollBar.Line}"
@@ -79,6 +100,16 @@
                           Foreground="{TemplateBinding Background}"
                           IsEnabled="{TemplateBinding IsMouseOver}"
                           Visibility="{Binding Path=(p:ScrollBarAssist.ButtonsVisibility), RelativeSource={RelativeSource TemplatedParent}}" />
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MyNet.Templates.ScrollBar.Horizontal" TargetType="{x:Type ScrollBar}">
+        <Grid x:Name="Bg" Opacity="{StaticResource MyNet.Opacity.Secondary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MaxWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}" />
+                <ColumnDefinition Width="0.00001*" />
+                <ColumnDefinition Width="Auto" MaxWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}" />
+            </Grid.ColumnDefinitions>
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal" />
@@ -100,16 +131,6 @@
                     </VisualState>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-        </Grid>
-    </ControlTemplate>
-
-    <ControlTemplate x:Key="MyNet.Templates.ScrollBar.Horizontal" TargetType="{x:Type ScrollBar}">
-        <Grid x:Name="Bg" Opacity="{StaticResource MyNet.Opacity.Secondary}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" MaxWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}" />
-                <ColumnDefinition Width="0.00001*" />
-                <ColumnDefinition Width="Auto" MaxWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}" />
-            </Grid.ColumnDefinitions>
             <Border Grid.Column="1" />
             <RepeatButton x:Name="PART_LineLeftButton"
                           Style="{StaticResource MyNet.Styles.RepeatButton.Embedded.ScrollBar.Line}"
@@ -142,73 +163,52 @@
                           Foreground="{TemplateBinding Background}"
                           IsEnabled="{TemplateBinding IsMouseOver}"
                           Visibility="{Binding Path=(p:ScrollBarAssist.ButtonsVisibility), RelativeSource={RelativeSource TemplatedParent}}" />
-            <VisualStateManager.VisualStateGroups>
-                <VisualStateGroup x:Name="CommonStates">
-                    <VisualState x:Name="Normal" />
-                    <VisualState x:Name="MouseOver">
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="Bg"
-                                             Storyboard.TargetProperty="Opacity"
-                                             To="1"
-                                             Duration="0:0:0.2" />
-                        </Storyboard>
-                    </VisualState>
-                    <VisualState x:Name="Disabled">
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="Bg"
-                                             Storyboard.TargetProperty="Opacity"
-                                             To="0.7"
-                                             Duration="0:0:0.2" />
-                        </Storyboard>
-                    </VisualState>
-                </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
         </Grid>
     </ControlTemplate>
 
     <Style x:Key="MyNet.Styles.ScrollBar" TargetType="{x:Type ScrollBar}">
-        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
-        <Setter Property="p:ScrollBarAssist.ButtonsVisibility" Value="{Binding Path=(p:ScrollBarAssist.ButtonsVisibility), RelativeSource={RelativeSource AncestorType={x:Type ScrollViewer}}}" />
-        <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="p:ScrollBarAssist.ThumbWidth" Value="14" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
+        <Setter Property="p:ScrollBarAssist.ButtonsVisibility" Value="{Binding Path=(p:ScrollBarAssist.ButtonsVisibility), RelativeSource={RelativeSource AncestorType={x:Type ScrollViewer}}}" />
         <Setter Property="p:ScrollBarAssist.ThumbHeight" Value="14" />
+        <Setter Property="p:ScrollBarAssist.ThumbWidth" Value="14" />
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
             </Trigger>
             <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="BorderThickness" Value="0 1" />
                 <Setter Property="Height" Value="{Binding Path=(p:ScrollBarAssist.ThumbHeight), RelativeSource={RelativeSource Self}}" />
                 <Setter Property="MinHeight" Value="{Binding Path=(p:ScrollBarAssist.ThumbHeight), RelativeSource={RelativeSource Self}}" />
-                <Setter Property="Width" Value="Auto" />
                 <Setter Property="MinWidth" Value="0" />
-                <Setter Property="BorderThickness" Value="0 1" />
                 <Setter Property="Template" Value="{StaticResource MyNet.Templates.ScrollBar.Horizontal}" />
+                <Setter Property="Width" Value="Auto" />
             </Trigger>
             <Trigger Property="Orientation" Value="Vertical">
-                <Setter Property="Width" Value="{Binding Path=(p:ScrollBarAssist.ThumbWidth), RelativeSource={RelativeSource Self}}" />
-                <Setter Property="MinWidth" Value="{Binding Path=(p:ScrollBarAssist.ThumbWidth), RelativeSource={RelativeSource Self}}" />
+                <Setter Property="BorderThickness" Value="1 0" />
                 <Setter Property="Height" Value="Auto" />
                 <Setter Property="MinHeight" Value="0" />
-                <Setter Property="BorderThickness" Value="1 0" />
+                <Setter Property="MinWidth" Value="{Binding Path=(p:ScrollBarAssist.ThumbWidth), RelativeSource={RelativeSource Self}}" />
                 <Setter Property="Template" Value="{StaticResource MyNet.Templates.ScrollBar.Vertical}" />
+                <Setter Property="Width" Value="{Binding Path=(p:ScrollBarAssist.ThumbWidth), RelativeSource={RelativeSource Self}}" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.ScrollBar.Foreground" BasedOn="{StaticResource MyNet.Styles.ScrollBar}" TargetType="{x:Type ScrollBar}">
+    <Style x:Key="MyNet.Styles.ScrollBar.Foreground" TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource MyNet.Styles.ScrollBar}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
-    
-    <Style x:Key="MyNet.Styles.ScrollBar.Small" BasedOn="{StaticResource MyNet.Styles.ScrollBar}" TargetType="{x:Type ScrollBar}">
+
+    <Style x:Key="MyNet.Styles.ScrollBar.Small" TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource MyNet.Styles.ScrollBar}">
         <Setter Property="p:ScrollBarAssist.ThumbCornerRadius" Value="7" />
-        <Setter Property="p:ScrollBarAssist.ThumbWidth" Value="7" />
         <Setter Property="p:ScrollBarAssist.ThumbHeight" Value="7" />
+        <Setter Property="p:ScrollBarAssist.ThumbWidth" Value="7" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ScrollBar.Small.Foreground" BasedOn="{StaticResource MyNet.Styles.ScrollBar.Small}" TargetType="{x:Type ScrollBar}">
+    <Style x:Key="MyNet.Styles.ScrollBar.Small.Foreground" TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource MyNet.Styles.ScrollBar.Small}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 </ResourceDictionary>

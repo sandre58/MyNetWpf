@@ -15,30 +15,10 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Height" Value="16" />
-        <Setter Property="Width" Value="16" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}">
-                        <Viewbox>
-                            <Canvas Width="24" Height="24">
-                                <Path x:Name="ExpandPath"
-                                      Data="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-                                      Fill="{TemplateBinding Foreground}"
-                                      RenderTransformOrigin=".5,.5"
-                                      SnapsToDevicePixels="True"
-                                      Stroke="{TemplateBinding Foreground}">
-                                    <Path.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform />
-                                            <SkewTransform />
-                                            <RotateTransform Angle="0" CenterX="4" CenterY="4" />
-                                            <TranslateTransform />
-                                        </TransformGroup>
-                                    </Path.RenderTransform>
-                                </Path>
-                            </Canvas>
-                        </Viewbox>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualStateGroup.Transitions>
@@ -95,10 +75,30 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Viewbox>
+                            <Canvas Width="24" Height="24">
+                                <Path x:Name="ExpandPath"
+                                      Data="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+                                      Fill="{TemplateBinding Foreground}"
+                                      RenderTransformOrigin=".5,.5"
+                                      SnapsToDevicePixels="True"
+                                      Stroke="{TemplateBinding Foreground}">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform />
+                                            <SkewTransform />
+                                            <RotateTransform Angle="0" CenterX="4" CenterY="4" />
+                                            <TranslateTransform />
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Canvas>
+                        </Viewbox>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Width" Value="16" />
     </Style>
 
     <Style x:Key="MyNet.Styles.TreeViewItem" TargetType="{x:Type TreeViewItem}">
@@ -108,12 +108,6 @@
         <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type TreeView}}}" />
         <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Padding" Value="8" />
-        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:TreeViewAssist.ExpanderSize" Value="16" />
-        <Setter Property="p:TreeViewAssist.HasNoItemsExpanderVisibility" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=(p:TreeViewAssist.HasNoItemsExpanderVisibility)}" />
-        <Setter Property="p:TreeViewAssist.ShowSelection" Value="True" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TreeViewItem}">
@@ -128,71 +122,6 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <ctrl:ScaleHost x:Name="ScaleHost" />
-                        <ToggleButton x:Name="Expander"
-                                      Style="{StaticResource MyNet.Styles.ToggleButton.Embedded.TreeViewItem}"
-                                      Width="{TemplateBinding p:TreeViewAssist.ExpanderSize}"
-                                      Height="{TemplateBinding p:TreeViewAssist.ExpanderSize}"
-                                      Margin="8 0 8 0"
-                                      VerticalAlignment="Center"
-                                      ClickMode="Press"
-                                      Foreground="{TemplateBinding Foreground}"
-                                      IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" />
-
-                        <Border x:Name="MouseOverBorder"
-                                Grid.Column="1"
-                                Grid.ColumnSpan="2"
-                                Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                IsHitTestVisible="False"
-                                Opacity="0" />
-
-                        <Border x:Name="SelectedBorder"
-                                Grid.Column="1"
-                                Grid.ColumnSpan="2"
-                                Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                IsHitTestVisible="False"
-                                Opacity="0" />
-
-                        <Grid x:Name="ContentGrid"
-                              Grid.Column="1"
-                              Grid.ColumnSpan="2"
-                              Background="{TemplateBinding Background}">
-                            <ctrl:Ripple x:Name="Ripple"
-                                         Padding="{TemplateBinding Padding}"
-                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                         Feedback="{TemplateBinding Foreground}"
-                                         Focusable="False"
-                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                                <ContentPresenter x:Name="PART_Header" ContentSource="Header" />
-                            </ctrl:Ripple>
-                        </Grid>
-
-                        <ContentControl x:Name="AdditionalContentControl"
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        Grid.ColumnSpan="2"
-                                        Content="{TemplateBinding Header}"
-                                        ContentTemplate="{Binding RelativeSource={RelativeSource Self}, Path=(p:TreeViewAssist.AdditionalTemplate)}"
-                                        ContentTemplateSelector="{Binding RelativeSource={RelativeSource Self}, Path=(p:TreeViewAssist.AdditionalTemplateSelector)}"
-                                        Visibility="Collapsed" />
-
-                        <StackPanel x:Name="ItemsPanel"
-                                    Grid.Row="2"
-                                    Grid.Column="1"
-                                    Grid.ColumnSpan="2"
-                                    Margin="-16 0 0 0">
-                            <StackPanel.Height>
-                                <MultiBinding Converter="{x:Static c:MathConverter.Multiply}">
-                                    <Binding ElementName="ItemsHost" Path="ActualHeight" />
-                                    <Binding ElementName="ScaleHost" Path="Scale" />
-                                </MultiBinding>
-                            </StackPanel.Height>
-                            <ItemsPresenter x:Name="ItemsHost"
-                                            VerticalAlignment="Top"
-                                            Opacity="0"
-                                            Visibility="Collapsed" />
-                        </StackPanel>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -302,6 +231,71 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <ctrl:ScaleHost x:Name="ScaleHost" />
+                        <ToggleButton x:Name="Expander"
+                                      Style="{StaticResource MyNet.Styles.ToggleButton.Embedded.TreeViewItem}"
+                                      Width="{TemplateBinding p:TreeViewAssist.ExpanderSize}"
+                                      Height="{TemplateBinding p:TreeViewAssist.ExpanderSize}"
+                                      Margin="8 0 8 0"
+                                      VerticalAlignment="Center"
+                                      ClickMode="Press"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                        <Border x:Name="MouseOverBorder"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                IsHitTestVisible="False"
+                                Opacity="0" />
+
+                        <Border x:Name="SelectedBorder"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                IsHitTestVisible="False"
+                                Opacity="0" />
+
+                        <Grid x:Name="ContentGrid"
+                              Grid.Column="1"
+                              Grid.ColumnSpan="2"
+                              Background="{TemplateBinding Background}">
+                            <ctrl:Ripple x:Name="Ripple"
+                                         Padding="{TemplateBinding Padding}"
+                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         Feedback="{TemplateBinding Foreground}"
+                                         Focusable="False"
+                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                <ContentPresenter x:Name="PART_Header" ContentSource="Header" />
+                            </ctrl:Ripple>
+                        </Grid>
+
+                        <ContentControl x:Name="AdditionalContentControl"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Grid.ColumnSpan="2"
+                                        Content="{TemplateBinding Header}"
+                                        ContentTemplate="{Binding RelativeSource={RelativeSource Self}, Path=(p:TreeViewAssist.AdditionalTemplate)}"
+                                        ContentTemplateSelector="{Binding RelativeSource={RelativeSource Self}, Path=(p:TreeViewAssist.AdditionalTemplateSelector)}"
+                                        Visibility="Collapsed" />
+
+                        <StackPanel x:Name="ItemsPanel"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    Margin="-16 0 0 0">
+                            <StackPanel.Height>
+                                <MultiBinding Converter="{x:Static c:MathConverter.Multiply}">
+                                    <Binding ElementName="ItemsHost" Path="ActualHeight" />
+                                    <Binding ElementName="ScaleHost" Path="Scale" />
+                                </MultiBinding>
+                            </StackPanel.Height>
+                            <ItemsPresenter x:Name="ItemsHost"
+                                            VerticalAlignment="Top"
+                                            Opacity="0"
+                                            Visibility="Collapsed" />
+                        </StackPanel>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(p:TreeViewAssist.AdditionalTemplate), Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}, Mode=OneWay}" Value="Visible">
@@ -318,13 +312,19 @@
                         </Trigger>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(p:TreeViewAssist.ShowSelection)}" Value="False">
                             <Setter TargetName="MouseOverBorder" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="SelectedBorder" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="Ripple" Property="Feedback" Value="Transparent" />
+                            <Setter TargetName="SelectedBorder" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="p:TreeViewAssist.ExpanderSize" Value="16" />
+        <Setter Property="p:TreeViewAssist.HasNoItemsExpanderVisibility" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=(p:TreeViewAssist.HasNoItemsExpanderVisibility)}" />
+        <Setter Property="p:TreeViewAssist.ShowSelection" Value="True" />
         <Style.Triggers>
             <Trigger Property="VirtualizingPanel.IsVirtualizing" Value="true">
                 <Setter Property="ItemsPanel">
@@ -339,23 +339,18 @@
     </Style>
 
     <Style x:Key="MyNet.Styles.TreeView" TargetType="{x:Type TreeView}">
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
-        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
-        <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{x:Null}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-        <Setter Property="Padding" Value="1" />
-        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-        <Setter Property="p:TreeViewAssist.HasNoItemsExpanderVisibility" Value="Hidden" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.TreeViewItem}" />
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue" />
+        <Setter Property="Padding" Value="1" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden" />
+        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TreeView}">
@@ -366,13 +361,13 @@
                             SnapsToDevicePixels="true">
                         <ContentControl x:Name="ContentControl">
                             <ctrl:DynamicScrollViewer x:Name="_tv_scrollviewer_"
-                                          Padding="{TemplateBinding Padding}"
-                                          Background="{TemplateBinding Background}"
-                                          CanContentScroll="false"
-                                          Focusable="false"
-                                          HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                                      Padding="{TemplateBinding Padding}"
+                                                      Background="{TemplateBinding Background}"
+                                                      CanContentScroll="false"
+                                                      Focusable="false"
+                                                      HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                      VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                                 <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             </ctrl:DynamicScrollViewer>
                         </ContentControl>
@@ -385,6 +380,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:TreeViewAssist.HasNoItemsExpanderVisibility" Value="Hidden" />
         <Style.Triggers>
             <Trigger Property="VirtualizingPanel.IsVirtualizing" Value="true">
                 <Setter Property="ItemsPanel">

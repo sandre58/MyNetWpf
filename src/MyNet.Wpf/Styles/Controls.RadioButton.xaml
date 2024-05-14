@@ -13,36 +13,36 @@
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/MyNet.GeometryIcon.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MyNet.Styles.RadioButton" BasedOn="{StaticResource MyNet.Styles.CheckBox}" TargetType="{x:Type RadioButton}">
-        <Setter Property="p:CheckBoxAssist.UncheckedPath" Value="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+    <Style x:Key="MyNet.Styles.RadioButton" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource MyNet.Styles.CheckBox}">
         <Setter Property="p:CheckBoxAssist.CheckedPath" Value="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7Z" />
         <Setter Property="p:CheckBoxAssist.IndeterminatePath" Value="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7Z" />
+        <Setter Property="p:CheckBoxAssist.UncheckedPath" Value="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
     </Style>
-    <Style x:Key="MyNet.Styles.RadioButton.Accent" BasedOn="{StaticResource MyNet.Styles.RadioButton}" TargetType="{x:Type RadioButton}">
+    <Style x:Key="MyNet.Styles.RadioButton.Accent" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource MyNet.Styles.RadioButton}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.RadioButton.Foreground" BasedOn="{StaticResource MyNet.Styles.RadioButton}" TargetType="{x:Type RadioButton}">
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Style x:Key="MyNet.Styles.RadioButton.Foreground" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource MyNet.Styles.RadioButton}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.RadioButton.Chip" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip}" TargetType="{x:Type RadioButton}">
+    <Style x:Key="MyNet.Styles.RadioButton.Chip" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip}">
         <Setter Property="p:CheckBoxAssist.ShowCheck" Value="False" />
     </Style>
-    <Style x:Key="MyNet.Styles.RadioButton.Chip.Accent" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Accent}" TargetType="{x:Type RadioButton}">
+    <Style x:Key="MyNet.Styles.RadioButton.Chip.Accent" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Accent}">
         <Setter Property="p:CheckBoxAssist.ShowCheck" Value="False" />
     </Style>
-    <Style x:Key="MyNet.Styles.RadioButton.Chip.Foreground" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Foreground}" TargetType="{x:Type RadioButton}">
+    <Style x:Key="MyNet.Styles.RadioButton.Chip.Foreground" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Foreground}">
         <Setter Property="p:CheckBoxAssist.ShowCheck" Value="False" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.RadioButton.Chip.Alternate" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Alternate}" TargetType="{x:Type RadioButton}">
+    <Style x:Key="MyNet.Styles.RadioButton.Chip.Alternate" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Alternate}">
         <Setter Property="p:CheckBoxAssist.ShowCheck" Value="False" />
     </Style>
-    <Style x:Key="MyNet.Styles.RadioButton.Chip.Alternate.Accent" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Alternate.Accent}" TargetType="{x:Type RadioButton}">
+    <Style x:Key="MyNet.Styles.RadioButton.Chip.Alternate.Accent" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Alternate.Accent}">
         <Setter Property="p:CheckBoxAssist.ShowCheck" Value="False" />
     </Style>
-    <Style x:Key="MyNet.Styles.RadioButton.Chip.Alternate.Foreground" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Alternate.Foreground}" TargetType="{x:Type RadioButton}">
+    <Style x:Key="MyNet.Styles.RadioButton.Chip.Alternate.Foreground" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Alternate.Foreground}">
         <Setter Property="p:CheckBoxAssist.ShowCheck" Value="False" />
     </Style>
 
@@ -50,24 +50,24 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="BorderThickness" Value="0 0 0 2" />
+        <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Icon}" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="MinHeight" Value="32" />
         <Setter Property="MinWidth" Value="80" />
         <Setter Property="Padding" Value="16 4 16 4" />
-        <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Icon}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
                     <ControlTemplate.Resources>
-                        <Style BasedOn="{StaticResource MyNet.Styles.PackIcon}" TargetType="{x:Type ctrl:PackIcon}">
-                            <Setter Property="Width" Value="24" />
+                        <Style TargetType="{x:Type ctrl:PackIcon}" BasedOn="{StaticResource MyNet.Styles.PackIcon}">
                             <Setter Property="Height" Value="24" />
+                            <Setter Property="Width" Value="24" />
                         </Style>
-                        <Style BasedOn="{StaticResource MyNet.Styles.GeometryIcon}" TargetType="{x:Type ctrl:GeometryIcon}">
-                            <Setter Property="Width" Value="24" />
+                        <Style TargetType="{x:Type ctrl:GeometryIcon}" BasedOn="{StaticResource MyNet.Styles.GeometryIcon}">
                             <Setter Property="Height" Value="24" />
+                            <Setter Property="Width" Value="24" />
                         </Style>
                     </ControlTemplate.Resources>
                     <Grid SnapsToDevicePixels="true">
@@ -89,8 +89,8 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="contentPresenter" Property="Opacity" Value="1.0" />
                             <Setter TargetName="SelectionHighlightBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="contentPresenter" Property="Opacity" Value="1.0" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>

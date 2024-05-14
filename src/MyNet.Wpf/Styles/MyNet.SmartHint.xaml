@@ -8,25 +8,13 @@
 
     <Style x:Key="MyNet.Styles.SmartHint" TargetType="{x:Type ctrl:SmartHint}">
         <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="VerticalContentAlignment" Value="Bottom" />
         <Setter Property="IsHitTestVisible" Value="False" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:SmartHint}">
                     <Grid Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
-                        <ContentControl x:Name="SimpleHintTextBlock"
-                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                        Content="{TemplateBinding Hint}"
-                                        FontSize="{TemplateBinding FontSize}"
-                                        IsHitTestVisible="False"
-                                        IsTabStop="False"
-                                        Opacity="{TemplateBinding HintOpacity}"
-                                        Visibility="{TemplateBinding UseFloating,
-                                                                     Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="ContentStates">
                                 <VisualStateGroup.Transitions>
@@ -62,41 +50,27 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <ContentControl x:Name="SimpleHintTextBlock"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Content="{TemplateBinding Hint}"
+                                        FontSize="{TemplateBinding FontSize}"
+                                        IsHitTestVisible="False"
+                                        IsTabStop="False"
+                                        Opacity="{TemplateBinding HintOpacity}"
+                                        Visibility="{TemplateBinding UseFloating, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+        <Setter Property="VerticalContentAlignment" Value="Bottom" />
         <Style.Triggers>
             <Trigger Property="UseFloating" Value="True">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ctrl:SmartHint}">
                             <Grid Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
-                                <ctrl:ScaleHost x:Name="ScaleHost" />
-                                <ContentControl x:Name="FloatingHintTextBlock"
-                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                Content="{TemplateBinding Hint}"
-                                                FontFamily="{TemplateBinding FontFamily}"
-                                                FontSize="{TemplateBinding FontSize}"
-                                                IsHitTestVisible="False"
-                                                IsTabStop="False"
-                                                Opacity="{TemplateBinding HintOpacity}"
-                                                RenderTransformOrigin="0,0"
-                                                Visibility="{TemplateBinding UseFloating,
-                                                                             Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                                    <ContentControl.Tag>
-                                        <sys:Double>0.0</sys:Double>
-                                    </ContentControl.Tag>
-                                    <ContentControl.RenderTransform>
-                                        <MultiBinding Converter="{x:Static c:FloatingHintTransformConverter.Default}">
-                                            <Binding ElementName="ScaleHost" Path="Scale" />
-                                            <Binding Path="FloatingScale" RelativeSource="{RelativeSource TemplatedParent}" />
-                                            <Binding Source="{StaticResource NoContentFloatingScale}" />
-                                            <Binding Path="FloatingOffset" RelativeSource="{RelativeSource TemplatedParent}" />
-                                        </MultiBinding>
-                                    </ContentControl.RenderTransform>
-                                </ContentControl>
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup x:Name="ContentStates">
                                         <VisualStateGroup.Transitions>
@@ -147,6 +121,30 @@
                                         </VisualState>
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
+                                <ctrl:ScaleHost x:Name="ScaleHost" />
+                                <ContentControl x:Name="FloatingHintTextBlock"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                Content="{TemplateBinding Hint}"
+                                                FontFamily="{TemplateBinding FontFamily}"
+                                                FontSize="{TemplateBinding FontSize}"
+                                                IsHitTestVisible="False"
+                                                IsTabStop="False"
+                                                Opacity="{TemplateBinding HintOpacity}"
+                                                RenderTransformOrigin="0,0"
+                                                Visibility="{TemplateBinding UseFloating, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                                    <ContentControl.Tag>
+                                        <sys:Double>0.0</sys:Double>
+                                    </ContentControl.Tag>
+                                    <ContentControl.RenderTransform>
+                                        <MultiBinding Converter="{x:Static c:FloatingHintTransformConverter.Default}">
+                                            <Binding ElementName="ScaleHost" Path="Scale" />
+                                            <Binding Path="FloatingScale" RelativeSource="{RelativeSource TemplatedParent}" />
+                                            <Binding Source="{StaticResource NoContentFloatingScale}" />
+                                            <Binding Path="FloatingOffset" RelativeSource="{RelativeSource TemplatedParent}" />
+                                        </MultiBinding>
+                                    </ContentControl.RenderTransform>
+                                </ContentControl>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsHintInFloatingPosition" Value="True">

@@ -1,4 +1,6 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p="clr-namespace:MyNet.Wpf.Parameters">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
@@ -152,49 +154,49 @@
                 </MultiTrigger.ExitActions>
             </MultiTrigger>
             <Trigger Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True">
-                <Setter TargetName="PART_VerticalScrollBar" Property="Grid.Column" Value="0" />
                 <Setter TargetName="PART_HorizontalScrollBar" Property="Grid.Row" Value="0" />
+                <Setter TargetName="PART_VerticalScrollBar" Property="Grid.Column" Value="0" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style x:Key="MyNet.Styles.ScrollViewer" TargetType="{x:Type ScrollViewer}">
         <Style.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.ScrollBar}" TargetType="{x:Type ScrollBar}" />
+            <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource MyNet.Styles.ScrollBar}" />
         </Style.Resources>
-        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
-        <Setter Property="p:ScrollViewerAssist.IgnorePadding" Value="False" />
-        <Setter Property="Template" Value="{StaticResource MyNet.Templates.ScrollViewer}" />
-        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
-        <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
-        <Setter Property="p:ScrollBarAssist.ButtonsVisibility" Value="Visible" />
         <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="Template" Value="{StaticResource MyNet.Templates.ScrollViewer}" />
         <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
-    </Style>
-
-    <Style x:Key="MyNet.Styles.ScrollViewer.Foreground" BasedOn="{StaticResource MyNet.Styles.ScrollViewer}" TargetType="{x:Type ScrollViewer}">
-        <Style.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.ScrollBar.Foreground}" TargetType="{x:Type ScrollBar}" />
-        </Style.Resources>
-    </Style>
-
-    <Style x:Key="MyNet.Styles.ScrollViewer.Small" BasedOn="{StaticResource MyNet.Styles.ScrollViewer}" TargetType="{x:Type ScrollViewer}">
-        <Style.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.ScrollBar.Small}" TargetType="{x:Type ScrollBar}" />
-        </Style.Resources>
-        <Setter Property="p:ScrollViewerAssist.CornerRectangleVisibility" Value="Collapsed" />
-        <Setter Property="p:ScrollBarAssist.ButtonsVisibility" Value="Collapsed" />
-    </Style>
-
-    <Style x:Key="MyNet.Styles.ScrollViewer.Small.Foreground" BasedOn="{StaticResource MyNet.Styles.ScrollViewer.Small}" TargetType="{x:Type ScrollViewer}">
-        <Style.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.ScrollBar.Small.Foreground}" TargetType="{x:Type ScrollBar}" />
-        </Style.Resources>
-    </Style>
-
-    <Style x:Key="MyNet.Styles.ScrollViewer.Fixed" BasedOn="{StaticResource MyNet.Styles.ScrollViewer.Small}" TargetType="{x:Type ScrollViewer}">
-        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="False" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="p:ScrollBarAssist.ButtonsVisibility" Value="Visible" />
+        <Setter Property="p:ScrollViewerAssist.IgnorePadding" Value="False" />
+        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.ScrollViewer.Foreground" TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource MyNet.Styles.ScrollViewer}">
+        <Style.Resources>
+            <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource MyNet.Styles.ScrollBar.Foreground}" />
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="MyNet.Styles.ScrollViewer.Small" TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource MyNet.Styles.ScrollViewer}">
+        <Style.Resources>
+            <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource MyNet.Styles.ScrollBar.Small}" />
+        </Style.Resources>
+        <Setter Property="p:ScrollBarAssist.ButtonsVisibility" Value="Collapsed" />
+        <Setter Property="p:ScrollViewerAssist.CornerRectangleVisibility" Value="Collapsed" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.ScrollViewer.Small.Foreground" TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource MyNet.Styles.ScrollViewer.Small}">
+        <Style.Resources>
+            <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource MyNet.Styles.ScrollBar.Small.Foreground}" />
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="MyNet.Styles.ScrollViewer.Fixed" TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource MyNet.Styles.ScrollViewer.Small}">
+        <Setter Property="p:ScrollBarAssist.ButtonsVisibility" Value="Visible" />
+        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="False" />
     </Style>
 
 

@@ -9,7 +9,7 @@
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/MyNet.Card.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <SineEase x:Key="FlipEase" po:Freeze="True" EasingMode="EaseInOut" />
+    <SineEase x:Key="FlipEase" EasingMode="EaseInOut" po:Freeze="True" />
 
     <Style x:Key="MyNet.Styles.Flipper" TargetType="{x:Type ctrl:Flipper}">
         <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
@@ -20,25 +20,6 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <ctrl:Plane3D x:Name="Plane3D" RotationY="0" ZFactor="2.055">
-                            <Grid>
-                                <ContentPresenter x:Name="FrontContentPresenter"
-                                                  Margin="{TemplateBinding Padding}"
-                                                  Content="{TemplateBinding FrontContent}"
-                                                  ContentStringFormat="{TemplateBinding FrontContentStringFormat}"
-                                                  ContentTemplate="{TemplateBinding FrontContentTemplate}"
-                                                  ContentTemplateSelector="{TemplateBinding FrontContentTemplateSelector}"
-                                                  RenderTransformOrigin=".5,.5" />
-                                <ContentPresenter x:Name="BackContentPresenter"
-                                                  Margin="{TemplateBinding Padding}"
-                                                  Content="{TemplateBinding BackContent}"
-                                                  ContentStringFormat="{TemplateBinding BackContentStringFormat}"
-                                                  ContentTemplate="{TemplateBinding BackContentTemplate}"
-                                                  ContentTemplateSelector="{TemplateBinding BackContentTemplateSelector}"
-                                                  RenderTransformOrigin=".5,.5"
-                                                  Visibility="Hidden" />
-                            </Grid>
-                        </ctrl:Plane3D>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="FlipStates">
                                 <VisualStateGroup.Transitions>
@@ -97,15 +78,32 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <ctrl:Plane3D x:Name="Plane3D" RotationY="0" ZFactor="2.055">
+                            <Grid>
+                                <ContentPresenter x:Name="FrontContentPresenter"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  Content="{TemplateBinding FrontContent}"
+                                                  ContentStringFormat="{TemplateBinding FrontContentStringFormat}"
+                                                  ContentTemplate="{TemplateBinding FrontContentTemplate}"
+                                                  ContentTemplateSelector="{TemplateBinding FrontContentTemplateSelector}"
+                                                  RenderTransformOrigin=".5,.5" />
+                                <ContentPresenter x:Name="BackContentPresenter"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  Content="{TemplateBinding BackContent}"
+                                                  ContentStringFormat="{TemplateBinding BackContentStringFormat}"
+                                                  ContentTemplate="{TemplateBinding BackContentTemplate}"
+                                                  ContentTemplateSelector="{TemplateBinding BackContentTemplateSelector}"
+                                                  RenderTransformOrigin=".5,.5"
+                                                  Visibility="Hidden" />
+                            </Grid>
+                        </ctrl:Plane3D>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="MyNet.Styles.Flipper.Card" BasedOn="{StaticResource MyNet.Styles.Flipper}" TargetType="{x:Type ctrl:Flipper}">
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
-        <Setter Property="p:ThemeAssist.Style" Value="{StaticResource MyNet.Styles.Card.Elevation}" />
+    <Style x:Key="MyNet.Styles.Flipper.Card" TargetType="{x:Type ctrl:Flipper}" BasedOn="{StaticResource MyNet.Styles.Flipper}">
         <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -114,6 +112,65 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="FlipStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition From="Unflipped" To="Flipped">
+                                        <Storyboard FillBehavior="HoldEnd">
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Plane3D" Storyboard.TargetProperty="RotationY" Duration="0:0:0.4">
+                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.0" Value="0" />
+                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.2" Value="-90" />
+                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.2" Value="90" />
+                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.4" Value="0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackContentPresenter" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FrontContentPresenter" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="Flipped" To="Unflipped">
+                                        <Storyboard FillBehavior="HoldEnd">
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Plane3D" Storyboard.TargetProperty="RotationY" Duration="0:0:0.4">
+                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.0" Value="0" />
+                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.2" Value="90" />
+                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.2" Value="-90" />
+                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.4" Value="0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackContentPresenter" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FrontContentPresenter" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualTransition>
+                                </VisualStateGroup.Transitions>
+
+                                <VisualState x:Name="Unflipped">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackContentPresenter" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FrontContentPresenter" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Flipped">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackContentPresenter" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FrontContentPresenter" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                         <ctrl:Plane3D x:Name="PART_Plane3D" RotationY="0" ZFactor="2.055">
                             <ctrl:Card Style="{TemplateBinding p:ThemeAssist.Style}"
                                        Padding="{TemplateBinding Padding}"
@@ -138,69 +195,12 @@
                                 </Grid>
                             </ctrl:Card>
                         </ctrl:Plane3D>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="FlipStates">
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition From="Unflipped" To="Flipped">
-                                        <Storyboard FillBehavior="HoldEnd">
-                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Plane3D" Storyboard.TargetProperty="RotationY" Duration="0:0:0.4">
-                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.0" Value="0" />
-                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.2" Value="-90" />
-                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.2" Value="90" />
-                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.4" Value="0" />
-                                            </DoubleAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackContentPresenter" Storyboard.TargetProperty="Visibility">
-                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FrontContentPresenter" Storyboard.TargetProperty="Visibility">
-                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualTransition>
-                                    <VisualTransition From="Flipped" To="Unflipped">
-                                        <Storyboard FillBehavior="HoldEnd">
-                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Plane3D" Storyboard.TargetProperty="RotationY" Duration="0:0:0.4">
-                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.0" Value="0" />
-                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.2" Value="90" />
-                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.2" Value="-90" />
-                                                <EasingDoubleKeyFrame EasingFunction="{StaticResource FlipEase}" KeyTime="0:0:0.4" Value="0" />
-                                            </DoubleAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackContentPresenter" Storyboard.TargetProperty="Visibility">
-                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FrontContentPresenter" Storyboard.TargetProperty="Visibility">
-                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualTransition>
-                                </VisualStateGroup.Transitions>
-
-                                <VisualState x:Name="Unflipped">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackContentPresenter" Storyboard.TargetProperty="Visibility">
-                                            <DiscreteObjectKeyFrame Value="{x:Static Visibility.Collapsed}" />
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FrontContentPresenter" Storyboard.TargetProperty="Visibility">
-                                            <DiscreteObjectKeyFrame Value="{x:Static Visibility.Visible}" />
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Flipped">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackContentPresenter" Storyboard.TargetProperty="Visibility">
-                                            <DiscreteObjectKeyFrame Value="{x:Static Visibility.Visible}" />
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FrontContentPresenter" Storyboard.TargetProperty="Visibility">
-                                            <DiscreteObjectKeyFrame Value="{x:Static Visibility.Collapsed}" />
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="p:ThemeAssist.Style" Value="{StaticResource MyNet.Styles.Card.Elevation}" />
     </Style>
 
 </ResourceDictionary>

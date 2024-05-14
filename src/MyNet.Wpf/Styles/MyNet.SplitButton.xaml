@@ -12,38 +12,24 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.SplitButton.Filled" TargetType="{x:Type ctrl:SplitButton}">
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
-        <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
-        <Setter Property="p:IconAssist.Alignment" Value="Left" />
-        <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
-        <Setter Property="FontWeight" Value="{StaticResource MyNet.Font.Weight.Button}" />
-        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Button}" />
-        <Setter Property="Padding" Value="11 5" />
-        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="ToggleContentTemplate" Value="{StaticResource MyNet.DataTemplates.Icon}" />
-        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
-        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Filled}" />
-        <Setter Property="PlacementMode" Value="BottomAndAlignRightEdges" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
         <Setter Property="Focusable" Value="True" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Button}" />
+        <Setter Property="FontWeight" Value="{StaticResource MyNet.Font.Weight.Button}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="11 5" />
+        <Setter Property="PlacementMode" Value="BottomAndAlignRightEdges" />
         <Setter Property="PopupHorizontalOffset" Value="0" />
-        <Setter Property="PopupVerticalOffset" Value="0" />
         <Setter Property="PopupMode" Value="Click" />
+        <Setter Property="PopupVerticalOffset" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:SplitButton}">
@@ -163,44 +149,44 @@
                             <Setter TargetName="PART_Button" Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                         </Trigger>
                         <Trigger Property="DropDownButtonPosition" Value="Top">
+                            <Setter TargetName="Col0" Property="Width" Value="*" />
+                            <Setter TargetName="Col1" Property="Width" Value="Auto" />
+                            <Setter TargetName="PART_Button" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="PART_Button" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="0" />
                             <Setter TargetName="Row0" Property="Height" Value="Auto" />
                             <Setter TargetName="Row1" Property="Height" Value="*" />
-                            <Setter TargetName="Col0" Property="Width" Value="*" />
-                            <Setter TargetName="Col1" Property="Width" Value="Auto" />
-                            <Setter TargetName="PART_Button" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="PART_Button" Property="Grid.Row" Value="1" />
-                            <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="0" />
                         </Trigger>
                         <Trigger Property="DropDownButtonPosition" Value="Right">
-                            <Setter TargetName="Row0" Property="Height" Value="*" />
-                            <Setter TargetName="Row1" Property="Height" Value="Auto" />
                             <Setter TargetName="Col0" Property="Width" Value="*" />
                             <Setter TargetName="Col1" Property="Width" Value="Auto" />
                             <Setter TargetName="PART_Button" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="1" />
                             <Setter TargetName="PART_Button" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="1" />
                             <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Row0" Property="Height" Value="*" />
+                            <Setter TargetName="Row1" Property="Height" Value="Auto" />
                         </Trigger>
                         <Trigger Property="DropDownButtonPosition" Value="Bottom">
-                            <Setter TargetName="Row0" Property="Height" Value="*" />
-                            <Setter TargetName="Row1" Property="Height" Value="Auto" />
                             <Setter TargetName="Col0" Property="Width" Value="*" />
                             <Setter TargetName="Col1" Property="Width" Value="Auto" />
                             <Setter TargetName="PART_Button" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="0" />
                             <Setter TargetName="PART_Button" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="0" />
                             <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="1" />
-                        </Trigger>
-                        <Trigger Property="DropDownButtonPosition" Value="Left">
                             <Setter TargetName="Row0" Property="Height" Value="*" />
                             <Setter TargetName="Row1" Property="Height" Value="Auto" />
+                        </Trigger>
+                        <Trigger Property="DropDownButtonPosition" Value="Left">
                             <Setter TargetName="Col0" Property="Width" Value="Auto" />
                             <Setter TargetName="Col1" Property="Width" Value="*" />
                             <Setter TargetName="PART_Button" Property="Grid.Column" Value="1" />
-                            <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="0" />
                             <Setter TargetName="PART_Button" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="0" />
                             <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Row0" Property="Height" Value="*" />
+                            <Setter TargetName="Row1" Property="Height" Value="Auto" />
                         </Trigger>
                         <Trigger Property="DropDownButtonOrientation" Value="Up">
                             <Setter TargetName="Caret" Property="Kind" Value="ChevronUp" />
@@ -242,138 +228,152 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="ToggleContentTemplate" Value="{StaticResource MyNet.DataTemplates.Icon}" />
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="p:IconAssist.Alignment" Value="Left" />
+        <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
+        <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
+        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.SplitButton.Filled.Custom" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Filled.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
+        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
-        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Filled.Primary" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Filled.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Filled.Accent" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Filled.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Filled.Foreground" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Filled.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}">
+        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     </Style>
 
-    <!--  Outlined  -->
-    <Style x:Key="MyNet.Styles.SplitButton.Outlined" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" TargetType="{x:Type ctrl:SplitButton}">
+    <!-- Outlined -->
+    <Style x:Key="MyNet.Styles.SplitButton.Outlined" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
         <Setter Property="Background" Value="Transparent" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Outlined.Primary" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Primary}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Outlined.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Primary}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Outlined.Accent" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Accent}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Outlined.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Accent}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Outlined.Custom" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Outlined.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Outlined.Foreground" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Foreground}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Outlined.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Foreground}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
 
-    <!--  Text  -->
-    <Style x:Key="MyNet.Styles.SplitButton.Text" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" TargetType="{x:Type ctrl:SplitButton}">
+    <!-- Text -->
+    <Style x:Key="MyNet.Styles.SplitButton.Text" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Text.Primary" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Primary}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Text.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Primary}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Text.Accent" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Accent}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Text.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Accent}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Text.Custom" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Text.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Text.Foreground" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Foreground}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Text.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Foreground}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
 
-    <!--  Elevation  -->
-    <Style x:Key="MyNet.Styles.SplitButton.Elevation" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" TargetType="{x:Type ctrl:SplitButton}">
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
-        <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
+    <!-- Elevation -->
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Custom" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation}" TargetType="{x:Type ctrl:SplitButton}">
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation}">
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Background, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
         <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Primary" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Custom}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Accent" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Custom}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
         <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Foreground" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Custom}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" TargetType="{x:Type ctrl:SplitButton}">
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
         <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Custom" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate}">
+        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
-        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Primary" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate.Custom}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Accent" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate.Custom}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Foreground" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate.Custom}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate.Custom}">
+        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     </Style>
 
-    <!--  Icon  -->
-    <Style x:Key="MyNet.Styles.SplitButton.Icon" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" TargetType="{x:Type ctrl:SplitButton}">
+    <!-- Icon -->
+    <Style x:Key="MyNet.Styles.SplitButton.Icon" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
+        <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Icon}" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedForeground), Opacity={StaticResource MyNet.Opacity.Secondary}}" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Icon}" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsMouseOverForeground)}" />
@@ -384,13 +384,13 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Icon.Primary" BasedOn="{StaticResource MyNet.Styles.SplitButton.Icon}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Icon.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Icon}">
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Icon.Accent" BasedOn="{StaticResource MyNet.Styles.SplitButton.Icon}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Icon.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Icon}">
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.SplitButton.Icon.Foreground" BasedOn="{StaticResource MyNet.Styles.SplitButton.Icon}" TargetType="{x:Type ctrl:SplitButton}">
+    <Style x:Key="MyNet.Styles.SplitButton.Icon.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Icon}">
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>

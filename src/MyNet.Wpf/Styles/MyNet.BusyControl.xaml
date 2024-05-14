@@ -397,17 +397,15 @@
                             ProgressionBusyTemplate="{StaticResource MyNet.DataTemplates.ProgressionBusy.Alternate}" />
 
     <Style x:Key="MyNet.Styles.BusyControl" TargetType="{x:Type ctrl:BusyControl}">
-        <Setter Property="Focusable" Value="False" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Overlay}" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="ContentTemplateSelector" Value="{StaticResource MyNet.Selectors.Busy}" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Title}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="ClipToBounds" Value="False" />
-        <Setter Property="Opacity" Value="0" />
-        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Title}" />
-        <Setter Property="ContentTemplateSelector" Value="{StaticResource MyNet.Selectors.Busy}" />
         <Setter Property="IsHitTestVisible" Value="{Binding IsActive, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="Opacity" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:BusyControl}">
@@ -423,19 +421,21 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
     </Style>
-    <Style x:Key="MyNet.Styles.BusyControl.Alternate" BasedOn="{StaticResource MyNet.Styles.BusyControl}" TargetType="{x:Type ctrl:BusyControl}">
+    <Style x:Key="MyNet.Styles.BusyControl.Alternate" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl}">
         <Setter Property="ContentTemplateSelector" Value="{StaticResource MyNet.Selectors.Busy.Alternate}" />
     </Style>
-    <Style x:Key="MyNet.Styles.BusyControl.Small" BasedOn="{StaticResource MyNet.Styles.BusyControl}" TargetType="{x:Type ctrl:BusyControl}">
+    <Style x:Key="MyNet.Styles.BusyControl.Small" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl}">
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="ContentTemplateSelector">
             <Setter.Value>
                 <s:BusyTemplateSelector DeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.DeterminateBusy}" IndeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.IndeterminateBusy.Small}" ProgressionBusyTemplate="{StaticResource MyNet.DataTemplates.ProgressionBusy}" />
             </Setter.Value>
         </Setter>
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
     </Style>
 </ResourceDictionary>

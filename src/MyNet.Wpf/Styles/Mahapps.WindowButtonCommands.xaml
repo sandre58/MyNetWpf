@@ -6,15 +6,14 @@
                     xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions">
 
     <Style x:Key="MyNet.Styles.Button.MetroWindow" TargetType="{x:Type ButtonBase}">
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Opacity" Value="0.8" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="Padding" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
@@ -33,6 +32,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Background" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static c:BrushConverter.Opacity}, ConverterParameter={StaticResource MyNet.Opacity.Hovered}}" />
@@ -44,7 +44,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.Button.MetroWindow.Close" BasedOn="{StaticResource MyNet.Styles.Button.MetroWindow}" TargetType="{x:Type Button}">
+    <Style x:Key="MyNet.Styles.Button.MetroWindow.Close" TargetType="{x:Type Button}" BasedOn="{StaticResource MyNet.Styles.Button.MetroWindow}">
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Red}" />
@@ -55,14 +55,14 @@
 
     <Style x:Key="MyNet.Styles.WindowButtonCommands" TargetType="{x:Type mah:WindowButtonCommands}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-        <Setter Property="DarkMinButtonStyle" Value="{StaticResource MyNet.Styles.Button.MetroWindow}" />
-        <Setter Property="DarkMaxButtonStyle" Value="{StaticResource MyNet.Styles.Button.MetroWindow}" />
-        <Setter Property="DarkCloseButtonStyle" Value="{StaticResource MyNet.Styles.Button.MetroWindow.Close}" />
-        <Setter Property="Maximize" Value="{me:Resource Maximize}" />
-        <Setter Property="Restore" Value="{me:Resource Restore}" />
-        <Setter Property="Minimize" Value="{me:Resource Minimize}" />
         <Setter Property="Close" Value="{me:Resource Close}" />
+        <Setter Property="DarkCloseButtonStyle" Value="{StaticResource MyNet.Styles.Button.MetroWindow.Close}" />
+        <Setter Property="DarkMaxButtonStyle" Value="{StaticResource MyNet.Styles.Button.MetroWindow}" />
+        <Setter Property="DarkMinButtonStyle" Value="{StaticResource MyNet.Styles.Button.MetroWindow}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="Maximize" Value="{me:Resource Maximize}" />
+        <Setter Property="Minimize" Value="{me:Resource Minimize}" />
+        <Setter Property="Restore" Value="{me:Resource Restore}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type mah:WindowButtonCommands}">
@@ -99,7 +99,7 @@
                                 ToolTip="{Binding Maximize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                 UseLayoutRounding="True"
                                 Visibility="{Binding ShowMaxRestoreButton, RelativeSource={RelativeSource AncestorType={x:Type ctrl:ExtendedWindow}}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                            <!--  normal state  -->
+                            <!-- normal state -->
                             <Path x:Name="PART_MaxPath"
                                   Width="10"
                                   Height="10"

@@ -4,7 +4,7 @@
                     xmlns:vm="clr-namespace:MyNet.UI.ViewModels;assembly=MyNet.UI">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.Styles.xaml" />
+        <my:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.Styles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.TextBox.Edition" BasedOn="{StaticResource MyNet.Styles.TextBox}" TargetType="{x:Type TextBox}">

@@ -1,10 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters"
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters">
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <!--  Font Families  -->
+    <!-- Font Families -->
     <FontFamily x:Key="MyNet.Font.Family.Daggersquare">pack://application:,,,/MyNet.Wpf;component/Fonts/#DAGGERSQUARE</FontFamily>
     <FontFamily x:Key="MyNet.Font.Family.Jersey">pack://application:,,,/MyNet.Wpf;component/Fonts/#Jersey M54</FontFamily>
     <FontFamily x:Key="MyNet.Font.Family.Nuvel">pack://application:,,,/MyNet.Wpf;component/Fonts/#Nuvel</FontFamily>
@@ -15,7 +15,7 @@
     <FontFamily x:Key="MyNet.Font.Family.FiraCode">pack://application:,,,/MyNet.Wpf;component/Fonts/#Fira Code</FontFamily>
     <FontFamily x:Key="MyNet.Font.Family.Digital">pack://application:,,,/MyNet.Wpf;component/Fonts/#DS-Digital</FontFamily>
 
-    <!--  Font Sizes  -->
+    <!-- Font Sizes -->
     <sys:Double x:Key="MyNet.Font.Size.Secondary">10</sys:Double>
     <sys:Double x:Key="MyNet.Font.Size">12</sys:Double>
     <sys:Double x:Key="MyNet.Font.Size.Menu">12</sys:Double>
@@ -31,7 +31,7 @@
     <FontWeight x:Key="MyNet.Font.Weight.ToolTip">Normal</FontWeight>
     <FontWeight x:Key="MyNet.Font.Weight.Header">Medium</FontWeight>
 
-    <!--  Colors  -->
+    <!-- Colors -->
     <Color x:Key="MyNet.Colors.Red">#F44336</Color>
     <Color x:Key="MyNet.Colors.White">#FFFFFF</Color>
     <Color x:Key="MyNet.Colors.Black">#000000</Color>
@@ -39,15 +39,15 @@
     <Color x:Key="MyNet.Colors.Female">#c90076</Color>
     <Color x:Key="MyNet.Colors.Male">#2986cc</Color>
 
-    <!--  Brushes  -->
-    <SolidColorBrush x:Key="MyNet.Brushes.Red" po:Freeze="true" Color="{StaticResource MyNet.Colors.Red}" />
-    <SolidColorBrush x:Key="MyNet.Brushes.White" po:Freeze="true" Color="{StaticResource MyNet.Colors.White}" />
-    <SolidColorBrush x:Key="MyNet.Brushes.Black" po:Freeze="true" Color="{StaticResource MyNet.Colors.Black}" />
-    <SolidColorBrush x:Key="MyNet.Brushes.Gold" po:Freeze="true" Color="{StaticResource MyNet.Colors.Gold}" />
-    <SolidColorBrush x:Key="MyNet.Brushes.Female" po:Freeze="true" Color="{StaticResource MyNet.Colors.Female}" />
-    <SolidColorBrush x:Key="MyNet.Brushes.Male" po:Freeze="true" Color="{StaticResource MyNet.Colors.Male}" />
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="MyNet.Brushes.Red" Color="{StaticResource MyNet.Colors.Red}" po:Freeze="true" />
+    <SolidColorBrush x:Key="MyNet.Brushes.White" Color="{StaticResource MyNet.Colors.White}" po:Freeze="true" />
+    <SolidColorBrush x:Key="MyNet.Brushes.Black" Color="{StaticResource MyNet.Colors.Black}" po:Freeze="true" />
+    <SolidColorBrush x:Key="MyNet.Brushes.Gold" Color="{StaticResource MyNet.Colors.Gold}" po:Freeze="true" />
+    <SolidColorBrush x:Key="MyNet.Brushes.Female" Color="{StaticResource MyNet.Colors.Female}" po:Freeze="true" />
+    <SolidColorBrush x:Key="MyNet.Brushes.Male" Color="{StaticResource MyNet.Colors.Male}" po:Freeze="true" />
 
-    <!--  Opacities  -->
+    <!-- Opacities -->
     <sys:Double x:Key="MyNet.Opacity.Default">1</sys:Double>
     <sys:Double x:Key="MyNet.Opacity.Secondary">0.7</sys:Double>
     <sys:Double x:Key="MyNet.Opacity.Medium">0.56</sys:Double>
@@ -58,97 +58,97 @@
     <sys:Double x:Key="MyNet.Opacity.Hovered">0.12</sys:Double>
     <sys:Double x:Key="MyNet.Opacity.Filled">0.10</sys:Double>
 
-    <!--  Shadows  -->
+    <!-- Shadows -->
     <DropShadowEffect x:Key="MyNet.Shadows.Elevation1"
-                      po:Freeze="True"
                       BlurRadius="3"
                       Direction="270"
                       Opacity="0.45"
                       RenderingBias="Performance"
                       ShadowDepth="1"
-                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+                      Color="{DynamicResource MyNet.Colors.Shadow}"
+                      po:Freeze="True" />
     <DropShadowEffect x:Key="MyNet.Shadows.Elevation2"
-                      po:Freeze="True"
                       BlurRadius="5"
                       Direction="270"
                       Opacity="0.45"
                       RenderingBias="Performance"
                       ShadowDepth="1.5"
-                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+                      Color="{DynamicResource MyNet.Colors.Shadow}"
+                      po:Freeze="True" />
     <DropShadowEffect x:Key="MyNet.Shadows.Elevation3"
-                      po:Freeze="True"
                       BlurRadius="7"
                       Direction="270"
                       Opacity="0.45"
                       RenderingBias="Performance"
                       ShadowDepth="2"
-                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+                      Color="{DynamicResource MyNet.Colors.Shadow}"
+                      po:Freeze="True" />
     <DropShadowEffect x:Key="MyNet.Shadows.Elevation4"
-                      po:Freeze="True"
                       BlurRadius="9"
                       Direction="270"
                       Opacity="0.45"
                       RenderingBias="Performance"
                       ShadowDepth="2.5"
-                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+                      Color="{DynamicResource MyNet.Colors.Shadow}"
+                      po:Freeze="True" />
     <DropShadowEffect x:Key="MyNet.Shadows.Elevation5"
-                      po:Freeze="True"
                       BlurRadius="11"
                       Direction="270"
                       Opacity="0.45"
                       RenderingBias="Performance"
                       ShadowDepth="3"
-                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+                      Color="{DynamicResource MyNet.Colors.Shadow}"
+                      po:Freeze="True" />
     <DropShadowEffect x:Key="MyNet.Shadows.Elevation6"
-                      po:Freeze="True"
                       BlurRadius="13"
                       Direction="270"
                       Opacity="0.45"
                       RenderingBias="Performance"
                       ShadowDepth="3.5"
-                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+                      Color="{DynamicResource MyNet.Colors.Shadow}"
+                      po:Freeze="True" />
     <DropShadowEffect x:Key="MyNet.Shadows.Elevation7"
-                      po:Freeze="True"
                       BlurRadius="15"
                       Direction="270"
                       Opacity="0.45"
                       RenderingBias="Performance"
                       ShadowDepth="4"
-                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+                      Color="{DynamicResource MyNet.Colors.Shadow}"
+                      po:Freeze="True" />
     <DropShadowEffect x:Key="MyNet.Shadows.Elevation8"
-                      po:Freeze="True"
                       BlurRadius="17"
                       Direction="270"
                       Opacity="0.45"
                       RenderingBias="Performance"
                       ShadowDepth="4.5"
-                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+                      Color="{DynamicResource MyNet.Colors.Shadow}"
+                      po:Freeze="True" />
     <DropShadowEffect x:Key="MyNet.Shadows.Elevation12"
-                      po:Freeze="True"
                       BlurRadius="25"
                       Direction="270"
                       Opacity="0.45"
                       RenderingBias="Performance"
                       ShadowDepth="6.5"
-                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+                      Color="{DynamicResource MyNet.Colors.Shadow}"
+                      po:Freeze="True" />
     <DropShadowEffect x:Key="MyNet.Shadows.Elevation16"
-                      po:Freeze="True"
                       BlurRadius="33"
                       Direction="270"
                       Opacity="0.45"
                       RenderingBias="Performance"
                       ShadowDepth="8.5"
-                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+                      Color="{DynamicResource MyNet.Colors.Shadow}"
+                      po:Freeze="True" />
     <DropShadowEffect x:Key="MyNet.Shadows.Elevation24"
-                      po:Freeze="True"
                       BlurRadius="49"
                       Direction="270"
                       Opacity="0.45"
                       RenderingBias="Performance"
                       ShadowDepth="12.5"
-                      Color="{DynamicResource MyNet.Colors.Shadow}" />
+                      Color="{DynamicResource MyNet.Colors.Shadow}"
+                      po:Freeze="True" />
 
-    <!--  Margins  -->
+    <!-- Margins -->
     <sys:Double x:Key="MyNet.Margin.Small">2</sys:Double>
     <sys:Double x:Key="MyNet.Margin.Default">5</sys:Double>
     <sys:Double x:Key="MyNet.Margin.Medium">10</sys:Double>
@@ -238,13 +238,13 @@
                Right="2"
                Top="4" />
 
-    <!--  Widths  -->
+    <!-- Widths -->
     <sys:Double x:Key="MyNet.Widths.Control.Huge">400</sys:Double>
     <sys:Double x:Key="MyNet.Widths.Control.VeryLarge">200</sys:Double>
     <sys:Double x:Key="MyNet.Widths.Control.Large">150</sys:Double>
     <sys:Double x:Key="MyNet.Widths.Control.Medium">100</sys:Double>
 
-    <!--  Corner Radius  -->
+    <!-- Corner Radius -->
     <sys:Double x:Key="MyNet.UniformCornerRadius.Control">2</sys:Double>
     <sys:Double x:Key="MyNet.UniformCornerRadius.Container">4</sys:Double>
 
@@ -267,12 +267,12 @@
     <CornerRadius x:Key="MyNet.CornerRadius.Container.Left" BottomLeft="{StaticResource MyNet.UniformCornerRadius.Container}" TopLeft="{StaticResource MyNet.UniformCornerRadius.Container}" />
     <CornerRadius x:Key="MyNet.CornerRadius.Container.Right" BottomRight="{StaticResource MyNet.UniformCornerRadius.Container}" TopRight="{StaticResource MyNet.UniformCornerRadius.Container}" />
 
-    <!--  Alignments  -->
+    <!-- Alignments -->
     <VerticalAlignment x:Key="MyNet.VerticalAlignment.Control">Center</VerticalAlignment>
     <HorizontalAlignment x:Key="MyNet.HorizontalAlignment.Control">Left</HorizontalAlignment>
     <VerticalAlignment x:Key="MyNet.VerticalAlignment.Container">Stretch</VerticalAlignment>
     <HorizontalAlignment x:Key="MyNet.HorizontalAlignment.Container">Stretch</HorizontalAlignment>
-    
+
     <!-- Elevation -->
     <p:Elevation x:Key="MyNet.Elevation.Container">Dp1</p:Elevation>
     <p:Elevation x:Key="MyNet.Elevation.Control">Dp2</p:Elevation>

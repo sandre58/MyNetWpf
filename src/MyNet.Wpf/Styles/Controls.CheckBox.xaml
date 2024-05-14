@@ -10,17 +10,12 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.CheckBox" TargetType="{x:Type ToggleButton}">
-        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
-        <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-        <Setter Property="p:CheckBoxAssist.UncheckedPath" Value="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z" />
-        <Setter Property="p:CheckBoxAssist.CheckedPath" Value="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
-        <Setter Property="p:CheckBoxAssist.IndeterminatePath" Value="M6,13L6,11L18,11L18,13M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -121,41 +116,49 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+        <Setter Property="p:CheckBoxAssist.CheckedPath" Value="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+        <Setter Property="p:CheckBoxAssist.IndeterminatePath" Value="M6,13L6,11L18,11L18,13M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+        <Setter Property="p:CheckBoxAssist.UncheckedPath" Value="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
-    <Style x:Key="MyNet.Styles.CheckBox.Accent" BasedOn="{StaticResource MyNet.Styles.CheckBox}" TargetType="{x:Type CheckBox}">
+    <Style x:Key="MyNet.Styles.CheckBox.Accent" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.CheckBox.Foreground" BasedOn="{StaticResource MyNet.Styles.CheckBox}" TargetType="{x:Type CheckBox}">
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Style x:Key="MyNet.Styles.CheckBox.Foreground" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.CheckBox.Circle" BasedOn="{StaticResource MyNet.Styles.CheckBox}" TargetType="{x:Type CheckBox}">
-        <Setter Property="p:CheckBoxAssist.UncheckedPath" Value="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+    <Style x:Key="MyNet.Styles.CheckBox.Circle" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox}">
         <Setter Property="p:CheckBoxAssist.CheckedPath" Value="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
         <Setter Property="p:CheckBoxAssist.IndeterminatePath" Value="M17,13H7V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+        <Setter Property="p:CheckBoxAssist.UncheckedPath" Value="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
     </Style>
-    <Style x:Key="MyNet.Styles.CheckBox.Circle.Accent" BasedOn="{StaticResource MyNet.Styles.CheckBox.Circle}" TargetType="{x:Type CheckBox}">
+    <Style x:Key="MyNet.Styles.CheckBox.Circle.Accent" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Circle}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.CheckBox.Circle.Foreground" BasedOn="{StaticResource MyNet.Styles.CheckBox.Circle}" TargetType="{x:Type CheckBox}">
+    <Style x:Key="MyNet.Styles.CheckBox.Circle.Foreground" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Circle}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.CheckBox.Circle.Alternate" BasedOn="{StaticResource MyNet.Styles.CheckBox.Circle}" TargetType="{x:Type CheckBox}">
+    <Style x:Key="MyNet.Styles.CheckBox.Circle.Alternate" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Circle}">
         <Setter Property="p:CheckBoxAssist.CheckedPath" Value="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
         <Setter Property="p:CheckBoxAssist.IndeterminatePath" Value="M19,13H5V11H19V13Z" />
     </Style>
-    <Style x:Key="MyNet.Styles.CheckBox.Circle.Alternate.Accent" BasedOn="{StaticResource MyNet.Styles.CheckBox.Circle.Alternate}" TargetType="{x:Type CheckBox}">
+    <Style x:Key="MyNet.Styles.CheckBox.Circle.Alternate.Accent" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Circle.Alternate}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.CheckBox.Circle.Alternate.Foreground" BasedOn="{StaticResource MyNet.Styles.CheckBox.Circle.Alternate}" TargetType="{x:Type CheckBox}">
+    <Style x:Key="MyNet.Styles.CheckBox.Circle.Alternate.Foreground" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Circle.Alternate}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
     <Style x:Key="MyNet.Styles.CheckBox.Chip" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FocusVisualStyle">
             <Setter.Value>
                 <Style>
@@ -175,20 +178,10 @@
                 </Style>
             </Setter.Value>
         </Setter>
-        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="p:CheckBoxAssist.ShowCheck" Value="True" />
-        <Setter Property="p:ThemeAssist.CornerRadius" Value="16" />
-        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Height" Value="32" />
-        <Setter Property="MinWidth" Value="46" />
         <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+        <Setter Property="MinWidth" Value="46" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
@@ -198,44 +191,6 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Border Grid.ColumnSpan="2"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
-                        <Border x:Name="SelectedBackgroundBorder"
-                                Grid.Column="0"
-                                Grid.ColumnSpan="2"
-                                Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource TemplatedParent}}"
-                                BorderBrush="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource TemplatedParent}}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
-                        <Border x:Name="MouseOverBorder"
-                                Grid.Column="0"
-                                Grid.ColumnSpan="2"
-                                Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                Opacity="0" />
-                        <ctrl:PackIcon x:Name="IconControl"
-                                       Grid.Column="0"
-                                       Width="16"
-                                       Height="16"
-                                       Margin="-16 0 0 0"
-                                       VerticalAlignment="Center"
-                                       IsTabStop="False"
-                                       Kind="Check"
-                                       Visibility="{Binding Path=(p:CheckBoxAssist.ShowCheck), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
-                        <ContentControl x:Name="Content"
-                                        Grid.Column="1"
-                                        Margin="0 0 10 0"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Content="{TemplateBinding Content}"
-                                        ContentStringFormat="{TemplateBinding ContentTemplateSelector}"
-                                        ContentTemplate="{TemplateBinding ContentTemplate}"
-                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                        IsTabStop="False" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -333,6 +288,44 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Border Grid.ColumnSpan="2"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Border x:Name="SelectedBackgroundBorder"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderBrush="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Border x:Name="MouseOverBorder"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                Opacity="0" />
+                        <ctrl:PackIcon x:Name="IconControl"
+                                       Grid.Column="0"
+                                       Width="16"
+                                       Height="16"
+                                       Margin="-16 0 0 0"
+                                       VerticalAlignment="Center"
+                                       IsTabStop="False"
+                                       Kind="Check"
+                                       Visibility="{Binding Path=(p:CheckBoxAssist.ShowCheck), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+                        <ContentControl x:Name="Content"
+                                        Grid.Column="1"
+                                        Margin="0 0 10 0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding Content}"
+                                        ContentStringFormat="{TemplateBinding ContentTemplateSelector}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        IsTabStop="False" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
@@ -345,18 +338,25 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+        <Setter Property="p:CheckBoxAssist.ShowCheck" Value="True" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="16" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="true">
                 <Setter Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=Self}}" />
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.CheckBox.Chip.Accent" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip}" TargetType="{x:Type ToggleButton}">
+    <Style x:Key="MyNet.Styles.CheckBox.Chip.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.CheckBox.Chip.Foreground" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip}" TargetType="{x:Type ToggleButton}">
+    <Style x:Key="MyNet.Styles.CheckBox.Chip.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
@@ -364,16 +364,16 @@
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Contrast=True}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.CheckBox.Chip.Alternate" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip}" TargetType="{x:Type ToggleButton}">
+    <Style x:Key="MyNet.Styles.CheckBox.Chip.Alternate" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip}">
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedForeground), Opacity={StaticResource MyNet.Opacity.Checked}}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedForeground)}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
-    <Style x:Key="MyNet.Styles.CheckBox.Chip.Alternate.Accent" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Alternate}" TargetType="{x:Type ToggleButton}">
+    <Style x:Key="MyNet.Styles.CheckBox.Chip.Alternate.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Alternate}">
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.CheckBox.Chip.Alternate.Foreground" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Alternate}" TargetType="{x:Type ToggleButton}">
+    <Style x:Key="MyNet.Styles.CheckBox.Chip.Alternate.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.CheckBox.Chip.Alternate}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />

@@ -17,13 +17,13 @@
 
     <DataTemplate x:Key="MyNet.DataTemplates.GroupBox.Header">
         <DataTemplate.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.PackIcon}" TargetType="{x:Type ctrl:PackIcon}">
-                <Setter Property="Width" Value="24" />
+            <Style TargetType="{x:Type ctrl:PackIcon}" BasedOn="{StaticResource MyNet.Styles.PackIcon}">
                 <Setter Property="Height" Value="24" />
+                <Setter Property="Width" Value="24" />
             </Style>
-            <Style BasedOn="{StaticResource MyNet.Styles.GeometryIcon}" TargetType="{x:Type ctrl:GeometryIcon}">
-                <Setter Property="Width" Value="24" />
+            <Style TargetType="{x:Type ctrl:GeometryIcon}" BasedOn="{StaticResource MyNet.Styles.GeometryIcon}">
                 <Setter Property="Height" Value="24" />
+                <Setter Property="Width" Value="24" />
             </Style>
         </DataTemplate.Resources>
         <Grid VerticalAlignment="Center">
@@ -75,22 +75,13 @@
     </DataTemplate>
 
     <Style x:Key="MyNet.Styles.GroupBox.Elevation" TargetType="{x:Type GroupBox}">
-        <Setter Property="p:CardAssist.Style" Value="{StaticResource MyNet.Styles.Card.Elevation}" />
-        <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Medium.Right}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
-        <Setter Property="p:HeaderAssist.Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
-        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
-        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Default}" />
-        <Setter Property="p:HeaderAssist.FontSize" Value="{StaticResource MyNet.Font.Size.Caption}" />
+        <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="HeaderTemplate" Value="{StaticResource MyNet.DataTemplates.GroupBox.Header}" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="Template">
@@ -113,7 +104,7 @@
                                 <RowDefinition x:Name="Row2" Height="*" />
                             </Grid.RowDefinitions>
 
-                            <!--  Header  -->
+                            <!-- Header -->
                             <Border x:Name="Header"
                                     Padding="{Binding Path=(p:HeaderAssist.Padding), RelativeSource={RelativeSource TemplatedParent}}"
                                     Background="{Binding Path=(p:HeaderAssist.Background), RelativeSource={RelativeSource TemplatedParent}}"
@@ -145,7 +136,7 @@
                                                     Foreground="{Binding Path=(p:HeaderAssist.Foreground), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GroupBox}}}"
                                                     Visibility="{Binding Path=(p:GroupBoxAssist.MoreContent), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GroupBox}}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}">
                                         <ContentControl.Resources>
-                                            <Style BasedOn="{StaticResource MyNet.Styles.Button.Icon.Foreground}" TargetType="{x:Type Button}">
+                                            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MyNet.Styles.Button.Icon.Foreground}">
                                                 <Setter Property="Height" Value="22" />
                                                 <Setter Property="Width" Value="22" />
                                             </Style>
@@ -154,7 +145,7 @@
                                 </Grid>
                             </Border>
 
-                            <!--  Content  -->
+                            <!-- Content -->
                             <ContentPresenter x:Name="Content"
                                               Grid.Row="1"
                                               Margin="{TemplateBinding Padding}"
@@ -171,104 +162,108 @@
                         <Trigger Property="p:HeaderAssist.Alignment" Value="Left">
                             <Setter TargetName="Col1" Property="Width" Value="{Binding Path=(p:HeaderAssist.Size), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Col2" Property="Width" Value="*" />
-                            <Setter TargetName="Row1" Property="Height" Value="*" />
-                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
-                            <Setter TargetName="Header" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="Header" Property="Grid.Row" Value="0" />
                             <Setter TargetName="Content" Property="Grid.Column" Value="1" />
                             <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Row1" Property="Height" Value="*" />
+                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
                         </Trigger>
 
                         <Trigger Property="p:HeaderAssist.Alignment" Value="Right">
                             <Setter TargetName="Col1" Property="Width" Value="*" />
                             <Setter TargetName="Col2" Property="Width" Value="{Binding Path=(p:HeaderAssist.Size), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Row1" Property="Height" Value="*" />
-                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
-                            <Setter TargetName="Header" Property="Grid.Column" Value="1" />
-                            <Setter TargetName="Header" Property="Grid.Row" Value="0" />
                             <Setter TargetName="Content" Property="Grid.Column" Value="0" />
                             <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Column" Value="1" />
+                            <Setter TargetName="Header" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Row1" Property="Height" Value="*" />
+                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
                         </Trigger>
 
                         <Trigger Property="p:HeaderAssist.Alignment" Value="Bottom">
                             <Setter TargetName="Col1" Property="Width" Value="*" />
                             <Setter TargetName="Col2" Property="Width" Value="Auto" />
-                            <Setter TargetName="Row1" Property="Height" Value="*" />
-                            <Setter TargetName="Row2" Property="Height" Value="{Binding Path=(p:HeaderAssist.Size), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Header" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="Header" Property="Grid.Row" Value="1" />
                             <Setter TargetName="Content" Property="Grid.Column" Value="0" />
                             <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="Row1" Property="Height" Value="*" />
+                            <Setter TargetName="Row2" Property="Height" Value="{Binding Path=(p:HeaderAssist.Size), RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="p:CardAssist.Style" Value="{StaticResource MyNet.Styles.Card.Elevation}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="p:HeaderAssist.FontSize" Value="{StaticResource MyNet.Font.Size.Caption}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Default}" />
+        <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Medium.Right}" />
+        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Application" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Application" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Primary" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Accent" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Accent" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Custom" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Custom" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Foreground" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Custom}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Foreground" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Custom}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Contrast=True}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Foreground.SemiTransparent" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Foreground.SemiTransparent" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Outlined" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}" TargetType="{x:Type GroupBox}">
-        <Setter Property="p:CardAssist.Style" Value="{StaticResource MyNet.Styles.Card.Outlined}" />
+    <Style x:Key="MyNet.Styles.GroupBox.Outlined" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="p:CardAssist.Style" Value="{StaticResource MyNet.Styles.Card.Outlined}" />
+        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Outlined.Application" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Outlined.Application" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
-        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Outlined.Primary" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Outlined.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Outlined.Accent" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Outlined.Accent" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Outlined.Custom" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Outlined.Custom" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
         <Setter Property="p:HeaderAssist.Background" Value="{me:BrushBinding SelfPath=BorderBrush}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Outlined.Foreground" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined.Custom}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Outlined.Foreground" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined.Custom}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Contrast=True}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}" TargetType="{x:Type GroupBox}">
-        <Setter Property="p:CardAssist.Style" Value="{StaticResource MyNet.Styles.Card.Elevation}" />
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
-        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
-        <Setter Property="p:HeaderAssist.Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
-        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GroupBox}">
@@ -286,7 +281,7 @@
                                 <RowDefinition x:Name="Row2" Height="*" />
                             </Grid.RowDefinitions>
 
-                            <!--  Header  -->
+                            <!-- Header -->
                             <ctrl:Card x:Name="Header"
                                        Style="{Binding Path=(p:CardAssist.Style), RelativeSource={RelativeSource TemplatedParent}}"
                                        Padding="{Binding Path=(p:HeaderAssist.Padding), RelativeSource={RelativeSource TemplatedParent}}"
@@ -322,7 +317,7 @@
                                                     Foreground="{Binding Path=(p:HeaderAssist.Foreground), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GroupBox}}}"
                                                     Visibility="{Binding Path=(p:GroupBoxAssist.MoreContent), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GroupBox}}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}">
                                         <ContentControl.Resources>
-                                            <Style BasedOn="{StaticResource MyNet.Styles.Button.Icon.Foreground}" TargetType="{x:Type Button}">
+                                            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MyNet.Styles.Button.Icon.Foreground}">
                                                 <Setter Property="Height" Value="22" />
                                                 <Setter Property="Width" Value="22" />
                                             </Style>
@@ -331,7 +326,7 @@
                                 </Grid>
                             </ctrl:Card>
 
-                            <!--  Content  -->
+                            <!-- Content -->
                             <ContentPresenter x:Name="Content"
                                               Grid.Row="1"
                                               Margin="{TemplateBinding Padding}"
@@ -348,66 +343,69 @@
                         <Trigger Property="p:HeaderAssist.Alignment" Value="Left">
                             <Setter TargetName="Col1" Property="Width" Value="{Binding Path=(p:HeaderAssist.Size), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Col2" Property="Width" Value="*" />
-                            <Setter TargetName="Row1" Property="Height" Value="*" />
-                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
-                            <Setter TargetName="Header" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="Header" Property="Grid.Row" Value="0" />
                             <Setter TargetName="Content" Property="Grid.Column" Value="1" />
                             <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Row1" Property="Height" Value="*" />
+                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
                         </Trigger>
 
                         <Trigger Property="p:HeaderAssist.Alignment" Value="Right">
                             <Setter TargetName="Col1" Property="Width" Value="*" />
                             <Setter TargetName="Col2" Property="Width" Value="{Binding Path=(p:HeaderAssist.Size), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Row1" Property="Height" Value="*" />
-                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
-                            <Setter TargetName="Header" Property="Grid.Column" Value="1" />
-                            <Setter TargetName="Header" Property="Grid.Row" Value="0" />
                             <Setter TargetName="Content" Property="Grid.Column" Value="0" />
                             <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Column" Value="1" />
+                            <Setter TargetName="Header" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Row1" Property="Height" Value="*" />
+                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
                         </Trigger>
 
                         <Trigger Property="p:HeaderAssist.Alignment" Value="Bottom">
                             <Setter TargetName="Col1" Property="Width" Value="*" />
                             <Setter TargetName="Col2" Property="Width" Value="Auto" />
-                            <Setter TargetName="Row1" Property="Height" Value="*" />
-                            <Setter TargetName="Row2" Property="Height" Value="{Binding Path=(p:HeaderAssist.Size), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Header" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="Header" Property="Grid.Row" Value="1" />
                             <Setter TargetName="Content" Property="Grid.Column" Value="0" />
                             <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="Row1" Property="Height" Value="*" />
+                            <Setter TargetName="Row2" Property="Height" Value="{Binding Path=(p:HeaderAssist.Size), RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:CardAssist.Style" Value="{StaticResource MyNet.Styles.Card.Elevation}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Application" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Application" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}">
         <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Primary" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}">
         <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Accent" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Accent" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}">
         <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Custom" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Custom" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}">
         <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding SelfPath=(p:HeaderAssist.Background), Contrast=True}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Foreground" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header.Custom}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Foreground" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header.Custom}">
         <Setter Property="p:HeaderAssist.Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Bordered" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Bordered" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
         <Setter Property="BorderThickness" Value="0 0 0 1" />
         <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
-        <Setter Property="p:HeaderAssist.Background" Value="Transparent" />
-        <Setter Property="p:HeaderAssist.Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GroupBox}">
@@ -422,7 +420,7 @@
                                 <RowDefinition x:Name="Row2" Height="*" />
                             </Grid.RowDefinitions>
 
-                            <!--  Header  -->
+                            <!-- Header -->
                             <Border x:Name="Header"
                                     Padding="{Binding Path=(p:HeaderAssist.Padding), RelativeSource={RelativeSource TemplatedParent}}"
                                     Background="{Binding Path=(p:HeaderAssist.Background), RelativeSource={RelativeSource TemplatedParent}}"
@@ -454,7 +452,7 @@
                                                     Foreground="{Binding Path=(p:HeaderAssist.Foreground), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GroupBox}}}"
                                                     Visibility="{Binding Path=(p:GroupBoxAssist.MoreContent), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GroupBox}}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}">
                                         <ContentControl.Resources>
-                                            <Style BasedOn="{StaticResource MyNet.Styles.Button.Icon.Foreground}" TargetType="{x:Type Button}">
+                                            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MyNet.Styles.Button.Icon.Foreground}">
                                                 <Setter Property="Height" Value="22" />
                                                 <Setter Property="Width" Value="22" />
                                             </Style>
@@ -463,7 +461,7 @@
                                 </Grid>
                             </Border>
 
-                            <!--  Content  -->
+                            <!-- Content -->
                             <ContentPresenter x:Name="Content"
                                               Grid.Row="1"
                                               Margin="{TemplateBinding Padding}"
@@ -480,168 +478,170 @@
                         <Trigger Property="p:HeaderAssist.Alignment" Value="Left">
                             <Setter TargetName="Col1" Property="Width" Value="{Binding Path=(p:HeaderAssist.Size), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="Col2" Property="Width" Value="*" />
-                            <Setter TargetName="Row1" Property="Height" Value="*" />
-                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
-                            <Setter TargetName="Header" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="Header" Property="Grid.Row" Value="0" />
                             <Setter TargetName="Content" Property="Grid.Column" Value="1" />
                             <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Row1" Property="Height" Value="*" />
+                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
                         </Trigger>
 
                         <Trigger Property="p:HeaderAssist.Alignment" Value="Right">
                             <Setter TargetName="Col1" Property="Width" Value="*" />
                             <Setter TargetName="Col2" Property="Width" Value="{Binding Path=(p:HeaderAssist.Size), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Row1" Property="Height" Value="*" />
-                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
-                            <Setter TargetName="Header" Property="Grid.Column" Value="1" />
-                            <Setter TargetName="Header" Property="Grid.Row" Value="0" />
                             <Setter TargetName="Content" Property="Grid.Column" Value="0" />
                             <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Column" Value="1" />
+                            <Setter TargetName="Header" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Row1" Property="Height" Value="*" />
+                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
                         </Trigger>
 
                         <Trigger Property="p:HeaderAssist.Alignment" Value="Bottom">
                             <Setter TargetName="Col1" Property="Width" Value="*" />
                             <Setter TargetName="Col2" Property="Width" Value="Auto" />
-                            <Setter TargetName="Row1" Property="Height" Value="*" />
-                            <Setter TargetName="Row2" Property="Height" Value="{Binding Path=(p:HeaderAssist.Size), RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="Header" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="Header" Property="Grid.Row" Value="1" />
                             <Setter TargetName="Content" Property="Grid.Column" Value="0" />
                             <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Header" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="Row1" Property="Height" Value="*" />
+                            <Setter TargetName="Row2" Property="Height" Value="{Binding Path=(p:HeaderAssist.Size), RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:HeaderAssist.Background" Value="Transparent" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Bordered.Application" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Bordered.Application" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Bordered.Primary" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Bordered.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Bordered.Accent" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Bordered.Accent" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Bordered.Foreground" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Bordered.Foreground" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Clean" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Clean" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}">
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Bottom}" />
+        <Setter Property="p:HeaderAssist.Capitals" Value="Normal" />
         <Setter Property="p:HeaderAssist.FontSize" Value="{StaticResource MyNet.Font.Size}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Secondary}}" />
-        <Setter Property="p:HeaderAssist.Capitals" Value="Normal" />
         <Setter Property="p:HeaderAssist.HorizontalAlignment" Value="Center" />
+        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Bottom}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Clean.Right" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean}" TargetType="{x:Type GroupBox}">
-        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Left}" />
+    <Style x:Key="MyNet.Styles.GroupBox.Clean.Right" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean}">
         <Setter Property="p:HeaderAssist.Alignment" Value="Right" />
         <Setter Property="p:HeaderAssist.HorizontalAlignment" Value="Right" />
+        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Left}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Clean.Left" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean}" TargetType="{x:Type GroupBox}">
-        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Right}" />
+    <Style x:Key="MyNet.Styles.GroupBox.Clean.Left" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean}">
         <Setter Property="p:HeaderAssist.Alignment" Value="Left" />
         <Setter Property="p:HeaderAssist.HorizontalAlignment" Value="Left" />
+        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Right}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Clean.Bottom" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean}" TargetType="{x:Type GroupBox}">
-        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Top}" />
+    <Style x:Key="MyNet.Styles.GroupBox.Clean.Bottom" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean}">
         <Setter Property="p:HeaderAssist.Alignment" Value="Bottom" />
+        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Top}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Clean.SubCaption" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Clean.SubCaption" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean}">
         <Setter Property="p:HeaderAssist.Capitals" Value="AllSmallCaps" />
         <Setter Property="p:HeaderAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Clean.Caption" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Clean.Caption" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean}">
+        <Setter Property="p:HeaderAssist.Capitals" Value="AllSmallCaps" />
         <Setter Property="p:HeaderAssist.FontSize" Value="{StaticResource MyNet.Font.Size.Caption}" />
-        <Setter Property="p:HeaderAssist.Capitals" Value="AllSmallCaps" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Clean.Caption.Right" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Caption}" TargetType="{x:Type GroupBox}">
-        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Left}" />
+    <Style x:Key="MyNet.Styles.GroupBox.Clean.Caption.Right" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Caption}">
         <Setter Property="p:HeaderAssist.Alignment" Value="Right" />
         <Setter Property="p:HeaderAssist.HorizontalAlignment" Value="Right" />
+        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Left}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Clean.Caption.Left" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Caption}" TargetType="{x:Type GroupBox}">
-        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Right}" />
+    <Style x:Key="MyNet.Styles.GroupBox.Clean.Caption.Left" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Caption}">
         <Setter Property="p:HeaderAssist.Alignment" Value="Left" />
         <Setter Property="p:HeaderAssist.HorizontalAlignment" Value="Left" />
+        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Right}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Clean.Caption.Bottom" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Caption}" TargetType="{x:Type GroupBox}">
-        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Top}" />
+    <Style x:Key="MyNet.Styles.GroupBox.Clean.Caption.Bottom" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Caption}">
         <Setter Property="p:HeaderAssist.Alignment" Value="Bottom" />
+        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Top}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Clean.Title" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Clean.Title" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean}">
+        <Setter Property="p:HeaderAssist.Capitals" Value="AllSmallCaps" />
         <Setter Property="p:HeaderAssist.FontSize" Value="{StaticResource MyNet.Font.Size.Title}" />
-        <Setter Property="p:HeaderAssist.Capitals" Value="AllSmallCaps" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Clean.Title.Right" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Title}" TargetType="{x:Type GroupBox}">
-        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Left}" />
+    <Style x:Key="MyNet.Styles.GroupBox.Clean.Title.Right" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Title}">
         <Setter Property="p:HeaderAssist.Alignment" Value="Right" />
         <Setter Property="p:HeaderAssist.HorizontalAlignment" Value="Right" />
+        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Left}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Clean.Title.Left" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Title}" TargetType="{x:Type GroupBox}">
-        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Right}" />
+    <Style x:Key="MyNet.Styles.GroupBox.Clean.Title.Left" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Title}">
         <Setter Property="p:HeaderAssist.Alignment" Value="Left" />
         <Setter Property="p:HeaderAssist.HorizontalAlignment" Value="Left" />
+        <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Right}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Clean.Title.Bottom" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Title}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Clean.Title.Bottom" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Title}">
+        <Setter Property="p:HeaderAssist.Alignment" Value="Bottom" />
         <Setter Property="p:HeaderAssist.Padding" Value="{StaticResource MyNet.Margins.Medium.Top}" />
-        <Setter Property="p:HeaderAssist.Alignment" Value="Bottom" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.Label" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Label" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Header}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="p:HeaderAssist.Alignment" Value="Bottom" />
+        <Setter Property="p:HeaderAssist.FontSize" Value="{StaticResource MyNet.Font.Size}" />
         <Setter Property="p:HeaderAssist.HorizontalAlignment" Value="Center" />
         <Setter Property="p:HeaderAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
         <Setter Property="p:HeaderAssist.Padding" Value="5 0 5 5" />
-        <Setter Property="p:HeaderAssist.FontSize" Value="{StaticResource MyNet.Font.Size}" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Top" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Header}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Label.Application" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Label.Application" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Label.Primary" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Label.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Label.Accent" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Label.Accent" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Label.Custom" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Label.Custom" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}">
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
-    <Style x:Key="MyNet.Styles.GroupBox.Label.Foreground" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label.Custom}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Label.Foreground" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label.Custom}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Contrast=True}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.GroupBox.StringsList" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Caption}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.StringsList" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Caption}">
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>

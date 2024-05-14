@@ -8,56 +8,16 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.Ripple" TargetType="{x:Type ctrl:Ripple}">
-        <Setter Property="RecognizesAccessKey" Value="True" />
-        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="ClipToBounds" Value="{Binding RelativeSource={RelativeSource Self}, Path=(p:RippleAssist.ClipToBounds)}" />
         <Setter Property="Feedback" Value="{Binding RelativeSource={RelativeSource Self}, Path=(p:RippleAssist.Feedback)}" />
+        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="RecognizesAccessKey" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:Ripple}">
                     <Grid Background="Transparent">
-                        <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
-                            <Ellipse x:Name="ClickEllipse"
-                                     Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RippleX}"
-                                     Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RippleY}"
-                                     Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RippleSize}"
-                                     Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RippleSize}"
-                                     Fill="{TemplateBinding Feedback}"
-                                     Opacity="0"
-                                     RenderTransformOrigin=".5,.5">
-                                <Ellipse.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform x:Name="ScaleTransform" ScaleX="0" ScaleY="0" />
-                                        <SkewTransform />
-                                        <RotateTransform />
-                                        <TranslateTransform x:Name="TranslateTransform" />
-                                    </TransformGroup>
-                                </Ellipse.RenderTransform>
-                            </Ellipse>
-                            <Canvas.Style>
-                                <Style TargetType="Canvas">
-                                    <Setter Property="ZIndex" Value="0" />
-                                    <Style.Triggers>
-                                        <Trigger Property="p:RippleAssist.RippleOnTop" Value="True">
-                                            <Setter Property="ZIndex" Value="2" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Canvas.Style>
-                        </Canvas>
-                        <ContentPresenter Margin="{TemplateBinding Padding}"
-                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          Panel.ZIndex="1"
-                                          Content="{TemplateBinding Content}"
-                                          ContentStringFormat="{TemplateBinding ContentStringFormat}"
-                                          ContentTemplate="{TemplateBinding ContentTemplate}"
-                                          ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                          RecognizesAccessKey="{TemplateBinding RecognizesAccessKey}"
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -153,10 +113,50 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
+                            <Ellipse x:Name="ClickEllipse"
+                                     Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RippleX}"
+                                     Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RippleY}"
+                                     Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RippleSize}"
+                                     Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RippleSize}"
+                                     Fill="{TemplateBinding Feedback}"
+                                     Opacity="0"
+                                     RenderTransformOrigin=".5,.5">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="ScaleTransform" ScaleX="0" ScaleY="0" />
+                                        <SkewTransform />
+                                        <RotateTransform />
+                                        <TranslateTransform x:Name="TranslateTransform" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Canvas.Style>
+                                <Style TargetType="Canvas">
+                                    <Setter Property="ZIndex" Value="0" />
+                                    <Style.Triggers>
+                                        <Trigger Property="p:RippleAssist.RippleOnTop" Value="True">
+                                            <Setter Property="ZIndex" Value="2" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Canvas.Style>
+                        </Canvas>
+                        <ContentPresenter Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Panel.ZIndex="1"
+                                          Content="{TemplateBinding Content}"
+                                          ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                          RecognizesAccessKey="{TemplateBinding RecognizesAccessKey}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
     </Style>
 
 </ResourceDictionary>

@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <my:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf.Presentation;component/Themes/MyNet.DataTemplates.xaml" />
+                <my:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <my:BindingProxy x:Key="Proxy" Data="{Binding}" />

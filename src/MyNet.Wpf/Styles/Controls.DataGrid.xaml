@@ -18,35 +18,35 @@
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/MyNet.NumericUpDown.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MyNet.Styles.Thumb.Embedded.GridRowHeader" BasedOn="{StaticResource MyNet.Styles.Thumb}" TargetType="{x:Type Thumb}">
+    <Style x:Key="MyNet.Styles.Thumb.Embedded.GridRowHeader" TargetType="{x:Type Thumb}" BasedOn="{StaticResource MyNet.Styles.Thumb}">
         <Setter Property="Cursor" Value="SizeNS" />
         <Setter Property="Height" Value="8" />
         <Setter Property="Padding" Value="0" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.Thumb.Embedded.GridColumnHeader" BasedOn="{StaticResource MyNet.Styles.Thumb}" TargetType="{x:Type Thumb}">
+    <Style x:Key="MyNet.Styles.Thumb.Embedded.GridColumnHeader" TargetType="{x:Type Thumb}" BasedOn="{StaticResource MyNet.Styles.Thumb}">
         <Setter Property="Cursor" Value="SizeWE" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="Width" Value="8" />
     </Style>
 
-    <!--  Embedded controls  -->
-    <Style x:Key="MyNet.Styles.CheckBox.Embedded.DataGrid" BasedOn="{StaticResource MyNet.Styles.CheckBox}" TargetType="{x:Type CheckBox}">
+    <!-- Embedded controls -->
+    <Style x:Key="MyNet.Styles.CheckBox.Embedded.DataGrid" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox}">
+        <Setter Property="Focusable" Value="False" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="IsHitTestVisible" Value="False" />
-        <Setter Property="Focusable" Value="False" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type DataGridCell}}}" Value="True">
                 <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.CheckBox.Embedded.DataGrid.Edition" BasedOn="{StaticResource MyNet.Styles.CheckBox}" TargetType="{x:Type CheckBox}">
+    <Style x:Key="MyNet.Styles.CheckBox.Embedded.DataGrid.Edition" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox}">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.TextBlock.Embedded.DataGrid" BasedOn="{StaticResource MyNet.Styles.TextBlock}" TargetType="{x:Type TextBlock}">
+    <Style x:Key="MyNet.Styles.TextBlock.Embedded.DataGrid" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MyNet.Styles.TextBlock}">
         <Setter Property="Validation.ErrorTemplate">
             <Setter.Value>
                 <ControlTemplate>
@@ -61,19 +61,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="MyNet.Styles.ContentControl.Embedded.DataGrid" BasedOn="{StaticResource MyNet.Styles.ContentControl}" TargetType="{x:Type ContentControl}">
-        <Setter Property="Validation.ErrorTemplate">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Border Margin="-1 0 -1 -4"
-                            Padding="1 0 1 2"
-                            BorderBrush="{DynamicResource MyNet.Brushes.Validation.Error}"
-                            BorderThickness="0 0 0 2">
-                        <AdornedElementPlaceholder />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+    <Style x:Key="MyNet.Styles.ContentControl.Embedded.DataGrid" TargetType="{x:Type ContentControl}" BasedOn="{StaticResource MyNet.Styles.ContentControl}">
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -81,45 +69,56 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Margin="-1 0 -1 -4"
+                            Padding="1 0 1 2"
+                            BorderBrush="{DynamicResource MyNet.Brushes.Validation.Error}"
+                            BorderThickness="0 0 0 2">
+                        <AdornedElementPlaceholder />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
-    <Style x:Key="MyNet.Styles.TextBox.Embedded.DataGrid.Edition" BasedOn="{StaticResource MyNet.Styles.TextBox.Foreground}" TargetType="{x:Type TextBox}">
+    <Style x:Key="MyNet.Styles.TextBox.Embedded.DataGrid.Edition" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyNet.Styles.TextBox.Foreground}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Margin" Value="-1 0 -1 -2" />
         <Setter Property="Padding" Value="1" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="p:ValidationAssist.UsePopup" Value="True" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.DatePicker.Embedded.DataGrid.Edition" BasedOn="{StaticResource MyNet.Styles.DatePicker.Foreground}" TargetType="{x:Type DatePicker}">
+    <Style x:Key="MyNet.Styles.DatePicker.Embedded.DataGrid.Edition" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.Foreground}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Margin" Value="-1 0 -1 -2" />
         <Setter Property="Padding" Value="1" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="p:ValidationAssist.UsePopup" Value="True" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.TimePicker.Embedded.DataGrid.Edition" BasedOn="{StaticResource MyNet.Styles.TimePicker.Foreground}" TargetType="{x:Type ctrl:TimePicker}">
+    <Style x:Key="MyNet.Styles.TimePicker.Embedded.DataGrid.Edition" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Foreground}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Margin" Value="-1 0 -1 -2" />
         <Setter Property="Padding" Value="1" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="p:ValidationAssist.UsePopup" Value="True" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ColorPicker.Embedded.DataGrid.Edition" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Foreground}" TargetType="{x:Type ctrl:ColorPicker}">
+    <Style x:Key="MyNet.Styles.ColorPicker.Embedded.DataGrid.Edition" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Foreground}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Margin" Value="-1 0 -1 -2" />
         <Setter Property="Padding" Value="1" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="p:ValidationAssist.UsePopup" Value="True" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.NumericUpDown.Embedded.DataGrid.Edition" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Foreground}" TargetType="{x:Type ctrl:NumericUpDown}">
+    <Style x:Key="MyNet.Styles.NumericUpDown.Embedded.DataGrid.Edition" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Foreground}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Margin" Value="-1 0 -1 -2" />
         <Setter Property="Padding" Value="1" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="p:ValidationAssist.UsePopup" Value="True" />
     </Style>
 
     <Style x:Key="MyNet.Styles.ContentControl.Embedded.DataGrid.Color" TargetType="{x:Type ContentControl}">
-        <Setter Property="Focusable" Value="True" />
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -140,6 +139,7 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Focusable" Value="True" />
     </Style>
 
     <Style x:Key="MyNet.Styles.ComboBox.Embedded.DataGrid" TargetType="{x:Type ComboBox}">
@@ -153,20 +153,34 @@
         </Setter>
     </Style>
 
-    <Style x:Key="MyNet.Styles.ComboBox.Embedded.DataGrid.Edition" BasedOn="{StaticResource MyNet.Styles.ComboBox.Foreground}" TargetType="{x:Type ComboBox}">
+    <Style x:Key="MyNet.Styles.ComboBox.Embedded.DataGrid.Edition" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Foreground}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Margin" Value="-1 0 -1 -2" />
         <Setter Property="Padding" Value="1" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="p:ValidationAssist.UsePopup" Value="True" />
     </Style>
 
-    <!--  Headers  -->
+    <!-- Headers -->
     <Style x:Key="{ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}" TargetType="{x:Type Button}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Opacity)">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="{StaticResource MyNet.Opacity.Medium}" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed" />
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                         <Rectangle x:Name="Border" SnapsToDevicePixels="True">
                             <Rectangle.Fill>
                                 <SolidColorBrush Color="{DynamicResource MyNet.Colors.Control.Background}" />
@@ -182,20 +196,6 @@
                                 <SolidColorBrush Opacity="{StaticResource MyNet.Opacity.Medium}" Color="{DynamicResource MyNet.Colors.Application.Foreground}" />
                             </Polygon.Fill>
                         </Polygon>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Opacity)">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="{StaticResource MyNet.Opacity.Medium}" />
-                                        </DoubleAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed" />
-                                <VisualState x:Name="Disabled" />
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -203,15 +203,12 @@
     </Style>
 
     <Style x:Key="MyNet.Styles.DataGridColumnHeader" TargetType="{x:Type DataGridColumnHeader}">
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="TextBlock.FontWeight" Value="{StaticResource MyNet.Font.Weight.Header}" />
-        <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="p:DataGridAssist.ColumnHeaderPadding" Value="8 15" />
-        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(p:DataGridAssist.ColumnHeaderPadding)}" />
-        <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+        <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Opacity" Value="{DynamicResource MyNet.Opacity.Secondary}" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(p:DataGridAssist.ColumnHeaderPadding)}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
@@ -292,13 +289,16 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="TextBlock.FontWeight" Value="{StaticResource MyNet.Font.Weight.Header}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="p:DataGridAssist.ColumnHeaderPadding" Value="8 15" />
     </Style>
 
     <Style x:Key="MyNet.Styles.DataGridRowHeader" TargetType="{x:Type DataGridRowHeader}">
-        <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
         <Setter Property="BorderBrush" Value="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
         <Setter Property="BorderThickness" Value="{Binding GridLinesVisibility, RelativeSource={RelativeSource AncestorType=DataGrid}, Converter={x:Static c:GridLinesVisibilityBorderToThicknessConverter.Default}}" />
+        <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="Opacity" Value="{DynamicResource MyNet.Opacity.Medium}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -332,15 +332,14 @@
         </Setter>
     </Style>
 
-    <!--  Cells  -->
+    <!-- Cells -->
     <Style x:Key="MyNet.Styles.DataGridCell" TargetType="{x:Type DataGridCell}">
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
-        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=(p:DataGridAssist.CellPadding)}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
         <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=(p:DataGridAssist.CellPadding)}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
@@ -349,11 +348,15 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 SnapsToDevicePixels="True" />
-                        <ContentPresenter Focusable="False" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Validation.ErrorTemplate="{x:Null}" />
+                        <ContentPresenter Margin="{TemplateBinding Padding}"
+                                          Focusable="False"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          Validation.ErrorTemplate="{x:Null}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 
         <Style.Triggers>
             <Trigger Property="IsKeyboardFocusWithin" Value="True">
@@ -364,8 +367,8 @@
                     <Condition Binding="{Binding Path=(p:ListBoxItemAssist.ShowSelection), RelativeSource={RelativeSource AncestorType=DataGridRow}}" Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
                 <Setter Property="Background" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
+                <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
             </MultiDataTrigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
@@ -373,19 +376,12 @@
         </Style.Triggers>
     </Style>
 
-    <!--  Rows  -->
+    <!-- Rows -->
     <Style x:Key="MyNet.Styles.DataGridRow" TargetType="{x:Type DataGridRow}">
-        <Setter Property="p:ListBoxItemAssist.ShowSelection" Value="{Binding Path=(p:ListBoxItemAssist.ShowSelection), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{Binding Path=(p:ListBoxItemAssist.IsMouseOverBackground), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsMouseOverForeground), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
-        <Setter Property="ValidationErrorTemplate" Value="{Binding RowValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRow}">
@@ -395,32 +391,6 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             ClipToBounds="{TemplateBinding ClipToBounds}"
                             SnapsToDevicePixels="True">
-                        <Grid>
-                            <Border x:Name="AlternateBackground" Background="{TemplateBinding Foreground}" Opacity="0" />
-                            <Border x:Name="MouseOverBorder" Background="{Binding Path=(p:ListBoxItemAssist.IsMouseOverBackground), RelativeSource={RelativeSource TemplatedParent}}" Opacity="0" />
-                            <Border x:Name="SelectedBackgroundBorder" Background="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource TemplatedParent}}" Opacity="0" />
-
-                            <SelectiveScrollingGrid>
-                                <SelectiveScrollingGrid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </SelectiveScrollingGrid.ColumnDefinitions>
-                                <SelectiveScrollingGrid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="Auto" />
-                                </SelectiveScrollingGrid.RowDefinitions>
-                                <DataGridCellsPresenter Grid.Column="1" ItemsPanel="{TemplateBinding ItemsPanel}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                <DataGridDetailsPresenter Grid.Row="1"
-                                                          Grid.Column="1"
-                                                          SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen, ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical}, Converter={x:Static DataGrid.RowDetailsScrollingConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                                          Visibility="{TemplateBinding DetailsVisibility}" />
-                                <DataGridRowHeader Grid.Row="0"
-                                                   Grid.RowSpan="2"
-                                                   Grid.Column="0"
-                                                   SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
-                                                   Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-                            </SelectiveScrollingGrid>
-                        </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -504,6 +474,32 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Grid>
+                            <Border x:Name="AlternateBackground" Background="{TemplateBinding Foreground}" Opacity="0" />
+                            <Border x:Name="MouseOverBorder" Background="{Binding Path=(p:ListBoxItemAssist.IsMouseOverBackground), RelativeSource={RelativeSource TemplatedParent}}" Opacity="0" />
+                            <Border x:Name="SelectedBackgroundBorder" Background="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource TemplatedParent}}" Opacity="0" />
+
+                            <SelectiveScrollingGrid>
+                                <SelectiveScrollingGrid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </SelectiveScrollingGrid.ColumnDefinitions>
+                                <SelectiveScrollingGrid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </SelectiveScrollingGrid.RowDefinitions>
+                                <DataGridCellsPresenter Grid.Column="1" ItemsPanel="{TemplateBinding ItemsPanel}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <DataGridDetailsPresenter Grid.Row="1"
+                                                          Grid.Column="1"
+                                                          SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen, ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical}, Converter={x:Static DataGrid.RowDetailsScrollingConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                          Visibility="{TemplateBinding DetailsVisibility}" />
+                                <DataGridRowHeader Grid.Row="0"
+                                                   Grid.RowSpan="2"
+                                                   Grid.Column="0"
+                                                   SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
+                                                   Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+                            </SelectiveScrollingGrid>
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
@@ -517,6 +513,13 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Setter Property="ValidationErrorTemplate" Value="{Binding RowValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{Binding Path=(p:ListBoxItemAssist.IsMouseOverBackground), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsMouseOverForeground), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+        <Setter Property="p:ListBoxItemAssist.ShowSelection" Value="{Binding Path=(p:ListBoxItemAssist.ShowSelection), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource Self}}" />
@@ -527,51 +530,30 @@
         </Style.Triggers>
     </Style>
 
-    <!--  Datagrids  -->
+    <!-- Datagrids -->
     <Style x:Key="MyNet.Styles.DataGrid" TargetType="{x:Type DataGrid}">
-        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
-        <Setter Property="p:DataGridAssist.EnableEditBoxAssist" Value="True" />
-        <Setter Property="p:ListBoxItemAssist.ShowSelection" Value="True" />
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverForeground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="p:DataGridAssist.SelectedCellBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.FontSize)}" />
-        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="GridLinesVisibility" Value="None" />
         <Setter Property="AlternationCount" Value="2" />
-        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
-        <Setter Property="VerticalGridLinesBrush" Value="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
-        <Setter Property="HeadersVisibility" Value="Column" />
-        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
-        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-        <Setter Property="ColumnHeaderStyle" Value="{StaticResource MyNet.Styles.DataGridColumnHeader}" />
-        <Setter Property="RowHeaderStyle" Value="{StaticResource MyNet.Styles.DataGridRowHeader}" />
-        <Setter Property="RowStyle" Value="{StaticResource MyNet.Styles.DataGridRow}" />
-        <Setter Property="CellStyle" Value="{StaticResource MyNet.Styles.DataGridCell}" />
-        <Setter Property="p:DataGridAssist.TextColumnStyle" Value="{StaticResource MyNet.Styles.TextBlock.Embedded.DataGrid}" />
-        <Setter Property="p:DataGridAssist.EditingTextColumnStyle" Value="{StaticResource MyNet.Styles.TextBox.Embedded.DataGrid.Edition}" />
-        <Setter Property="p:DataGridAssist.ComboBoxColumnStyle" Value="{StaticResource MyNet.Styles.ComboBox.Embedded.DataGrid}" />
-        <Setter Property="p:DataGridAssist.EditingComboBoxColumnStyle" Value="{StaticResource MyNet.Styles.ComboBox.Embedded.DataGrid.Edition}" />
-        <Setter Property="p:DataGridAssist.CheckBoxColumnStyle" Value="{StaticResource MyNet.Styles.CheckBox.Embedded.DataGrid}" />
-        <Setter Property="p:DataGridAssist.EditingCheckBoxColumnStyle" Value="{StaticResource MyNet.Styles.CheckBox.Embedded.DataGrid.Edition}" />
-        <Setter Property="p:DataGridAssist.ApplyDefaultStyle" Value="True" />
         <Setter Property="AutoGenerateColumns" Value="False" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="CanUserAddRows" Value="True" />
         <Setter Property="CanUserDeleteRows" Value="True" />
         <Setter Property="CanUserReorderColumns" Value="False" />
         <Setter Property="CanUserResizeColumns" Value="False" />
         <Setter Property="CanUserResizeRows" Value="False" />
+        <Setter Property="CellStyle" Value="{StaticResource MyNet.Styles.DataGridCell}" />
+        <Setter Property="ColumnHeaderStyle" Value="{StaticResource MyNet.Styles.DataGridColumnHeader}" />
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.FontSize)}" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
+        <Setter Property="GridLinesVisibility" Value="None" />
+        <Setter Property="HeadersVisibility" Value="Column" />
         <Setter Property="HeadersVisibility" Value="All" />
+        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
+        <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
+        <Setter Property="RowHeaderStyle" Value="{StaticResource MyNet.Styles.DataGridRowHeader}" />
         <Setter Property="RowHeight" Value="40" />
-        <Setter Property="SelectionMode" Value="Extended" />
+        <Setter Property="RowStyle" Value="{StaticResource MyNet.Styles.DataGridRow}" />
         <Setter Property="RowValidationErrorTemplate">
             <Setter.Value>
                 <ControlTemplate>
@@ -586,6 +568,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+        <Setter Property="SelectionMode" Value="Extended" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGrid}">
@@ -609,8 +595,7 @@
                                             <RowDefinition Height="*" />
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
-                                        <Button Style="{DynamicResource {ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle,
-                                                                                              TypeInTargetAssembly={x:Type DataGrid}}}"
+                                        <Button Style="{DynamicResource {ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}}"
                                                 Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                                 Command="{x:Static DataGrid.SelectAllCommand}"
                                                 Focusable="false"
@@ -661,6 +646,23 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
+        <Setter Property="VerticalGridLinesBrush" Value="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="p:DataGridAssist.ApplyDefaultStyle" Value="True" />
+        <Setter Property="p:DataGridAssist.CheckBoxColumnStyle" Value="{StaticResource MyNet.Styles.CheckBox.Embedded.DataGrid}" />
+        <Setter Property="p:DataGridAssist.ComboBoxColumnStyle" Value="{StaticResource MyNet.Styles.ComboBox.Embedded.DataGrid}" />
+        <Setter Property="p:DataGridAssist.EditingCheckBoxColumnStyle" Value="{StaticResource MyNet.Styles.CheckBox.Embedded.DataGrid.Edition}" />
+        <Setter Property="p:DataGridAssist.EditingComboBoxColumnStyle" Value="{StaticResource MyNet.Styles.ComboBox.Embedded.DataGrid.Edition}" />
+        <Setter Property="p:DataGridAssist.EditingTextColumnStyle" Value="{StaticResource MyNet.Styles.TextBox.Embedded.DataGrid.Edition}" />
+        <Setter Property="p:DataGridAssist.EnableEditBoxAssist" Value="True" />
+        <Setter Property="p:DataGridAssist.SelectedCellBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
+        <Setter Property="p:DataGridAssist.TextColumnStyle" Value="{StaticResource MyNet.Styles.TextBlock.Embedded.DataGrid}" />
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverForeground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ListBoxItemAssist.ShowSelection" Value="True" />
+        <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -671,12 +673,12 @@
             </MultiTrigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.DataGrid.Accent" BasedOn="{StaticResource MyNet.Styles.DataGrid}" TargetType="{x:Type DataGrid}">
+    <Style x:Key="MyNet.Styles.DataGrid.Accent" TargetType="{x:Type DataGrid}" BasedOn="{StaticResource MyNet.Styles.DataGrid}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DataGrid.Foreground" BasedOn="{StaticResource MyNet.Styles.DataGrid}" TargetType="{x:Type DataGrid}">
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Style x:Key="MyNet.Styles.DataGrid.Foreground" TargetType="{x:Type DataGrid}" BasedOn="{StaticResource MyNet.Styles.DataGrid}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 </ResourceDictionary>

@@ -10,70 +10,17 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.OverlayDialogControl" TargetType="{x:Type ctrl:OverlayDialogControl}">
-        <Setter Property="Focusable" Value="False" />
-        <Setter Property="Padding" Value="50" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Popup}" />
-        <Setter Property="OverlayBackground" Value="{DynamicResource MyNet.Brushes.Overlay}" />
-        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
-        <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="Focusable" Value="False" />
         <Setter Property="FontFamily" Value="{me:RobotoFont}" />
+        <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="OverlayBackground" Value="{DynamicResource MyNet.Brushes.Overlay}" />
+        <Setter Property="Padding" Value="50" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:OverlayDialogControl}">
                     <Grid x:Name="DialogHostRoot" Focusable="False">
-                        <Grid x:Name="PART_ContentCoverGrid"
-                              Background="Transparent"
-                              Focusable="False"
-                              IsHitTestVisible="False"
-                              Visibility="{Binding Opacity, RelativeSource={RelativeSource Self}, Converter={x:Static c:ComparaisonToVisibilityConverter.CollapsedIfIsEqualsTo}, ConverterParameter=0}">
-                            <Border x:Name="ContentCoverBorder"
-                                    Background="{Binding OverlayBackground, RelativeSource={RelativeSource TemplatedParent}}"
-                                    IsHitTestVisible="False" />
-
-                            <Border Background="Transparent" IsHitTestVisible="{TemplateBinding CloseOnClickAway}">
-                                <Border.InputBindings>
-                                    <MouseBinding Command="{x:Static ctrl:OverlayDialogControl.CloseDialogCommand}" MouseAction="LeftClick" />
-                                </Border.InputBindings>
-                            </Border>
-                            <ctrl:Card x:Name="PART_ContentElement"
-                                       Margin="{TemplateBinding Padding}"
-                                       Padding="0"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       p:ElevationAssist.Elevation="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation)}"
-                                       Background="{TemplateBinding Background}"
-                                       Content="{TemplateBinding Content}"
-                                       ContentTemplate="{TemplateBinding ContentTemplate}"
-                                       ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                       FocusManager.IsFocusScope="False"
-                                       Focusable="False"
-                                       FontFamily="{TemplateBinding FontFamily}"
-                                       FontSize="{TemplateBinding FontSize}"
-                                       FontStretch="{TemplateBinding FontStretch}"
-                                       FontStyle="{TemplateBinding FontStyle}"
-                                       FontWeight="{TemplateBinding FontWeight}"
-                                       Foreground="{TemplateBinding Foreground}"
-                                       IsHitTestVisible="True"
-                                       IsTabStop="False"
-                                       Opacity="0"
-                                       RenderTransformOrigin=".5,.5"
-                                       TextElement.FontFamily="{TemplateBinding FontFamily}"
-                                       TextElement.FontSize="{TemplateBinding FontSize}"
-                                       TextElement.FontStretch="{TemplateBinding FontStretch}"
-                                       TextElement.FontStyle="{TemplateBinding FontStyle}"
-                                       TextElement.FontWeight="{TemplateBinding FontWeight}"
-                                       TextElement.Foreground="{TemplateBinding Foreground}"
-                                       TextOptions.TextFormattingMode="Ideal"
-                                       TextOptions.TextRenderingMode="Auto"
-                                       UniformCornerRadius="{StaticResource MyNet.UniformCornerRadius.Container}">
-                                <ctrl:Card.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform x:Name="CardScaleTransform" ScaleX="0" ScaleY="0" />
-                                    </TransformGroup>
-                                </ctrl:Card.RenderTransform>
-                            </ctrl:Card>
-                        </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="PopupStates">
                                 <VisualStateGroup.Transitions>
@@ -183,6 +130,56 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="PART_ContentCoverGrid"
+                              Background="Transparent"
+                              Focusable="False"
+                              IsHitTestVisible="False"
+                              Visibility="{Binding Opacity, RelativeSource={RelativeSource Self}, Converter={x:Static c:ComparaisonToVisibilityConverter.CollapsedIfIsEqualsTo}, ConverterParameter=0}">
+                            <Border x:Name="ContentCoverBorder" Background="{Binding OverlayBackground, RelativeSource={RelativeSource TemplatedParent}}" IsHitTestVisible="False" />
+
+                            <Border Background="Transparent" IsHitTestVisible="{TemplateBinding CloseOnClickAway}">
+                                <Border.InputBindings>
+                                    <MouseBinding Command="{x:Static ctrl:OverlayDialogControl.CloseDialogCommand}" MouseAction="LeftClick" />
+                                </Border.InputBindings>
+                            </Border>
+                            <ctrl:Card x:Name="PART_ContentElement"
+                                       Margin="{TemplateBinding Padding}"
+                                       Padding="0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       p:ElevationAssist.Elevation="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation)}"
+                                       Background="{TemplateBinding Background}"
+                                       Content="{TemplateBinding Content}"
+                                       ContentTemplate="{TemplateBinding ContentTemplate}"
+                                       ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                       FocusManager.IsFocusScope="False"
+                                       Focusable="False"
+                                       FontFamily="{TemplateBinding FontFamily}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       FontStretch="{TemplateBinding FontStretch}"
+                                       FontStyle="{TemplateBinding FontStyle}"
+                                       FontWeight="{TemplateBinding FontWeight}"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       IsHitTestVisible="True"
+                                       IsTabStop="False"
+                                       Opacity="0"
+                                       RenderTransformOrigin=".5,.5"
+                                       TextElement.FontFamily="{TemplateBinding FontFamily}"
+                                       TextElement.FontSize="{TemplateBinding FontSize}"
+                                       TextElement.FontStretch="{TemplateBinding FontStretch}"
+                                       TextElement.FontStyle="{TemplateBinding FontStyle}"
+                                       TextElement.FontWeight="{TemplateBinding FontWeight}"
+                                       TextElement.Foreground="{TemplateBinding Foreground}"
+                                       TextOptions.TextFormattingMode="Ideal"
+                                       TextOptions.TextRenderingMode="Auto"
+                                       UniformCornerRadius="{StaticResource MyNet.UniformCornerRadius.Container}">
+                                <ctrl:Card.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="CardScaleTransform" ScaleX="0" ScaleY="0" />
+                                    </TransformGroup>
+                                </ctrl:Card.RenderTransform>
+                            </ctrl:Card>
+                        </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsOpen" Value="True">
@@ -192,5 +189,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Popup}" />
     </Style>
 </ResourceDictionary>

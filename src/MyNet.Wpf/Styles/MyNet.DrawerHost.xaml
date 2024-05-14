@@ -10,212 +10,16 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.DrawerHost" TargetType="{x:Type ctrl:DrawerHost}">
-        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Popup}" />
+        <Setter Property="BottomDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
         <Setter Property="ClipToBounds" Value="True" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="LeftDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
-        <Setter Property="RightDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
-        <Setter Property="BottomDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
-        <Setter Property="TopDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
         <Setter Property="OverlayBackground" Value="{DynamicResource MyNet.Brushes.Overlay}" />
+        <Setter Property="RightDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:DrawerHost}">
                     <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid x:Name="RootGrid">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <AdornerDecorator Grid.Row="1" Grid.Column="1">
-                                <ContentPresenter x:Name="ContentPresenter"
-                                                  Content="{TemplateBinding Content}"
-                                                  ContentStringFormat="{TemplateBinding ContentStringFormat}"
-                                                  ContentTemplate="{TemplateBinding ContentTemplate}">
-                                    <ContentPresenter.Tag>
-                                        <sys:Boolean>False</sys:Boolean>
-                                    </ContentPresenter.Tag>
-                                </ContentPresenter>
-                            </AdornerDecorator>
-                            <Grid x:Name="PART_ContentCover"
-                                  Grid.Row="0"
-                                  Grid.RowSpan="3"
-                                  Grid.Column="0"
-                                  Grid.ColumnSpan="3"
-                                  Focusable="False"
-                                  IsHitTestVisible="False"
-                                  Opacity="0">
-                                <Grid.Style>
-                                    <Style TargetType="Grid">
-                                        <Setter Property="Background" Value="{Binding OverlayBackground, RelativeSource={RelativeSource TemplatedParent}}" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding OpenMode, RelativeSource={RelativeSource TemplatedParent}}" Value="Standard">
-                                                <Setter Property="Background" Value="{x:Null}" />
-                                            </DataTrigger>
-                                            <Trigger Property="Opacity" Value="0">
-                                                <Setter Property="Visibility" Value="Hidden" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Grid.Style>
-                            </Grid>
-                            <Grid x:Name="PART_LeftDrawer"
-                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth, Converter={x:Static c:DrawerOffsetConverter.Default}, ConverterParameter={x:Static Dock.Left}}"
-                                  HorizontalAlignment="Left"
-                                  VerticalAlignment="Stretch"
-                                  Panel.ZIndex="{TemplateBinding LeftDrawerZIndex}">
-                                <Grid.Style>
-                                    <Style TargetType="Grid">
-                                        <Setter Property="Grid.Column" Value="1" />
-                                        <Setter Property="Grid.Row" Value="1" />
-                                        <Setter Property="Grid.RowSpan" Value="1" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding OpenMode, RelativeSource={RelativeSource TemplatedParent}}" Value="Standard">
-                                                <Setter Property="Grid.Column" Value="0" />
-                                                <Setter Property="Grid.Row" Value="0" />
-                                                <Setter Property="Grid.RowSpan" Value="3" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Grid.Style>
-
-                                <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
-                                    <Border x:Name="LeftDrawerShadow"
-                                            Background="{TemplateBinding LeftDrawerBackground}"
-                                            CornerRadius="{TemplateBinding LeftDrawerCornerRadius}"
-                                            Opacity="0">
-                                        <Border.Style>
-                                            <Style TargetType="Border">
-                                                <Setter Property="Effect" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" />
-                                            </Style>
-                                        </Border.Style>
-                                    </Border>
-                                </AdornerDecorator>
-                                <ContentPresenter Content="{TemplateBinding LeftDrawerContent}"
-                                                  ContentStringFormat="{TemplateBinding LeftDrawerContentStringFormat}"
-                                                  ContentTemplate="{TemplateBinding LeftDrawerContentTemplate}"
-                                                  IsEnabled="{TemplateBinding IsLeftDrawerOpen}"
-                                                  Validation.ErrorTemplate="{x:Null}" />
-                            </Grid>
-                            <Grid x:Name="PART_RightDrawer"
-                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth, Converter={x:Static c:DrawerOffsetConverter.Default}, ConverterParameter={x:Static Dock.Right}}"
-                                  HorizontalAlignment="Right"
-                                  VerticalAlignment="Stretch"
-                                  Panel.ZIndex="{TemplateBinding RightDrawerZIndex}">
-                                <Grid.Style>
-                                    <Style TargetType="Grid">
-                                        <Setter Property="Grid.Column" Value="1" />
-                                        <Setter Property="Grid.Row" Value="1" />
-                                        <Setter Property="Grid.RowSpan" Value="1" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding OpenMode, RelativeSource={RelativeSource TemplatedParent}}" Value="Standard">
-                                                <Setter Property="Grid.Column" Value="2" />
-                                                <Setter Property="Grid.Row" Value="0" />
-                                                <Setter Property="Grid.RowSpan" Value="3" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Grid.Style>
-                                <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
-                                    <Border x:Name="RightDrawerShadow"
-                                            Background="{TemplateBinding RightDrawerBackground}"
-                                            CornerRadius="{TemplateBinding RightDrawerCornerRadius}"
-                                            Opacity="0">
-                                        <Border.Style>
-                                            <Style TargetType="Border">
-                                                <Setter Property="Effect" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" />
-                                            </Style>
-                                        </Border.Style>
-                                    </Border>
-                                </AdornerDecorator>
-                                <ContentPresenter Content="{TemplateBinding RightDrawerContent}"
-                                                  ContentStringFormat="{TemplateBinding RightDrawerContentStringFormat}"
-                                                  ContentTemplate="{TemplateBinding RightDrawerContentTemplate}"
-                                                  IsEnabled="{TemplateBinding IsRightDrawerOpen}"
-                                                  Validation.ErrorTemplate="{x:Null}" />
-                            </Grid>
-                            <Grid x:Name="PART_TopDrawer"
-                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight, Converter={x:Static c:DrawerOffsetConverter.Default}, ConverterParameter={x:Static Dock.Top}}"
-                                  HorizontalAlignment="Stretch"
-                                  VerticalAlignment="Top"
-                                  Panel.ZIndex="{TemplateBinding TopDrawerZIndex}">
-                                <Grid.Style>
-                                    <Style TargetType="Grid">
-                                        <Setter Property="Grid.Column" Value="1" />
-                                        <Setter Property="Grid.Row" Value="1" />
-                                        <Setter Property="Grid.RowSpan" Value="1" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding OpenMode, RelativeSource={RelativeSource TemplatedParent}}" Value="Standard">
-                                                <Setter Property="Grid.Column" Value="0" />
-                                                <Setter Property="Grid.ColumnSpan" Value="3" />
-                                                <Setter Property="Grid.Row" Value="0" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Grid.Style>
-                                <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
-                                    <Border x:Name="TopDrawerShadow"
-                                            Background="{TemplateBinding TopDrawerBackground}"
-                                            CornerRadius="{TemplateBinding TopDrawerCornerRadius}"
-                                            Opacity="0">
-                                        <Border.Style>
-                                            <Style TargetType="Border">
-                                                <Setter Property="Effect" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" />
-                                            </Style>
-                                        </Border.Style>
-                                    </Border>
-                                </AdornerDecorator>
-                                <ContentPresenter Content="{TemplateBinding TopDrawerContent}"
-                                                  ContentStringFormat="{TemplateBinding TopDrawerContentStringFormat}"
-                                                  ContentTemplate="{TemplateBinding TopDrawerContentTemplate}"
-                                                  IsEnabled="{TemplateBinding IsTopDrawerOpen}"
-                                                  Validation.ErrorTemplate="{x:Null}" />
-                            </Grid>
-                            <Grid x:Name="PART_BottomDrawer"
-                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight, Converter={x:Static c:DrawerOffsetConverter.Default}, ConverterParameter={x:Static Dock.Bottom}}"
-                                  HorizontalAlignment="Stretch"
-                                  VerticalAlignment="Bottom"
-                                  Panel.ZIndex="{TemplateBinding BottomDrawerZIndex}">
-                                <Grid.Style>
-                                    <Style TargetType="Grid">
-                                        <Setter Property="Grid.Column" Value="1" />
-                                        <Setter Property="Grid.Row" Value="1" />
-                                        <Setter Property="Grid.RowSpan" Value="1" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding OpenMode, RelativeSource={RelativeSource TemplatedParent}}" Value="Standard">
-                                                <Setter Property="Grid.Column" Value="0" />
-                                                <Setter Property="Grid.ColumnSpan" Value="3" />
-                                                <Setter Property="Grid.Row" Value="2" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Grid.Style>
-                                <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
-                                    <Border x:Name="BottomDrawerShadow"
-                                            Background="{TemplateBinding BottomDrawerBackground}"
-                                            CornerRadius="{TemplateBinding BottomDrawerCornerRadius}"
-                                            Opacity="0">
-                                        <Border.Style>
-                                            <Style TargetType="Border">
-                                                <Setter Property="Effect" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" />
-                                            </Style>
-                                        </Border.Style>
-                                    </Border>
-                                </AdornerDecorator>
-                                <ContentPresenter Content="{TemplateBinding BottomDrawerContent}"
-                                                  ContentStringFormat="{TemplateBinding BottomDrawerContentStringFormat}"
-                                                  ContentTemplate="{TemplateBinding BottomDrawerContentTemplate}"
-                                                  IsEnabled="{TemplateBinding IsBottomDrawerOpen}"
-                                                  Validation.ErrorTemplate="{x:Null}" />
-                            </Grid>
-                        </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="AllDrawers">
                                 <VisualStateGroup.Transitions>
@@ -514,10 +318,206 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="RootGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <AdornerDecorator Grid.Row="1" Grid.Column="1">
+                                <ContentPresenter x:Name="ContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}">
+                                    <ContentPresenter.Tag>
+                                        <sys:Boolean>False</sys:Boolean>
+                                    </ContentPresenter.Tag>
+                                </ContentPresenter>
+                            </AdornerDecorator>
+                            <Grid x:Name="PART_ContentCover"
+                                  Grid.Row="0"
+                                  Grid.RowSpan="3"
+                                  Grid.Column="0"
+                                  Grid.ColumnSpan="3"
+                                  Focusable="False"
+                                  IsHitTestVisible="False"
+                                  Opacity="0">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Background" Value="{Binding OverlayBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding OpenMode, RelativeSource={RelativeSource TemplatedParent}}" Value="Standard">
+                                                <Setter Property="Background" Value="{x:Null}" />
+                                            </DataTrigger>
+                                            <Trigger Property="Opacity" Value="0">
+                                                <Setter Property="Visibility" Value="Hidden" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                            </Grid>
+                            <Grid x:Name="PART_LeftDrawer"
+                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth, Converter={x:Static c:DrawerOffsetConverter.Default}, ConverterParameter={x:Static Dock.Left}}"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Stretch"
+                                  Panel.ZIndex="{TemplateBinding LeftDrawerZIndex}">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Grid.Column" Value="1" />
+                                        <Setter Property="Grid.Row" Value="1" />
+                                        <Setter Property="Grid.RowSpan" Value="1" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding OpenMode, RelativeSource={RelativeSource TemplatedParent}}" Value="Standard">
+                                                <Setter Property="Grid.Column" Value="0" />
+                                                <Setter Property="Grid.Row" Value="0" />
+                                                <Setter Property="Grid.RowSpan" Value="3" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+
+                                <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
+                                    <Border x:Name="LeftDrawerShadow"
+                                            Background="{TemplateBinding LeftDrawerBackground}"
+                                            CornerRadius="{TemplateBinding LeftDrawerCornerRadius}"
+                                            Opacity="0">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Effect" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" />
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                </AdornerDecorator>
+                                <ContentPresenter Content="{TemplateBinding LeftDrawerContent}"
+                                                  ContentStringFormat="{TemplateBinding LeftDrawerContentStringFormat}"
+                                                  ContentTemplate="{TemplateBinding LeftDrawerContentTemplate}"
+                                                  IsEnabled="{TemplateBinding IsLeftDrawerOpen}"
+                                                  Validation.ErrorTemplate="{x:Null}" />
+                            </Grid>
+                            <Grid x:Name="PART_RightDrawer"
+                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth, Converter={x:Static c:DrawerOffsetConverter.Default}, ConverterParameter={x:Static Dock.Right}}"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Stretch"
+                                  Panel.ZIndex="{TemplateBinding RightDrawerZIndex}">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Grid.Column" Value="1" />
+                                        <Setter Property="Grid.Row" Value="1" />
+                                        <Setter Property="Grid.RowSpan" Value="1" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding OpenMode, RelativeSource={RelativeSource TemplatedParent}}" Value="Standard">
+                                                <Setter Property="Grid.Column" Value="2" />
+                                                <Setter Property="Grid.Row" Value="0" />
+                                                <Setter Property="Grid.RowSpan" Value="3" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                                <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
+                                    <Border x:Name="RightDrawerShadow"
+                                            Background="{TemplateBinding RightDrawerBackground}"
+                                            CornerRadius="{TemplateBinding RightDrawerCornerRadius}"
+                                            Opacity="0">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Effect" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" />
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                </AdornerDecorator>
+                                <ContentPresenter Content="{TemplateBinding RightDrawerContent}"
+                                                  ContentStringFormat="{TemplateBinding RightDrawerContentStringFormat}"
+                                                  ContentTemplate="{TemplateBinding RightDrawerContentTemplate}"
+                                                  IsEnabled="{TemplateBinding IsRightDrawerOpen}"
+                                                  Validation.ErrorTemplate="{x:Null}" />
+                            </Grid>
+                            <Grid x:Name="PART_TopDrawer"
+                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight, Converter={x:Static c:DrawerOffsetConverter.Default}, ConverterParameter={x:Static Dock.Top}}"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Top"
+                                  Panel.ZIndex="{TemplateBinding TopDrawerZIndex}">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Grid.Column" Value="1" />
+                                        <Setter Property="Grid.Row" Value="1" />
+                                        <Setter Property="Grid.RowSpan" Value="1" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding OpenMode, RelativeSource={RelativeSource TemplatedParent}}" Value="Standard">
+                                                <Setter Property="Grid.Column" Value="0" />
+                                                <Setter Property="Grid.ColumnSpan" Value="3" />
+                                                <Setter Property="Grid.Row" Value="0" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                                <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
+                                    <Border x:Name="TopDrawerShadow"
+                                            Background="{TemplateBinding TopDrawerBackground}"
+                                            CornerRadius="{TemplateBinding TopDrawerCornerRadius}"
+                                            Opacity="0">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Effect" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" />
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                </AdornerDecorator>
+                                <ContentPresenter Content="{TemplateBinding TopDrawerContent}"
+                                                  ContentStringFormat="{TemplateBinding TopDrawerContentStringFormat}"
+                                                  ContentTemplate="{TemplateBinding TopDrawerContentTemplate}"
+                                                  IsEnabled="{TemplateBinding IsTopDrawerOpen}"
+                                                  Validation.ErrorTemplate="{x:Null}" />
+                            </Grid>
+                            <Grid x:Name="PART_BottomDrawer"
+                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight, Converter={x:Static c:DrawerOffsetConverter.Default}, ConverterParameter={x:Static Dock.Bottom}}"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Bottom"
+                                  Panel.ZIndex="{TemplateBinding BottomDrawerZIndex}">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Grid.Column" Value="1" />
+                                        <Setter Property="Grid.Row" Value="1" />
+                                        <Setter Property="Grid.RowSpan" Value="1" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding OpenMode, RelativeSource={RelativeSource TemplatedParent}}" Value="Standard">
+                                                <Setter Property="Grid.Column" Value="0" />
+                                                <Setter Property="Grid.ColumnSpan" Value="3" />
+                                                <Setter Property="Grid.Row" Value="2" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                                <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
+                                    <Border x:Name="BottomDrawerShadow"
+                                            Background="{TemplateBinding BottomDrawerBackground}"
+                                            CornerRadius="{TemplateBinding BottomDrawerCornerRadius}"
+                                            Opacity="0">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Effect" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" />
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                </AdornerDecorator>
+                                <ContentPresenter Content="{TemplateBinding BottomDrawerContent}"
+                                                  ContentStringFormat="{TemplateBinding BottomDrawerContentStringFormat}"
+                                                  ContentTemplate="{TemplateBinding BottomDrawerContentTemplate}"
+                                                  IsEnabled="{TemplateBinding IsBottomDrawerOpen}"
+                                                  Validation.ErrorTemplate="{x:Null}" />
+                            </Grid>
+                        </Grid>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="TopDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Popup}" />
     </Style>
 
 </ResourceDictionary>

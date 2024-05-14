@@ -14,10 +14,12 @@
                 <!--  It's only for autocompletion in Design Mode  -->
                 <my:SharedResourceDictionary DesignMode="True" Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.Styles.xaml" />
 
+                <!-- Styles -->
                 <my:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf.Presentation;component/Themes/MyNet.Styles.xaml" />
-                <my:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.DataTemplates.xaml" />
-                <my:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf.Presentation;component/Themes/MyNet.DataTemplates.xaml" />
                 <my:SharedResourceDictionary Source="pack://application:,,,/ShowMeTheXAML.AvalonEdit;component/Themes/xamldisplayer.xaml" />
+
+                <!-- Theme -->
+                <my:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf.Presentation;component/Themes/MyNet.Theme.xaml" />
                 <my:ThemeDictionary />
             </ResourceDictionary.MergedDictionaries>
 

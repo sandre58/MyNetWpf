@@ -15,15 +15,14 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Style.NavigationViewItemHeader" TargetType="{x:Type ctrl:NavigationViewItemHeader}">
-        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=HeaderForeground, RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
-        <Setter Property="IconForeground" Value="{me:BrushBinding InheritPath=HeaderForeground, RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
-        <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
-        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Margin" Value="0 4 0 2" />
         <Setter Property="Focusable" Value="False" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=HeaderForeground, RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="IconForeground" Value="{me:BrushBinding InheritPath=HeaderForeground, RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
+        <Setter Property="Margin" Value="0 4 0 2" />
+        <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
@@ -53,28 +52,22 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <Style x:Key="MyNet.Styles.NavigationViewItem.Base" TargetType="{x:Type ctrl:NavigationViewItem}">
-        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
-        <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
-        <Setter Property="Border.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Border.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=BorderBrush, RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
+        <Setter Property="Focusable" Value="True" />
         <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Tab}" />
-        <Setter Property="Padding" Value="10 8" />
-        <Setter Property="p:IconAssist.Margin" Value="0" />
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=HeaderForeground, RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
         <Setter Property="IconForeground" Value="{me:BrushBinding InheritPath=HeaderForeground, RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
-        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=BorderBrush, RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(p:ThemeAssist.IsMouseOverForeground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding InheritPath=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding InheritPath=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
         <Setter Property="KeyboardNavigation.IsTabStop" Value="True" />
-        <Setter Property="Focusable" Value="True" />
+        <Setter Property="Padding" Value="10 8" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
@@ -201,41 +194,43 @@
                             </MultiTrigger.ExitActions>
                         </MultiTrigger>
                         <Trigger Property="IsActive" Value="True">
-                            <Setter TargetName="PART_MainBorder" Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
-                            <Setter TargetName="IconContentPresenter" Property="Opacity" Value="1.0" />
                             <Setter TargetName="ActiveRectangle" Property="Opacity" Value="1.0" />
+                            <Setter TargetName="IconContentPresenter" Property="Opacity" Value="1.0" />
+                            <Setter TargetName="PART_MainBorder" Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Setter Property="p:IconAssist.Margin" Value="0" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding InheritPath=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding InheritPath=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(p:ThemeAssist.IsMouseOverForeground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
         <Style.Triggers>
-            <!--  IsEnabled  -->
+            <!-- IsEnabled -->
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.NavigationViewItem.SubLevel" BasedOn="{StaticResource MyNet.Styles.NavigationViewItem.Base}" TargetType="{x:Type ctrl:NavigationViewItem}">
+    <Style x:Key="MyNet.Styles.NavigationViewItem.SubLevel" TargetType="{x:Type ctrl:NavigationViewItem}" BasedOn="{StaticResource MyNet.Styles.NavigationViewItem.Base}">
+        <Setter Property="FontSize" Value="13" />
         <Setter Property="Padding" Value="{StaticResource MyNet.Margins.VeryLarge.Horizontal}" />
         <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Medium.Left}" />
-        <Setter Property="FontSize" Value="13" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.NavigationViewItem" BasedOn="{StaticResource MyNet.Styles.NavigationViewItem.Base}" TargetType="{x:Type ctrl:NavigationViewItem}">
+    <Style x:Key="MyNet.Styles.NavigationViewItem" TargetType="{x:Type ctrl:NavigationViewItem}" BasedOn="{StaticResource MyNet.Styles.NavigationViewItem.Base}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.NavigationViewItem.SubLevel}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.NavigationViewItem.Compact" BasedOn="{StaticResource MyNet.Styles.NavigationViewItem}" TargetType="{x:Type ctrl:NavigationViewItem}">
-        <Setter Property="Padding" Value="4" />
-        <Setter Property="Width" Value="60" />
-        <Setter Property="Height" Value="60" />
+    <Style x:Key="MyNet.Styles.NavigationViewItem.Compact" TargetType="{x:Type ctrl:NavigationViewItem}" BasedOn="{StaticResource MyNet.Styles.NavigationViewItem}">
         <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Secondary}" />
-        <Setter Property="p:PopupAssist.Background" Value="{me:BrushBinding InheritPath=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
-        <Setter Property="p:PopupAssist.Foreground" Value="{me:BrushBinding InheritPath=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
-        <Setter Property="p:HeaderAssist.HorizontalAlignment" Value="{me:BrushBinding InheritPath=(p:HeaderAssist.HorizontalAlignment), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
-        <Setter Property="p:HeaderAssist.VerticalAlignment" Value="{me:BrushBinding InheritPath=(p:HeaderAssist.VerticalAlignment), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="Padding" Value="4" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:NavigationViewItem}">
@@ -347,10 +342,10 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsActive" Value="True">
-                            <Setter TargetName="Icon" Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
-                            <Setter TargetName="ElementContentPresenter" Property="TextElement.Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
-                            <Setter TargetName="PART_MainBorder" Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                             <Setter TargetName="ActiveRectangle" Property="Opacity" Value="1.0" />
+                            <Setter TargetName="ElementContentPresenter" Property="TextElement.Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="PART_MainBorder" Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -437,11 +432,14 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
-
-    <Style x:Key="MyNet.Styles.NavigationViewItem.Top" BasedOn="{StaticResource MyNet.Styles.NavigationViewItem}" TargetType="{x:Type ctrl:NavigationViewItem}">
+        <Setter Property="Width" Value="60" />
+        <Setter Property="p:HeaderAssist.HorizontalAlignment" Value="{me:BrushBinding InheritPath=(p:HeaderAssist.HorizontalAlignment), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
+        <Setter Property="p:HeaderAssist.VerticalAlignment" Value="{me:BrushBinding InheritPath=(p:HeaderAssist.VerticalAlignment), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
         <Setter Property="p:PopupAssist.Background" Value="{me:BrushBinding InheritPath=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
         <Setter Property="p:PopupAssist.Foreground" Value="{me:BrushBinding InheritPath=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.NavigationViewItem.Top" TargetType="{x:Type ctrl:NavigationViewItem}" BasedOn="{StaticResource MyNet.Styles.NavigationViewItem}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:NavigationViewItem}">
@@ -579,28 +577,39 @@
                             <Setter Property="IsExpanded" Value="False" />
                         </MultiTrigger>
                         <Trigger Property="IsActive" Value="True">
-                            <Setter TargetName="PART_MainBorder" Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
-                            <Setter TargetName="IconContentPresenter" Property="Opacity" Value="1.0" />
                             <Setter TargetName="ActiveRectangle" Property="Opacity" Value="1.0" />
+                            <Setter TargetName="IconContentPresenter" Property="Opacity" Value="1.0" />
+                            <Setter TargetName="PART_MainBorder" Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:PopupAssist.Background" Value="{me:BrushBinding InheritPath=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
+        <Setter Property="p:PopupAssist.Foreground" Value="{me:BrushBinding InheritPath=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:NavigationView}}}" />
     </Style>
 
     <Style x:Key="MyNet.Styles.NavigationView" TargetType="{x:Type ctrl:NavigationView}">
         <Style.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.NavigationViewItem}" TargetType="{x:Type ctrl:NavigationViewItem}" />
+            <Style TargetType="{x:Type ctrl:NavigationViewItem}" BasedOn="{StaticResource MyNet.Styles.NavigationViewItem}" />
         </Style.Resources>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="CompactPaneLength" Value="40" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Focusable" Value="False" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="FrameBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+        <Setter Property="FrameCornerRadius" Value="15,0,0,0" />
+        <Setter Property="HeaderForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock FontSize="{StaticResource MyNet.Font.Size.Title}" Text="{Binding}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="KeyboardNavigation.DirectionalNavigation" Value="Contained" />
-        <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
-        <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Standard" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -612,31 +621,15 @@
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="HeaderForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="KeyboardNavigation.DirectionalNavigation" Value="Contained" />
+        <Setter Property="Margin" Value="0" />
         <Setter Property="OpenPaneLength" Value="320" />
-        <Setter Property="CompactPaneLength" Value="40" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
         <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
-        <Setter Property="FrameCornerRadius" Value="15,0,0,0" />
-        <Setter Property="FrameBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="HeaderTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <TextBlock FontSize="{StaticResource MyNet.Font.Size.Title}" Text="{Binding}" />
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:NavigationView}">
@@ -646,7 +639,32 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <!--  Left Pane  -->
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="PaneStates">
+                                <VisualState Name="PaneOpen">
+                                    <Storyboard>
+                                        <DoubleAnimation AccelerationRatio="0.4"
+                                                         Storyboard.TargetName="PaneGrid"
+                                                         Storyboard.TargetProperty="Width"
+                                                         From="40"
+                                                         To="{TemplateBinding OpenPaneLength}"
+                                                         Duration="0:0:.16" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState Name="PaneCompact">
+                                    <Storyboard>
+                                        <DoubleAnimation AccelerationRatio="0.4"
+                                                         Storyboard.TargetName="PaneGrid"
+                                                         Storyboard.TargetProperty="Width"
+                                                         From="{TemplateBinding OpenPaneLength}"
+                                                         To="40"
+                                                         Duration="0:0:.16" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <!-- Left Pane -->
                         <Grid x:Name="PaneGrid"
                               Grid.Column="0"
                               Width="{TemplateBinding OpenPaneLength}"
@@ -657,7 +675,7 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <!--  Pane Header  -->
+                            <!-- Pane Header -->
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -668,7 +686,7 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
-                                <!--  Menu button  -->
+                                <!-- Menu button -->
                                 <Button x:Name="PART_ToggleButton"
                                         Style="{StaticResource MyNet.Styles.Button.Text}"
                                         Width="39"
@@ -678,13 +696,13 @@
                                         Content="{me:MediumIcon Kind=Menu}"
                                         Visibility="{Binding IsPaneToggleVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
 
-                                <!--  Header  -->
+                                <!-- Header -->
                                 <ContentPresenter Grid.Column="1"
                                                   Margin="{StaticResource MyNet.Margins.Default.Bottom}"
                                                   Content="{TemplateBinding PaneHeader}"
                                                   Visibility="{Binding PaneHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
 
-                                <!--  Auto Suggest Box  -->
+                                <!-- Auto Suggest Box -->
                                 <Grid Grid.Row="1" Grid.ColumnSpan="2" Visibility="{Binding ShowAutoSuggestBox, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                                     <ctrl:AutoSuggestBox x:Name="PART_AutoSuggestBox"
                                                          Style="{StaticResource MyNet.Styles.AutoSuggestBox.Filled}"
@@ -711,7 +729,7 @@
                                 </Grid>
                             </Grid>
 
-                            <!--  Items  -->
+                            <!-- Items -->
                             <ctrl:DynamicScrollViewer Grid.Row="1"
                                                       CanContentScroll="True"
                                                       HorizontalScrollBarVisibility="Disabled"
@@ -722,10 +740,10 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
 
-                                    <!--  Items  -->
+                                    <!-- Items -->
                                     <ItemsPresenter />
 
-                                    <!--  Footer Items  -->
+                                    <!-- Footer Items -->
                                     <ItemsControl Style="{StaticResource MyNet.Styles.ItemsControl}"
                                                   Grid.Row="1"
                                                   ItemsSource="{Binding FooterMenuItems, RelativeSource={RelativeSource TemplatedParent}}"
@@ -733,14 +751,14 @@
                                 </Grid>
                             </ctrl:DynamicScrollViewer>
 
-                            <!--  PaneFooter  -->
+                            <!-- PaneFooter -->
                             <ContentPresenter Grid.Row="2"
                                               Margin="{StaticResource MyNet.Margins.Default.Top}"
                                               Content="{TemplateBinding PaneFooter}"
                                               Visibility="{Binding PaneFooter, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
                         </Grid>
 
-                        <!--  Main frame  -->
+                        <!-- Main frame -->
                         <Border Grid.Column="1"
                                 Margin="{TemplateBinding FrameMargin}"
                                 Background="{TemplateBinding FrameBackground}"
@@ -761,10 +779,10 @@
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
 
-                                <!--  Header  -->
+                                <!-- Header -->
                                 <DockPanel Margin="{StaticResource MyNet.Margins.Medium}" Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
 
-                                    <!--  Breadcrumb  -->
+                                    <!-- Breadcrumb -->
                                     <ctrl:SimpleStackPanel Margin="{StaticResource MyNet.Margins.Large.Right}"
                                                            VerticalAlignment="Center"
                                                            DockPanel.Dock="Left"
@@ -785,7 +803,7 @@
                                     <ContentPresenter Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" />
                                 </DockPanel>
 
-                                <!--  Page content  -->
+                                <!-- Page content -->
                                 <ctrl:NavigationFrame x:Name="PART_NavigationFrame"
                                                       Grid.Row="1"
                                                       Padding="{TemplateBinding Padding}"
@@ -794,49 +812,25 @@
                                                       TransitionDuration="{TemplateBinding TransitionDuration}" />
                             </Grid>
                         </Border>
-
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup Name="PaneStates">
-                                <VisualState Name="PaneOpen">
-                                    <Storyboard>
-                                        <DoubleAnimation AccelerationRatio="0.4"
-                                                         Storyboard.TargetName="PaneGrid"
-                                                         Storyboard.TargetProperty="Width"
-                                                         From="40"
-                                                         To="{TemplateBinding OpenPaneLength}"
-                                                         Duration="0:0:.16" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState Name="PaneCompact">
-                                    <Storyboard>
-                                        <DoubleAnimation AccelerationRatio="0.4"
-                                                         Storyboard.TargetName="PaneGrid"
-                                                         Storyboard.TargetProperty="Width"
-                                                         From="{TemplateBinding OpenPaneLength}"
-                                                         To="40"
-                                                         Duration="0:0:.16" />
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
+        <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Standard" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.NavigationView.Compact" BasedOn="{StaticResource MyNet.Styles.NavigationView}" TargetType="{x:Type ctrl:NavigationView}">
+    <Style x:Key="MyNet.Styles.NavigationView.Compact" TargetType="{x:Type ctrl:NavigationView}" BasedOn="{StaticResource MyNet.Styles.NavigationView}">
         <Style.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.NavigationViewItem.Compact}" TargetType="{x:Type ctrl:NavigationViewItem}" />
+            <Style TargetType="{x:Type ctrl:NavigationViewItem}" BasedOn="{StaticResource MyNet.Styles.NavigationViewItem.Compact}" />
         </Style.Resources>
-        <Setter Property="OpenPaneLength" Value="60" />
         <Setter Property="CompactPaneLength" Value="60" />
-        <Setter Property="ShowAutoSuggestBox" Value="False" />
         <Setter Property="IsPaneToggleVisible" Value="False" />
-        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
-        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="p:HeaderAssist.HorizontalAlignment" Value="Left" />
-        <Setter Property="p:HeaderAssist.VerticalAlignment" Value="Center" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -847,19 +841,23 @@
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="OpenPaneLength" Value="60" />
+        <Setter Property="ShowAutoSuggestBox" Value="False" />
+        <Setter Property="p:HeaderAssist.HorizontalAlignment" Value="Left" />
+        <Setter Property="p:HeaderAssist.VerticalAlignment" Value="Center" />
+        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
+        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.NavigationView.Compact.Accent" BasedOn="{StaticResource MyNet.Styles.NavigationView.Compact}" TargetType="{x:Type ctrl:NavigationView}">
+    <Style x:Key="MyNet.Styles.NavigationView.Compact.Accent" TargetType="{x:Type ctrl:NavigationView}" BasedOn="{StaticResource MyNet.Styles.NavigationView.Compact}">
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.NavigationView.Top" BasedOn="{StaticResource MyNet.Styles.NavigationView}" TargetType="{x:Type ctrl:NavigationView}">
+    <Style x:Key="MyNet.Styles.NavigationView.Top" TargetType="{x:Type ctrl:NavigationView}" BasedOn="{StaticResource MyNet.Styles.NavigationView}">
         <Style.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.NavigationViewItem.Top}" TargetType="{x:Type ctrl:NavigationViewItem}" />
+            <Style TargetType="{x:Type ctrl:NavigationViewItem}" BasedOn="{StaticResource MyNet.Styles.NavigationViewItem.Top}" />
         </Style.Resources>
         <Setter Property="IsPaneToggleVisible" Value="False" />
-        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
-        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -876,7 +874,7 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
-                        <!--  Top Pane  -->
+                        <!-- Top Pane -->
                         <Grid x:Name="PaneGrid">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
@@ -886,7 +884,7 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <!--  Navigation button  -->
+                            <!-- Navigation button -->
                             <ctrl:SimpleStackPanel Margin="{StaticResource MyNet.Margins.Medium.Right}"
                                                    VerticalAlignment="Center"
                                                    Orientation="Horizontal"
@@ -904,14 +902,14 @@
                                         ToolTip="{me:Resource Next}" />
                             </ctrl:SimpleStackPanel>
 
-                            <!--  Header  -->
+                            <!-- Header -->
                             <ContentPresenter Grid.Column="1"
                                               Margin="{StaticResource MyNet.Margins.Medium.Right}"
                                               VerticalAlignment="Center"
                                               Content="{TemplateBinding PaneHeader}"
                                               Visibility="{Binding PaneHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
 
-                            <!--  Items  -->
+                            <!-- Items -->
                             <ctrl:DynamicScrollViewer Grid.Column="2"
                                                       Margin="{StaticResource MyNet.Margins.Medium.Right}"
                                                       VerticalAlignment="Center"
@@ -924,10 +922,10 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <!--  Items  -->
+                                    <!-- Items -->
                                     <ItemsPresenter />
 
-                                    <!--  Footer Items  -->
+                                    <!-- Footer Items -->
                                     <ItemsControl Style="{StaticResource MyNet.Styles.ItemsControl}"
                                                   Grid.Column="1"
                                                   ItemsSource="{Binding FooterMenuItems, RelativeSource={RelativeSource TemplatedParent}}"
@@ -941,7 +939,7 @@
                                 </Grid>
                             </ctrl:DynamicScrollViewer>
 
-                            <!--  Auto Suggest Box  -->
+                            <!-- Auto Suggest Box -->
                             <!--<ctrl:AutoSuggestBox x:Name="PART_AutoSuggestBox"
                                                  Style="{StaticResource MyNet.Styles.AutoSuggestBox.Filled}"
                                                  Grid.Column="3"
@@ -958,7 +956,7 @@
                                                  DisplayMemberPath="Header"
                                                  Visibility="{Binding ShowAutoSuggestBox, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />-->
 
-                            <!--  PaneFooter  -->
+                            <!-- PaneFooter -->
                             <ContentPresenter Grid.Column="4"
                                               Margin="{StaticResource MyNet.Margins.Default.Top}"
                                               VerticalAlignment="Center"
@@ -967,7 +965,7 @@
 
                         </Grid>
 
-                        <!--  Main frame  -->
+                        <!-- Main frame -->
                         <Border Grid.Row="1"
                                 Margin="{TemplateBinding FrameMargin}"
                                 Background="{TemplateBinding FrameBackground}"
@@ -988,13 +986,13 @@
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
 
-                                <!--  Header  -->
+                                <!-- Header -->
                                 <ContentPresenter Margin="{StaticResource MyNet.Margins.Medium}"
                                                   Content="{TemplateBinding Header}"
                                                   ContentTemplate="{TemplateBinding HeaderTemplate}"
                                                   Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
 
-                                <!--  Page content  -->
+                                <!-- Page content -->
                                 <ctrl:NavigationFrame x:Name="PART_NavigationFrame"
                                                       Grid.Row="1"
                                                       Padding="{TemplateBinding Padding}"
@@ -1007,8 +1005,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
+        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.NavigationView.Top.Accent" BasedOn="{StaticResource MyNet.Styles.NavigationView.Top}" TargetType="{x:Type ctrl:NavigationView}">
+    <Style x:Key="MyNet.Styles.NavigationView.Top.Accent" TargetType="{x:Type ctrl:NavigationView}" BasedOn="{StaticResource MyNet.Styles.NavigationView.Top}">
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>

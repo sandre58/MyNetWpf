@@ -40,8 +40,7 @@
                                         FontWeight="{StaticResource MyNet.Font.Weight}"
                                         Foreground="{TemplateBinding IconForeground}"
                                         IsTabStop="False"
-                                        Visibility="{TemplateBinding Icon,
-                                                                     Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}">
+                                        Visibility="{TemplateBinding Icon, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}">
                             <ContentControl.Clip>
                                 <EllipseGeometry Center="16,16" RadiusX="16" RadiusY="16" />
                             </ContentControl.Clip>
@@ -68,8 +67,7 @@
                                 Margin="0 0 8 0"
                                 Content="{me:ToolIcon Kind=Close}"
                                 ToolTip="{TemplateBinding DeleteToolTip}"
-                                Visibility="{TemplateBinding IsDeletable,
-                                                             Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+                                Visibility="{TemplateBinding IsDeletable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger SourceName="IconControl" Property="Visibility" Value="Collapsed">

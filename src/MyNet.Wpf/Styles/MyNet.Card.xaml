@@ -8,20 +8,16 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style x:Key="MyNet.Styles.Card.Elevation" TargetType="{x:Type ctrl:Card}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="ClipContent" Value="True" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
         <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
-        <Setter Property="ClipContent" Value="True" />
-        <Setter Property="UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:Card}">
@@ -37,12 +33,12 @@
                             </AdornerDecorator.OpacityMask>
                             <Border CornerRadius="{Binding UniformCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:DoubleToCornerRadiusConverter.All}}" Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}">
                                 <Border x:Name="PART_ClipBorder"
-                                        CornerRadius="{Binding UniformCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:DoubleToCornerRadiusConverter.All}}"
                                         Padding="{TemplateBinding Padding}"
                                         Background="{TemplateBinding Background}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
-                                        Clip="{TemplateBinding ContentClip}" />
+                                        Clip="{TemplateBinding ContentClip}"
+                                        CornerRadius="{Binding UniformCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:DoubleToCornerRadiusConverter.All}}" />
                             </Border>
                         </AdornerDecorator>
                         <ContentPresenter x:Name="ContentPresenter"
@@ -62,6 +58,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
     </Style>
     <Style x:Key="MyNet.Styles.Card.Elevation.Application" TargetType="{x:Type ctrl:Card}" BasedOn="{StaticResource MyNet.Styles.Card.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
@@ -88,7 +88,6 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -118,5 +117,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
     </Style>
 </ResourceDictionary>

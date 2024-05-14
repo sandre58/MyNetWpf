@@ -20,16 +20,15 @@
     </Storyboard>
 
     <Style x:Key="MyNet.Styles.Badged" TargetType="{x:Type ctrl:Badged}">
-        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
         <Setter Property="BadgeBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="BadgeForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
-        <Setter Property="BadgePlacementMode" Value="TopRight" />
         <Setter Property="BadgeChangedStoryboard" Value="{StaticResource BadgeChangedStoryboard}" />
         <Setter Property="BadgeFontSize" Value="{StaticResource MyNet.Font.Size.Secondary}" />
         <Setter Property="BadgeFontWeight" Value="{StaticResource MyNet.Font.Weight.Button}" />
+        <Setter Property="BadgeForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="BadgePlacementMode" Value="TopRight" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
+        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:Badged}">
@@ -111,6 +110,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
     </Style>
 
     <Style x:Key="MyNet.Styles.Badged.Accent" TargetType="{x:Type ctrl:Badged}">

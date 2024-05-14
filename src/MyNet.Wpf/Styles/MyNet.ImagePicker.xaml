@@ -15,186 +15,6 @@
 
     <ControlTemplate x:Key="MyNet.Templates.ImagePicker" TargetType="{x:Type ctrl:ImagePicker}">
         <Grid>
-            <AdornerDecorator>
-                <Border x:Name="border"
-                        ctrl:BottomDashedLineAdorner.Brush="{TemplateBinding BorderBrush}"
-                        ctrl:BottomDashedLineAdorner.Thickness="{TemplateBinding BorderThickness}"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                        SnapsToDevicePixels="True">
-                    <Grid>
-
-                        <!--  Mouse Over  -->
-                        <Border x:Name="mouseOver"
-                                Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                Visibility="Collapsed" />
-
-                        <!--  Ripple on focus  -->
-                        <Border HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
-                                Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                RenderTransformOrigin="0.5,0.5"
-                                Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
-                            <Border.RenderTransform>
-                                <ScaleTransform x:Name="RippleOnFocusScaleTransform" ScaleX="0" ScaleY="0" />
-                            </Border.RenderTransform>
-                        </Border>
-
-                        <Grid Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <!--  Icon  -->
-                            <ContentControl x:Name="Icon"
-                                            Grid.Column="0"
-                                            Margin="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource TemplatedParent}}"
-                                            VerticalAlignment="Center"
-                                            Content="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}}"
-                                            Opacity="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource TemplatedParent}}"
-                                            Visibility="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}">
-                                <ContentControl.Resources>
-                                    <Style BasedOn="{StaticResource MyNet.Styles.PackIcon}" TargetType="{x:Type ctrl:PackIcon}">
-                                        <Setter Property="Width" Value="20" />
-                                        <Setter Property="Height" Value="20" />
-                                    </Style>
-                                    <Style BasedOn="{StaticResource MyNet.Styles.GeometryIcon}" TargetType="{x:Type ctrl:GeometryIcon}">
-                                        <Setter Property="Width" Value="20" />
-                                        <Setter Property="Height" Value="20" />
-                                    </Style>
-                                </ContentControl.Resources>
-                            </ContentControl>
-
-                            <!--  Content  -->
-                            <Grid x:Name="grid"
-                                  Grid.Column="1"
-                                  MinWidth="1"
-                                  MinHeight="18">
-                                <Grid Grid.Column="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <!--  Prefix  -->
-                                    <TextBlock x:Name="PrefixTextBlock"
-                                               Grid.Column="0"
-                                               Margin="{StaticResource MyNet.Margins.Small.Horizontal}"
-                                               FontSize="{TemplateBinding FontSize}"
-                                               Opacity="{TemplateBinding p:HintAssist.HintOpacity}"
-                                               Text="{TemplateBinding p:TextFieldAssist.PrefixText}">
-                                        <TextBlock.Visibility>
-                                            <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
-                                                <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
-                                                <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
-                                            </MultiBinding>
-                                        </TextBlock.Visibility>
-                                    </TextBlock>
-
-                                    <!--  Preview  -->
-                                    <ContentControl Grid.Column="1" Content="{TemplateBinding SelectedImage}" ContentTemplate="{TemplateBinding SelectedImageTemplate}" />
-
-                                    <!--  Host Text  -->
-                                    <TextBox x:Name="PART_TextBox"
-                                             Style="{StaticResource MyNet.Styles.TextBox.Embedded}"
-                                             Grid.Column="2"
-                                             HorizontalAlignment="Stretch"
-                                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                             VerticalContentAlignment="Center"
-                                             CaretBrush="{TemplateBinding p:TextFieldAssist.UnderlineBrush}"
-                                             SelectionBrush="{TemplateBinding p:TextFieldAssist.UnderlineBrush}"
-                                             Text="{Binding ImagePath, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, ValidatesOnExceptions=True}" />
-
-                                    <!--  Suffix  -->
-                                    <TextBlock x:Name="SuffixTextBlock"
-                                               Grid.Column="3"
-                                               Margin="{StaticResource MyNet.Margins.Small.Horizontal}"
-                                               FontSize="{TemplateBinding FontSize}"
-                                               Opacity="{TemplateBinding p:HintAssist.HintOpacity}"
-                                               Text="{TemplateBinding p:TextFieldAssist.SuffixText}" />
-
-                                    <!--  Clear button  -->
-                                    <Button x:Name="PART_ClearButton" Style="{StaticResource MyNet.Styles.Button.Icon.Tool.Clear}" Grid.Column="4">
-                                        <Button.Visibility>
-                                            <MultiBinding Converter="{x:Static c:TextFieldClearButtonVisibilityConverter.Default}">
-                                                <Binding Path="(p:TextFieldAssist.HasClearButton)" RelativeSource="{RelativeSource TemplatedParent}" />
-                                                <Binding ElementName="Hint" Path="IsContentNullOrEmpty" />
-                                            </MultiBinding>
-                                        </Button.Visibility>
-                                    </Button>
-
-                                    <!--  Image button  -->
-                                    <Button x:Name="PART_Button"
-                                            Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
-                                            Grid.Column="5"
-                                            Content="{me:Icon Kind=ImageEdit}" />
-                                </Grid>
-
-                                <!--  SmartHint  -->
-                                <ctrl:SmartHint x:Name="Hint"
-                                                Grid.Column="0"
-                                                Margin="{TemplateBinding p:TextFieldAssist.TextBoxViewMargin}"
-                                                FloatingOffset="{TemplateBinding p:HintAssist.FloatingOffset}"
-                                                FloatingScale="{TemplateBinding p:HintAssist.FloatingScale}"
-                                                FontFamily="{TemplateBinding p:HintAssist.FontFamily}"
-                                                FontSize="{TemplateBinding FontSize}"
-                                                HintOpacity="{TemplateBinding p:HintAssist.HintOpacity}"
-                                                HintProxy="{Binding RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:HintProxyFabricConverter.Default}}"
-                                                UseFloating="{TemplateBinding p:HintAssist.IsFloating}">
-                                    <ctrl:SmartHint.Hint>
-                                        <Border x:Name="HintBackgroundBorder" Background="{TemplateBinding p:HintAssist.Background}" CornerRadius="{StaticResource MyNet.CornerRadius.Control}">
-                                            <ContentPresenter x:Name="HintWrapper" Content="{TemplateBinding p:HintAssist.Hint}" />
-                                        </Border>
-                                    </ctrl:SmartHint.Hint>
-                                </ctrl:SmartHint>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Border>
-            </AdornerDecorator>
-
-            <!--  Underline  -->
-            <ctrl:Underline x:Name="Underline" Background="{TemplateBinding p:TextFieldAssist.UnderlineBrush}" Visibility="{TemplateBinding p:TextFieldAssist.DecorationVisibility}" />
-
-            <!--  Helper text  -->
-            <Canvas VerticalAlignment="Bottom">
-                <Grid x:Name="FooterGrid" Canvas.Top="2" Width="{Binding ActualWidth, ElementName=border}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="HelperTextTextBlock" Style="{Binding Path=(p:HintAssist.HelperTextStyle), RelativeSource={RelativeSource TemplatedParent}}" />
-                    <Border x:Name="CharacterCounterContainer" Grid.Column="1">
-                        <TextBlock x:Name="CharacterCounterTextBlock" Style="{Binding Path=(p:TextFieldAssist.CharacterCounterStyle), RelativeSource={RelativeSource TemplatedParent}}" />
-                    </Border>
-                </Grid>
-            </Canvas>
-
-            <!--  Errors  -->
-            <Canvas x:Name="Errors" VerticalAlignment="Bottom" Visibility="{Binding Errors.Count, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:CountToVisibilityConverter.CollapsedIfNotAny}}">
-                <Grid Canvas.Top="2" Width="{Binding ActualWidth, ElementName=border}">
-                    <ItemsControl ItemsSource="{TemplateBinding Errors}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock FontSize="{StaticResource MyNet.Font.Size.Secondary}"
-                                           Foreground="{DynamicResource MyNet.Brushes.Validation.Error}"
-                                           Text="{Binding}"
-                                           TextWrapping="Wrap" />
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </Grid>
-            </Canvas>
 
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="FocusStates">
@@ -234,11 +54,191 @@
                     </VisualState>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
+            <AdornerDecorator>
+                <Border x:Name="border"
+                        ctrl:BottomDashedLineAdorner.Brush="{TemplateBinding BorderBrush}"
+                        ctrl:BottomDashedLineAdorner.Thickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                        SnapsToDevicePixels="True">
+                    <Grid>
+
+                        <!-- Mouse Over -->
+                        <Border x:Name="mouseOver"
+                                Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                Visibility="Collapsed" />
+
+                        <!-- Ripple on focus -->
+                        <Border HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                RenderTransformOrigin="0.5,0.5"
+                                Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="RippleOnFocusScaleTransform" ScaleX="0" ScaleY="0" />
+                            </Border.RenderTransform>
+                        </Border>
+
+                        <Grid Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Icon -->
+                            <ContentControl x:Name="Icon"
+                                            Grid.Column="0"
+                                            Margin="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource TemplatedParent}}"
+                                            VerticalAlignment="Center"
+                                            Content="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}}"
+                                            Opacity="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource TemplatedParent}}"
+                                            Visibility="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}">
+                                <ContentControl.Resources>
+                                    <Style TargetType="{x:Type ctrl:PackIcon}" BasedOn="{StaticResource MyNet.Styles.PackIcon}">
+                                        <Setter Property="Height" Value="20" />
+                                        <Setter Property="Width" Value="20" />
+                                    </Style>
+                                    <Style TargetType="{x:Type ctrl:GeometryIcon}" BasedOn="{StaticResource MyNet.Styles.GeometryIcon}">
+                                        <Setter Property="Height" Value="20" />
+                                        <Setter Property="Width" Value="20" />
+                                    </Style>
+                                </ContentControl.Resources>
+                            </ContentControl>
+
+                            <!-- Content -->
+                            <Grid x:Name="grid"
+                                  Grid.Column="1"
+                                  MinWidth="1"
+                                  MinHeight="18">
+                                <Grid Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Prefix -->
+                                    <TextBlock x:Name="PrefixTextBlock"
+                                               Grid.Column="0"
+                                               Margin="{StaticResource MyNet.Margins.Small.Horizontal}"
+                                               FontSize="{TemplateBinding FontSize}"
+                                               Opacity="{TemplateBinding p:HintAssist.HintOpacity}"
+                                               Text="{TemplateBinding p:TextFieldAssist.PrefixText}">
+                                        <TextBlock.Visibility>
+                                            <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
+                                                <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
+                                                <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                                            </MultiBinding>
+                                        </TextBlock.Visibility>
+                                    </TextBlock>
+
+                                    <!-- Preview -->
+                                    <ContentControl Grid.Column="1" Content="{TemplateBinding SelectedImage}" ContentTemplate="{TemplateBinding SelectedImageTemplate}" />
+
+                                    <!-- Host Text -->
+                                    <TextBox x:Name="PART_TextBox"
+                                             Style="{StaticResource MyNet.Styles.TextBox.Embedded}"
+                                             Grid.Column="2"
+                                             HorizontalAlignment="Stretch"
+                                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                             VerticalContentAlignment="Center"
+                                             CaretBrush="{TemplateBinding p:TextFieldAssist.UnderlineBrush}"
+                                             SelectionBrush="{TemplateBinding p:TextFieldAssist.UnderlineBrush}"
+                                             Text="{Binding ImagePath, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, ValidatesOnExceptions=True}" />
+
+                                    <!-- Suffix -->
+                                    <TextBlock x:Name="SuffixTextBlock"
+                                               Grid.Column="3"
+                                               Margin="{StaticResource MyNet.Margins.Small.Horizontal}"
+                                               FontSize="{TemplateBinding FontSize}"
+                                               Opacity="{TemplateBinding p:HintAssist.HintOpacity}"
+                                               Text="{TemplateBinding p:TextFieldAssist.SuffixText}" />
+
+                                    <!-- Clear button -->
+                                    <Button x:Name="PART_ClearButton" Style="{StaticResource MyNet.Styles.Button.Icon.Tool.Clear}" Grid.Column="4">
+                                        <Button.Visibility>
+                                            <MultiBinding Converter="{x:Static c:TextFieldClearButtonVisibilityConverter.Default}">
+                                                <Binding Path="(p:TextFieldAssist.HasClearButton)" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                <Binding ElementName="Hint" Path="IsContentNullOrEmpty" />
+                                            </MultiBinding>
+                                        </Button.Visibility>
+                                    </Button>
+
+                                    <!-- Image button -->
+                                    <Button x:Name="PART_Button"
+                                            Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
+                                            Grid.Column="5"
+                                            Content="{me:Icon Kind=ImageEdit}" />
+                                </Grid>
+
+                                <!-- SmartHint -->
+                                <ctrl:SmartHint x:Name="Hint"
+                                                Grid.Column="0"
+                                                Margin="{TemplateBinding p:TextFieldAssist.TextBoxViewMargin}"
+                                                FloatingOffset="{TemplateBinding p:HintAssist.FloatingOffset}"
+                                                FloatingScale="{TemplateBinding p:HintAssist.FloatingScale}"
+                                                FontFamily="{TemplateBinding p:HintAssist.FontFamily}"
+                                                FontSize="{TemplateBinding FontSize}"
+                                                HintOpacity="{TemplateBinding p:HintAssist.HintOpacity}"
+                                                HintProxy="{Binding RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:HintProxyFabricConverter.Default}}"
+                                                UseFloating="{TemplateBinding p:HintAssist.IsFloating}">
+                                    <ctrl:SmartHint.Hint>
+                                        <Border x:Name="HintBackgroundBorder" Background="{TemplateBinding p:HintAssist.Background}" CornerRadius="{StaticResource MyNet.CornerRadius.Control}">
+                                            <ContentPresenter x:Name="HintWrapper" Content="{TemplateBinding p:HintAssist.Hint}" />
+                                        </Border>
+                                    </ctrl:SmartHint.Hint>
+                                </ctrl:SmartHint>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </AdornerDecorator>
+
+            <!-- Underline -->
+            <ctrl:Underline x:Name="Underline" Background="{TemplateBinding p:TextFieldAssist.UnderlineBrush}" Visibility="{TemplateBinding p:TextFieldAssist.DecorationVisibility}" />
+
+            <!-- Helper text -->
+            <Canvas VerticalAlignment="Bottom">
+                <Grid x:Name="FooterGrid" Canvas.Top="2" Width="{Binding ActualWidth, ElementName=border}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="HelperTextTextBlock" Style="{Binding Path=(p:HintAssist.HelperTextStyle), RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Border x:Name="CharacterCounterContainer" Grid.Column="1">
+                        <TextBlock x:Name="CharacterCounterTextBlock" Style="{Binding Path=(p:TextFieldAssist.CharacterCounterStyle), RelativeSource={RelativeSource TemplatedParent}}" />
+                    </Border>
+                </Grid>
+            </Canvas>
+
+            <!-- Errors -->
+            <Canvas x:Name="Errors" VerticalAlignment="Bottom" Visibility="{Binding Errors.Count, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:CountToVisibilityConverter.CollapsedIfNotAny}}">
+                <Grid Canvas.Top="2" Width="{Binding ActualWidth, ElementName=border}">
+                    <ItemsControl ItemsSource="{TemplateBinding Errors}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock FontSize="{StaticResource MyNet.Font.Size.Secondary}"
+                                           Foreground="{DynamicResource MyNet.Brushes.Validation.Error}"
+                                           Text="{Binding}"
+                                           TextWrapping="Wrap" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </Canvas>
         </Grid>
 
         <ControlTemplate.Triggers>
 
-            <!--  Icon Alignment  -->
+            <!-- Icon Alignment -->
             <Trigger Property="p:IconAssist.Alignment" Value="Right">
                 <Setter TargetName="Icon" Property="Grid.Column" Value="6" />
             </Trigger>
@@ -249,7 +249,7 @@
                 <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
             </Trigger>
 
-            <!--  Hint  -->
+            <!-- Hint -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="p:HintAssist.IsFloating" Value="True" />
@@ -281,44 +281,44 @@
                 </Setter>
             </Trigger>
 
-            <!--  IsMouseOver  -->
+            <!-- IsMouseOver -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsMouseOver" Value="True" />
                     <Condition SourceName="PART_TextBox" Property="IsKeyboardFocused" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="mouseOver" Property="Visibility" Value="Visible" />
                 <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsMouseOverBorderBrush), RelativeSource={RelativeSource Self}}" />
+                <Setter TargetName="mouseOver" Property="Visibility" Value="Visible" />
             </MultiTrigger>
 
-            <!--  IsKeyboardFocused  -->
+            <!-- IsKeyboardFocused -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition SourceName="PART_TextBox" Property="IsKeyboardFocused" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="Underline" Property="IsActive" Value="True" />
                 <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
                 <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
+                <Setter TargetName="Underline" Property="IsActive" Value="True" />
             </MultiTrigger>
 
-            <!--  Validation.HasError  -->
+            <!-- Validation.HasError -->
             <Trigger Property="Validation.HasError" Value="true">
                 <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Validation.Error}" />
-                <Setter TargetName="Underline" Property="Background" Value="{DynamicResource MyNet.Brushes.Validation.Error}" />
-                <Setter TargetName="FooterGrid" Property="Visibility" Value="Collapsed" />
                 <Setter TargetName="Errors" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="FooterGrid" Property="Visibility" Value="Collapsed" />
                 <Setter TargetName="PART_Button" Property="Foreground" Value="{DynamicResource MyNet.Brushes.Validation.Error}" />
                 <Setter TargetName="PART_Button" Property="Opacity" Value="1" />
+                <Setter TargetName="Underline" Property="Background" Value="{DynamicResource MyNet.Brushes.Validation.Error}" />
             </Trigger>
             <Trigger Property="HasErrors" Value="true">
                 <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Validation.Error}" />
-                <Setter TargetName="Underline" Property="Background" Value="{DynamicResource MyNet.Brushes.Validation.Error}" />
                 <Setter TargetName="FooterGrid" Property="Visibility" Value="Collapsed" />
                 <Setter TargetName="PART_Button" Property="Foreground" Value="{DynamicResource MyNet.Brushes.Validation.Error}" />
                 <Setter TargetName="PART_Button" Property="Opacity" Value="1" />
+                <Setter TargetName="Underline" Property="Background" Value="{DynamicResource MyNet.Brushes.Validation.Error}" />
             </Trigger>
 
-            <!--  IsEnabled  -->
+            <!-- IsEnabled -->
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
                 <Setter TargetName="PART_ClearButton" Property="Opacity" Value="0" />
@@ -328,58 +328,37 @@
                     <Condition Property="IsEnabled" Value="False" />
                     <Condition Property="ctrl:BottomDashedLineAdorner.IsEnabled" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="border" Property="ctrl:BottomDashedLineAdorner.IsAttached" Value="True" />
                 <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
+                <Setter TargetName="border" Property="ctrl:BottomDashedLineAdorner.IsAttached" Value="True" />
             </MultiTrigger>
 
-            <!--  IsReadOnly  -->
+            <!-- IsReadOnly -->
             <Trigger Property="p:TextFieldAssist.IsReadOnly" Value="True">
+                <Setter Property="BorderBrush" Value="Transparent" />
                 <Setter Property="Opacity" Value="1" />
-                <Setter TargetName="grid" Property="Opacity" Value="1" />
+                <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="PART_ClearButton" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
                 <Setter TargetName="border" Property="Opacity" Value="1" />
                 <Setter TargetName="border" Property="ctrl:BottomDashedLineAdorner.IsAttached" Value="False" />
-                <Setter TargetName="PART_ClearButton" Property="Visibility" Value="Collapsed" />
-                <Setter Property="BorderBrush" Value="Transparent" />
-                <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
-                <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+                <Setter TargetName="grid" Property="Opacity" Value="1" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style x:Key="MyNet.Styles.ImagePicker" TargetType="{x:Type ctrl:ImagePicker}">
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="AllowDrop" Value="true" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
         <Setter Property="BorderThickness" Value="0 0 0 1" />
-        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="Transparent" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="Transparent" />
-        <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border.Secondary}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-        <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
-        <Setter Property="p:HintAssist.HelperTextForeground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
-        <Setter Property="Padding" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
-        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="Template" Value="{StaticResource MyNet.Templates.ImagePicker}" />
         <Setter Property="ContextMenu" Value="{StaticResource MyNet.ContextMenu.Text}" />
-        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource MyNet.Templates.Validation}" />
-        <Setter Property="p:ValidationAssist.Background" Value="Transparent" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
+        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="KeyboardNavigation.TabNavigation" Value="Local" />
+        <Setter Property="Padding" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-        <Setter Property="AllowDrop" Value="true" />
-        <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
-        <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="False" />
-        <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
-        <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
-        <Setter Property="p:IconAssist.Alignment" Value="Left" />
-        <Setter Property="p:HintAssist.HelperTextStyle" Value="{StaticResource MyNet.Styles.TextBlock.Embedded.TextBox.HelperText}" />
-        <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
-        <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="1" />
         <Setter Property="SelectedImageTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -392,68 +371,80 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="Template" Value="{StaticResource MyNet.Templates.ImagePicker}" />
+        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource MyNet.Templates.Validation}" />
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
+        <Setter Property="p:HintAssist.HelperTextForeground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
+        <Setter Property="p:HintAssist.HelperTextStyle" Value="{StaticResource MyNet.Styles.TextBlock.Embedded.TextBox.HelperText}" />
+        <Setter Property="p:IconAssist.Alignment" Value="Left" />
+        <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
+        <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+        <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
+        <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="False" />
+        <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="1" />
+        <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="Transparent" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="Transparent" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border.Secondary}" />
+        <Setter Property="p:ValidationAssist.Background" Value="Transparent" />
     </Style>
-    <Style x:Key="MyNet.Styles.ImagePicker.Foreground" BasedOn="{StaticResource MyNet.Styles.ImagePicker}" TargetType="{x:Type ctrl:ImagePicker}">
-        <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-        <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Style x:Key="MyNet.Styles.ImagePicker.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+        <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ImagePicker.Filled" BasedOn="{StaticResource MyNet.Styles.ImagePicker}" TargetType="{x:Type ctrl:ImagePicker}">
+    <Style x:Key="MyNet.Styles.ImagePicker.Filled" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
         <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ImagePicker.Filled.Foreground" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Filled}" TargetType="{x:Type ctrl:ImagePicker}">
-        <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Style x:Key="MyNet.Styles.ImagePicker.Filled.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Filled}">
         <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
-        <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+        <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
-    </Style>
-
-    <Style x:Key="MyNet.Styles.ImagePicker.Outlined" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Filled}" TargetType="{x:Type ctrl:ImagePicker}">
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
-        <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
-        <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
-    </Style>
-    <Style x:Key="MyNet.Styles.ImagePicker.Outlined.Foreground" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Outlined}" TargetType="{x:Type ctrl:ImagePicker}">
-        <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-        <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
-        <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
-        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ImagePicker.Alternate" BasedOn="{StaticResource MyNet.Styles.ImagePicker}" TargetType="{x:Type ctrl:ImagePicker}">
-        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
-        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
+    <Style x:Key="MyNet.Styles.ImagePicker.Outlined" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Filled}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
+        <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.ImagePicker.Outlined.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Outlined}">
+        <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+        <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.ImagePicker.Alternate" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Background, Opacity={StaticResource MyNet.Opacity.Medium}}" />
-        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Medium}}" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="FontSize" Value="40" />
-        <Setter Property="Width" Value="80" />
-        <Setter Property="Height" Value="80" />
         <Setter Property="ContextMenu" Value="{x:Null}" />
-        <Setter Property="p:IconAssist.Icon" Value="{me:Icon Data={StaticResource MyNet.Geometries.Male}, Size=85}" />
-        <Setter Property="p:TextFieldAssist.HasClearButton" Value="True" />
-        <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="FontSize" Value="40" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Medium}}" />
+        <Setter Property="Height" Value="80" />
+        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="SelectedImageTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -535,5 +526,14 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="p:IconAssist.Icon" Value="{me:Icon Data={StaticResource MyNet.Geometries.Male}, Size=85}" />
+        <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
+        <Setter Property="p:TextFieldAssist.HasClearButton" Value="True" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Background, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
     </Style>
 </ResourceDictionary>

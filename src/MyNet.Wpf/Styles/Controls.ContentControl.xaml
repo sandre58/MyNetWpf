@@ -3,10 +3,10 @@
 
     <Style x:Key="MyNet.Styles.ContentControl" TargetType="{x:Type ContentControl}">
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
     </Style>
 
 </ResourceDictionary>

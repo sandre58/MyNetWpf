@@ -14,16 +14,12 @@
     <Point x:Key="FallBackValuePoint" X="0" Y="0" />
 
     <Style x:Key="MyNet.Styles.ProgressBar.Linear" TargetType="{x:Type ProgressBar}">
-        <Setter Property="p:ProgressBarAssist.ContentStringFormat" Value="P0" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="Height" Value="15" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ProgressBar}">
@@ -66,6 +62,25 @@
                                 <TranslateTransform />
                             </TransformGroup>
                         </Grid.RenderTransform>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Determinate" />
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.25" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                            <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5" />
+                                            <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5" />
+                                            <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5" />
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
@@ -124,25 +139,6 @@
                                 </Border>
                             </Border>
                         </Grid>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Determinate" />
-                                <VisualState x:Name="Indeterminate">
-                                    <Storyboard RepeatBehavior="Forever">
-                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.25" />
-                                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25" />
-                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25" />
-                                        </DoubleAnimationUsingKeyFrames>
-                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
-                                            <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5" />
-                                            <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5" />
-                                            <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5" />
-                                        </PointAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="p:TransitionAssist.DisableTransitions" Value="True">
@@ -190,22 +186,24 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="p:ProgressBarAssist.ContentStringFormat" Value="P0" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ProgressBar.Linear.Accent" BasedOn="{StaticResource MyNet.Styles.ProgressBar.Linear}" TargetType="{x:Type ProgressBar}">
+    <Style x:Key="MyNet.Styles.ProgressBar.Linear.Accent" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource MyNet.Styles.ProgressBar.Linear}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ProgressBar.Linear.Foreground" BasedOn="{StaticResource MyNet.Styles.ProgressBar.Linear}" TargetType="{x:Type ProgressBar}">
+    <Style x:Key="MyNet.Styles.ProgressBar.Linear.Foreground" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource MyNet.Styles.ProgressBar.Linear}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Contrast=True}" />
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Contrast=True}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ProgressBar.Circular" BasedOn="{StaticResource MyNet.Styles.ProgressBar.Linear}" TargetType="{x:Type ProgressBar}">
-        <Setter Property="Width" Value="80" />
+    <Style x:Key="MyNet.Styles.ProgressBar.Circular" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource MyNet.Styles.ProgressBar.Linear}">
         <Setter Property="Height" Value="80" />
-        <Setter Property="p:ProgressBarAssist.StrokeThickness" Value="15" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ProgressBar}">
@@ -451,16 +449,18 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Width" Value="80" />
+        <Setter Property="p:ProgressBarAssist.StrokeThickness" Value="15" />
     </Style>
-    <Style x:Key="MyNet.Styles.ProgressBar.Circular.Accent" BasedOn="{StaticResource MyNet.Styles.ProgressBar.Circular}" TargetType="{x:Type ProgressBar}">
+    <Style x:Key="MyNet.Styles.ProgressBar.Circular.Accent" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource MyNet.Styles.ProgressBar.Circular}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.ProgressBar.Circular.Foreground" BasedOn="{StaticResource MyNet.Styles.ProgressBar.Circular}" TargetType="{x:Type ProgressBar}">
+    <Style x:Key="MyNet.Styles.ProgressBar.Circular.Foreground" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource MyNet.Styles.ProgressBar.Circular}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Contrast=True}" />
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Contrast=True}" />
     </Style>
 
 </ResourceDictionary>

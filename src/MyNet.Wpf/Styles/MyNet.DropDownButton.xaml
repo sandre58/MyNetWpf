@@ -12,38 +12,24 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.DropDownButton.Filled" TargetType="{x:Type ctrl:DropDownButton}">
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
-        <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
-        <Setter Property="p:IconAssist.Alignment" Value="Left" />
-        <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
-        <Setter Property="FontWeight" Value="{StaticResource MyNet.Font.Weight.Button}" />
-        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Button}" />
-        <Setter Property="Padding" Value="11 5" />
-        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="ToggleContentTemplate" Value="{StaticResource MyNet.DataTemplates.Icon}" />
-        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
-        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Filled}" />
-        <Setter Property="PlacementMode" Value="BottomAndAlignLeftEdges" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
         <Setter Property="Focusable" Value="True" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Button}" />
+        <Setter Property="FontWeight" Value="{StaticResource MyNet.Font.Weight.Button}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="11 5" />
+        <Setter Property="PlacementMode" Value="BottomAndAlignLeftEdges" />
         <Setter Property="PopupHorizontalOffset" Value="0" />
-        <Setter Property="PopupVerticalOffset" Value="0" />
         <Setter Property="PopupMode" Value="Click" />
+        <Setter Property="PopupVerticalOffset" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:DropDownButton}">
@@ -135,36 +121,36 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="DropDownButtonPosition" Value="Top">
+                            <Setter TargetName="Caret" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Caret" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Content" Property="Grid.Row" Value="1" />
                             <Setter TargetName="Row0" Property="Height" Value="Auto" />
                             <Setter TargetName="Row1" Property="Height" Value="*" />
-                            <Setter TargetName="Content" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="Caret" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="Content" Property="Grid.Row" Value="1" />
-                            <Setter TargetName="Caret" Property="Grid.Row" Value="0" />
                         </Trigger>
                         <Trigger Property="DropDownButtonPosition" Value="Right">
+                            <Setter TargetName="Caret" Property="Grid.Column" Value="1" />
+                            <Setter TargetName="Caret" Property="Grid.Row" Value="0" />
                             <Setter TargetName="Col0" Property="Width" Value="*" />
                             <Setter TargetName="Col1" Property="Width" Value="Auto" />
                             <Setter TargetName="Content" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="Caret" Property="Grid.Column" Value="1" />
                             <Setter TargetName="Content" Property="Grid.Row" Value="0" />
-                            <Setter TargetName="Caret" Property="Grid.Row" Value="0" />
                         </Trigger>
                         <Trigger Property="DropDownButtonPosition" Value="Bottom">
+                            <Setter TargetName="Caret" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Caret" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Content" Property="Grid.Row" Value="0" />
                             <Setter TargetName="Row0" Property="Height" Value="*" />
                             <Setter TargetName="Row1" Property="Height" Value="Auto" />
-                            <Setter TargetName="Content" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="Caret" Property="Grid.Column" Value="0" />
-                            <Setter TargetName="Content" Property="Grid.Row" Value="0" />
-                            <Setter TargetName="Caret" Property="Grid.Row" Value="1" />
                         </Trigger>
                         <Trigger Property="DropDownButtonPosition" Value="Left">
+                            <Setter TargetName="Caret" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Caret" Property="Grid.Row" Value="0" />
                             <Setter TargetName="Col0" Property="Width" Value="Auto" />
                             <Setter TargetName="Col1" Property="Width" Value="*" />
                             <Setter TargetName="Content" Property="Grid.Column" Value="1" />
-                            <Setter TargetName="Caret" Property="Grid.Column" Value="0" />
                             <Setter TargetName="Content" Property="Grid.Row" Value="0" />
-                            <Setter TargetName="Caret" Property="Grid.Row" Value="0" />
                         </Trigger>
                         <Trigger Property="DropDownButtonOrientation" Value="Up">
                             <Setter TargetName="Caret" Property="Kind" Value="ChevronUp" />
@@ -206,205 +192,219 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="ToggleContentTemplate" Value="{StaticResource MyNet.DataTemplates.Icon}" />
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="p:IconAssist.Alignment" Value="Left" />
+        <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
+        <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
+        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
         <Style.Triggers>
             <Trigger Property="IsPopupOpen" Value="true">
                 <Setter Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=Self}}" />
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Filled.Custom" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Filled.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
+        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
-        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Filled.Primary" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Filled.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Filled.Accent" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Filled.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Filled.Foreground" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Filled.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}">
+        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Filled.Foreground.SemiTransparent" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Filled.Foreground.SemiTransparent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}">
         <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
-        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
-        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
     </Style>
 
-    <!--  Outlined  -->
-    <Style x:Key="MyNet.Styles.DropDownButton.Outlined" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}" TargetType="{x:Type ctrl:DropDownButton}">
+    <!-- Outlined -->
+    <Style x:Key="MyNet.Styles.DropDownButton.Outlined" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
         <Setter Property="Background" Value="Transparent" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Primary" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Primary}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Primary}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Accent" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Accent}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Accent}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Custom" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Foreground" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Foreground}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Foreground}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
 
-    <!--  Text  -->
-    <Style x:Key="MyNet.Styles.DropDownButton.Text" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}" TargetType="{x:Type ctrl:DropDownButton}">
+    <!-- Text -->
+    <Style x:Key="MyNet.Styles.DropDownButton.Text" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Text.Primary" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Primary}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Text.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Primary}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Text.Accent" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Accent}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Text.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Accent}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Text.Custom" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Text.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Text.Foreground" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Foreground}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Text.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Foreground}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
 
-    <!--  Elevation  -->
-    <Style x:Key="MyNet.Styles.DropDownButton.Elevation" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}" TargetType="{x:Type ctrl:DropDownButton}">
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+    <!-- Elevation -->
+    <Style x:Key="MyNet.Styles.DropDownButton.Elevation" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
         <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Custom" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation}">
+        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
-        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Primary" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Accent" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Foreground" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}">
+        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     </Style>
 
-    <!--  Rounded Filled  -->
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}" TargetType="{x:Type ctrl:DropDownButton}">
+    <!-- Rounded Filled -->
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
+        <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled}" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rounded.Margin}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled}" />
         <Style.Triggers>
             <Trigger Property="IsPopupOpen" Value="true">
                 <Setter Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=Self}}" />
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Custom" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}">
+        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
-        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Primary" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Accent" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Foreground" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}">
+        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     </Style>
 
-    <!--  Rounded Outlined  -->
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}" TargetType="{x:Type ctrl:DropDownButton}">
+    <!-- Rounded Outlined -->
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}">
         <Setter Property="Background" Value="Transparent" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Primary" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Primary}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Primary}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Accent" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Accent}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Accent}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Custom" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Foreground" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Foreground}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Foreground}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
 
-    <!--  Rounded Text  -->
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}" TargetType="{x:Type ctrl:DropDownButton}">
+    <!-- Rounded Text -->
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Primary" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Primary}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Primary}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Accent" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Accent}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Accent}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Custom" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Foreground" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Foreground}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Foreground}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
 
-    <!--  Icon  -->
-    <Style x:Key="MyNet.Styles.DropDownButton.Icon" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}" TargetType="{x:Type ctrl:DropDownButton}">
+    <!-- Icon -->
+    <Style x:Key="MyNet.Styles.DropDownButton.Icon" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}">
+        <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Icon}" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedForeground), Opacity={StaticResource MyNet.Opacity.Secondary}}" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Icon}" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsMouseOverForeground)}" />
@@ -415,19 +415,19 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Icon.Primary" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Icon.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon}">
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Icon.Accent" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Icon.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon}">
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.Icon.Foreground" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Icon.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon}">
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.DropDownButton.Icon.MouseOver.Foreground" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon.Foreground}" TargetType="{x:Type ctrl:DropDownButton}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Icon.MouseOver.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon.Foreground}">
         <Setter Property="Cursor" Value="Arrow" />
         <Setter Property="PlacementMode" Value="RightAndAlignMiddles" />
         <Setter Property="PopupAnimation" Value="Fade" />

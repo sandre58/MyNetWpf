@@ -10,8 +10,8 @@
     <Cursor x:Key="MyNet.Cursors.EyeDropper">pack://application:,,,/MyNet.Wpf;component/Cursors/EyeDropper.cur</Cursor>
 
     <Style x:Key="MyNet.Styles.ColorEyeDropper" TargetType="{x:Type ctrl:ColorEyeDropper}">
-        <Setter Property="Focusable" Value="False" />
         <Setter Property="EyeDropperCursor" Value="{StaticResource MyNet.Cursors.EyeDropper}" />
+        <Setter Property="Focusable" Value="False" />
         <Setter Property="PreviewContentTemplate">
             <Setter.Value>
                 <DataTemplate DataType="{x:Type ctrl:ColorEyePreviewData}">
@@ -31,7 +31,7 @@
 
                         <Path Stroke="{DynamicResource MyNet.Brushes.Application.Foreground}" StrokeThickness="2">
                             <Path.Data>
-                                <PathGeometry po:Freeze="true" Figures=" m 0 50 40 0  m 10 10 0 40  m 10 -50 40 0  m -50 -50 0 40 m -10 0 H40 H60 V60 H40 z" />
+                                <PathGeometry Figures=" m 0 50 40 0  m 10 10 0 40  m 10 -50 40 0  m -50 -50 0 40 m -10 0 H40 H60 V60 H40 z" po:Freeze="true" />
                             </Path.Data>
                         </Path>
 

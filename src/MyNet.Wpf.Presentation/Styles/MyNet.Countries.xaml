@@ -5,7 +5,7 @@
                     xmlns:my="http://mynet.com/xaml/themes">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.Styles.xaml" />
+        <my:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.Styles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate x:Key="MyNet.DataTemplates.ComboBox.Country">

@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:c="clr-namespace:MyNet.Wpf.Converters"
-                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters"
                     xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
-                    xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions">
+                    xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions"
+                    xmlns:p="clr-namespace:MyNet.Wpf.Parameters">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
@@ -11,19 +11,17 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.ContentDialog" TargetType="{x:Type ctrl:ContentDialog}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="FooterPadding" Value="{StaticResource MyNet.Margins.Medium}" />
+        <Setter Property="HeaderBackground" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+        <Setter Property="HeaderFontSize" Value="{StaticResource MyNet.Font.Size}" />
+        <Setter Property="HeaderForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="HeaderHeight" Value="30" />
         <Setter Property="HeaderPadding" Value="{StaticResource MyNet.Margins.Default}" />
-        <Setter Property="FooterPadding" Value="{StaticResource MyNet.Margins.Medium}" />
-        <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
-        <Setter Property="HeaderBackground" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
-        <Setter Property="HeaderForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="HeaderFontSize" Value="{StaticResource MyNet.Font.Size}" />
-        <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="Focusable" Value="False" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:ContentDialog}">
@@ -34,7 +32,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <!--  Header  -->
+                        <!-- Header -->
                         <Grid DockPanel.Dock="Top">
                             <ctrl:Card Height="{TemplateBinding HeaderHeight}"
                                        Padding="{TemplateBinding HeaderPadding}"
@@ -49,7 +47,7 @@
                                                 Focusable="False" />
                             </ctrl:Card>
 
-                            <!--  Close Button  -->
+                            <!-- Close Button -->
                             <Button Style="{StaticResource MyNet.Styles.Button.Text}"
                                     Width="20"
                                     Height="20"
@@ -63,10 +61,10 @@
                                     Visibility="{Binding ShowCloseButton, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
                         </Grid>
 
-                        <!--  Content  -->
+                        <!-- Content -->
                         <ContentPresenter Grid.Row="1" Margin="{TemplateBinding Padding}" Focusable="False" />
 
-                        <!--  Footer  -->
+                        <!-- Footer -->
                         <ContentControl Grid.Row="2"
                                         Margin="{TemplateBinding FooterPadding}"
                                         Content="{TemplateBinding Footer}"
@@ -76,5 +74,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
     </Style>
 </ResourceDictionary>

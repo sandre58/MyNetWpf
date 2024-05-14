@@ -12,14 +12,12 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.ToastItem" TargetType="{x:Type ctrl:ToastItem}">
-        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
-        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Default}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
         <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Small}" />
-        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Default}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:ToastItem}">
@@ -100,6 +98,8 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Toast.OnClick, RelativeSource={RelativeSource Self}, Converter={x:Static c:NullToBooleanConverter.FalseIfNull}}" Value="True">
                 <Setter Property="Cursor" Value="Hand" />

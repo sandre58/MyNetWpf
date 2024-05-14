@@ -8,7 +8,7 @@
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.ContentControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MyNet.Styles.TransitioningContent" BasedOn="{StaticResource MyNet.Styles.ContentControl}" TargetType="{x:Type ctrl:TransitioningContent}">
+    <Style x:Key="MyNet.Styles.TransitioningContent" TargetType="{x:Type ctrl:TransitioningContent}" BasedOn="{StaticResource MyNet.Styles.ContentControl}">
         <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
         <Setter Property="OpeningEffect" Value="{md:TransitionEffect Kind=FadeIn, Duration='0:0:0.5'}" />
         <Setter Property="Template">

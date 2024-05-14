@@ -10,18 +10,13 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.Label.Elevation" TargetType="{x:Type Label}">
-        <Setter Property="p:CardAssist.Style" Value="{StaticResource MyNet.Styles.Card.Elevation}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
-        <Setter Property="Padding" Value="6 3" />
+        <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
+        <Setter Property="Padding" Value="6 3" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Label}">
@@ -42,59 +37,63 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="p:CardAssist.Style" Value="{StaticResource MyNet.Styles.Card.Elevation}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Label.Elevation.Application" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}" TargetType="{x:Type Label}">
+    <Style x:Key="MyNet.Styles.Label.Elevation.Application" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Label.Elevation.Primary" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}" TargetType="{x:Type Label}">
+    <Style x:Key="MyNet.Styles.Label.Elevation.Primary" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Label.Elevation.Accent" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}" TargetType="{x:Type Label}">
+    <Style x:Key="MyNet.Styles.Label.Elevation.Accent" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Label.Elevation.Custom" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}" TargetType="{x:Type Label}">
+    <Style x:Key="MyNet.Styles.Label.Elevation.Custom" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Label.Elevation.Foreground" BasedOn="{StaticResource MyNet.Styles.Label.Elevation.Custom}" TargetType="{x:Type Label}">
+    <Style x:Key="MyNet.Styles.Label.Elevation.Foreground" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation.Custom}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.Label.Outlined" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}" TargetType="{x:Type Label}">
-        <Setter Property="p:CardAssist.Style" Value="{StaticResource MyNet.Styles.Card.Outlined}" />
+    <Style x:Key="MyNet.Styles.Label.Outlined" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="p:CardAssist.Style" Value="{StaticResource MyNet.Styles.Card.Outlined}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.Label.Rounded.Elevation" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}" TargetType="{x:Type Label}">
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="100" />
+    <Style x:Key="MyNet.Styles.Label.Rounded.Elevation" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
         <Setter Property="Height" Value="35" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="Width" Value="35" />
+        <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="100" />
     </Style>
-    <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Application" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation}" TargetType="{x:Type Label}">
+    <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Application" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Primary" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation}" TargetType="{x:Type Label}">
+    <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Primary" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Accent" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation}" TargetType="{x:Type Label}">
+    <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Accent" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Custom" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation}" TargetType="{x:Type Label}">
+    <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Custom" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation}">
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Foreground" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation.Custom}" TargetType="{x:Type Label}">
+    <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Foreground" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation.Custom}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.Label.Legend" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}" TargetType="{x:Type Label}">
-        <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Style x:Key="MyNet.Styles.Label.Legend" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Label}">
@@ -108,6 +107,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
 </ResourceDictionary>

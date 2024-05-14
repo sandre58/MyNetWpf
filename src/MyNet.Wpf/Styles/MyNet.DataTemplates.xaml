@@ -1,60 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
-                    xmlns:dial="clr-namespace:MyNet.UI.Dialogs;assembly=MyNet.UI"
-                    xmlns:dialVm="clr-namespace:MyNet.Wpf.Dialogs"
-                    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-                    xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions"
-                    xmlns:wpf="clr-namespace:MyNet.Wpf">
+                    xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions">
 
     <ResourceDictionary.MergedDictionaries>
-        <wpf:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.Styles.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.TextBlock.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
-    <DataTemplate DataType="{x:Type dialVm:MessageBoxViewModel}">
-        <Grid Width="400" MinHeight="80">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <ctrl:PackIcon x:Name="Icon"
-                           Grid.Column="0"
-                           Width="60"
-                           Height="60"
-                           VerticalAlignment="Center" />
-            <TextBlock Grid.Column="1"
-                       Margin="{StaticResource MyNet.Margins.Medium.Left}"
-                       VerticalAlignment="Center"
-                       Text="{Binding Message, Mode=OneTime}"
-                       TextWrapping="Wrap" />
-        </Grid>
-
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Severity}" Value="{x:Static dial:MessageSeverity.Success}">
-                <Setter TargetName="Icon" Property="Kind" Value="{x:Static md:PackIconKind.CheckCircle}" />
-                <Setter TargetName="Icon" Property="Foreground" Value="{DynamicResource MyNet.Brushes.Positive}" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Severity}" Value="{x:Static dial:MessageSeverity.Error}">
-                <Setter TargetName="Icon" Property="Kind" Value="{x:Static md:PackIconKind.RemoveCircle}" />
-                <Setter TargetName="Icon" Property="Foreground" Value="{DynamicResource MyNet.Brushes.Negative}" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Severity}" Value="{x:Static dial:MessageSeverity.Warning}">
-                <Setter TargetName="Icon" Property="Kind" Value="{x:Static md:PackIconKind.WarningCircle}" />
-                <Setter TargetName="Icon" Property="Foreground" Value="{DynamicResource MyNet.Brushes.Warning}" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Severity}" Value="{x:Static dial:MessageSeverity.Information}">
-                <Setter TargetName="Icon" Property="Kind" Value="{x:Static md:PackIconKind.InformationCircle}" />
-                <Setter TargetName="Icon" Property="Foreground" Value="{DynamicResource MyNet.Brushes.Information}" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Severity}" Value="{x:Static dial:MessageSeverity.Question}">
-                <Setter TargetName="Icon" Property="Kind" Value="{x:Static md:PackIconKind.QuestionMarkCircle}" />
-                <Setter TargetName="Icon" Property="Foreground" Value="{DynamicResource MyNet.Brushes.Information}" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Severity}" Value="{x:Static dial:MessageSeverity.Custom}">
-                <Setter TargetName="Icon" Property="Visibility" Value="Hidden" />
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
 
     <DataTemplate x:Key="MyNet.DataTemplates.ManyItems.Large">
         <ctrl:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center">

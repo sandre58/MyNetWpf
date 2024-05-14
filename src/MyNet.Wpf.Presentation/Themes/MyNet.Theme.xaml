@@ -565,7 +565,7 @@
                       SelectedValue="{Binding Value}" />
         </Grid>
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type vm:SelectableCompositeFilterViewModel}">
         <Grid>
             <Border Background="{DynamicResource MyNet.Brushes.Control.Background}" CornerRadius="{StaticResource MyNet.CornerRadius.Container}" Opacity="{StaticResource MyNet.Opacity.Disabled}" />

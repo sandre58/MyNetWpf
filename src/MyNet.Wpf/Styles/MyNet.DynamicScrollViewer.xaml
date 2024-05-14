@@ -8,10 +8,9 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.DynamicScrollViewer" TargetType="{x:Type ctrl:DynamicScrollViewer}">
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
-        <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
@@ -62,11 +61,12 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.DynamicScrollViewer.Foreground" BasedOn="{StaticResource MyNet.Styles.DynamicScrollViewer}" TargetType="{x:Type ctrl:DynamicScrollViewer}">
+    <Style x:Key="MyNet.Styles.DynamicScrollViewer.Foreground" TargetType="{x:Type ctrl:DynamicScrollViewer}" BasedOn="{StaticResource MyNet.Styles.DynamicScrollViewer}">
         <Style.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.DynamicScrollBar.Foreground}" TargetType="{x:Type ctrl:DynamicScrollBar}" />
+            <Style TargetType="{x:Type ctrl:DynamicScrollBar}" BasedOn="{StaticResource MyNet.Styles.DynamicScrollBar.Foreground}" />
         </Style.Resources>
     </Style>
 

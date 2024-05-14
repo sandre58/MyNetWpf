@@ -13,62 +13,39 @@
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Mahapps.WindowButtonCommands.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MyNet.Styles.ExtendedWindow" BasedOn="{StaticResource {x:Type Window}}" TargetType="{x:Type ctrl:ExtendedWindow}">
+    <Style x:Key="MyNet.Styles.ExtendedWindow" TargetType="{x:Type ctrl:ExtendedWindow}" BasedOn="{StaticResource {x:Type Window}}">
         <Style.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.WindowButtonCommands}" TargetType="{x:Type mah:WindowButtonCommands}" />
+            <Style TargetType="{x:Type mah:WindowButtonCommands}" BasedOn="{StaticResource MyNet.Styles.WindowButtonCommands}" />
         </Style.Resources>
 
-        <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="UseLayoutRounding" Value="True" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-
-        <Setter Property="Height" Value="600" />
-        <Setter Property="MinHeight" Value="320" />
-        <Setter Property="Width" Value="1100" />
-        <Setter Property="MinWidth" Value="460" />
-        <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="0" />
+        <Setter Property="AllowDrop" Value="True" />
 
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
-        <Setter Property="GlowColor" Value="{DynamicResource MyNet.Colors.Application.Border}" />
-        <Setter Property="NonActiveGlowColor" Value="{DynamicResource MyNet.Colors.Application.Border.Inactive}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Border}" />
-        <Setter Property="NonActiveBorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Border.Inactive}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="ResizeBorderThickness" Value="6" />
-
-        <Setter Property="TextElement.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size}" />
         <Setter Property="FontFamily" Value="{me:RobotoFont}" />
-        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-        <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size}" />
         <Setter Property="FontWeight" Value="{StaticResource MyNet.Font.Weight}" />
+        <Setter Property="GlowColor" Value="{DynamicResource MyNet.Colors.Application.Border}" />
+
+        <Setter Property="Height" Value="600" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="MinHeight" Value="320" />
+        <Setter Property="MinWidth" Value="460" />
+        <Setter Property="NonActiveBorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Border.Inactive}" />
+        <Setter Property="NonActiveGlowColor" Value="{DynamicResource MyNet.Colors.Application.Border.Inactive}" />
+        <Setter Property="NonActiveWindowTitleBrush" Value="Transparent" />
+
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Padding" Value="0" />
 
         <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant" />
+        <Setter Property="RenderOptions.CachingHint" Value="Cache" />
         <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled" />
         <Setter Property="RenderOptions.EdgeMode" Value="Unspecified" />
-        <Setter Property="RenderOptions.CachingHint" Value="Cache" />
-
-        <Setter Property="WindowTitleBrush" Value="Transparent" />
-        <Setter Property="NonActiveWindowTitleBrush" Value="Transparent" />
-        <Setter Property="TitleForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="TitleAlignment" Value="Stretch" />
-        <Setter Property="TitleBarHeight" Value="30" />
-        <Setter Property="TitleCharacterCasing" Value="Normal" />
+        <Setter Property="ResizeBorderThickness" Value="6" />
         <Setter Property="ShowIconOnTitleBar" Value="False" />
-        <Setter Property="TitleTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <TextBlock Margin="{StaticResource MyNet.Margins.Default.Left}"
-                               VerticalAlignment="Center"
-                               Text="{TemplateBinding Content}"
-                               TextTrimming="CharacterEllipsis" />
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
-
-        <Setter Property="AllowDrop" Value="True" />
-        <Setter Property="WindowTransitionsEnabled" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -82,11 +59,11 @@
                             <Grid UseLayoutRounding="False">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Converter={x:Static c:ThicknessToDoubleConverter.Left}}" />
-                                    <!--  icon  -->
+                                    <!-- icon -->
                                     <ColumnDefinition Width="Auto" />
-                                    <!--  left window commands, title, right window commands  -->
+                                    <!-- left window commands, title, right window commands -->
                                     <ColumnDefinition Width="*" />
-                                    <!--  min,max,close buttons  -->
+                                    <!-- min,max,close buttons -->
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Converter={x:Static c:ThicknessToDoubleConverter.Right}}" />
                                 </Grid.ColumnDefinitions>
@@ -104,7 +81,7 @@
                                            Focusable="False"
                                            StrokeThickness="0" />
 
-                                <!--  icon  -->
+                                <!-- icon -->
                                 <ContentControl x:Name="PART_Icon"
                                                 Grid.Row="1"
                                                 Grid.Column="1"
@@ -118,8 +95,7 @@
                                                 ContentTemplate="{TemplateBinding IconTemplate}"
                                                 Focusable="False"
                                                 Foreground="{TemplateBinding TitleForeground}"
-                                                Visibility="{TemplateBinding ShowIconOnTitleBar,
-                                                                             Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+                                                Visibility="{TemplateBinding ShowIconOnTitleBar, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
 
                                 <mah:MetroThumb x:Name="PART_WindowTitleThumb"
                                                 Style="{StaticResource MyNet.Styles.Thumb}"
@@ -136,7 +112,7 @@
                                            VerticalAlignment="Top"
                                            Panel.ZIndex="6"
                                            Focusable="False">
-                                    <!--  the left window commands  -->
+                                    <!-- the left window commands -->
                                     <mah:ContentPresenterEx x:Name="PART_LeftWindowCommands"
                                                             Height="{Binding TitleBarHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                                             VerticalAlignment="Top"
@@ -144,7 +120,7 @@
                                                             DockPanel.Dock="Left"
                                                             Focusable="False"
                                                             TextElement.Foreground="{TemplateBinding TitleForeground}" />
-                                    <!--  the right window commands  -->
+                                    <!-- the right window commands -->
                                     <mah:ContentPresenterEx x:Name="PART_RightWindowCommands"
                                                             Height="{Binding TitleBarHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                                             VerticalAlignment="Top"
@@ -152,7 +128,7 @@
                                                             DockPanel.Dock="Right"
                                                             Focusable="False"
                                                             TextElement.Foreground="{TemplateBinding TitleForeground}" />
-                                    <!--  the title bar  -->
+                                    <!-- the title bar -->
                                     <mah:MetroThumbContentControl x:Name="PART_TitleBar"
                                                                   Height="{Binding TitleBarHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                                                   HorizontalAlignment="{TemplateBinding TitleAlignment}"
@@ -165,7 +141,7 @@
                                                                   Foreground="{TemplateBinding Foreground}" />
                                 </DockPanel>
 
-                                <!--  the window button commands  -->
+                                <!-- the window button commands -->
                                 <mah:ContentPresenterEx x:Name="PART_WindowButtonCommands"
                                                         Grid.Row="1"
                                                         Grid.RowSpan="2"
@@ -177,7 +153,7 @@
                                                         Focusable="False"
                                                         TextElement.Foreground="{TemplateBinding TitleForeground}" />
 
-                                <!--  the main window content  -->
+                                <!-- the main window content -->
                                 <mah:MetroContentControl x:Name="PART_Content"
                                                          Grid.Row="2"
                                                          Grid.Column="0"
@@ -190,7 +166,7 @@
                                     <mah:ContentPresenterEx x:Name="PART_ContentPresenter" UseLayoutRounding="False" />
                                 </mah:MetroContentControl>
 
-                                <!--  disables the main content when a modal flyout is shown  -->
+                                <!-- disables the main content when a modal flyout is shown -->
                                 <Rectangle Name="PART_FlyoutModal"
                                            Grid.Row="1"
                                            Grid.RowSpan="2"
@@ -199,7 +175,7 @@
                                            Fill="{TemplateBinding FlyoutOverlayBrush}"
                                            Visibility="Hidden" />
 
-                                <!--  Busy container  -->
+                                <!-- Busy container -->
                                 <Grid Grid.Row="1"
                                       Grid.RowSpan="2"
                                       Grid.Column="1"
@@ -210,7 +186,7 @@
                                       FocusVisualStyle="{x:Null}"
                                       Visibility="{Binding BusyService, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
 
-                                <!--  Dialog container  -->
+                                <!-- Dialog container -->
                                 <Grid x:Name="PART_MetroActiveDialogContainer"
                                       Grid.Row="1"
                                       Grid.RowSpan="2"
@@ -245,15 +221,15 @@
                         <Trigger Property="ShowTitleBar" Value="False">
                             <Setter TargetName="PART_WindowTitleThumb" Property="Grid.RowSpan" Value="2" />
                         </Trigger>
-                        <!--  handle active/inactive state  -->
+                        <!-- handle active/inactive state -->
                         <Trigger Property="IsActive" Value="False">
                             <Setter TargetName="PART_Border" Property="BorderBrush" Value="{Binding Path=NonActiveGlowColor, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BrushConverter.Default}}" />
-                            <Setter TargetName="PART_WindowTitleBackground" Property="Fill" Value="{Binding Path=NonActiveWindowTitleBrush, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
                             <Setter TargetName="PART_Icon" Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
                             <Setter TargetName="PART_LeftWindowCommands" Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
                             <Setter TargetName="PART_RightWindowCommands" Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
                             <Setter TargetName="PART_TitleBar" Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
                             <Setter TargetName="PART_WindowButtonCommands" Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+                            <Setter TargetName="PART_WindowTitleBackground" Property="Fill" Value="{Binding Path=NonActiveWindowTitleBrush, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -281,6 +257,29 @@
             </Setter.Value>
         </Setter>
 
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
+        <Setter Property="TitleAlignment" Value="Stretch" />
+        <Setter Property="TitleBarHeight" Value="30" />
+        <Setter Property="TitleCharacterCasing" Value="Normal" />
+        <Setter Property="TitleForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="TitleTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Margin="{StaticResource MyNet.Margins.Default.Left}"
+                               VerticalAlignment="Center"
+                               Text="{TemplateBinding Content}"
+                               TextTrimming="CharacterEllipsis" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="Width" Value="1100" />
+
+        <Setter Property="WindowTitleBrush" Value="Transparent" />
+        <Setter Property="WindowTransitionsEnabled" Value="True" />
+
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Icon, Mode=OneWay, Converter={x:Static c:NullToBooleanConverter.FalseIfNull}}" Value="True">
                 <Setter Property="IconTemplate">
@@ -300,10 +299,10 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MyNet.Styles.ExtendedWindowDialog" BasedOn="{StaticResource MyNet.Styles.ExtendedWindow}" TargetType="{x:Type ctrl:ExtendedWindowDialog}">
-        <Setter Property="WindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+    <Style x:Key="MyNet.Styles.ExtendedWindowDialog" TargetType="{x:Type ctrl:ExtendedWindowDialog}" BasedOn="{StaticResource MyNet.Styles.ExtendedWindow}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
         <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
         <Setter Property="ShowTitleBar" Value="False" />
-        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+        <Setter Property="WindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
     </Style>
 </ResourceDictionary>

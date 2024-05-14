@@ -7,10 +7,10 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.TextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
         <Setter Property="TextTrimming" Value="CharacterEllipsis" />
         <Setter Property="TextWrapping" Value="NoWrap" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="TextOptions.TextHintingMode" Value="Fixed" />
     </Style>
 
     <Style x:Key="MyNet.Styles.TextBlock.Disablable" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MyNet.Styles.TextBlock}">

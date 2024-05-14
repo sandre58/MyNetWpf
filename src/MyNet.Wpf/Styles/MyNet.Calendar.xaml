@@ -49,74 +49,69 @@
         </ctrl:SimpleStackPanel>
     </DataTemplate>
 
-    <Style x:Key="MyNet.Styles.CalendarAppointment" BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Card}" TargetType="{x:Type ctrl:CalendarAppointment}">
+    <Style x:Key="MyNet.Styles.CalendarAppointment" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Card}">
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
-        <Setter Property="Height" Value="Auto" />
-        <Setter Property="Padding" Value="3" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.DaysByMonth" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment}" TargetType="{x:Type ctrl:CalendarAppointment}">
+    <Style x:Key="MyNet.Styles.CalendarAppointment.DaysByMonth" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment}">
         <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Top" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.DaysByMonth.Accent" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.DaysByMonth}" TargetType="{x:Type ctrl:CalendarAppointment}">
+    <Style x:Key="MyNet.Styles.CalendarAppointment.DaysByMonth.Accent" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.DaysByMonth}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.HoursByWeek" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment}" TargetType="{x:Type ctrl:CalendarAppointment}">
+    <Style x:Key="MyNet.Styles.CalendarAppointment.HoursByWeek" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment}">
         <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.HoursByWeek.Accent" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.HoursByWeek}" TargetType="{x:Type ctrl:CalendarAppointment}">
+    <Style x:Key="MyNet.Styles.CalendarAppointment.HoursByWeek.Accent" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.HoursByWeek}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.HoursByDay" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment}" TargetType="{x:Type ctrl:CalendarAppointment}">
+    <Style x:Key="MyNet.Styles.CalendarAppointment.HoursByDay" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment}">
         <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.HoursByDay.Accent" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.HoursByDay}" TargetType="{x:Type ctrl:CalendarAppointment}">
+    <Style x:Key="MyNet.Styles.CalendarAppointment.HoursByDay.Accent" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.HoursByDay}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.DaysByYear" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment}" TargetType="{x:Type ctrl:CalendarAppointment}">
+    <Style x:Key="MyNet.Styles.CalendarAppointment.DaysByYear" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment}">
         <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.DaysByYear.Accent" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.DaysByYear}" TargetType="{x:Type ctrl:CalendarAppointment}">
+    <Style x:Key="MyNet.Styles.CalendarAppointment.DaysByYear.Accent" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.DaysByYear}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.DaysRange" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment}" TargetType="{x:Type ctrl:CalendarAppointment}">
+    <Style x:Key="MyNet.Styles.CalendarAppointment.DaysRange" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment}">
         <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Top" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.DaysRange.Accent" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.DaysRange}" TargetType="{x:Type ctrl:CalendarAppointment}">
+    <Style x:Key="MyNet.Styles.CalendarAppointment.DaysRange.Accent" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.DaysRange}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
     <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate" TargetType="{x:Type ctrl:CalendarAppointment}">
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="Height" Value="Auto" />
-        <Setter Property="Padding" Value="5" />
-        <Setter Property="Margin" Value="0 1" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="0 1" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:CalendarAppointment}">
@@ -127,34 +122,6 @@
                             ClipToBounds="{TemplateBinding ClipToBounds}"
                             CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                             SnapsToDevicePixels="True">
-                        <Grid>
-                            <Border x:Name="MouseOverBorder"
-                                    Background="{TemplateBinding p:ListBoxItemAssist.IsMouseOverBackground}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                    Opacity="0"
-                                    SnapsToDevicePixels="True" />
-                            <Border x:Name="SelectedBorder"
-                                    Background="{TemplateBinding p:ListBoxItemAssist.IsSelectedBackground}"
-                                    BorderBrush="{TemplateBinding p:ListBoxItemAssist.IsSelectedBorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                    Opacity="0"
-                                    RenderTransformOrigin="0.5,0.5" />
-                            <ctrl:Ripple x:Name="Ripple"
-                                         Padding="{TemplateBinding Padding}"
-                                         HorizontalAlignment="Stretch"
-                                         VerticalAlignment="Stretch"
-                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                         Content="{TemplateBinding Content}"
-                                         ContentTemplate="{TemplateBinding ContentTemplate}"
-                                         ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                         Feedback="{TemplateBinding Foreground}"
-                                         Focusable="False"
-                                         RecognizesAccessKey="False"
-                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -203,6 +170,34 @@
                                 <VisualState Name="Unfocused" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Grid>
+                            <Border x:Name="MouseOverBorder"
+                                    Background="{TemplateBinding p:ListBoxItemAssist.IsMouseOverBackground}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                    Opacity="0"
+                                    SnapsToDevicePixels="True" />
+                            <Border x:Name="SelectedBorder"
+                                    Background="{TemplateBinding p:ListBoxItemAssist.IsSelectedBackground}"
+                                    BorderBrush="{TemplateBinding p:ListBoxItemAssist.IsSelectedBorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                    Opacity="0"
+                                    RenderTransformOrigin="0.5,0.5" />
+                            <ctrl:Ripple x:Name="Ripple"
+                                         Padding="{TemplateBinding Padding}"
+                                         HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Stretch"
+                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         Content="{TemplateBinding Content}"
+                                         ContentTemplate="{TemplateBinding ContentTemplate}"
+                                         ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                         Feedback="{TemplateBinding Foreground}"
+                                         Focusable="False"
+                                         RecognizesAccessKey="False"
+                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
@@ -224,54 +219,59 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="true">
                 <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource Self}}" />
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.DaysByMonth" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate}" TargetType="{x:Type ctrl:CalendarAppointment}">
+    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.DaysByMonth" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate}">
         <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
-        <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
-    </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.DaysByMonth.Accent" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysByMonth}" TargetType="{x:Type ctrl:CalendarAppointment}">
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
-    </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.HoursByWeek" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate}" TargetType="{x:Type ctrl:CalendarAppointment}">
-        <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-    </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.HoursByWeek.Accent" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.HoursByWeek}" TargetType="{x:Type ctrl:CalendarAppointment}">
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
-    </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.HoursByDay" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate}" TargetType="{x:Type ctrl:CalendarAppointment}">
-        <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-    </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.HoursByDay.Accent" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.HoursByDay}" TargetType="{x:Type ctrl:CalendarAppointment}">
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
-    </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.DaysByYear" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate}" TargetType="{x:Type ctrl:CalendarAppointment}">
-        <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-    </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.DaysByYear.Accent" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysByYear}" TargetType="{x:Type ctrl:CalendarAppointment}">
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
-    </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.DaysRange" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate}" TargetType="{x:Type ctrl:CalendarAppointment}">
-        <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
         <Setter Property="VerticalAlignment" Value="Top" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.DaysRange.Accent" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysRange}" TargetType="{x:Type ctrl:CalendarAppointment}">
+    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.DaysByMonth.Accent" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysByMonth}">
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.HoursByWeek" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate}">
+        <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+    </Style>
+    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.HoursByWeek.Accent" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.HoursByWeek}">
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.HoursByDay" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate}">
+        <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+    </Style>
+    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.HoursByDay.Accent" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.HoursByDay}">
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.DaysByYear" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate}">
+        <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+    </Style>
+    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.DaysByYear.Accent" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysByYear}">
+        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.DaysRange" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate}">
+        <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Calendar.Appointment.Day}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+    <Style x:Key="MyNet.Styles.CalendarAppointment.Alternate.DaysRange.Accent" TargetType="{x:Type ctrl:CalendarAppointment}" BasedOn="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysRange}">
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
@@ -279,17 +279,14 @@
     <Style x:Key="MyNet.Styles.CalendarItem" TargetType="{x:Type ctrl:CalendarItem}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Focusable" Value="True" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Default}" />
+        <Setter Property="IsTabStop" Value="True" />
         <Setter Property="MinHeight" Value="5" />
         <Setter Property="MinWidth" Value="5" />
-        <Setter Property="Focusable" Value="True" />
-        <Setter Property="IsTabStop" Value="True" />
+        <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Default}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:CalendarItem}">
@@ -297,40 +294,6 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             ClipToBounds="{TemplateBinding ClipToBounds}">
-                        <Grid x:Name="base">
-                            <Border Background="{TemplateBinding Background}" />
-                            <Border x:Name="MouseOverBorder" Background="{TemplateBinding Foreground}" Opacity="0" />
-
-                            <Border x:Name="SelectedBorder"
-                                    Background="{TemplateBinding Foreground}"
-                                    Opacity="0"
-                                    RenderTransformOrigin="0.5,0.5">
-                                <Border.RenderTransform>
-                                    <ScaleTransform ScaleX="1" />
-                                </Border.RenderTransform>
-                            </Border>
-                            <ctrl:Ripple Padding="{TemplateBinding Padding}"
-                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                         Feedback="{TemplateBinding Foreground}"
-                                         Focusable="False"
-                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                                <Grid>
-                                    <ContentPresenter x:Name="DayText"
-                                                      HorizontalAlignment="Stretch"
-                                                      VerticalAlignment="Stretch"
-                                                      Content="{TemplateBinding Content}"
-                                                      ContentTemplate="{TemplateBinding ContentTemplate}" />
-                                    <Button x:Name="PART_AddButton"
-                                            Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
-                                            Grid.Column="1"
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Top"
-                                            Content="{me:ToolIcon Kind=Plus}"
-                                            Visibility="Hidden" />
-                                </Grid>
-                            </ctrl:Ripple>
-                        </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -374,6 +337,40 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="base">
+                            <Border Background="{TemplateBinding Background}" />
+                            <Border x:Name="MouseOverBorder" Background="{TemplateBinding Foreground}" Opacity="0" />
+
+                            <Border x:Name="SelectedBorder"
+                                    Background="{TemplateBinding Foreground}"
+                                    Opacity="0"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <ScaleTransform ScaleX="1" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <ctrl:Ripple Padding="{TemplateBinding Padding}"
+                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         Feedback="{TemplateBinding Foreground}"
+                                         Focusable="False"
+                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                <Grid>
+                                    <ContentPresenter x:Name="DayText"
+                                                      HorizontalAlignment="Stretch"
+                                                      VerticalAlignment="Stretch"
+                                                      Content="{TemplateBinding Content}"
+                                                      ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                    <Button x:Name="PART_AddButton"
+                                            Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
+                                            Grid.Column="1"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Top"
+                                            Content="{me:ToolIcon Kind=Plus}"
+                                            Visibility="Hidden" />
+                                </Grid>
+                            </ctrl:Ripple>
+                        </Grid>
                     </Border>
 
                     <ControlTemplate.Triggers>
@@ -400,6 +397,9 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Primary}" />
 
         <Style.Triggers>
             <MultiDataTrigger>
@@ -415,7 +415,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarItem.DaysByMonth" BasedOn="{StaticResource MyNet.Styles.CalendarItem}" TargetType="{x:Type ctrl:CalendarItem}">
+    <Style x:Key="MyNet.Styles.CalendarItem.DaysByMonth" TargetType="{x:Type ctrl:CalendarItem}" BasedOn="{StaticResource MyNet.Styles.CalendarItem}">
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -424,21 +424,21 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarItem.HoursByWeek" BasedOn="{StaticResource MyNet.Styles.CalendarItem}" TargetType="{x:Type ctrl:CalendarItem}">
+    <Style x:Key="MyNet.Styles.CalendarItem.HoursByWeek" TargetType="{x:Type ctrl:CalendarItem}" BasedOn="{StaticResource MyNet.Styles.CalendarItem}">
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate />
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarItem.HoursByDay" BasedOn="{StaticResource MyNet.Styles.CalendarItem}" TargetType="{x:Type ctrl:CalendarItem}">
+    <Style x:Key="MyNet.Styles.CalendarItem.HoursByDay" TargetType="{x:Type ctrl:CalendarItem}" BasedOn="{StaticResource MyNet.Styles.CalendarItem}">
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate />
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarItem.DaysByYear" BasedOn="{StaticResource MyNet.Styles.CalendarItem}" TargetType="{x:Type ctrl:CalendarItem}">
+    <Style x:Key="MyNet.Styles.CalendarItem.DaysByYear" TargetType="{x:Type ctrl:CalendarItem}" BasedOn="{StaticResource MyNet.Styles.CalendarItem}">
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -453,7 +453,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="MyNet.Styles.CalendarItem.DaysRange" BasedOn="{StaticResource MyNet.Styles.CalendarItem}" TargetType="{x:Type ctrl:CalendarItem}">
+    <Style x:Key="MyNet.Styles.CalendarItem.DaysRange" TargetType="{x:Type ctrl:CalendarItem}" BasedOn="{StaticResource MyNet.Styles.CalendarItem}">
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -468,21 +468,16 @@
 
     <Style x:Key="MyNet.Styles.ContentControl.Calendar.DaysByYear.Week" TargetType="{x:Type ContentControl}">
         <Setter Property="HorizontalAlignment" Value="Right" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="TextBlock.FontWeight" Value="{StaticResource MyNet.Font.Weight.Header}" />
+        <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Default}" />
         <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
         <Setter Property="TextBlock.FontSize" Value="{StaticResource MyNet.Font.Size.Caption}" />
-        <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Default}" />
+        <Setter Property="TextBlock.FontWeight" Value="{StaticResource MyNet.Font.Weight.Header}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
     <Style x:Key="MyNet.Styles.CalendarItemsControl" TargetType="{x:Type ctrl:CalendarItemsControl}">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="KeyboardNavigation.DirectionalNavigation" Value="Contained" />
-        <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="VirtualizingPanel.IsVirtualizing" Value="False" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -494,6 +489,10 @@
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="KeyboardNavigation.DirectionalNavigation" Value="Contained" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -501,42 +500,12 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VirtualizingPanel.IsVirtualizing" Value="False" />
     </Style>
 
     <Style x:Key="MyNet.Styles.Calendar" TargetType="{x:Type ctrl:CalendarBase}">
-        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="InnerBorderBrush">
-            <Setter.Value>
-                <SolidColorBrush Opacity="{StaticResource MyNet.Opacity.Secondary}" Color="{DynamicResource MyNet.Colors.Control.Border}" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="InnerBorderThickess" Value="1" />
-        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
-        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Focusable" Value="False" />
-        <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem}" />
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment}" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
-        <Setter Property="p:HeaderAssist.FontWeight" Value="{StaticResource MyNet.Font.Weight.Header}" />
-        <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-        <Setter Property="p:HeaderAssist.Opacity" Value="{DynamicResource MyNet.Opacity.Secondary}" />
-        <Setter Property="p:HeaderAssist.Height" Value="35" />
-        <Setter Property="p:HeaderAssist.Width" Value="50" />
-        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-        <Setter Property="AppointmentsSpacing" Value="{StaticResource MyNet.Margin.Small}" />
-        <Setter Property="HeaderTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <TextBlock Text="{me:Translation Casing=AllCaps, Format='MMMM yyyy'}" />
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="AccurateDateForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="AccurateDatePreviewOpacity" Value="{StaticResource MyNet.Opacity.Overlay}" />
         <Setter Property="AccurateDateTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -547,8 +516,29 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="AccurateDateForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="AccurateDatePreviewOpacity" Value="{StaticResource MyNet.Opacity.Overlay}" />
+        <Setter Property="AppointmentsSpacing" Value="{StaticResource MyNet.Margin.Small}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem}" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{me:Translation Casing=AllCaps, Format='MMMM yyyy'}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
+        <Setter Property="InnerBorderBrush">
+            <Setter.Value>
+                <SolidColorBrush Opacity="{StaticResource MyNet.Opacity.Secondary}" Color="{DynamicResource MyNet.Colors.Control.Border}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="InnerBorderThickess" Value="1" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment}" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -556,16 +546,19 @@
                                             VerticalAlignment="Stretch"
                                             IsItemsHost="True"
                                             Orientation="{Binding ItemsOrientation, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}"
-                                            Spacing="{Binding AppointmentsSpacing, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}"
-                                            Owner="{Binding RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}" />
+                                            Owner="{Binding RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}"
+                                            Spacing="{Binding AppointmentsSpacing, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:CalendarBase}">
                     <DockPanel>
-                        <!--  Header  -->
+                        <!-- Header -->
                         <ctrl:SimpleStackPanel Margin="{StaticResource MyNet.Margins.Medium.Bottom}"
                                                HorizontalAlignment="Right"
                                                DockPanel.Dock="Top"
@@ -604,7 +597,7 @@
                             </StackPanel>
                         </ctrl:SimpleStackPanel>
 
-                        <!--  Calendar  -->
+                        <!-- Calendar -->
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                             <DockPanel Grid.IsSharedSizeScope="True">
                                 <Grid DockPanel.Dock="Top">
@@ -613,7 +606,7 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <!--  Column headers  -->
+                                    <!-- Column headers -->
                                     <ItemsControl x:Name="PART_ColumnHeaders"
                                                   Style="{StaticResource MyNet.Styles.ItemsControl}"
                                                   Grid.Column="1"
@@ -632,7 +625,7 @@
                                     </ItemsControl>
                                 </Grid>
 
-                                <!--  Content  -->
+                                <!-- Content -->
                                 <ctrl:DynamicScrollViewer Padding="0"
                                                           CanContentScroll="True"
                                                           Focusable="False"
@@ -645,7 +638,7 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
 
-                                        <!--  Row headers  -->
+                                        <!-- Row headers -->
                                         <ItemsControl x:Name="PART_RowHeaders"
                                                       Style="{StaticResource MyNet.Styles.ItemsControl}"
                                                       Grid.Column="0"
@@ -663,13 +656,13 @@
                                             </ItemsControl.ItemsPanel>
                                         </ItemsControl>
 
-                                        <!--  Calendar items  -->
+                                        <!-- Calendar items -->
                                         <ctrl:CalendarItemsControl x:Name="PART_DatesItemsControl"
                                                                    Style="{StaticResource MyNet.Styles.CalendarItemsControl}"
                                                                    Grid.Column="1"
                                                                    ItemContainerStyle="{TemplateBinding CalendarItemStyle}" />
 
-                                        <!--  Grid used fot extra content (i.e. Week number)  -->
+                                        <!-- Grid used fot extra content (i.e. Week number) -->
                                         <Grid x:Name="PART_Grid"
                                               Grid.Column="1"
                                               p:GridAssist.ColumnCount="{Binding ColumnsCount, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}"
@@ -702,14 +695,14 @@
                                                 <ContentControl.Visibility>
                                                     <MultiBinding Converter="{x:Static c:MultipleBooleanToVisibilityConverter.AndCollapse}">
                                                         <Binding Path="ShowAccurateDate" RelativeSource="{RelativeSource TemplatedParent}" />
-                                                        <Binding Path="AccurateDateIsVisible" Mode="OneWay" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                        <Binding Mode="OneWay" Path="AccurateDateIsVisible" RelativeSource="{RelativeSource TemplatedParent}" />
                                                         <Binding Converter="{x:Static c:NullToBooleanConverter.FalseIfNull}" Path="AccurateDate" RelativeSource="{RelativeSource TemplatedParent}" />
                                                     </MultiBinding>
                                                 </ContentControl.Visibility>
                                             </ContentControl>
                                         </Grid>
 
-                                        <!--  Appointment items  -->
+                                        <!-- Appointment items -->
                                         <ItemsPresenter Grid.Column="1" Visibility="{Binding AppointmentsDisplayMode, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:EnumToVisibilityConverter.CollapsedIfNotAny}, ConverterParameter={x:Static ctrl:AppointmentsDisplayMode.Range}}" />
                                     </Grid>
                                 </ctrl:DynamicScrollViewer>
@@ -724,9 +717,18 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
+        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
+        <Setter Property="p:HeaderAssist.FontWeight" Value="{StaticResource MyNet.Font.Weight.Header}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:HeaderAssist.Height" Value="35" />
+        <Setter Property="p:HeaderAssist.Opacity" Value="{DynamicResource MyNet.Opacity.Secondary}" />
+        <Setter Property="p:HeaderAssist.Width" Value="50" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.Calendar.DaysByMonth" BasedOn="{StaticResource MyNet.Styles.Calendar}" TargetType="{x:Type ctrl:CalendarDaysByMonth}">
+    <Style x:Key="MyNet.Styles.Calendar.DaysByMonth" TargetType="{x:Type ctrl:CalendarDaysByMonth}" BasedOn="{StaticResource MyNet.Styles.Calendar}">
+        <Setter Property="AppointmentsMargin" Value="2 25 2 2" />
+        <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.DaysByMonth}" />
         <Setter Property="ColumnHeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -734,23 +736,23 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.DaysByMonth}" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.DaysByMonth}" />
-        <Setter Property="AppointmentsMargin" Value="2 25 2 2" />
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.DaysByMonth.Accent" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByMonth}" TargetType="{x:Type ctrl:CalendarDaysByMonth}">
+    <Style x:Key="MyNet.Styles.Calendar.DaysByMonth.Accent" TargetType="{x:Type ctrl:CalendarDaysByMonth}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByMonth}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.DaysByMonth.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.DaysByMonth.Alternate" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByMonth}" TargetType="{x:Type ctrl:CalendarDaysByMonth}">
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysByMonth}" />
+    <Style x:Key="MyNet.Styles.Calendar.DaysByMonth.Alternate" TargetType="{x:Type ctrl:CalendarDaysByMonth}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByMonth}">
         <Setter Property="AppointmentsMargin" Value="0 25 0 2" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysByMonth}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.DaysByMonth.Alternate.Accent" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByMonth}" TargetType="{x:Type ctrl:CalendarDaysByMonth}">
+    <Style x:Key="MyNet.Styles.Calendar.DaysByMonth.Alternate.Accent" TargetType="{x:Type ctrl:CalendarDaysByMonth}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByMonth}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysByMonth.Accent}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.Calendar.HoursByWeek" BasedOn="{StaticResource MyNet.Styles.Calendar}" TargetType="{x:Type ctrl:CalendarHoursByWeek}">
+    <Style x:Key="MyNet.Styles.Calendar.HoursByWeek" TargetType="{x:Type ctrl:CalendarHoursByWeek}" BasedOn="{StaticResource MyNet.Styles.Calendar}">
+        <Setter Property="AppointmentsMargin" Value="2" />
         <Setter Property="BorderThickness" Value="0 0 1 1" />
+        <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.HoursByWeek}" />
         <Setter Property="ColumnHeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -764,19 +766,6 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="RowHeaderTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <TextBlock Margin="{StaticResource MyNet.Margins.Default}"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Top"
-                               Text="{Binding Converter={x:Static c:TimeSpanToDateTimeConverter.Default}, StringFormat='HH:mm'}" />
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.HoursByWeek}" />
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.HoursByWeek}" />
-        <Setter Property="AppointmentsMargin" Value="2" />
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -788,20 +777,33 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.HoursByWeek}" />
+        <Setter Property="RowHeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Margin="{StaticResource MyNet.Margins.Default}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                               Text="{Binding Converter={x:Static c:TimeSpanToDateTimeConverter.Default}, StringFormat='HH:mm'}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.HoursByWeek.Accent" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByWeek}" TargetType="{x:Type ctrl:CalendarHoursByWeek}">
+    <Style x:Key="MyNet.Styles.Calendar.HoursByWeek.Accent" TargetType="{x:Type ctrl:CalendarHoursByWeek}" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByWeek}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.HoursByWeek.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.HoursByWeek.Alternate" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByWeek}" TargetType="{x:Type ctrl:CalendarHoursByWeek}">
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.HoursByWeek}" />
+    <Style x:Key="MyNet.Styles.Calendar.HoursByWeek.Alternate" TargetType="{x:Type ctrl:CalendarHoursByWeek}" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByWeek}">
         <Setter Property="AppointmentsMargin" Value="0" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.HoursByWeek}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.HoursByWeek.Alternate.Accent" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByWeek.Alternate}" TargetType="{x:Type ctrl:CalendarHoursByWeek}">
+    <Style x:Key="MyNet.Styles.Calendar.HoursByWeek.Alternate.Accent" TargetType="{x:Type ctrl:CalendarHoursByWeek}" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByWeek.Alternate}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.HoursByWeek.Accent}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.Calendar.HoursByDay" BasedOn="{StaticResource MyNet.Styles.Calendar}" TargetType="{x:Type ctrl:CalendarHoursByDay}">
+    <Style x:Key="MyNet.Styles.Calendar.HoursByDay" TargetType="{x:Type ctrl:CalendarHoursByDay}" BasedOn="{StaticResource MyNet.Styles.Calendar}">
+        <Setter Property="AppointmentsMargin" Value="2" />
         <Setter Property="BorderThickness" Value="0 0 1 1" />
+        <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.HoursByDay}" />
         <Setter Property="ColumnHeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -815,19 +817,6 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="RowHeaderTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <TextBlock Margin="{StaticResource MyNet.Margins.Default}"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Top"
-                               Text="{Binding Converter={x:Static c:TimeSpanToDateTimeConverter.Default}, StringFormat='HH:mm'}" />
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.HoursByDay}" />
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.HoursByDay}" />
-        <Setter Property="AppointmentsMargin" Value="2" />
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -839,19 +828,32 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.HoursByDay}" />
+        <Setter Property="RowHeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Margin="{StaticResource MyNet.Margins.Default}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                               Text="{Binding Converter={x:Static c:TimeSpanToDateTimeConverter.Default}, StringFormat='HH:mm'}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.HoursByDay.Accent" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByDay}" TargetType="{x:Type ctrl:CalendarHoursByDay}">
+    <Style x:Key="MyNet.Styles.Calendar.HoursByDay.Accent" TargetType="{x:Type ctrl:CalendarHoursByDay}" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByDay}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.HoursByDay.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.HoursByDay.Alternate" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByDay}" TargetType="{x:Type ctrl:CalendarHoursByDay}">
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.HoursByDay}" />
+    <Style x:Key="MyNet.Styles.Calendar.HoursByDay.Alternate" TargetType="{x:Type ctrl:CalendarHoursByDay}" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByDay}">
         <Setter Property="AppointmentsMargin" Value="0" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.HoursByDay}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.HoursByDay.Alternate.Accent" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByDay.Alternate}" TargetType="{x:Type ctrl:CalendarHoursByDay}">
+    <Style x:Key="MyNet.Styles.Calendar.HoursByDay.Alternate.Accent" TargetType="{x:Type ctrl:CalendarHoursByDay}" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByDay.Alternate}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.HoursByDay.Accent}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.Calendar.DaysByYear" BasedOn="{StaticResource MyNet.Styles.Calendar}" TargetType="{x:Type ctrl:CalendarDaysByYear}">
+    <Style x:Key="MyNet.Styles.Calendar.DaysByYear" TargetType="{x:Type ctrl:CalendarDaysByYear}" BasedOn="{StaticResource MyNet.Styles.Calendar}">
+        <Setter Property="AppointmentsMargin" Value="25 2 2 2" />
+        <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.DaysByYear}" />
         <Setter Property="ColumnHeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -859,10 +861,6 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.DaysByYear}" />
-        <Setter Property="WeekStyle" Value="{StaticResource MyNet.Styles.ContentControl.Calendar.DaysByYear.Week}" />
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.DaysByYear}" />
-        <Setter Property="AppointmentsMargin" Value="25 2 2 2" />
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -870,31 +868,33 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.DaysByYear}" />
+        <Setter Property="WeekStyle" Value="{StaticResource MyNet.Styles.ContentControl.Calendar.DaysByYear.Week}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.DaysByYear.Accent" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByYear}" TargetType="{x:Type ctrl:CalendarDaysByYear}">
+    <Style x:Key="MyNet.Styles.Calendar.DaysByYear.Accent" TargetType="{x:Type ctrl:CalendarDaysByYear}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByYear}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.DaysByYear.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.DaysByYear.Alternate" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByYear}" TargetType="{x:Type ctrl:CalendarDaysByYear}">
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysByYear}" />
+    <Style x:Key="MyNet.Styles.Calendar.DaysByYear.Alternate" TargetType="{x:Type ctrl:CalendarDaysByYear}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByYear}">
         <Setter Property="AppointmentsMargin" Value="25 0 0 0" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysByYear}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.DaysByYear.Alternate.Accent" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByYear.Alternate}" TargetType="{x:Type ctrl:CalendarDaysByYear}">
+    <Style x:Key="MyNet.Styles.Calendar.DaysByYear.Alternate.Accent" TargetType="{x:Type ctrl:CalendarDaysByYear}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByYear.Alternate}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysByYear.Accent}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.Calendar.DaysRange" BasedOn="{StaticResource MyNet.Styles.Calendar}" TargetType="{x:Type ctrl:CalendarDaysRange}">
+    <Style x:Key="MyNet.Styles.Calendar.DaysRange" TargetType="{x:Type ctrl:CalendarDaysRange}" BasedOn="{StaticResource MyNet.Styles.Calendar}">
+        <Setter Property="AppointmentsMargin" Value="2 25 2 2" />
         <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.DaysRange}" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.DaysRange}" />
-        <Setter Property="AppointmentsMargin" Value="2 25 2 2" />
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.DaysRange.Accent" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysRange}" TargetType="{x:Type ctrl:CalendarDaysRange}">
+    <Style x:Key="MyNet.Styles.Calendar.DaysRange.Accent" TargetType="{x:Type ctrl:CalendarDaysRange}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysRange}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.DaysRange.Accent}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.DaysRange.Alternate" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysRange}" TargetType="{x:Type ctrl:CalendarDaysRange}">
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysRange}" />
+    <Style x:Key="MyNet.Styles.Calendar.DaysRange.Alternate" TargetType="{x:Type ctrl:CalendarDaysRange}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysRange}">
         <Setter Property="AppointmentsMargin" Value="0 25 0 2" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysRange}" />
     </Style>
-    <Style x:Key="MyNet.Styles.Calendar.DaysRange.Alternate.Accent" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysRange.Alternate}" TargetType="{x:Type ctrl:CalendarDaysRange}">
+    <Style x:Key="MyNet.Styles.Calendar.DaysRange.Alternate.Accent" TargetType="{x:Type ctrl:CalendarDaysRange}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysRange.Alternate}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.Alternate.DaysRange.Accent}" />
     </Style>
 

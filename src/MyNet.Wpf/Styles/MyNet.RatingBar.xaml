@@ -12,8 +12,6 @@
     <Style x:Key="MyNet.Styles.RatingBar" TargetType="{x:Type ctrl:RatingBar}">
         <Setter Property="ClipToBounds" Value="False" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
-        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:RatingBar}">
@@ -194,7 +192,7 @@
                                                 <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=IsPreviewValueEnabled}" Value="True" />
                                                 <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=IsFractionalValueEnabled}" Value="True" />
                                             </MultiDataTrigger.Conditions>
-                                            <!--  When fractional values are enabled, always show the preview with 2 decimal places  -->
+                                            <!-- When fractional values are enabled, always show the preview with 2 decimal places -->
                                             <Setter TargetName="previewValueTextHorizontal" Property="Text" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=PreviewValue, StringFormat=' {0:N2}'}" />
                                         </MultiDataTrigger>
                                         <MultiDataTrigger>
@@ -212,7 +210,7 @@
                                                 <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=IsPreviewValueEnabled}" Value="True" />
                                                 <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=IsFractionalValueEnabled}" Value="True" />
                                             </MultiDataTrigger.Conditions>
-                                            <!--  When fractional values are enabled, always show the preview with 2 decimal places  -->
+                                            <!-- When fractional values are enabled, always show the preview with 2 decimal places -->
                                             <Setter TargetName="previewValueTextVertical" Property="Text" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ctrl:RatingBar}, Path=PreviewValue, StringFormat=' {0:N2}'}" />
                                         </MultiDataTrigger>
                                         <EventTrigger RoutedEvent="Click">
@@ -278,6 +276,8 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />

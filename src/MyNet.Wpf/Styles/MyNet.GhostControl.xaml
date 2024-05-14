@@ -9,9 +9,8 @@
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.TextBlock.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MyNet.Styles.GhostControl" BasedOn="{StaticResource MyNet.Styles.ContentControl}" TargetType="{x:Type ctrl:GhostControl}">
-        <Setter Property="VerticalContentAlignment" Value="Top" />
-        <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Style x:Key="MyNet.Styles.GhostControl" TargetType="{x:Type ctrl:GhostControl}" BasedOn="{StaticResource MyNet.Styles.ContentControl}">
+        <Setter Property="Ghost" Value="{me:Resource NoData}" />
         <Setter Property="GhostTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -22,7 +21,7 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="Ghost" Value="{me:Resource NoData}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ctrl:GhostControl}">
@@ -36,5 +35,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Top" />
     </Style>
 </ResourceDictionary>
