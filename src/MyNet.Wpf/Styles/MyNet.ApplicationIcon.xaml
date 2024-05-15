@@ -14,9 +14,10 @@
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="FontFamily" Value="{StaticResource MyNet.Font.Family.Nuvel}" />
-        <Setter Property="FontSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:FontSizeConverter.Default}, ConverterParameter=0.4}" />
+        <Setter Property="TextSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.58}" />
+        <Setter Property="FontSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:FontSizeConverter.Default}, ConverterParameter=0.51}" />
+        <Setter Property="IconSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.98}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="IconSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.75}" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
