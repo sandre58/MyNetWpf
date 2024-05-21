@@ -27,7 +27,7 @@
 
     <my:ContentDialog.Footer>
         <my:SimpleStackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Switch}" Content="{my:Resource SaveConfiguration}" IsChecked="{Binding SaveConfiguration}" />
+            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Switch}" Content="{my:Resource SaveConfiguration}" IsChecked="{Binding SaveConfigurationOnValidate}" />
             <Button Style="{StaticResource MyNet.Styles.Button.Reset}" HorizontalAlignment="Right" Command="{Binding ResetCommand}" />
             <Button Style="{StaticResource MyNet.Styles.Button.Cancel}" HorizontalAlignment="Right" Command="{Binding CancelCommand}" />
             <Button Style="{StaticResource MyNet.Styles.Button.Validate}" HorizontalAlignment="Right" Command="{Binding ExportAndCloseCommand}" />
@@ -104,7 +104,6 @@
                     </my:SimpleStackPanel>
                 </Grid>
                 <ListView Grid.Row="4"
-                          dd:DragDrop.DropHandler="{Binding DropHandler}"
                           dd:DragDrop.IsDragSource="True"
                           dd:DragDrop.IsDropTarget="True"
                           dd:DragDrop.UseDefaultDragAdorner="True"
@@ -133,7 +132,7 @@
                             <GridViewColumn my:GridViewColumnAssist.Width="*" Header="{my:Resource ColumnHeader}">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock x:Name="text" Text="{Binding Item.DisplayName.Value}" />
+                                        <TextBlock x:Name="text" Text="{Binding Item.Value}" />
                                         <DataTemplate.Triggers>
                                             <DataTrigger Binding="{Binding IsSelected}" Value="False">
                                                 <Setter TargetName="text" Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
