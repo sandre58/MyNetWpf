@@ -1,5 +1,10 @@
 # Changelog
 
+## [v2.2.0] - 2024-05-21
+### :sparkles: New Features
+- [`a77440c`](https://github.com/sandre58/MyNetWpf/commit/a77440c94c3de4af38a3429bb2490d877b49c80a) - add export view *(PR [#3](https://github.com/sandre58/MyNetWpf/pull/3) by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v2.1.0] - 2024-05-20
 ### :bug: Bug Fixes
 - [`e5e583c`](https://github.com/sandre58/MyNetWpf/commit/e5e583cb30f6112cd2332fbd78536cb96f8087e6) - change coef of sizes in ApplicationIcn *(commit by [@sandre58](https://github.com/sandre58))*
@@ -29,3 +34,4 @@
 [v1.1.0]: https://github.com/sandre58/MyNetWpf/compare/MyNet.Wpf.Web-v1.0.0...v1.1.0
 [v2.0.0]: https://github.com/sandre58/MyNetWpf/compare/v1.1.0...v2.0.0
 [v2.1.0]: https://github.com/sandre58/MyNetWpf/compare/v2.0.0...v2.1.0
+[v2.2.0]: https://github.com/sandre58/MyNetWpf/compare/v2.1.0...v2.2.0
