@@ -27,7 +27,7 @@
 
     <my:ContentDialog.Footer>
         <my:SimpleStackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Switch}" Content="{my:Resource SaveConfiguration}" IsChecked="{Binding SaveConfiguration}" />
+            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Switch}" Content="{my:Resource SaveConfiguration}" IsChecked="{Binding SaveConfigurationOnValidate}" />
             <Button Style="{StaticResource MyNet.Styles.Button.Reset}" HorizontalAlignment="Right" Command="{Binding ResetCommand}" />
             <Button Style="{StaticResource MyNet.Styles.Button.Cancel}" HorizontalAlignment="Right" Command="{Binding CancelCommand}" />
             <Button Style="{StaticResource MyNet.Styles.Button.Validate}" HorizontalAlignment="Right" Command="{Binding ExportAndCloseCommand}" />
