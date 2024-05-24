@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Offers a robust set of tools for seamlessly integrating drag-and-drop functionality into WPF applications.</Description>
     <PackageTags>MyNet;UI;Xaml;Drag;Drop;Wpf</PackageTags>
-    <VersionPrefix>2.1.0</VersionPrefix>
+    <VersionPrefix>2.2.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
