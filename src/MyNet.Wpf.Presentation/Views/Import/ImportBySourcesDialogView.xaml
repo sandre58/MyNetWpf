@@ -1,0 +1,80 @@
+﻿<my:ContentDialog x:Class="MyNet.Wpf.Presentation.Views.Import.ImportBySourcesDialogView"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:my="http://mynet.com/xaml/themes"
+                  xmlns:v="clr-namespace:MyNet.Wpf.Presentation.Views.Import"
+                  Style="{StaticResource MyNet.Styles.ContentDialog}"
+                  Width="1000"
+                  Height="550"
+                  Padding="0"
+                  BusyService="{Binding BusyService, Mode=OneWay}"
+                  Header="{Binding Title}"
+                  ShowCloseButton="True"
+                  mc:Ignorable="d">
+
+    <my:ContentDialog.Resources>
+        <my:BindingProxy x:Key="Proxy" Data="{Binding}" />
+    </my:ContentDialog.Resources>
+
+    <my:InputAssist.InputBindings>
+        <InputBindingCollection>
+            <KeyBinding Modifiers="Ctrl" Key="N" Command="{Binding Data.ResetCommand, Source={StaticResource Proxy}}" />
+            <KeyBinding Modifiers="Ctrl" Key="S" Command="{Binding Data.ValidateCommand, Source={StaticResource Proxy}}" />
+            <KeyBinding Key="Esc" Command="{Binding Data.CancelCommand, Source={StaticResource Proxy}}" />
+            <KeyBinding Key="F5" Command="{Binding Data.RefreshAsyncCommand, Source={StaticResource Proxy}}" />
+        </InputBindingCollection>
+    </my:InputAssist.InputBindings>
+
+    <my:ContentDialog.Footer>
+        <my:SimpleStackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+                    HorizontalAlignment="Right"
+                    my:IconAssist.Icon="{my:Icon Kind=Import}"
+                    Command="{Binding ResetCommand}"
+                    Content="{my:Resource Reset}"
+                    ToolTip="Ctrl+N"
+                    Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+            <Button Style="{StaticResource MyNet.Styles.Button.Refresh}"
+                    HorizontalAlignment="Right"
+                    Command="{Binding RefreshAsyncCommand}"
+                    Content="{my:Resource Refresh}"
+                    Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+            <Button Style="{StaticResource MyNet.Styles.Button.Cancel}" HorizontalAlignment="Right" Command="{Binding CancelCommand}" />
+            <Button Style="{StaticResource MyNet.Styles.Button.Validate}"
+                    HorizontalAlignment="Right"
+                    Command="{Binding ValidateCommand}"
+                    Content="{my:Translation List.ImportItems.Count,
+                                             Format=ImportXItems}"
+                    Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+        </my:SimpleStackPanel>
+    </my:ContentDialog.Footer>
+
+    <my:TransitioningContent>
+        <my:TransitioningContent.Style>
+            <Style TargetType="{x:Type my:TransitioningContent}" BasedOn="{StaticResource MyNet.Styles.TransitioningContent}">
+
+                <!-- Sources -->
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <v:ImportSourcesView DataContext="{Binding Sources}" />
+                    </Setter.Value>
+                </Setter>
+
+                <Style.Triggers>
+
+                    <!-- List -->
+                    <DataTrigger Binding="{Binding ShowList}" Value="True">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <ContentControl Content="{Binding List, Converter={x:Static my:ViewModelToViewConverter.Default}}" />
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+
+                </Style.Triggers>
+            </Style>
+        </my:TransitioningContent.Style>
+    </my:TransitioningContent>
+</my:ContentDialog>

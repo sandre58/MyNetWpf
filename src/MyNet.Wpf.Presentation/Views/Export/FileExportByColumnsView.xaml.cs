@@ -3,8 +3,8 @@
 
 namespace MyNet.Wpf.Presentation.Views.Export
 {
-    public partial class ExportView
+    public partial class FileExportByColumnsView
     {
-        public ExportView() => InitializeComponent();
+        public FileExportByColumnsView() => InitializeComponent();
     }
 }
