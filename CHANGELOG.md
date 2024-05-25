@@ -1,5 +1,11 @@
 # Changelog
 
+## [v3.0.0] - 2024-05-25
+### :sparkles: New Features
+- [`785e54c`](https://github.com/sandre58/MyNetWpf/commit/785e54c558ab9226cf3b8b47d50cbfccea209e00) - add export and import views *(PR [#4](https://github.com/sandre58/MyNetWpf/pull/4) by [@sandre58](https://github.com/sandre58))*
+- [`fb254ee`](https://github.com/sandre58/MyNetWpf/commit/fb254ee9d06fa02619a5c757fb62639ceeedf045) - add dependency property Stretch for ImagePicker *(PR [#6](https://github.com/sandre58/MyNetWpf/pull/6) by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v2.2.0] - 2024-05-21
 ### :sparkles: New Features
 - [`a77440c`](https://github.com/sandre58/MyNetWpf/commit/a77440c94c3de4af38a3429bb2490d877b49c80a) - add export view *(PR [#3](https://github.com/sandre58/MyNetWpf/pull/3) by [@sandre58](https://github.com/sandre58))*
@@ -35,3 +41,4 @@
 [v2.0.0]: https://github.com/sandre58/MyNetWpf/compare/v1.1.0...v2.0.0
 [v2.1.0]: https://github.com/sandre58/MyNetWpf/compare/v2.0.0...v2.1.0
 [v2.2.0]: https://github.com/sandre58/MyNetWpf/compare/v2.1.0...v2.2.0
+[v3.0.0]: https://github.com/sandre58/MyNetWpf/compare/v2.2.0...v3.0.0
