@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
 
-    <ItemsControl ItemsSource="{Binding Sources}">
+    <ItemsControl ItemsSource="{Binding}">
         <ItemsControl.ItemTemplate>
             <DataTemplate>
                 <Grid>
@@ -25,7 +25,7 @@
         </ItemsControl.ItemTemplate>
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
-                <UniformGrid Columns="{Binding Sources.Count}" />
+                <UniformGrid Columns="{Binding Count}" />
             </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
     </ItemsControl>
