@@ -222,6 +222,19 @@ namespace MyNet.Wpf.Controls
 
         #endregion
 
+        #region Stretch
+
+        public static readonly DependencyProperty StretchProperty
+            = DependencyProperty.Register(nameof(Stretch), typeof(Stretch), typeof(ImagePicker), new PropertyMetadata(Stretch.UniformToFill));
+
+        public Stretch Stretch
+        {
+            get => (Stretch)GetValue(StretchProperty);
+            set => SetValue(StretchProperty, value);
+        }
+
+        #endregion
+
         protected virtual void OnSelectedImageChanged(ImageSource? oldValue, ImageSource? newValue) => RaiseEvent(new RoutedPropertyChangedEventArgs<ImageSource?>(oldValue, newValue, SelectedImageChangedEvent));
 
         public override void OnApplyTemplate()
