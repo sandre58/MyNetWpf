@@ -1,4 +1,4 @@
-﻿<my:ContentDialog x:Class="MyNet.Wpf.Presentation.Views.Export.ExportView"
+﻿<my:ContentDialog x:Class="MyNet.Wpf.Presentation.Views.Export.FileExportByColumnsView"
                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -41,7 +41,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!--  Destination  -->
+        <!-- Destination -->
         <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=FileExcel}">
             <TextBox Width="Auto"
                      HorizontalAlignment="Stretch"
@@ -54,7 +54,7 @@
             </TextBox>
         </GroupBox>
 
-        <!--  Columns  -->
+        <!-- Columns -->
         <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Grid.Row="2" Header=" ">
             <Grid>
                 <Grid.RowDefinitions>
@@ -83,7 +83,7 @@
                                            Visibility="{Binding PresetColumns.Count, Converter={x:Static my:CountToVisibilityConverter.CollapsedIfNotAny}}">
                             <my:Submenu ItemsSource="{Binding PresetColumns}">
                                 <my:Submenu.ItemContainerStyle>
-                                    <Style BasedOn="{StaticResource MyNet.Styles.MenuItem}" TargetType="{x:Type MenuItem}">
+                                    <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MyNet.Styles.MenuItem}">
                                         <Setter Property="Command" Value="{Binding Data.SetSelectedColumnsCommand, Source={StaticResource Proxy}}" />
                                         <Setter Property="CommandParameter" Value="{Binding Item}" />
                                         <Setter Property="Header" Value="{Binding DisplayName.Value}" />
