@@ -448,7 +448,7 @@
         <Setter Property="SelectedImageTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <Image Source="{Binding}" Stretch="UniformToFill" Visibility="{Binding UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+                    <Image Source="{Binding}" Stretch="{Binding Stretch, RelativeSource={RelativeSource AncestorType={x:Type ctrl:ImagePicker}}}" Visibility="{Binding UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
