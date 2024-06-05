@@ -13766,8 +13766,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         </ControlTemplate>
       </Setter.Value>
     </Setter>
-    <Setter Property="VerticalAlignment" Value="Stretch" />
-    <Setter Property="VerticalContentAlignment" Value="Stretch" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Embedded.Expander.Horizontal.Alternate" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Text}">
     <Setter Property="ContentTemplate">
@@ -14821,6 +14819,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
     <Setter Property="ShowCloseButton" Value="True" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
   </Style>
   <Style x:Key="MyNet.Styles.MultiComboBoxSelectedItem" TargetType="{x:Type ctrl:MultiComboBoxSelectedItem}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
