@@ -1,5 +1,16 @@
 # Changelog
 
+## [v4.0.0] - 2024-06-05
+### :boom: BREAKING CHANGES
+- due to [`652b72c`](https://github.com/sandre58/MyNetWpf/commit/652b72c4f86ee9faa103f068801e3bbcffcaaf2d) - Add possibility to specify VerticalAlignment and HorizontalAlignment for ContentDialogs *(commit by [@sandre58](https://github.com/sandre58))*:
+
+  Add possibility to specify VerticalAlignment and HorizontalAlignment for ContentDialogs
+
+
+### :sparkles: New Features
+- [`652b72c`](https://github.com/sandre58/MyNetWpf/commit/652b72c4f86ee9faa103f068801e3bbcffcaaf2d) - Add possibility to specify VerticalAlignment and HorizontalAlignment for ContentDialogs *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v3.0.0] - 2024-05-25
 ### :sparkles: New Features
 - [`785e54c`](https://github.com/sandre58/MyNetWpf/commit/785e54c558ab9226cf3b8b47d50cbfccea209e00) - add export and import views *(PR [#4](https://github.com/sandre58/MyNetWpf/pull/4) by [@sandre58](https://github.com/sandre58))*
@@ -42,3 +53,4 @@
 [v2.1.0]: https://github.com/sandre58/MyNetWpf/compare/v2.0.0...v2.1.0
 [v2.2.0]: https://github.com/sandre58/MyNetWpf/compare/v2.1.0...v2.2.0
 [v3.0.0]: https://github.com/sandre58/MyNetWpf/compare/v2.2.0...v3.0.0
+[v4.0.0]: https://github.com/sandre58/MyNetWpf/compare/v3.0.0...v4.0.0
