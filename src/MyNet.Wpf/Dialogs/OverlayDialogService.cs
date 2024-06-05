@@ -71,8 +71,14 @@ namespace MyNet.Wpf.Dialogs
             control.AssociatedControl = _associatedControl;
 
             var overlayDialogObject = viewModel is IOverlayDialog overlayDialogViewModel ? overlayDialogViewModel : view is IOverlayDialog overlayDialogView ? overlayDialogView : null;
-            control.CloseOnClickAway = overlayDialogObject?.CloseOnClickAway ?? false;
-            control.FocusOnShow = overlayDialogObject?.FocusOnShow ?? true;
+
+            if (overlayDialogObject is not null)
+            {
+                control.CloseOnClickAway = overlayDialogObject.CloseOnClickAway;
+                control.FocusOnShow = overlayDialogObject.FocusOnShow;
+                control.VerticalContentAlignment = overlayDialogObject.VerticalAlignment;
+                control.HorizontalContentAlignment = overlayDialogObject.HorizontalAlignment;
+            }
 
             // Load view Model on openning control
             control.Opened += OnControlOpened;

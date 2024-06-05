@@ -6948,6 +6948,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     <Setter Property="OverlayBackground" Value="{DynamicResource MyNet.Brushes.Overlay}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="Padding" Value="50" />
     <Setter Property="Template">
       <Setter.Value>
@@ -7054,7 +7056,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                   <MouseBinding Command="{x:Static ctrl:OverlayDialogControl.CloseDialogCommand}" MouseAction="LeftClick" />
                 </Border.InputBindings>
               </Border>
-              <ctrl:Card x:Name="PART_ContentElement" Margin="{TemplateBinding Padding}" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center" p:ElevationAssist.Elevation="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation)}" Background="{TemplateBinding Background}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" FocusManager.IsFocusScope="False" Focusable="False" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" Foreground="{TemplateBinding Foreground}" IsHitTestVisible="True" IsTabStop="False" Opacity="0" RenderTransformOrigin=".5,.5" TextElement.FontFamily="{TemplateBinding FontFamily}" TextElement.FontSize="{TemplateBinding FontSize}" TextElement.FontStretch="{TemplateBinding FontStretch}" TextElement.FontStyle="{TemplateBinding FontStyle}" TextElement.FontWeight="{TemplateBinding FontWeight}" TextElement.Foreground="{TemplateBinding Foreground}" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" UniformCornerRadius="{StaticResource MyNet.UniformCornerRadius.Container}">
+              <ctrl:Card x:Name="PART_ContentElement" Margin="{TemplateBinding Padding}" Padding="0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" p:ElevationAssist.Elevation="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation)}" Background="{TemplateBinding Background}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" FocusManager.IsFocusScope="False" Focusable="False" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" Foreground="{TemplateBinding Foreground}" IsHitTestVisible="True" IsTabStop="False" Opacity="0" RenderTransformOrigin=".5,.5" TextElement.FontFamily="{TemplateBinding FontFamily}" TextElement.FontSize="{TemplateBinding FontSize}" TextElement.FontStretch="{TemplateBinding FontStretch}" TextElement.FontStyle="{TemplateBinding FontStyle}" TextElement.FontWeight="{TemplateBinding FontWeight}" TextElement.Foreground="{TemplateBinding Foreground}" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" UniformCornerRadius="{StaticResource MyNet.UniformCornerRadius.Container}">
                 <ctrl:Card.RenderTransform>
                   <TransformGroup>
                     <ScaleTransform x:Name="CardScaleTransform" ScaleX="0" ScaleY="0" />
@@ -13733,7 +13735,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="HeaderForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     <Setter Property="HeaderHeight" Value="30" />
     <Setter Property="HeaderPadding" Value="{StaticResource MyNet.Margins.Default}" />
-    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Stretch" />
     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
     <Setter Property="IsTabStop" Value="False" />
     <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />

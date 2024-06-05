@@ -175,7 +175,6 @@ namespace MyNet.Wpf.Controls
 
         #endregion
 
-
         #region FocusOnShow
 
         public static readonly DependencyProperty FocusOnShowProperty = DependencyProperty.Register(
@@ -191,7 +190,6 @@ namespace MyNet.Wpf.Controls
         }
 
         #endregion
-
 
         #region OverlayBackground
 
@@ -300,7 +298,7 @@ namespace MyNet.Wpf.Controls
             if (!canClose)
                 dialogClosingEventArgs.Cancel();
 
-            Dispatcher.Invoke(() =>
+            await Dispatcher.InvokeAsync(() =>
             {
                 //multiple ways of calling back that the dialog is closing:
                 // * routed event
