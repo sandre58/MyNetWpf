@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.0.1] - 2024-06-05
+### :bug: Bug Fixes
+- [`b638ac0`](https://github.com/sandre58/MyNetWpf/commit/b638ac0d9d474ac8482b4127c5f065cfb40b56ed) - remove duplicated properties in ContentDialog *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.0.0] - 2024-06-05
 ### :boom: BREAKING CHANGES
 - due to [`652b72c`](https://github.com/sandre58/MyNetWpf/commit/652b72c4f86ee9faa103f068801e3bbcffcaaf2d) - Add possibility to specify VerticalAlignment and HorizontalAlignment for ContentDialogs *(commit by [@sandre58](https://github.com/sandre58))*:
@@ -54,3 +59,4 @@
 [v2.2.0]: https://github.com/sandre58/MyNetWpf/compare/v2.1.0...v2.2.0
 [v3.0.0]: https://github.com/sandre58/MyNetWpf/compare/v2.2.0...v3.0.0
 [v4.0.0]: https://github.com/sandre58/MyNetWpf/compare/v3.0.0...v4.0.0
+[v4.0.1]: https://github.com/sandre58/MyNetWpf/compare/v4.0.0...v4.0.1
