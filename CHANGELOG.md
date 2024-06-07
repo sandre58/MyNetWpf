@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.0.2] - 2024-06-07
+### :bug: Bug Fixes
+- [`804b8e3`](https://github.com/sandre58/MyNetWpf/commit/804b8e33356644774eceff99d7dff797bb83a743) - add IsVisibleChanged behavior for selection on mouse over *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.0.1] - 2024-06-05
 ### :bug: Bug Fixes
 - [`b638ac0`](https://github.com/sandre58/MyNetWpf/commit/b638ac0d9d474ac8482b4127c5f065cfb40b56ed) - remove duplicated properties in ContentDialog *(commit by [@sandre58](https://github.com/sandre58))*
@@ -60,3 +65,4 @@
 [v3.0.0]: https://github.com/sandre58/MyNetWpf/compare/v2.2.0...v3.0.0
 [v4.0.0]: https://github.com/sandre58/MyNetWpf/compare/v3.0.0...v4.0.0
 [v4.0.1]: https://github.com/sandre58/MyNetWpf/compare/v4.0.0...v4.0.1
+[v4.0.2]: https://github.com/sandre58/MyNetWpf/compare/v4.0.1...v4.0.2
