@@ -16,6 +16,8 @@ namespace MyNet.Wpf.Behaviors
 {
     public class ListBoxSelectOnMouseOverBehavior : Behavior<ListBox>
     {
+        private bool _isRegistered = false;
+
         public Brush? SelectionBackground { get; set; }
 
         public Brush? SelectionBorderBrush { get; set; }
@@ -34,6 +36,7 @@ namespace MyNet.Wpf.Behaviors
                 // child controls.
                 AssociatedObject.Loaded += OnLoaded;
             }
+            AssociatedObject.IsVisibleChanged += OnIsVisibleChanged;
         }
 
         /// <inheritdoc />
@@ -42,6 +45,7 @@ namespace MyNet.Wpf.Behaviors
             base.OnDetaching();
 
             UnRegister();
+            AssociatedObject.IsVisibleChanged -= OnIsVisibleChanged;
         }
 
         private ScrollContentPresenter? _scrollContent;
@@ -56,6 +60,8 @@ namespace MyNet.Wpf.Behaviors
 
         private void Register()
         {
+            if (!AssociatedObject.IsVisible || _isRegistered) return;
+
             _scrollContent = AssociatedObject.FindVisualChild<ScrollContentPresenter>();
             if (_scrollContent != null)
             {
@@ -81,6 +87,8 @@ namespace MyNet.Wpf.Behaviors
             AssociatedObject.PreviewMouseLeftButtonDown += OnPreviewMouseLeftButtonDown;
             AssociatedObject.PreviewMouseLeftButtonUp += OnPreviewMouseLeftButtonUp;
             AssociatedObject.MouseMove += OnMouseMove;
+
+            _isRegistered = true;
         }
 
         private void UnRegister()
@@ -90,9 +98,20 @@ namespace MyNet.Wpf.Behaviors
             if (_scrollViewer is not null)
                 _scrollViewer.ScrollChanged -= OnScrollChanged;
 
+            AssociatedObject.IsVisibleChanged -= OnIsVisibleChanged;
             AssociatedObject.PreviewMouseLeftButtonDown -= OnPreviewMouseLeftButtonDown;
             AssociatedObject.PreviewMouseLeftButtonUp -= OnPreviewMouseLeftButtonUp;
             AssociatedObject.MouseMove -= OnMouseMove;
+
+            _isRegistered = false;
+        }
+
+        private void OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (AssociatedObject.IsVisible)
+                Register();
+            else
+                UnRegister();
         }
 
         private void OnLoaded(object sender, EventArgs e)
