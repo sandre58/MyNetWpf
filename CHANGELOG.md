@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.0.3] - 2024-06-08
+### :bug: Bug Fixes
+- [`32e0159`](https://github.com/sandre58/MyNetWpf/commit/32e01595b9e0a1a24d5d24685f2faee6791af5cc) - fix ListBox mouse over behavior *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.0.2] - 2024-06-07
 ### :bug: Bug Fixes
 - [`804b8e3`](https://github.com/sandre58/MyNetWpf/commit/804b8e33356644774eceff99d7dff797bb83a743) - add IsVisibleChanged behavior for selection on mouse over *(commit by [@sandre58](https://github.com/sandre58))*
@@ -66,3 +71,4 @@
 [v4.0.0]: https://github.com/sandre58/MyNetWpf/compare/v3.0.0...v4.0.0
 [v4.0.1]: https://github.com/sandre58/MyNetWpf/compare/v4.0.0...v4.0.1
 [v4.0.2]: https://github.com/sandre58/MyNetWpf/compare/v4.0.1...v4.0.2
+[v4.0.3]: https://github.com/sandre58/MyNetWpf/compare/v4.0.2...v4.0.3
