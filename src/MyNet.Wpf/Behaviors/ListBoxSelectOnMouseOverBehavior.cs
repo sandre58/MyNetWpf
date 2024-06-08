@@ -16,8 +16,6 @@ namespace MyNet.Wpf.Behaviors
 {
     public class ListBoxSelectOnMouseOverBehavior : Behavior<ListBox>
     {
-        private bool _isRegistered = false;
-
         public Brush? SelectionBackground { get; set; }
 
         public Brush? SelectionBorderBrush { get; set; }
@@ -36,7 +34,6 @@ namespace MyNet.Wpf.Behaviors
                 // child controls.
                 AssociatedObject.Loaded += OnLoaded;
             }
-            AssociatedObject.IsVisibleChanged += OnIsVisibleChanged;
         }
 
         /// <inheritdoc />
@@ -45,7 +42,6 @@ namespace MyNet.Wpf.Behaviors
             base.OnDetaching();
 
             UnRegister();
-            AssociatedObject.IsVisibleChanged -= OnIsVisibleChanged;
         }
 
         private ScrollContentPresenter? _scrollContent;
@@ -60,58 +56,58 @@ namespace MyNet.Wpf.Behaviors
 
         private void Register()
         {
-            if (!AssociatedObject.IsVisible || _isRegistered) return;
-
-            _scrollContent = AssociatedObject.FindVisualChild<ScrollContentPresenter>();
-            if (_scrollContent != null)
-            {
-                _selectionAdorner = new SelectionAdorner(_scrollContent);
-                _scrollContent.AdornerLayer.Add(_selectionAdorner);
-
-                if (SelectionBackground is not null)
-                    _selectionAdorner.Background = SelectionBackground;
-                if (SelectionBorderBrush is not null)
-                    _selectionAdorner.BorderBrush = SelectionBorderBrush;
-            }
-
-            _scrollViewer = AssociatedObject.FindVisualChild<ScrollViewer>();
-
-            if (_scrollViewer is not null)
-            {
-                _scrollViewer.ScrollChanged += OnScrollChanged;
-
-                _autoScroll.Tick += (sender, e) => Scroll();
-                _autoScroll.Interval = TimeSpan.FromMilliseconds(GetRepeatRate());
-            }
-
             AssociatedObject.PreviewMouseLeftButtonDown += OnPreviewMouseLeftButtonDown;
             AssociatedObject.PreviewMouseLeftButtonUp += OnPreviewMouseLeftButtonUp;
             AssociatedObject.MouseMove += OnMouseMove;
+        }
 
-            _isRegistered = true;
+        private ScrollContentPresenter? GetScrollContent()
+        {
+            if (_scrollContent is null)
+            {
+                _scrollContent = AssociatedObject.FindVisualChild<ScrollContentPresenter>();
+                if (_scrollContent != null)
+                {
+                    _selectionAdorner = new SelectionAdorner(_scrollContent);
+                    _scrollContent.AdornerLayer.Add(_selectionAdorner);
+
+                    if (SelectionBackground is not null)
+                        _selectionAdorner.Background = SelectionBackground;
+                    if (SelectionBorderBrush is not null)
+                        _selectionAdorner.BorderBrush = SelectionBorderBrush;
+                }
+            }
+
+            return _scrollContent;
+        }
+
+        private ScrollViewer? GetScrollViewer()
+        {
+            if (_scrollViewer is null)
+            {
+                _scrollViewer = AssociatedObject.FindVisualChild<ScrollViewer>();
+                if (_scrollViewer is not null)
+                {
+                    _scrollViewer.ScrollChanged += OnScrollChanged;
+
+                    _autoScroll.Tick += (sender, e) => Scroll();
+                    _autoScroll.Interval = TimeSpan.FromMilliseconds(GetRepeatRate());
+                }
+            }
+
+            return _scrollViewer;
         }
 
         private void UnRegister()
         {
             StopSelection();
 
-            if (_scrollViewer is not null)
-                _scrollViewer.ScrollChanged -= OnScrollChanged;
+            if (GetScrollViewer() is ScrollViewer scrollViewer)
+                scrollViewer.ScrollChanged -= OnScrollChanged;
 
-            AssociatedObject.IsVisibleChanged -= OnIsVisibleChanged;
             AssociatedObject.PreviewMouseLeftButtonDown -= OnPreviewMouseLeftButtonDown;
             AssociatedObject.PreviewMouseLeftButtonUp -= OnPreviewMouseLeftButtonUp;
             AssociatedObject.MouseMove -= OnMouseMove;
-
-            _isRegistered = false;
-        }
-
-        private void OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if (AssociatedObject.IsVisible)
-                Register();
-            else
-                UnRegister();
         }
 
         private void OnLoaded(object sender, EventArgs e)
@@ -122,7 +118,7 @@ namespace MyNet.Wpf.Behaviors
 
         private void OnScrollChanged(object sender, ScrollChangedEventArgs e)
         {
-            if (_scrollViewer is null || !_mouseCaptured || _selectionStart is null) return;
+            if (GetScrollViewer() is null || !_mouseCaptured || _selectionStart is null) return;
 
             _selectionStart = new Point(_selectionStart.Value.X - e.HorizontalChange, _selectionStart.Value.Y - e.VerticalChange);
             UpdateSelection();
@@ -139,9 +135,9 @@ namespace MyNet.Wpf.Behaviors
 
         private void OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (_mouseCaptured)
+            if (_mouseCaptured && GetScrollContent() is ScrollContentPresenter scrollContent)
             {
-                var mouse = e.GetPosition(_scrollContent);
+                var mouse = e.GetPosition(scrollContent);
                 _selectionEnd = mouse;
 
                 if (!_autoScroll.IsEnabled)
@@ -157,10 +153,11 @@ namespace MyNet.Wpf.Behaviors
                 || e.OriginalSource is DependencyObject d1 && (d1 is ScrollBar || d1.FindVisualParent<ScrollBar>() is not null)
                 || e.OriginalSource is DependencyObject d2 && (d2 is MenuItem || d2.FindVisualParent<MenuItem>() is not null)
                 || e.RightButton == MouseButtonState.Pressed
+                || GetScrollContent() is not ScrollContentPresenter scrollContent
                 ) return;
 
             // Check that the mouse is inside the scroll content (could be on the scroll bars for example).
-            var mouse = e.GetPosition(_scrollContent);
+            var mouse = e.GetPosition(scrollContent);
             if (IsOnScrollContent(mouse))
             {
                 _mouseCaptured = true;
@@ -205,15 +202,15 @@ namespace MyNet.Wpf.Behaviors
 
         private void UpdateSelection()
         {
-            if (_scrollContent is null) return;
+            if (GetScrollContent() is not ScrollContentPresenter scrollContent) return;
 
             // Update adorner
             var newSelectionArea = ComputeSelectionArea(_selectionStart, _selectionEnd);
             _selectionAdorner?.UpdateArea(newSelectionArea);
 
             // And select the items.
-            var topLeft = _scrollContent.TranslatePoint(newSelectionArea.TopLeft, AssociatedObject);
-            var bottomRight = _scrollContent.TranslatePoint(newSelectionArea.BottomRight, AssociatedObject);
+            var topLeft = scrollContent.TranslatePoint(newSelectionArea.TopLeft, AssociatedObject);
+            var bottomRight = scrollContent.TranslatePoint(newSelectionArea.BottomRight, AssociatedObject);
             var selectionAreaRelative = new Rect(topLeft, bottomRight);
 
             for (var i = 0; i < AssociatedObject.Items.Count; i++)
@@ -241,7 +238,7 @@ namespace MyNet.Wpf.Behaviors
             _previousSelectionArea = newSelectionArea;
         }
 
-        private bool IsOnScrollContent(Point mouse) => mouse.X >= 0 && mouse.X < _scrollContent?.ActualWidth && mouse.Y >= 0 && mouse.Y < _scrollContent.ActualHeight;
+        private bool IsOnScrollContent(Point mouse) => GetScrollContent() is ScrollContentPresenter scrollContent && mouse.X >= 0 && mouse.X < scrollContent.ActualWidth && mouse.Y >= 0 && mouse.Y < scrollContent.ActualHeight;
 
         private static Rect ComputeSelectionArea(Point? startPoint, Point? endPoint)
         {
@@ -259,30 +256,30 @@ namespace MyNet.Wpf.Behaviors
 
         private void Scroll()
         {
-            if (_scrollContent is null || _scrollViewer is null || _selectionEnd is null) return;
+            if (GetScrollContent() is not ScrollContentPresenter scrollContent || GetScrollViewer() is not ScrollViewer scrollViewer || _selectionEnd is null) return;
 
             var position = _selectionEnd.Value;
             var scrolled = false;
 
-            if (position.X > _scrollContent.ActualWidth)
+            if (position.X > scrollContent.ActualWidth)
             {
-                _scrollViewer.LineRight();
+                scrollViewer.LineRight();
                 scrolled = true;
             }
             else if (position.X < 0)
             {
-                _scrollViewer.LineLeft();
+                scrollViewer.LineLeft();
                 scrolled = true;
             }
 
-            if (position.Y > _scrollContent.ActualHeight)
+            if (position.Y > scrollContent.ActualHeight)
             {
-                _scrollViewer.LineDown();
+                scrollViewer.LineDown();
                 scrolled = true;
             }
             else if (position.Y < 0)
             {
-                _scrollViewer.LineUp();
+                scrollViewer.LineUp();
                 scrolled = true;
             }
 
