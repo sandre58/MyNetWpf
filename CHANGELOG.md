@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.1.0] - 2024-06-11
+### :sparkles: New Features
+- [`4c1973c`](https://github.com/sandre58/MyNetWpf/commit/4c1973c059533fc3857164e26f8bb9de29e95128) - add new converter to compare dates *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.0.3] - 2024-06-08
 ### :bug: Bug Fixes
 - [`32e0159`](https://github.com/sandre58/MyNetWpf/commit/32e01595b9e0a1a24d5d24685f2faee6791af5cc) - fix ListBox mouse over behavior *(commit by [@sandre58](https://github.com/sandre58))*
@@ -72,3 +77,4 @@
 [v4.0.1]: https://github.com/sandre58/MyNetWpf/compare/v4.0.0...v4.0.1
 [v4.0.2]: https://github.com/sandre58/MyNetWpf/compare/v4.0.1...v4.0.2
 [v4.0.3]: https://github.com/sandre58/MyNetWpf/compare/v4.0.2...v4.0.3
+[v4.1.0]: https://github.com/sandre58/MyNetWpf/compare/v4.0.3...v4.1.0
