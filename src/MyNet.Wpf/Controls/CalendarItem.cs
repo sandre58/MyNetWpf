@@ -383,7 +383,7 @@ namespace MyNet.Wpf.Controls
                     }
                 }
 
-                if (Owner?.Appointments is INotifyCollectionChanged ncc)
+                if (Owner.Appointments is INotifyCollectionChanged ncc)
                 {
                     ncc.CollectionChanged -= ItemsSource_CollectionChanged;
                     ncc.CollectionChanged += ItemsSource_CollectionChanged;

@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using MyNet.Utilities;
 
 namespace MyNet.Wpf.Converters
 {
@@ -57,7 +58,7 @@ namespace MyNet.Wpf.Converters
 
                 return operation switch
                 {
-                    MathComparaisonForConverter.IsEqualsTo => value1 == value2,
+                    MathComparaisonForConverter.IsEqualsTo => value1.NearlyEqual(value2),
                     MathComparaisonForConverter.IsGreaterThan => value1 > value2,
                     MathComparaisonForConverter.IsLessThan => value1 < value2,
                     _ => Binding.DoNothing,
