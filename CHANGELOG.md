@@ -1,5 +1,13 @@
 # Changelog
 
+## [v4.2.0] - 2024-06-13
+### :white_check_mark: Tests
+- [`60d7118`](https://github.com/sandre58/MyNetWpf/commit/60d71181cb73bbddaff499abeae9058b24673fb4) - add perfs dialog *(commit by [@sandre58](https://github.com/sandre58))*
+
+### :wrench: Chores
+- [`55b3491`](https://github.com/sandre58/MyNetWpf/commit/55b3491ace0fc6fbf85b5789a7ca09b181dd0dd6) - update packages *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.1.0] - 2024-06-11
 ### :sparkles: New Features
 - [`4c1973c`](https://github.com/sandre58/MyNetWpf/commit/4c1973c059533fc3857164e26f8bb9de29e95128) - add new converter to compare dates *(commit by [@sandre58](https://github.com/sandre58))*
@@ -78,3 +86,4 @@
 [v4.0.2]: https://github.com/sandre58/MyNetWpf/compare/v4.0.1...v4.0.2
 [v4.0.3]: https://github.com/sandre58/MyNetWpf/compare/v4.0.2...v4.0.3
 [v4.1.0]: https://github.com/sandre58/MyNetWpf/compare/v4.0.3...v4.1.0
+[v4.2.0]: https://github.com/sandre58/MyNetWpf/compare/v4.1.0...v4.2.0
