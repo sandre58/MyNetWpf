@@ -86,12 +86,12 @@ namespace MyNet.Wpf.Busy
 
                 if (_busyNumber != 1)
                 {
-                    Observable.Threading.Scheduler.GetUIOrCurrent().Schedule(() => BusyView.Content = busy);
+                    UI.Threading.Scheduler.GetUIOrCurrent().Schedule(() => BusyView.Content = busy);
                     return busy;
                 }
             }
 
-            Observable.Threading.Scheduler.GetUIOrCurrent().Schedule(() =>
+            UI.Threading.Scheduler.GetUIOrCurrent().Schedule(() =>
             {
                 ShowBusy(busy);
                 IsBusy = true;
@@ -120,7 +120,7 @@ namespace MyNet.Wpf.Busy
                 }
             }
 
-            Observable.Threading.Scheduler.GetUIOrCurrent().Schedule(() =>
+            UI.Threading.Scheduler.GetUIOrCurrent().Schedule(() =>
             {
                 HideBusy();
                 IsBusy = false;

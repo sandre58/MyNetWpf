@@ -54,7 +54,7 @@ namespace MyNet.Wpf.Web.Controls
             await _webView.EnsureCoreWebView2Async().ConfigureAwait(false);
             var str = string.IsNullOrEmpty(url) ? "about:blank" : GoogleResources.GoogleMapsFrame.Replace("$url", url);
 
-            _ = Observable.Threading.Scheduler.GetUIOrCurrent().Schedule(() => _webView.NavigateToString(str));
+            _ = UI.Threading.Scheduler.GetUIOrCurrent().Schedule(() => _webView.NavigateToString(str));
         }
 
         #endregion

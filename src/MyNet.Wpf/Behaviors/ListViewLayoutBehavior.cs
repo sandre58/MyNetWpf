@@ -152,7 +152,7 @@ namespace MyNet.Wpf.Behaviors
                 Resize();
                 AssociatedObject.SizeChanged += OnSizeChanged;
             }
-            _timer = new Timer(x => Observable.Threading.Scheduler.GetUIOrCurrent().Schedule(resizeAndEnableSize), null, Delay, RefreshTime);
+            _timer = new Timer(x => UI.Threading.Scheduler.GetUIOrCurrent().Schedule(resizeAndEnableSize), null, Delay, RefreshTime);
         }
 
         private void RemoveBehavior()

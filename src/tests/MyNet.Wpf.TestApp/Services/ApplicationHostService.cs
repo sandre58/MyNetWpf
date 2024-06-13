@@ -55,7 +55,7 @@ public class ApplicationHostService : IHostedService
         WindowDialogManager.Initialize(messageBoxFactory, viewResolver, viewLocator, viewModelLocator);
         BusyManager.Initialize(busyServiceFactory);
         CommandsManager.Initialize(commandFactory);
-        Observable.Threading.Scheduler.Initialize(uiScheduler);
+        UI.Threading.Scheduler.Initialize(uiScheduler);
 
         TranslationService.RegisterResources(nameof(CountryResources), CountryResources.ResourceManager);
         TranslationService.RegisterResources(nameof(TestAppResources), TestAppResources.ResourceManager);
