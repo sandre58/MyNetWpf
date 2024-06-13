@@ -74,6 +74,14 @@
                                 Width="150"
                                 Command="{Binding OpenCustomNonDialogCommand}"
                                 Content="NON DIALOG" />
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation}"
+                                Width="150"
+                                Command="{Binding OpenPerfDialogCommand}"
+                                Content="PERF DIALOG" />
+                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation}"
+                                Width="150"
+                                Command="{Binding OpenPerfNonDialogCommand}"
+                                Content="PERF NON DIALOG" />
                     </my:SimpleStackPanel>
                 </my:SimpleStackPanel>
             </Expander>

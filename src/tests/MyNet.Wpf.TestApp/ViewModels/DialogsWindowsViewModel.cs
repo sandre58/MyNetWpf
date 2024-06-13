@@ -25,6 +25,10 @@ namespace MyNet.Wpf.TestApp.ViewModels
 
         public ICommand OpenCustomNonDialogCommand { get; set; }
 
+        public ICommand OpenPerfNonDialogCommand { get; set; }
+
+        public ICommand OpenPerfDialogCommand { get; set; }
+
         public DialogsWindowsViewModel()
         {
             OpenMessageDialogCommand = CommandsManager.Create<string>(async x =>
@@ -108,6 +112,18 @@ namespace MyNet.Wpf.TestApp.ViewModels
             {
                 var vm = new LoginDialogViewModel();
                 await WindowDialogManager.ShowAsync(vm, x => ShowToasterResult(x)).ConfigureAwait(false);
+            });
+
+            OpenPerfNonDialogCommand = CommandsManager.Create(async () =>
+            {
+                using var vm = new PerfDialogViewModel();
+                await WindowDialogManager.ShowAsync(vm).ConfigureAwait(false);
+            });
+
+            OpenPerfDialogCommand = CommandsManager.Create(async () =>
+            {
+                using var vm = new PerfDialogViewModel();
+                await WindowDialogManager.ShowDialogAsync(vm).ConfigureAwait(false);
             });
         }
 
