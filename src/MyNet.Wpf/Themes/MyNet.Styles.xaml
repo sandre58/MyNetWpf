@@ -8558,6 +8558,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                       <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
                         <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
                         <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
                       </MultiBinding>
                     </TextBlock.Visibility>
                   </TextBlock>
@@ -9038,6 +9039,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                       <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
                         <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
                         <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
                       </MultiBinding>
                     </TextBlock.Visibility>
                   </TextBlock>
@@ -10309,6 +10311,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                       <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
                         <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
                         <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
                       </MultiBinding>
                     </TextBlock.Visibility>
                   </TextBlock>
@@ -10945,6 +10948,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                       <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
                         <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
                         <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
                       </MultiBinding>
                     </TextBlock.Visibility>
                   </TextBlock>
@@ -12171,6 +12175,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                         <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
                           <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
                           <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                          <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
                         </MultiBinding>
                       </TextBlock.Visibility>
                     </TextBlock>
@@ -14405,6 +14410,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                       <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
                         <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
                         <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
                       </MultiBinding>
                     </TextBlock.Visibility>
                   </TextBlock>
@@ -14959,6 +14965,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                       <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
                         <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
                         <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
                       </MultiBinding>
                     </TextBlock.Visibility>
                   </TextBlock>
@@ -15853,6 +15860,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                       <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
                         <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
                         <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
                       </MultiBinding>
                     </TextBlock.Visibility>
                   </TextBlock>
@@ -16221,6 +16229,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                       <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
                         <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
                         <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
                       </MultiBinding>
                     </TextBlock.Visibility>
                   </TextBlock>
@@ -16771,6 +16780,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                       <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
                         <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
                         <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
                       </MultiBinding>
                     </TextBlock.Visibility>
                   </TextBlock>
@@ -18082,6 +18092,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                       <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
                         <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
                         <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
                       </MultiBinding>
                     </TextBlock.Visibility>
                   </TextBlock>

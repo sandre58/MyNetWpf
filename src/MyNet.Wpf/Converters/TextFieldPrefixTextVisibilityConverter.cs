@@ -3,6 +3,7 @@
 
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 
@@ -16,8 +17,13 @@ namespace MyNet.Wpf.Converters
         {
             var prefixText = (string)values[1];
             if (string.IsNullOrEmpty(prefixText))
-            {
                 return Visibility.Collapsed;
+
+            if (values.Length > 2)
+            {
+                var hint = (string)values[2];
+                if (string.IsNullOrEmpty(hint))
+                    return Visibility.Visible;
             }
 
             var isHintInFloatingPosition = (bool)values[0];
