@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.2.1] - 2024-06-16
+### :bug: Bug Fixes
+- [`5d6c4f7`](https://github.com/sandre58/MyNetWpf/commit/5d6c4f7094604053976c16f72fe8ff1be947ed54) - show Prefix even if hint is present *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.2.0] - 2024-06-13
 ### :white_check_mark: Tests
 - [`60d7118`](https://github.com/sandre58/MyNetWpf/commit/60d71181cb73bbddaff499abeae9058b24673fb4) - add perfs dialog *(commit by [@sandre58](https://github.com/sandre58))*
@@ -87,3 +92,4 @@
 [v4.0.3]: https://github.com/sandre58/MyNetWpf/compare/v4.0.2...v4.0.3
 [v4.1.0]: https://github.com/sandre58/MyNetWpf/compare/v4.0.3...v4.1.0
 [v4.2.0]: https://github.com/sandre58/MyNetWpf/compare/v4.1.0...v4.2.0
+[v4.2.1]: https://github.com/sandre58/MyNetWpf/compare/v4.2.0...v4.2.1
