@@ -2430,6 +2430,68 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
   </Style>
+  <DataTemplate x:Key="MyNet.DataTemplates.Icon.Label">
+    <DataTemplate.Resources>
+      <Style TargetType="{x:Type ctrl:PackIcon}" BasedOn="{StaticResource MyNet.Styles.PackIcon}">
+        <Setter Property="Height" Value="18" />
+        <Setter Property="Width" Value="18" />
+      </Style>
+      <Style TargetType="{x:Type ctrl:GeometryIcon}" BasedOn="{StaticResource MyNet.Styles.GeometryIcon}">
+        <Setter Property="Height" Value="18" />
+        <Setter Property="Width" Value="18" />
+      </Style>
+    </DataTemplate.Resources>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Name="Row1" Height="Auto" />
+        <RowDefinition Name="Row2" Height="Auto" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Name="Col1" Width="Auto" />
+        <ColumnDefinition Name="Col2" Width="*" />
+      </Grid.ColumnDefinitions>
+      <ContentControl Name="Icon" Margin="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource AncestorType={x:Type Label}}}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource AncestorType={x:Type Label}}}" Opacity="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource AncestorType={x:Type Label}}}" Visibility="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource AncestorType={x:Type Label}}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+      <ContentControl Name="Content" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding}" />
+    </Grid>
+    <DataTemplate.Triggers>
+      <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type Label}}}" Value="{x:Static ctrl:Alignment.Left}">
+        <Setter TargetName="Content" Property="Grid.Column" Value="1" />
+        <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+        <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
+        <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type Label}}}" Value="{x:Static ctrl:Alignment.Top}">
+        <Setter TargetName="Col1" Property="Width" Value="*" />
+        <Setter TargetName="Col2" Property="Width" Value="Auto" />
+        <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+        <Setter TargetName="Content" Property="Grid.Row" Value="1" />
+        <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
+        <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
+        <Setter TargetName="Row1" Property="Height" Value="Auto" />
+        <Setter TargetName="Row2" Property="Height" Value="*" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type Label}}}" Value="{x:Static ctrl:Alignment.Right}">
+        <Setter TargetName="Col1" Property="Width" Value="*" />
+        <Setter TargetName="Col2" Property="Width" Value="Auto" />
+        <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+        <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+        <Setter TargetName="Icon" Property="Grid.Column" Value="1" />
+        <Setter TargetName="Icon" Property="Grid.Row" Value="0" />
+        <Setter TargetName="Row1" Property="Height" Value="*" />
+        <Setter TargetName="Row2" Property="Height" Value="Auto" />
+      </DataTrigger>
+      <DataTrigger Binding="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource AncestorType={x:Type Label}}}" Value="{x:Static ctrl:Alignment.Bottom}">
+        <Setter TargetName="Col1" Property="Width" Value="*" />
+        <Setter TargetName="Col2" Property="Width" Value="Auto" />
+        <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+        <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+        <Setter TargetName="Icon" Property="Grid.Column" Value="0" />
+        <Setter TargetName="Icon" Property="Grid.Row" Value="1" />
+        <Setter TargetName="Row1" Property="Height" Value="*" />
+        <Setter TargetName="Row2" Property="Height" Value="Auto" />
+      </DataTrigger>
+    </DataTemplate.Triggers>
+  </DataTemplate>
   <DataTemplate x:Key="MyNet.DataTemplates.Icon.ListBoxItem">
     <DataTemplate.Resources>
       <Style TargetType="{x:Type ctrl:PackIcon}" BasedOn="{StaticResource MyNet.Styles.PackIcon}">
@@ -9843,6 +9905,28 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Foreground" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation.Custom}">
     <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
   </Style>
+  <Style x:Key="MyNet.Styles.Label.Message" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation.Custom}">
+    <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Icon.Label}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Message.Warning" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Message}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Warning}" />
+    <Setter Property="p:IconAssist.Icon" Value="{me:MediumIcon Kind=Warning}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Message.Success" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Message}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Positive}" />
+    <Setter Property="p:IconAssist.Icon" Value="{me:MediumIcon Kind=Check}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Message.Error" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Message}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Negative}" />
+    <Setter Property="p:IconAssist.Icon" Value="{me:MediumIcon Kind=Close}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Message.Information" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Message}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Information}" />
+    <Setter Property="p:IconAssist.Icon" Value="{me:MediumIcon Kind=InformationCircle}" />
+  </Style>
   <Style x:Key="MyNet.Styles.Label.Legend" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
     <Setter Property="Template">
       <Setter.Value>
@@ -14177,7 +14261,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Cursor" Value="Arrow" />
     <Setter Property="PlacementMode" Value="RightAndAlignMiddles" />
     <Setter Property="PopupAnimation" Value="Fade" />
-    <Setter Property="PopupMode" Value="MouseOverEager" />
+    <Setter Property="PopupMode" Value="MouseOver" />
     <Setter Property="ShowDropDownButton" Value="False" />
     <Setter Property="StaysOpen" Value="True" />
   </Style>
