@@ -1,5 +1,13 @@
 # Changelog
 
+## [v4.3.0] - 2024-06-21
+### :sparkles: New Features
+- [`66791a3`](https://github.com/sandre58/MyNetWpf/commit/66791a305ad8445a90a299d6d44b47b531df9cad) - add message styles for labels *(commit by [@sandre58](https://github.com/sandre58))*
+
+### :bug: Bug Fixes
+- [`038ddac`](https://github.com/sandre58/MyNetWpf/commit/038ddacc852ce8f5026e9cc804c4232e30933fcb) - change popupMode to MouseOver for Style "MyNet.Styles.DropDownButton.Icon.MouseOver.Foreground" *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.2.1] - 2024-06-16
 ### :bug: Bug Fixes
 - [`5d6c4f7`](https://github.com/sandre58/MyNetWpf/commit/5d6c4f7094604053976c16f72fe8ff1be947ed54) - show Prefix even if hint is present *(commit by [@sandre58](https://github.com/sandre58))*
@@ -93,3 +101,4 @@
 [v4.1.0]: https://github.com/sandre58/MyNetWpf/compare/v4.0.3...v4.1.0
 [v4.2.0]: https://github.com/sandre58/MyNetWpf/compare/v4.1.0...v4.2.0
 [v4.2.1]: https://github.com/sandre58/MyNetWpf/compare/v4.2.0...v4.2.1
+[v4.3.0]: https://github.com/sandre58/MyNetWpf/compare/v4.2.1...v4.3.0
