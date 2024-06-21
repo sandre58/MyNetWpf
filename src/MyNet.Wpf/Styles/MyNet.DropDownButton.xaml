@@ -431,7 +431,7 @@
         <Setter Property="Cursor" Value="Arrow" />
         <Setter Property="PlacementMode" Value="RightAndAlignMiddles" />
         <Setter Property="PopupAnimation" Value="Fade" />
-        <Setter Property="PopupMode" Value="MouseOverEager" />
+        <Setter Property="PopupMode" Value="MouseOver" />
         <Setter Property="ShowDropDownButton" Value="False" />
         <Setter Property="StaysOpen" Value="True" />
     </Style>
