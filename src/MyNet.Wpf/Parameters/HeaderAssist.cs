@@ -190,5 +190,33 @@ namespace MyNet.Wpf.Parameters
         public static void SetWidth(DependencyObject item, double value) => item.SetValue(WidthProperty, value);
 
         #endregion Width
+
+        #region Header
+
+        public static readonly DependencyProperty HeaderProperty = DependencyProperty.RegisterAttached(
+            "Header",
+            typeof(object),
+            typeof(HeaderAssist),
+            new PropertyMetadata(null));
+
+        public static object GetHeader(UIElement item) => item.GetValue(HeaderProperty);
+
+        public static void SetHeader(UIElement item, object value) => item.SetValue(HeaderProperty, value);
+
+        #endregion Header
+
+        #region HeaderTemplate
+
+        public static readonly DependencyProperty HeaderTemplateProperty = DependencyProperty.RegisterAttached(
+            "HeaderTemplate",
+            typeof(DataTemplate),
+            typeof(HeaderAssist),
+            new PropertyMetadata(null));
+
+        public static DataTemplate GetHeaderTemplate(UIElement item) => (DataTemplate)item.GetValue(HeaderProperty);
+
+        public static void SetHeaderTemplate(UIElement item, DataTemplate value) => item.SetValue(HeaderProperty, value);
+
+        #endregion Header
     }
 }

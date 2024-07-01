@@ -7,6 +7,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.Menu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.TextBlock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.Button.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.ToggleButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -109,6 +110,8 @@
                             <Grid>
                                 <Border Background="White" Opacity="0.002" />
                                 <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Popup}"
+                                           MaxWidth="{TemplateBinding MaxPopupWidth}"
+                                           MaxHeight="{TemplateBinding MaxPopupHeight}"
                                            Padding="{TemplateBinding PopupPadding}"
                                            Background="{TemplateBinding p:PopupAssist.Background}"
                                            FontSize="{StaticResource MyNet.Font.Size}"
@@ -427,13 +430,37 @@
         <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.DropDownButton.Icon.MouseOver.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon.Foreground}">
+    <Style x:Key="MyNet.Styles.DropDownButton.Icon.ToolTip" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon.Foreground}">
         <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="MaxPopupWidth" Value="300" />
         <Setter Property="PlacementMode" Value="RightAndAlignMiddles" />
         <Setter Property="PopupAnimation" Value="Fade" />
+        <Setter Property="PopupContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <ctrl:SimpleStackPanel Spacing="{StaticResource MyNet.Margin.Default}">
+                        <ContentControl Content="{Binding Path=(p:HeaderAssist.Header), RelativeSource={RelativeSource AncestorType={x:Type ctrl:DropDownButton}}}"
+                                        ContentTemplate="{Binding Path=(p:HeaderAssist.HeaderTemplate), RelativeSource={RelativeSource AncestorType={x:Type ctrl:DropDownButton}}}"
+                                        TextElement.FontSize="{Binding Path=(p:HeaderAssist.FontSize), RelativeSource={RelativeSource AncestorType={x:Type ctrl:DropDownButton}}}"
+                                        TextElement.FontWeight="{Binding Path=(p:HeaderAssist.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type ctrl:DropDownButton}}}"
+                                        Visibility="{Binding Path=(p:HeaderAssist.Header), RelativeSource={RelativeSource AncestorType={x:Type ctrl:DropDownButton}}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+                        <ContentPresenter Content="{Binding}">
+                            <ContentPresenter.Resources>
+                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MyNet.Styles.TextBlock}">
+                                    <Setter Property="TextAlignment" Value="Justify" />
+                                    <Setter Property="TextWrapping" Value="Wrap" />
+                                </Style>
+                            </ContentPresenter.Resources>
+                        </ContentPresenter>
+                    </ctrl:SimpleStackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="PopupMode" Value="MouseOver" />
         <Setter Property="ShowDropDownButton" Value="False" />
         <Setter Property="StaysOpen" Value="True" />
+        <Setter Property="p:HeaderAssist.FontSize" Value="{StaticResource MyNet.Font.Size}" />
+        <Setter Property="p:HeaderAssist.FontWeight" Value="Bold" />
     </Style>
 
 </ResourceDictionary>

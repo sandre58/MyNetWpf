@@ -388,6 +388,12 @@
                             <contents:SmallContent />
                         </my:DropDownButton>
                     </smtx:XamlDisplay>
+                    <smtx:XamlDisplay UniqueKey="ddb_2_0_6">
+                        <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Icon.ToolTip}"
+                                           my:HeaderAssist.Header="Titre de l'information"
+                                           PopupContent="Ceci est un long texte qui décrit plus précisément l'information donnée. Elle peut contenir des icônes, des boutons, des textes, etc."
+                                           ToggleContent="{my:Icon Kind=InformationCircle}" />
+                    </smtx:XamlDisplay>
                 </my:SimpleStackPanel>
             </Expander>
 

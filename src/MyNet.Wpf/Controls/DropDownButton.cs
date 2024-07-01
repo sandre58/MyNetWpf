@@ -81,5 +81,29 @@ namespace MyNet.Wpf.Controls
         }
 
         #endregion PopupAnimation
+
+        #region MaxPopupHeight
+
+        public static readonly DependencyProperty MaxPopupHeightProperty = DependencyProperty.Register(nameof(MaxPopupHeight), typeof(double), typeof(DropDownButton), new UIPropertyMetadata(double.NaN));
+
+        public double MaxPopupHeight
+        {
+            get => (double)GetValue(MaxPopupHeightProperty);
+            set => SetValue(MaxPopupHeightProperty, value);
+        }
+
+        #endregion MaxPopupWidth
+
+        #region MaxPopupWidth
+
+        public static readonly DependencyProperty MaxPopupWidthProperty = DependencyProperty.Register(nameof(MaxPopupWidth), typeof(double), typeof(DropDownButton), new UIPropertyMetadata(double.NaN));
+
+        public double MaxPopupWidth
+        {
+            get => (double)GetValue(MaxPopupWidthProperty);
+            set => SetValue(MaxPopupWidthProperty, value);
+        }
+
+        #endregion MaxPopupWidth
     }
 }
