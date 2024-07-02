@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="MyNet.Wpf.Presentation.Views.Rules.EditableRulesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:my="http://mynet.com/xaml/themes"
+             xmlns:units="clr-namespace:MyNet.Utilities.Units;assembly=MyNet.Utilities"
+             xmlns:v="clr-namespace:MyNet.Wpf.Presentation.Views.Rules"
+             xmlns:vm="clr-namespace:MyNet.UI.ViewModels.Rules;assembly=MyNet.UI"
+             d:DataContext="{d:DesignInstance Type=vm:EditableRulesViewModel`1}"
+             Validation.ErrorTemplate="{x:Null}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <my:BindingProxy x:Key="ProxyRules" Data="{Binding}" />
+    </UserControl.Resources>
+
+    <DockPanel>
+        <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation}"
+                           Margin="{StaticResource MyNet.Margins.Medium.Bottom}"
+                           HorizontalAlignment="Stretch"
+                           HorizontalContentAlignment="Stretch"
+                           my:IconAssist.Icon="{my:Icon Kind=Plus}"
+                           DockPanel.Dock="Top"
+                           PlacementMode="BottomAndAlignRightEdges"
+                           PopupPadding="0"
+                           ToggleContent="{Binding Header, RelativeSource={RelativeSource AncestorType={x:Type v:EditableRulesView}}}">
+            <my:Submenu MaxHeight="300" ItemsSource="{Binding AvailableRules}">
+                <my:Submenu.ItemContainerStyle>
+                    <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MyNet.Styles.MenuItem}">
+                        <Setter Property="Command" Value="{Binding Data.AddCommand, Source={StaticResource ProxyRules}}" />
+                        <Setter Property="CommandParameter" Value="{Binding}" />
+                        <Setter Property="Header" Value="{my:Translation Value}" />
+                    </Style>
+                </my:Submenu.ItemContainerStyle>
+            </my:Submenu>
+        </my:DropDownButton>
+        <ItemsControl ItemsSource="{Binding Rules}" Validation.ErrorTemplate="{x:Null}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <my:SimpleStackPanel IsItemsHost="True" Spacing="{StaticResource MyNet.Margin.Default}" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Application}" Padding="{StaticResource MyNet.Margins.Default}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
+                                    Grid.Column="0"
+                                    Command="{Binding Data.MoveUpCommand, Source={StaticResource ProxyRules}}"
+                                    CommandParameter="{Binding}"
+                                    Content="{my:ToolIcon Kind=ChevronUp}"
+                                    ToolTip="{my:Resource MoveUp}"
+                                    Visibility="{Binding CanMove, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+                            <Button Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
+                                    Grid.Column="1"
+                                    Command="{Binding Data.MoveDownCommand, Source={StaticResource ProxyRules}}"
+                                    CommandParameter="{Binding}"
+                                    Content="{my:ToolIcon Kind=ChevronDown}"
+                                    ToolTip="{my:Resource MoveDown}"
+                                    Visibility="{Binding CanMove, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
+
+                            <ContentControl Grid.Column="3" Content="{Binding}" />
+
+                            <!-- Delete -->
+                            <Button Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
+                                    Grid.Column="5"
+                                    Command="{Binding Data.RemoveCommand, Source={StaticResource ProxyRules}}"
+                                    CommandParameter="{Binding}"
+                                    Content="{my:ToolIcon Kind=Trash}"
+                                    ToolTip="{my:Resource Remove}" />
+                        </Grid>
+                    </my:Card>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DockPanel>
+</UserControl>

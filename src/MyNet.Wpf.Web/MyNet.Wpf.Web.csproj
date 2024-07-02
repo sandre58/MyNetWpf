@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Provides developers with powerful tools to seamlessly integrate web components into WPF applications.</Description>
     <PackageTags>MyNet;UI;Web;Xaml;Wpf</PackageTags>
-    <VersionPrefix>4.2.0</VersionPrefix>
+    <VersionPrefix>4.4.0</VersionPrefix>
   </PropertyGroup>
   
   <ItemGroup>

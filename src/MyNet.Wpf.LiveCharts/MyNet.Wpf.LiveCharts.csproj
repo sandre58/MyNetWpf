@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Extends the functionality of the LiveCharts library, enhancing its capabilities for data visualization in .NET applications.</Description>
     <PackageTags>MyNet;UI;Charts;Wpf;LiveCharts</PackageTags>
-    <VersionPrefix>4.2.0</VersionPrefix>
+    <VersionPrefix>4.4.0</VersionPrefix>
   </PropertyGroup>
 
   <PropertyGroup>
