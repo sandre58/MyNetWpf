@@ -1,5 +1,11 @@
 # Changelog
 
+## [v4.4.0] - 2024-07-02
+### :sparkles: New Features
+- [`c5406ab`](https://github.com/sandre58/MyNetWpf/commit/c5406ab233a97ab8c4ec79103e7465c88d495c81) - add style Tooltip for DropDownButton *(commit by [@sandre58](https://github.com/sandre58))*
+- [`872adfd`](https://github.com/sandre58/MyNetWpf/commit/872adfd475860c5b60318b55bfc571732a9c3372) - add editable rules view *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.3.0] - 2024-06-21
 ### :sparkles: New Features
 - [`66791a3`](https://github.com/sandre58/MyNetWpf/commit/66791a305ad8445a90a299d6d44b47b531df9cad) - add message styles for labels *(commit by [@sandre58](https://github.com/sandre58))*
@@ -102,3 +108,4 @@
 [v4.2.0]: https://github.com/sandre58/MyNetWpf/compare/v4.1.0...v4.2.0
 [v4.2.1]: https://github.com/sandre58/MyNetWpf/compare/v4.2.0...v4.2.1
 [v4.3.0]: https://github.com/sandre58/MyNetWpf/compare/v4.2.1...v4.3.0
+[v4.4.0]: https://github.com/sandre58/MyNetWpf/compare/v4.3.0...v4.4.0
