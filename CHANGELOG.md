@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.4.1] - 2024-07-04
+### :bug: Bug Fixes
+- [`dc1168a`](https://github.com/sandre58/MyNetWpf/commit/dc1168a86a3841974136ee23004ca02478d054f2) - change column with in listboxitem datatemplate *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.4.0] - 2024-07-02
 ### :sparkles: New Features
 - [`c5406ab`](https://github.com/sandre58/MyNetWpf/commit/c5406ab233a97ab8c4ec79103e7465c88d495c81) - add style Tooltip for DropDownButton *(commit by [@sandre58](https://github.com/sandre58))*
@@ -109,3 +114,4 @@
 [v4.2.1]: https://github.com/sandre58/MyNetWpf/compare/v4.2.0...v4.2.1
 [v4.3.0]: https://github.com/sandre58/MyNetWpf/compare/v4.2.1...v4.3.0
 [v4.4.0]: https://github.com/sandre58/MyNetWpf/compare/v4.3.0...v4.4.0
+[v4.4.1]: https://github.com/sandre58/MyNetWpf/compare/v4.4.0...v4.4.1
