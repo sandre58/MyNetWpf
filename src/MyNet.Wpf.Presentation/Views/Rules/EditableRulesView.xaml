@@ -35,7 +35,7 @@
                 </my:Submenu.ItemContainerStyle>
             </my:Submenu>
         </my:DropDownButton>
-        <ItemsControl ItemsSource="{Binding Rules}" Validation.ErrorTemplate="{x:Null}">
+        <ItemsControl my:ItemsControlAssist.EmptyTemplate="{Binding EmptyTemplate, RelativeSource={RelativeSource AncestorType={x:Type v:EditableRulesView}}}" ItemsSource="{Binding Rules}" Validation.ErrorTemplate="{x:Null}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <my:SimpleStackPanel IsItemsHost="True" Spacing="{StaticResource MyNet.Margin.Default}" />

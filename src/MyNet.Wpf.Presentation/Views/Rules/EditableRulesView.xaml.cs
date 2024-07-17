@@ -2,6 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Windows;
+using System.Windows.Controls;
 using MyNet.UI.Resources;
 
 namespace MyNet.Wpf.Presentation.Views.Rules
@@ -19,6 +20,16 @@ namespace MyNet.Wpf.Presentation.Views.Rules
         {
             get => (string)GetValue(HeaderProperty);
             set => SetValue(HeaderProperty, value);
+        }
+
+        public static readonly DependencyProperty EmptyTemplateProperty =
+    DependencyProperty.Register(
+        nameof(EmptyTemplate), typeof(ControlTemplate), typeof(EditableRulesView));
+
+        public ControlTemplate EmptyTemplate
+        {
+            get => (ControlTemplate)GetValue(EmptyTemplateProperty);
+            set => SetValue(EmptyTemplateProperty, value);
         }
     }
 }
