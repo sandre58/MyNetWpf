@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.4.2] - 2024-07-18
+### :bug: Bug Fixes
+- [`829661a`](https://github.com/sandre58/MyNetWpf/commit/829661a8e072eda051e6bb0c6c53727dc2a0eccd) - **presentation**: Add EmptyTemplate in EditableRulesView *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.4.1] - 2024-07-04
 ### :bug: Bug Fixes
 - [`dc1168a`](https://github.com/sandre58/MyNetWpf/commit/dc1168a86a3841974136ee23004ca02478d054f2) - change column with in listboxitem datatemplate *(commit by [@sandre58](https://github.com/sandre58))*
@@ -115,3 +120,4 @@
 [v4.3.0]: https://github.com/sandre58/MyNetWpf/compare/v4.2.1...v4.3.0
 [v4.4.0]: https://github.com/sandre58/MyNetWpf/compare/v4.3.0...v4.4.0
 [v4.4.1]: https://github.com/sandre58/MyNetWpf/compare/v4.4.0...v4.4.1
+[v4.4.2]: https://github.com/sandre58/MyNetWpf/compare/v4.4.1...v4.4.2
