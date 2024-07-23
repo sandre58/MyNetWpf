@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.5.0] - 2024-07-23
+### :wrench: Chores
+- [`e523272`](https://github.com/sandre58/MyNetWpf/commit/e5232720f5e4da7442922ec61d1b83bd76537c01) - update packages *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.4.2] - 2024-07-18
 ### :bug: Bug Fixes
 - [`829661a`](https://github.com/sandre58/MyNetWpf/commit/829661a8e072eda051e6bb0c6c53727dc2a0eccd) - **presentation**: Add EmptyTemplate in EditableRulesView *(commit by [@sandre58](https://github.com/sandre58))*
@@ -121,3 +126,4 @@
 [v4.4.0]: https://github.com/sandre58/MyNetWpf/compare/v4.3.0...v4.4.0
 [v4.4.1]: https://github.com/sandre58/MyNetWpf/compare/v4.4.0...v4.4.1
 [v4.4.2]: https://github.com/sandre58/MyNetWpf/compare/v4.4.1...v4.4.2
+[v4.5.0]: https://github.com/sandre58/MyNetWpf/compare/v4.4.2...v4.5.0
