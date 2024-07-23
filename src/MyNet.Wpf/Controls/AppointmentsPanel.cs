@@ -71,12 +71,12 @@ namespace MyNet.Wpf.Controls
             {
                 if (Orientation == Orientation.Horizontal)
                 {
-                    var itemBoundsInSamePeriod = items.Where(x => x.ComputedBounds.HasValue && x.Period.Intersect(item.Period)).OrderBy(x => x.ComputedBounds!.Value.Y).ToList();
+                    var itemBoundsInSamePeriod = items.Where(x => x.ComputedBounds.HasValue && x.Period.IntersectWith(item.Period)).OrderBy(x => x.ComputedBounds!.Value.Y).ToList();
                     ComputeHorizontal(item, itemBoundsInSamePeriod);
                 }
                 else
                 {
-                    var itemBoundsInSamePeriod = items.Where(x => x.ComputedBounds.HasValue && x.Period.Intersect(item.Period)).OrderBy(x => x.ComputedBounds!.Value.X).ToList();
+                    var itemBoundsInSamePeriod = items.Where(x => x.ComputedBounds.HasValue && x.Period.IntersectWith(item.Period)).OrderBy(x => x.ComputedBounds!.Value.X).ToList();
                     ComputeVertical(item, itemBoundsInSamePeriod);
                 }
             }
