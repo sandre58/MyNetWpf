@@ -937,14 +937,14 @@
                             ProgressionBusyTemplate="{StaticResource MyNet.DataTemplates.ProgressionBusy}" />
 
     <s:BusyTemplateSelector x:Key="MyNet.Selectors.Busy.Accent"
-                        DeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.DeterminateBusy.Accent}"
-                        IndeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.IndeterminateBusy.Accent}"
-                        ProgressionBusyTemplate="{StaticResource MyNet.DataTemplates.ProgressionBusy.Accent}" />
+                            DeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.DeterminateBusy.Accent}"
+                            IndeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.IndeterminateBusy.Accent}"
+                            ProgressionBusyTemplate="{StaticResource MyNet.DataTemplates.ProgressionBusy.Accent}" />
 
     <s:BusyTemplateSelector x:Key="MyNet.Selectors.Busy.Foreground"
-                        DeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.DeterminateBusy.Foreground}"
-                        IndeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.IndeterminateBusy.Foreground}"
-                        ProgressionBusyTemplate="{StaticResource MyNet.DataTemplates.ProgressionBusy.Foreground}" />
+                            DeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.DeterminateBusy.Foreground}"
+                            IndeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.IndeterminateBusy.Foreground}"
+                            ProgressionBusyTemplate="{StaticResource MyNet.DataTemplates.ProgressionBusy.Foreground}" />
 
     <s:BusyTemplateSelector x:Key="MyNet.Selectors.Busy.Alternate"
                             DeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.DeterminateBusy.Alternate}"
@@ -955,7 +955,7 @@
                             DeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.DeterminateBusy.Alternate.Accent}"
                             IndeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.IndeterminateBusy.Alternate.Accent}"
                             ProgressionBusyTemplate="{StaticResource MyNet.DataTemplates.ProgressionBusy.Alternate.Accent}" />
-    
+
     <Style x:Key="MyNet.Styles.BusyControl" TargetType="{x:Type ctrl:BusyControl}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Overlay}" />
         <Setter Property="ClipToBounds" Value="False" />
@@ -990,12 +990,14 @@
     <Style x:Key="MyNet.Styles.BusyControl.Foreground" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl}">
         <Setter Property="ContentTemplateSelector" Value="{StaticResource MyNet.Selectors.Busy.Foreground}" />
     </Style>
+
     <Style x:Key="MyNet.Styles.BusyControl.Alternate" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl}">
         <Setter Property="ContentTemplateSelector" Value="{StaticResource MyNet.Selectors.Busy.Alternate}" />
     </Style>
     <Style x:Key="MyNet.Styles.BusyControl.Alternate.Accent" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl}">
         <Setter Property="ContentTemplateSelector" Value="{StaticResource MyNet.Selectors.Busy.Alternate.Accent}" />
     </Style>
+
     <Style x:Key="MyNet.Styles.BusyControl.Small" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="ContentTemplateSelector">
@@ -1012,5 +1014,28 @@
     </Style>
     <Style x:Key="MyNet.Styles.BusyControl.Small.Foreground" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl.Small}">
         <Setter Property="ContentTemplateSelector" Value="{StaticResource MyNet.Selectors.Busy.Foreground}" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.BusyControl.Dark.Foreground" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl.Foreground}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Opacity="{DynamicResource MyNet.Opacity.Overlay}" Color="{DynamicResource MyNet.Colors.Application.Background}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <ProgressBar Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}"
+                                 Width="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.17}"
+                                 Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.17}"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 p:ProgressBarAssist.ShowSecondProgress="True"
+                                 p:ProgressBarAssist.StrokeThickness="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.010}"
+                                 IsIndeterminate="True" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ContentTemplateSelector" Value="{x:Null}" />
     </Style>
 </ResourceDictionary>

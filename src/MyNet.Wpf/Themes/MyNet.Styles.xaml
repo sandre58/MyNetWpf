@@ -2415,7 +2415,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Setter>
   </Style>
   <Style x:Key="MyNet.Styles.ItemsControl.Scrollable" TargetType="{x:Type ItemsControl}" BasedOn="{StaticResource MyNet.Styles.ItemsControl}">
-    <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+    <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
     <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
     <Setter Property="Template">
@@ -13012,6 +13012,21 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.BusyControl.Small.Foreground" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl.Small}">
     <Setter Property="ContentTemplateSelector" Value="{StaticResource MyNet.Selectors.Busy.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.BusyControl.Dark.Foreground" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl.Foreground}">
+    <Setter Property="Background">
+      <Setter.Value>
+        <SolidColorBrush Opacity="{DynamicResource MyNet.Opacity.Overlay}" Color="{DynamicResource MyNet.Colors.Application.Background}" />
+      </Setter.Value>
+    </Setter>
+    <Setter Property="ContentTemplate">
+      <Setter.Value>
+        <DataTemplate>
+          <ProgressBar Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.17}" Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.17}" HorizontalAlignment="Center" VerticalAlignment="Center" p:ProgressBarAssist.ShowSecondProgress="True" p:ProgressBarAssist.StrokeThickness="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.010}" IsIndeterminate="True" />
+        </DataTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="ContentTemplateSelector" Value="{x:Null}" />
   </Style>
   <Style x:Key="MyNet.Styles.CalendarItem" TargetType="{x:Type ctrl:CalendarItem}">
     <Setter Property="Background" Value="Transparent" />

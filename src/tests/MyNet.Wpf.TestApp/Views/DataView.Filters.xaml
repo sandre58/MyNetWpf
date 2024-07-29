@@ -204,7 +204,7 @@
                   my:ListViewAssist.AutoResizeIsEnabled="True"
                   Foreground="{DynamicResource MyNet.Brushes.Application.Foreground}">
             <i:Interaction.Behaviors>
-                <my:ListBoxSelectOnMouseOverBehavior ShowSelectionArea="False" />
+                <my:ListBoxSelectOnMouseOverBehavior ShowSelectionArea="True" />
             </i:Interaction.Behaviors>
             <ListView.Style>
                 <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource MyNet.Styles.ListView}">
@@ -216,6 +216,11 @@
                     </Style.Triggers>
                 </Style>
             </ListView.Style>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource MyNet.Styles.ListViewItem}">
                     <Setter Property="IsEnabled" Value="{Binding IsSelectable}" />

@@ -26,6 +26,7 @@ namespace MyNet.Wpf.Behaviors
         {
             base.OnAttached();
 
+            ScrollViewer.SetCanContentScroll(AssociatedObject, false);
             if (AssociatedObject.IsLoaded)
                 Register();
             else
