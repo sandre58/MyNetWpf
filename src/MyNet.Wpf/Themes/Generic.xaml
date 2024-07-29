@@ -10,7 +10,7 @@
     <Style TargetType="{x:Type ctrl:ApplicationIcon}" BasedOn="{StaticResource MyNet.Styles.ApplicationIcon}" />
     <Style TargetType="{x:Type ctrl:AutoSuggestBox}" BasedOn="{StaticResource MyNet.Styles.AutoSuggestBox}" />
     <Style TargetType="{x:Type ctrl:Badged}" BasedOn="{StaticResource MyNet.Styles.Badged}" />
-    <Style TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl}" />
+    <Style TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl.Foreground}" />
     <Style TargetType="{x:Type ctrl:CalendarDaysByMonth}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByMonth}" />
     <Style TargetType="{x:Type ctrl:CalendarDaysByYear}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByYear}" />
     <Style TargetType="{x:Type ctrl:CalendarDaysRange}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysRange}" />

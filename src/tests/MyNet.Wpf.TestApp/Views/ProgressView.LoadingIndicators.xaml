@@ -14,7 +14,7 @@
                    my:ViewModelAssist.AutoWire="True"
                    mc:Ignorable="d">
     <Grid my:BusyAssist.AssociatedControl="{Binding ElementName=Expander1}" my:BusyAssist.AttachService="{Binding BusyService}" my:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl}">
-        <Grid my:BusyAssist.AssociatedControl="{Binding ElementName=Expander1}" my:BusyAssist.AttachService="{Binding BusyService2}" my:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Alternate}">
+        <Grid my:BusyAssist.AssociatedControl="{Binding ElementName=Expander1}" my:BusyAssist.AttachService="{Binding BusyService2}" my:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Alternate.Accent}">
             <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}">
                 <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
 
