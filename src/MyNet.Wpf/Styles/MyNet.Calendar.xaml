@@ -626,86 +626,88 @@
                                 </Grid>
 
                                 <!-- Content -->
-                                <ctrl:DynamicScrollViewer Padding="0"
-                                                          CanContentScroll="True"
+                                <Grid p:BusyAssist.AttachService="{Binding BusyService, RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}">
+                                    <ctrl:DynamicScrollViewer Padding="0"
+                                                              CanContentScroll="True"
+                                                              Focusable="False"
+                                                              HorizontalScrollBarVisibility="Disabled"
+                                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" SharedSizeGroup="rowHeadersColumn" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Row headers -->
+                                            <ItemsControl x:Name="PART_RowHeaders"
+                                                          Style="{StaticResource MyNet.Styles.ItemsControl}"
+                                                          Grid.Column="0"
+                                                          Width="{Binding Path=(p:HeaderAssist.Width), RelativeSource={RelativeSource TemplatedParent}}"
+                                                          Background="{Binding Path=(p:HeaderAssist.Background), RelativeSource={RelativeSource TemplatedParent}}"
                                                           Focusable="False"
-                                                          HorizontalScrollBarVisibility="Disabled"
-                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                          VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" SharedSizeGroup="rowHeadersColumn" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
+                                                          FontWeight="{Binding Path=(p:HeaderAssist.FontWeight), RelativeSource={RelativeSource TemplatedParent}}"
+                                                          Foreground="{Binding Path=(p:HeaderAssist.Foreground), RelativeSource={RelativeSource TemplatedParent}}"
+                                                          IsTabStop="False"
+                                                          ItemTemplate="{TemplateBinding RowHeaderTemplate}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <UniformGrid Columns="1" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                            </ItemsControl>
 
-                                        <!-- Row headers -->
-                                        <ItemsControl x:Name="PART_RowHeaders"
-                                                      Style="{StaticResource MyNet.Styles.ItemsControl}"
-                                                      Grid.Column="0"
-                                                      Width="{Binding Path=(p:HeaderAssist.Width), RelativeSource={RelativeSource TemplatedParent}}"
-                                                      Background="{Binding Path=(p:HeaderAssist.Background), RelativeSource={RelativeSource TemplatedParent}}"
-                                                      Focusable="False"
-                                                      FontWeight="{Binding Path=(p:HeaderAssist.FontWeight), RelativeSource={RelativeSource TemplatedParent}}"
-                                                      Foreground="{Binding Path=(p:HeaderAssist.Foreground), RelativeSource={RelativeSource TemplatedParent}}"
-                                                      IsTabStop="False"
-                                                      ItemTemplate="{TemplateBinding RowHeaderTemplate}">
-                                            <ItemsControl.ItemsPanel>
-                                                <ItemsPanelTemplate>
-                                                    <UniformGrid Columns="1" />
-                                                </ItemsPanelTemplate>
-                                            </ItemsControl.ItemsPanel>
-                                        </ItemsControl>
+                                            <!-- Calendar items -->
+                                            <ctrl:CalendarItemsControl x:Name="PART_DatesItemsControl"
+                                                                       Style="{StaticResource MyNet.Styles.CalendarItemsControl}"
+                                                                       Grid.Column="1"
+                                                                       ItemContainerStyle="{TemplateBinding CalendarItemStyle}" />
 
-                                        <!-- Calendar items -->
-                                        <ctrl:CalendarItemsControl x:Name="PART_DatesItemsControl"
-                                                                   Style="{StaticResource MyNet.Styles.CalendarItemsControl}"
-                                                                   Grid.Column="1"
-                                                                   ItemContainerStyle="{TemplateBinding CalendarItemStyle}" />
+                                            <!-- Grid used fot extra content (i.e. Week number) -->
+                                            <Grid x:Name="PART_Grid"
+                                                  Grid.Column="1"
+                                                  p:GridAssist.ColumnCount="{Binding ColumnsCount, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}"
+                                                  p:GridAssist.RowCount="{Binding RowsCount, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}">
+                                                <ContentControl x:Name="PART_AccurateDatePreview"
+                                                                HorizontalAlignment="Stretch"
+                                                                VerticalAlignment="Top"
+                                                                Content="{Binding AccurateDatePreview, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}"
+                                                                ContentTemplate="{TemplateBinding AccurateDateTemplate}"
+                                                                Foreground="{TemplateBinding AccurateDateForeground}"
+                                                                IsHitTestVisible="False"
+                                                                Opacity="{TemplateBinding AccurateDatePreviewOpacity}">
+                                                    <ContentControl.Visibility>
+                                                        <MultiBinding Converter="{x:Static c:MultipleBooleanToVisibilityConverter.AndCollapse}">
+                                                            <Binding Path="ShowAccurateDate" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                            <Binding Converter="{x:Static c:NullToBooleanConverter.FalseIfNull}"
+                                                                     Mode="OneWay"
+                                                                     Path="AccurateDatePreview"
+                                                                     RelativeSource="{RelativeSource TemplatedParent}" />
+                                                        </MultiBinding>
+                                                    </ContentControl.Visibility>
+                                                </ContentControl>
+                                                <ContentControl x:Name="PART_AccurateDate"
+                                                                HorizontalAlignment="Stretch"
+                                                                VerticalAlignment="Stretch"
+                                                                Content="{TemplateBinding AccurateDate}"
+                                                                ContentTemplate="{TemplateBinding AccurateDateTemplate}"
+                                                                Foreground="{TemplateBinding AccurateDateForeground}"
+                                                                IsHitTestVisible="False">
+                                                    <ContentControl.Visibility>
+                                                        <MultiBinding Converter="{x:Static c:MultipleBooleanToVisibilityConverter.AndCollapse}">
+                                                            <Binding Path="ShowAccurateDate" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                            <Binding Mode="OneWay" Path="AccurateDateIsVisible" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                            <Binding Converter="{x:Static c:NullToBooleanConverter.FalseIfNull}" Path="AccurateDate" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                        </MultiBinding>
+                                                    </ContentControl.Visibility>
+                                                </ContentControl>
+                                            </Grid>
 
-                                        <!-- Grid used fot extra content (i.e. Week number) -->
-                                        <Grid x:Name="PART_Grid"
-                                              Grid.Column="1"
-                                              p:GridAssist.ColumnCount="{Binding ColumnsCount, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}"
-                                              p:GridAssist.RowCount="{Binding RowsCount, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}">
-                                            <ContentControl x:Name="PART_AccurateDatePreview"
-                                                            HorizontalAlignment="Stretch"
-                                                            VerticalAlignment="Top"
-                                                            Content="{Binding AccurateDatePreview, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}"
-                                                            ContentTemplate="{TemplateBinding AccurateDateTemplate}"
-                                                            Foreground="{TemplateBinding AccurateDateForeground}"
-                                                            IsHitTestVisible="False"
-                                                            Opacity="{TemplateBinding AccurateDatePreviewOpacity}">
-                                                <ContentControl.Visibility>
-                                                    <MultiBinding Converter="{x:Static c:MultipleBooleanToVisibilityConverter.AndCollapse}">
-                                                        <Binding Path="ShowAccurateDate" RelativeSource="{RelativeSource TemplatedParent}" />
-                                                        <Binding Converter="{x:Static c:NullToBooleanConverter.FalseIfNull}"
-                                                                 Mode="OneWay"
-                                                                 Path="AccurateDatePreview"
-                                                                 RelativeSource="{RelativeSource TemplatedParent}" />
-                                                    </MultiBinding>
-                                                </ContentControl.Visibility>
-                                            </ContentControl>
-                                            <ContentControl x:Name="PART_AccurateDate"
-                                                            HorizontalAlignment="Stretch"
-                                                            VerticalAlignment="Stretch"
-                                                            Content="{TemplateBinding AccurateDate}"
-                                                            ContentTemplate="{TemplateBinding AccurateDateTemplate}"
-                                                            Foreground="{TemplateBinding AccurateDateForeground}"
-                                                            IsHitTestVisible="False">
-                                                <ContentControl.Visibility>
-                                                    <MultiBinding Converter="{x:Static c:MultipleBooleanToVisibilityConverter.AndCollapse}">
-                                                        <Binding Path="ShowAccurateDate" RelativeSource="{RelativeSource TemplatedParent}" />
-                                                        <Binding Mode="OneWay" Path="AccurateDateIsVisible" RelativeSource="{RelativeSource TemplatedParent}" />
-                                                        <Binding Converter="{x:Static c:NullToBooleanConverter.FalseIfNull}" Path="AccurateDate" RelativeSource="{RelativeSource TemplatedParent}" />
-                                                    </MultiBinding>
-                                                </ContentControl.Visibility>
-                                            </ContentControl>
+                                            <!-- Appointment items -->
+                                            <ItemsPresenter Grid.Column="1" Visibility="{Binding AppointmentsDisplayMode, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:EnumToVisibilityConverter.CollapsedIfNotAny}, ConverterParameter={x:Static ctrl:AppointmentsDisplayMode.Range}}" />
                                         </Grid>
-
-                                        <!-- Appointment items -->
-                                        <ItemsPresenter Grid.Column="1" Visibility="{Binding AppointmentsDisplayMode, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:EnumToVisibilityConverter.CollapsedIfNotAny}, ConverterParameter={x:Static ctrl:AppointmentsDisplayMode.Range}}" />
-                                    </Grid>
-                                </ctrl:DynamicScrollViewer>
+                                    </ctrl:DynamicScrollViewer>
+                                </Grid>
                             </DockPanel>
                         </Border>
                     </DockPanel>

@@ -10,6 +10,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
@@ -20,10 +22,14 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using DynamicData;
 using MyNet.Observable;
+using MyNet.UI.Busy;
+using MyNet.UI.Busy.Models;
 using MyNet.Utilities;
 using MyNet.Utilities.DateTimes;
 using MyNet.Utilities.Helpers;
+using MyNet.Utilities.Threading;
 using MyNet.Utilities.Units;
+using MyNet.Wpf.Busy;
 using MyNet.Wpf.Controls.Calendars;
 using MyNet.Wpf.Converters;
 using MyNet.Wpf.Extensions;
@@ -63,6 +69,7 @@ namespace MyNet.Wpf.Controls
         private readonly ObservableCollection<object> _rowHeaders = [];
         private readonly ObservableCollection<CalendarItem> _displayDates = [];
         private readonly ObservableCollection<CalendarAppointment> _appointments = [];
+        private readonly SingleTaskRunner _updateAppointments;
 
         protected Grid? Grid { get; private set; }
 
@@ -101,6 +108,7 @@ namespace MyNet.Wpf.Controls
 
         protected CalendarBase()
         {
+            _updateAppointments = new(async x => await UpdateAppointmentsAsync(x).ConfigureAwait(false));
             BlackoutDates = new BlackoutDatesCollection(this);
             SelectedDatesInternal = new Calendars.SelectedDatesCollection(this);
             SetCurrentValue(DisplayDateProperty, DateTime.Now);
@@ -290,26 +298,26 @@ namespace MyNet.Wpf.Controls
         {
             if (e.OldValue is INotifyCollectionChanged notifyCollectionChanged)
             {
-                notifyCollectionChanged.CollectionChanged -= Appointments_CollectionChanged;
+                notifyCollectionChanged.CollectionChanged -= Appointments_CollectionChangedAsync;
 
                 if (e.OldValue is IEnumerable<object> enumerable)
-                    enumerable.OfType<IAppointment>().ForEach(x => x.PropertyChanged -= Item_PropertyChanged);
+                    enumerable.OfType<IAppointment>().ForEach(x => x.PropertyChanged -= Item_PropertyChangedAsync);
             }
 
             if (e.NewValue is INotifyCollectionChanged notifyCollectionChanged1)
             {
-                notifyCollectionChanged1.CollectionChanged += Appointments_CollectionChanged;
+                notifyCollectionChanged1.CollectionChanged += Appointments_CollectionChangedAsync;
 
                 if (e.NewValue is IEnumerable<object> enumerable)
                     enumerable.OfType<IAppointment>().ForEach(x =>
                     {
-                        x.PropertyChanged -= Item_PropertyChanged;
-                        x.PropertyChanged += Item_PropertyChanged;
+                        x.PropertyChanged -= Item_PropertyChangedAsync;
+                        x.PropertyChanged += Item_PropertyChangedAsync;
                     });
             }
         }
 
-        private void Appointments_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        private async void Appointments_CollectionChangedAsync(object? sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Move) return;
 
@@ -321,22 +329,22 @@ namespace MyNet.Wpf.Controls
 
             foreach (var item in e.OldItems?.OfType<IAppointment>() ?? [])
             {
-                item.PropertyChanged -= Item_PropertyChanged;
+                item.PropertyChanged -= Item_PropertyChangedAsync;
                 var toRemove = _appointments.Where(x => x.DataContext == item).ToList();
                 _appointments.RemoveMany(toRemove);
             }
             foreach (var item in e.NewItems?.OfType<IAppointment>() ?? [])
             {
-                item.PropertyChanged -= Item_PropertyChanged;
-                item.PropertyChanged += Item_PropertyChanged;
-                SynchronizeAppointment(item);
+                item.PropertyChanged -= Item_PropertyChangedAsync;
+                item.PropertyChanged += Item_PropertyChangedAsync;
+                await SynchronizeAppointmentAsync(item, CancellationToken.None).ConfigureAwait(false);
             }
         }
 
-        private void Item_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        private async void Item_PropertyChangedAsync(object? sender, PropertyChangedEventArgs e)
         {
             if (sender is IAppointment appointment && e.PropertyName is (nameof(IAppointment.StartDate)) /* or (nameof(IAppointment.EndDate)) */)
-                SynchronizeAppointment(appointment);
+                await SynchronizeAppointmentAsync(appointment, CancellationToken.None).ConfigureAwait(false);
         }
 
         #endregion Appointments
@@ -1027,6 +1035,18 @@ namespace MyNet.Wpf.Controls
 
         #endregion RowsCount
 
+        #region BusyService
+
+        internal static readonly DependencyProperty BusyServiceProperty = DependencyProperty.Register(nameof(BusyService), typeof(IBusyService), typeof(CalendarBase), new FrameworkPropertyMetadata(new BusyService()));
+
+        public IBusyService BusyService
+        {
+            get => (IBusyService)GetValue(BusyServiceProperty);
+            set => SetValue(BusyServiceProperty, value);
+        }
+
+        #endregion BusyService
+
         #region Methods
 
         #region Build
@@ -1654,18 +1674,44 @@ namespace MyNet.Wpf.Controls
 
         #region Appointments
 
-        private void SynchronizeAppointment(IAppointment appointment)
-            => Dispatcher.BeginInvoke(() =>
+        private async Task SynchronizeAppointmentAsync(IAppointment appointment, CancellationToken cancellationToken)
+            => await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ =>
             {
-                var toRemove = _appointments.Where(x => x.DataContext == appointment).ToList();
-                _appointments.RemoveMany(toRemove);
-
-                if (AppointmentMustBeDisplayed(appointment))
+                try
                 {
-                    var appointments = GetCalendarAppointments(appointment).ToList();
-                    _appointments.AddRange(appointments);
+                    var toRemove = Dispatcher.Invoke(() => _appointments.Where(x => x.DataContext == appointment).ToList());
+                    await RemoveAppointmentsAsync(toRemove, cancellationToken).ConfigureAwait(false);
+
+                    if (Dispatcher.Invoke(() => AppointmentMustBeDisplayed(appointment)))
+                    {
+                        var appointments = Dispatcher.Invoke(() => GetCalendarAppointments(appointment).ToList());
+                        await AddAppointmentsAsync(appointments, cancellationToken).ConfigureAwait(false);
+                    }
+                }
+                catch (OperationCanceledException)
+                {
+                    // Nothing
                 }
             });
+
+        private async Task RemoveAppointmentsAsync(List<CalendarAppointment> toRemove, CancellationToken cancellationToken)
+        {
+            foreach (var item in toRemove)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Dispatcher.BeginInvoke(() => _appointments.Remove(item));
+            }
+        }
+
+        private async Task AddAppointmentsAsync(List<CalendarAppointment> appointments, CancellationToken cancellationToken)
+        {
+            foreach (var item in appointments)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Dispatcher.BeginInvoke(() => _appointments.Add(item));
+                await Task.Delay(5.Milliseconds(), cancellationToken).ConfigureAwait(false);
+            }
+        }
 
         private bool AppointmentMustBeDisplayed(IAppointment appointment)
         {
@@ -1706,14 +1752,33 @@ namespace MyNet.Wpf.Controls
             }
         }
 
-        protected virtual void UpdateAppointments()
+        protected void UpdateAppointments()
         {
-            var calendarItems = GetCalendarItems().ToList();
-            var appointments = Appointments?.OfType<IAppointment>().SelectMany(GetCalendarAppointments).ToList();
-            _appointments.Set(appointments);
-
-            calendarItems.ForEach(x => x.UpdateAppointments());
+            _updateAppointments.Cancel();
+            _updateAppointments.Run();
         }
+
+        private async Task UpdateAppointmentsAsync(CancellationToken cancellationToken)
+         => await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ =>
+         {
+             try
+             {
+                 var calendarItems = GetCalendarItems().ToList();
+                 var appointments = Dispatcher.Invoke(() => Appointments?.OfType<IAppointment>().SelectMany(GetCalendarAppointments).ToList());
+
+                 await Dispatcher.BeginInvoke(() => _appointments.Clear());
+
+                 if (appointments is not null)
+                     await AddAppointmentsAsync(appointments, cancellationToken).ConfigureAwait(false);
+
+                 foreach (var item in calendarItems)
+                     await Dispatcher.BeginInvoke(() => item.UpdateAppointments());
+             }
+             catch (OperationCanceledException)
+             {
+                 // Nothing
+             }
+         });
 
         #endregion
 
