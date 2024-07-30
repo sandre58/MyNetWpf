@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.7.0] - 2024-07-29
+### :sparkles: New Features
+- [`6e33f22`](https://github.com/sandre58/MyNetWpf/commit/6e33f221779b151b822eaacc53a8c8356d0844a6) - add behavior to loading async items *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.6.0] - 2024-07-29
 ### :sparkles: New Features
 - [`f71d250`](https://github.com/sandre58/MyNetWpf/commit/f71d250db1860e3371f9e12ea04ddb924a1627c5) - add new styles for BusyControl *(commit by [@sandre58](https://github.com/sandre58))*
@@ -133,3 +138,4 @@
 [v4.4.2]: https://github.com/sandre58/MyNetWpf/compare/v4.4.1...v4.4.2
 [v4.5.0]: https://github.com/sandre58/MyNetWpf/compare/v4.4.2...v4.5.0
 [v4.6.0]: https://github.com/sandre58/MyNetWpf/compare/v4.5.0...v4.6.0
+[v4.7.0]: https://github.com/sandre58/MyNetWpf/compare/v4.6.0...v4.7.0
