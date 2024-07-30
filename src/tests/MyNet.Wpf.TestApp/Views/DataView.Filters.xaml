@@ -16,7 +16,7 @@
         <my:BindingProxy x:Key="Proxy" Data="{Binding ItemsViewModel}" />
 
         <DataTemplate x:Key="PlayerDataTemplate">
-            <Grid Width="170" Height="230">
+            <Grid>
 
                 <Grid Margin="{StaticResource MyNet.Margins.Medium}">
                     <Grid.RowDefinitions>
@@ -95,7 +95,7 @@
                                              ToolTip="{my:Resource IsMutation}"
                                              Visibility="{Binding Item.IsMutation, FallbackValue=Hidden, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
 
-                                <TextBlock Text="{my:Translation Item.LicenseNumber, Format=LicenseNumberFormat}" />
+                                <TextBlock Text="{my:Translation Item.LicenseNumber}" />
 
                                 <Button Style="{StaticResource MyNet.Styles.Button.Icon.Tool.ClipBoard}" CommandParameter="{my:Translation Item.LicenseNumber, Format=LicenseNumberFormat}" />
 
@@ -204,23 +204,19 @@
                   my:ListViewAssist.AutoResizeIsEnabled="True"
                   Foreground="{DynamicResource MyNet.Brushes.Application.Foreground}">
             <i:Interaction.Behaviors>
-                <my:ListBoxSelectOnMouseOverBehavior ShowSelectionArea="True" />
+                <my:ListBoxSelectOnMouseOverBehavior ShowSelectionArea="False" />
+                <my:ItemsControlAsyncBehavior Items="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" />
             </i:Interaction.Behaviors>
             <ListView.Style>
                 <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource MyNet.Styles.ListView}">
-                    <Setter Property="ItemsSource" Value="{Binding Data.Wrappers, Source={StaticResource Proxy}}" />
+                    <Setter Property="Tag" Value="{Binding Data.Wrappers, Source={StaticResource Proxy}}" />
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding CanPage}" Value="True">
-                            <Setter Property="ItemsSource" Value="{Binding Data.PagedWrappers, Source={StaticResource Proxy}}" />
+                            <Setter Property="Tag" Value="{Binding Data.PagedWrappers, Source={StaticResource Proxy}}" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </ListView.Style>
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel IsItemsHost="True" />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource MyNet.Styles.ListViewItem}">
                     <Setter Property="IsEnabled" Value="{Binding IsSelectable}" />
@@ -521,13 +517,14 @@
                  ItemTemplate="{StaticResource PlayerDataTemplate}">
             <i:Interaction.Behaviors>
                 <my:ListBoxSelectOnMouseOverBehavior />
+                <my:ItemsControlAsyncBehavior Items="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" />
             </i:Interaction.Behaviors>
             <ListBox.Style>
                 <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}">
-                    <Setter Property="ItemsSource" Value="{Binding Data.Wrappers, Source={StaticResource Proxy}}" />
+                    <Setter Property="Tag" Value="{Binding Data.Wrappers, Source={StaticResource Proxy}}" />
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding CanPage}" Value="True">
-                            <Setter Property="ItemsSource" Value="{Binding Data.PagedWrappers, Source={StaticResource Proxy}}" />
+                            <Setter Property="Tag" Value="{Binding Data.PagedWrappers, Source={StaticResource Proxy}}" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
@@ -536,6 +533,7 @@
                 <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Card}">
                     <Setter Property="IsEnabled" Value="{Binding IsSelectable}" />
                     <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+                    <Setter Property="Width" Value="170" />
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBox.GroupStyle>

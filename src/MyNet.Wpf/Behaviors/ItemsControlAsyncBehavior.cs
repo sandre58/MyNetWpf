@@ -51,11 +51,19 @@ namespace MyNet.Wpf.Behaviors
         #region BusyService
 
         public static readonly DependencyProperty BusyServiceProperty = DependencyProperty.RegisterAttached(
-            "BusyService", typeof(IBusyService), typeof(ItemsControlAsyncBehavior), new PropertyMetadata(new BusyService()));
+            "BusyService", typeof(IBusyService), typeof(ItemsControlAsyncBehavior), new PropertyMetadata(null));
 
         public static void SetBusyService(DependencyObject element, IBusyService value) => element.SetValue(BusyServiceProperty, value);
 
-        public static IBusyService GetBusyService(DependencyObject element) => (IBusyService)element.GetValue(BusyServiceProperty);
+        public static IBusyService GetBusyService(DependencyObject element)
+        {
+            var busy = (IBusyService)element.GetValue(BusyServiceProperty);
+
+            if (busy is null)
+                SetBusyService(element, new BusyService());
+
+            return (IBusyService)element.GetValue(BusyServiceProperty);
+        }
 
         #endregion
 
@@ -81,28 +89,7 @@ namespace MyNet.Wpf.Behaviors
             }
         }
 
-        private void Items_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
-        {
-            switch (e.Action)
-            {
-                case NotifyCollectionChangedAction.Add:
-                    e.NewItems.IfNotNull(x => _cacheItems.AddRange(x.OfType<object>().Where(y => !_cacheItems.Contains(y))));
-                    break;
-                case NotifyCollectionChangedAction.Remove:
-                    e.OldItems.IfNotNull(x => _cacheItems.RemoveMany(x.OfType<object>()));
-                    break;
-                case NotifyCollectionChangedAction.Replace:
-                    break;
-                case NotifyCollectionChangedAction.Move:
-                    break;
-                case NotifyCollectionChangedAction.Reset:
-                    if (((IEnumerable?)sender)?.OfType<object>().Count() == 0)
-                        _cacheItems.Clear();
-                    break;
-                default:
-                    break;
-            }
-        }
+        private void Items_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) => _cacheItems.Set(((IEnumerable?)sender)?.OfType<object>());
 
         private void LoadItems()
         {
@@ -110,7 +97,7 @@ namespace MyNet.Wpf.Behaviors
             _loadItems.Run();
         }
 
-        private async Task RemoveItemsAsync(IList items, CancellationToken cancellationToken)
+        private async Task<bool> RemoveItemsAsync(IList items, CancellationToken cancellationToken)
         {
             foreach (var item in items)
             {
@@ -118,21 +105,25 @@ namespace MyNet.Wpf.Behaviors
 
                 await Dispatcher.BeginInvoke(() => _items.Remove(item));
             }
+
+            return true;
         }
 
-        private async Task AddItemsAsync(IList items, CancellationToken cancellationToken)
+        private async Task<bool> AddItemsAsync(IList items, CancellationToken cancellationToken)
         {
             foreach (var item in items)
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
                 await Dispatcher.BeginInvoke(() => _items.Add(item));
-                await Task.Delay(5.Milliseconds(), cancellationToken);
+                await Task.Delay(5.Milliseconds(), cancellationToken).ConfigureAwait(false);
             }
+
+            return true;
         }
 
         private async Task SynchronizeItemsAsync(CancellationToken cancellationToken)
-        => await Dispatcher.Invoke(() => GetBusyService(AssociatedObject)).WaitAsync<IndeterminateBusy>(async _ =>
+        => await Dispatcher.Invoke(() => GetBusyService(AssociatedObject)).WaitAsync<IndeterminateBusy>(async x =>
         {
             try
             {
@@ -142,11 +133,21 @@ namespace MyNet.Wpf.Behaviors
 
                 // Delete
                 var toDelete = destinationList.Where(x => !sourceList.Exists(y => predicate(y, x))).ToList();
-                await RemoveItemsAsync(toDelete, cancellationToken).ConfigureAwait(false);
+                _ = await RemoveItemsAsync(toDelete, cancellationToken).ConfigureAwait(false);
 
                 // Add
                 var toAdd = sourceList.Where(x => !destinationList.Any(y => predicate(x, y))).ToList();
-                await AddItemsAsync(toAdd, cancellationToken).ConfigureAwait(false);
+                _ = await AddItemsAsync(toAdd, cancellationToken).ConfigureAwait(false);
+
+                // Move
+                for (var i = 0; i < _cacheItems.Count; i++)
+                {
+                    var cacheItem = _cacheItems[i];
+                    var indexOfItem = Dispatcher.Invoke(() => _items.IndexOf(cacheItem));
+
+                    if (indexOfItem >= 0 && i < _items.Count && indexOfItem != i)
+                        await Dispatcher.BeginInvoke(() => _items.Move(indexOfItem, i));
+                }
             }
             catch (OperationCanceledException)
             {
@@ -157,6 +158,7 @@ namespace MyNet.Wpf.Behaviors
         protected override void OnAttached()
         {
             base.OnAttached();
+            VirtualizingPanel.SetIsVirtualizing(AssociatedObject, false);
             AssociatedObject.SetValue(ItemsControl.ItemsSourceProperty, _items);
         }
     }

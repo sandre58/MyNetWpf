@@ -93,7 +93,7 @@ Styles\MyNet.VirtualizingGridView.xaml
 Styles\MyNet.VirtualizingItemsControl.xaml
 Styles\MyNet.VirtualizingWrapPanel.xaml
 -->
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" xmlns:p="clr-namespace:MyNet.Wpf.Parameters" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:c="clr-namespace:MyNet.Wpf.Converters" xmlns:cmd="clr-namespace:MyNet.Wpf.Commands" xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls" xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions" xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" xmlns:busy="clr-namespace:MyNet.UI.Busy.Models;assembly=MyNet.UI" xmlns:s="clr-namespace:MyNet.Wpf.Selectors" xmlns:models="clr-namespace:MyNet.Observable;assembly=MyNet.Observable" xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:media="clr-namespace:MyNet.Wpf.Media" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="po d" xmlns:controlzEx="urn:controlzex" xmlns:dialSettings="clr-namespace:MyNet.UI.Dialogs.Settings;assembly=MyNet.UI" xmlns:notif="clr-namespace:MyNet.UI.Notifications;assembly=MyNet.UI">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" xmlns:p="clr-namespace:MyNet.Wpf.Parameters" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:c="clr-namespace:MyNet.Wpf.Converters" xmlns:cmd="clr-namespace:MyNet.Wpf.Commands" xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls" xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions" xmlns:b="clr-namespace:MyNet.Wpf.Behaviors" xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" xmlns:busy="clr-namespace:MyNet.UI.Busy.Models;assembly=MyNet.UI" xmlns:s="clr-namespace:MyNet.Wpf.Selectors" xmlns:models="clr-namespace:MyNet.Observable;assembly=MyNet.Observable" xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:media="clr-namespace:MyNet.Wpf.Media" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="po d" xmlns:controlzEx="urn:controlzex" xmlns:dialSettings="clr-namespace:MyNet.UI.Dialogs.Settings;assembly=MyNet.UI" xmlns:notif="clr-namespace:MyNet.UI.Notifications;assembly=MyNet.UI">
   <ResourceDictionary.MergedDictionaries />
   <Geometry x:Key="MyNet.Geometries.Foot" po:Freeze="True">M18.3313312530518,4.47466659545898L19.846061706543,4.62646055221558 21.7239437103271,5.21648120880127 23.3418369293213,6.44668531417847 23.8585586547852,7.36496829986572 24.0766048431396,8.5190315246582 23.7810935974121,10.7147674560547 23.0195255279541,12.4733963012695 22.2365245819092,14.2477712631226 21.8767185211182,16.4907455444336 21.2611198425293,18.3269214630127 20.5235157012939,18.9572620391846 19.5277214050293,19.2000026702881 18.1812648773193,18.9933128356934 17.3465423583984,18.4375648498535 16.9131603240967,17.6292285919189 16.7707271575928,16.6647853851318 17.0931167602539,15.1356287002563 17.8848533630371,14.0511646270752 18.6924495697021,13.0223913192749 19.0624237060547,11.6603107452393 18.5863628387451,10.0264301300049 17.5390281677246,8.93793773651123 16.4916915893555,7.89725971221924 16.0156307220459,6.40682649612427 16.2644805908203,5.37332439422607 16.8722057342529,4.79043388366699 18.3313312530518,4.47466659545898z M5.75009346008301,4.47465419769287L7.20868492126465,4.79043340682983 7.81618309020996,5.37333059310913 8.06493949890137,6.40683126449585 7.58886766433716,7.89726448059082 6.54150915145874,8.93793869018555 5.49415063858032,10.0264291763306 5.01807880401611,11.6603136062622 5.38811731338501,13.0223913192749 6.1959023475647,14.0511569976807 6.98793697357178,15.1356153488159 7.31072473526001,16.6647720336914 7.16815614700317,17.6292190551758 6.73471307754517,18.437557220459 5.89986181259155,18.9933128356934 4.5530686378479,19.2000026702881 3.55755519866943,18.9572620391846 2.82000923156738,18.3269233703613 2.20432209968567,16.4907569885254 1.84450244903564,14.2477693557739 1.0614492893219,12.4733877182007 0.299771368503571,10.7147579193115 0.00407753000035882,8.51902484893799 0.222220063209534,7.36496210098267 0.739003360271454,6.44667911529541 2.35698747634888,5.21647262573242 4.23502063751221,4.62644958496094 5.75009346008301,4.47465419769287z M23.4613094329834,3.73060441017151L23.7955856323242,3.92074012756348 23.9422073364258,4.39665651321411 23.8174476623535,4.87744903564453 23.492208480835,5.08369445800781 23.1585731506348,4.89355897903442 23.0101127624512,4.41764307022095 23.1357002258301,3.93685054779053 23.4613094329834,3.73060441017151z M0.619690716266632,3.7305862903595L0.9450843334198,3.93685531616211 1.07089924812317,4.417649269104 0.922358810901642,4.89356803894043 0.589089214801788,5.08371019363403 0.263433277606964,4.87744140625 0.138480380177498,4.39664697647095 0.285258442163467,3.92072892189026 0.619690716266632,3.7305862903595z M1.43937730789185,2.53559684753418L1.85089468955994,2.73003125190735 2.10622000694275,3.25054240226746 2.05548167228699,3.85997319221497 1.70391201972961,4.17462730407715 1.25851535797119,4.01186227798462 0.978497326374054,3.46656227111816 1.02912354469299,2.85600638389587 1.38080525398254,2.54247760772705 1.43937730789185,2.53559684753418z M22.6413917541504,2.5355920791626L22.6999130249023,2.54247069358826 23.051628112793,2.85601735115051 23.1025161743164,3.4665789604187 22.8225021362305,4.01187086105347 22.3771171569824,4.1746392250061 22.0254039764404,3.85996699333191 21.974515914917,3.25053143501282 22.2299385070801,2.7300271987915 22.6413917541504,2.5355920791626z M2.91413617134094,1.52538454532623L3.41278386116028,1.83178746700287 3.62004995346069,2.57248067855835 3.4128212928772,3.31317329406738 2.9135365486145,3.6195764541626 2.41342616081238,3.31317329406738 2.20672202110291,2.57248067855835 2.4140636920929,1.83178746700287 2.91413617134094,1.52538454532623z M21.1669216156006,1.52537333965302L21.6664543151855,1.83178269863129 21.8737163543701,2.57246661186218 21.6673927307129,3.31318235397339 21.1681213378906,3.61959624290466 20.6683216094971,3.31318235397339 20.4610252380371,2.57246661186218 20.6679458618164,1.83178269863129 21.1669216156006,1.52537333965302z M19.1145801544189,0.799981832504272L19.7093620300293,1.15237045288086 20.0176162719727,1.97841763496399 19.8504867553711,2.89351630210876 19.271821975708,3.32253527641296 18.6211624145508,3.01088833808899 18.2785243988037,2.14344763755798 18.4468631744385,1.22985076904297 19.024923324585,0.80233359336853 19.1145801544189,0.799981832504272z M4.96622467041016,0.799968183040619L5.05587959289551,0.802318155765533 5.63417863845825,1.22985732555389 5.80229425430298,2.14344096183777 5.45938730239868,3.01089549064636 4.80867481231689,3.32254910469055 4.23015069961548,2.89350962638855 4.06315994262695,1.97842586040497 4.37154531478882,1.15236508846283 4.96622467041016,0.799968183040619z M16.3480205535889,3.38493955496233E-05L17.2013492584229,0.454524487257004 17.6995277404785,1.60638654232025 17.5447273254395,2.92313599586487 16.779727935791,3.58059072494507 15.8519086837769,3.19204664230347 15.30433177948,1.98442423343658 15.458909034729,0.667679190635681 16.2241325378418,0.010256570763886 16.3480205535889,3.38493955496233E-05z M7.73343896865845,2.16491607716307E-05L7.85733509063721,0.0102458065375686 8.62212562561035,0.667680859565735 8.77625370025635,1.98442661762238 8.22945594787598,3.19203686714172 7.30172443389893,3.58057236671448 6.53607177734375,2.92313742637634 6.38130617141724,1.60639190673828 6.87976741790771,0.454509913921356 7.73343896865845,2.16491607716307E-05z</Geometry>
   <Geometry x:Key="MyNet.Geometries.LeftFoot" po:Freeze="True">M12.750093460083,4.47465419769287L14.2086849212646,4.79043340682983 14.81618309021,5.37333059310913 15.0649394989014,6.40683126449585 14.5888671875,7.89726448059082 13.5415096282959,8.93793869018555 12.4941501617432,10.0264291763306 12.0180788040161,11.6603136062622 12.3881168365479,13.0223913192749 13.1959018707275,14.0511569976807 13.9879369735718,15.1356153488159 14.3107242584229,16.6647720336914 14.168155670166,17.6292190551758 13.734712600708,18.437557220459 12.8998622894287,18.9933128356934 11.5530681610107,19.2000026702881 10.5575551986694,18.9572620391846 9.82000923156738,18.3269233703613 9.20432186126709,16.4907569885254 8.84450244903564,14.2477693557739 8.06144905090332,12.4733877182007 7.29977130889893,10.7147579193115 7.00407743453979,8.51902484893799 7.22221994400024,7.36496210098267 7.73900318145752,6.44667911529541 9.35698699951172,5.21647262573242 11.2350206375122,4.62644958496094 12.750093460083,4.47465419769287z M7.61969089508057,3.7305862903595L7.94508457183838,3.93685531616211 8.07089900970459,4.417649269104 7.92235898971558,4.89356803894043 7.58908939361572,5.08371019363403 7.2634334564209,4.87744140625 7.1384801864624,4.39664697647095 7.28525829315186,3.92072892189026 7.61969089508057,3.7305862903595z M8.43937683105469,2.53559684753418L8.85089492797852,2.73003125190735 9.10622024536133,3.25054240226746 9.05548191070557,3.85997319221497 8.70391178131104,4.17462730407715 8.25851535797119,4.01186227798462 7.97849750518799,3.46656227111816 8.02912330627441,2.85600638389587 8.38080501556396,2.54247760772705 8.43937683105469,2.53559684753418z M9.91413593292236,1.52538454532623L10.4127836227417,1.83178746700287 10.6200504302979,2.57248067855835 10.41282081604,3.31317329406738 9.91353607177734,3.6195764541626 9.41342639923096,3.31317329406738 9.20672225952148,2.57248067855835 9.41406345367432,1.83178746700287 9.91413593292236,1.52538454532623z M11.9662246704102,0.799968183040619L12.0558795928955,0.802318155765533 12.6341781616211,1.22985732555389 12.8022937774658,2.14344096183777 12.4593868255615,3.01089549064636 11.8086748123169,3.32254910469055 11.2301502227783,2.89350962638855 11.063159942627,1.97842586040497 11.371545791626,1.15236508846283 11.9662246704102,0.799968183040619z M14.7334384918213,2.16491607716307E-05L14.8573350906372,0.0102458065375686 15.6221256256104,0.667680859565735 15.7762537002563,1.98442661762238 15.229455947876,3.19203686714172 14.3017244338989,3.58057236671448 13.5360717773438,2.92313742637634 13.3813056945801,1.60639190673828 13.8797674179077,0.454509913921356 14.7334384918213,2.16491607716307E-05z</Geometry>
@@ -2637,132 +2637,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Trigger>
     </Style.Triggers>
   </Style>
-  <Style x:Key="MyNet.Styles.ListBox" TargetType="{x:Type ListBox}">
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-    <Setter Property="BorderThickness" Value="0" />
-    <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle}" />
-    <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
-    <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
-    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem}" />
-    <Setter Property="ItemsPanel">
-      <Setter.Value>
-        <ItemsPanelTemplate>
-          <VirtualizingStackPanel IsVirtualizing="{TemplateBinding VirtualizingPanel.IsVirtualizing}" VirtualizationMode="{TemplateBinding VirtualizingPanel.VirtualizationMode}" />
-        </ItemsPanelTemplate>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
-    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-    <Setter Property="ScrollViewer.PanningMode" Value="Both" />
-    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-    <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type ListBox}">
-          <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ClipToBounds="False" SnapsToDevicePixels="true">
-            <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}" ClipToBounds="False" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-              <ItemsPresenter ClipToBounds="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-            </ctrl:DynamicScrollViewer>
-          </Border>
-          <ControlTemplate.Triggers>
-            <MultiTrigger>
-              <MultiTrigger.Conditions>
-                <Condition Property="IsGrouping" Value="true" />
-                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-              </MultiTrigger.Conditions>
-              <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-            </MultiTrigger>
-          </ControlTemplate.Triggers>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
-    <Setter Property="VerticalContentAlignment" Value="Center" />
-    <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
-    <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Standard" />
-    <Setter Property="p:IconAssist.Alignment" Value="Left" />
-    <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
-    <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
-    <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-    <Setter Property="p:ListBoxItemAssist.ShowSelection" Value="True" />
-    <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-  </Style>
   <Style x:Key="MyNet.Styles.ListBoxItem.Toggle" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
     <Setter Property="Padding" Value="6 4" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Toggle" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-    <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
-    <Setter Property="HorizontalContentAlignment" Value="Center" />
-    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Toggle}" />
-    <Setter Property="ItemsPanel">
-      <Setter.Value>
-        <ItemsPanelTemplate>
-          <VirtualizingStackPanel IsVirtualizing="{TemplateBinding VirtualizingPanel.IsVirtualizing}" Orientation="Horizontal" VirtualizationMode="{TemplateBinding VirtualizingPanel.VirtualizationMode}" />
-        </ItemsPanelTemplate>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="SelectionMode" Value="Single" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type ListBox}">
-          <ctrl:Card Padding="0" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ClipToBounds="False">
-            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-          </ctrl:Card>
-          <ControlTemplate.Triggers>
-            <MultiTrigger>
-              <MultiTrigger.Conditions>
-                <Condition Property="IsGrouping" Value="true" />
-                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-              </MultiTrigger.Conditions>
-              <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-            </MultiTrigger>
-          </ControlTemplate.Triggers>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
-    <Setter Property="VerticalContentAlignment" Value="Center" />
-    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
-    <Setter Property="p:ListBoxAssist.IsToggle" Value="False" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
-    <Style.Triggers>
-      <Trigger Property="p:ListBoxAssist.Orientation" Value="{x:Static Orientation.Vertical}">
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="ItemsPanel">
-          <Setter.Value>
-            <ItemsPanelTemplate>
-              <VirtualizingStackPanel IsVirtualizing="{TemplateBinding VirtualizingPanel.IsVirtualizing}" VirtualizationMode="{TemplateBinding VirtualizingPanel.VirtualizationMode}" />
-            </ItemsPanelTemplate>
-          </Setter.Value>
-        </Setter>
-      </Trigger>
-    </Style.Triggers>
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Toggle.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Toggle.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Toggle.Foreground.Opacity" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle.Foreground}">
-    <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
-    <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Checked}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ListBoxItem.Icon" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
     <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Default}" />
@@ -2804,33 +2680,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource Self}}" />
       </Trigger>
     </Style.Triggers>
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Icon" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Icon}" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type ListBox}">
-          <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-          <ControlTemplate.Triggers>
-            <MultiTrigger>
-              <MultiTrigger.Conditions>
-                <Condition Property="IsGrouping" Value="true" />
-                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-              </MultiTrigger.Conditions>
-              <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-            </MultiTrigger>
-          </ControlTemplate.Triggers>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Icon.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Icon}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Icon.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Icon}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ListBoxItem.Card" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
@@ -2910,55 +2759,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="VerticalContentAlignment" Value="Top" />
     <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
     <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Cards" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
-    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Card}" />
-    <Setter Property="ItemsPanel">
-      <Setter.Value>
-        <ItemsPanelTemplate>
-          <ctrl:VirtualizingWrapPanel IsVirtualizing="{TemplateBinding VirtualizingPanel.IsVirtualizing}" Orientation="Vertical" SpacingMode="None" StretchItems="False" VirtualizationMode="{TemplateBinding VirtualizingPanel.VirtualizationMode}" />
-        </ItemsPanelTemplate>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue" />
-    <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
-    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-    <Setter Property="SelectionMode" Value="Extended" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type ListBox}">
-          <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
-            <ContentControl x:Name="ContentControl">
-              <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}" p:ScrollViewerAssist.BubbleVerticalScroll="{TemplateBinding p:ScrollViewerAssist.BubbleVerticalScroll}" p:ScrollViewerAssist.IsAutoHideEnabled="{Binding Path=(p:ScrollViewerAssist.IsAutoHideEnabled), RelativeSource={RelativeSource Mode=TemplatedParent}}" CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-              </ctrl:DynamicScrollViewer>
-            </ContentControl>
-          </Border>
-          <ControlTemplate.Triggers>
-            <MultiTrigger>
-              <MultiTrigger.Conditions>
-                <Condition Property="IsGrouping" Value="true" />
-                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-              </MultiTrigger.Conditions>
-              <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-            </MultiTrigger>
-          </ControlTemplate.Triggers>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="VirtualizingPanel.CacheLengthUnit" Value="Page" />
-    <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel" />
-    <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Cards.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Cards.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.ListBoxItem.Chip" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
@@ -3187,18 +2987,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Navigation" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
-    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Navigation}" />
-    <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground.Tertiary}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Navigation.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Navigation}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Navigation.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Navigation}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.Thumb.Embedded.GridViewColumnHeader" TargetType="{x:Type Thumb}" BasedOn="{StaticResource MyNet.Styles.Thumb}">
     <Setter Property="Cursor" Value="SizeWE" />
@@ -4997,33 +4785,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </DataTrigger>
     </Style.Triggers>
   </Style>
-  <Style x:Key="MyNet.Styles.ListBox.ToolBar" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
-    <Setter Property="FontWeight" Value="{Binding Path=(TextElement.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
-    <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
-    <Setter Property="HorizontalAlignment" Value="Stretch" />
-    <Setter Property="ItemContainerStyle">
-      <Setter.Value>
-        <Style TargetType="ListBoxItem" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
-          <Setter Property="HorizontalContentAlignment" Value="Center" />
-          <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Small.Horizontal}" />
-          <Setter Property="MinWidth" Value="46" />
-          <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Small}" />
-          <Setter Property="VerticalAlignment" Value="Stretch" />
-          <Setter Property="VerticalContentAlignment" Value="Center" />
-        </Style>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Small.Vertical}" />
-    <Setter Property="Padding" Value="0" />
-    <Setter Property="VerticalAlignment" Value="Stretch" />
-    <Setter Property="p:ElevationAssist.Elevation" Value="Dp0" />
-    <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
-    <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
-    <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
-  </Style>
   <Style x:Key="MyNet.Styles.Label.ToolBar" TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -5848,30 +5609,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
     <Setter Property="VerticalContentAlignment" Value="Stretch" />
   </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Embedded.ColorCanvas" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}">
-    <Setter Property="ItemContainerStyle">
-      <Setter.Value>
-        <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Card}">
-          <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Transparency.Small}" />
-          <Setter Property="Height" Value="18" />
-          <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-          <Setter Property="Margin" Value="2" />
-          <Setter Property="Padding" Value="0" />
-          <Setter Property="ToolTip" Value="{me:Translation}" />
-          <Setter Property="VerticalContentAlignment" Value="Stretch" />
-          <Setter Property="Width" Value="18" />
-        </Style>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="ItemTemplate">
-      <Setter.Value>
-        <DataTemplate>
-          <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Converter={x:Static c:ColorToBrushConverter.Default}}" />
-        </DataTemplate>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="p:ScrollViewerAssist.BubbleVerticalScroll" Value="True" />
-  </Style>
   <Style x:Key="MyNet.Styles.Slider.Embedded.ColorCanvas" TargetType="{x:Type Slider}" BasedOn="{StaticResource MyNet.Styles.Slider.Colors.ARGB}">
     <Setter Property="HorizontalAlignment" Value="Stretch" />
     <Setter Property="Panel.ZIndex" Value="1" />
@@ -5957,30 +5694,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
     <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
     <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Embedded.ColorPicker" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}">
-    <Setter Property="ItemContainerStyle">
-      <Setter.Value>
-        <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Card}">
-          <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Transparency.Small}" />
-          <Setter Property="Height" Value="18" />
-          <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-          <Setter Property="Margin" Value="1.5" />
-          <Setter Property="Padding" Value="0" />
-          <Setter Property="ToolTip" Value="{me:Translation}" />
-          <Setter Property="VerticalContentAlignment" Value="Stretch" />
-          <Setter Property="Width" Value="18" />
-        </Style>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="ItemTemplate">
-      <Setter.Value>
-        <DataTemplate>
-          <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Converter={x:Static c:ColorToBrushConverter.Default}}" />
-        </DataTemplate>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="p:ScrollViewerAssist.BubbleVerticalScroll" Value="True" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Embedded.Expander.Vertical" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Embedded.Expander}">
     <Setter Property="Cursor" Value="Hand" />
@@ -9966,114 +9679,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Setter>
     <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{Binding Path=(p:RippleAssist.Feedback), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Tab" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="Transparent" />
-    <Setter Property="BorderThickness" Value="0" />
-    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Tab}" />
-    <Setter Property="ItemsPanel">
-      <Setter.Value>
-        <ItemsPanelTemplate>
-          <WrapPanel Orientation="Horizontal" />
-        </ItemsPanelTemplate>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
-    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-    <Setter Property="ScrollViewer.PanningMode" Value="Both" />
-    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-    <Setter Property="SelectedValuePath" Value="" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type ListBox}">
-          <ControlTemplate.Triggers>
-            <MultiTrigger>
-              <MultiTrigger.Conditions>
-                <Condition Property="IsGrouping" Value="true" />
-                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-              </MultiTrigger.Conditions>
-              <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-            </MultiTrigger>
-          </ControlTemplate.Triggers>
-          <ctrl:Card Padding="{TemplateBinding Padding}" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" p:ShadowAssist.ShadowEdges="{TemplateBinding p:ShadowAssist.ShadowEdges}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" DockPanel.Dock="Top" Focusable="False" SnapsToDevicePixels="true" UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-            <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-              <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-            </ctrl:DynamicScrollViewer>
-          </ctrl:Card>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="p:ElevationAssist.Elevation" Value="Dp0" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ShadowAssist.ShadowEdges" Value="None" />
-    <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
-    <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="0" />
-    <Style.Triggers>
-      <Trigger Property="p:ListBoxAssist.Orientation" Value="{x:Static Orientation.Vertical}">
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="ItemsPanel">
-          <Setter.Value>
-            <ItemsPanelTemplate>
-              <WrapPanel Orientation="Vertical" />
-            </ItemsPanelTemplate>
-          </Setter.Value>
-        </Setter>
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
-        <Setter Property="p:ShadowAssist.ShadowEdges" Value="Right" />
-      </Trigger>
-    </Style.Triggers>
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Tab.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Tab}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Tab.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Tab}">
-    <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=Foreground}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Chips" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Tab}">
-    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Chip}" />
-    <Setter Property="SelectionMode" Value="Multiple" />
-    <Setter Property="p:CheckBoxAssist.ShowCheck" Value="False" />
-    <Setter Property="p:ListBoxAssist.IsToggle" Value="True" />
-    <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Chips.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Chips.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Contrast=True}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Chips.Alternate" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips}">
-    <Setter Property="ItemContainerStyle">
-      <Setter.Value>
-        <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Chip}">
-          <Setter Property="BorderThickness" Value="1" />
-        </Style>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding SelfPath=(p:ListBoxItemAssist.IsSelectedForeground), Opacity={StaticResource MyNet.Opacity.Checked}}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ListBoxItemAssist.IsSelectedForeground)}" />
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Chips.Alternate.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips.Alternate}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ListBox.Chips.Alternate.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips.Alternate}">
-    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ComboBox.Embedded.ListView" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox}">
     <Style.Triggers>
@@ -17622,6 +17227,159 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
   </Style>
+  <Style x:Key="MyNet.Styles.ListBox" TargetType="{x:Type ListBox}">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle}" />
+    <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
+    <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
+    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem}" />
+    <Setter Property="ItemsPanel">
+      <Setter.Value>
+        <ItemsPanelTemplate>
+          <VirtualizingStackPanel IsVirtualizing="{TemplateBinding VirtualizingPanel.IsVirtualizing}" VirtualizationMode="{TemplateBinding VirtualizingPanel.VirtualizationMode}" />
+        </ItemsPanelTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+    <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+    <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ListBox}">
+          <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ClipToBounds="False" SnapsToDevicePixels="true">
+            <Grid p:BusyAssist.AttachService="{Binding Path=(b:ItemsControlAsyncBehavior.BusyService), RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}">
+              <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}" ClipToBounds="False" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                <ItemsPresenter ClipToBounds="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+              </ctrl:DynamicScrollViewer>
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsGrouping" Value="true" />
+                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+              </MultiTrigger.Conditions>
+              <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+            </MultiTrigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Container}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
+    <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Standard" />
+    <Setter Property="p:IconAssist.Alignment" Value="Left" />
+    <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
+    <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+    <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ListBoxItemAssist.ShowSelection" Value="True" />
+    <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Toggle" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+    <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Toggle}" />
+    <Setter Property="ItemsPanel">
+      <Setter.Value>
+        <ItemsPanelTemplate>
+          <VirtualizingStackPanel IsVirtualizing="{TemplateBinding VirtualizingPanel.IsVirtualizing}" Orientation="Horizontal" VirtualizationMode="{TemplateBinding VirtualizingPanel.VirtualizationMode}" />
+        </ItemsPanelTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="SelectionMode" Value="Single" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ListBox}">
+          <ctrl:Card Padding="0" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ClipToBounds="False">
+            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+          </ctrl:Card>
+          <ControlTemplate.Triggers>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsGrouping" Value="true" />
+                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+              </MultiTrigger.Conditions>
+              <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+            </MultiTrigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+    <Setter Property="p:ListBoxAssist.IsToggle" Value="False" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
+    <Style.Triggers>
+      <Trigger Property="p:ListBoxAssist.Orientation" Value="{x:Static Orientation.Vertical}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="ItemsPanel">
+          <Setter.Value>
+            <ItemsPanelTemplate>
+              <VirtualizingStackPanel IsVirtualizing="{TemplateBinding VirtualizingPanel.IsVirtualizing}" VirtualizationMode="{TemplateBinding VirtualizingPanel.VirtualizationMode}" />
+            </ItemsPanelTemplate>
+          </Setter.Value>
+        </Setter>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Toggle.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Toggle.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Toggle.Foreground.Opacity" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle.Foreground}">
+    <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Checked}}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Icon" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Icon}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ListBox}">
+          <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+          <ControlTemplate.Triggers>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsGrouping" Value="true" />
+                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+              </MultiTrigger.Conditions>
+              <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+            </MultiTrigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Icon.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Icon}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Icon.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Icon}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+  </Style>
   <Style x:Key="MyNet.Styles.ListBoxItem.Tab.DropDown" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Tab}">
     <Setter Property="Template">
       <Setter.Value>
@@ -17680,6 +17438,177 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Setter>
     <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
     <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Tab" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Tab}" />
+    <Setter Property="ItemsPanel">
+      <Setter.Value>
+        <ItemsPanelTemplate>
+          <WrapPanel Orientation="Horizontal" />
+        </ItemsPanelTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+    <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+    <Setter Property="SelectedValuePath" Value="" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ListBox}">
+          <ControlTemplate.Triggers>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsGrouping" Value="true" />
+                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+              </MultiTrigger.Conditions>
+              <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+            </MultiTrigger>
+          </ControlTemplate.Triggers>
+          <ctrl:Card Padding="{TemplateBinding Padding}" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" p:ShadowAssist.ShadowEdges="{TemplateBinding p:ShadowAssist.ShadowEdges}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" DockPanel.Dock="Top" Focusable="False" SnapsToDevicePixels="true" UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+            <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+              <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+            </ctrl:DynamicScrollViewer>
+          </ctrl:Card>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="p:ElevationAssist.Elevation" Value="Dp0" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ShadowAssist.ShadowEdges" Value="None" />
+    <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
+    <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="0" />
+    <Style.Triggers>
+      <Trigger Property="p:ListBoxAssist.Orientation" Value="{x:Static Orientation.Vertical}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="ItemsPanel">
+          <Setter.Value>
+            <ItemsPanelTemplate>
+              <WrapPanel Orientation="Vertical" />
+            </ItemsPanelTemplate>
+          </Setter.Value>
+        </Setter>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="p:ShadowAssist.ShadowEdges" Value="Right" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Tab.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Tab}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Tab.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Tab}">
+    <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=Foreground}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Cards" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
+    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Card}" />
+    <Setter Property="ItemsPanel">
+      <Setter.Value>
+        <ItemsPanelTemplate>
+          <ctrl:VirtualizingWrapPanel IsVirtualizing="{TemplateBinding VirtualizingPanel.IsVirtualizing}" Orientation="Vertical" SpacingMode="None" StretchItems="False" VirtualizationMode="{TemplateBinding VirtualizingPanel.VirtualizationMode}" />
+        </ItemsPanelTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue" />
+    <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+    <Setter Property="SelectionMode" Value="Extended" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ListBox}">
+          <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+            <Grid p:BusyAssist.AttachService="{Binding Path=(b:ItemsControlAsyncBehavior.BusyService), RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}">
+              <ContentControl x:Name="ContentControl">
+                <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}" p:ScrollViewerAssist.BubbleVerticalScroll="{TemplateBinding p:ScrollViewerAssist.BubbleVerticalScroll}" p:ScrollViewerAssist.IsAutoHideEnabled="{Binding Path=(p:ScrollViewerAssist.IsAutoHideEnabled), RelativeSource={RelativeSource Mode=TemplatedParent}}" CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                  <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                </ctrl:DynamicScrollViewer>
+              </ContentControl>
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsGrouping" Value="true" />
+                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+              </MultiTrigger.Conditions>
+              <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+            </MultiTrigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="VirtualizingPanel.CacheLengthUnit" Value="Page" />
+    <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel" />
+    <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ScrollViewerAssist.IsAutoHideEnabled" Value="True" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Cards.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Cards.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Chips" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Tab}">
+    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Chip}" />
+    <Setter Property="SelectionMode" Value="Multiple" />
+    <Setter Property="p:CheckBoxAssist.ShowCheck" Value="False" />
+    <Setter Property="p:ListBoxAssist.IsToggle" Value="True" />
+    <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Chips.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Chips.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Contrast=True}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Chips.Alternate" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips}">
+    <Setter Property="ItemContainerStyle">
+      <Setter.Value>
+        <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Chip}">
+          <Setter Property="BorderThickness" Value="1" />
+        </Style>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding SelfPath=(p:ListBoxItemAssist.IsSelectedForeground), Opacity={StaticResource MyNet.Opacity.Checked}}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ListBoxItemAssist.IsSelectedForeground)}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Chips.Alternate.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips.Alternate}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Chips.Alternate.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips.Alternate}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Navigation" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
+    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Navigation}" />
+    <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground.Tertiary}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Navigation.Accent" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Navigation}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Navigation.Foreground" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Navigation}">
+    <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Specials.PresetColumns" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Icon.Foreground}">
     <Setter Property="PopupContent" Value="{Binding DataContext.Display.Mode.PresetColumns, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" />
@@ -17835,6 +17764,33 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
+  <Style x:Key="MyNet.Styles.ListBox.ToolBar" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+    <Setter Property="FontWeight" Value="{Binding Path=(TextElement.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+    <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="ItemContainerStyle">
+      <Setter.Value>
+        <Style TargetType="ListBoxItem" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
+          <Setter Property="HorizontalContentAlignment" Value="Center" />
+          <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Small.Horizontal}" />
+          <Setter Property="MinWidth" Value="46" />
+          <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Small}" />
+          <Setter Property="VerticalAlignment" Value="Stretch" />
+          <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Small.Vertical}" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="VerticalAlignment" Value="Stretch" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="Dp0" />
+    <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
+  </Style>
   <Style x:Key="MyNet.Styles.MultiComboBox.ToolBar" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox}">
     <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
@@ -17843,6 +17799,30 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.NumericUpDown.ToolBar" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}">
     <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Embedded.ColorCanvas" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}">
+    <Setter Property="ItemContainerStyle">
+      <Setter.Value>
+        <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Card}">
+          <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Transparency.Small}" />
+          <Setter Property="Height" Value="18" />
+          <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+          <Setter Property="Margin" Value="2" />
+          <Setter Property="Padding" Value="0" />
+          <Setter Property="ToolTip" Value="{me:Translation}" />
+          <Setter Property="VerticalContentAlignment" Value="Stretch" />
+          <Setter Property="Width" Value="18" />
+        </Style>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="ItemTemplate">
+      <Setter.Value>
+        <DataTemplate>
+          <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Converter={x:Static c:ColorToBrushConverter.Default}}" />
+        </DataTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="p:ScrollViewerAssist.BubbleVerticalScroll" Value="True" />
   </Style>
   <Style x:Key="MyNet.Styles.NumericUpDown.Embedded.ColorCanvas" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Outlined}">
     <Setter Property="Maximum" Value="255" />
@@ -18422,6 +18402,30 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         </ControlTemplate>
       </Setter.Value>
     </Setter>
+  </Style>
+  <Style x:Key="MyNet.Styles.ListBox.Embedded.ColorPicker" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}">
+    <Setter Property="ItemContainerStyle">
+      <Setter.Value>
+        <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem.Card}">
+          <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Transparency.Small}" />
+          <Setter Property="Height" Value="18" />
+          <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+          <Setter Property="Margin" Value="1.5" />
+          <Setter Property="Padding" Value="0" />
+          <Setter Property="ToolTip" Value="{me:Translation}" />
+          <Setter Property="VerticalContentAlignment" Value="Stretch" />
+          <Setter Property="Width" Value="18" />
+        </Style>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="ItemTemplate">
+      <Setter.Value>
+        <DataTemplate>
+          <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Converter={x:Static c:ColorToBrushConverter.Default}}" />
+        </DataTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="p:ScrollViewerAssist.BubbleVerticalScroll" Value="True" />
   </Style>
   <ControlTemplate x:Key="MyNet.Templates.ColorPicker" TargetType="{x:Type ctrl:ColorPicker}">
     <Grid>
@@ -19390,9 +19394,11 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ListView}">
-          <ctrl:DynamicScrollViewer Style="{StaticResource MyNet.Style.DynamicScrollViewer.Embedded.ListView}" CanContentScroll="{Binding Path=(ScrollViewer.CanContentScroll), RelativeSource={RelativeSource TemplatedParent}}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-            <ItemsPresenter />
-          </ctrl:DynamicScrollViewer>
+          <Grid p:BusyAssist.AttachService="{Binding Path=(b:ItemsControlAsyncBehavior.BusyService), RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}">
+            <ctrl:DynamicScrollViewer Style="{StaticResource MyNet.Style.DynamicScrollViewer.Embedded.ListView}" CanContentScroll="{Binding Path=(ScrollViewer.CanContentScroll), RelativeSource={RelativeSource TemplatedParent}}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+              <ItemsPresenter />
+            </ctrl:DynamicScrollViewer>
+          </Grid>
         </ControlTemplate>
       </Setter.Value>
     </Setter>

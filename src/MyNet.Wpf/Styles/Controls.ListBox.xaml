@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:b="clr-namespace:MyNet.Wpf.Behaviors"
                     xmlns:c="clr-namespace:MyNet.Wpf.Converters"
                     xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
                     xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions"
@@ -9,6 +10,7 @@
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.TextBlock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.RadioButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/MyNet.BusyControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate x:Key="MyNet.DataTemplates.Icon.ListBoxItem">
@@ -237,13 +239,15 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             ClipToBounds="False"
                             SnapsToDevicePixels="true">
-                        <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}"
+                        <Grid p:BusyAssist.AttachService="{Binding Path=(b:ItemsControlAsyncBehavior.BusyService), RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}">
+                            <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}"
                                                   ClipToBounds="False"
                                                   Focusable="false"
                                                   HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                                   VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-                            <ItemsPresenter ClipToBounds="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </ctrl:DynamicScrollViewer>
+                                <ItemsPresenter ClipToBounds="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </ctrl:DynamicScrollViewer>
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
@@ -820,17 +824,19 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             SnapsToDevicePixels="true">
-                        <ContentControl x:Name="ContentControl">
-                            <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}"
-                                                      p:ScrollViewerAssist.BubbleVerticalScroll="{TemplateBinding p:ScrollViewerAssist.BubbleVerticalScroll}"
-                                                      p:ScrollViewerAssist.IsAutoHideEnabled="{Binding Path=(p:ScrollViewerAssist.IsAutoHideEnabled), RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                                      CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
-                                                      Focusable="false"
-                                                      HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                                                      VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                            </ctrl:DynamicScrollViewer>
-                        </ContentControl>
+                        <Grid p:BusyAssist.AttachService="{Binding Path=(b:ItemsControlAsyncBehavior.BusyService), RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}">
+                            <ContentControl x:Name="ContentControl">
+                                <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}"
+                                                          p:ScrollViewerAssist.BubbleVerticalScroll="{TemplateBinding p:ScrollViewerAssist.BubbleVerticalScroll}"
+                                                          p:ScrollViewerAssist.IsAutoHideEnabled="{Binding Path=(p:ScrollViewerAssist.IsAutoHideEnabled), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                          CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
+                                                          Focusable="false"
+                                                          HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                                          VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                    <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                </ctrl:DynamicScrollViewer>
+                            </ContentControl>
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
