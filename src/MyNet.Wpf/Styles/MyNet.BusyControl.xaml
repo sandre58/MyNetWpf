@@ -1010,10 +1010,18 @@
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
     </Style>
     <Style x:Key="MyNet.Styles.BusyControl.Small.Accent" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl.Small}">
-        <Setter Property="ContentTemplateSelector" Value="{StaticResource MyNet.Selectors.Busy.Accent}" />
+        <Setter Property="ContentTemplateSelector">
+            <Setter.Value>
+                <s:BusyTemplateSelector DeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.DeterminateBusy.Accent}" IndeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.IndeterminateBusy.Small.Accent}" ProgressionBusyTemplate="{StaticResource MyNet.DataTemplates.ProgressionBusy.Accent}" />
+            </Setter.Value>
+        </Setter>
     </Style>
     <Style x:Key="MyNet.Styles.BusyControl.Small.Foreground" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl.Small}">
-        <Setter Property="ContentTemplateSelector" Value="{StaticResource MyNet.Selectors.Busy.Foreground}" />
+        <Setter Property="ContentTemplateSelector">
+            <Setter.Value>
+                <s:BusyTemplateSelector DeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.DeterminateBusy.Foreground}" IndeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.IndeterminateBusy.Small.Foreground}" ProgressionBusyTemplate="{StaticResource MyNet.DataTemplates.ProgressionBusy.Foreground}" />
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="MyNet.Styles.BusyControl.Dark.Foreground" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl.Foreground}">
