@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.7.1] - 2024-07-30
+### :bug: Bug Fixes
+- [`1f607fc`](https://github.com/sandre58/MyNetWpf/commit/1f607fc01a6dbead07296ce4c5d34e11a07c224f) - Show Busy on several items control *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.7.0] - 2024-07-29
 ### :sparkles: New Features
 - [`6e33f22`](https://github.com/sandre58/MyNetWpf/commit/6e33f221779b151b822eaacc53a8c8356d0844a6) - add behavior to loading async items *(commit by [@sandre58](https://github.com/sandre58))*
@@ -139,3 +144,4 @@
 [v4.5.0]: https://github.com/sandre58/MyNetWpf/compare/v4.4.2...v4.5.0
 [v4.6.0]: https://github.com/sandre58/MyNetWpf/compare/v4.5.0...v4.6.0
 [v4.7.0]: https://github.com/sandre58/MyNetWpf/compare/v4.6.0...v4.7.0
+[v4.7.1]: https://github.com/sandre58/MyNetWpf/compare/v4.7.0...v4.7.1
