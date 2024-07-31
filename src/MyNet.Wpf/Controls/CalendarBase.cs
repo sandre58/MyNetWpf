@@ -1139,7 +1139,7 @@ namespace MyNet.Wpf.Controls
 
         protected internal virtual bool IsInactive(DateTime date) => false;
 
-        protected virtual void Build()
+        protected virtual void BuildCore()
         {
             if (PreviousButton != null)
                 PreviousButton.IsEnabled = CanGoToPreviousDate();
@@ -1166,6 +1166,11 @@ namespace MyNet.Wpf.Controls
 
                 return item;
             }));
+        }
+
+        protected void Build()
+        {
+            BuildCore();
 
             SetValue(DisplayDateStartPropertyKey, _displayDates.MinOrDefault(x => x.Date));
             SetValue(DisplayDateEndPropertyKey, _displayDates.MaxOrDefault(x => x.Date));

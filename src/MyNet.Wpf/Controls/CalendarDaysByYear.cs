@@ -101,9 +101,9 @@ namespace MyNet.Wpf.Controls
                                      .ToList();
         }
 
-        protected override void Build()
+        protected override void BuildCore()
         {
-            base.Build();
+            base.BuildCore();
 
             if (Grid is null) return;
             Grid.Children.RemoveRange(2, Grid.Children.Count - 2);
