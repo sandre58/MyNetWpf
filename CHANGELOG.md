@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.8.1] - 2024-07-30
+### :bug: Bug Fixes
+- [`46635fc`](https://github.com/sandre58/MyNetWpf/commit/46635fc2523c72881e2920a8113a36c3818a8b2d) - fix design of small busy control *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.8.0] - 2024-07-30
 ### :sparkles: New Features
 - [`4c91def`](https://github.com/sandre58/MyNetWpf/commit/4c91defb118632dfff0c83b3894ef48deb6a1b62) - load calendar appointments async *(commit by [@sandre58](https://github.com/sandre58))*
@@ -151,3 +156,4 @@
 [v4.7.0]: https://github.com/sandre58/MyNetWpf/compare/v4.6.0...v4.7.0
 [v4.7.1]: https://github.com/sandre58/MyNetWpf/compare/v4.7.0...v4.7.1
 [v4.8.0]: https://github.com/sandre58/MyNetWpf/compare/v4.7.1...v4.8.0
+[v4.8.1]: https://github.com/sandre58/MyNetWpf/compare/v4.8.0...v4.8.1
