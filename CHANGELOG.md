@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.8.3] - 2024-07-31
+### :bug: Bug Fixes
+- [`c36dc18`](https://github.com/sandre58/MyNetWpf/commit/c36dc18cb7b72a880aeb38fdc13ece79f76bae3c) - fix associatedcontrol *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.8.2] - 2024-07-31
 ### :bug: Bug Fixes
 - [`2cb1770`](https://github.com/sandre58/MyNetWpf/commit/2cb1770d2df10b4b149cf4ee162e1b7ea183ad7e) - add associated control when loading items async *(commit by [@sandre58](https://github.com/sandre58))*
@@ -163,3 +168,4 @@
 [v4.8.0]: https://github.com/sandre58/MyNetWpf/compare/v4.7.1...v4.8.0
 [v4.8.1]: https://github.com/sandre58/MyNetWpf/compare/v4.8.0...v4.8.1
 [v4.8.2]: https://github.com/sandre58/MyNetWpf/compare/v4.8.1...v4.8.2
+[v4.8.3]: https://github.com/sandre58/MyNetWpf/compare/v4.8.2...v4.8.3
