@@ -626,7 +626,7 @@
                                 </Grid>
 
                                 <!-- Content -->
-                                <Grid p:BusyAssist.AssociatedControl="{Binding ElementName=scrollViewer}" p:BusyAssist.AttachService="{Binding BusyService, RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}">
+                                <Grid>
                                     <ctrl:DynamicScrollViewer x:Name="scrollViewer"
                                                               Padding="0"
                                                               CanContentScroll="True"
@@ -708,6 +708,8 @@
                                             <ItemsPresenter Grid.Column="1" Visibility="{Binding AppointmentsDisplayMode, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:EnumToVisibilityConverter.CollapsedIfNotAny}, ConverterParameter={x:Static ctrl:AppointmentsDisplayMode.Range}}" />
                                         </Grid>
                                     </ctrl:DynamicScrollViewer>
+
+                                    <Grid p:BusyAssist.AttachService="{Binding BusyService, RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}" />
                                 </Grid>
                             </DockPanel>
                         </Border>

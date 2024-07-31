@@ -239,15 +239,15 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             ClipToBounds="False"
                             SnapsToDevicePixels="true">
-                        <Grid p:BusyAssist.AssociatedControl="{Binding ElementName=scrollViewer}" p:BusyAssist.AttachService="{Binding Path=(b:ItemsControlAsyncBehavior.BusyService), RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}">
-                            <ctrl:DynamicScrollViewer x:Name="scrollViewer"
-                                                      Padding="{TemplateBinding Padding}"
+                        <Grid>
+                            <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}"
                                                       ClipToBounds="False"
                                                       Focusable="false"
                                                       HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                                       VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                                 <ItemsPresenter ClipToBounds="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             </ctrl:DynamicScrollViewer>
+                            <Grid p:BusyAssist.AttachService="{Binding Path=(b:ItemsControlAsyncBehavior.BusyService), RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -825,10 +825,9 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             SnapsToDevicePixels="true">
-                        <Grid p:BusyAssist.AssociatedControl="{Binding ElementName=scrollViewer}" p:BusyAssist.AttachService="{Binding Path=(b:ItemsControlAsyncBehavior.BusyService), RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}">
+                        <Grid>
                             <ContentControl x:Name="ContentControl">
-                                <ctrl:DynamicScrollViewer x:Name="scrollViewer"
-                                                          Padding="{TemplateBinding Padding}"
+                                <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}"
                                                           p:ScrollViewerAssist.BubbleVerticalScroll="{TemplateBinding p:ScrollViewerAssist.BubbleVerticalScroll}"
                                                           p:ScrollViewerAssist.IsAutoHideEnabled="{Binding Path=(p:ScrollViewerAssist.IsAutoHideEnabled), RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                           CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
@@ -838,6 +837,7 @@
                                     <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 </ctrl:DynamicScrollViewer>
                             </ContentControl>
+                            <Grid p:BusyAssist.AttachService="{Binding Path=(b:ItemsControlAsyncBehavior.BusyService), RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>

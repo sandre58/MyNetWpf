@@ -54,9 +54,9 @@ namespace MyNet.Wpf.Controls
         }
 
         public static readonly DependencyProperty IsActiveProperty =
-            DependencyProperty.Register(nameof(IsActive), typeof(bool), typeof(BusyControl), new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, IActivePropertyChangedCallback));
+            DependencyProperty.Register(nameof(IsActive), typeof(bool), typeof(BusyControl), new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, IsActivePropertyChangedCallback));
 
-        private static void IActivePropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        private static void IsActivePropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
             var control = (BusyControl)dependencyObject;
 
