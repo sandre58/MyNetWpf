@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.8.6] - 2024-07-31
+### :bug: Bug Fixes
+- [`e25aed7`](https://github.com/sandre58/MyNetWpf/commit/e25aed7565b6657a099496ac5c28dc7d231547d0) - fix calendar by year *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.8.5] - 2024-07-31
 ### :bug: Bug Fixes
 - [`70267df`](https://github.com/sandre58/MyNetWpf/commit/70267df3f1b9ff42a1299958332661c6b20dcd18) - fix ItemsControlAsyncBehavior *(commit by [@sandre58](https://github.com/sandre58))*
@@ -181,3 +186,4 @@
 [v4.8.3]: https://github.com/sandre58/MyNetWpf/compare/v4.8.2...v4.8.3
 [v4.8.4]: https://github.com/sandre58/MyNetWpf/compare/v4.8.3...v4.8.4
 [v4.8.5]: https://github.com/sandre58/MyNetWpf/compare/v4.8.4...v4.8.5
+[v4.8.6]: https://github.com/sandre58/MyNetWpf/compare/v4.8.5...v4.8.6
