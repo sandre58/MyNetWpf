@@ -626,8 +626,9 @@
                                 </Grid>
 
                                 <!-- Content -->
-                                <Grid p:BusyAssist.AttachService="{Binding BusyService, RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}">
-                                    <ctrl:DynamicScrollViewer Padding="0"
+                                <Grid p:BusyAssist.AssociatedControl="{Binding ElementName=scrollViewer}" p:BusyAssist.AttachService="{Binding BusyService, RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}">
+                                    <ctrl:DynamicScrollViewer x:Name="scrollViewer"
+                                                              Padding="0"
                                                               CanContentScroll="True"
                                                               Focusable="False"
                                                               HorizontalScrollBarVisibility="Disabled"

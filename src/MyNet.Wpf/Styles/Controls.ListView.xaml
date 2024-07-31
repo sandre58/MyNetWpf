@@ -679,8 +679,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListView}">
-                    <Grid p:BusyAssist.AttachService="{Binding Path=(b:ItemsControlAsyncBehavior.BusyService), RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}">
-                        <ctrl:DynamicScrollViewer Style="{StaticResource MyNet.Style.DynamicScrollViewer.Embedded.ListView}"
+                    <Grid p:BusyAssist.AssociatedControl="{Binding ElementName=scrollViewer}" p:BusyAssist.AttachService="{Binding Path=(b:ItemsControlAsyncBehavior.BusyService), RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}">
+                        <ctrl:DynamicScrollViewer x:Name="scrollViewer"
+                                                  Style="{StaticResource MyNet.Style.DynamicScrollViewer.Embedded.ListView}"
                                                   CanContentScroll="{Binding Path=(ScrollViewer.CanContentScroll), RelativeSource={RelativeSource TemplatedParent}}"
                                                   HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                                   VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
