@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.8.5] - 2024-07-31
+### :bug: Bug Fixes
+- [`70267df`](https://github.com/sandre58/MyNetWpf/commit/70267df3f1b9ff42a1299958332661c6b20dcd18) - fix ItemsControlAsyncBehavior *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.8.4] - 2024-07-31
 ### :bug: Bug Fixes
 - [`2313553`](https://github.com/sandre58/MyNetWpf/commit/2313553319866c3e082400e59bc2285c9e939095) - fix ItemsControlAsyncBehavior *(commit by [@sandre58](https://github.com/sandre58))*
@@ -175,3 +180,4 @@
 [v4.8.2]: https://github.com/sandre58/MyNetWpf/compare/v4.8.1...v4.8.2
 [v4.8.3]: https://github.com/sandre58/MyNetWpf/compare/v4.8.2...v4.8.3
 [v4.8.4]: https://github.com/sandre58/MyNetWpf/compare/v4.8.3...v4.8.4
+[v4.8.5]: https://github.com/sandre58/MyNetWpf/compare/v4.8.4...v4.8.5
