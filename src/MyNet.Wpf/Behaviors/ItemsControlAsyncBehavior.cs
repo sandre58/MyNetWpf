@@ -34,11 +34,7 @@ namespace MyNet.Wpf.Behaviors
         public ItemsControlAsyncBehavior()
         {
             _loadItems = new(async x => await SynchronizeItemsAsync(x).ConfigureAwait(false), null, () => Dispatcher.BeginInvoke(() => GetBusyService(AssociatedObject).Resume()));
-            _disposable = _cacheItems.ToObservableChangeSet().Throttle(200.Milliseconds()).Subscribe(_ =>
-            {
-                if (Dispatcher.Invoke(() => AssociatedObject.IsLoaded && AssociatedObject.IsEnabled))
-                    LoadItems();
-            });
+            _disposable = _cacheItems.ToObservableChangeSet().Throttle(200.Milliseconds()).Subscribe(_ => LoadItems());
         }
 
         ~ItemsControlAsyncBehavior() => _disposable.Dispose();
@@ -82,7 +78,8 @@ namespace MyNet.Wpf.Behaviors
         {
             if (e.OldValue is INotifyCollectionChanged newCollection)
             {
-                _cacheItems.Clear();
+                if (_cacheItems.Count > 0)
+                    _cacheItems.Clear();
                 newCollection.CollectionChanged -= Items_CollectionChanged;
             }
 
