@@ -80,7 +80,7 @@ namespace MyNet.Wpf.Behaviors
 
         private void OnItemsChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue is INotifyCollectionChanged newCollection)
+            if (e.OldValue is INotifyCollectionChanged newCollection)
             {
                 _cacheItems.Clear();
                 newCollection.CollectionChanged -= Items_CollectionChanged;
