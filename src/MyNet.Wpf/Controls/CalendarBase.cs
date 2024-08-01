@@ -1745,7 +1745,7 @@ namespace MyNet.Wpf.Controls
             }
         }
 
-        private async Task AddAppointmentsAsync(List<CalendarAppointment> appointments, CancellationToken cancellationToken)
+        private async Task<bool> AddAppointmentsAsync(List<CalendarAppointment> appointments, CancellationToken cancellationToken)
         {
             foreach (var item in appointments)
             {
@@ -1753,6 +1753,8 @@ namespace MyNet.Wpf.Controls
                 await Dispatcher.BeginInvoke(() => _appointments.Add(item));
                 await Task.Delay(5.Milliseconds(), cancellationToken).ConfigureAwait(false);
             }
+
+            return true;
         }
 
         private bool AppointmentMustBeDisplayed(IAppointment appointment)
@@ -1810,11 +1812,9 @@ namespace MyNet.Wpf.Controls
 
                  await Dispatcher.BeginInvoke(() => _appointments.Clear());
 
-                 if (appointments is not null)
-                     await AddAppointmentsAsync(appointments, cancellationToken).ConfigureAwait(false);
-
-                 foreach (var item in calendarItems)
-                     await Dispatcher.BeginInvoke(() => item.UpdateAppointments());
+                 if (appointments is not null && await AddAppointmentsAsync(appointments, cancellationToken).ConfigureAwait(false))
+                     foreach (var item in calendarItems)
+                         await Dispatcher.BeginInvoke(() => item.UpdateAppointments());
              }
              catch (OperationCanceledException)
              {
