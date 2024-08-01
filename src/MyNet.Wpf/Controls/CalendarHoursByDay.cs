@@ -83,7 +83,7 @@ namespace MyNet.Wpf.Controls
             var c = d as CalendarHoursByDay;
             Debug.Assert(c != null);
 
-            c.Build();
+            c.Rebuild();
         }
 
         #endregion DisplayDaysCount

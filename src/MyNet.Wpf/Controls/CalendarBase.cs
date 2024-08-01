@@ -22,11 +22,14 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using DynamicData;
 using MyNet.Observable;
+using MyNet.Observable.Deferrers;
 using MyNet.UI.Busy;
 using MyNet.UI.Busy.Models;
+using MyNet.UI.Extensions;
 using MyNet.Utilities;
 using MyNet.Utilities.DateTimes;
 using MyNet.Utilities.Helpers;
+using MyNet.Utilities.Logging;
 using MyNet.Utilities.Threading;
 using MyNet.Utilities.Units;
 using MyNet.Wpf.Busy;
@@ -70,6 +73,7 @@ namespace MyNet.Wpf.Controls
         private readonly ObservableCollection<CalendarItem> _displayDates = [];
         private readonly ObservableCollection<CalendarAppointment> _appointments = [];
         private readonly SingleTaskRunner _updateAppointments;
+        private readonly SingleTaskRunner _build;
 
         protected Grid? Grid { get; private set; }
 
@@ -108,11 +112,18 @@ namespace MyNet.Wpf.Controls
 
         protected CalendarBase()
         {
+            _build = new(async x => await Dispatcher.BeginInvoke(() => Build(x)));
             _updateAppointments = new(async x => await UpdateAppointmentsAsync(x).ConfigureAwait(false));
             BlackoutDates = new BlackoutDatesCollection(this);
             SelectedDatesInternal = new Calendars.SelectedDatesCollection(this);
             SetCurrentValue(DisplayDateProperty, DateTime.Now);
             ItemsSource = _appointments;
+        }
+
+        ~CalendarBase()
+        {
+            _updateAppointments.Dispose();
+            _build.Dispose();
         }
 
         #region Orientation
@@ -486,7 +497,7 @@ namespace MyNet.Wpf.Controls
             c.DisplayDateInternal = newDate;
 
             if (!oldDate.HasValue || c.MustBeRebuild(oldDate.Value, newDate))
-                c.Build();
+                c.Rebuild();
 
             c.OnDisplayDateChanged(new DateChangedEventArgs((DateTime)e.OldValue, (DateTime)e.NewValue));
         }
@@ -536,7 +547,7 @@ namespace MyNet.Wpf.Controls
             Debug.Assert(c != null);
 
             c.CoerceValue(DisplayDateProperty);
-            c.Build();
+            c.Rebuild();
         }
 
         private static object CoerceMaximumDate(DependencyObject d, object value)
@@ -593,7 +604,7 @@ namespace MyNet.Wpf.Controls
 
             c.CoerceValue(MaximumDateProperty);
             c.CoerceValue(DisplayDateProperty);
-            c.Build();
+            c.Rebuild();
         }
 
         private static object CoerceMinimumDate(DependencyObject d, object value)
@@ -645,7 +656,7 @@ namespace MyNet.Wpf.Controls
         private static void OnFirstDayOfWeekChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var c = d as CalendarBase;
-            c?.Build();
+            c?.Rebuild();
         }
 
         internal static bool IsValidFirstDayOfWeek(object value)
@@ -1102,7 +1113,7 @@ namespace MyNet.Wpf.Controls
             }
 
             CurrentDate = DisplayDate;
-            Build();
+            Rebuild();
         }
 
         public virtual IEnumerable<CalendarItem> GetCalendarItems() => DatesItemsControl?.Items.OfType<CalendarItem>() ?? [];
@@ -1139,7 +1150,7 @@ namespace MyNet.Wpf.Controls
 
         protected internal virtual bool IsInactive(DateTime date) => false;
 
-        protected virtual void BuildCore()
+        protected virtual void BuildCore(CancellationToken cancellationToken)
         {
             if (PreviousButton != null)
                 PreviousButton.IsEnabled = CanGoToPreviousDate();
@@ -1148,15 +1159,20 @@ namespace MyNet.Wpf.Controls
 
             var dates = GetDisplayDates().ToList();
 
+            cancellationToken.ThrowIfCancellationRequested();
+
             SetValue(RowsCountPropertyKey, dates.MaxOrDefault(x => x.row) + 1);
             SetValue(ColumnsCountPropertyKey, dates.MaxOrDefault(x => x.column) + 1);
             DatesItemsControl?.SetValue(RowsCountPropertyKey, dates.MaxOrDefault(x => x.row) + 1);
             DatesItemsControl?.SetValue(ColumnsCountPropertyKey, dates.MaxOrDefault(x => x.column) + 1);
 
+            cancellationToken.ThrowIfCancellationRequested();
+
             _columnHeaders.Set(GetColumnHeaders());
             _rowHeaders.Set(GetRowHeaders());
             _displayDates.Set(dates.Select(x =>
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 var item = new CalendarItem(this, x.date, IntervalUnit);
                 Grid.SetRow(item, x.row);
                 Grid.SetColumn(item, x.column);
@@ -1166,17 +1182,38 @@ namespace MyNet.Wpf.Controls
 
                 return item;
             }));
+
+            cancellationToken.ThrowIfCancellationRequested();
+
+            if (GetCalendarItemFromDate(CurrentDate) is CalendarItem calendarItem)
+                FocusItem(calendarItem);
         }
 
-        protected void Build()
+        protected void Rebuild()
         {
-            BuildCore();
+            if (IsInitialized)
+            {
+                _build.Cancel();
+                _build.Run();
+            }
+        }
 
-            SetValue(DisplayDateStartPropertyKey, _displayDates.MinOrDefault(x => x.Date));
-            SetValue(DisplayDateEndPropertyKey, _displayDates.MaxOrDefault(x => x.Date));
-            UpdateAppointments();
-            RefreshAccurateDateControl();
-            RefreshAccurateDatePreviewControl();
+        private void Build(CancellationToken cancellationToken)
+        {
+            try
+            {
+                BuildCore(cancellationToken);
+
+                SetValue(DisplayDateStartPropertyKey, _displayDates.MinOrDefault(x => x.Date));
+                SetValue(DisplayDateEndPropertyKey, _displayDates.MaxOrDefault(x => x.Date));
+                UpdateAppointments();
+                RefreshAccurateDateControl();
+                RefreshAccurateDatePreviewControl();
+            }
+            catch (OperationCanceledException)
+            {
+                // Nothing
+            }
         }
 
         protected virtual IEnumerable<object> GetColumnHeaders() => [];
@@ -1595,7 +1632,7 @@ namespace MyNet.Wpf.Controls
             var item = GetCalendarItemFromDate(CurrentDate);
 
             if (item is null)
-                SetCurrentDate(date);
+                CurrentDate = date;
             else
                 FocusItem(item);
         }

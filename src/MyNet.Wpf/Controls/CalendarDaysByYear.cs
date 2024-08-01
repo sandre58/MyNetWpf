@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -46,7 +47,7 @@ namespace MyNet.Wpf.Controls
             var c = d as CalendarDaysByYear;
             Debug.Assert(c != null);
 
-            c.Build();
+            c.Rebuild();
         }
 
         #endregion DisplayEndMonth
@@ -101,15 +102,17 @@ namespace MyNet.Wpf.Controls
                                      .ToList();
         }
 
-        protected override void BuildCore()
+        protected override void BuildCore(CancellationToken cancellationToken)
         {
-            base.BuildCore();
+            base.BuildCore(cancellationToken);
 
             if (Grid is null) return;
             Grid.Children.RemoveRange(2, Grid.Children.Count - 2);
 
             foreach (var calendarItem in GetCalendarItems().ToList())
             {
+                cancellationToken.ThrowIfCancellationRequested();
+
                 var date = calendarItem.Date;
                 if (date.Date == date.LastDayOfWeek(FirstDayOfWeek).Date || date.Date == date.LastDayOfMonth().Date)
                 {

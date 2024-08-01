@@ -36,7 +36,7 @@ namespace MyNet.Wpf.Controls
             var c = d as CalendarHoursByWeek;
             Debug.Assert(c != null);
 
-            c.Build();
+            c.Rebuild();
         }
 
         private static object CoerceDisplayTimeEnd(DependencyObject d, object value)
@@ -71,7 +71,7 @@ namespace MyNet.Wpf.Controls
             Debug.Assert(c != null);
 
             c.CoerceValue(DisplayTimeEndProperty);
-            c.Build();
+            c.Rebuild();
         }
 
         #endregion DisplayTimeStart

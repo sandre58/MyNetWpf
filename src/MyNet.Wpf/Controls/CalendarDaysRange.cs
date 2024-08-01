@@ -38,7 +38,7 @@ namespace MyNet.Wpf.Controls
             var c = d as CalendarDaysRange;
             Debug.Assert(c != null);
 
-            c.Build();
+            c.Rebuild();
         }
 
         #endregion DisplayDaysCount
