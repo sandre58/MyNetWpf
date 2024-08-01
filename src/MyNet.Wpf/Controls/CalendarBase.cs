@@ -22,14 +22,11 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using DynamicData;
 using MyNet.Observable;
-using MyNet.Observable.Deferrers;
 using MyNet.UI.Busy;
 using MyNet.UI.Busy.Models;
-using MyNet.UI.Extensions;
 using MyNet.Utilities;
 using MyNet.Utilities.DateTimes;
 using MyNet.Utilities.Helpers;
-using MyNet.Utilities.Logging;
 using MyNet.Utilities.Threading;
 using MyNet.Utilities.Units;
 using MyNet.Wpf.Busy;
@@ -72,7 +69,7 @@ namespace MyNet.Wpf.Controls
         private readonly ObservableCollection<object> _rowHeaders = [];
         private readonly ObservableCollection<CalendarItem> _displayDates = [];
         private readonly ObservableCollection<CalendarAppointment> _appointments = [];
-        private readonly RefreshDeferrer _updateAppointments = new();
+        private readonly SingleTaskRunner _updateAppointments;
         private readonly SingleTaskRunner _build;
 
         protected Grid? Grid { get; private set; }
@@ -112,14 +109,8 @@ namespace MyNet.Wpf.Controls
 
         protected CalendarBase()
         {
-            var cancellationToken = new CancellationTokenSource();
             _build = new(async x => await Dispatcher.BeginInvoke(() => Build(x)));
-            _updateAppointments.Subscribe(this, async () =>
-            {
-                cancellationToken.Cancel();
-                cancellationToken = new CancellationTokenSource();
-                await UpdateAppointmentsAsync(cancellationToken.Token).ConfigureAwait(false);
-            }, 100);
+            _updateAppointments = new(async x => await UpdateAppointmentsAsync(x).ConfigureAwait(false));
             BlackoutDates = new BlackoutDatesCollection(this);
             SelectedDatesInternal = new Calendars.SelectedDatesCollection(this);
             SetCurrentValue(DisplayDateProperty, DateTime.Now);
@@ -1802,11 +1793,7 @@ namespace MyNet.Wpf.Controls
             }
         }
 
-        protected void UpdateAppointments()
-        {
-            if (IsInitialized)
-                _updateAppointments.AskRefresh();
-        }
+        protected void UpdateAppointments() => _updateAppointments.Run();
 
         private async Task UpdateAppointmentsAsync(CancellationToken cancellationToken)
          => await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ =>
@@ -1814,22 +1801,13 @@ namespace MyNet.Wpf.Controls
              try
              {
                  var calendarItems = GetCalendarItems().ToList();
-                 var appointments = Dispatcher.Invoke(() => Appointments)?.OfType<IAppointment>().SelectMany(x =>
-                 {
-                     cancellationToken.ThrowIfCancellationRequested();
-
-                     return Dispatcher.Invoke(() => CreateCalendarAppointments(x).ToList());
-                 }).ToList();
+                 var appointments = Dispatcher.Invoke(() => Appointments)?.OfType<IAppointment>().SelectMany(x => Dispatcher.Invoke(() => CreateCalendarAppointments(x).ToList())).ToList();
 
                  await Dispatcher.BeginInvoke(() => _appointments.Clear());
 
                  if (appointments is not null && await AddAppointmentsAsync(appointments, cancellationToken).ConfigureAwait(false))
                      foreach (var item in calendarItems)
-                     {
-                         cancellationToken.ThrowIfCancellationRequested();
-
                          await Dispatcher.BeginInvoke(() => item.UpdateAppointments());
-                     }
              }
              catch (OperationCanceledException)
              {

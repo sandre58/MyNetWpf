@@ -94,7 +94,8 @@
                                           HorizontalAlignment="Stretch"
                                           UniqueKey="cal_0_0_0"
                                           Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=0}">
-                            <my:CalendarHoursByWeek Appointments="{Binding Appointments}"
+                            <my:CalendarHoursByWeek AddCommand="{Binding Appointments.AddToDateCommand}"
+                                                    Appointments="{Binding Appointments.Items}"
                                                     AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
                                                     DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
                                                     DisplayDate="{Binding DisplayDate}"
@@ -108,7 +109,8 @@
                                           HorizontalAlignment="Stretch"
                                           UniqueKey="cal_0_0_1"
                                           Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=1}">
-                            <my:CalendarDaysByMonth Appointments="{Binding Appointments}"
+                            <my:CalendarDaysByMonth AddCommand="{Binding Appointments.AddToDateCommand}"
+                                                    Appointments="{Binding Appointments.Items}"
                                                     AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
                                                     DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
                                                     DisplayDate="{Binding DisplayDate}"
@@ -122,7 +124,8 @@
                                           HorizontalAlignment="Stretch"
                                           UniqueKey="cal_0_0_2"
                                           Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=2}">
-                            <my:CalendarDaysByYear Appointments="{Binding Appointments}"
+                            <my:CalendarDaysByYear AddCommand="{Binding Appointments.AddToDateCommand}"
+                                                   Appointments="{Binding Appointments.Items}"
                                                    AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
                                                    DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
                                                    DisplayDate="{Binding DisplayDate}"
@@ -138,7 +141,8 @@
                                           HorizontalAlignment="Stretch"
                                           UniqueKey="cal_0_0_3"
                                           Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=3}">
-                            <my:CalendarDaysRange Appointments="{Binding Appointments}"
+                            <my:CalendarDaysRange AddCommand="{Binding Appointments.AddToDateCommand}"
+                                                  Appointments="{Binding Appointments.Items}"
                                                   AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
                                                   DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
                                                   DisplayDate="{Binding DisplayDate}"
@@ -153,7 +157,8 @@
                                           HorizontalAlignment="Stretch"
                                           UniqueKey="cal_0_0_4"
                                           Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=4}">
-                            <my:CalendarHoursByWeek Appointments="{Binding Appointments}"
+                            <my:CalendarHoursByWeek AddCommand="{Binding Appointments.AddToDateCommand}"
+                                                    Appointments="{Binding Appointments.Items}"
                                                     AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
                                                     DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
                                                     DisplayDate="{Binding DisplayDate}"
@@ -246,7 +251,8 @@
                                           UniqueKey="cal_1_0_0"
                                           Visibility="{Binding SelectedIndex, ElementName=mode2, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=0}">
                             <my:CalendarHoursByWeek Style="{StaticResource MyNet.Styles.Calendar.HoursByWeek.Alternate}"
-                                                    Appointments="{Binding Appointments}"
+                                                    AddCommand="{Binding Appointments.AddToDateCommand}"
+                                                    Appointments="{Binding Appointments.Items}"
                                                     AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
                                                     DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
                                                     DisplayDate="{Binding DisplayDate}"
@@ -261,7 +267,8 @@
                                           UniqueKey="cal_1_0_1"
                                           Visibility="{Binding SelectedIndex, ElementName=mode2, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=1}">
                             <my:CalendarDaysByMonth Style="{StaticResource MyNet.Styles.Calendar.DaysByMonth.Alternate}"
-                                                    Appointments="{Binding Appointments}"
+                                                    AddCommand="{Binding Appointments.AddToDateCommand}"
+                                                    Appointments="{Binding Appointments.Items}"
                                                     AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
                                                     DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
                                                     DisplayDate="{Binding DisplayDate}"
@@ -276,7 +283,8 @@
                                           UniqueKey="cal_1_0_2"
                                           Visibility="{Binding SelectedIndex, ElementName=mode2, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=2}">
                             <my:CalendarDaysByYear Style="{StaticResource MyNet.Styles.Calendar.DaysByYear.Alternate}"
-                                                   Appointments="{Binding Appointments}"
+                                                   AddCommand="{Binding Appointments.AddToDateCommand}"
+                                                   Appointments="{Binding Appointments.Items}"
                                                    AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
                                                    DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
                                                    DisplayDate="{Binding DisplayDate}"
@@ -293,7 +301,8 @@
                                           UniqueKey="cal_1_0_3"
                                           Visibility="{Binding SelectedIndex, ElementName=mode2, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=3}">
                             <my:CalendarDaysRange Style="{StaticResource MyNet.Styles.Calendar.DaysRange.Alternate}"
-                                                  Appointments="{Binding Appointments}"
+                                                  AddCommand="{Binding Appointments.AddToDateCommand}"
+                                                  Appointments="{Binding Appointments.Items}"
                                                   AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
                                                   DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
                                                   DisplayDate="{Binding DisplayDate}"
@@ -309,7 +318,8 @@
                                           UniqueKey="cal_1_0_4"
                                           Visibility="{Binding SelectedIndex, ElementName=mode2, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=4}">
                             <my:CalendarHoursByWeek Style="{StaticResource MyNet.Styles.Calendar.HoursByWeek.Alternate}"
-                                                    Appointments="{Binding Appointments}"
+                                                    AddCommand="{Binding Appointments.AddToDateCommand}"
+                                                    Appointments="{Binding Appointments.Items}"
                                                     AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
                                                     DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
                                                     DisplayDate="{Binding DisplayDate}"
