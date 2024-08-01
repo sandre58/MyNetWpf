@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.9.1] - 2024-08-01
+### :bug: Bug Fixes
+- [`cb45612`](https://github.com/sandre58/MyNetWpf/commit/cb45612fe9f26b2b187fc70a7af09f60e4424bcd) - Thread safe in calendar *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.9.0] - 2024-08-01
 ### :sparkles: New Features
 - [`85b2133`](https://github.com/sandre58/MyNetWpf/commit/85b213330119782926bfb4e485b600bb6425e2e2) - build calendar async *(commit by [@sandre58](https://github.com/sandre58))*
@@ -193,3 +198,4 @@
 [v4.8.5]: https://github.com/sandre58/MyNetWpf/compare/v4.8.4...v4.8.5
 [v4.8.6]: https://github.com/sandre58/MyNetWpf/compare/v4.8.5...v4.8.6
 [v4.9.0]: https://github.com/sandre58/MyNetWpf/compare/v4.8.6...v4.9.0
+[v4.9.1]: https://github.com/sandre58/MyNetWpf/compare/v4.9.0...v4.9.1
