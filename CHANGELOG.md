@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.9.0] - 2024-08-01
+### :sparkles: New Features
+- [`85b2133`](https://github.com/sandre58/MyNetWpf/commit/85b213330119782926bfb4e485b600bb6425e2e2) - build calendar async *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.8.6] - 2024-07-31
 ### :bug: Bug Fixes
 - [`e25aed7`](https://github.com/sandre58/MyNetWpf/commit/e25aed7565b6657a099496ac5c28dc7d231547d0) - fix calendar by year *(commit by [@sandre58](https://github.com/sandre58))*
@@ -187,3 +192,4 @@
 [v4.8.4]: https://github.com/sandre58/MyNetWpf/compare/v4.8.3...v4.8.4
 [v4.8.5]: https://github.com/sandre58/MyNetWpf/compare/v4.8.4...v4.8.5
 [v4.8.6]: https://github.com/sandre58/MyNetWpf/compare/v4.8.5...v4.8.6
+[v4.9.0]: https://github.com/sandre58/MyNetWpf/compare/v4.8.6...v4.9.0
