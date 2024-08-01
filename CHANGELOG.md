@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.9.3] - 2024-08-01
+### :bug: Bug Fixes
+- [`bf21f9a`](https://github.com/sandre58/MyNetWpf/commit/bf21f9a6625924f663b370d4e5d7b499562e49a7) - fi calendar *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.9.2] - 2024-08-01
 ### :bug: Bug Fixes
 - [`89756b9`](https://github.com/sandre58/MyNetWpf/commit/89756b9a30513f11e7227a737f3cd4c1a6f07186) - fix calendar *(commit by [@sandre58](https://github.com/sandre58))*
@@ -205,3 +210,4 @@
 [v4.9.0]: https://github.com/sandre58/MyNetWpf/compare/v4.8.6...v4.9.0
 [v4.9.1]: https://github.com/sandre58/MyNetWpf/compare/v4.9.0...v4.9.1
 [v4.9.2]: https://github.com/sandre58/MyNetWpf/compare/v4.9.1...v4.9.2
+[v4.9.3]: https://github.com/sandre58/MyNetWpf/compare/v4.9.2...v4.9.3
