@@ -1726,7 +1726,7 @@ namespace MyNet.Wpf.Controls
 
                     if (Dispatcher.Invoke(() => AppointmentMustBeDisplayed(appointment)))
                     {
-                        var appointments = Dispatcher.Invoke(() => GetCalendarAppointments(appointment).ToList());
+                        var appointments = Dispatcher.Invoke(() => CreateCalendarAppointments(appointment).ToList());
                         await AddAppointmentsAsync(appointments, cancellationToken).ConfigureAwait(false);
                     }
                 }
@@ -1767,7 +1767,7 @@ namespace MyNet.Wpf.Controls
         protected virtual IEnumerable<(int row, int column, int rowSpan, int columnSpan)> GetDisplayedAppointments(IAppointment appointment, IEnumerable<(ImmutablePeriod period, int row, int column)> allDisplayedDates)
             => allDisplayedDates.GroupBy(x => x.column).Select(x => (x.Min(y => y.row), x.Key, x.Count(), 1));
 
-        private IEnumerable<CalendarAppointment> GetCalendarAppointments(IAppointment appointment)
+        private IEnumerable<CalendarAppointment> CreateCalendarAppointments(IAppointment appointment)
         {
             var availablePeriods = GetCalendarItems().Select(x => (x.Period, Grid.GetRow(x), Grid.GetColumn(x))).ToList();
             if (availablePeriods.Count == 0) yield break;
@@ -1806,7 +1806,7 @@ namespace MyNet.Wpf.Controls
              try
              {
                  var calendarItems = GetCalendarItems().ToList();
-                 var appointments = Dispatcher.Invoke(() => Appointments?.OfType<IAppointment>().SelectMany(GetCalendarAppointments).ToList());
+                 var appointments = Dispatcher.Invoke(() => Appointments)?.OfType<IAppointment>().SelectMany(x => Dispatcher.Invoke(() => CreateCalendarAppointments(x).ToList())).ToList();
 
                  await Dispatcher.BeginInvoke(() => _appointments.Clear());
 
