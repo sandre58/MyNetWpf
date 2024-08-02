@@ -1,5 +1,10 @@
 # Changelog
 
+## [v4.10.0] - 2024-08-02
+### :sparkles: New Features
+- [`968ca39`](https://github.com/sandre58/MyNetWpf/commit/968ca3930adc78b1669294e7e769959cbf1e12c6) - add new calendars *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.9.4] - 2024-08-01
 ### :bug: Bug Fixes
 - [`6c3d9f8`](https://github.com/sandre58/MyNetWpf/commit/6c3d9f89a80c8a7d64244ac2cefca585b4e15a65) - fix calendar *(commit by [@sandre58](https://github.com/sandre58))*
@@ -217,3 +222,4 @@
 [v4.9.2]: https://github.com/sandre58/MyNetWpf/compare/v4.9.1...v4.9.2
 [v4.9.3]: https://github.com/sandre58/MyNetWpf/compare/v4.9.2...v4.9.3
 [v4.9.4]: https://github.com/sandre58/MyNetWpf/compare/v4.9.3...v4.9.4
+[v4.10.0]: https://github.com/sandre58/MyNetWpf/compare/v4.9.4...v4.10.0
