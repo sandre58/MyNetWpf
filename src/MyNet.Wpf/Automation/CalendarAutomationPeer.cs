@@ -99,7 +99,7 @@ namespace MyNet.Wpf.Automation
                 }
             }
 
-            if (OwningScheduler.PreviousButton is not null)
+            if (OwningScheduler.TodayButton is not null)
             {
                 var buttonPeer = CreatePeerForElement(OwningScheduler.TodayButton);
                 if (buttonPeer != null)

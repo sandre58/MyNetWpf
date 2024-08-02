@@ -15,6 +15,7 @@ using System.Windows.Media;
 using MyNet.Observable.Translatables;
 using MyNet.UI.Commands;
 using MyNet.Utilities;
+using MyNet.Wpf.Commands;
 using MyNet.Wpf.Parameters;
 using MyNet.Wpf.Resources;
 using MyNet.Xaml;
@@ -60,8 +61,8 @@ namespace MyNet.Wpf.Controls
             {
                 _fontSizeComboBox.LostFocus += FontSizeComboBox_LostFocus;
                 _fontSizeComboBox.SelectionChanged += FontSizeComboBox_LostFocus;
-                ComboBoxAssist.SetDownCommand(_fontSizeComboBox, ComboBoxAssist.DownCommand);
-                ComboBoxAssist.SetUpCommand(_fontSizeComboBox, ComboBoxAssist.UpCommand);
+                TextFieldAssist.SetPreviousCommand(_fontSizeComboBox, AppCommands.ComboBoxDownCommand);
+                TextFieldAssist.SetNextCommand(_fontSizeComboBox, AppCommands.ComboBoxUpCommand);
                 _fontSizeComboBox.ItemsSource = new List<int> { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
                 _fontSizeComboBox.SelectedIndex = 4;
             }

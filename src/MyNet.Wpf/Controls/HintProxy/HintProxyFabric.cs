@@ -31,6 +31,7 @@ public static partial class HintProxyFabric
         Builders.Add(new HintProxyBuilder(c => c is NumericUpDown, c => new NumericUpDownHintProxy((NumericUpDown)c)));
         Builders.Add(new HintProxyBuilder(c => c is DatePicker, c => new DatePickerHintProxy((DatePicker)c)));
         Builders.Add(new HintProxyBuilder(c => c is TimePicker, c => new TimePickerHintProxy((TimePicker)c)));
+        Builders.Add(new HintProxyBuilder(c => c is MonthPicker, c => new MonthPickerHintProxy((MonthPicker)c)));
         Builders.Add(new HintProxyBuilder(c => c is ColorPicker, c => new ColorPickerHintProxy((ColorPicker)c)));
         Builders.Add(new HintProxyBuilder(c => c is ImagePicker, c => new ImagePickerHintProxy((ImagePicker)c)));
         Builders.Add(new HintProxyBuilder(c => c is AutoSuggestBox, c => new AutoSuggestBoxHintProxy((AutoSuggestBox)c)));

@@ -7,6 +7,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Base.Icons.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.Menu.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.Button.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.TextBox.xaml" />
@@ -81,7 +82,7 @@
                             </Border.RenderTransform>
                         </Border>
 
-                        <Grid Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
@@ -90,11 +91,12 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
                             <!-- Icon -->
                             <ContentControl x:Name="Icon"
-                                            Grid.Column="0"
+                                            Grid.Column="2"
                                             Margin="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource TemplatedParent}}"
                                             VerticalAlignment="Center"
                                             Content="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}}"
@@ -113,101 +115,111 @@
                             </ContentControl>
 
                             <!-- Content -->
-                            <Grid x:Name="grid"
-                                  Grid.Column="3"
-                                  MinWidth="1"
-                                  MinHeight="18">
-                                <Grid Grid.Column="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="3"
+                                  Margin="{TemplateBinding Padding}"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid x:Name="grid" MinWidth="1" MinHeight="18">
+                                    <Grid Grid.Column="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
 
-                                    <!-- Prefix -->
-                                    <TextBlock x:Name="PrefixTextBlock"
-                                               Grid.Column="0"
-                                               Margin="{StaticResource MyNet.Margins.Small.Horizontal}"
-                                               FontSize="{TemplateBinding FontSize}"
-                                               Opacity="{TemplateBinding p:HintAssist.HintOpacity}"
-                                               Text="{TemplateBinding p:TextFieldAssist.PrefixText}">
-                                        <TextBlock.Visibility>
-                                            <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
-                                                <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
-                                                <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
-                                                <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
-                                            </MultiBinding>
-                                        </TextBlock.Visibility>
-                                    </TextBlock>
+                                        <!-- Prefix -->
+                                        <TextBlock x:Name="PrefixTextBlock"
+                                                   Grid.Column="0"
+                                                   Margin="{StaticResource MyNet.Margins.Small.Horizontal}"
+                                                   FontSize="{TemplateBinding FontSize}"
+                                                   Opacity="{TemplateBinding p:HintAssist.HintOpacity}"
+                                                   Text="{TemplateBinding p:TextFieldAssist.PrefixText}">
+                                            <TextBlock.Visibility>
+                                                <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
+                                                    <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
+                                                    <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                    <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                </MultiBinding>
+                                            </TextBlock.Visibility>
+                                        </TextBlock>
 
-                                    <!-- Host Text -->
-                                    <TextBox x:Name="PART_TextBox"
-                                             Style="{StaticResource MyNet.Styles.TextBox.Embedded}"
-                                             Grid.Column="1"
-                                             HorizontalAlignment="Stretch"
-                                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                             VerticalContentAlignment="Center"
-                                             CaretBrush="{TemplateBinding p:TextFieldAssist.UnderlineBrush}"
-                                             SelectionBrush="{TemplateBinding p:TextFieldAssist.UnderlineBrush}" />
+                                        <!-- Host Text -->
+                                        <TextBox x:Name="PART_TextBox"
+                                                 Style="{StaticResource MyNet.Styles.TextBox.Embedded}"
+                                                 Grid.Column="1"
+                                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                 VerticalContentAlignment="Center"
+                                                 CaretBrush="{TemplateBinding p:TextFieldAssist.UnderlineBrush}"
+                                                 SelectionBrush="{TemplateBinding p:TextFieldAssist.UnderlineBrush}" />
 
-                                    <!-- Suffix -->
-                                    <TextBlock x:Name="SuffixTextBlock"
-                                               Grid.Column="2"
-                                               Margin="{StaticResource MyNet.Margins.Small.Horizontal}"
-                                               FontSize="{TemplateBinding FontSize}"
-                                               Opacity="{TemplateBinding p:HintAssist.HintOpacity}"
-                                               Text="{TemplateBinding p:TextFieldAssist.SuffixText}" />
+                                        <!-- Suffix -->
+                                        <TextBlock x:Name="SuffixTextBlock"
+                                                   Grid.Column="2"
+                                                   Margin="{StaticResource MyNet.Margins.Small.Horizontal}"
+                                                   FontSize="{TemplateBinding FontSize}"
+                                                   Opacity="{TemplateBinding p:HintAssist.HintOpacity}"
+                                                   Text="{TemplateBinding p:TextFieldAssist.SuffixText}" />
+                                    </Grid>
 
-                                    <!-- Clear button -->
-                                    <Button x:Name="PART_ClearButton" Style="{StaticResource MyNet.Styles.Button.Icon.Tool.Clear}" Grid.Column="3">
-                                        <Button.Visibility>
-                                            <MultiBinding Converter="{x:Static c:TextFieldClearButtonVisibilityConverter.Default}">
-                                                <Binding Path="(p:TextFieldAssist.HasClearButton)" RelativeSource="{RelativeSource TemplatedParent}" />
-                                                <Binding ElementName="Hint" Path="IsContentNullOrEmpty" />
-                                            </MultiBinding>
-                                        </Button.Visibility>
-                                    </Button>
+                                    <!-- SmartHint -->
+                                    <ctrl:SmartHint x:Name="Hint"
+                                                    Grid.Column="0"
+                                                    Margin="{TemplateBinding p:TextFieldAssist.TextBoxViewMargin}"
+                                                    FloatingOffset="{TemplateBinding p:HintAssist.FloatingOffset}"
+                                                    FloatingScale="{TemplateBinding p:HintAssist.FloatingScale}"
+                                                    FontFamily="{TemplateBinding p:HintAssist.FontFamily}"
+                                                    FontSize="{TemplateBinding FontSize}"
+                                                    HintOpacity="{TemplateBinding p:HintAssist.HintOpacity}"
+                                                    HintProxy="{Binding RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:HintProxyFabricConverter.Default}}"
+                                                    UseFloating="{TemplateBinding p:HintAssist.IsFloating}">
+                                        <ctrl:SmartHint.Hint>
+                                            <Border x:Name="HintBackgroundBorder" Background="{TemplateBinding p:HintAssist.Background}" CornerRadius="{StaticResource MyNet.CornerRadius.Control}">
+                                                <ContentPresenter x:Name="HintWrapper" Content="{TemplateBinding p:HintAssist.Hint}" />
+                                            </Border>
+                                        </ctrl:SmartHint.Hint>
+                                    </ctrl:SmartHint>
                                 </Grid>
-
-                                <!-- SmartHint -->
-                                <ctrl:SmartHint x:Name="Hint"
-                                                Grid.Column="0"
-                                                Margin="{TemplateBinding p:TextFieldAssist.TextBoxViewMargin}"
-                                                FloatingOffset="{TemplateBinding p:HintAssist.FloatingOffset}"
-                                                FloatingScale="{TemplateBinding p:HintAssist.FloatingScale}"
-                                                FontFamily="{TemplateBinding p:HintAssist.FontFamily}"
-                                                FontSize="{TemplateBinding FontSize}"
-                                                HintOpacity="{TemplateBinding p:HintAssist.HintOpacity}"
-                                                HintProxy="{Binding RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:HintProxyFabricConverter.Default}}"
-                                                UseFloating="{TemplateBinding p:HintAssist.IsFloating}">
-                                    <ctrl:SmartHint.Hint>
-                                        <Border x:Name="HintBackgroundBorder" Background="{TemplateBinding p:HintAssist.Background}" CornerRadius="{StaticResource MyNet.CornerRadius.Control}">
-                                            <ContentPresenter x:Name="HintWrapper" Content="{TemplateBinding p:HintAssist.Hint}" />
-                                        </Border>
-                                    </ctrl:SmartHint.Hint>
-                                </ctrl:SmartHint>
                             </Grid>
+
+                            <!-- Clear button -->
+                            <Button x:Name="PART_ClearButton"
+                                    Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
+                                    Grid.Column="4"
+                                    VerticalAlignment="Stretch"
+                                    p:ThemeAssist.CornerRadius="0"
+                                    Command="{x:Static p:TextFieldAssist.ClearCommand}"
+                                    Content="{me:Icon Kind=Close, Size=16}"
+                                    ToolTip="{me:Resource Clear}">
+                                <Button.Visibility>
+                                    <MultiBinding Converter="{x:Static c:TextFieldClearButtonVisibilityConverter.Default}">
+                                        <Binding Path="(p:TextFieldAssist.HasClearButton)" RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <Binding ElementName="Hint" Path="IsContentNullOrEmpty" />
+                                    </MultiBinding>
+                                </Button.Visibility>
+                            </Button>
 
                             <!-- Down -->
                             <RepeatButton x:Name="PART_NumericDown"
-                                          Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
-                                          Grid.Column="4"
+                                          Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
+                                          Grid.Column="6"
+                                          VerticalAlignment="Stretch"
+                                          p:ThemeAssist.CornerRadius="0"
+                                          Content="{Binding Path=(p:TextFieldAssist.PreviousButtonContent), RelativeSource={RelativeSource TemplatedParent}}"
                                           Delay="{TemplateBinding Delay}"
                                           Focusable="{TemplateBinding UpDownButtonsFocusable}"
-                                          Visibility="{Binding HideUpDownButtons, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}">
-                                <ctrl:PackIcon Margin="0" Kind="Minus" />
-                            </RepeatButton>
+                                          Visibility="{Binding HideUpDownButtons, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
 
                             <!-- Up -->
                             <RepeatButton x:Name="PART_NumericUp"
-                                          Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
-                                          Grid.Column="5"
+                                          Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
+                                          Grid.Column="7"
+                                          VerticalAlignment="Stretch"
+                                          p:ThemeAssist.CornerRadius="0"
+                                          Content="{Binding Path=(p:TextFieldAssist.NextButtonContent), RelativeSource={RelativeSource TemplatedParent}}"
                                           Delay="{TemplateBinding Delay}"
                                           Focusable="{TemplateBinding UpDownButtonsFocusable}"
-                                          Visibility="{Binding HideUpDownButtons, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}">
-                                <ctrl:PackIcon Margin="0" Kind="Plus" />
-                            </RepeatButton>
+                                          Visibility="{Binding HideUpDownButtons, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
                         </Grid>
                     </Grid>
                 </Border>
@@ -238,45 +250,45 @@
                     <Condition Property="ButtonsAlignment" Value="Right" />
                     <Condition Property="SwitchUpDownButtons" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="PART_NumericDown" Property="Grid.Column" Value="5" />
-                <Setter TargetName="PART_NumericUp" Property="Grid.Column" Value="4" />
+                <Setter TargetName="PART_NumericDown" Property="Grid.Column" Value="7" />
+                <Setter TargetName="PART_NumericUp" Property="Grid.Column" Value="6" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="ButtonsAlignment" Value="Left" />
                     <Condition Property="SwitchUpDownButtons" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="PART_NumericDown" Property="Grid.Column" Value="1" />
-                <Setter TargetName="PART_NumericUp" Property="Grid.Column" Value="2" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="ButtonsAlignment" Value="Left" />
-                    <Condition Property="SwitchUpDownButtons" Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter TargetName="PART_NumericDown" Property="Grid.Column" Value="2" />
+                <Setter TargetName="PART_NumericDown" Property="Grid.Column" Value="0" />
                 <Setter TargetName="PART_NumericUp" Property="Grid.Column" Value="1" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
+                    <Condition Property="ButtonsAlignment" Value="Left" />
+                    <Condition Property="SwitchUpDownButtons" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="PART_NumericDown" Property="Grid.Column" Value="1" />
+                <Setter TargetName="PART_NumericUp" Property="Grid.Column" Value="0" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
                     <Condition Property="ButtonsAlignment" Value="Opposite" />
                     <Condition Property="SwitchUpDownButtons" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="PART_NumericDown" Property="Grid.Column" Value="1" />
-                <Setter TargetName="PART_NumericUp" Property="Grid.Column" Value="4" />
+                <Setter TargetName="PART_NumericDown" Property="Grid.Column" Value="0" />
+                <Setter TargetName="PART_NumericUp" Property="Grid.Column" Value="6" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="ButtonsAlignment" Value="Opposite" />
                     <Condition Property="SwitchUpDownButtons" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="PART_NumericDown" Property="Grid.Column" Value="4" />
+                <Setter TargetName="PART_NumericDown" Property="Grid.Column" Value="6" />
                 <Setter TargetName="PART_NumericUp" Property="Grid.Column" Value="1" />
             </MultiTrigger>
 
             <!-- Icon Alignment -->
             <Trigger Property="p:IconAssist.Alignment" Value="Right">
-                <Setter TargetName="Icon" Property="Grid.Column" Value="6" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="5" />
             </Trigger>
             <Trigger Property="p:IconAssist.Alignment" Value="Bottom">
                 <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
@@ -296,26 +308,6 @@
             </MultiTrigger>
             <Trigger Property="p:HintAssist.IsFloating" Value="True">
                 <Setter TargetName="Hint" Property="FloatingOffset">
-                    <Setter.Value>
-                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
-                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
-                        </MultiBinding>
-                    </Setter.Value>
-                </Setter>
-                <Setter TargetName="PART_NumericDown" Property="Margin">
-                    <Setter.Value>
-                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
-                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
-                        </MultiBinding>
-                    </Setter.Value>
-                </Setter>
-                <Setter TargetName="PART_NumericUp" Property="Margin">
                     <Setter.Value>
                         <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
                             <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
@@ -393,6 +385,11 @@
                 <Setter TargetName="border" Property="ctrl:BottomDashedLineAdorner.IsAttached" Value="False" />
                 <Setter TargetName="grid" Property="Opacity" Value="1" />
             </Trigger>
+
+            <!-- IsEditable -->
+            <Trigger Property="p:TextFieldAssist.IsEditable" Value="False">
+                <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+            </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -428,7 +425,10 @@
         <Setter Property="p:IconAssist.Alignment" Value="Left" />
         <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
         <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+        <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
         <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
+        <Setter Property="p:TextFieldAssist.NextButtonContent" Value="{StaticResource MyNet.Icons.Plus.Tool}" />
+        <Setter Property="p:TextFieldAssist.PreviousButtonContent" Value="{StaticResource MyNet.Icons.Minus.Tool}" />
         <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="False" />
         <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="1" />
         <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -439,6 +439,11 @@
         <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border.Secondary}" />
         <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
         <Setter Property="p:ValidationAssist.Background" Value="Transparent" />
+        <Style.Triggers>
+            <Trigger Property="p:TextFieldAssist.IsEditable" Value="False">
+                <Setter Property="Cursor" Value="Arrow" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style x:Key="MyNet.Styles.NumericUpDown.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
@@ -473,6 +478,61 @@
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
     </Style>
     <Style x:Key="MyNet.Styles.NumericUpDown.Outlined.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Outlined}">
+        <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+        <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.NumericUpDown.Alternate" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}">
+        <Setter Property="ButtonsAlignment" Value="Opposite" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
+        <Setter Property="p:TextFieldAssist.NextButtonContent" Value="{StaticResource MyNet.Icons.ChevronRight.Medium}" />
+        <Setter Property="p:TextFieldAssist.PreviousButtonContent" Value="{StaticResource MyNet.Icons.ChevronLeft.Medium}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.NumericUpDown.Alternate.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Alternate}">
+        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+        <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.NumericUpDown.Alternate.Filled" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Alternate}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+        <Setter Property="p:TextFieldAssist.ButtonStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text.Foreground}">
+                    <Setter Property="Padding" Value="3 0" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.NumericUpDown.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Filled}">
+        <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+        <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+    </Style>
+
+    <Style x:Key="MyNet.Styles.NumericUpDown.Alternate.Outlined" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Filled}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
+        <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.NumericUpDown.Alternate.Outlined.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Outlined}">
         <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />

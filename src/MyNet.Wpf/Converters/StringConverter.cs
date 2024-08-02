@@ -17,7 +17,7 @@ namespace MyNet.Wpf.Converters
     /// Converts string values.
     /// </summary>
     public class StringConverter(LetterCasing casing, bool convertPlural = false, bool abbreviation = false, bool initials = false)
-                : IValueConverter
+                : IValueConverter, IMultiValueConverter
     {
         private readonly LetterCasing _casing = casing;
         private readonly bool _convertPlural = convertPlural;
@@ -29,16 +29,6 @@ namespace MyNet.Wpf.Converters
         public static StringConverter ToTitle { get; } = new StringConverter(LetterCasing.Title);
         public static StringConverter Default { get; } = new StringConverter(LetterCasing.Normal);
 
-        /// <summary>
-        /// Converts a value.
-        /// </summary>
-        /// <param name="value">The value produced by the binding source.</param>
-        /// <param name="targetType">The type of the binding target property.</param>
-        /// <param name="parameter">The converter parameter to use.</param>
-        /// <param name="culture">The culture to use in the converter.</param>
-        /// <returns>
-        /// A converted value. If the method returns null, the valid null value is used.
-        /// </returns>
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             if (value == null)
@@ -73,7 +63,7 @@ namespace MyNet.Wpf.Converters
                 else if (value is DateTime date)
                 {
                     var format = p.TranslateDatePattern();
-                    result = date.ToLocalTime().ToString(format, culture);
+                    result = date.ToString(format, culture);
                 }
                 else if (value is TimeSpan && int.TryParse(p, out var number))
                 {
@@ -91,16 +81,10 @@ namespace MyNet.Wpf.Converters
             return result?.ApplyCase(_casing);
         }
 
-        /// <summary>
-        /// Converts a value.
-        /// </summary>
-        /// <param name="value">The value that is produced by the binding target.</param>
-        /// <param name="targetType">The type to convert to.</param>
-        /// <param name="parameter">The converter parameter to use.</param>
-        /// <param name="culture">The culture to use in the converter.</param>
-        /// <returns>
-        /// A converted value. If the method returns null, the valid null value is used.
-        /// </returns>
+        public object? Convert(object[] values, Type targetType, object parameter, CultureInfo culture) => Convert(values.Length > 0 ? values[0] : null, targetType, values.Length > 1 ? values[1] : null, culture);
+
         public virtual object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture) => throw new NotSupportedException();
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture) => throw new NotImplementedException();
     }
 }

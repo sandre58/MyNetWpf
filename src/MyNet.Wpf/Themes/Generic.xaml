@@ -42,6 +42,7 @@
     <Style TargetType="{x:Type ctrl:ListSortDirectionIndicator}" BasedOn="{StaticResource MyNet.Styles.ListSortDirectionIndicator}" />
     <Style TargetType="{x:Type ctrl:LoadingIndicator}" BasedOn="{StaticResource MyNet.Styles.LoadingIndicator}" />
     <Style TargetType="{x:Type ctrl:MessageView}" BasedOn="{StaticResource MyNet.Styles.MessageView}" />
+    <Style TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker}" />
     <Style TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox}" />
     <Style TargetType="{x:Type ctrl:MultiComboBoxItem}" BasedOn="{StaticResource MyNet.Styles.MultiComboBoxItem}" />
     <Style TargetType="{x:Type ctrl:NavigationFrame}" BasedOn="{StaticResource MyNet.Styles.NavigationFrame}" />

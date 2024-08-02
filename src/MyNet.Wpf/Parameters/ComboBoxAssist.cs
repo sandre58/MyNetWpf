@@ -51,58 +51,6 @@ namespace MyNet.Wpf.Parameters
 
         #endregion
 
-        #region UpCommand
-
-        public static readonly DependencyProperty UpCommandProperty = DependencyProperty.RegisterAttached(
-            "UpCommand",
-            typeof(ICommand),
-            typeof(ComboBoxAssist),
-            new PropertyMetadata(UpCommand));
-
-        public static ICommand GetUpCommand(DependencyObject item) => (ICommand)item.GetValue(UpCommandProperty);
-
-        public static void SetUpCommand(DependencyObject item, ICommand value) => item.SetValue(UpCommandProperty, value);
-
-        public static ICommand UpCommand => CommandsManager.Create<object>(Up, CanUp);
-
-        private static void Up(object? obj)
-        {
-            if (obj is ComboBox cb && cb.SelectedIndex < cb.Items.Count - 1)
-            {
-                cb.SelectedIndex += 1;
-            }
-        }
-
-        private static bool CanUp(object? obj) => obj is ComboBox cb && cb.SelectedIndex < cb.Items.Count - 1;
-
-        #endregion
-
-        #region DownCommand
-
-        public static readonly DependencyProperty DownCommandProperty = DependencyProperty.RegisterAttached(
-            "DownCommand",
-            typeof(ICommand),
-            typeof(ComboBoxAssist),
-            new PropertyMetadata(DownCommand));
-
-        public static ICommand GetDownCommand(DependencyObject item) => (ICommand)item.GetValue(DownCommandProperty);
-
-        public static void SetDownCommand(DependencyObject item, ICommand value) => item.SetValue(DownCommandProperty, value);
-
-        public static ICommand DownCommand => CommandsManager.Create<object>(Down, CanDown);
-
-        private static void Down(object? obj)
-        {
-            if (obj is ComboBox cb && cb.SelectedIndex > 0)
-            {
-                cb.SelectedIndex -= 1;
-            }
-        }
-
-        private static bool CanDown(object? obj) => obj is ComboBox cb && cb.SelectedIndex > 0;
-
-        #endregion
-
         #region AttachedProperty : ShowSelectedItem
 
         public static readonly DependencyProperty ShowSelectedItemProperty = DependencyProperty.RegisterAttached(

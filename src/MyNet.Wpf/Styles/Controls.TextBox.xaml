@@ -108,10 +108,11 @@
                             </Border.RenderTransform>
                         </Border>
 
-                        <Grid Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
@@ -135,84 +136,94 @@
                                 </ContentControl.Resources>
                             </ContentControl>
 
-                            <!-- Content -->
-                            <Grid x:Name="grid"
-                                  Grid.Column="1"
-                                  MinWidth="1"
-                                  MinHeight="18">
-                                <Grid Grid.Column="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="1"
+                                  Margin="{TemplateBinding Padding}"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 
-                                    <!-- Prefix -->
-                                    <TextBlock x:Name="PrefixTextBlock"
-                                               Grid.Column="0"
-                                               Margin="{StaticResource MyNet.Margins.Small.Horizontal}"
-                                               FontSize="{TemplateBinding FontSize}"
-                                               Opacity="{TemplateBinding p:HintAssist.HintOpacity}"
-                                               Text="{TemplateBinding p:TextFieldAssist.PrefixText}">
-                                        <TextBlock.Visibility>
-                                            <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
-                                                <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
-                                                <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
-                                                <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
-                                            </MultiBinding>
-                                        </TextBlock.Visibility>
-                                    </TextBlock>
+                                <!-- Content -->
+                                <Grid x:Name="grid" MinWidth="1" MinHeight="18">
+                                    <Grid Grid.Column="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
 
-                                    <!-- Host Text -->
-                                    <ScrollViewer x:Name="PART_ContentHost"
-                                                  Grid.Column="1"
-                                                  VerticalAlignment="Center"
-                                                  Panel.ZIndex="1"
-                                                  p:ScrollViewerAssist.IgnorePadding="True"
-                                                  Focusable="false"
-                                                  HorizontalScrollBarVisibility="Hidden"
-                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                  UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
-                                                  VerticalScrollBarVisibility="Hidden" />
+                                        <!-- Prefix -->
+                                        <TextBlock x:Name="PrefixTextBlock"
+                                                   Grid.Column="0"
+                                                   Margin="{StaticResource MyNet.Margins.Small.Horizontal}"
+                                                   FontSize="{TemplateBinding FontSize}"
+                                                   Opacity="{TemplateBinding p:HintAssist.HintOpacity}"
+                                                   Text="{TemplateBinding p:TextFieldAssist.PrefixText}">
+                                            <TextBlock.Visibility>
+                                                <MultiBinding Converter="{x:Static c:TextFieldPrefixTextVisibilityConverter.Default}">
+                                                    <Binding ElementName="Hint" Path="IsHintInFloatingPosition" />
+                                                    <Binding Path="(p:TextFieldAssist.PrefixText)" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                    <Binding Path="(p:HintAssist.Hint)" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                </MultiBinding>
+                                            </TextBlock.Visibility>
+                                        </TextBlock>
 
-                                    <!-- Suffix -->
-                                    <TextBlock x:Name="SuffixTextBlock"
-                                               Grid.Column="2"
-                                               Margin="{StaticResource MyNet.Margins.Small.Horizontal}"
-                                               FontSize="{TemplateBinding FontSize}"
-                                               Opacity="{TemplateBinding p:HintAssist.HintOpacity}"
-                                               Text="{TemplateBinding p:TextFieldAssist.SuffixText}" />
+                                        <!-- Host Text -->
+                                        <ScrollViewer x:Name="PART_ContentHost"
+                                                      Grid.Column="1"
+                                                      VerticalAlignment="Center"
+                                                      Panel.ZIndex="1"
+                                                      p:ScrollViewerAssist.IgnorePadding="True"
+                                                      Focusable="false"
+                                                      HorizontalScrollBarVisibility="Hidden"
+                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                      UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
+                                                      VerticalScrollBarVisibility="Hidden" />
 
-                                    <!-- Clear button -->
-                                    <Button x:Name="PART_ClearButton" Style="{StaticResource MyNet.Styles.Button.Icon.Tool.Clear}" Grid.Column="3">
-                                        <Button.Visibility>
-                                            <MultiBinding Converter="{x:Static c:TextFieldClearButtonVisibilityConverter.Default}">
-                                                <Binding Path="(p:TextFieldAssist.HasClearButton)" RelativeSource="{RelativeSource TemplatedParent}" />
-                                                <Binding ElementName="Hint" Path="IsContentNullOrEmpty" />
-                                            </MultiBinding>
-                                        </Button.Visibility>
-                                    </Button>
+                                        <!-- Suffix -->
+                                        <TextBlock x:Name="SuffixTextBlock"
+                                                   Grid.Column="2"
+                                                   Margin="{StaticResource MyNet.Margins.Small.Horizontal}"
+                                                   FontSize="{TemplateBinding FontSize}"
+                                                   Opacity="{TemplateBinding p:HintAssist.HintOpacity}"
+                                                   Text="{TemplateBinding p:TextFieldAssist.SuffixText}" />
+                                    </Grid>
+
+                                    <!-- SmartHint -->
+                                    <ctrl:SmartHint x:Name="Hint"
+                                                    Grid.Column="0"
+                                                    Margin="{TemplateBinding p:TextFieldAssist.TextBoxViewMargin}"
+                                                    FloatingOffset="{TemplateBinding p:HintAssist.FloatingOffset}"
+                                                    FloatingScale="{TemplateBinding p:HintAssist.FloatingScale}"
+                                                    FontFamily="{TemplateBinding p:HintAssist.FontFamily}"
+                                                    FontSize="{TemplateBinding FontSize}"
+                                                    HintOpacity="{TemplateBinding p:HintAssist.HintOpacity}"
+                                                    HintProxy="{Binding RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:HintProxyFabricConverter.Default}}"
+                                                    UseFloating="{TemplateBinding p:HintAssist.IsFloating}">
+                                        <ctrl:SmartHint.Hint>
+                                            <Border x:Name="HintBackgroundBorder" Background="{TemplateBinding p:HintAssist.Background}" CornerRadius="{StaticResource MyNet.CornerRadius.Control}">
+                                                <ContentPresenter x:Name="HintWrapper" Content="{TemplateBinding p:HintAssist.Hint}" />
+                                            </Border>
+                                        </ctrl:SmartHint.Hint>
+                                    </ctrl:SmartHint>
                                 </Grid>
-
-                                <!-- SmartHint -->
-                                <ctrl:SmartHint x:Name="Hint"
-                                                Grid.Column="0"
-                                                Margin="{TemplateBinding p:TextFieldAssist.TextBoxViewMargin}"
-                                                FloatingOffset="{TemplateBinding p:HintAssist.FloatingOffset}"
-                                                FloatingScale="{TemplateBinding p:HintAssist.FloatingScale}"
-                                                FontFamily="{TemplateBinding p:HintAssist.FontFamily}"
-                                                FontSize="{TemplateBinding FontSize}"
-                                                HintOpacity="{TemplateBinding p:HintAssist.HintOpacity}"
-                                                HintProxy="{Binding RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:HintProxyFabricConverter.Default}}"
-                                                UseFloating="{TemplateBinding p:HintAssist.IsFloating}">
-                                    <ctrl:SmartHint.Hint>
-                                        <Border x:Name="HintBackgroundBorder" Background="{TemplateBinding p:HintAssist.Background}" CornerRadius="{StaticResource MyNet.CornerRadius.Control}">
-                                            <ContentPresenter x:Name="HintWrapper" Content="{TemplateBinding p:HintAssist.Hint}" />
-                                        </Border>
-                                    </ctrl:SmartHint.Hint>
-                                </ctrl:SmartHint>
                             </Grid>
+
+                            <!-- Clear button -->
+                            <Button x:Name="PART_ClearButton"
+                                    Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
+                                    Grid.Column="2"
+                                    VerticalAlignment="Stretch"
+                                    p:ThemeAssist.CornerRadius="0"
+                                    Command="{x:Static p:TextFieldAssist.ClearCommand}"
+                                    Content="{me:Icon Kind=Close,
+                                                      Size=16}"
+                                    ToolTip="{me:Resource Clear}">
+                                <Button.Visibility>
+                                    <MultiBinding Converter="{x:Static c:TextFieldClearButtonVisibilityConverter.Default}">
+                                        <Binding Path="(p:TextFieldAssist.HasClearButton)" RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <Binding ElementName="Hint" Path="IsContentNullOrEmpty" />
+                                    </MultiBinding>
+                                </Button.Visibility>
+                            </Button>
                         </Grid>
                     </Grid>
                 </Border>
@@ -239,7 +250,7 @@
 
             <!-- Icon Alignment -->
             <Trigger Property="p:IconAssist.Alignment" Value="Right">
-                <Setter TargetName="Icon" Property="Grid.Column" Value="2" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="3" />
             </Trigger>
             <Trigger Property="p:IconAssist.Alignment" Value="Bottom">
                 <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
@@ -366,6 +377,7 @@
         <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
         <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="False" />
         <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="1" />
+        <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
         <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="Transparent" />

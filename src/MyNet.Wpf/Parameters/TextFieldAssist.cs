@@ -100,6 +100,19 @@ namespace MyNet.Wpf.Parameters
 
         #endregion
 
+        #region Format
+
+        public static readonly DependencyProperty FormatProperty = DependencyProperty.RegisterAttached(
+            "Format", typeof(string), typeof(TextFieldAssist), new PropertyMetadata(default(string?)));
+
+        public static void SetFormat(DependencyObject element, string? value)
+            => element.SetValue(FormatProperty, value);
+
+        public static string? GetFormat(DependencyObject element)
+            => (string?)element.GetValue(FormatProperty);
+
+        #endregion
+
         #region HasClearButton
 
         public static readonly DependencyProperty HasClearButtonProperty = DependencyProperty.RegisterAttached(
@@ -227,6 +240,9 @@ namespace MyNet.Wpf.Parameters
                     case TimePicker timePicker:
                         timePicker.SetCurrentValue(TimePicker.SelectedTimeProperty, null);
                         break;
+                    case MonthPicker monthPicker:
+                        monthPicker.SetCurrentValue(MonthPicker.SelectedMonthProperty, null);
+                        break;
                     case ColorPickerBase colorPicker:
                         colorPicker.SetCurrentValue(ColorPickerBase.ColorNameProperty, null);
                         break;
@@ -254,6 +270,20 @@ namespace MyNet.Wpf.Parameters
         public static void SetIsReadOnly(DependencyObject item, bool value) => item.SetValue(IsReadOnlyProperty, value);
 
         #endregion IsReadOnly
+
+        #region IsEditable
+
+        public static readonly DependencyProperty IsEditableProperty = DependencyProperty.RegisterAttached(
+            "IsEditable",
+            typeof(bool),
+            typeof(TextFieldAssist),
+            new PropertyMetadata(true));
+
+        public static bool GetIsEditable(DependencyObject item) => (bool)item.GetValue(IsEditableProperty);
+
+        public static void SetIsEditable(DependencyObject item, bool value) => item.SetValue(IsEditableProperty, value);
+
+        #endregion IsEditable
 
         #region Mask
 
@@ -382,6 +412,76 @@ namespace MyNet.Wpf.Parameters
         }
 
         #endregion Mask
+
+        #region ButtonStyle
+
+        public static readonly DependencyProperty ButtonStyleProperty = DependencyProperty.RegisterAttached(
+            "ButtonStyle",
+            typeof(Style),
+            typeof(TextFieldAssist),
+            new PropertyMetadata(null));
+
+        public static Style GetButtonStyle(UIElement item) => (Style)item.GetValue(ButtonStyleProperty);
+
+        public static void SetButtonStyle(UIElement item, Style value) => item.SetValue(ButtonStyleProperty, value);
+
+        #endregion ButtonStyle
+
+        #region PreviousCommand
+
+        public static readonly DependencyProperty PreviousCommandProperty = DependencyProperty.RegisterAttached(
+            "PreviousCommand",
+            typeof(ICommand),
+            typeof(TextFieldAssist),
+            new PropertyMetadata(null));
+
+        public static ICommand GetPreviousCommand(DependencyObject item) => (ICommand)item.GetValue(PreviousCommandProperty);
+
+        public static void SetPreviousCommand(DependencyObject item, ICommand value) => item.SetValue(PreviousCommandProperty, value);
+
+        #endregion
+
+        #region NextCommand
+
+        public static readonly DependencyProperty NextCommandProperty = DependencyProperty.RegisterAttached(
+            "NextCommand",
+            typeof(ICommand),
+            typeof(TextFieldAssist),
+            new PropertyMetadata(null));
+
+        public static ICommand GetNextCommand(DependencyObject item) => (ICommand)item.GetValue(NextCommandProperty);
+
+        public static void SetNextCommand(DependencyObject item, ICommand value) => item.SetValue(NextCommandProperty, value);
+
+        #endregion
+
+        #region NextButtonContent
+
+        public static readonly DependencyProperty NextButtonContentProperty = DependencyProperty.RegisterAttached(
+            "NextButtonContent",
+            typeof(object),
+            typeof(TextFieldAssist),
+            new PropertyMetadata(null));
+
+        public static object GetNextButtonContent(DependencyObject item) => (object)item.GetValue(NextButtonContentProperty);
+
+        public static void SetNextButtonContent(DependencyObject item, object value) => item.SetValue(NextButtonContentProperty, value);
+
+        #endregion
+
+        #region PreviousButtonContent
+
+        public static readonly DependencyProperty PreviousButtonContentProperty = DependencyProperty.RegisterAttached(
+            "PreviousButtonContent",
+            typeof(object),
+            typeof(TextFieldAssist),
+            new PropertyMetadata(null));
+
+        public static object GetPreviousButtonContent(DependencyObject item) => (object)item.GetValue(PreviousButtonContentProperty);
+
+        public static void SetPreviousButtonContent(DependencyObject item, object value) => item.SetValue(PreviousButtonContentProperty, value);
+
+        #endregion
 
         #region Methods
 

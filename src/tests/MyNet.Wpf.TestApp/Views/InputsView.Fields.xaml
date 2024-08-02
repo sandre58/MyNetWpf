@@ -10,7 +10,7 @@
                    d:DesignWidth="800"
                    mc:Ignorable="d">
     <my:NavigationPage.Resources>
-        <Style x:Key="MyTestApp.Styles.TextBlock.ColumnHeader" BasedOn="{StaticResource MyNet.Styles.TextBlock.Caption}" TargetType="{x:Type TextBlock}">
+        <Style x:Key="MyTestApp.Styles.TextBlock.ColumnHeader" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MyNet.Styles.TextBlock.Caption}">
             <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Small}" />
             <Setter Property="Typography.Capitals" Value="AllSmallCaps" />
         </Style>
@@ -27,7 +27,7 @@
 
                     <CheckBox x:Name="IsReadOnly" Content="ReadOnly" IsChecked="False" />
 
-                    <!--  Hint  -->
+                    <!-- Hint -->
                     <TextBox x:Name="HintTextBox"
                              HorizontalAlignment="Stretch"
                              my:HintAssist.Hint="Watermark"
@@ -44,7 +44,7 @@
                              my:HintAssist.IsFloating="True"
                              Text="" />
 
-                    <!--  Helper text  -->
+                    <!-- Helper text -->
                     <TextBox x:Name="HelperTextBox"
                              HorizontalAlignment="Stretch"
                              my:HintAssist.Hint="HelperText"
@@ -54,7 +54,7 @@
                              my:HintAssist.Hint="Validation error"
                              my:HintAssist.IsFloating="True" />
 
-                    <!--  Icon  -->
+                    <!-- Icon -->
                     <ComboBox x:Name="IconAlignment"
                               HorizontalAlignment="Stretch"
                               my:HintAssist.Hint="Icon Alignment"
@@ -128,12 +128,12 @@
                         </UniformGrid>
                     </GroupBox>
 
-                    <!--  TextBox  -->
+                    <!-- TextBox -->
                     <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered}" Header="TextBox">
                         <CheckBox x:Name="SpellChecking" Content="SpellCheck" IsChecked="True" />
                     </GroupBox>
 
-                    <!--  ComboBox  -->
+                    <!-- ComboBox -->
                     <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered}" Header="ComboBox">
                         <my:SimpleStackPanel>
                             <CheckBox x:Name="IsEditableCheckBox" Content="Editable" />
@@ -143,14 +143,14 @@
                         </my:SimpleStackPanel>
                     </GroupBox>
 
-                    <!--  MultiComboBox  -->
+                    <!-- MultiComboBox -->
                     <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered}" Header="MultiComboBox">
                         <my:SimpleStackPanel>
                             <CheckBox x:Name="ShowRemoveButton" Content="Show Remove Button" IsChecked="True" />
                         </my:SimpleStackPanel>
                     </GroupBox>
 
-                    <!--  NumericUpDown  -->
+                    <!-- NumericUpDown -->
                     <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered}" Header="NumericUpDown">
                         <my:SimpleStackPanel>
                             <ComboBox x:Name="NumericButtonsAlignment"
@@ -166,7 +166,7 @@
                         </my:SimpleStackPanel>
                     </GroupBox>
 
-                    <!--  TimePicker  -->
+                    <!-- TimePicker -->
                     <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered}" Header="TimePicker">
                         <my:SimpleStackPanel>
                             <CheckBox x:Name="Is24Hours" Content="Is 24 Hours" IsChecked="True" />
@@ -174,7 +174,7 @@
                         </my:SimpleStackPanel>
                     </GroupBox>
 
-                    <!--  ColorPicker  -->
+                    <!-- ColorPicker -->
                     <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered}" Header="ColorPicker">
                         <my:SimpleStackPanel>
                             <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Clean}" Header="Drop Down Size">
@@ -254,6 +254,12 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="140" />
@@ -269,8 +275,8 @@
                     <ColumnDefinition MinWidth="150" />
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Row="7"
-                        Grid.RowSpan="6"
+                <Border Grid.Row="10"
+                        Grid.RowSpan="9"
                         Grid.Column="0"
                         Grid.ColumnSpan="11"
                         Margin="1"
@@ -291,19 +297,28 @@
                            Text="Outlined" />
                 <TextBlock Style="{StaticResource MyTestApp.Styles.TextBlock.ColumnHeader}"
                            Grid.Row="7"
+                           Grid.RowSpan="3"
+                           Text="Alternate" />
+                <TextBlock Style="{StaticResource MyTestApp.Styles.TextBlock.ColumnHeader}"
+                           Grid.Row="10"
                            Grid.RowSpan="2"
                            Foreground="{StaticResource MyNet.Brushes.Primary.Foreground}"
                            Text="Default" />
                 <TextBlock Style="{StaticResource MyTestApp.Styles.TextBlock.ColumnHeader}"
-                           Grid.Row="9"
+                           Grid.Row="12"
                            Grid.RowSpan="2"
                            Foreground="{StaticResource MyNet.Brushes.Primary.Foreground}"
                            Text="Filled" />
                 <TextBlock Style="{StaticResource MyTestApp.Styles.TextBlock.ColumnHeader}"
-                           Grid.Row="11"
+                           Grid.Row="14"
                            Grid.RowSpan="2"
                            Foreground="{StaticResource MyNet.Brushes.Primary.Foreground}"
                            Text="Outlined" />
+                <TextBlock Style="{StaticResource MyTestApp.Styles.TextBlock.ColumnHeader}"
+                           Grid.Row="16"
+                           Grid.RowSpan="3"
+                           Foreground="{StaticResource MyNet.Brushes.Primary.Foreground}"
+                           Text="Alternate" />
 
                 <TextBlock Style="{StaticResource MyTestApp.Styles.TextBlock.ColumnHeader}"
                            Grid.Column="1"
@@ -359,29 +374,29 @@
                          Grid.Column="1"
                          my:HintAssist.IsFloating="True" />
                 <TextBox Style="{StaticResource MyNet.Styles.TextBox.Foreground}"
-                         Grid.Row="7"
+                         Grid.Row="10"
                          Grid.Column="1"
                          Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
                 <TextBox Style="{StaticResource MyNet.Styles.TextBox.Foreground}"
-                         Grid.Row="8"
-                         Grid.Column="1"
-                         my:HintAssist.IsFloating="True"
-                         Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <TextBox Style="{StaticResource MyNet.Styles.TextBox.Filled.Foreground}"
-                         Grid.Row="9"
-                         Grid.Column="1"
-                         Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <TextBox Style="{StaticResource MyNet.Styles.TextBox.Filled.Foreground}"
-                         Grid.Row="10"
-                         Grid.Column="1"
-                         my:HintAssist.IsFloating="True"
-                         Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <TextBox Style="{StaticResource MyNet.Styles.TextBox.Outlined.Foreground}"
                          Grid.Row="11"
                          Grid.Column="1"
+                         my:HintAssist.IsFloating="True"
+                         Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <TextBox Style="{StaticResource MyNet.Styles.TextBox.Filled.Foreground}"
+                         Grid.Row="12"
+                         Grid.Column="1"
+                         Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <TextBox Style="{StaticResource MyNet.Styles.TextBox.Filled.Foreground}"
+                         Grid.Row="13"
+                         Grid.Column="1"
+                         my:HintAssist.IsFloating="True"
                          Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
                 <TextBox Style="{StaticResource MyNet.Styles.TextBox.Outlined.Foreground}"
-                         Grid.Row="12"
+                         Grid.Row="14"
+                         Grid.Column="1"
+                         Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <TextBox Style="{StaticResource MyNet.Styles.TextBox.Outlined.Foreground}"
+                         Grid.Row="15"
                          Grid.Column="1"
                          my:HintAssist.IsFloating="True"
                          Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
@@ -400,29 +415,29 @@
                              Grid.Column="2"
                              my:HintAssist.IsFloating="True" />
                 <PasswordBox Style="{StaticResource MyNet.Styles.PasswordBox.Foreground}"
-                             Grid.Row="7"
+                             Grid.Row="10"
                              Grid.Column="2"
                              Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
                 <PasswordBox Style="{StaticResource MyNet.Styles.PasswordBox.Foreground}"
-                             Grid.Row="8"
-                             Grid.Column="2"
-                             my:HintAssist.IsFloating="True"
-                             Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <PasswordBox Style="{StaticResource MyNet.Styles.PasswordBox.Filled.Foreground}"
-                             Grid.Row="9"
-                             Grid.Column="2"
-                             Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <PasswordBox Style="{StaticResource MyNet.Styles.PasswordBox.Filled.Foreground}"
-                             Grid.Row="10"
-                             Grid.Column="2"
-                             my:HintAssist.IsFloating="True"
-                             Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <PasswordBox Style="{StaticResource MyNet.Styles.PasswordBox.Outlined.Foreground}"
                              Grid.Row="11"
                              Grid.Column="2"
+                             my:HintAssist.IsFloating="True"
+                             Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <PasswordBox Style="{StaticResource MyNet.Styles.PasswordBox.Filled.Foreground}"
+                             Grid.Row="12"
+                             Grid.Column="2"
+                             Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <PasswordBox Style="{StaticResource MyNet.Styles.PasswordBox.Filled.Foreground}"
+                             Grid.Row="13"
+                             Grid.Column="2"
+                             my:HintAssist.IsFloating="True"
                              Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
                 <PasswordBox Style="{StaticResource MyNet.Styles.PasswordBox.Outlined.Foreground}"
-                             Grid.Row="12"
+                             Grid.Row="14"
+                             Grid.Column="2"
+                             Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <PasswordBox Style="{StaticResource MyNet.Styles.PasswordBox.Outlined.Foreground}"
+                             Grid.Row="15"
                              Grid.Column="2"
                              my:HintAssist.IsFloating="True"
                              Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
@@ -440,29 +455,29 @@
                                       Grid.Column="3"
                                       my:HintAssist.IsFloating="True" />
                 <my:RevealPasswordBox Style="{StaticResource MyNet.Styles.RevealPasswordBox.Foreground}"
-                                      Grid.Row="7"
+                                      Grid.Row="10"
                                       Grid.Column="3"
                                       Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
                 <my:RevealPasswordBox Style="{StaticResource MyNet.Styles.RevealPasswordBox.Foreground}"
-                                      Grid.Row="8"
-                                      Grid.Column="3"
-                                      my:HintAssist.IsFloating="True"
-                                      Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:RevealPasswordBox Style="{StaticResource MyNet.Styles.RevealPasswordBox.Filled.Foreground}"
-                                      Grid.Row="9"
-                                      Grid.Column="3"
-                                      Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:RevealPasswordBox Style="{StaticResource MyNet.Styles.RevealPasswordBox.Filled.Foreground}"
-                                      Grid.Row="10"
-                                      Grid.Column="3"
-                                      my:HintAssist.IsFloating="True"
-                                      Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:RevealPasswordBox Style="{StaticResource MyNet.Styles.RevealPasswordBox.Outlined.Foreground}"
                                       Grid.Row="11"
                                       Grid.Column="3"
+                                      my:HintAssist.IsFloating="True"
+                                      Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:RevealPasswordBox Style="{StaticResource MyNet.Styles.RevealPasswordBox.Filled.Foreground}"
+                                      Grid.Row="12"
+                                      Grid.Column="3"
+                                      Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:RevealPasswordBox Style="{StaticResource MyNet.Styles.RevealPasswordBox.Filled.Foreground}"
+                                      Grid.Row="13"
+                                      Grid.Column="3"
+                                      my:HintAssist.IsFloating="True"
                                       Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
                 <my:RevealPasswordBox Style="{StaticResource MyNet.Styles.RevealPasswordBox.Outlined.Foreground}"
-                                      Grid.Row="12"
+                                      Grid.Row="14"
+                                      Grid.Column="3"
+                                      Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:RevealPasswordBox Style="{StaticResource MyNet.Styles.RevealPasswordBox.Outlined.Foreground}"
+                                      Grid.Row="15"
                                       Grid.Column="3"
                                       my:HintAssist.IsFloating="True"
                                       Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
@@ -479,32 +494,47 @@
                           Grid.Row="6"
                           Grid.Column="4"
                           my:HintAssist.IsFloating="True" />
+                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Alternate}" Grid.Row="7" Grid.Column="4" />
+                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Alternate.Filled}" Grid.Row="8" Grid.Column="4" />
+                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Alternate.Outlined}" Grid.Row="9" Grid.Column="4" />
                 <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Foreground}"
-                          Grid.Row="7"
-                          Grid.Column="4"
-                          Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Foreground}"
-                          Grid.Row="8"
-                          Grid.Column="4"
-                          my:HintAssist.IsFloating="True"
-                          Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Filled.Foreground}"
-                          Grid.Row="9"
-                          Grid.Column="4"
-                          Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Filled.Foreground}"
                           Grid.Row="10"
                           Grid.Column="4"
-                          my:HintAssist.IsFloating="True"
                           Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Outlined.Foreground}"
+                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Foreground}"
                           Grid.Row="11"
                           Grid.Column="4"
+                          my:HintAssist.IsFloating="True"
                           Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Outlined.Foreground}"
+                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Filled.Foreground}"
                           Grid.Row="12"
                           Grid.Column="4"
+                          Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Filled.Foreground}"
+                          Grid.Row="13"
+                          Grid.Column="4"
                           my:HintAssist.IsFloating="True"
+                          Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Outlined.Foreground}"
+                          Grid.Row="14"
+                          Grid.Column="4"
+                          Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Outlined.Foreground}"
+                          Grid.Row="15"
+                          Grid.Column="4"
+                          my:HintAssist.IsFloating="True"
+                          Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Alternate.Foreground}"
+                          Grid.Row="16"
+                          Grid.Column="4"
+                          Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Alternate.Filled.Foreground}"
+                          Grid.Row="17"
+                          Grid.Column="4"
+                          Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Alternate.Outlined.Foreground}"
+                          Grid.Row="18"
+                          Grid.Column="4"
                           Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
 
                 <my:MultiComboBox Grid.Row="1" Grid.Column="5" />
@@ -520,29 +550,29 @@
                                   Grid.Column="5"
                                   my:HintAssist.IsFloating="True" />
                 <my:MultiComboBox Style="{StaticResource MyNet.Styles.MultiComboBox.Foreground}"
-                                  Grid.Row="7"
+                                  Grid.Row="10"
                                   Grid.Column="5"
                                   Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
                 <my:MultiComboBox Style="{StaticResource MyNet.Styles.MultiComboBox.Foreground}"
-                                  Grid.Row="8"
-                                  Grid.Column="5"
-                                  my:HintAssist.IsFloating="True"
-                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:MultiComboBox Style="{StaticResource MyNet.Styles.MultiComboBox.Filled.Foreground}"
-                                  Grid.Row="9"
-                                  Grid.Column="5"
-                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:MultiComboBox Style="{StaticResource MyNet.Styles.MultiComboBox.Filled.Foreground}"
-                                  Grid.Row="10"
-                                  Grid.Column="5"
-                                  my:HintAssist.IsFloating="True"
-                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:MultiComboBox Style="{StaticResource MyNet.Styles.MultiComboBox.Outlined.Foreground}"
                                   Grid.Row="11"
                                   Grid.Column="5"
+                                  my:HintAssist.IsFloating="True"
+                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:MultiComboBox Style="{StaticResource MyNet.Styles.MultiComboBox.Filled.Foreground}"
+                                  Grid.Row="12"
+                                  Grid.Column="5"
+                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:MultiComboBox Style="{StaticResource MyNet.Styles.MultiComboBox.Filled.Foreground}"
+                                  Grid.Row="13"
+                                  Grid.Column="5"
+                                  my:HintAssist.IsFloating="True"
                                   Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
                 <my:MultiComboBox Style="{StaticResource MyNet.Styles.MultiComboBox.Outlined.Foreground}"
-                                  Grid.Row="12"
+                                  Grid.Row="14"
+                                  Grid.Column="5"
+                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:MultiComboBox Style="{StaticResource MyNet.Styles.MultiComboBox.Outlined.Foreground}"
+                                  Grid.Row="15"
                                   Grid.Column="5"
                                   my:HintAssist.IsFloating="True"
                                   Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
@@ -559,32 +589,47 @@
                                   Grid.Row="6"
                                   Grid.Column="6"
                                   my:HintAssist.IsFloating="True" />
+                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Alternate}" Grid.Row="7" Grid.Column="6" />
+                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Filled}" Grid.Row="8" Grid.Column="6" />
+                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Outlined}" Grid.Row="9" Grid.Column="6" />
                 <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Foreground}"
-                                  Grid.Row="7"
-                                  Grid.Column="6"
-                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Foreground}"
-                                  Grid.Row="8"
-                                  Grid.Column="6"
-                                  my:HintAssist.IsFloating="True"
-                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Filled.Foreground}"
-                                  Grid.Row="9"
-                                  Grid.Column="6"
-                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Filled.Foreground}"
                                   Grid.Row="10"
                                   Grid.Column="6"
-                                  my:HintAssist.IsFloating="True"
                                   Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Outlined.Foreground}"
+                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Foreground}"
                                   Grid.Row="11"
                                   Grid.Column="6"
+                                  my:HintAssist.IsFloating="True"
                                   Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Outlined.Foreground}"
+                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Filled.Foreground}"
                                   Grid.Row="12"
                                   Grid.Column="6"
+                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Filled.Foreground}"
+                                  Grid.Row="13"
+                                  Grid.Column="6"
                                   my:HintAssist.IsFloating="True"
+                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Outlined.Foreground}"
+                                  Grid.Row="14"
+                                  Grid.Column="6"
+                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Outlined.Foreground}"
+                                  Grid.Row="15"
+                                  Grid.Column="6"
+                                  my:HintAssist.IsFloating="True"
+                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Foreground}"
+                                  Grid.Row="16"
+                                  Grid.Column="6"
+                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Filled.Foreground}"
+                                  Grid.Row="17"
+                                  Grid.Column="6"
+                                  Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Outlined.Foreground}"
+                                  Grid.Row="18"
+                                  Grid.Column="6"
                                   Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
 
                 <DatePicker Grid.Row="1" Grid.Column="7" />
@@ -599,32 +644,47 @@
                             Grid.Row="6"
                             Grid.Column="7"
                             my:HintAssist.IsFloating="True" />
+                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Alternate}" Grid.Row="7" Grid.Column="7" />
+                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Alternate.Filled}" Grid.Row="8" Grid.Column="7" />
+                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Alternate.Outlined}" Grid.Row="9" Grid.Column="7" />
                 <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Foreground}"
-                            Grid.Row="7"
-                            Grid.Column="7"
-                            Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Foreground}"
-                            Grid.Row="8"
-                            Grid.Column="7"
-                            my:HintAssist.IsFloating="True"
-                            Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Filled.Foreground}"
-                            Grid.Row="9"
-                            Grid.Column="7"
-                            Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Filled.Foreground}"
                             Grid.Row="10"
                             Grid.Column="7"
-                            my:HintAssist.IsFloating="True"
                             Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Outlined.Foreground}"
+                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Foreground}"
                             Grid.Row="11"
                             Grid.Column="7"
+                            my:HintAssist.IsFloating="True"
                             Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Outlined.Foreground}"
+                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Filled.Foreground}"
                             Grid.Row="12"
                             Grid.Column="7"
+                            Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Filled.Foreground}"
+                            Grid.Row="13"
+                            Grid.Column="7"
                             my:HintAssist.IsFloating="True"
+                            Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Outlined.Foreground}"
+                            Grid.Row="14"
+                            Grid.Column="7"
+                            Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Outlined.Foreground}"
+                            Grid.Row="15"
+                            Grid.Column="7"
+                            my:HintAssist.IsFloating="True"
+                            Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Alternate.Foreground}"
+                            Grid.Row="16"
+                            Grid.Column="7"
+                            Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Alternate.Filled.Foreground}"
+                            Grid.Row="17"
+                            Grid.Column="7"
+                            Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Alternate.Outlined.Foreground}"
+                            Grid.Row="18"
+                            Grid.Column="7"
                             Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
 
                 <my:TimePicker Grid.Row="1" Grid.Column="8" />
@@ -639,32 +699,47 @@
                                Grid.Row="6"
                                Grid.Column="8"
                                my:HintAssist.IsFloating="True" />
+                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Alternate}" Grid.Row="7" Grid.Column="8" />
+                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Alternate.Filled}" Grid.Row="8" Grid.Column="8" />
+                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Alternate.Outlined}" Grid.Row="9" Grid.Column="8" />
                 <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Foreground}"
-                               Grid.Row="7"
-                               Grid.Column="8"
-                               Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Foreground}"
-                               Grid.Row="8"
-                               Grid.Column="8"
-                               my:HintAssist.IsFloating="True"
-                               Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Filled.Foreground}"
-                               Grid.Row="9"
-                               Grid.Column="8"
-                               Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Filled.Foreground}"
                                Grid.Row="10"
                                Grid.Column="8"
-                               my:HintAssist.IsFloating="True"
                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Outlined.Foreground}"
+                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Foreground}"
                                Grid.Row="11"
                                Grid.Column="8"
+                               my:HintAssist.IsFloating="True"
                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Outlined.Foreground}"
+                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Filled.Foreground}"
                                Grid.Row="12"
                                Grid.Column="8"
+                               Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Filled.Foreground}"
+                               Grid.Row="13"
+                               Grid.Column="8"
                                my:HintAssist.IsFloating="True"
+                               Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Outlined.Foreground}"
+                               Grid.Row="14"
+                               Grid.Column="8"
+                               Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Outlined.Foreground}"
+                               Grid.Row="15"
+                               Grid.Column="8"
+                               my:HintAssist.IsFloating="True"
+                               Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Alternate.Foreground}"
+                               Grid.Row="16"
+                               Grid.Column="8"
+                               Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Alternate.Filled.Foreground}"
+                               Grid.Row="17"
+                               Grid.Column="8"
+                               Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Alternate.Outlined.Foreground}"
+                               Grid.Row="18"
+                               Grid.Column="8"
                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
 
                 <my:ColorPicker Grid.Row="1" Grid.Column="9" />
@@ -679,32 +754,47 @@
                                 Grid.Row="6"
                                 Grid.Column="9"
                                 my:HintAssist.IsFloating="True" />
+                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Alternate}" Grid.Row="7" Grid.Column="9" />
+                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Alternate.Filled}" Grid.Row="8" Grid.Column="9" />
+                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Alternate.Outlined}" Grid.Row="9" Grid.Column="9" />
                 <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Foreground}"
-                                Grid.Row="7"
-                                Grid.Column="9"
-                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Foreground}"
-                                Grid.Row="8"
-                                Grid.Column="9"
-                                my:HintAssist.IsFloating="True"
-                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Filled.Foreground}"
-                                Grid.Row="9"
-                                Grid.Column="9"
-                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Filled.Foreground}"
                                 Grid.Row="10"
                                 Grid.Column="9"
-                                my:HintAssist.IsFloating="True"
                                 Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Outlined.Foreground}"
+                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Foreground}"
                                 Grid.Row="11"
                                 Grid.Column="9"
+                                my:HintAssist.IsFloating="True"
                                 Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Outlined.Foreground}"
+                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Filled.Foreground}"
                                 Grid.Row="12"
                                 Grid.Column="9"
+                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Filled.Foreground}"
+                                Grid.Row="13"
+                                Grid.Column="9"
                                 my:HintAssist.IsFloating="True"
+                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Outlined.Foreground}"
+                                Grid.Row="14"
+                                Grid.Column="9"
+                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Outlined.Foreground}"
+                                Grid.Row="15"
+                                Grid.Column="9"
+                                my:HintAssist.IsFloating="True"
+                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Alternate.Foreground}"
+                                Grid.Row="16"
+                                Grid.Column="9"
+                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Alternate.Filled.Foreground}"
+                                Grid.Row="17"
+                                Grid.Column="9"
+                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:ColorPicker Style="{StaticResource MyNet.Styles.ColorPicker.Alternate.Outlined.Foreground}"
+                                Grid.Row="18"
+                                Grid.Column="9"
                                 Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
 
                 <my:ImagePicker Grid.Row="1" Grid.Column="10" />
@@ -719,32 +809,47 @@
                                 Grid.Row="6"
                                 Grid.Column="10"
                                 my:HintAssist.IsFloating="True" />
+                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Alternate}" Grid.Row="7" Grid.Column="10" />
+                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Alternate.Filled}" Grid.Row="8" Grid.Column="10" />
+                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Alternate.Outlined}" Grid.Row="9" Grid.Column="10" />
                 <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Foreground}"
-                                Grid.Row="7"
-                                Grid.Column="10"
-                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Foreground}"
-                                Grid.Row="8"
-                                Grid.Column="10"
-                                my:HintAssist.IsFloating="True"
-                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Filled.Foreground}"
-                                Grid.Row="9"
-                                Grid.Column="10"
-                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Filled.Foreground}"
                                 Grid.Row="10"
                                 Grid.Column="10"
-                                my:HintAssist.IsFloating="True"
                                 Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Outlined.Foreground}"
+                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Foreground}"
                                 Grid.Row="11"
                                 Grid.Column="10"
+                                my:HintAssist.IsFloating="True"
                                 Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Outlined.Foreground}"
+                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Filled.Foreground}"
                                 Grid.Row="12"
                                 Grid.Column="10"
+                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Filled.Foreground}"
+                                Grid.Row="13"
+                                Grid.Column="10"
                                 my:HintAssist.IsFloating="True"
+                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Outlined.Foreground}"
+                                Grid.Row="14"
+                                Grid.Column="10"
+                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Outlined.Foreground}"
+                                Grid.Row="15"
+                                Grid.Column="10"
+                                my:HintAssist.IsFloating="True"
+                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Alternate.Foreground}"
+                                Grid.Row="16"
+                                Grid.Column="10"
+                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Alternate.Filled.Foreground}"
+                                Grid.Row="17"
+                                Grid.Column="10"
+                                Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                <my:ImagePicker Style="{StaticResource MyNet.Styles.ImagePicker.Alternate.Outlined.Foreground}"
+                                Grid.Row="18"
+                                Grid.Column="10"
                                 Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
 
             </Grid>

@@ -3,6 +3,7 @@
                     xmlns:c="clr-namespace:MyNet.Wpf.Converters"
                     xmlns:cmd="clr-namespace:MyNet.Wpf.Commands"
                     xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
+                    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
                     xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions"
                     xmlns:p="clr-namespace:MyNet.Wpf.Parameters">
 
@@ -10,96 +11,273 @@
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Base.Icons.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.Menu.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.ComboBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.Button.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.TextBlock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.TextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/MyNet.Calendar.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <!-- Selected Items -->
-    <DataTemplate x:Key="MyNet.DataTemplates.MultiComboBox.SelectedItem">
-        <TextBlock HorizontalAlignment="Stretch"
-                   VerticalAlignment="Center"
-                   Text="{me:Translation}"
-                   TextTrimming="CharacterEllipsis"
-                   TextWrapping="NoWrap" />
-    </DataTemplate>
-
-    <Style x:Key="MyNet.Styles.MultiComboBoxSelectedItem" TargetType="{x:Type ctrl:MultiComboBoxSelectedItem}">
-        <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Style x:Key="MyNet.Styles.Button.Embedded.MonthPicker" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="ClickMode" Value="Release" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Secondary}" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ctrl:MultiComboBoxSelectedItem}">
-                    <Grid Margin="1 1 1 0">
-                        <Border Grid.ColumnSpan="3" Background="{TemplateBinding Background}" CornerRadius="10" />
-                        <Grid Margin="6 1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="AUto" />
-                            </Grid.ColumnDefinitions>
-
-                            <ContentControl VerticalAlignment="Center" Content="{TemplateBinding DataContext}" ContentTemplate="{TemplateBinding ContentTemplate}" />
-                            <Button x:Name="PART_RemoveItemButton"
-                                    Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
-                                    Grid.Column="1"
-                                    Width="12"
-                                    Height="12"
-                                    Margin="2 0 -3 0">
-                                <Button.Visibility>
-                                    <MultiBinding Converter="{x:Static c:MultipleBooleanToVisibilityConverter.AndCollapse}">
-                                        <Binding Path="ShowRemoveItemButton" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ctrl:MultiComboBox}}" />
-                                        <Binding Converter="{x:Static c:NotBooleanConverter.Default}" Path="IsReadOnly" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ctrl:MultiComboBox}}" />
-                                    </MultiBinding>
-                                </Button.Visibility>
-                                <ctrl:PackIcon Width="12"
-                                               Height="12"
-                                               Margin="0"
-                                               Kind="CloseCircle" />
-                            </Button>
-                        </Grid>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border Background="White" Opacity="0.002" />
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="MyNet.Styles.MultiComboBoxSelectedItems" TargetType="{x:Type ctrl:MultiComboBoxSelectedItems}">
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.MultiComboBoxSelectedItem}" />
-        <Setter Property="ItemsPanel">
+    <Style x:Key="MyNet.Styles.CalendarMonthsByYear.Embedded.MonthPicker" TargetType="{x:Type ctrl:CalendarMonthsByYear}" BasedOn="{StaticResource MyNet.Styles.Calendar.MonthsByYear}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CalendarItemStyle">
             <Setter.Value>
-                <ItemsPanelTemplate>
-                    <WrapPanel ClipToBounds="False" Orientation="Horizontal" />
-                </ItemsPanelTemplate>
+                <Style TargetType="{x:Type ctrl:CalendarItem}" BasedOn="{StaticResource MyNet.Styles.CalendarItem.MonthsByYear}">
+                    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+                    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+                    <Setter Property="FocusVisualStyle" Value="{StaticResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
+                    <Setter Property="Height" Value="50" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Small}" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ctrl:CalendarItem}">
+                                <ctrl:Card x:Name="Card"
+                                           Padding="0"
+                                           p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}"
+                                           Background="{TemplateBinding Background}"
+                                           BorderBrush="{TemplateBinding BorderBrush}"
+                                           BorderThickness="{TemplateBinding BorderThickness}"
+                                           UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup Name="CommonStates">
+                                            <VisualStateGroup.Transitions>
+                                                <VisualTransition GeneratedDuration="0:0:0.3" To="Normal">
+                                                    <VisualTransition.GeneratedEasingFunction>
+                                                        <CircleEase EasingMode="EaseOut" />
+                                                    </VisualTransition.GeneratedEasingFunction>
+                                                </VisualTransition>
+                                            </VisualStateGroup.Transitions>
+                                            <VisualState Name="Normal" />
+                                            <VisualState Name="MouseOver">
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="MouseOverBorder"
+                                                                     Storyboard.TargetProperty="Opacity"
+                                                                     To="1"
+                                                                     Duration="0" />
+                                                </Storyboard>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                        <VisualStateGroup Name="SelectionStates">
+                                            <VisualStateGroup.Transitions>
+                                                <VisualTransition GeneratedDuration="0:0:0.3" />
+                                            </VisualStateGroup.Transitions>
+                                            <VisualState Name="Selected">
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="SelectedBorder"
+                                                                     Storyboard.TargetProperty="Opacity"
+                                                                     To="1"
+                                                                     Duration="0" />
+                                                </Storyboard>
+                                            </VisualState>
+                                            <VisualState Name="Unselected" />
+                                        </VisualStateGroup>
+                                        <VisualStateGroup Name="FocusStates">
+                                            <VisualStateGroup.Transitions>
+                                                <VisualTransition GeneratedDuration="0:0:0.3" To="Unfocused" />
+                                            </VisualStateGroup.Transitions>
+                                            <VisualState Name="Focused">
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="MouseOverBorder"
+                                                                     Storyboard.TargetProperty="Opacity"
+                                                                     To="1"
+                                                                     Duration="0" />
+                                                </Storyboard>
+                                            </VisualState>
+                                            <VisualState Name="Unfocused" />
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <Grid>
+                                        <Border x:Name="MouseOverBorder"
+                                                Background="{TemplateBinding p:ListBoxItemAssist.IsMouseOverBackground}"
+                                                Opacity="0"
+                                                SnapsToDevicePixels="True" />
+
+                                        <Border x:Name="SelectedBorder"
+                                                Background="{TemplateBinding p:ListBoxItemAssist.IsSelectedBackground}"
+                                                BorderBrush="{TemplateBinding p:ListBoxItemAssist.IsSelectedBorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                Opacity="0"
+                                                RenderTransformOrigin="0.5,0.5" />
+
+                                        <ctrl:Ripple x:Name="Ripple"
+                                                     Padding="{TemplateBinding Padding}"
+                                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                     Content="{TemplateBinding Content}"
+                                                     ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                     Feedback="{TemplateBinding Foreground}"
+                                                     Focusable="False"
+                                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    </Grid>
+                                </ctrl:Card>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                    <Setter Property="Width" Value="50" />
+                    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+                    <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+                    <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+                    <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+                    <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource Self}}" />
+                        </Trigger>
+                        <Trigger Property="IsNow" Value="True">
+                            <Setter Property="BorderBrush" Value="{Binding Path=Foreground, RelativeSource={RelativeSource Self}}" />
+                            <Setter Property="BorderThickness" Value="1" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
             </Setter.Value>
         </Setter>
-        <Setter Property="OverridesDefaultStyle" Value="False" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="InnerBorderThickess" Value="0" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.MonthsByYear}" />
+        <Setter Property="Margin" Value="16 8 16 24" />
+        <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Default}" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ctrl:MultiComboBoxSelectedItems}">
-                    <ScrollViewer CanContentScroll="True"
-                                  Focusable="False"
-                                  Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
-                                  HorizontalScrollBarVisibility="Disabled"
-                                  OverridesDefaultStyle="True">
-                        <ItemsPresenter />
-                    </ScrollViewer>
+                <ControlTemplate TargetType="{x:Type ctrl:CalendarMonthsByYear}">
+                    <ctrl:Card Padding="0 -1 0 0"
+                               p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}"
+                               Background="{TemplateBinding Background}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               ClipContent="True">
+                        <DockPanel Margin="{TemplateBinding Padding}">
+                            <!-- Header -->
+                            <DockPanel Margin="{StaticResource MyNet.Margins.Medium.Bottom}" DockPanel.Dock="Top" Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                                <ContentControl VerticalAlignment="Center"
+                                                Content="{Binding DisplayDate, RelativeSource={RelativeSource TemplatedParent}}"
+                                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                FontWeight="DemiBold"
+                                                Opacity="{StaticResource MyNet.Opacity.Secondary}" />
+                                <StackPanel HorizontalAlignment="Right" DockPanel.Dock="Right" Orientation="Horizontal">
+                                    <Button x:Name="PART_PreviousButton"
+                                            Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
+                                            Content="{me:MediumIcon Kind=ChevronLeft}"
+                                            ToolTip="{me:Resource Previous}" />
+                                    <Button x:Name="PART_NextButton"
+                                            Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
+                                            Content="{me:MediumIcon Kind=ChevronRight}"
+                                            ToolTip="{me:Resource Next}" />
+                                </StackPanel>
+                            </DockPanel>
+
+                            <!-- Calendar -->
+                            <DockPanel Grid.IsSharedSizeScope="True">
+                                <Grid DockPanel.Dock="Top">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="rowHeadersColumn" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Column headers -->
+                                    <ItemsControl x:Name="PART_ColumnHeaders"
+                                                  Style="{StaticResource MyNet.Styles.ItemsControl}"
+                                                  Grid.Column="1"
+                                                  Height="{Binding Path=(p:HeaderAssist.Height), RelativeSource={RelativeSource TemplatedParent}}"
+                                                  Background="{Binding Path=(p:HeaderAssist.Background), RelativeSource={RelativeSource TemplatedParent}}"
+                                                  Focusable="False"
+                                                  FontWeight="{Binding Path=(p:HeaderAssist.FontWeight), RelativeSource={RelativeSource TemplatedParent}}"
+                                                  Foreground="{Binding Path=(p:HeaderAssist.Foreground), RelativeSource={RelativeSource TemplatedParent}}"
+                                                  IsTabStop="False"
+                                                  ItemTemplate="{TemplateBinding ColumnHeaderTemplate}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <UniformGrid Rows="1" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                    </ItemsControl>
+                                </Grid>
+
+                                <!-- Content -->
+                                <Grid>
+                                    <ctrl:DynamicScrollViewer x:Name="scrollViewer"
+                                                              Padding="0"
+                                                              CanContentScroll="True"
+                                                              Focusable="False"
+                                                              HorizontalScrollBarVisibility="Disabled"
+                                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" SharedSizeGroup="rowHeadersColumn" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Row headers -->
+                                            <ItemsControl x:Name="PART_RowHeaders"
+                                                          Style="{StaticResource MyNet.Styles.ItemsControl}"
+                                                          Grid.Column="0"
+                                                          Width="{Binding Path=(p:HeaderAssist.Width), RelativeSource={RelativeSource TemplatedParent}}"
+                                                          Background="{Binding Path=(p:HeaderAssist.Background), RelativeSource={RelativeSource TemplatedParent}}"
+                                                          Focusable="False"
+                                                          FontWeight="{Binding Path=(p:HeaderAssist.FontWeight), RelativeSource={RelativeSource TemplatedParent}}"
+                                                          Foreground="{Binding Path=(p:HeaderAssist.Foreground), RelativeSource={RelativeSource TemplatedParent}}"
+                                                          IsTabStop="False"
+                                                          ItemTemplate="{TemplateBinding RowHeaderTemplate}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <UniformGrid Columns="1" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                            </ItemsControl>
+
+                                            <!-- Calendar items -->
+                                            <ctrl:CalendarItemsControl x:Name="PART_DatesItemsControl"
+                                                                       Style="{StaticResource MyNet.Styles.CalendarItemsControl}"
+                                                                       Grid.Column="1"
+                                                                       ItemContainerStyle="{TemplateBinding CalendarItemStyle}" />
+
+                                            <!-- Appointment items -->
+                                            <ItemsPresenter Grid.Column="1" Visibility="{Binding AppointmentsDisplayMode, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:EnumToVisibilityConverter.CollapsedIfNotAny}, ConverterParameter={x:Static ctrl:AppointmentsDisplayMode.Range}}" />
+                                        </Grid>
+                                    </ctrl:DynamicScrollViewer>
+
+                                    <Grid p:BusyAssist.AttachService="{Binding BusyService, RelativeSource={RelativeSource TemplatedParent}}" p:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Dark.Foreground}" />
+                                </Grid>
+                            </DockPanel>
+                        </DockPanel>
+                    </ctrl:Card>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Popup}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.MultiComboBoxItem" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ComboBoxItem}">
-        <Setter Property="p:ComboBoxAssist.ShowSelectedItem" Value="{Binding Path=(p:ComboBoxAssist.ShowSelectedItem), RelativeSource={RelativeSource AncestorType={x:Type ctrl:MultiComboBox}}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:MultiComboBox}}}" />
-    </Style>
-
-    <!-- MultiComboBox -->
-    <ControlTemplate x:Key="MyNet.Templates.MultiComboBox" TargetType="{x:Type ctrl:MultiComboBox}">
+    <ControlTemplate x:Key="MyNet.Templates.MonthPicker" TargetType="{x:Type ctrl:MonthPicker}">
         <Grid>
 
             <VisualStateManager.VisualStateGroups>
@@ -150,21 +328,15 @@
                         CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition x:Name="columnCaret" Width="0" MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" />
-                        </Grid.ColumnDefinitions>
 
                         <!-- Mouse Over -->
                         <Border x:Name="mouseOver"
-                                Grid.ColumnSpan="2"
                                 Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                 CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                 Visibility="Collapsed" />
 
                         <!-- Ripple on focus -->
-                        <Border Grid.ColumnSpan="2"
-                                HorizontalAlignment="Stretch"
+                        <Border HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
                                 Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                 CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
@@ -175,20 +347,6 @@
                             </Border.RenderTransform>
                         </Border>
 
-                        <ToggleButton x:Name="toggleButton"
-                                      Style="{StaticResource MyNet.Styles.ToggleButton.Embedded.ComboBox}"
-                                      Grid.ColumnSpan="2"
-                                      Padding="{TemplateBinding Padding}"
-                                      p:ComboBoxAssist.ShowCaret="{Binding Path=(p:ComboBoxAssist.ShowCaret), RelativeSource={RelativeSource TemplatedParent}}"
-                                      p:ComboBoxAssist.ShowDropDownPopup="{Binding Path=(p:ComboBoxAssist.ShowDropDownPopup), RelativeSource={RelativeSource TemplatedParent}}"
-                                      p:TextFieldAssist.IsReadOnly="{TemplateBinding IsReadOnly}"
-                                      p:TextFieldAssist.RippleOnFocusEnabled="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), RelativeSource={RelativeSource TemplatedParent}}"
-                                      BorderBrush="{TemplateBinding BorderBrush}"
-                                      BorderThickness="0"
-                                      IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                      UseLayoutRounding="{TemplateBinding UseLayoutRounding}" />
-
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
@@ -197,18 +355,18 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
                             <!-- Previous button -->
-                            <RepeatButton x:Name="PART_NumericDown"
-                                          Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
+                            <RepeatButton Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
                                           Grid.Column="0"
                                           VerticalAlignment="Stretch"
                                           p:ThemeAssist.CornerRadius="0"
                                           Command="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}}"
                                           CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                           Content="{Binding Path=(p:TextFieldAssist.PreviousButtonContent), RelativeSource={RelativeSource TemplatedParent}}"
-                                          Visibility="Collapsed" />
+                                          Visibility="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
 
                             <!-- Icon -->
                             <ContentControl x:Name="Icon"
@@ -236,7 +394,10 @@
                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 
                                 <!-- Content -->
-                                <Grid x:Name="grid" MinWidth="1" MinHeight="18">
+                                <Grid x:Name="grid"
+                                      Grid.Column="1"
+                                      MinWidth="1"
+                                      MinHeight="18">
                                     <Grid Grid.Column="0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
@@ -260,32 +421,15 @@
                                             </TextBlock.Visibility>
                                         </TextBlock>
 
-                                        <!-- Selected Item -->
-                                        <Grid Grid.Column="1"
-                                              Margin="{TemplateBinding p:TextFieldAssist.TextBoxViewMargin}"
-                                              HorizontalAlignment="Left"
-                                              VerticalAlignment="Center">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <ctrl:MultiComboBoxSelectedItems x:Name="PART_MultiComboBoxSelectedItems"
-                                                                             Style="{StaticResource MyNet.Styles.MultiComboBoxSelectedItems}"
-                                                                             DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
-                                                                             Focusable="False"
-                                                                             ItemTemplate="{TemplateBinding SelectedItemTemplate}"
-                                                                             ItemsSource="{TemplateBinding SelectedItems}"
-                                                                             Visibility="{Binding HasSelectedItems, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
-                                            <TextBox x:Name="PART_EditableTextBox"
-                                                     Style="{StaticResource MyNet.Styles.TextBox.Embedded}"
-                                                     Grid.Row="1"
-                                                     Margin="0 1 0 0"
-                                                     p:TextFieldAssist.Mask="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:TextFieldAssist.Mask)}"
-                                                     CaretBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderBrush}"
-                                                     IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}"
-                                                     SelectionBrush="{TemplateBinding p:TextFieldAssist.UnderlineBrush}"
-                                                     Visibility="Collapsed" />
-                                        </Grid>
+                                        <!-- Host Text -->
+                                        <TextBlock Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center">
+                                            <TextBlock.Text>
+                                                <MultiBinding Converter="{x:Static c:StringConverter.ToTitle}">
+                                                    <Binding Path="SelectedMonth" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                    <Binding Path="SelectedMonthFormat" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
 
                                         <!-- Suffix -->
                                         <TextBlock x:Name="SuffixTextBlock"
@@ -316,6 +460,12 @@
                                 </Grid>
                             </Grid>
 
+                            <!-- Calendar button -->
+                            <Button x:Name="PART_Button"
+                                    Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
+                                    Grid.Column="4"
+                                    Content="{me:Icon Kind=Calendar}" />
+
                             <!-- Clear button -->
                             <Button x:Name="PART_ClearButton"
                                     Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
@@ -335,91 +485,52 @@
                             </Button>
 
                             <!-- Next button -->
-                            <RepeatButton x:Name="PART_NumericUp"
-                                          Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
-                                          Grid.Column="5"
+                            <RepeatButton Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
+                                          Grid.Column="6"
                                           VerticalAlignment="Stretch"
                                           p:ThemeAssist.CornerRadius="0"
                                           Command="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}}"
                                           CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                           Content="{Binding Path=(p:TextFieldAssist.NextButtonContent), RelativeSource={RelativeSource TemplatedParent}}"
-                                          Visibility="Collapsed" />
+                                          Visibility="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+
                         </Grid>
                     </Grid>
                 </Border>
             </AdornerDecorator>
 
             <!-- Underline -->
-            <ctrl:Underline x:Name="Underline"
-                            Background="{TemplateBinding p:TextFieldAssist.UnderlineBrush}"
-                            IsActive="{Binding ElementName=PART_EditableTextBox, Path=IsKeyboardFocused}"
-                            Visibility="{TemplateBinding p:TextFieldAssist.DecorationVisibility}" />
+            <ctrl:Underline x:Name="Underline" Background="{TemplateBinding p:TextFieldAssist.UnderlineBrush}" Visibility="{TemplateBinding p:TextFieldAssist.DecorationVisibility}" />
 
             <!-- Helper text -->
             <Canvas VerticalAlignment="Bottom">
                 <Grid x:Name="FooterGrid" Canvas.Top="2" Width="{Binding ActualWidth, ElementName=border}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
                     <TextBlock x:Name="HelperTextTextBlock" Style="{Binding Path=(p:HintAssist.HelperTextStyle), RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Border x:Name="CharacterCounterContainer" Grid.Column="1">
+                        <TextBlock x:Name="CharacterCounterTextBlock" Style="{Binding Path=(p:TextFieldAssist.CharacterCounterStyle), RelativeSource={RelativeSource TemplatedParent}}" />
+                    </Border>
                 </Grid>
             </Canvas>
 
-            <!-- Popup -->
-            <ctrl:ComboBoxPopup x:Name="PART_Popup"
-                                Grid.Column="0"
-                                AllowsTransparency="True"
-                                Background="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource TemplatedParent}}"
-                                ClassicContentTemplate="{StaticResource MyNet.Styles.ContentControl.Embedded.ComboBox.Popup}"
-                                ContentMargin="6,0,6,6"
-                                ContentMinWidth="{Binding Path=ActualWidth, ElementName=border}"
-                                DefaultVerticalOffset="-1"
-                                DownVerticalOffset="0"
-                                Focusable="False"
-                                HorizontalOffset="-7"
-                                Placement="Custom"
-                                PlacementTarget="{Binding ElementName=border}"
-                                PopupAnimation="Slide"
-                                RelativeHorizontalOffset="0"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                TextElement.Foreground="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource TemplatedParent}}"
-                                UpVerticalOffset="15"
-                                UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
-                                VerticalOffset="0">
-                <ctrl:ComboBoxPopup.IsOpen>
-                    <MultiBinding Converter="{x:Static c:MultipleBooleanConverter.And}">
-                        <Binding Path="IsDropDownOpen" RelativeSource="{RelativeSource TemplatedParent}" />
-                        <Binding Path="(p:ComboBoxAssist.ShowDropDownPopup)" RelativeSource="{RelativeSource TemplatedParent}" />
-                    </MultiBinding>
-                </ctrl:ComboBoxPopup.IsOpen>
-                <ctrl:ComboBoxPopup.Style>
-                    <Style TargetType="{x:Type ctrl:ComboBoxPopup}">
-                        <Setter Property="CornerRadius" Value="{StaticResource MyNet.CornerRadius.Container.Bottom}" />
-                        <Style.Triggers>
-                            <Trigger Property="OpenDirection" Value="Up">
-                                <Setter Property="CornerRadius" Value="{StaticResource MyNet.CornerRadius.Container.Top}" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ctrl:ComboBoxPopup.Style>
-                <ContentControl>
-                    <ctrl:DynamicScrollViewer MinHeight="1"
-                                              MaxHeight="{Binding Path=MaxDropDownHeight, RelativeSource={RelativeSource TemplatedParent}}"
-                                              Background="{Binding Background, ElementName=PART_Popup}"
-                                              Foreground="{Binding ElementName=PART_Popup, Path=(TextElement.Foreground)}">
-                        <Grid>
-                            <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" Visibility="{Binding HasItems, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
-                            <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Ghost}"
-                                       Margin="16 8"
-                                       Text="{me:Resource NoResults}"
-                                       Visibility="{Binding HasItems, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
-                        </Grid>
-                    </ctrl:DynamicScrollViewer>
-                </ContentControl>
-            </ctrl:ComboBoxPopup>
+            <Popup x:Name="PART_Popup"
+                   AllowsTransparency="True"
+                   HorizontalOffset="-16"
+                   Placement="Bottom"
+                   PlacementTarget="{Binding ElementName=border}"
+                   PopupAnimation="Slide"
+                   StaysOpen="False"
+                   VerticalOffset="-5" />
         </Grid>
 
         <ControlTemplate.Triggers>
+
             <!-- Icon Alignment -->
             <Trigger Property="p:IconAssist.Alignment" Value="Right">
-                <Setter TargetName="Icon" Property="Grid.Column" Value="4" />
+                <Setter TargetName="Icon" Property="Grid.Column" Value="5" />
             </Trigger>
             <Trigger Property="p:IconAssist.Alignment" Value="Bottom">
                 <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
@@ -428,51 +539,10 @@
                 <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
             </Trigger>
 
-            <!-- Show DropDown Popup -->
-            <Trigger Property="p:ComboBoxAssist.ShowUpDownButton" Value="True">
-                <Setter TargetName="PART_NumericDown" Property="Visibility" Value="Visible" />
-                <Setter TargetName="PART_NumericUp" Property="Visibility" Value="Visible" />
-            </Trigger>
-            <Trigger Property="p:ComboBoxAssist.ShowDropDownPopup" Value="False">
-                <Setter TargetName="PART_EditableTextBox" Property="HorizontalAlignment" Value="Stretch" />
-                <Setter TargetName="columnCaret" Property="MinWidth" Value="0" />
-            </Trigger>
-
-            <!-- Show Caret -->
-            <Trigger Property="p:ComboBoxAssist.ShowCaret" Value="False">
-                <Setter TargetName="columnCaret" Property="MinWidth" Value="0" />
-            </Trigger>
-
-            <!-- IsEditable -->
-            <Trigger Property="IsEditable" Value="True">
-                <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible" />
-                <Setter TargetName="Underline" Property="Visibility" Value="{Binding Path=(p:TextFieldAssist.DecorationVisibility), RelativeSource={RelativeSource TemplatedParent}}" />
-            </Trigger>
-
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsGrouping" Value="True" />
-                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="False" />
-                </MultiTrigger.Conditions>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
-            </MultiTrigger>
-
-
             <!-- Hint -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="Hint" Property="IsContentNullOrEmpty" Value="False" />
                     <Condition Property="p:HintAssist.IsFloating" Value="True" />
-                    <Condition Property="IsKeyboardFocused" Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter TargetName="Hint" Property="Foreground" Value="{Binding Path=(p:HintAssist.Foreground), RelativeSource={RelativeSource TemplatedParent}}" />
-                <Setter TargetName="Hint" Property="HintOpacity" Value="1" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsKeyboardFocusWithin" Value="True" />
-                    <Condition Property="p:HintAssist.IsFloating" Value="True" />
-                    <Condition SourceName="Hint" Property="IsHintInFloatingPosition" Value="True" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="Hint" Property="Foreground" Value="{Binding Path=(p:HintAssist.Foreground), RelativeSource={RelativeSource TemplatedParent}}" />
                 <Setter TargetName="Hint" Property="HintOpacity" Value="1" />
@@ -498,54 +568,35 @@
                         </MultiBinding>
                     </Setter.Value>
                 </Setter>
-                <Setter TargetName="toggleButton" Property="p:TextFieldAssist.TextBoxViewMargin">
-                    <Setter.Value>
-                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
-                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
-                        </MultiBinding>
-                    </Setter.Value>
-                </Setter>
             </Trigger>
 
             <!-- IsMouseOver -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsMouseOver" Value="True" />
-                    <Condition Property="IsKeyboardFocused" Value="False" />
                 </MultiTrigger.Conditions>
                 <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsMouseOverBorderBrush), RelativeSource={RelativeSource Self}}" />
                 <Setter TargetName="mouseOver" Property="Visibility" Value="Visible" />
             </MultiTrigger>
 
-            <!-- IsKeyboardFocused -->
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsKeyboardFocused" Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
-                <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
-                <Setter TargetName="Underline" Property="IsActive" Value="True" />
-                <Setter TargetName="toggleButton" Property="BorderBrush" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
-            </MultiTrigger>
-
             <!-- IsDropDownOpen -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsDropDownOpen" Value="True" />
+                    <Condition SourceName="PART_Popup" Property="IsOpen" Value="True" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
                 <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
+                <Setter TargetName="PART_Button" Property="Foreground" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="PART_Button" Property="Opacity" Value="1" />
                 <Setter TargetName="Underline" Property="IsActive" Value="True" />
-                <Setter TargetName="toggleButton" Property="BorderBrush" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
             </MultiTrigger>
 
             <!-- Validation.HasError -->
             <Trigger Property="Validation.HasError" Value="true">
                 <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Validation.Error}" />
                 <Setter TargetName="FooterGrid" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="PART_Button" Property="Foreground" Value="{DynamicResource MyNet.Brushes.Validation.Error}" />
+                <Setter TargetName="PART_Button" Property="Opacity" Value="1" />
                 <Setter TargetName="Underline" Property="Background" Value="{DynamicResource MyNet.Brushes.Validation.Error}" />
             </Trigger>
 
@@ -564,64 +615,54 @@
             </MultiTrigger>
 
             <!-- IsReadOnly -->
-            <Trigger Property="IsReadOnly" Value="True">
+            <Trigger Property="p:TextFieldAssist.IsReadOnly" Value="True">
                 <Setter Property="BorderBrush" Value="Transparent" />
                 <Setter Property="Opacity" Value="1" />
+                <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
                 <Setter TargetName="PART_ClearButton" Property="Visibility" Value="Collapsed" />
-                <Setter TargetName="PART_NumericDown" Property="Visibility" Value="Collapsed" />
-                <Setter TargetName="PART_NumericUp" Property="Visibility" Value="Collapsed" />
                 <Setter TargetName="border" Property="Opacity" Value="1" />
                 <Setter TargetName="border" Property="ctrl:BottomDashedLineAdorner.IsAttached" Value="False" />
                 <Setter TargetName="grid" Property="Opacity" Value="1" />
             </Trigger>
 
+            <!-- IsEditable -->
+            <Trigger Property="p:TextFieldAssist.IsEditable" Value="False">
+                <Setter TargetName="PART_Button" Property="Content" Value="" />
+                <Setter TargetName="PART_Button" Property="Grid.Column" Value="1" />
+                <Setter TargetName="PART_Button" Property="Grid.ColumnSpan" Value="3" />
+                <Setter TargetName="PART_Button" Property="Height" Value="Auto" />
+                <Setter TargetName="PART_Button" Property="HorizontalAlignment" Value="Stretch" />
+                <Setter TargetName="PART_Button" Property="Style" Value="{StaticResource MyNet.Styles.Button.Embedded.MonthPicker}" />
+                <Setter TargetName="PART_Button" Property="VerticalAlignment" Value="Stretch" />
+                <Setter TargetName="PART_Button" Property="Width" Value="Auto" />
+            </Trigger>
         </ControlTemplate.Triggers>
-
     </ControlTemplate>
 
-    <Style x:Key="MyNet.Styles.MultiComboBox" TargetType="{x:Type ctrl:MultiComboBox}">
+    <Style x:Key="MyNet.Styles.MonthPicker" TargetType="{x:Type ctrl:MonthPicker}">
+        <Setter Property="AllowDrop" Value="true" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
         <Setter Property="BorderThickness" Value="0 0 0 1" />
+        <Setter Property="CalendarStyle" Value="{StaticResource MyNet.Styles.CalendarMonthsByYear.Embedded.MonthPicker}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Focusable" Value="True" />
         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
         <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="IsTabStop" Value="True" />
-        <Setter Property="IsTextSearchEnabled" Value="True" />
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.MultiComboBoxItem}" />
-        <Setter Property="ItemsPanel">
-            <Setter.Value>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
-                </ItemsPanelTemplate>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="Local" />
         <Setter Property="Padding" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
-        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-        <Setter Property="SelectedItemTemplate" Value="{StaticResource MyNet.DataTemplates.MultiComboBox.SelectedItem}" />
-        <Setter Property="SelectionMode" Value="Multiple" />
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-        <Setter Property="Template" Value="{StaticResource MyNet.Templates.MultiComboBox}" />
+        <Setter Property="Template" Value="{StaticResource MyNet.Templates.MonthPicker}" />
         <Setter Property="Validation.ErrorTemplate" Value="{StaticResource MyNet.Templates.Validation}" />
         <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="p:ComboBoxAssist.ShowSelectedItem" Value="True" />
         <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
         <Setter Property="p:HintAssist.HelperTextForeground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}" />
-        <Setter Property="p:HintAssist.HelperTextStyle" Value="{StaticResource MyNet.Styles.TextBlock.Embedded.ComboBox.HelperText}" />
+        <Setter Property="p:HintAssist.HelperTextStyle" Value="{StaticResource MyNet.Styles.TextBlock.Embedded.TextBox.HelperText}" />
         <Setter Property="p:IconAssist.Alignment" Value="Left" />
         <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
         <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
-        <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
         <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
         <Setter Property="p:TextFieldAssist.NextButtonContent" Value="{StaticResource MyNet.Icons.ChevronRight.Medium}" />
@@ -634,16 +675,10 @@
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="Transparent" />
         <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border.Secondary}" />
+        <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
         <Setter Property="p:ValidationAssist.Background" Value="Transparent" />
-        <Style.Triggers>
-            <Trigger Property="IsEditable" Value="True">
-                <Setter Property="ContextMenu" Value="{StaticResource MyNet.ContextMenu.Text}" />
-                <Setter Property="IsTabStop" Value="False" />
-                <Setter Property="p:ComboBoxAssist.ShowSelectedItem" Value="True" />
-            </Trigger>
-        </Style.Triggers>
     </Style>
-    <Style x:Key="MyNet.Styles.MultiComboBox.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox}">
+    <Style x:Key="MyNet.Styles.MonthPicker.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -651,14 +686,14 @@
         <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.MultiComboBox.Filled" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox}">
+    <Style x:Key="MyNet.Styles.MonthPicker.Filled" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
         <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
         <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     </Style>
-    <Style x:Key="MyNet.Styles.MultiComboBox.Filled.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Filled}">
+    <Style x:Key="MyNet.Styles.MonthPicker.Filled.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Filled}">
         <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -668,14 +703,14 @@
         <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.MultiComboBox.Outlined" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Filled}">
+    <Style x:Key="MyNet.Styles.MonthPicker.Outlined" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Filled}">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
         <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-        <Setter Property="p:ThemeAssist.CornerRadius" Value="2" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
     </Style>
-    <Style x:Key="MyNet.Styles.MultiComboBox.Outlined.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Outlined}">
+    <Style x:Key="MyNet.Styles.MonthPicker.Outlined.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Outlined}">
         <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -685,21 +720,20 @@
         <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.MultiComboBox.Alternate" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox}">
+    <Style x:Key="MyNet.Styles.MonthPicker.Alternate" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker}">
         <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="p:ComboBoxAssist.ShowCaret" Value="False" />
-        <Setter Property="p:ComboBoxAssist.ShowUpDownButton" Value="True" />
-        <Setter Property="p:TextFieldAssist.NextCommand" Value="{x:Static cmd:AppCommands.ComboBoxUpCommand}" />
-        <Setter Property="p:TextFieldAssist.PreviousCommand" Value="{x:Static cmd:AppCommands.ComboBoxDownCommand}" />
+        <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
+        <Setter Property="p:TextFieldAssist.NextCommand" Value="{x:Static cmd:AppCommands.NextMonthCommand}" />
+        <Setter Property="p:TextFieldAssist.PreviousCommand" Value="{x:Static cmd:AppCommands.PreviousMonthCommand}" />
     </Style>
-    <Style x:Key="MyNet.Styles.MultiComboBox.Alternate.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Alternate}">
+    <Style x:Key="MyNet.Styles.MonthPicker.Alternate.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Alternate}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
     </Style>
-    <Style x:Key="MyNet.Styles.MultiComboBox.Alternate.Filled" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Alternate}">
+    <Style x:Key="MyNet.Styles.MonthPicker.Alternate.Filled" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Alternate}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
         <Setter Property="p:TextFieldAssist.ButtonStyle">
             <Setter.Value>
@@ -713,7 +747,7 @@
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     </Style>
-    <Style x:Key="MyNet.Styles.MultiComboBox.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Alternate.Filled}">
+    <Style x:Key="MyNet.Styles.MonthPicker.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Alternate.Filled}">
         <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -723,14 +757,14 @@
         <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.MultiComboBox.Alternate.Outlined" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Alternate.Filled}">
+    <Style x:Key="MyNet.Styles.MonthPicker.Alternate.Outlined" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Alternate.Filled}">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
         <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
         <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
     </Style>
-    <Style x:Key="MyNet.Styles.MultiComboBox.Alternate.Outlined.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Alternate.Outlined}">
+    <Style x:Key="MyNet.Styles.MonthPicker.Alternate.Outlined.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Alternate.Outlined}">
         <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
