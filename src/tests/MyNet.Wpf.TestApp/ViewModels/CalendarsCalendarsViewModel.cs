@@ -48,8 +48,8 @@ namespace MyNet.Wpf.TestApp.ViewModels
 
         public CalendarsCalendarsViewModel()
         {
-            StartDate = DateTime.Today.AddYears(-1).BeginningOfYear();
-            EndDate = DateTime.Today.AddYears(1).EndOfYear();
+            StartDate = DateTime.Today.AddYears(-10).BeginningOfYear();
+            EndDate = DateTime.Today.AddYears(10).EndOfYear();
             DisplayDate = DateTime.Today;
             Appointments = new(StartDate, EndDate);
         }

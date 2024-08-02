@@ -31,14 +31,6 @@ namespace MyNet.Wpf.Controls
                         typeof(AppointmentsPanel),
                         new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange));
 
-        public static readonly DependencyProperty IsStretchProperty
-            = DependencyProperty.RegisterAttached("IsStretch", typeof(bool), typeof(AppointmentsPanel),
-                new FrameworkPropertyMetadata(default(bool), FrameworkPropertyMetadataOptions.Inherits));
-
-        public static bool GetIsStretch(DependencyObject element) => (bool)element.GetValue(IsStretchProperty);
-
-        public static void SetIsStretch(DependencyObject element, bool value) => element.SetValue(IsStretchProperty, value);
-
         #endregion Public Properties
 
         #region Protected Methods
@@ -71,12 +63,16 @@ namespace MyNet.Wpf.Controls
             {
                 if (Orientation == Orientation.Horizontal)
                 {
-                    var itemBoundsInSamePeriod = items.Where(x => x.ComputedBounds.HasValue && x.Period.IntersectWith(item.Period)).OrderBy(x => x.ComputedBounds!.Value.Y).ToList();
+                    var itemBoundsInSamePeriod = Owner.UseAccurateItemPosition
+                        ? [.. items.Where(x => x.ComputedBounds.HasValue && x.Period.IntersectWith(item.Period)).OrderBy(x => x.ComputedBounds!.Value.Y)]
+                        : items.Where(x => x.ComputedBounds.HasValue && (x.Rows.IntersectWith(item.Rows) || x.Row == item.Row) && (x.Columns.IntersectWith(x.Columns) || x.Column == item.Column)).ToList();
                     ComputeHorizontal(item, itemBoundsInSamePeriod);
                 }
                 else
                 {
-                    var itemBoundsInSamePeriod = items.Where(x => x.ComputedBounds.HasValue && x.Period.IntersectWith(item.Period)).OrderBy(x => x.ComputedBounds!.Value.X).ToList();
+                    var itemBoundsInSamePeriod = Owner.UseAccurateItemPosition
+                        ? [.. items.Where(x => x.ComputedBounds.HasValue && x.Period.IntersectWith(item.Period)).OrderBy(x => x.ComputedBounds!.Value.X)]
+                        : items.Where(x => x.ComputedBounds.HasValue && (x.Rows.IntersectWith(item.Rows) || x.Row == item.Row) && (x.Columns.IntersectWith(x.Columns) || x.Column == item.Column)).ToList();
                     ComputeVertical(item, itemBoundsInSamePeriod);
                 }
             }
@@ -86,8 +82,7 @@ namespace MyNet.Wpf.Controls
 
         private void ComputeVertical(CalendarAppointmentInfo item, List<CalendarAppointmentInfo> itemBoundsInSamePeriod)
         {
-            var calendarItemSize = new Size(Owner.CalendarItemBounds?.Width ?? double.PositiveInfinity, Owner.CalendarItemBounds?.Height ?? double.PositiveInfinity);
-            var isStretch = GetIsStretch(item.Item);
+            var calendarItemSize = new Size(GetPositiveValue(Owner.CalendarItemBounds?.Width), GetPositiveValue(Owner.CalendarItemBounds?.Height));
             var offsetFromStartDate = ApplyCoef(double.IsInfinity(calendarItemSize.Height) ? 0 : calendarItemSize.Height, item.Date);
             var offsetFromEndDate = ApplyCoef(double.IsInfinity(calendarItemSize.Height) ? 0 : calendarItemSize.Height, item.EndDate, true);
 
@@ -97,8 +92,8 @@ namespace MyNet.Wpf.Controls
             var x = calendarItemSize.Width * item.Column + Owner.AppointmentsMargin.Left;
             var width = Math.Max(1, calendarItemSize.Width - Owner.AppointmentsMargin.Right - Owner.AppointmentsMargin.Left);
 
-            // 1 => Not stretch
-            if (!isStretch)
+            // 1 => By accurate date
+            if (Owner.UseAccurateItemPosition)
             {
                 var found = false;
 
@@ -153,15 +148,20 @@ namespace MyNet.Wpf.Controls
                     }
                 }
             }
+            else
+            {
+                y += Math.Min(itemBoundsInSamePeriod.Count * (item.Item.DesiredSize.Height + Spacing), y + calendarItemSize.Height - Owner.AppointmentsMargin.Top - Owner.AppointmentsMargin.Bottom - item.Item.DesiredSize.Height);
+            }
 
             // Affect bounds to item
             item.ComputedBounds = new Rect(x, y, Math.Max(1, width), Math.Max(1, height));
         }
 
+        private static double GetPositiveValue(double? value) => !value.HasValue ? double.PositiveInfinity : value.Value < 0 ? 0 : value.Value;
+
         private void ComputeHorizontal(CalendarAppointmentInfo item, List<CalendarAppointmentInfo> itemBoundsInSamePeriod)
         {
             var calendarItemSize = new Size(Owner.CalendarItemBounds?.Width ?? double.PositiveInfinity, Owner.CalendarItemBounds?.Height ?? double.PositiveInfinity);
-            var isStretch = GetIsStretch(item.Item);
             var offsetFromStartDate = ApplyCoef(double.IsInfinity(calendarItemSize.Width) ? 0 : calendarItemSize.Width, item.Date);
             var offsetFromEndDate = ApplyCoef(double.IsInfinity(calendarItemSize.Width) ? 0 : calendarItemSize.Width, item.EndDate, true);
 
@@ -171,8 +171,8 @@ namespace MyNet.Wpf.Controls
             var y = calendarItemSize.Width * item.Column + Owner.AppointmentsMargin.Top;
             var height = Math.Max(1, calendarItemSize.Height - Owner.AppointmentsMargin.Bottom - Owner.AppointmentsMargin.Top);
 
-            // 1 => Not stretch
-            if (!isStretch)
+            // 1 => By accurate date
+            if (Owner.UseAccurateItemPosition)
             {
                 var found = false;
 
@@ -226,6 +226,10 @@ namespace MyNet.Wpf.Controls
                         }
                     }
                 }
+            }
+            else
+            {
+                x += Math.Min(itemBoundsInSamePeriod.Count * (item.Item.DesiredSize.Width + Spacing), y + calendarItemSize.Width - Owner.AppointmentsMargin.Left - Owner.AppointmentsMargin.Right - item.Item.DesiredSize.Width);
             }
 
             // Affect bounds to item

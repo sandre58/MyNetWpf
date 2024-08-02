@@ -16,6 +16,8 @@
     <Style TargetType="{x:Type ctrl:CalendarDaysRange}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysRange}" />
     <Style TargetType="{x:Type ctrl:CalendarHoursByWeek}" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByWeek}" />
     <Style TargetType="{x:Type ctrl:CalendarHoursByDay}" BasedOn="{StaticResource MyNet.Styles.Calendar.HoursByDay}" />
+    <Style TargetType="{x:Type ctrl:CalendarMonthsByYear}" BasedOn="{StaticResource MyNet.Styles.Calendar.MonthsByYear}" />
+    <Style TargetType="{x:Type ctrl:CalendarYearsByDecade}" BasedOn="{StaticResource MyNet.Styles.Calendar.YearsByDecade}" />
     <Style TargetType="{x:Type ctrl:Card}" BasedOn="{StaticResource MyNet.Styles.Card.Elevation}" />
     <Style TargetType="{x:Type ctrl:Chip}" BasedOn="{StaticResource MyNet.Styles.Chip}" />
     <Style TargetType="{x:Type ctrl:Clock}" BasedOn="{StaticResource MyNet.Styles.Clock}" />
