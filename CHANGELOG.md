@@ -1,5 +1,10 @@
 # Changelog
 
+## [v5.0.1] - 2024-08-03
+### :bug: Bug Fixes
+- [`ae75397`](https://github.com/sandre58/MyNetWpf/commit/ae75397d4c6db20b6e9abefc5b96339de9ea1a7a) - fix styles *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v5.0.0] - 2024-08-02
 ### :boom: BREAKING CHANGES
 - due to [`fcac6c7`](https://github.com/sandre58/MyNetWpf/commit/fcac6c780ce48411379724507ba6c9e27ccf637f) - new styles for textfield controls *(commit by [@sandre58](https://github.com/sandre58))*:
@@ -235,3 +240,4 @@
 [v4.9.4]: https://github.com/sandre58/MyNetWpf/compare/v4.9.3...v4.9.4
 [v4.10.0]: https://github.com/sandre58/MyNetWpf/compare/v4.9.4...v4.10.0
 [v5.0.0]: https://github.com/sandre58/MyNetWpf/compare/v4.10.0...v5.0.0
+[v5.0.1]: https://github.com/sandre58/MyNetWpf/compare/v5.0.0...v5.0.1
