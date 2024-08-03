@@ -115,6 +115,7 @@ namespace MyNet.Wpf.Controls
             SelectedDatesInternal = new Calendars.SelectedDatesCollection(this);
             SetCurrentValue(DisplayDateProperty, DateTime.Now);
             ItemsSource = _appointments;
+            BusyService = new BusyService();
         }
 
         ~CalendarBase()
@@ -1045,7 +1046,7 @@ namespace MyNet.Wpf.Controls
 
         #region BusyService
 
-        internal static readonly DependencyProperty BusyServiceProperty = DependencyProperty.Register(nameof(BusyService), typeof(IBusyService), typeof(CalendarBase), new FrameworkPropertyMetadata(new BusyService()));
+        internal static readonly DependencyProperty BusyServiceProperty = DependencyProperty.Register(nameof(BusyService), typeof(IBusyService), typeof(CalendarBase), new FrameworkPropertyMetadata(null));
 
         public IBusyService BusyService
         {
