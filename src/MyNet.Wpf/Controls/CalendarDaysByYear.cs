@@ -82,8 +82,8 @@ namespace MyNet.Wpf.Controls
 
         protected override IEnumerable<object> GetColumnHeaders()
         {
-            var start = DisplayDateInternal.Previous(1, DisplayStartMonth).DiscardTime();
-            var end = DisplayDateInternal.Next(28, DisplayEndMonth).EndOfMonth().DiscardTime();
+            var start = DisplayDateInternal.Month == DisplayStartMonth ? DisplayDateInternal.BeginningOfMonth() : DisplayDateInternal.Previous(1, DisplayStartMonth).DiscardTime();
+            var end = DisplayDateInternal.Month == DisplayEndMonth ? DisplayDateInternal.EndOfMonth() : DisplayDateInternal.Next(28, DisplayEndMonth).EndOfMonth().DiscardTime();
 
             return DateTimeHelper.Range(start, end, 1, TimeUnit.Month).OfType<object>().ToList();
         }

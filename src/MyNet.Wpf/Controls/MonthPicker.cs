@@ -190,9 +190,6 @@ public class MonthPicker : Control
         base.OnApplyTemplate();
     }
 
-    private void SetSelectedMonth(in DateTime month)
-        => SetCurrentValue(SelectedMonthProperty, month.BeginningOfMonth());
-
     private void PopupOnPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs mouseButtonEventArgs)
     {
         if (sender is not Popup popup || popup.StaysOpen) return;
@@ -241,7 +238,7 @@ public class MonthPicker : Control
         SetCurrentValue(IsDropDownOpenProperty, false);
 
         if (SelectedMonth == null && _calendar.SelectedDate.HasValue)
-            SetSelectedMonth(_calendar.SelectedDate.Value);
+            SelectedMonth = _calendar.SelectedDate.Value;
     }
 
     private void DropDownButtonOnClick(object sender, RoutedEventArgs routedEventArgs) => TogglePopup();
