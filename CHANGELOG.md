@@ -1,5 +1,10 @@
 # Changelog
 
+## [v5.0.8] - 2024-08-03
+### :bug: Bug Fixes
+- [`c32122f`](https://github.com/sandre58/MyNetWpf/commit/c32122f53a42d31524c45e4280d1643f56972145) - appointments panel *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v5.0.7] - 2024-08-03
 ### :bug: Bug Fixes
 - [`0f6200c`](https://github.com/sandre58/MyNetWpf/commit/0f6200cbd95bcc8bc0766db3bc858c242c0e8f22) - fix calendarbase *(commit by [@sandre58](https://github.com/sandre58))*
@@ -277,3 +282,4 @@
 [v5.0.5]: https://github.com/sandre58/MyNetWpf/compare/v5.0.4...v5.0.5
 [v5.0.6]: https://github.com/sandre58/MyNetWpf/compare/v5.0.5...v5.0.6
 [v5.0.7]: https://github.com/sandre58/MyNetWpf/compare/v5.0.6...v5.0.7
+[v5.0.8]: https://github.com/sandre58/MyNetWpf/compare/v5.0.7...v5.0.8
