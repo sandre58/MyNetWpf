@@ -87,7 +87,7 @@ namespace MyNet.Wpf.Controls
             var offsetFromEndDate = ApplyCoef(double.IsInfinity(calendarItemSize.Height) ? 0 : calendarItemSize.Height, item.EndDate, true);
 
             var y = calendarItemSize.Height * item.Row + Owner.AppointmentsMargin.Top + offsetFromStartDate;
-            var height = Math.Max(1, calendarItemSize.Height * item.RowsCount - Owner.AppointmentsMargin.Top - Owner.AppointmentsMargin.Bottom) - offsetFromStartDate - offsetFromEndDate;
+            var height = Math.Max(1, calendarItemSize.Height * item.RowsCount - Owner.AppointmentsMargin.Top - Owner.AppointmentsMargin.Bottom - offsetFromStartDate - offsetFromEndDate);
 
             var x = calendarItemSize.Width * item.Column + Owner.AppointmentsMargin.Left;
             var width = Math.Max(1, calendarItemSize.Width - Owner.AppointmentsMargin.Right - Owner.AppointmentsMargin.Left);
@@ -166,7 +166,7 @@ namespace MyNet.Wpf.Controls
             var offsetFromEndDate = ApplyCoef(double.IsInfinity(calendarItemSize.Width) ? 0 : calendarItemSize.Width, item.EndDate, true);
 
             var x = calendarItemSize.Width * item.Column + Owner.AppointmentsMargin.Left + offsetFromStartDate;
-            var width = Math.Max(1, calendarItemSize.Width * item.ColumnsCount - Owner.AppointmentsMargin.Left - Owner.AppointmentsMargin.Right) - offsetFromStartDate - offsetFromEndDate;
+            var width = Math.Max(1, calendarItemSize.Width * item.ColumnsCount - Owner.AppointmentsMargin.Left - Owner.AppointmentsMargin.Right - offsetFromStartDate - offsetFromEndDate);
 
             var y = calendarItemSize.Width * item.Column + Owner.AppointmentsMargin.Top;
             var height = Math.Max(1, calendarItemSize.Height - Owner.AppointmentsMargin.Bottom - Owner.AppointmentsMargin.Top);

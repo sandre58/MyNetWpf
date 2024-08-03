@@ -13672,16 +13672,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <Grid>
                   <ContentPresenter x:Name="DayText" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
                   <Button x:Name="PART_AddButton" Style="{StaticResource MyNet.Styles.Button.Icon.Tool}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Content="{me:ToolIcon Kind=Plus}" Visibility="Hidden" />
-                  <ListBox Margin="0 25 0 0" ItemsSource="{TemplateBinding Appointments}" SelectionMode="Extended">
-                    <ListBox.ItemTemplate>
-                      <DataTemplate>
-                        <ctrl:SimpleStackPanel>
-                          <ContentControl Content="{Binding}" />
-                          <ToggleButton />
-                        </ctrl:SimpleStackPanel>
-                      </DataTemplate>
-                    </ListBox.ItemTemplate>
-                  </ListBox>
                 </Grid>
               </ctrl:Ripple>
             </Grid>
@@ -13830,7 +13820,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment}" />
     <Setter Property="ItemsPanel">
       <Setter.Value>
-        <ItemsPanelTemplate />
+        <ItemsPanelTemplate>
+          <ctrl:AppointmentsPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsItemsHost="True" Orientation="{Binding ItemsOrientation, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}" Owner="{Binding RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}" Spacing="{Binding AppointmentsSpacing, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}" />
+        </ItemsPanelTemplate>
       </Setter.Value>
     </Setter>
     <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue" />
