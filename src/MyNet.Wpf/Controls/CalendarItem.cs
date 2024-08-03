@@ -2,17 +2,20 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using System.Collections;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Linq;
 using System.Reactive.Concurrency;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using DynamicData;
+using MyNet.Observable;
+using MyNet.UI.Collections;
 using MyNet.Utilities;
 using MyNet.Utilities.DateTimes;
-using MyNet.Observable;
 using MyNet.Utilities.Units;
 
 namespace MyNet.Wpf.Controls
@@ -25,7 +28,9 @@ namespace MyNet.Wpf.Controls
     {
         private const string PartAddButton = "PART_AddButton";
 
+        private readonly CollectionViewSource _collectionViewSource = new();
         private ICollectionView? _collectionView;
+        private readonly UiObservableCollection<IAppointment> _appointments = [];
 
         public DateTime Date { get; internal set; }
 
@@ -52,6 +57,7 @@ namespace MyNet.Wpf.Controls
 
         public CalendarItem(CalendarBase owner, DateTime date, TimeUnit unit)
         {
+            Appointments = new(_appointments);
             Owner = owner;
             Unit = unit;
             Date = date;
@@ -312,7 +318,7 @@ namespace MyNet.Wpf.Controls
 
         #region Appointments
 
-        public IEnumerable? Appointments { get; private set; }
+        public ReadOnlyObservableCollection<IAppointment> Appointments { get; }
 
         #endregion
 
@@ -365,14 +371,21 @@ namespace MyNet.Wpf.Controls
 
         internal virtual void UpdateAppointments()
         {
+            if (_collectionView is not null)
+                _collectionView.CollectionChanged -= CollectionView_CollectionChanged;
+
             if (Owner != null && Owner.Appointments != null)
             {
                 var source = Owner.Appointments is ICollectionView collectionView ? collectionView.SourceCollection : Owner.Appointments;
-                _collectionView = new CollectionViewSource { Source = source }.View;
+                _collectionViewSource.Source = source;
+                _collectionView = _collectionViewSource.View;
+
+                _collectionView.CollectionChanged += CollectionView_CollectionChanged;
+
                 _collectionView.Filter = x => (Owner.Appointments is not ICollectionView collectionView || collectionView.Filter == null || collectionView.Filter.Invoke(x)) && x is IAppointment appointment && IsMatch(appointment);
                 _collectionView.SortDescriptions.Add(new SortDescription(nameof(IAppointment.StartDate), ListSortDirection.Ascending));
 
-                Appointments = _collectionView;
+                _appointments.Set(_collectionView.OfType<IAppointment>() ?? []);
 
                 foreach (var item in Owner.Appointments)
                 {
@@ -391,7 +404,25 @@ namespace MyNet.Wpf.Controls
             }
             else
             {
-                Appointments = null;
+                _appointments.Clear();
+            }
+        }
+
+        private void CollectionView_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    _appointments.AddRange(e.NewItems?.OfType<IAppointment>() ?? []);
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    _appointments.RemoveMany(e.OldItems?.OfType<IAppointment>() ?? []);
+                    break;
+                case NotifyCollectionChangedAction.Reset:
+                    _appointments.Clear();
+                    break;
+                default:
+                    break;
             }
         }
 

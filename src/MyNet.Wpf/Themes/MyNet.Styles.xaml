@@ -13672,6 +13672,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <Grid>
                   <ContentPresenter x:Name="DayText" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
                   <Button x:Name="PART_AddButton" Style="{StaticResource MyNet.Styles.Button.Icon.Tool}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Content="{me:ToolIcon Kind=Plus}" Visibility="Hidden" />
+                  <TextBlock Text="{Binding Appointments.Count, RelativeSource={RelativeSource TemplatedParent}}" />
                 </Grid>
               </ctrl:Ripple>
             </Grid>
@@ -13946,7 +13947,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.Calendar.MonthsByYear" TargetType="{x:Type ctrl:CalendarMonthsByYear}" BasedOn="{StaticResource MyNet.Styles.Calendar}">
     <Setter Property="AppointmentsMargin" Value="2 25 2 2" />
     <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.MonthsByYear}" />
-    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.MonthsByYear}" />
     <Setter Property="HeaderTemplate">
       <Setter.Value>
         <DataTemplate>
@@ -13954,6 +13954,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         </DataTemplate>
       </Setter.Value>
     </Setter>
+    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.MonthsByYear}" />
   </Style>
   <Style x:Key="MyNet.Styles.Calendar.MonthsByYear.Accent" TargetType="{x:Type ctrl:CalendarMonthsByYear}" BasedOn="{StaticResource MyNet.Styles.Calendar.MonthsByYear}">
     <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.MonthsByYear.Accent}" />
@@ -13968,7 +13969,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.Calendar.YearsByDecade" TargetType="{x:Type ctrl:CalendarYearsByDecade}" BasedOn="{StaticResource MyNet.Styles.Calendar}">
     <Setter Property="AppointmentsMargin" Value="2 25 2 2" />
     <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.YearsByDecade}" />
-    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.YearsByDecade}" />
     <Setter Property="HeaderTemplate">
       <Setter.Value>
         <DataTemplate>
@@ -13976,6 +13976,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         </DataTemplate>
       </Setter.Value>
     </Setter>
+    <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.YearsByDecade}" />
   </Style>
   <Style x:Key="MyNet.Styles.Calendar.YearsByDecade.Accent" TargetType="{x:Type ctrl:CalendarYearsByDecade}" BasedOn="{StaticResource MyNet.Styles.Calendar.YearsByDecade}">
     <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.YearsByDecade.Accent}" />

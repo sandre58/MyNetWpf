@@ -808,7 +808,6 @@
     <Style x:Key="MyNet.Styles.Calendar.MonthsByYear" TargetType="{x:Type ctrl:CalendarMonthsByYear}" BasedOn="{StaticResource MyNet.Styles.Calendar}">
         <Setter Property="AppointmentsMargin" Value="2 25 2 2" />
         <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.MonthsByYear}" />
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.MonthsByYear}" />
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -816,6 +815,7 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.MonthsByYear}" />
     </Style>
     <Style x:Key="MyNet.Styles.Calendar.MonthsByYear.Accent" TargetType="{x:Type ctrl:CalendarMonthsByYear}" BasedOn="{StaticResource MyNet.Styles.Calendar.MonthsByYear}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.MonthsByYear.Accent}" />
@@ -831,7 +831,6 @@
     <Style x:Key="MyNet.Styles.Calendar.YearsByDecade" TargetType="{x:Type ctrl:CalendarYearsByDecade}" BasedOn="{StaticResource MyNet.Styles.Calendar}">
         <Setter Property="AppointmentsMargin" Value="2 25 2 2" />
         <Setter Property="CalendarItemStyle" Value="{StaticResource MyNet.Styles.CalendarItem.YearsByDecade}" />
-        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.YearsByDecade}" />
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -839,6 +838,7 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.YearsByDecade}" />
     </Style>
     <Style x:Key="MyNet.Styles.Calendar.YearsByDecade.Accent" TargetType="{x:Type ctrl:CalendarYearsByDecade}" BasedOn="{StaticResource MyNet.Styles.Calendar.YearsByDecade}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment.YearsByDecade.Accent}" />
