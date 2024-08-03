@@ -1,5 +1,10 @@
 # Changelog
 
+## [v5.0.6] - 2024-08-03
+### :bug: Bug Fixes
+- [`79dcfed`](https://github.com/sandre58/MyNetWpf/commit/79dcfedd35edba8cbd6488bc41ad1812343418c8) - fix appointments *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v5.0.5] - 2024-08-03
 ### :bug: Bug Fixes
 - [`eb91041`](https://github.com/sandre58/MyNetWpf/commit/eb910411ecf27039dbcada502712a4bfe944db18) - fix Appointments in CalendarItem *(commit by [@sandre58](https://github.com/sandre58))*
@@ -265,3 +270,4 @@
 [v5.0.3]: https://github.com/sandre58/MyNetWpf/compare/v5.0.2...v5.0.3
 [v5.0.4]: https://github.com/sandre58/MyNetWpf/compare/v5.0.3...v5.0.4
 [v5.0.5]: https://github.com/sandre58/MyNetWpf/compare/v5.0.4...v5.0.5
+[v5.0.6]: https://github.com/sandre58/MyNetWpf/compare/v5.0.5...v5.0.6
