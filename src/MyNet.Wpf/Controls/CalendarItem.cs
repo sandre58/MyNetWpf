@@ -57,7 +57,7 @@ namespace MyNet.Wpf.Controls
 
         public CalendarItem(CalendarBase owner, DateTime date, TimeUnit unit)
         {
-            Appointments = new(_appointments);
+            SetValue(AppointmentsPropertyKey, new ReadOnlyObservableCollection<IAppointment>(_appointments));
             Owner = owner;
             Unit = unit;
             Date = date;
@@ -318,7 +318,15 @@ namespace MyNet.Wpf.Controls
 
         #region Appointments
 
-        public ReadOnlyObservableCollection<IAppointment> Appointments { get; }
+        internal static readonly DependencyPropertyKey AppointmentsPropertyKey = DependencyProperty.RegisterReadOnly(
+        nameof(Appointments),
+        typeof(ReadOnlyObservableCollection<IAppointment>),
+        typeof(CalendarItem),
+        new FrameworkPropertyMetadata(null));
+
+        public static readonly DependencyProperty AppointmentsProperty = AppointmentsPropertyKey.DependencyProperty;
+
+        public ReadOnlyObservableCollection<IAppointment> Appointments => (ReadOnlyObservableCollection<IAppointment>)GetValue(AppointmentsProperty);
 
         #endregion
 

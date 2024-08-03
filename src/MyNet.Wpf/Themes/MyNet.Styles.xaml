@@ -13672,7 +13672,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <Grid>
                   <ContentPresenter x:Name="DayText" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
                   <Button x:Name="PART_AddButton" Style="{StaticResource MyNet.Styles.Button.Icon.Tool}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Content="{me:ToolIcon Kind=Plus}" Visibility="Hidden" />
-                  <TextBlock Text="{Binding Appointments.Count, RelativeSource={RelativeSource TemplatedParent}}" />
+                  <ListBox ItemsSource="{Binding Appointments, RelativeSource={RelativeSource TemplatedParent}}" />
                 </Grid>
               </ctrl:Ripple>
             </Grid>
