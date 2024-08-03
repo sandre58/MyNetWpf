@@ -1,5 +1,10 @@
 # Changelog
 
+## [v5.0.2] - 2024-08-03
+### :bug: Bug Fixes
+- [`b79c01c`](https://github.com/sandre58/MyNetWpf/commit/b79c01cefd0f55d2290e3ffb2de429b4b128d887) - fix monthPicker *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v5.0.1] - 2024-08-03
 ### :bug: Bug Fixes
 - [`ae75397`](https://github.com/sandre58/MyNetWpf/commit/ae75397d4c6db20b6e9abefc5b96339de9ea1a7a) - fix styles *(commit by [@sandre58](https://github.com/sandre58))*
@@ -241,3 +246,4 @@
 [v4.10.0]: https://github.com/sandre58/MyNetWpf/compare/v4.9.4...v4.10.0
 [v5.0.0]: https://github.com/sandre58/MyNetWpf/compare/v4.10.0...v5.0.0
 [v5.0.1]: https://github.com/sandre58/MyNetWpf/compare/v5.0.0...v5.0.1
+[v5.0.2]: https://github.com/sandre58/MyNetWpf/compare/v5.0.1...v5.0.2
