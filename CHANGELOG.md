@@ -1,5 +1,10 @@
 # Changelog
 
+## [v5.0.3] - 2024-08-03
+### :bug: Bug Fixes
+- [`055b6c3`](https://github.com/sandre58/MyNetWpf/commit/055b6c3860c2c1340deda1b759fa6a91e4400e54) - fix CalendarDaysByYear *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v5.0.2] - 2024-08-03
 ### :bug: Bug Fixes
 - [`b79c01c`](https://github.com/sandre58/MyNetWpf/commit/b79c01cefd0f55d2290e3ffb2de429b4b128d887) - fix monthPicker *(commit by [@sandre58](https://github.com/sandre58))*
@@ -247,3 +252,4 @@
 [v5.0.0]: https://github.com/sandre58/MyNetWpf/compare/v4.10.0...v5.0.0
 [v5.0.1]: https://github.com/sandre58/MyNetWpf/compare/v5.0.0...v5.0.1
 [v5.0.2]: https://github.com/sandre58/MyNetWpf/compare/v5.0.1...v5.0.2
+[v5.0.3]: https://github.com/sandre58/MyNetWpf/compare/v5.0.2...v5.0.3
