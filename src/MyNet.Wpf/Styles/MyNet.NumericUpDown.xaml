@@ -82,7 +82,7 @@
                             </Border.RenderTransform>
                         </Border>
 
-                        <Grid>
+                        <Grid Margin="{TemplateBinding Padding}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
@@ -115,10 +115,7 @@
                             </ContentControl>
 
                             <!-- Content -->
-                            <Grid Grid.Column="3"
-                                  Margin="{TemplateBinding Padding}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid Grid.Column="3" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
                                     <Grid Grid.Column="0">
                                         <Grid.ColumnDefinitions>
@@ -189,7 +186,8 @@
                                     VerticalAlignment="Stretch"
                                     p:ThemeAssist.CornerRadius="0"
                                     Command="{x:Static p:TextFieldAssist.ClearCommand}"
-                                    Content="{me:Icon Kind=Close, Size=16}"
+                                    Content="{me:Icon Kind=Close,
+                                                      Size=16}"
                                     ToolTip="{me:Resource Clear}">
                                 <Button.Visibility>
                                     <MultiBinding Converter="{x:Static c:TextFieldClearButtonVisibilityConverter.Default}">
@@ -328,6 +326,42 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="p:HintAssist.IsFloating" Value="True" />
+                    <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="PART_ClearButton" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PART_NumericDown" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PART_NumericUp" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
 
             <!-- IsMouseOver -->
             <MultiTrigger>
@@ -490,9 +524,11 @@
     <Style x:Key="MyNet.Styles.NumericUpDown.Alternate" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}">
         <Setter Property="ButtonsAlignment" Value="Opposite" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
         <Setter Property="p:TextFieldAssist.NextButtonContent" Value="{StaticResource MyNet.Icons.ChevronRight.Medium}" />
         <Setter Property="p:TextFieldAssist.PreviousButtonContent" Value="{StaticResource MyNet.Icons.ChevronLeft.Medium}" />
+        <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
     </Style>
     <Style x:Key="MyNet.Styles.NumericUpDown.Alternate.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Alternate}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />

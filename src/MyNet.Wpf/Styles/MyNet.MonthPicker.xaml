@@ -145,12 +145,14 @@
                     <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
                     <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
                     <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="true">
-                            <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource Self}}" />
-                        </Trigger>
                         <Trigger Property="IsNow" Value="True">
-                            <Setter Property="BorderBrush" Value="{Binding Path=Foreground, RelativeSource={RelativeSource Self}}" />
+                            <Setter Property="BorderBrush" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource Self}}" />
                             <Setter Property="BorderThickness" Value="1" />
+                            <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource Self}}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource Self}}" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -172,13 +174,18 @@
                                ClipContent="True">
                         <DockPanel Margin="{TemplateBinding Padding}">
                             <!-- Header -->
-                            <DockPanel Margin="{StaticResource MyNet.Margins.Medium.Bottom}" DockPanel.Dock="Top" Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                            <ctrl:SimpleStackPanel Margin="{StaticResource MyNet.Margins.Medium.Bottom}"
+                                                   HorizontalAlignment="Right"
+                                                   DockPanel.Dock="Top"
+                                                   Orientation="Horizontal"
+                                                   Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                                 <ContentControl VerticalAlignment="Center"
                                                 Content="{Binding DisplayDate, RelativeSource={RelativeSource TemplatedParent}}"
                                                 ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                FontSize="{StaticResource MyNet.Font.Size.Tab}"
                                                 FontWeight="DemiBold"
                                                 Opacity="{StaticResource MyNet.Opacity.Secondary}" />
-                                <StackPanel HorizontalAlignment="Right" DockPanel.Dock="Right" Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal">
                                     <Button x:Name="PART_PreviousButton"
                                             Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
                                             Content="{me:MediumIcon Kind=ChevronLeft}"
@@ -188,7 +195,7 @@
                                             Content="{me:MediumIcon Kind=ChevronRight}"
                                             ToolTip="{me:Resource Next}" />
                                 </StackPanel>
-                            </DockPanel>
+                            </ctrl:SimpleStackPanel>
 
                             <!-- Calendar -->
                             <DockPanel Grid.IsSharedSizeScope="True">
@@ -347,7 +354,7 @@
                             </Border.RenderTransform>
                         </Border>
 
-                        <Grid>
+                        <Grid Margin="{TemplateBinding Padding}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
@@ -359,7 +366,8 @@
                             </Grid.ColumnDefinitions>
 
                             <!-- Previous button -->
-                            <RepeatButton Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
+                            <RepeatButton x:Name="PART_Previous"
+                                          Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
                                           Grid.Column="0"
                                           VerticalAlignment="Stretch"
                                           p:ThemeAssist.CornerRadius="0"
@@ -388,10 +396,7 @@
                                 </ContentControl.Resources>
                             </ContentControl>
 
-                            <Grid Grid.Column="2"
-                                  Margin="{TemplateBinding Padding}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid Grid.Column="2" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 
                                 <!-- Content -->
                                 <Grid x:Name="grid"
@@ -485,7 +490,8 @@
                             </Button>
 
                             <!-- Next button -->
-                            <RepeatButton Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
+                            <RepeatButton x:Name="PART_Next"
+                                          Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
                                           Grid.Column="6"
                                           VerticalAlignment="Stretch"
                                           p:ThemeAssist.CornerRadius="0"
@@ -569,6 +575,52 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="p:HintAssist.IsFloating" Value="True" />
+                    <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="PART_Button" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PART_ClearButton" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PART_Next" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PART_Previous" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
 
             <!-- IsMouseOver -->
             <MultiTrigger>
@@ -722,9 +774,11 @@
 
     <Style x:Key="MyNet.Styles.MonthPicker.Alternate" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker}">
         <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
         <Setter Property="p:TextFieldAssist.NextCommand" Value="{x:Static cmd:AppCommands.NextMonthCommand}" />
         <Setter Property="p:TextFieldAssist.PreviousCommand" Value="{x:Static cmd:AppCommands.PreviousMonthCommand}" />
+        <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
     </Style>
     <Style x:Key="MyNet.Styles.MonthPicker.Alternate.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Alternate}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />

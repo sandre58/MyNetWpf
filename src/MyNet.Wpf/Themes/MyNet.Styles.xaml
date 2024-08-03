@@ -172,7 +172,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <ControlTemplate TargetType="{x:Type ToggleButton}">
           <Grid>
             <Border x:Name="ToggleTemplateRoot" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
-              <ctrl:PackIcon x:Name="arrow" Width="18" Height="18" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{TemplateBinding BorderBrush}" Kind="ChevronDown" RenderTransformOrigin="0.5, 0.5">
+              <ctrl:PackIcon x:Name="arrow" Width="18" Height="18" Margin="{Binding Path=(p:TextFieldAssist.TextBoxViewMargin), RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{TemplateBinding BorderBrush}" Kind="ChevronDown" RenderTransformOrigin="0.5, 0.5">
                 <ctrl:PackIcon.RenderTransform>
                   <RotateTransform Angle="0" />
                 </ctrl:PackIcon.RenderTransform>
@@ -3226,7 +3226,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <ScaleTransform x:Name="RippleOnFocusScaleTransform" ScaleX="0" ScaleY="0" />
               </Border.RenderTransform>
             </Border>
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -3246,7 +3246,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                   </Style>
                 </ContentControl.Resources>
               </ContentControl>
-              <Grid Grid.Column="1" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+              <Grid Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <!-- Content -->
                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
                   <Grid Grid.Column="0">
@@ -3331,6 +3331,16 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </MultiTrigger>
       <Trigger Property="p:HintAssist.IsFloating" Value="True">
         <Setter TargetName="Hint" Property="FloatingOffset">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_ClearButton" Property="Margin">
           <Setter.Value>
             <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
               <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
@@ -5024,7 +5034,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <ScaleTransform x:Name="RippleOnFocusScaleTransform" ScaleX="0" ScaleY="0" />
               </Border.RenderTransform>
             </Border>
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -5044,7 +5054,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                   </Style>
                 </ContentControl.Resources>
               </ContentControl>
-              <Grid Grid.Column="1" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+              <Grid Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <!-- Content -->
                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
                   <Grid Grid.Column="0">
@@ -5129,6 +5139,16 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </MultiTrigger>
       <Trigger Property="p:HintAssist.IsFloating" Value="True">
         <Setter TargetName="Hint" Property="FloatingOffset">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_ClearButton" Property="Margin">
           <Setter.Value>
             <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
               <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
@@ -7303,7 +7323,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <ScaleTransform x:Name="RippleOnFocusScaleTransform" ScaleX="0" ScaleY="0" />
               </Border.RenderTransform>
             </Border>
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -7328,7 +7348,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 </ContentControl.Resources>
               </ContentControl>
               <!-- Content -->
-              <Grid Grid.Column="3" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+              <Grid Grid.Column="3" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
                   <Grid Grid.Column="0">
                     <Grid.ColumnDefinitions>
@@ -7363,7 +7383,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 </Grid>
               </Grid>
               <!-- Clear button -->
-              <Button x:Name="PART_ClearButton" Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="4" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{x:Static p:TextFieldAssist.ClearCommand}" Content="{me:Icon Kind=Close, Size=16}" ToolTip="{me:Resource Clear}">
+              <Button x:Name="PART_ClearButton" Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="4" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{x:Static p:TextFieldAssist.ClearCommand}" Content="{me:Icon Kind=Close,                                                       Size=16}" ToolTip="{me:Resource Clear}">
                 <Button.Visibility>
                   <MultiBinding Converter="{x:Static c:TextFieldClearButtonVisibilityConverter.Default}">
                     <Binding Path="(p:TextFieldAssist.HasClearButton)" RelativeSource="{RelativeSource TemplatedParent}" />
@@ -7478,6 +7498,42 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           </Setter.Value>
         </Setter>
       </Trigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="p:HintAssist.IsFloating" Value="True" />
+          <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter TargetName="PART_ClearButton" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_NumericDown" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_NumericUp" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+      </MultiTrigger>
       <!-- IsMouseOver -->
       <MultiTrigger>
         <MultiTrigger.Conditions>
@@ -7971,7 +8027,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <ScaleTransform x:Name="RippleOnFocusScaleTransform" ScaleX="0" ScaleY="0" />
               </Border.RenderTransform>
             </Border>
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -7992,7 +8048,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                   </Style>
                 </ContentControl.Resources>
               </ContentControl>
-              <Grid Grid.Column="1" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+              <Grid Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <!-- Content -->
                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
                   <Grid Grid.Column="0">
@@ -8085,6 +8141,26 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </MultiTrigger>
       <Trigger Property="p:HintAssist.IsFloating" Value="True">
         <Setter TargetName="Hint" Property="FloatingOffset">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_ClearButton" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_RevealPassword" Property="Margin">
           <Setter.Value>
             <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
               <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
@@ -9337,7 +9413,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
               </Border.RenderTransform>
             </Border>
             <ToggleButton x:Name="toggleButton" Style="{StaticResource MyNet.Styles.ToggleButton.Embedded.ComboBox}" Grid.ColumnSpan="2" Padding="{TemplateBinding Padding}" p:ComboBoxAssist.ShowCaret="{Binding Path=(p:ComboBoxAssist.ShowCaret), RelativeSource={RelativeSource TemplatedParent}}" p:ComboBoxAssist.ShowDropDownPopup="{Binding Path=(p:ComboBoxAssist.ShowDropDownPopup), RelativeSource={RelativeSource TemplatedParent}}" p:TextFieldAssist.IsReadOnly="{TemplateBinding IsReadOnly}" p:TextFieldAssist.RippleOnFocusEnabled="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}" />
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -9361,7 +9437,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                   </Style>
                 </ContentControl.Resources>
               </ContentControl>
-              <Grid Grid.Column="2" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+              <Grid Grid.Column="2" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <!-- Content -->
                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
                   <Grid Grid.Column="0">
@@ -9521,6 +9597,42 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             </MultiBinding>
           </Setter.Value>
         </Setter>
+      </Trigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="p:HintAssist.IsFloating" Value="True" />
+          <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter TargetName="PART_ClearButton" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_NumericDown" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_NumericUp" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
         <Setter TargetName="toggleButton" Property="p:TextFieldAssist.TextBoxViewMargin">
           <Setter.Value>
             <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
@@ -9531,7 +9643,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             </MultiBinding>
           </Setter.Value>
         </Setter>
-      </Trigger>
+      </MultiTrigger>
       <!-- IsMouseOver -->
       <MultiTrigger>
         <MultiTrigger.Conditions>
@@ -9615,7 +9727,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         </ItemsPanelTemplate>
       </Setter.Value>
     </Setter>
-    <Setter Property="Padding" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
+    <Setter Property="Padding" Value="5 3" />
     <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
     <Setter Property="ScrollViewer.PanningMode" Value="Both" />
@@ -9637,13 +9749,13 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
     <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
     <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
+    <Setter Property="p:TextFieldAssist.NextButtonContent" Value="{StaticResource MyNet.Icons.ChevronRight.Medium}" />
+    <Setter Property="p:TextFieldAssist.PreviousButtonContent" Value="{StaticResource MyNet.Icons.ChevronLeft.Medium}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="False" />
     <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="1" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
-    <Setter Property="p:TextFieldAssist.NextButtonContent" Value="{StaticResource MyNet.Icons.ChevronRight.Medium}" />
-    <Setter Property="p:TextFieldAssist.PreviousButtonContent" Value="{StaticResource MyNet.Icons.ChevronLeft.Medium}" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="Transparent" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
@@ -9717,10 +9829,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.ComboBox.Alternate" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox}">
     <Setter Property="HorizontalContentAlignment" Value="Center" />
-    <Setter Property="p:ComboBoxAssist.ShowUpDownButton" Value="True" />
+    <Setter Property="Padding" Value="0" />
     <Setter Property="p:ComboBoxAssist.ShowCaret" Value="False" />
+    <Setter Property="p:ComboBoxAssist.ShowUpDownButton" Value="True" />
     <Setter Property="p:TextFieldAssist.NextCommand" Value="{x:Static cmd:AppCommands.ComboBoxUpCommand}" />
     <Setter Property="p:TextFieldAssist.PreviousCommand" Value="{x:Static cmd:AppCommands.ComboBoxDownCommand}" />
+    <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
   <Style x:Key="MyNet.Styles.ComboBox.Alternate.Foreground" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Alternate}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
@@ -9916,7 +10030,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <ScaleTransform x:Name="RippleOnFocusScaleTransform" ScaleX="0" ScaleY="0" />
               </Border.RenderTransform>
             </Border>
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -9927,7 +10041,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <ColumnDefinition Width="Auto" />
               </Grid.ColumnDefinitions>
               <!-- Previous button -->
-              <RepeatButton Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="0" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding Path=(p:TextFieldAssist.PreviousButtonContent), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+              <RepeatButton x:Name="PART_Previous" Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="0" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding Path=(p:TextFieldAssist.PreviousButtonContent), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
               <!-- Icon -->
               <ContentControl x:Name="Icon" Grid.Column="1" Margin="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="Center" Content="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}}" Opacity="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}">
                 <ContentControl.Resources>
@@ -9941,7 +10055,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                   </Style>
                 </ContentControl.Resources>
               </ContentControl>
-              <Grid Grid.Column="2" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+              <Grid Grid.Column="2" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <!-- Content -->
                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
                   <Grid Grid.Column="0">
@@ -9995,7 +10109,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 </Button.Visibility>
               </Button>
               <!-- Next button -->
-              <RepeatButton Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="6" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding Path=(p:TextFieldAssist.NextButtonContent), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+              <RepeatButton x:Name="PART_Next" Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="6" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding Path=(p:TextFieldAssist.NextButtonContent), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
             </Grid>
           </Grid>
         </Border>
@@ -10068,6 +10182,52 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           </Setter.Value>
         </Setter>
       </Trigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="p:HintAssist.IsFloating" Value="True" />
+          <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter TargetName="PART_Button" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_ClearButton" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_Next" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_Previous" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+      </MultiTrigger>
       <!-- IsMouseOver -->
       <MultiTrigger>
         <MultiTrigger.Conditions>
@@ -10171,8 +10331,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Alignment" Value="Left" />
     <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
     <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
-    <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
     <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
+    <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
     <Setter Property="p:TextFieldAssist.NextButtonContent" Value="{StaticResource MyNet.Icons.ChevronRight.Medium}" />
     <Setter Property="p:TextFieldAssist.PreviousButtonContent" Value="{StaticResource MyNet.Icons.ChevronLeft.Medium}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="False" />
@@ -10226,6 +10386,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
   <Style x:Key="MyNet.Styles.DatePicker.Alternate" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker}">
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="p:TextFieldAssist.Format" Value="dd MMM" />
     <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
@@ -11162,7 +11324,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Control}" />
     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
     <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
-    <Setter Property="Padding" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
+    <Setter Property="Padding" Value="5 3" />
     <Setter Property="PasswordChar" Value="●" />
     <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
     <Setter Property="SelectionBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
@@ -11177,12 +11339,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Alignment" Value="Left" />
     <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
     <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+    <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
     <Setter Property="p:TextFieldAssist.CharacterCounterIsVisible" Value="False" />
     <Setter Property="p:TextFieldAssist.CharacterCounterStyle" Value="{StaticResource MyNet.Styles.TextBlock.Embedded.PasswordBox.CharacterCounter}" />
     <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="False" />
     <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="1" />
-    <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="Transparent" />
@@ -11614,12 +11776,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Alignment" Value="Left" />
     <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
     <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+    <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
     <Setter Property="p:TextFieldAssist.CharacterCounterIsVisible" Value="False" />
     <Setter Property="p:TextFieldAssist.CharacterCounterStyle" Value="{StaticResource MyNet.Styles.TextBlock.Embedded.TextBox.CharacterCounter}" />
     <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="False" />
     <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="1" />
-    <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="Transparent" />
@@ -15266,7 +15428,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <ScaleTransform x:Name="RippleOnFocusScaleTransform" ScaleX="0" ScaleY="0" />
               </Border.RenderTransform>
             </Border>
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -15288,7 +15450,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 </ContentControl.Resources>
               </ContentControl>
               <!-- Content -->
-              <Grid Grid.Column="1" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+              <Grid Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
                   <Grid Grid.Column="0">
                     <Grid.ColumnDefinitions>
@@ -15409,6 +15571,32 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           </Setter.Value>
         </Setter>
       </Trigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="p:HintAssist.IsFloating" Value="True" />
+          <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter TargetName="PART_Button" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_ClearButton" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+      </MultiTrigger>
       <!-- IsMouseOver -->
       <MultiTrigger>
         <MultiTrigger.Conditions>
@@ -15640,7 +15828,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.ImagePicker.Alternate" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker}">
     <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="Padding" Value="0" />
     <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
+    <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
   <Style x:Key="MyNet.Styles.ImagePicker.Alternate.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Alternate}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
@@ -15863,12 +16053,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
           <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
           <Style.Triggers>
-            <Trigger Property="IsSelected" Value="true">
-              <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource Self}}" />
-            </Trigger>
             <Trigger Property="IsNow" Value="True">
-              <Setter Property="BorderBrush" Value="{Binding Path=Foreground, RelativeSource={RelativeSource Self}}" />
+              <Setter Property="BorderBrush" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource Self}}" />
               <Setter Property="BorderThickness" Value="1" />
+              <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBackground), RelativeSource={RelativeSource Self}}" />
+            </Trigger>
+            <Trigger Property="IsSelected" Value="true">
+              <Setter Property="BorderThickness" Value="0" />
+              <Setter Property="Foreground" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedForeground), RelativeSource={RelativeSource Self}}" />
             </Trigger>
           </Style.Triggers>
         </Style>
@@ -15886,13 +16078,13 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <ctrl:Card Padding="0 -1 0 0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" ClipContent="True">
             <DockPanel Margin="{TemplateBinding Padding}">
               <!-- Header -->
-              <DockPanel Margin="{StaticResource MyNet.Margins.Medium.Bottom}" DockPanel.Dock="Top" Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                <ContentControl VerticalAlignment="Center" Content="{Binding DisplayDate, RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{TemplateBinding HeaderTemplate}" FontWeight="DemiBold" Opacity="{StaticResource MyNet.Opacity.Secondary}" />
-                <StackPanel HorizontalAlignment="Right" DockPanel.Dock="Right" Orientation="Horizontal">
+              <ctrl:SimpleStackPanel Margin="{StaticResource MyNet.Margins.Medium.Bottom}" HorizontalAlignment="Right" DockPanel.Dock="Top" Orientation="Horizontal" Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                <ContentControl VerticalAlignment="Center" Content="{Binding DisplayDate, RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{TemplateBinding HeaderTemplate}" FontSize="{StaticResource MyNet.Font.Size.Tab}" FontWeight="DemiBold" Opacity="{StaticResource MyNet.Opacity.Secondary}" />
+                <StackPanel Orientation="Horizontal">
                   <Button x:Name="PART_PreviousButton" Style="{StaticResource MyNet.Styles.Button.Icon.Tool}" Content="{me:MediumIcon Kind=ChevronLeft}" ToolTip="{me:Resource Previous}" />
                   <Button x:Name="PART_NextButton" Style="{StaticResource MyNet.Styles.Button.Icon.Tool}" Content="{me:MediumIcon Kind=ChevronRight}" ToolTip="{me:Resource Next}" />
                 </StackPanel>
-              </DockPanel>
+              </ctrl:SimpleStackPanel>
               <!-- Calendar -->
               <DockPanel Grid.IsSharedSizeScope="True">
                 <Grid DockPanel.Dock="Top">
@@ -15985,7 +16177,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <ScaleTransform x:Name="RippleOnFocusScaleTransform" ScaleX="0" ScaleY="0" />
               </Border.RenderTransform>
             </Border>
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -15996,7 +16188,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <ColumnDefinition Width="Auto" />
               </Grid.ColumnDefinitions>
               <!-- Previous button -->
-              <RepeatButton Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="0" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding Path=(p:TextFieldAssist.PreviousButtonContent), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+              <RepeatButton x:Name="PART_Previous" Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="0" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding Path=(p:TextFieldAssist.PreviousButtonContent), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
               <!-- Icon -->
               <ContentControl x:Name="Icon" Grid.Column="1" Margin="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="Center" Content="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}}" Opacity="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}">
                 <ContentControl.Resources>
@@ -16010,7 +16202,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                   </Style>
                 </ContentControl.Resources>
               </ContentControl>
-              <Grid Grid.Column="2" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+              <Grid Grid.Column="2" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <!-- Content -->
                 <Grid x:Name="grid" Grid.Column="1" MinWidth="1" MinHeight="18">
                   <Grid Grid.Column="0">
@@ -16063,7 +16255,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 </Button.Visibility>
               </Button>
               <!-- Next button -->
-              <RepeatButton Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="6" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding Path=(p:TextFieldAssist.NextButtonContent), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+              <RepeatButton x:Name="PART_Next" Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="6" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding Path=(p:TextFieldAssist.NextButtonContent), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
             </Grid>
           </Grid>
         </Border>
@@ -16126,6 +16318,52 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           </Setter.Value>
         </Setter>
       </Trigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="p:HintAssist.IsFloating" Value="True" />
+          <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter TargetName="PART_Button" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_ClearButton" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_Next" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_Previous" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+      </MultiTrigger>
       <!-- IsMouseOver -->
       <MultiTrigger>
         <MultiTrigger.Conditions>
@@ -16269,9 +16507,11 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.MonthPicker.Alternate" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker}">
     <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="Padding" Value="0" />
     <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
     <Setter Property="p:TextFieldAssist.NextCommand" Value="{x:Static cmd:AppCommands.NextMonthCommand}" />
     <Setter Property="p:TextFieldAssist.PreviousCommand" Value="{x:Static cmd:AppCommands.PreviousMonthCommand}" />
+    <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
   <Style x:Key="MyNet.Styles.MonthPicker.Alternate.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Alternate}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
@@ -16420,7 +16660,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
               </Border.RenderTransform>
             </Border>
             <ToggleButton x:Name="toggleButton" Style="{StaticResource MyNet.Styles.ToggleButton.Embedded.ComboBox}" Grid.ColumnSpan="2" Padding="{TemplateBinding Padding}" p:ComboBoxAssist.ShowCaret="{Binding Path=(p:ComboBoxAssist.ShowCaret), RelativeSource={RelativeSource TemplatedParent}}" p:ComboBoxAssist.ShowDropDownPopup="{Binding Path=(p:ComboBoxAssist.ShowDropDownPopup), RelativeSource={RelativeSource TemplatedParent}}" p:TextFieldAssist.IsReadOnly="{TemplateBinding IsReadOnly}" p:TextFieldAssist.RippleOnFocusEnabled="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}" />
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -16444,7 +16684,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                   </Style>
                 </ContentControl.Resources>
               </ContentControl>
-              <Grid Grid.Column="2" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+              <Grid Grid.Column="2" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <!-- Content -->
                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
                   <Grid Grid.Column="0">
@@ -16612,6 +16852,42 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             </MultiBinding>
           </Setter.Value>
         </Setter>
+      </Trigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="p:HintAssist.IsFloating" Value="True" />
+          <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter TargetName="PART_ClearButton" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_NumericDown" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_NumericUp" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
         <Setter TargetName="toggleButton" Property="p:TextFieldAssist.TextBoxViewMargin">
           <Setter.Value>
             <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
@@ -16622,7 +16898,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             </MultiBinding>
           </Setter.Value>
         </Setter>
-      </Trigger>
+      </MultiTrigger>
       <!-- IsMouseOver -->
       <MultiTrigger>
         <MultiTrigger.Conditions>
@@ -16789,10 +17065,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.MultiComboBox.Alternate" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox}">
     <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="Padding" Value="0" />
     <Setter Property="p:ComboBoxAssist.ShowCaret" Value="False" />
     <Setter Property="p:ComboBoxAssist.ShowUpDownButton" Value="True" />
     <Setter Property="p:TextFieldAssist.NextCommand" Value="{x:Static cmd:AppCommands.ComboBoxUpCommand}" />
     <Setter Property="p:TextFieldAssist.PreviousCommand" Value="{x:Static cmd:AppCommands.ComboBoxDownCommand}" />
+    <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
   <Style x:Key="MyNet.Styles.MultiComboBox.Alternate.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Alternate}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
@@ -17426,9 +17704,11 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.NumericUpDown.Alternate" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}">
     <Setter Property="ButtonsAlignment" Value="Opposite" />
     <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="Padding" Value="0" />
     <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
     <Setter Property="p:TextFieldAssist.NextButtonContent" Value="{StaticResource MyNet.Icons.ChevronRight.Medium}" />
     <Setter Property="p:TextFieldAssist.PreviousButtonContent" Value="{StaticResource MyNet.Icons.ChevronLeft.Medium}" />
+    <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
   <Style x:Key="MyNet.Styles.NumericUpDown.Alternate.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Alternate}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
@@ -17848,7 +18128,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <ScaleTransform x:Name="RippleOnFocusScaleTransform" ScaleX="0" ScaleY="0" />
               </Border.RenderTransform>
             </Border>
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -17859,7 +18139,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <ColumnDefinition Width="Auto" />
               </Grid.ColumnDefinitions>
               <!-- Previous button -->
-              <RepeatButton Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="0" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding Path=(p:TextFieldAssist.PreviousButtonContent), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+              <RepeatButton x:Name="PART_Previous" Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="0" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding Path=(p:TextFieldAssist.PreviousButtonContent), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:TextFieldAssist.PreviousCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
               <!-- Icon -->
               <ContentControl x:Name="Icon" Grid.Column="1" Margin="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="Center" Content="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}}" Opacity="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:IconAssist.Icon), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}">
                 <ContentControl.Resources>
@@ -17873,7 +18153,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                   </Style>
                 </ContentControl.Resources>
               </ContentControl>
-              <Grid Grid.Column="2" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+              <Grid Grid.Column="2" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <!-- Content -->
                 <Grid x:Name="grid" Grid.Column="1" MinWidth="1" MinHeight="18">
                   <Grid Grid.Column="0">
@@ -17927,7 +18207,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 </Button.Visibility>
               </Button>
               <!-- Next button -->
-              <RepeatButton Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="6" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding Path=(p:TextFieldAssist.NextButtonContent), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+              <RepeatButton x:Name="PART_Next" Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="6" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Command="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding Path=(p:TextFieldAssist.NextButtonContent), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:TextFieldAssist.NextCommand), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
             </Grid>
           </Grid>
         </Border>
@@ -18000,6 +18280,52 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           </Setter.Value>
         </Setter>
       </Trigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="p:HintAssist.IsFloating" Value="True" />
+          <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter TargetName="PART_Button" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_ClearButton" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_Next" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_Previous" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+      </MultiTrigger>
       <!-- IsMouseOver -->
       <MultiTrigger>
         <MultiTrigger.Conditions>
@@ -18103,13 +18429,13 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Alignment" Value="Left" />
     <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
     <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+    <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
     <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
+    <Setter Property="p:TextFieldAssist.NextButtonContent" Value="{StaticResource MyNet.Icons.ChevronRight.Medium}" />
+    <Setter Property="p:TextFieldAssist.PreviousButtonContent" Value="{StaticResource MyNet.Icons.ChevronLeft.Medium}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="False" />
     <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="1" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
-    <Setter Property="p:TextFieldAssist.NextButtonContent" Value="{StaticResource MyNet.Icons.ChevronRight.Medium}" />
-    <Setter Property="p:TextFieldAssist.PreviousButtonContent" Value="{StaticResource MyNet.Icons.ChevronLeft.Medium}" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="Transparent" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
@@ -18159,10 +18485,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.TimePicker.Alternate" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker}">
     <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="Padding" Value="0" />
     <Setter Property="p:TextFieldAssist.Format" Value="HH:mm" />
     <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
     <Setter Property="p:TextFieldAssist.NextCommand" Value="{x:Static cmd:AppCommands.NextHourCommand}" />
     <Setter Property="p:TextFieldAssist.PreviousCommand" Value="{x:Static cmd:AppCommands.PreviousHourCommand}" />
+    <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
   <Style x:Key="MyNet.Styles.TimePicker.Alternate.Foreground" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Alternate}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
@@ -19645,7 +19973,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <ScaleTransform x:Name="RippleOnFocusScaleTransform" ScaleX="0" ScaleY="0" />
               </Border.RenderTransform>
             </Border>
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -19666,7 +19994,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                   </Style>
                 </ContentControl.Resources>
               </ContentControl>
-              <Grid Grid.Column="1" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+              <Grid Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <!-- Content -->
                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
                   <Grid Grid.Column="0">
@@ -19790,6 +20118,32 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           </Setter.Value>
         </Setter>
       </Trigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="p:HintAssist.IsFloating" Value="True" />
+          <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter TargetName="PART_Button" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+        <Setter TargetName="PART_ClearButton" Property="Margin">
+          <Setter.Value>
+            <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+              <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+              <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+            </MultiBinding>
+          </Setter.Value>
+        </Setter>
+      </MultiTrigger>
       <!-- IsMouseOver -->
       <MultiTrigger>
         <MultiTrigger.Conditions>
@@ -19972,7 +20326,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.ColorPicker.Alternate" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker}">
     <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="Padding" Value="0" />
     <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
+    <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
   <Style x:Key="MyNet.Styles.ColorPicker.Alternate.Foreground" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Alternate}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />

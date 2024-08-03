@@ -130,7 +130,7 @@
                             </Border.RenderTransform>
                         </Border>
 
-                        <Grid>
+                        <Grid Margin="{TemplateBinding Padding}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
@@ -159,10 +159,7 @@
                                 </ContentControl.Resources>
                             </ContentControl>
 
-                            <Grid Grid.Column="1"
-                                  Margin="{TemplateBinding Padding}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 
                                 <!-- Content -->
                                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
@@ -379,6 +376,32 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="p:HintAssist.IsFloating" Value="True" />
+                    <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="PART_Button" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PART_ClearButton" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
 
             <!-- IsMouseOver -->
             <MultiTrigger>
@@ -579,7 +602,9 @@
 
     <Style x:Key="MyNet.Styles.ColorPicker.Alternate" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker}">
         <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
+        <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
     </Style>
     <Style x:Key="MyNet.Styles.ColorPicker.Alternate.Foreground" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Alternate}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />

@@ -94,7 +94,7 @@
                                         Background="{StaticResource MyNet.Brushes.Control.Border}"
                                         Maximum="16"
                                         Minimum="0"
-                                        Value="2" />
+                                        Value="4" />
                             </GroupBox>
                             <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Clean.Left}" Margin="{StaticResource MyNet.Margins.Default.Left}" Header="V">
                                 <Slider x:Name="VerticalPaddingSlider"
@@ -102,7 +102,7 @@
                                         Background="{StaticResource MyNet.Brushes.Control.Border}"
                                         Maximum="16"
                                         Minimum="0"
-                                        Value="4" />
+                                        Value="2" />
                             </GroupBox>
                         </UniformGrid>
                     </GroupBox>

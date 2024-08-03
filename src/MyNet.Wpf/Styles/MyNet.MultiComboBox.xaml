@@ -189,7 +189,7 @@
                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                       UseLayoutRounding="{TemplateBinding UseLayoutRounding}" />
 
-                        <Grid>
+                        <Grid Margin="{TemplateBinding Padding}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
@@ -230,10 +230,7 @@
                                 </ContentControl.Resources>
                             </ContentControl>
 
-                            <Grid Grid.Column="2"
-                                  Margin="{TemplateBinding Padding}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid Grid.Column="2" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 
                                 <!-- Content -->
                                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
@@ -498,6 +495,42 @@
                         </MultiBinding>
                     </Setter.Value>
                 </Setter>
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="p:HintAssist.IsFloating" Value="True" />
+                    <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="PART_ClearButton" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PART_NumericDown" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PART_NumericUp" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
                 <Setter TargetName="toggleButton" Property="p:TextFieldAssist.TextBoxViewMargin">
                     <Setter.Value>
                         <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
@@ -508,7 +541,8 @@
                         </MultiBinding>
                     </Setter.Value>
                 </Setter>
-            </Trigger>
+            </MultiTrigger>
+
 
             <!-- IsMouseOver -->
             <MultiTrigger>
@@ -687,10 +721,12 @@
 
     <Style x:Key="MyNet.Styles.MultiComboBox.Alternate" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox}">
         <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="p:ComboBoxAssist.ShowCaret" Value="False" />
         <Setter Property="p:ComboBoxAssist.ShowUpDownButton" Value="True" />
         <Setter Property="p:TextFieldAssist.NextCommand" Value="{x:Static cmd:AppCommands.ComboBoxUpCommand}" />
         <Setter Property="p:TextFieldAssist.PreviousCommand" Value="{x:Static cmd:AppCommands.ComboBoxDownCommand}" />
+        <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
     </Style>
     <Style x:Key="MyNet.Styles.MultiComboBox.Alternate.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Alternate}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />

@@ -6,6 +6,7 @@
                    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
                    xmlns:my="http://mynet.com/xaml/themes"
                    xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
+                   xmlns:local="clr-namespace:MyNet.Wpf.TestApp.Views"
                    xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
                    d:DesignHeight="450"
@@ -71,7 +72,13 @@
                             <my:MonthPicker Style="{StaticResource MyNet.Styles.MonthPicker.Alternate.Filled}" Width="200" SelectedMonth="{x:Static sys:DateTime.Today}" />
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="dat_0_3_2">
-                            <my:MonthPicker Style="{StaticResource MyNet.Styles.MonthPicker.Alternate.Outlined}" Width="300" SelectedMonth="{x:Static sys:DateTime.Today}" />
+                            <my:MonthPicker Style="{StaticResource MyNet.Styles.MonthPicker.Alternate.Outlined}" Width="300" SelectedMonth="{Binding Month, RelativeSource={RelativeSource AncestorType={x:Type local:InputsCalendarsView}}}" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="dat_0_4_0">
+                            <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Outlined}" Width="150" Value="{Binding Year, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type local:InputsCalendarsView}}, Converter={x:Static my:DateToYearConverter.Default}}" />
                         </smtx:XamlDisplay>
                     </my:SimpleStackPanel>
                 </my:SimpleStackPanel>

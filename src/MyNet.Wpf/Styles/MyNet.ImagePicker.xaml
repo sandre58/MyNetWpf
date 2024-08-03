@@ -103,7 +103,7 @@
                             </Border.RenderTransform>
                         </Border>
 
-                        <Grid>
+                        <Grid Margin="{TemplateBinding Padding}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
@@ -133,10 +133,7 @@
                             </ContentControl>
 
                             <!-- Content -->
-                            <Grid Grid.Column="1"
-                                  Margin="{TemplateBinding Padding}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
                                     <Grid Grid.Column="0">
                                         <Grid.ColumnDefinitions>
@@ -312,6 +309,32 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="p:HintAssist.IsFloating" Value="True" />
+                    <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="PART_Button" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PART_ClearButton" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
 
             <!-- IsMouseOver -->
             <MultiTrigger>
@@ -586,7 +609,9 @@
 
     <Style x:Key="MyNet.Styles.ImagePicker.Alternate" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker}">
         <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
+        <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
     </Style>
     <Style x:Key="MyNet.Styles.ImagePicker.Alternate.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Alternate}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />

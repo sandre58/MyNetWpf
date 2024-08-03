@@ -108,7 +108,7 @@
                             </Border.RenderTransform>
                         </Border>
 
-                        <Grid>
+                        <Grid Margin="{TemplateBinding Padding}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
@@ -136,10 +136,7 @@
                                 </ContentControl.Resources>
                             </ContentControl>
 
-                            <Grid Grid.Column="1"
-                                  Margin="{TemplateBinding Padding}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 
                                 <!-- Content -->
                                 <Grid x:Name="grid" MinWidth="1" MinHeight="18">
@@ -279,6 +276,16 @@
                         </MultiBinding>
                     </Setter.Value>
                 </Setter>
+                <Setter TargetName="PART_ClearButton" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
                 <Setter TargetName="grid" Property="Margin">
                     <Setter.Value>
                         <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
@@ -372,12 +379,12 @@
         <Setter Property="p:IconAssist.Alignment" Value="Left" />
         <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
         <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+        <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
         <Setter Property="p:TextFieldAssist.CharacterCounterIsVisible" Value="False" />
         <Setter Property="p:TextFieldAssist.CharacterCounterStyle" Value="{StaticResource MyNet.Styles.TextBlock.Embedded.TextBox.CharacterCounter}" />
         <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
         <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="False" />
         <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="1" />
-        <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
         <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="Transparent" />

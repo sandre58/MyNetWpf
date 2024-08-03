@@ -85,11 +85,11 @@ public class MonthPicker : Control
         instance.RaiseEvent(args);
     }
 
-    private static object CoerceSelectedMonth(DependencyObject d, object value)
+    private static object? CoerceSelectedMonth(DependencyObject d, object value)
     {
-        var date = (DateTime)value;
+        var date = (DateTime?)value;
 
-        return date.BeginningOfMonth();
+        return date?.BeginningOfMonth();
     }
 
     public static readonly DependencyProperty SelectedMonthFormatProperty = DependencyProperty.Register(

@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:c="clr-namespace:MyNet.Wpf.Converters"
-                    xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
                     xmlns:cmd="clr-namespace:MyNet.Wpf.Commands"
+                    xmlns:ctrl="clr-namespace:MyNet.Wpf.Controls"
                     xmlns:me="clr-namespace:MyNet.Wpf.MarkupExtensions"
                     xmlns:p="clr-namespace:MyNet.Wpf.Parameters">
 
@@ -109,7 +109,7 @@
                             </Border.RenderTransform>
                         </Border>
 
-                        <Grid>
+                        <Grid Margin="{TemplateBinding Padding}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
@@ -121,7 +121,8 @@
                             </Grid.ColumnDefinitions>
 
                             <!-- Previous button -->
-                            <RepeatButton Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
+                            <RepeatButton x:Name="PART_Previous"
+                                          Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
                                           Grid.Column="0"
                                           VerticalAlignment="Stretch"
                                           p:ThemeAssist.CornerRadius="0"
@@ -151,7 +152,6 @@
                             </ContentControl>
 
                             <Grid Grid.Column="2"
-                                  Margin="{TemplateBinding Padding}"
                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 
@@ -258,7 +258,8 @@
                             </Button>
 
                             <!-- Next button -->
-                            <RepeatButton Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
+                            <RepeatButton x:Name="PART_Next"
+                                          Style="{Binding Path=(p:TextFieldAssist.ButtonStyle), RelativeSource={RelativeSource TemplatedParent}}"
                                           Grid.Column="6"
                                           VerticalAlignment="Stretch"
                                           p:ThemeAssist.CornerRadius="0"
@@ -349,6 +350,52 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="p:HintAssist.IsFloating" Value="True" />
+                    <Condition Property="p:TextFieldAssist.IsEditable" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="PART_Button" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PART_ClearButton" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PART_Next" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PART_Previous" Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{x:Static c:FloatingHintOffsetCalculationConverter.Default}">
+                            <Binding Path="FontFamily" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="FontSize" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingScale)" RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="(p:HintAssist.FloatingOffset)" RelativeSource="{RelativeSource TemplatedParent}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
 
             <!-- IsMouseOver -->
             <MultiTrigger>
@@ -460,8 +507,8 @@
         <Setter Property="p:IconAssist.Alignment" Value="Left" />
         <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
         <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
-        <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
         <Setter Property="p:TextFieldAssist.ButtonStyle" Value="{StaticResource MyNet.Styles.Button.Icon.Tool}" />
+        <Setter Property="p:TextFieldAssist.HandlesClearCommand" Value="True" />
         <Setter Property="p:TextFieldAssist.NextButtonContent" Value="{StaticResource MyNet.Icons.ChevronRight.Medium}" />
         <Setter Property="p:TextFieldAssist.PreviousButtonContent" Value="{StaticResource MyNet.Icons.ChevronLeft.Medium}" />
         <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="False" />
@@ -518,6 +565,8 @@
     </Style>
 
     <Style x:Key="MyNet.Styles.DatePicker.Alternate" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker}">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="p:TextFieldAssist.Format" Value="dd MMM" />
         <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
