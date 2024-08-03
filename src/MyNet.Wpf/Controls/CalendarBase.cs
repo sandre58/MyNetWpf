@@ -1397,8 +1397,16 @@ namespace MyNet.Wpf.Controls
         private void Cell_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (sender is not CalendarItem calendarItem
-                || e.OriginalSource is DependencyObject d && (d is Button || d.FindVisualParent<Button>() is not null)
-                || e.OriginalSource is DependencyObject d1 && (d1 is ScrollBar || d1.FindVisualParent<ScrollBar>() is not null)
+                || e.OriginalSource is DependencyObject d && (d is Button || d.FindVisualParent<Button>() is not null
+                                                           || d is ScrollBar || d.FindVisualParent<ScrollBar>() is not null
+                                                           || d is CheckBox || d.FindVisualParent<CheckBox>() is not null
+                                                           || d is ToggleButton || d.FindVisualParent<ToggleButton>() is not null
+                                                           || d is DropDownButton || d.FindVisualParent<DropDownButton>() is not null
+                                                           || d is SplitButton || d.FindVisualParent<SplitButton>() is not null
+                                                           || d is RadioButton || d.FindVisualParent<RadioButton>() is not null
+                                                           || d is ComboBox || d.FindVisualParent<ComboBox>() is not null
+                                                           || d is TextBox || d.FindVisualParent<TextBox>() is not null
+                                                           || d is NumericUpDown || d.FindVisualParent<NumericUpDown>() is not null)
                 || e.RightButton == MouseButtonState.Pressed && calendarItem.IsSelected
                 )
                 return;
@@ -1504,9 +1512,20 @@ namespace MyNet.Wpf.Controls
         private void Cell_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (sender is not CalendarItem calendarItem
-                 || e.OriginalSource is DependencyObject d && (d is Button || d.FindVisualParent<Button>() is not null)
-                 || e.OriginalSource is DependencyObject d1 && (d1 is ScrollBar || d1.FindVisualParent<ScrollBar>() is not null)
-                ) return;
+                || e.OriginalSource is DependencyObject d && (d is Button || d.FindVisualParent<Button>() is not null
+                                                           || d is ScrollBar || d.FindVisualParent<ScrollBar>() is not null
+                                                           || d is CheckBox || d.FindVisualParent<CheckBox>() is not null
+                                                           || d is ToggleButton || d.FindVisualParent<ToggleButton>() is not null
+                                                           || d is DropDownButton || d.FindVisualParent<DropDownButton>() is not null
+                                                           || d is SplitButton || d.FindVisualParent<SplitButton>() is not null
+                                                           || d is RadioButton || d.FindVisualParent<RadioButton>() is not null
+                                                           || d is ComboBox || d.FindVisualParent<ComboBox>() is not null
+                                                           || d is TextBox || d.FindVisualParent<TextBox>() is not null
+                                                           || d is NumericUpDown || d.FindVisualParent<NumericUpDown>() is not null)
+                || e.RightButton == MouseButtonState.Pressed && calendarItem.IsSelected
+                )
+                return;
+
 
             _isItemPressed = false;
 
