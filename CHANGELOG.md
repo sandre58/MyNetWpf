@@ -1,5 +1,16 @@
 # Changelog
 
+## [v5.0.0] - 2024-08-02
+### :boom: BREAKING CHANGES
+- due to [`fcac6c7`](https://github.com/sandre58/MyNetWpf/commit/fcac6c780ce48411379724507ba6c9e27ccf637f) - new styles for textfield controls *(commit by [@sandre58](https://github.com/sandre58))*:
+
+  Remove some WPF parameters and renames styles
+
+
+### :sparkles: New Features
+- [`fcac6c7`](https://github.com/sandre58/MyNetWpf/commit/fcac6c780ce48411379724507ba6c9e27ccf637f) - new styles for textfield controls *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v4.10.0] - 2024-08-02
 ### :sparkles: New Features
 - [`968ca39`](https://github.com/sandre58/MyNetWpf/commit/968ca3930adc78b1669294e7e769959cbf1e12c6) - add new calendars *(commit by [@sandre58](https://github.com/sandre58))*
@@ -223,3 +234,4 @@
 [v4.9.3]: https://github.com/sandre58/MyNetWpf/compare/v4.9.2...v4.9.3
 [v4.9.4]: https://github.com/sandre58/MyNetWpf/compare/v4.9.3...v4.9.4
 [v4.10.0]: https://github.com/sandre58/MyNetWpf/compare/v4.9.4...v4.10.0
+[v5.0.0]: https://github.com/sandre58/MyNetWpf/compare/v4.10.0...v5.0.0
