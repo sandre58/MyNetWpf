@@ -74,6 +74,7 @@
                         <smtx:XamlDisplay UniqueKey="dat_0_3_2">
                             <my:MonthPicker Style="{StaticResource MyNet.Styles.MonthPicker.Alternate.Outlined}" Width="300" SelectedMonth="{Binding Month, RelativeSource={RelativeSource AncestorType={x:Type local:InputsCalendarsView}}}" />
                         </smtx:XamlDisplay>
+                        <TextBlock Text="{Binding Month, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource AncestorType={x:Type local:InputsCalendarsView}}}" />
                     </my:SimpleStackPanel>
 
                     <my:SimpleStackPanel Orientation="Horizontal">

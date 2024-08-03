@@ -90,8 +90,8 @@ namespace MyNet.Wpf.Controls
 
         protected override IEnumerable<(DateTime date, int row, int column)> GetDisplayDates()
         {
-            var start = DisplayDateInternal.Previous(1, DisplayStartMonth).DiscardTime();
-            var end = DisplayDateInternal.Next(28, DisplayEndMonth).EndOfMonth().DiscardTime();
+            var start = DisplayDateInternal.Month == DisplayStartMonth ? DisplayDateInternal.BeginningOfMonth() : DisplayDateInternal.Previous(1, DisplayStartMonth).DiscardTime();
+            var end = DisplayDateInternal.Month == DisplayEndMonth ? DisplayDateInternal.EndOfMonth() : DisplayDateInternal.Next(28, DisplayEndMonth).EndOfMonth().DiscardTime();
 
             var columnHeaders = DateTimeHelper.Range(start, end, 1, TimeUnit.Month).ToList();
             var rowHeaders = EnumerableHelper.Range(1, 31, 1).ToList();
