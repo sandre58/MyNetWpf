@@ -1,5 +1,10 @@
 # Changelog
 
+## [v5.0.4] - 2024-08-03
+### :bug: Bug Fixes
+- [`43e1d73`](https://github.com/sandre58/MyNetWpf/commit/43e1d738687bea7e3e4030818f49422c01310ed5) - fix busy service *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v5.0.3] - 2024-08-03
 ### :bug: Bug Fixes
 - [`055b6c3`](https://github.com/sandre58/MyNetWpf/commit/055b6c3860c2c1340deda1b759fa6a91e4400e54) - fix CalendarDaysByYear *(commit by [@sandre58](https://github.com/sandre58))*
@@ -253,3 +258,4 @@
 [v5.0.1]: https://github.com/sandre58/MyNetWpf/compare/v5.0.0...v5.0.1
 [v5.0.2]: https://github.com/sandre58/MyNetWpf/compare/v5.0.1...v5.0.2
 [v5.0.3]: https://github.com/sandre58/MyNetWpf/compare/v5.0.2...v5.0.3
+[v5.0.4]: https://github.com/sandre58/MyNetWpf/compare/v5.0.3...v5.0.4
