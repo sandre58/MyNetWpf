@@ -69,7 +69,7 @@ namespace MyNet.Wpf.Controls
             return result;
         }
 
-        public async Task CloseAsync(Func<bool?>? dialogResult = null) => await InternalCloseAsync(dialogResult).ConfigureAwait(false);
+        public async Task CloseAsync(bool? dialogResult = null) => await InternalCloseAsync(dialogResult).ConfigureAwait(false);
 
         #region AssociatedControl
 
@@ -287,15 +287,14 @@ namespace MyNet.Wpf.Controls
             base.OnApplyTemplate();
         }
 
-        internal async Task InternalCloseAsync(Func<bool?>? dialogResult = null)
+        internal async Task InternalCloseAsync(bool? dialogResult = false)
         {
             var canClose = true;
-            var finalDialogResult = dialogResult;
 
             if (DataContext is IClosable closable)
                 canClose = await closable.CanCloseAsync().ConfigureAwait(false);
 
-            var dialogClosingEventArgs = new DialogClosingEventArgs(ClosingEvent, dialogResult?.Invoke() ?? false);
+            var dialogClosingEventArgs = new DialogClosingEventArgs(ClosingEvent, dialogResult);
             if (!canClose)
                 dialogClosingEventArgs.Cancel();
 
