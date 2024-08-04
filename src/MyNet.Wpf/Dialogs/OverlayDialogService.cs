@@ -84,7 +84,7 @@ namespace MyNet.Wpf.Dialogs
             control.Opened += OnControlOpened;
 
             // Close control when view Model request
-            viewModel.CloseRequest += (sender, e) => Schedulers.WpfScheduler.Current.Schedule(async () => await control.CloseAsync(viewModel.DialogResult).ConfigureAwait(false));
+            viewModel.CloseRequest += (sender, e) => Schedulers.WpfScheduler.Current.Schedule(async () => await control.CloseAsync(() => viewModel.DialogResult).ConfigureAwait(false));
 
             // Hide Control
             control.Closed += OnControlClosedAsync;
