@@ -2,11 +2,30 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace MyNet.Wpf.Parameters
 {
     public static class ProgressBarAssist
     {
+        #region BorderThickness
+
+        /// <summary>
+        /// The AutoWireViewModel attached property.
+        /// </summary>
+        public static readonly DependencyProperty BorderThicknessProperty = DependencyProperty.RegisterAttached(
+            "BorderThickness",
+            typeof(double),
+            typeof(ProgressBarAssist),
+            new PropertyMetadata(2.0D));
+
+        public static double GetBorderThickness(DependencyObject item) => (double)item.GetValue(BorderThicknessProperty);
+
+        public static void SetBorderThickness(DependencyObject item, double value) => item.SetValue(BorderThicknessProperty, value);
+
+        #endregion BorderThickness
+
         #region StrokeThickness
 
         /// <summary>
@@ -23,6 +42,23 @@ namespace MyNet.Wpf.Parameters
         public static void SetStrokeThickness(DependencyObject item, double value) => item.SetValue(StrokeThicknessProperty, value);
 
         #endregion StrokeThickness
+
+        #region Stroke
+
+        /// <summary>
+        /// The AutoWireViewModel attached property.
+        /// </summary>
+        public static readonly DependencyProperty StrokeProperty = DependencyProperty.RegisterAttached(
+            "Stroke",
+            typeof(Brush),
+            typeof(ProgressBarAssist),
+            new PropertyMetadata(null));
+
+        public static Brush GetStroke(DependencyObject item) => (Brush)item.GetValue(StrokeProperty);
+
+        public static void SetStroke(DependencyObject item, Brush value) => item.SetValue(StrokeProperty, value);
+
+        #endregion Stroke
 
         #region ShowValue
 

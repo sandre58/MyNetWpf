@@ -361,7 +361,7 @@
                                             BorderBrush="{DynamicResource MyNet.Brushes.Control.Border}"
                                             BorderThickness="1"
                                             DockPanel.Dock="Right">
-                                        <my:BusyControl Style="{StaticResource MyNet.Styles.BusyControl.Small}"
+                                        <my:BusyControl Style="{StaticResource MyNet.Styles.BusyControl.Small.Foreground}"
                                                         Width="40"
                                                         Height="40"
                                                         Margin="5"
