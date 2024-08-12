@@ -395,13 +395,15 @@
         <Setter Property="KeyboardNavigation.TabNavigation" Value="Local" />
         <Setter Property="LoadingContent">
             <Setter.Value>
-                <ProgressBar Style="{StaticResource MyNet.Styles.ProgressBar.Circular}"
-                             Width="100"
-                             Height="100"
-                             p:ProgressBarAssist.ShowSecondProgress="True"
-                             p:ProgressBarAssist.StrokeThickness="10"
-                             ClipToBounds="False"
-                             IsIndeterminate="True" />
+                <Grid>
+                    <ProgressBar Style="{StaticResource MyNet.Styles.ProgressBar.Circular}"
+                                 Width="100"
+                                 Height="100"
+                                 p:ProgressBarAssist.ShowSecondProgress="True"
+                                 p:ProgressBarAssist.BorderThickness="10"
+                                 ClipToBounds="False"
+                                 IsIndeterminate="True" />
+                </Grid>
             </Setter.Value>
         </Setter>
         <Setter Property="Padding" Value="{StaticResource MyNet.Paddings.TextField.Default}" />

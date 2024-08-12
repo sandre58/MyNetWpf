@@ -5818,7 +5818,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Contrast=True}" />
   </Style>
   <DataTemplate x:Key="MyNet.DataTemplates.IndeterminateBusy.Small" DataType="{x:Type busy:IndeterminateBusy}">
-    <ProgressBar Style="{Binding Path=(p:ThemeAssist.Style), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" p:ProgressBarAssist.ShowSecondProgress="True" p:ProgressBarAssist.BorderThickness="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=10}" ClipToBounds="False" FontSize="{StaticResource MyNet.Font.Size}" p:ProgressBarAssist.Stroke="{me:BrushBinding SelfPath=BorderBrush}" IsIndeterminate="True" ToolTip="{Binding Message}" />
+    <Grid>
+      <ProgressBar Style="{Binding Path=(p:ThemeAssist.Style), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" p:ProgressBarAssist.ShowSecondProgress="True" p:ProgressBarAssist.BorderThickness="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=10}" ClipToBounds="False" FontSize="{StaticResource MyNet.Font.Size}" p:ProgressBarAssist.Stroke="{me:BrushBinding SelfPath=BorderBrush}" IsIndeterminate="True" ToolTip="{Binding Message}" />
+    </Grid>
   </DataTemplate>
   <DataTemplate x:Key="MyNet.DataTemplates.Calendar.Appointment.Hour" DataType="{x:Type models:IAppointment}">
     <Grid>
@@ -13033,7 +13035,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="KeyboardNavigation.TabNavigation" Value="Local" />
     <Setter Property="LoadingContent">
       <Setter.Value>
-        <ProgressBar Style="{StaticResource MyNet.Styles.ProgressBar.Circular}" Width="100" Height="100" p:ProgressBarAssist.ShowSecondProgress="True" p:ProgressBarAssist.StrokeThickness="10" ClipToBounds="False" IsIndeterminate="True" />
+        <Grid>
+          <ProgressBar Style="{StaticResource MyNet.Styles.ProgressBar.Circular}" Width="100" Height="100" p:ProgressBarAssist.ShowSecondProgress="True" p:ProgressBarAssist.BorderThickness="10" ClipToBounds="False" IsIndeterminate="True" />
+        </Grid>
       </Setter.Value>
     </Setter>
     <Setter Property="Padding" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
@@ -13171,7 +13175,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <DataTemplate x:Key="MyNet.DataTemplates.IndeterminateBusy.Alternate" DataType="{x:Type busy:IndeterminateBusy}">
     <ctrl:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
       <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Primary}" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center" UniformCornerRadius="100">
-        <ProgressBar x:Name="ProgressBar" Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="125" Height="125" Margin="{StaticResource MyNet.Margins.Medium}" p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}" p:ProgressBarAssist.StrokeThickness="12" ClipToBounds="False" FontSize="{StaticResource MyNet.Font.Size.Header}" IsIndeterminate="True" />
+        <ProgressBar x:Name="ProgressBar" Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="125" Height="125" Margin="{StaticResource MyNet.Margins.Medium}" p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}" p:ProgressBarAssist.BorderThickness="12" ClipToBounds="False" FontSize="{StaticResource MyNet.Font.Size.Header}" IsIndeterminate="True" />
       </ctrl:Card>
       <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding FontSize, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ctrl:BusyControl}}}" FontStyle="Italic" Text="{Binding Message}" Visibility="{Binding Message, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
       <Button Style="{StaticResource MyNet.Styles.Button.Text}" Height="35" HorizontalAlignment="Center" p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}" Command="{Binding CancelCommand}" Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
@@ -13197,7 +13201,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <DataTemplate x:Key="MyNet.DataTemplates.DeterminateBusy.Alternate" DataType="{x:Type busy:DeterminateBusy}">
     <ctrl:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
       <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Primary}" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center" UniformCornerRadius="100">
-        <ProgressBar x:Name="ProgressBar" Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="125" Height="125" Margin="{StaticResource MyNet.Margins.Medium}" HorizontalAlignment="Center" VerticalAlignment="Center" p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}" p:ProgressBarAssist.ShowValue="True" p:ProgressBarAssist.StrokeThickness="12" FontSize="{StaticResource MyNet.Font.Size.Header}" Maximum="{Binding Maximum}" Minimum="{Binding Minimum}" Value="{Binding Value}" />
+        <ProgressBar x:Name="ProgressBar" Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="125" Height="125" Margin="{StaticResource MyNet.Margins.Medium}" HorizontalAlignment="Center" VerticalAlignment="Center" p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}" p:ProgressBarAssist.ShowValue="True" p:ProgressBarAssist.BorderThickness="12" FontSize="{StaticResource MyNet.Font.Size.Header}" Maximum="{Binding Maximum}" Minimum="{Binding Minimum}" Value="{Binding Value}" />
       </ctrl:Card>
       <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding FontSize, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ctrl:BusyControl}}}" FontStyle="Italic" Text="{Binding Message}" Visibility="{Binding Message, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
       <Button Style="{StaticResource MyNet.Styles.Button.Text}" Height="35" HorizontalAlignment="Center" p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}" Command="{Binding CancelCommand}" Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
@@ -13229,7 +13233,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       <ctrl:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
         <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Primary}" Padding="0" HorizontalAlignment="Center" UniformCornerRadius="100">
           <Grid>
-            <ProgressBar x:Name="ProgressBar" Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="125" Height="125" Margin="{StaticResource MyNet.Margins.Medium}" p:ProgressBarAssist.ShowValue="True" p:ProgressBarAssist.StrokeThickness="12" FontSize="{StaticResource MyNet.Font.Size.Header}" Maximum="1" Minimum="0" Value="{Binding Value}" />
+            <ProgressBar x:Name="ProgressBar" Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="125" Height="125" Margin="{StaticResource MyNet.Margins.Medium}" p:ProgressBarAssist.ShowValue="True" p:ProgressBarAssist.BorderThickness="12" FontSize="{StaticResource MyNet.Font.Size.Header}" Maximum="1" Minimum="0" Value="{Binding Value}" />
           </Grid>
         </ctrl:Card>
         <Button Style="{StaticResource MyNet.Styles.Button.Text.Foreground}" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}" Command="{Binding CancelCommand}" Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
@@ -13276,7 +13280,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <DataTemplate x:Key="MyNet.DataTemplates.IndeterminateBusy.Alternate.Accent" DataType="{x:Type busy:IndeterminateBusy}">
     <ctrl:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
       <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Accent}" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center" UniformCornerRadius="100">
-        <ProgressBar x:Name="ProgressBar" Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="125" Height="125" Margin="{StaticResource MyNet.Margins.Medium}" p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}" p:ProgressBarAssist.StrokeThickness="12" ClipToBounds="False" FontSize="{StaticResource MyNet.Font.Size.Header}" IsIndeterminate="True" />
+        <ProgressBar x:Name="ProgressBar" Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="125" Height="125" Margin="{StaticResource MyNet.Margins.Medium}" p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}" p:ProgressBarAssist.BorderThickness="12" ClipToBounds="False" FontSize="{StaticResource MyNet.Font.Size.Header}" IsIndeterminate="True" />
       </ctrl:Card>
       <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding FontSize, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ctrl:BusyControl}}}" FontStyle="Italic" Text="{Binding Message}" Visibility="{Binding Message, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
       <Button Style="{StaticResource MyNet.Styles.Button.Text}" Height="35" HorizontalAlignment="Center" p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}" Command="{Binding CancelCommand}" Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
@@ -13302,7 +13306,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <DataTemplate x:Key="MyNet.DataTemplates.DeterminateBusy.Alternate.Accent" DataType="{x:Type busy:DeterminateBusy}">
     <ctrl:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
       <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Accent}" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center" UniformCornerRadius="100">
-        <ProgressBar x:Name="ProgressBar" Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="125" Height="125" Margin="{StaticResource MyNet.Margins.Medium}" HorizontalAlignment="Center" VerticalAlignment="Center" p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}" p:ProgressBarAssist.ShowValue="True" p:ProgressBarAssist.StrokeThickness="12" FontSize="{StaticResource MyNet.Font.Size.Header}" Maximum="{Binding Maximum}" Minimum="{Binding Minimum}" Value="{Binding Value}" />
+        <ProgressBar x:Name="ProgressBar" Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="125" Height="125" Margin="{StaticResource MyNet.Margins.Medium}" HorizontalAlignment="Center" VerticalAlignment="Center" p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}" p:ProgressBarAssist.ShowValue="True" p:ProgressBarAssist.BorderThickness="12" FontSize="{StaticResource MyNet.Font.Size.Header}" Maximum="{Binding Maximum}" Minimum="{Binding Minimum}" Value="{Binding Value}" />
       </ctrl:Card>
       <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding FontSize, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ctrl:BusyControl}}}" FontStyle="Italic" Text="{Binding Message}" Visibility="{Binding Message, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
       <Button Style="{StaticResource MyNet.Styles.Button.Text}" Height="35" HorizontalAlignment="Center" p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}" Command="{Binding CancelCommand}" Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
@@ -13334,7 +13338,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       <ctrl:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
         <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Accent}" Padding="0" HorizontalAlignment="Center" UniformCornerRadius="100">
           <Grid>
-            <ProgressBar x:Name="ProgressBar" Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="125" Height="125" Margin="{StaticResource MyNet.Margins.Medium}" p:ProgressBarAssist.ShowValue="True" p:ProgressBarAssist.StrokeThickness="12" FontSize="{StaticResource MyNet.Font.Size.Header}" Maximum="1" Minimum="0" Value="{Binding Value}" />
+            <ProgressBar x:Name="ProgressBar" Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="125" Height="125" Margin="{StaticResource MyNet.Margins.Medium}" p:ProgressBarAssist.ShowValue="True" p:ProgressBarAssist.BorderThickness="12" FontSize="{StaticResource MyNet.Font.Size.Header}" Maximum="1" Minimum="0" Value="{Binding Value}" />
           </Grid>
         </ctrl:Card>
         <Button Style="{StaticResource MyNet.Styles.Button.Text.Foreground}" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}" Command="{Binding CancelCommand}" Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
@@ -13444,7 +13448,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="ContentTemplate">
       <Setter.Value>
         <DataTemplate>
-          <ProgressBar Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.17}" Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.17}" HorizontalAlignment="Center" VerticalAlignment="Center" p:ProgressBarAssist.ShowSecondProgress="True" p:ProgressBarAssist.StrokeThickness="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.010}" IsIndeterminate="True" />
+          <ProgressBar Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}" Width="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.17}" Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.17}" HorizontalAlignment="Center" VerticalAlignment="Center" p:ProgressBarAssist.ShowSecondProgress="True" p:ProgressBarAssist.BorderThickness="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.010}" IsIndeterminate="True" />
         </DataTemplate>
       </Setter.Value>
     </Setter>

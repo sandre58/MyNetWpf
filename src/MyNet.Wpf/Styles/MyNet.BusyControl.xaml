@@ -174,7 +174,7 @@
                              Height="125"
                              Margin="{StaticResource MyNet.Margins.Medium}"
                              p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}"
-                             p:ProgressBarAssist.StrokeThickness="12"
+                             p:ProgressBarAssist.BorderThickness="12"
                              ClipToBounds="False"
                              FontSize="{StaticResource MyNet.Font.Size.Header}"
                              IsIndeterminate="True" />
@@ -233,7 +233,7 @@
                              VerticalAlignment="Center"
                              p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}"
                              p:ProgressBarAssist.ShowValue="True"
-                             p:ProgressBarAssist.StrokeThickness="12"
+                             p:ProgressBarAssist.BorderThickness="12"
                              FontSize="{StaticResource MyNet.Font.Size.Header}"
                              Maximum="{Binding Maximum}"
                              Minimum="{Binding Minimum}"
@@ -292,7 +292,7 @@
                                      Height="125"
                                      Margin="{StaticResource MyNet.Margins.Medium}"
                                      p:ProgressBarAssist.ShowValue="True"
-                                     p:ProgressBarAssist.StrokeThickness="12"
+                                     p:ProgressBarAssist.BorderThickness="12"
                                      FontSize="{StaticResource MyNet.Font.Size.Header}"
                                      Maximum="1"
                                      Minimum="0"
@@ -377,7 +377,7 @@
                              Height="125"
                              Margin="{StaticResource MyNet.Margins.Medium}"
                              p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}"
-                             p:ProgressBarAssist.StrokeThickness="12"
+                             p:ProgressBarAssist.BorderThickness="12"
                              ClipToBounds="False"
                              FontSize="{StaticResource MyNet.Font.Size.Header}"
                              IsIndeterminate="True" />
@@ -436,7 +436,7 @@
                              VerticalAlignment="Center"
                              p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}"
                              p:ProgressBarAssist.ShowValue="True"
-                             p:ProgressBarAssist.StrokeThickness="12"
+                             p:ProgressBarAssist.BorderThickness="12"
                              FontSize="{StaticResource MyNet.Font.Size.Header}"
                              Maximum="{Binding Maximum}"
                              Minimum="{Binding Minimum}"
@@ -495,7 +495,7 @@
                                      Height="125"
                                      Margin="{StaticResource MyNet.Margins.Medium}"
                                      p:ProgressBarAssist.ShowValue="True"
-                                     p:ProgressBarAssist.StrokeThickness="12"
+                                     p:ProgressBarAssist.BorderThickness="12"
                                      FontSize="{StaticResource MyNet.Font.Size.Header}"
                                      Maximum="1"
                                      Minimum="0"
@@ -568,7 +568,8 @@
     </DataTemplate>
 
     <DataTemplate x:Key="MyNet.DataTemplates.IndeterminateBusy.Small" DataType="{x:Type busy:IndeterminateBusy}">
-        <ProgressBar Style="{Binding Path=(p:ThemeAssist.Style), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}"
+        <Grid>
+            <ProgressBar Style="{Binding Path=(p:ThemeAssist.Style), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}"
                      Width="Auto"
                      Height="Auto"
                      HorizontalAlignment="Stretch"
@@ -580,6 +581,7 @@
                      p:ProgressBarAssist.Stroke="{me:BrushBinding SelfPath=BorderBrush}"
                      IsIndeterminate="True"
                      ToolTip="{Binding Message}" />
+        </Grid>
     </DataTemplate>
 
     <s:BusyTemplateSelector x:Key="MyNet.Selectors.Busy"
@@ -674,7 +676,7 @@
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center"
                                  p:ProgressBarAssist.ShowSecondProgress="True"
-                                 p:ProgressBarAssist.StrokeThickness="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.010}"
+                                 p:ProgressBarAssist.BorderThickness="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.010}"
                                  IsIndeterminate="True" />
                 </DataTemplate>
             </Setter.Value>

@@ -76,7 +76,7 @@
                              Height="35"
                              HorizontalAlignment="Center"
                              my:ProgressBarAssist.ShowSecondProgress="True"
-                             my:ProgressBarAssist.StrokeThickness="2"
+                             my:ProgressBarAssist.BorderThickness="2"
                              IsIndeterminate="True" />
                 <TextBlock HorizontalAlignment="Center" FontStyle="Italic" Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}" />
             </my:SimpleStackPanel>
