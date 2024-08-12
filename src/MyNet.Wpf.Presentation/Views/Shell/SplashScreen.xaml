@@ -7,14 +7,14 @@
                    xmlns:vm="clr-namespace:MyNet.UI.ViewModels.Shell;assembly=MyNet.UI"
                    Title="{Binding ProductName}"
                    Style="{StaticResource MyNet.Styles.ExtendedWindow}"
-                   GlowColor="{DynamicResource MyNet.Colors.Accent}"
-                   NonActiveGlowColor="{DynamicResource MyNet.Colors.Accent}"
                    Width="500"
                    Height="300"
                    d:DataContext="{d:DesignInstance Type=vm:SplashScreenViewModel}"
                    Background="{DynamicResource MyNet.Brushes.Accent}"
                    BorderThickness="0"
                    Foreground="{DynamicResource MyNet.Brushes.Accent.Foreground}"
+                   GlowColor="{DynamicResource MyNet.Colors.Accent}"
+                   NonActiveGlowColor="{DynamicResource MyNet.Colors.Accent}"
                    ResizeBorderThickness="0"
                    ResizeMode="NoResize"
                    ShowInTaskbar="False"
@@ -75,8 +75,10 @@
                              Width="35"
                              Height="35"
                              HorizontalAlignment="Center"
+                             my:ProgressBarAssist.BorderThickness="2.5"
+                             my:ProgressBarAssist.InnerPadding="6"
                              my:ProgressBarAssist.ShowSecondProgress="True"
-                             my:ProgressBarAssist.BorderThickness="2"
+                             my:ProgressBarAssist.StrokeThickness="1.5"
                              IsIndeterminate="True" />
                 <TextBlock HorizontalAlignment="Center" FontStyle="Italic" Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}" />
             </my:SimpleStackPanel>
