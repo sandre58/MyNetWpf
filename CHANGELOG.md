@@ -1,5 +1,10 @@
 # Changelog
 
+## [v5.0.11] - 2024-08-12
+### :bug: Bug Fixes
+- [`b55e24c`](https://github.com/sandre58/MyNetWpf/commit/b55e24c1798afd5d37850309be046560c6a0fcea) - fix busy control
+
+
 ## [v5.0.10] - 2024-08-12
 ### :bug: Bug Fixes
 - [`e4081a1`](https://github.com/sandre58/MyNetWpf/commit/e4081a1079eee343071e68541aec84e322ed2d78) - change design of BusyControl
@@ -295,3 +300,4 @@
 [v5.0.8]: https://github.com/sandre58/MyNetWpf/compare/v5.0.7...v5.0.8
 [v5.0.9]: https://github.com/sandre58/MyNetWpf/compare/v5.0.8...v5.0.9
 [v5.0.10]: https://github.com/sandre58/MyNetWpf/compare/v5.0.9...v5.0.10
+[v5.0.11]: https://github.com/sandre58/MyNetWpf/compare/v5.0.10...v5.0.11
