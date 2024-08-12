@@ -10,19 +10,31 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.ProgressBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/MyNet.Card.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.ProgressBar.Embedded.BusyControl" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource MyNet.Styles.ProgressBar.Circular}">
-        <Setter Property="FontSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.055}" />
+        <Setter Property="FontSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=6}" />
         <Setter Property="Height" Value="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.2}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Width" Value="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.2}" />
-        <Setter Property="p:ProgressBarAssist.BorderThickness" Value="5" />
+        <Setter Property="p:ProgressBarAssist.BorderThickness" Value="3" />
+        <Setter Property="p:ProgressBarAssist.InnerPadding" Value="{Binding Path=(p:ProgressBarAssist.StrokeThickness), RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Add}, ConverterParameter=2}" />
         <Setter Property="p:ProgressBarAssist.ShowSecondProgress" Value="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}" />
+        <Setter Property="p:ProgressBarAssist.StrokeThickness" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=15}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsCancelling}" Value="True">
                 <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Negative}" />
+            </DataTrigger>
+            <Trigger Property="IsIndeterminate" Value="True">
+                <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+                <Setter Property="p:ProgressBarAssist.BorderThickness" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=15}" />
+                <Setter Property="p:ProgressBarAssist.InnerPadding" Value="{Binding Path=(p:ProgressBarAssist.BorderThickness), RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Add}, ConverterParameter=4}" />
+                <Setter Property="p:ProgressBarAssist.StrokeThickness" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=20}" />
+            </Trigger>
+            <DataTrigger Binding="{Binding Value, RelativeSource={RelativeSource Self}, Converter={x:Static c:ComparaisonToBooleanConverter.IsGreaterThan}, ConverterParameter=0}" Value="True">
+                <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=BorderBrush}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
@@ -45,7 +57,6 @@
             <ProgressBar x:Name="ProgressBar"
                          Style="{Binding Path=(p:ThemeAssist.Style), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}"
                          Margin="{StaticResource MyNet.Margins.Medium}"
-                         BorderBrush="{me:BrushBinding InheritPath=(TextElement.Foreground)}"
                          IsIndeterminate="True" />
 
             <TextBlock HorizontalAlignment="Center"
@@ -54,15 +65,17 @@
                        Text="{Binding Message}"
                        Visibility="{Binding Message, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
 
-            <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+            <Button x:Name="button"
+                    Style="{StaticResource MyNet.Styles.Button.Text}"
                     Height="35"
                     HorizontalAlignment="Center"
                     p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}"
                     Command="{Binding CancelCommand}"
+                    Tag="{Binding IsCancelling}"
                     Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                 <Grid>
-                    <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
-                    <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                    <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
+                    <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                         <TextBlock Text="Annulation en cours" />
                         <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
                             <ctrl:LoadingIndicator.RenderTransform>
@@ -92,15 +105,17 @@
                        Text="{Binding Message}"
                        Visibility="{Binding Message, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
 
-            <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+            <Button x:Name="button"
+                    Style="{StaticResource MyNet.Styles.Button.Text}"
                     Height="35"
                     HorizontalAlignment="Center"
                     p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}"
                     Command="{Binding CancelCommand}"
+                    Tag="{Binding IsCancelling}"
                     Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                 <Grid>
-                    <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
-                    <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                    <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
+                    <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                         <TextBlock Text="Annulation en cours" />
                         <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
                             <ctrl:LoadingIndicator.RenderTransform>
@@ -140,15 +155,17 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+            <Button x:Name="button"
+                    Style="{StaticResource MyNet.Styles.Button.Text}"
                     Height="35"
                     HorizontalAlignment="Center"
                     p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}"
                     Command="{Binding CancelCommand}"
+                    Tag="{Binding IsCancelling}"
                     Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                 <Grid>
-                    <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
-                    <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                    <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
+                    <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                         <TextBlock Text="Annulation en cours" />
                         <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
                             <ctrl:LoadingIndicator.RenderTransform>
@@ -163,18 +180,21 @@
 
     <DataTemplate x:Key="MyNet.DataTemplates.IndeterminateBusy.Alternate" DataType="{x:Type busy:IndeterminateBusy}">
         <ctrl:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
-            <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Primary}"
+            <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Custom}"
                        Padding="0"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
+                       Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}"
+                       Foreground="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}"
                        UniformCornerRadius="100">
                 <ProgressBar x:Name="ProgressBar"
                              Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}"
                              Width="125"
                              Height="125"
                              Margin="{StaticResource MyNet.Margins.Medium}"
-                             p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}"
                              p:ProgressBarAssist.BorderThickness="12"
+                             p:ProgressBarAssist.InnerPadding="16"
+                             p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}"
                              ClipToBounds="False"
                              FontSize="{StaticResource MyNet.Font.Size.Header}"
                              IsIndeterminate="True" />
@@ -188,18 +208,20 @@
                        Text="{Binding Message}"
                        Visibility="{Binding Message, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
 
-            <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+            <Button x:Name="button"
+                    Style="{StaticResource MyNet.Styles.Button.Text}"
                     Height="35"
                     HorizontalAlignment="Center"
                     p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}"
                     Command="{Binding CancelCommand}"
+                    Tag="{Binding IsCancelling}"
                     Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                 <Grid>
                     <ContentControl HorizontalAlignment="Center"
                                     Content="{me:Resource Cancel}"
                                     ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}"
-                                    Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
-                    <ctrl:SimpleStackPanel HorizontalAlignment="Center" Orientation="Horizontal" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                                    Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
+                    <ctrl:SimpleStackPanel HorizontalAlignment="Center" Orientation="Horizontal" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                         <TextBlock Text="Annulation en cours" />
                         <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
                             <ctrl:LoadingIndicator.RenderTransform>
@@ -219,10 +241,12 @@
 
     <DataTemplate x:Key="MyNet.DataTemplates.DeterminateBusy.Alternate" DataType="{x:Type busy:DeterminateBusy}">
         <ctrl:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
-            <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Primary}"
+            <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Custom}"
                        Padding="0"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
+                       Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}"
+                       Foreground="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}"
                        UniformCornerRadius="100">
                 <ProgressBar x:Name="ProgressBar"
                              Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}"
@@ -231,9 +255,10 @@
                              Margin="{StaticResource MyNet.Margins.Medium}"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
+                             p:ProgressBarAssist.BorderThickness="12"
+                             p:ProgressBarAssist.InnerPadding="16"
                              p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}"
                              p:ProgressBarAssist.ShowValue="True"
-                             p:ProgressBarAssist.BorderThickness="12"
                              FontSize="{StaticResource MyNet.Font.Size.Header}"
                              Maximum="{Binding Maximum}"
                              Minimum="{Binding Minimum}"
@@ -247,15 +272,17 @@
                        Text="{Binding Message}"
                        Visibility="{Binding Message, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
 
-            <Button Style="{StaticResource MyNet.Styles.Button.Text}"
+            <Button x:Name="button"
+                    Style="{StaticResource MyNet.Styles.Button.Text}"
                     Height="35"
                     HorizontalAlignment="Center"
                     p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}"
                     Command="{Binding CancelCommand}"
+                    Tag="{Binding IsCancelling}"
                     Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                 <Grid>
-                    <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
-                    <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                    <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
+                    <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                         <TextBlock Text="Annulation en cours" />
                         <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
                             <ctrl:LoadingIndicator.RenderTransform>
@@ -281,9 +308,11 @@
             </Grid.RowDefinitions>
 
             <ctrl:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
-                <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Primary}"
+                <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Custom}"
                            Padding="0"
                            HorizontalAlignment="Center"
+                           Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}"
+                           Foreground="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}"
                            UniformCornerRadius="100">
                     <Grid>
                         <ProgressBar x:Name="ProgressBar"
@@ -291,8 +320,9 @@
                                      Width="125"
                                      Height="125"
                                      Margin="{StaticResource MyNet.Margins.Medium}"
-                                     p:ProgressBarAssist.ShowValue="True"
                                      p:ProgressBarAssist.BorderThickness="12"
+                                     p:ProgressBarAssist.InnerPadding="16"
+                                     p:ProgressBarAssist.ShowValue="True"
                                      FontSize="{StaticResource MyNet.Font.Size.Header}"
                                      Maximum="1"
                                      Minimum="0"
@@ -300,16 +330,18 @@
                     </Grid>
                 </ctrl:Card>
 
-                <Button Style="{StaticResource MyNet.Styles.Button.Text.Foreground}"
+                <Button x:Name="button"
+                        Style="{StaticResource MyNet.Styles.Button.Text.Foreground}"
                         Height="35"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
                         p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}"
                         Command="{Binding CancelCommand}"
+                        Tag="{Binding IsCancelling}"
                         Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                     <Grid>
-                        <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
-                        <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                        <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
+                        <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                             <TextBlock Text="Annulation en cours" />
                             <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
                                 <ctrl:LoadingIndicator.RenderTransform>
@@ -321,212 +353,11 @@
                 </Button>
             </ctrl:SimpleStackPanel>
 
-            <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Primary}"
+            <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Custom}"
                        Grid.Row="1"
                        Padding="0"
-                       UniformCornerRadius="0">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="20" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="10" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-
-                    <ProgressBar Style="{StaticResource MyNet.Styles.ProgressBar.Linear.Foreground}"
-                                 Height="5"
-                                 IsIndeterminate="True"
-                                 Visibility="{Binding IsCancelling, Converter={x:Static c:BooleanToVisibilityConverter.HiddenIfTrue}}" />
-                    <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Caption}"
-                               Grid.Row="2"
-                               Margin="{StaticResource MyNet.Margins.Default.Bottom}"
-                               HorizontalAlignment="Center"
-                               Opacity="{StaticResource MyNet.Opacity.Default}"
-                               Text="{Binding Title}" />
-                    <ItemsControl Style="{StaticResource MyNet.Styles.ItemsControl}"
-                                  Grid.Row="4"
-                                  HorizontalAlignment="Center"
-                                  ItemsSource="{Binding Messages}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Ghost}" HorizontalAlignment="Center" Text="{Binding}" />
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </Grid>
-            </ctrl:Card>
-        </Grid>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IsCancelling}" Value="True">
-                <Setter TargetName="ProgressBar" Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Negative}" />
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
-
-    <DataTemplate x:Key="MyNet.DataTemplates.IndeterminateBusy.Alternate.Accent" DataType="{x:Type busy:IndeterminateBusy}">
-        <ctrl:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
-            <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Accent}"
-                       Padding="0"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       UniformCornerRadius="100">
-                <ProgressBar x:Name="ProgressBar"
-                             Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}"
-                             Width="125"
-                             Height="125"
-                             Margin="{StaticResource MyNet.Margins.Medium}"
-                             p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}"
-                             p:ProgressBarAssist.BorderThickness="12"
-                             ClipToBounds="False"
-                             FontSize="{StaticResource MyNet.Font.Size.Header}"
-                             IsIndeterminate="True" />
-            </ctrl:Card>
-
-            <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="{Binding FontSize, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ctrl:BusyControl}}}"
-                       FontStyle="Italic"
-                       Text="{Binding Message}"
-                       Visibility="{Binding Message, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
-
-            <Button Style="{StaticResource MyNet.Styles.Button.Text}"
-                    Height="35"
-                    HorizontalAlignment="Center"
-                    p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}"
-                    Command="{Binding CancelCommand}"
-                    Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                <Grid>
-                    <ContentControl HorizontalAlignment="Center"
-                                    Content="{me:Resource Cancel}"
-                                    ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}"
-                                    Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
-                    <ctrl:SimpleStackPanel HorizontalAlignment="Center" Orientation="Horizontal" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                        <TextBlock Text="Annulation en cours" />
-                        <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
-                            <ctrl:LoadingIndicator.RenderTransform>
-                                <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
-                            </ctrl:LoadingIndicator.RenderTransform>
-                        </ctrl:LoadingIndicator>
-                    </ctrl:SimpleStackPanel>
-                </Grid>
-            </Button>
-        </ctrl:SimpleStackPanel>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IsCancelling}" Value="True">
-                <Setter TargetName="ProgressBar" Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Negative}" />
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
-
-    <DataTemplate x:Key="MyNet.DataTemplates.DeterminateBusy.Alternate.Accent" DataType="{x:Type busy:DeterminateBusy}">
-        <ctrl:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
-            <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Accent}"
-                       Padding="0"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       UniformCornerRadius="100">
-                <ProgressBar x:Name="ProgressBar"
-                             Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}"
-                             Width="125"
-                             Height="125"
-                             Margin="{StaticResource MyNet.Margins.Medium}"
-                             HorizontalAlignment="Center"
-                             VerticalAlignment="Center"
-                             p:ProgressBarAssist.ShowSecondProgress="{Binding IsCancelling, Converter={x:Static c:NotBooleanConverter.Default}}"
-                             p:ProgressBarAssist.ShowValue="True"
-                             p:ProgressBarAssist.BorderThickness="12"
-                             FontSize="{StaticResource MyNet.Font.Size.Header}"
-                             Maximum="{Binding Maximum}"
-                             Minimum="{Binding Minimum}"
-                             Value="{Binding Value}" />
-            </ctrl:Card>
-            <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="{Binding FontSize, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ctrl:BusyControl}}}"
-                       FontStyle="Italic"
-                       Text="{Binding Message}"
-                       Visibility="{Binding Message, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
-
-            <Button Style="{StaticResource MyNet.Styles.Button.Text}"
-                    Height="35"
-                    HorizontalAlignment="Center"
-                    p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}"
-                    Command="{Binding CancelCommand}"
-                    Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                <Grid>
-                    <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
-                    <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                        <TextBlock Text="Annulation en cours" />
-                        <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
-                            <ctrl:LoadingIndicator.RenderTransform>
-                                <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
-                            </ctrl:LoadingIndicator.RenderTransform>
-                        </ctrl:LoadingIndicator>
-                    </ctrl:SimpleStackPanel>
-                </Grid>
-            </Button>
-        </ctrl:SimpleStackPanel>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding IsCancelling}" Value="True">
-                <Setter TargetName="ProgressBar" Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Negative}" />
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
-
-    <DataTemplate x:Key="MyNet.DataTemplates.ProgressionBusy.Alternate.Accent" DataType="{x:Type busy:ProgressionBusy}">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="250" />
-            </Grid.RowDefinitions>
-
-            <ctrl:SimpleStackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
-                <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Accent}"
-                           Padding="0"
-                           HorizontalAlignment="Center"
-                           UniformCornerRadius="100">
-                    <Grid>
-                        <ProgressBar x:Name="ProgressBar"
-                                     Style="{StaticResource MyNet.Styles.ProgressBar.Circular.Foreground}"
-                                     Width="125"
-                                     Height="125"
-                                     Margin="{StaticResource MyNet.Margins.Medium}"
-                                     p:ProgressBarAssist.ShowValue="True"
-                                     p:ProgressBarAssist.BorderThickness="12"
-                                     FontSize="{StaticResource MyNet.Font.Size.Header}"
-                                     Maximum="1"
-                                     Minimum="0"
-                                     Value="{Binding Value}" />
-                    </Grid>
-                </ctrl:Card>
-
-                <Button Style="{StaticResource MyNet.Styles.Button.Text.Foreground}"
-                        Height="35"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Top"
-                        p:IconAssist.Icon="{me:MediumIcon Kind=Cancel}"
-                        Command="{Binding CancelCommand}"
-                        Visibility="{Binding IsCancellable, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                    <Grid>
-                        <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
-                        <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding IsCancelling, FallbackValue=Collapsed, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                            <TextBlock Text="Annulation en cours" />
-                            <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
-                                <ctrl:LoadingIndicator.RenderTransform>
-                                    <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
-                                </ctrl:LoadingIndicator.RenderTransform>
-                            </ctrl:LoadingIndicator>
-                        </ctrl:SimpleStackPanel>
-                    </Grid>
-                </Button>
-            </ctrl:SimpleStackPanel>
-
-            <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Accent}"
-                       Grid.Row="1"
-                       Padding="0"
+                       Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}"
+                       Foreground="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}"
                        UniformCornerRadius="0">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -570,17 +401,19 @@
     <DataTemplate x:Key="MyNet.DataTemplates.IndeterminateBusy.Small" DataType="{x:Type busy:IndeterminateBusy}">
         <Grid>
             <ProgressBar Style="{Binding Path=(p:ThemeAssist.Style), RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}}"
-                     Width="Auto"
-                     Height="Auto"
-                     HorizontalAlignment="Stretch"
-                     VerticalAlignment="Stretch"
-                     p:ProgressBarAssist.ShowSecondProgress="True"
-                     p:ProgressBarAssist.BorderThickness="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=10}"
-                     ClipToBounds="False"
-                     FontSize="{StaticResource MyNet.Font.Size}"
-                     p:ProgressBarAssist.Stroke="{me:BrushBinding SelfPath=BorderBrush}"
-                     IsIndeterminate="True"
-                     ToolTip="{Binding Message}" />
+                         Width="Auto"
+                         Height="Auto"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch"
+                         p:ProgressBarAssist.BorderThickness="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=10}"
+                         p:ProgressBarAssist.InnerPadding="{Binding Path=(p:ProgressBarAssist.BorderThickness), RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Add}, ConverterParameter=4}"
+                         p:ProgressBarAssist.ShowSecondProgress="True"
+                         p:ProgressBarAssist.Stroke="{me:BrushBinding SelfPath=BorderBrush}"
+                         p:ProgressBarAssist.StrokeThickness="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Divide}, ConverterParameter=15}"
+                         ClipToBounds="False"
+                         FontSize="{StaticResource MyNet.Font.Size}"
+                         IsIndeterminate="True"
+                         ToolTip="{Binding Message}" />
         </Grid>
     </DataTemplate>
 
@@ -593,11 +426,6 @@
                             DeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.DeterminateBusy.Alternate}"
                             IndeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.IndeterminateBusy.Alternate}"
                             ProgressionBusyTemplate="{StaticResource MyNet.DataTemplates.ProgressionBusy.Alternate}" />
-
-    <s:BusyTemplateSelector x:Key="MyNet.Selectors.Busy.Alternate.Accent"
-                            DeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.DeterminateBusy.Alternate.Accent}"
-                            IndeterminateBusyTemplate="{StaticResource MyNet.DataTemplates.IndeterminateBusy.Alternate.Accent}"
-                            ProgressionBusyTemplate="{StaticResource MyNet.DataTemplates.ProgressionBusy.Alternate.Accent}" />
 
     <Style x:Key="MyNet.Styles.BusyControl" TargetType="{x:Type ctrl:BusyControl}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Overlay}" />
@@ -637,9 +465,12 @@
 
     <Style x:Key="MyNet.Styles.BusyControl.Alternate" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl}">
         <Setter Property="ContentTemplateSelector" Value="{StaticResource MyNet.Selectors.Busy.Alternate}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
-    <Style x:Key="MyNet.Styles.BusyControl.Alternate.Accent" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl}">
-        <Setter Property="ContentTemplateSelector" Value="{StaticResource MyNet.Selectors.Busy.Alternate.Accent}" />
+    <Style x:Key="MyNet.Styles.BusyControl.Alternate.Accent" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl.Alternate}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
 
     <Style x:Key="MyNet.Styles.BusyControl.Small" TargetType="{x:Type ctrl:BusyControl}" BasedOn="{StaticResource MyNet.Styles.BusyControl}">
@@ -675,8 +506,8 @@
                                  Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.17}"
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center"
-                                 p:ProgressBarAssist.ShowSecondProgress="True"
                                  p:ProgressBarAssist.BorderThickness="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ctrl:BusyControl}}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.010}"
+                                 p:ProgressBarAssist.ShowSecondProgress="True"
                                  IsIndeterminate="True" />
                 </DataTemplate>
             </Setter.Value>

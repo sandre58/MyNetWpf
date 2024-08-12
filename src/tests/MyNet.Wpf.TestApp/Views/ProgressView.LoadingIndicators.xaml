@@ -362,9 +362,8 @@
                                             BorderThickness="1"
                                             DockPanel.Dock="Right">
                                         <my:BusyControl Style="{StaticResource MyNet.Styles.BusyControl.Small.Foreground}"
-                                                        Width="40"
-                                                        Height="40"
-                                                        Margin="5"
+                                                        Width="50"
+                                                        Height="50"
                                                         IsActive="{Binding IsChecked, ElementName=IsActive1}">
                                             <busy:IndeterminateBusy />
                                         </my:BusyControl>

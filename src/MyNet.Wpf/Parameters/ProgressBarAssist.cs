@@ -60,6 +60,23 @@ namespace MyNet.Wpf.Parameters
 
         #endregion Stroke
 
+        #region InnerPadding
+
+        /// <summary>
+        /// The AutoWireViewModel attached property.
+        /// </summary>
+        public static readonly DependencyProperty InnerPaddingProperty = DependencyProperty.RegisterAttached(
+            "InnerPadding",
+            typeof(double),
+            typeof(ProgressBarAssist),
+            new PropertyMetadata(6.0D));
+
+        public static double GetInnerPadding(DependencyObject item) => (double)item.GetValue(InnerPaddingProperty);
+
+        public static void SetInnerPadding(DependencyObject item, double value) => item.SetValue(InnerPaddingProperty, value);
+
+        #endregion InnerPadding
+
         #region ShowValue
 
         /// <summary>
