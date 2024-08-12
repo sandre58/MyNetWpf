@@ -1,5 +1,10 @@
 # Changelog
 
+## [v5.0.10] - 2024-08-12
+### :bug: Bug Fixes
+- [`e4081a1`](https://github.com/sandre58/MyNetWpf/commit/e4081a1079eee343071e68541aec84e322ed2d78) - change design of BusyControl
+
+
 ## [v5.0.9] - 2024-08-04
 ### :bug: Bug Fixes
 - [`b1f8565`](https://github.com/sandre58/MyNetWpf/commit/b1f8565eeada008f9d329ed0aa4272f909fa8de4) - fix DialogResult in overlayDialogControl *(commit by [@sandre58](https://github.com/sandre58))*
@@ -289,3 +294,4 @@
 [v5.0.7]: https://github.com/sandre58/MyNetWpf/compare/v5.0.6...v5.0.7
 [v5.0.8]: https://github.com/sandre58/MyNetWpf/compare/v5.0.7...v5.0.8
 [v5.0.9]: https://github.com/sandre58/MyNetWpf/compare/v5.0.8...v5.0.9
+[v5.0.10]: https://github.com/sandre58/MyNetWpf/compare/v5.0.9...v5.0.10
