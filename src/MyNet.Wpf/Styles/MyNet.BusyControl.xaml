@@ -76,7 +76,7 @@
                 <Grid>
                     <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
                     <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                        <TextBlock Text="Annulation en cours" />
+                        <TextBlock Text="{me:Resource CancellationInProgress}" />
                         <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
                             <ctrl:LoadingIndicator.RenderTransform>
                                 <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
@@ -116,7 +116,7 @@
                 <Grid>
                     <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
                     <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                        <TextBlock Text="Annulation en cours" />
+                        <TextBlock Text="{me:Resource CancellationInProgress}" />
                         <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
                             <ctrl:LoadingIndicator.RenderTransform>
                                 <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
@@ -166,7 +166,7 @@
                 <Grid>
                     <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
                     <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                        <TextBlock Text="Annulation en cours" />
+                        <TextBlock Text="{me:Resource CancellationInProgress}" />
                         <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
                             <ctrl:LoadingIndicator.RenderTransform>
                                 <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
@@ -222,7 +222,7 @@
                                     ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}"
                                     Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
                     <ctrl:SimpleStackPanel HorizontalAlignment="Center" Orientation="Horizontal" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                        <TextBlock Text="Annulation en cours" />
+                        <TextBlock Text="{me:Resource CancellationInProgress}" />
                         <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
                             <ctrl:LoadingIndicator.RenderTransform>
                                 <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
@@ -283,7 +283,7 @@
                 <Grid>
                     <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
                     <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                        <TextBlock Text="Annulation en cours" />
+                        <TextBlock Text="{me:Resource CancellationInProgress}" />
                         <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
                             <ctrl:LoadingIndicator.RenderTransform>
                                 <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
@@ -342,7 +342,7 @@
                     <Grid>
                         <ContentControl Content="{me:Resource Cancel}" ContentTemplate="{StaticResource MyNet.DataTemplates.Icon}" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
                         <ctrl:SimpleStackPanel Orientation="Horizontal" Visibility="{Binding Tag, ElementName=button, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                            <TextBlock Text="Annulation en cours" />
+                            <TextBlock Text="{me:Resource CancellationInProgress}" />
                             <ctrl:LoadingIndicator VerticalAlignment="Center" Foreground="{me:BrushBinding InheritPath=(TextElement.Foreground)}" Mode="ThreeDots">
                                 <ctrl:LoadingIndicator.RenderTransform>
                                     <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
