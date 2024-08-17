@@ -15,9 +15,8 @@
         <Setter Property="FontFamily" Value="{me:RobotoFont}" />
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="OverlayBackground" Value="{DynamicResource MyNet.Brushes.Overlay}" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="OverlayBackground" Value="{DynamicResource MyNet.Brushes.Overlay}" />
         <Setter Property="Padding" Value="50" />
         <Setter Property="Template">
             <Setter.Value>
@@ -145,6 +144,10 @@
                                 </Border.InputBindings>
                             </Border>
                             <ctrl:Card x:Name="PART_ContentElement"
+                                       MinWidth="{TemplateBinding ContentMinWidth}"
+                                       MinHeight="{TemplateBinding ContentMinHeight}"
+                                       MaxWidth="{TemplateBinding ContentMaxWidth}"
+                                       MaxHeight="{TemplateBinding ContentMaxHeight}"
                                        Margin="{TemplateBinding Padding}"
                                        Padding="0"
                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -191,6 +194,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Popup}" />
     </Style>
 </ResourceDictionary>

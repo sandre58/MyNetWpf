@@ -14,5 +14,13 @@ namespace MyNet.Wpf.Dialogs
         VerticalAlignment VerticalAlignment { get; }
 
         HorizontalAlignment HorizontalAlignment { get; }
+
+        double MaxHeight { get; set; }
+
+        double MinHeight { get; set; }
+
+        double MinWidth { get; set; }
+
+        double MaxWidth { get; set; }
     }
 }

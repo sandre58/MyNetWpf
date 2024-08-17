@@ -5,6 +5,7 @@ using System.Reactive.Concurrency;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using MyNet.UI.Dialogs.Models;
 using MyNet.Wpf.Controls;
 
@@ -74,10 +75,14 @@ namespace MyNet.Wpf.Dialogs
 
             if (overlayDialogObject is not null)
             {
-                control.CloseOnClickAway = overlayDialogObject.CloseOnClickAway;
-                control.FocusOnShow = overlayDialogObject.FocusOnShow;
-                control.VerticalContentAlignment = overlayDialogObject.VerticalAlignment;
-                control.HorizontalContentAlignment = overlayDialogObject.HorizontalAlignment;
+                control.SetBinding(OverlayDialogControl.CloseOnClickAwayProperty, new Binding(nameof(IOverlayDialog.CloseOnClickAway)) { Source = overlayDialogObject });
+                control.SetBinding(OverlayDialogControl.FocusOnShowProperty, new Binding(nameof(IOverlayDialog.FocusOnShow)) { Source = overlayDialogObject });
+                control.SetBinding(Control.VerticalContentAlignmentProperty, new Binding(nameof(IOverlayDialog.VerticalAlignment)) { Source = overlayDialogObject });
+                control.SetBinding(Control.HorizontalContentAlignmentProperty, new Binding(nameof(IOverlayDialog.HorizontalAlignment)) { Source = overlayDialogObject });
+                control.SetBinding(OverlayDialogControl.ContentMaxHeightProperty, new Binding(nameof(IOverlayDialog.MaxHeight)) { Source = overlayDialogObject });
+                control.SetBinding(OverlayDialogControl.ContentMinHeightProperty, new Binding(nameof(IOverlayDialog.MinHeight)) { Source = overlayDialogObject });
+                control.SetBinding(OverlayDialogControl.ContentMaxWidthProperty, new Binding(nameof(IOverlayDialog.MaxWidth)) { Source = overlayDialogObject });
+                control.SetBinding(OverlayDialogControl.ContentMinWidthProperty, new Binding(nameof(IOverlayDialog.MinWidth)) { Source = overlayDialogObject });
             }
 
             // Load view Model on openning control

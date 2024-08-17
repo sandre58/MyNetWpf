@@ -207,6 +207,70 @@ namespace MyNet.Wpf.Controls
 
         #endregion
 
+        #region ContentMaxWidth
+
+        public static readonly DependencyProperty ContentMaxWidthProperty = DependencyProperty.Register(
+            nameof(ContentMaxWidth), typeof(double), typeof(OverlayDialogControl), new PropertyMetadata(double.PositiveInfinity));
+
+        /// <summary>
+        /// Represents the overlay brush that is used to dim the background behind the dialog
+        /// </summary>
+        public double ContentMaxWidth
+        {
+            get => (double)GetValue(ContentMaxWidthProperty);
+            set => SetValue(ContentMaxWidthProperty, value);
+        }
+
+        #endregion
+
+        #region ContentMinWidth
+
+        public static readonly DependencyProperty ContentMinWidthProperty = DependencyProperty.Register(
+            nameof(ContentMinWidth), typeof(double), typeof(OverlayDialogControl), new PropertyMetadata(0.0D));
+
+        /// <summary>
+        /// Represents the overlay brush that is used to dim the background behind the dialog
+        /// </summary>
+        public double ContentMinWidth
+        {
+            get => (double)GetValue(ContentMinWidthProperty);
+            set => SetValue(ContentMinWidthProperty, value);
+        }
+
+        #endregion
+
+        #region ContentMaxHeight
+
+        public static readonly DependencyProperty ContentMaxHeightProperty = DependencyProperty.Register(
+            nameof(ContentMaxHeight), typeof(double), typeof(OverlayDialogControl), new PropertyMetadata(double.PositiveInfinity));
+
+        /// <summary>
+        /// Represents the overlay brush that is used to dim the background behind the dialog
+        /// </summary>
+        public double ContentMaxHeight
+        {
+            get => (double)GetValue(ContentMaxHeightProperty);
+            set => SetValue(ContentMaxHeightProperty, value);
+        }
+
+        #endregion
+
+        #region ContentMinHeight
+
+        public static readonly DependencyProperty ContentMinHeightProperty = DependencyProperty.Register(
+            nameof(ContentMinHeight), typeof(double), typeof(OverlayDialogControl), new PropertyMetadata(0.0D));
+
+        /// <summary>
+        /// Represents the overlay brush that is used to dim the background behind the dialog
+        /// </summary>
+        public double ContentMinHeight
+        {
+            get => (double)GetValue(ContentMinHeightProperty);
+            set => SetValue(ContentMinHeightProperty, value);
+        }
+
+        #endregion
+
         #region open dialog events/callbacks
 
         public static readonly RoutedEvent OpenedEvent =
