@@ -1,5 +1,14 @@
 # Changelog
 
+## [v5.1.0] - 2024-08-17
+### :sparkles: New Features
+- [`cbff89c`](https://github.com/sandre58/MyNetWpf/commit/cbff89cb92640b24457e8f87f5ff883faf7fa04d) - add new features for overlay dialog
+
+### :bug: Bug Fixes
+- [`f2316e4`](https://github.com/sandre58/MyNetWpf/commit/f2316e4271114681bc72d7220b6a896bd95d1320) - fix spashScreen
+- [`43c427d`](https://github.com/sandre58/MyNetWpf/commit/43c427dee71196f51a02430715c3e301a91e34d6) - translate string
+
+
 ## [v5.0.12] - 2024-08-12
 ### :bug: Bug Fixes
 - [`986b426`](https://github.com/sandre58/MyNetWpf/commit/986b42666d728b96de0dc9fdd90f8187d0991b28) - fix design of busy control
@@ -307,3 +316,4 @@
 [v5.0.10]: https://github.com/sandre58/MyNetWpf/compare/v5.0.9...v5.0.10
 [v5.0.11]: https://github.com/sandre58/MyNetWpf/compare/v5.0.10...v5.0.11
 [v5.0.12]: https://github.com/sandre58/MyNetWpf/compare/v5.0.11...v5.0.12
+[v5.1.0]: https://github.com/sandre58/MyNetWpf/compare/v5.0.12...v5.1.0
