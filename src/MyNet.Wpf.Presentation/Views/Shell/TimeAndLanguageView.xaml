@@ -25,7 +25,7 @@
 
     <StackPanel>
 
-        <!--  Language  -->
+        <!-- Language -->
         <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=Language}">
             <ComboBox Width="{StaticResource MyNet.Widths.Control.Large}"
                       my:FocusAssist.IsDefault="True"
@@ -37,7 +37,7 @@
                       ItemsSource="{Binding Cultures}"
                       SelectedValue="{Binding SelectedCulture}">
                 <ComboBox.Style>
-                    <Style BasedOn="{StaticResource MyNet.Styles.ComboBox.Foreground}" TargetType="{x:Type ComboBox}">
+                    <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Foreground}">
                         <Setter Property="my:HintAssist.Hint" Value="{my:Resource Language}" />
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding SelectedCulture}" Value="{x:Null}">
@@ -58,6 +58,22 @@
                     </Style>
                 </ComboBox.Style>
             </ComboBox>
+        </GroupBox>
+
+        <!-- Time Zone -->
+        <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=Timezone}">
+            <my:SimpleStackPanel Orientation="Horizontal">
+                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Foreground}"
+                          Width="360"
+                          my:FocusAssist.IsDefault="True"
+                          my:HintAssist.Hint="{my:Resource Timezone}"
+                          my:HintAssist.IsFloating="True"
+                          my:PopupAssist.Background="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}"
+                          my:PopupAssist.Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Converter={x:Static my:BrushConverter.Contrast}}"
+                          IsEnabled="{Binding AutomaticTimeZone}"
+                          ItemsSource="{Binding TimeZones}"
+                          SelectedValue="{Binding SelectedTimeZone}" />
+            </my:SimpleStackPanel>
         </GroupBox>
     </StackPanel>
 </UserControl>
