@@ -27,52 +27,42 @@
 
         <!-- Language -->
         <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=Language}">
-            <ComboBox Width="{StaticResource MyNet.Widths.Control.Large}"
-                      my:FocusAssist.IsDefault="True"
-                      my:HintAssist.IsFloating="True"
-                      my:PopupAssist.Background="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}"
-                      my:PopupAssist.Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Converter={x:Static my:BrushConverter.Contrast}}"
-                      my:TextFieldAssist.HasClearButton="True"
-                      ItemTemplate="{StaticResource LanguageItemTemplate}"
-                      ItemsSource="{Binding Cultures}"
-                      SelectedValue="{Binding SelectedCulture}">
-                <ComboBox.Style>
-                    <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Foreground}">
-                        <Setter Property="my:HintAssist.Hint" Value="{my:Resource Language}" />
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding SelectedCulture}" Value="{x:Null}">
-                                <Setter Property="my:HintAssist.Hint">
-                                    <Setter.Value>
-                                        <StackPanel Orientation="Horizontal">
-                                            <my:PackIcon Width="16"
-                                                         Height="16"
-                                                         Margin="{StaticResource MyNet.Margins.Default.Horizontal}"
-                                                         VerticalAlignment="Center"
-                                                         Kind="Globe" />
-                                            <TextBlock VerticalAlignment="Center" Text="{my:Resource SystemLanguage}" TextWrapping="Wrap" />
-                                        </StackPanel>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ComboBox.Style>
-            </ComboBox>
+            <my:SimpleStackPanel Orientation="Horizontal" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
+                <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Foreground}"
+                          Width="{StaticResource MyNet.Widths.Control.Large}"
+                          my:FocusAssist.IsDefault="True"
+                          my:HintAssist.Hint="{my:Resource Language}"
+                          my:HintAssist.IsFloating="True"
+                          my:PopupAssist.Background="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}"
+                          my:PopupAssist.Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Converter={x:Static my:BrushConverter.Contrast}}"
+                          IsEnabled="{Binding AutomaticCulture, Converter={x:Static my:NotBooleanConverter.Default}}"
+                          ItemTemplate="{StaticResource LanguageItemTemplate}"
+                          ItemsSource="{Binding Cultures}"
+                          SelectedValue="{Binding SelectedCulture}" />
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Switch.Foreground}" Margin="{StaticResource MyNet.Margins.Default.Right}" IsChecked="{Binding AutomaticCulture}" />
+                    <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Disablable}" IsEnabled="{Binding AutomaticCulture}" Text="{my:Resource Automatic}" />
+                </StackPanel>
+            </my:SimpleStackPanel>
         </GroupBox>
 
         <!-- Time Zone -->
         <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=Timezone}">
-            <my:SimpleStackPanel Orientation="Horizontal">
+            <my:SimpleStackPanel Orientation="Horizontal" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
                 <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Foreground}"
-                          Width="360"
+                          Width="300"
                           my:FocusAssist.IsDefault="True"
                           my:HintAssist.Hint="{my:Resource Timezone}"
                           my:HintAssist.IsFloating="True"
                           my:PopupAssist.Background="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}"
                           my:PopupAssist.Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Converter={x:Static my:BrushConverter.Contrast}}"
-                          IsEnabled="{Binding AutomaticTimeZone}"
+                          IsEnabled="{Binding AutomaticTimeZone, Converter={x:Static my:NotBooleanConverter.Default}}"
                           ItemsSource="{Binding TimeZones}"
                           SelectedValue="{Binding SelectedTimeZone}" />
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Switch.Foreground}" Margin="{StaticResource MyNet.Margins.Default.Right}" IsChecked="{Binding AutomaticTimeZone}" />
+                    <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Disablable}" IsEnabled="{Binding AutomaticTimeZone}" Text="{my:Resource Automatic}" />
+                </StackPanel>
             </my:SimpleStackPanel>
         </GroupBox>
     </StackPanel>
