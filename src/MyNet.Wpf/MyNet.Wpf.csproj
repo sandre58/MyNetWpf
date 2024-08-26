@@ -12,7 +12,7 @@
     <PackageReference Include="MaterialDesignThemes" Version="5.1.1-ci718" />
     <PackageReference Include="MyNet.Humanizer" Version="1.1.0-alpha.10" />
     <PackageReference Include="MyNet.Observable" Version="5.3.0-alpha.3" />
-    <PackageReference Include="MyNet.UI" Version="4.7.0-alpha.2" />
+    <PackageReference Include="MyNet.UI" Version="4.7.0-alpha.3" />
     <PackageReference Include="MyNet.Utilities" Version="4.1.0-alpha.21" />
     <PackageReference Include="MyNet.Xaml.Html" Version="1.0.0" />
     <PackageReference Include="MyNet.Xaml.Merger.MSBuild" Version="2.0.1">
