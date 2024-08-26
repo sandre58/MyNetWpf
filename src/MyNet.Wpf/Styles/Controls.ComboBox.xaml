@@ -814,7 +814,7 @@
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Converter={x:Static c:TimeSpanToDateTimeConverter.Default}, StringFormat='HH:mm'}" />
+                    <TextBlock Text="{me:DisplayDateTime Format='HH:mm'}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>

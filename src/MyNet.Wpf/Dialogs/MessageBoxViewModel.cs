@@ -9,7 +9,7 @@ using MyNet.Observable;
 
 namespace MyNet.Wpf.Dialogs
 {
-    public class MessageBoxViewModel : ObservableObject, IMessageBox
+    public class MessageBoxViewModel : LocalizableObject, IMessageBox
     {
         #region Members
 

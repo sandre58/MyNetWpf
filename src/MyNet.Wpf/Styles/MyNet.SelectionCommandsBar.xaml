@@ -92,7 +92,7 @@
                                                    TextBlock.FontWeight="SemiBold"
                                                    TextBlock.Foreground="{DynamicResource MyNet.Brushes.Primary}">
                                 <ctrl:PackIcon Kind="Check" />
-                                <TextBlock Text="{me:Translation Path=SelectedCount, RelativeSource={RelativeSource TemplatedParent}, Format=XSelected, Plural=True}" Typography.Capitals="AllSmallCaps" />
+                                <TextBlock Text="{me:Translation Path=SelectedCount, RelativeSource={RelativeSource TemplatedParent}, Format=XSelected, Pluralize=True}" Typography.Capitals="AllSmallCaps" />
                             </ctrl:SimpleStackPanel>
 
                             <!-- Header -->

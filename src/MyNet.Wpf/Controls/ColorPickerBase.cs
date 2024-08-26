@@ -29,7 +29,7 @@ namespace MyNet.Wpf.Controls
         protected bool _colorIsUpdating;
         protected bool _updateHsvValues = true;
 
-        public ColorPickerBase() => CultureInfoService.Current.CultureChanged += (sender, e) => UpdateColorName(SelectedColor);
+        public ColorPickerBase() => GlobalizationService.Current.CultureChanged += (sender, e) => UpdateColorName(SelectedColor);
 
         #region A
 

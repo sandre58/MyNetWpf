@@ -6,8 +6,8 @@ namespace MyNet.Wpf.Presentation.Views.Shell
     /// <summary>
     /// Interaction logic for AboutView.xaml
     /// </summary>
-    public partial class LanguageView
+    public partial class TimeAndLanguageView
     {
-        public LanguageView() => InitializeComponent();
+        public TimeAndLanguageView() => InitializeComponent();
     }
 }

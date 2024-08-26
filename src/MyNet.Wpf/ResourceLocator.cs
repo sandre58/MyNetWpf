@@ -4,16 +4,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
-using MyNet.Wpf.Resources;
+using MyNet.UI.Resources;
 using MyNet.Utilities.Localization;
 using MyNet.Utilities.Logging;
-using MyNet.Utilities.Resources;
-using MyNet.UI.Resources;
+using MyNet.Wpf.Resources;
 
 namespace MyNet.Wpf
 {
@@ -36,9 +34,9 @@ namespace MyNet.Wpf
 
             Humanizer.ResourceLocator.Initialize();
 
-            FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(TranslationService.Current.Culture.Name)));
+            FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(GlobalizationService.Current.Culture.Name)));
             UpdateUiLanguage();
-            CultureInfoService.Current.CultureChanged += (sender, e) =>
+            GlobalizationService.Current.CultureChanged += (sender, e) =>
             {
                 FillColorResourcesDictionary();
                 UpdateUiLanguage();
@@ -51,14 +49,14 @@ namespace MyNet.Wpf
         {
             if (Application.Current?.MainWindow != null)
             {
-                Application.Current.MainWindow.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.Name);
+                Application.Current.MainWindow.Language = XmlLanguage.GetLanguage(GlobalizationService.Current.Culture.Name);
             }
         }
 
         private static void FillColorResourcesDictionary()
         {
             ColorResourcesDictionary = [];
-            var resourceSet = ColorResources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
+            var resourceSet = ColorResources.ResourceManager.GetResourceSet(GlobalizationService.Current.Culture, true, true);
 
             if (resourceSet is not null)
             {

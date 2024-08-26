@@ -519,6 +519,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="TextTrimming" Value="CharacterEllipsis" />
     <Setter Property="TextWrapping" Value="NoWrap" />
     <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="p:GlobalizationAssist.UpdateOnCultureChanged" Value="True" />
   </Style>
   <Style x:Key="MyNet.Styles.Thumb" TargetType="{x:Type Thumb}">
     <Setter Property="Background" Value="Transparent" />
@@ -1677,7 +1678,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         </ControlTemplate>
       </Setter.Value>
     </Setter>
-    <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
+    <Setter Property="p:GlobalizationAssist.UpdateOnCultureChanged" Value="True" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Embedded.Calendar.Header" TargetType="{x:Type Button}">
     <Setter Property="Cursor" Value="Hand" />
@@ -9267,7 +9268,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
     <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-    <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
+    <Setter Property="p:GlobalizationAssist.UpdateOnCultureChanged" Value="True" />
   </Style>
   <Style x:Key="MyNet.Styles.CheckBox" TargetType="{x:Type ToggleButton}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
@@ -9920,7 +9921,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="ItemTemplate">
       <Setter.Value>
         <DataTemplate>
-          <TextBlock Text="{Binding Converter={x:Static c:TimeSpanToDateTimeConverter.Default}, StringFormat='HH:mm'}" />
+          <TextBlock Text="{me:DisplayDateTime Format='HH:mm'}" />
         </DataTemplate>
       </Setter.Value>
     </Setter>
@@ -10377,7 +10378,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="Transparent" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border.Secondary}" />
-    <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
+    <Setter Property="p:GlobalizationAssist.UpdateOnCultureChanged" Value="True" />
     <Setter Property="p:ValidationAssist.Background" Value="Transparent" />
   </Style>
   <Style x:Key="MyNet.Styles.DatePicker.Foreground" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker}">
@@ -11822,6 +11823,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="Transparent" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border.Secondary}" />
+    <Setter Property="p:GlobalizationAssist.UpdateOnCultureChanged" Value="True" />
     <Setter Property="p:ValidationAssist.Background" Value="Transparent" />
   </Style>
   <Style x:Key="MyNet.Styles.TextBox.Foreground" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyNet.Styles.TextBox}">
@@ -13768,7 +13770,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="RowHeaderTemplate">
       <Setter.Value>
         <DataTemplate>
-          <TextBlock Margin="{StaticResource MyNet.Margins.Default}" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding Converter={x:Static c:TimeSpanToDateTimeConverter.Default}, StringFormat='HH:mm'}" />
+          <TextBlock Margin="{StaticResource MyNet.Margins.Default}" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{me:DisplayDateTime Format='HH:mm'}" />
         </DataTemplate>
       </Setter.Value>
     </Setter>
@@ -13812,7 +13814,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="RowHeaderTemplate">
       <Setter.Value>
         <DataTemplate>
-          <TextBlock Margin="{StaticResource MyNet.Margins.Default}" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding Converter={x:Static c:TimeSpanToDateTimeConverter.Default}, StringFormat='HH:mm'}" />
+          <TextBlock Margin="{StaticResource MyNet.Margins.Default}" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{me:DisplayDateTime Format='HH:mm'}" />
         </DataTemplate>
       </Setter.Value>
     </Setter>
@@ -16215,7 +16217,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="Transparent" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border.Secondary}" />
-    <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
+    <Setter Property="p:GlobalizationAssist.UpdateOnCultureChanged" Value="True" />
     <Setter Property="p:ValidationAssist.Background" Value="Transparent" />
   </Style>
   <Style x:Key="MyNet.Styles.MonthPicker.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker}">
@@ -17406,7 +17408,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="Transparent" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border.Secondary}" />
-    <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
+    <Setter Property="p:GlobalizationAssist.UpdateOnCultureChanged" Value="True" />
     <Setter Property="p:ValidationAssist.Background" Value="Transparent" />
     <Style.Triggers>
       <Trigger Property="p:TextFieldAssist.IsEditable" Value="False">
@@ -18193,7 +18195,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="Transparent" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border.Secondary}" />
-    <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
+    <Setter Property="p:GlobalizationAssist.UpdateOnCultureChanged" Value="True" />
     <Setter Property="p:ValidationAssist.Background" Value="Transparent" />
   </Style>
   <Style x:Key="MyNet.Styles.TimePicker.Foreground" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker}">
@@ -20521,7 +20523,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
               <Thumb x:Name="ToolBarThumb" Style="{StaticResource MyNet.Styles.Thumb.Embedded.ToolBar}" Width="10" Margin="-3 -1 4 0" Padding="6 5 1 3" />
               <ctrl:SimpleStackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" Spacing="{StaticResource MyNet.Margin.Default}" TextBlock.FontWeight="SemiBold" TextBlock.Foreground="{DynamicResource MyNet.Brushes.Primary}">
                 <ctrl:PackIcon Kind="Check" />
-                <TextBlock Text="{me:Translation Path=SelectedCount, RelativeSource={RelativeSource TemplatedParent}, Format=XSelected, Plural=True}" Typography.Capitals="AllSmallCaps" />
+                <TextBlock Text="{me:Translation Path=SelectedCount, RelativeSource={RelativeSource TemplatedParent}, Format=XSelected, Pluralize=True}" Typography.Capitals="AllSmallCaps" />
               </ctrl:SimpleStackPanel>
               <!-- Header -->
               <ContentPresenter x:Name="ToolBarHeader" Grid.Column="2" Margin="{StaticResource MyNet.Margins.Default.Right}" HorizontalAlignment="Center" VerticalAlignment="Center" ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />

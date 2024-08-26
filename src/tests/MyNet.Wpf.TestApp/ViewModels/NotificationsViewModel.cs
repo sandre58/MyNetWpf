@@ -120,7 +120,7 @@ namespace MyNet.Wpf.TestApp.ViewModels
         }
     }
 
-    internal class CustomNotification : ObservableObject, INotification
+    internal class CustomNotification : LocalizableObject, INotification
     {
         public string Category => string.Empty;
 

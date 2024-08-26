@@ -886,7 +886,7 @@
                     <TextBlock Margin="{StaticResource MyNet.Margins.Default}"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Top"
-                               Text="{Binding Converter={x:Static c:TimeSpanToDateTimeConverter.Default}, StringFormat='HH:mm'}" />
+                               Text="{me:DisplayDateTime Format='HH:mm'}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
@@ -937,7 +937,7 @@
                     <TextBlock Margin="{StaticResource MyNet.Margins.Default}"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Top"
-                               Text="{Binding Converter={x:Static c:TimeSpanToDateTimeConverter.Default}, StringFormat='HH:mm'}" />
+                               Text="{me:DisplayDateTime Format='HH:mm'}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>

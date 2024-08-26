@@ -15,8 +15,8 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="gong-wpf-dragdrop" Version="3.2.1" />
-    <PackageReference Include="MyNet.Utilities.Geography.Extensions" Version="1.1.0" />
-    <PackageReference Include="MyNet.Utilities.Localization.Extensions" Version="1.1.0" />
+    <PackageReference Include="MyNet.Utilities.Geography.Extensions" Version="5.0.0-alpha" />
+    <PackageReference Include="MyNet.Utilities.Localization.Extensions" Version="5.0.0-alpha" />
     <PackageReference Include="MyNet.Xaml.Merger.MSBuild" Version="2.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

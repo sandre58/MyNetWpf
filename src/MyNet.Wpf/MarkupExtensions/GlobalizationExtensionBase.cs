@@ -3,17 +3,27 @@
 
 using MyNet.Utilities.Localization;
 using System;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
 
 namespace MyNet.Wpf.MarkupExtensions
 {
-    public abstract class TranslationExtensionBase<T> : MarkupExtension
+    [MarkupExtensionReturnType(typeof(object))]
+    public abstract class GlobalizationExtensionBase<T> : MarkupExtension
         where T : BindingBase
     {
         private T? _binding;
+        private readonly bool _updateOnCultureChanged;
+        private readonly bool _updateOnTimeZoneChanged;
+        private Func<bool>? _updateTarget;
 
-        protected TranslationExtensionBase() : base() => ResourceLocator.Initialize();
+        protected GlobalizationExtensionBase(bool updateOnCultureChanged, bool updateOnTimeZoneChanged) : base()
+        {
+            ResourceLocator.Initialize();
+            _updateOnCultureChanged = updateOnCultureChanged;
+            _updateOnTimeZoneChanged = updateOnTimeZoneChanged;
+        }
 
         protected T Binding
         {
@@ -33,23 +43,40 @@ namespace MyNet.Wpf.MarkupExtensions
 
         public object FallbackValue { get => Binding.FallbackValue; set => Binding.FallbackValue = value; }
 
+        protected virtual bool UpdateTarget() => _updateTarget?.Invoke() ?? false;
+
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             if (Binding.ProvideValue(serviceProvider) is BindingExpressionBase expression)
             {
-                void handler(object? o, EventArgs e)
+                _updateTarget = () =>
                 {
                     var wr = new WeakReference<BindingExpressionBase>(expression);
                     if (wr.TryGetTarget(out var target))
                     {
                         if (target is not BindingExpression bindinExpression || bindinExpression.Status != BindingStatus.Detached)
+                        {
                             target.UpdateTarget();
+                            return true;
+                        }
                     }
-                    else
-                        CultureInfoService.Current.CultureChanged -= handler;
+
+                    return false;
+                };
+                void handler(object? o, EventArgs e)
+                {
+                    if (!UpdateTarget())
+                    {
+                        GlobalizationService.Current.CultureChanged -= handler;
+                        GlobalizationService.Current.TimeZoneChanged -= handler;
+                    }
                 }
 
-                CultureInfoService.Current.CultureChanged += handler;
+                if (_updateOnCultureChanged)
+                    GlobalizationService.Current.CultureChanged += handler;
+
+                if (_updateOnTimeZoneChanged)
+                    GlobalizationService.Current.TimeZoneChanged += handler;
 
                 return expression;
             }

@@ -140,6 +140,9 @@ BundleArtifacts/
 .idea
 .vscode
 
+# fody
+FodyWeavers.xsd
+
 # Approval tests
 *.received.*
 

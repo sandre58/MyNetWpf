@@ -5,24 +5,23 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
-using MyNet.Wpf.Extensions;
-using MyNet.Utilities;
 using MyNet.Humanizer;
-using MyNet.Utilities.Units;
+using MyNet.Utilities;
 using MyNet.Utilities.Extensions;
+using MyNet.Utilities.Units;
+using MyNet.Wpf.Extensions;
 
 namespace MyNet.Wpf.Converters
 {
     /// <summary>
     /// Converts string values.
     /// </summary>
-    public class StringConverter(LetterCasing casing, bool convertPlural = false, bool abbreviation = false, bool initials = false)
+    public class StringConverter(LetterCasing casing, bool pluralize = false, bool abbreviate = false)
                 : IValueConverter, IMultiValueConverter
     {
         private readonly LetterCasing _casing = casing;
-        private readonly bool _convertPlural = convertPlural;
-        private readonly bool _abbreviation = abbreviation;
-        private readonly bool _initials = initials;
+        private readonly bool _pluralize = pluralize;
+        private readonly bool _abbreviate = abbreviate;
 
         public static StringConverter ToUpper { get; } = new StringConverter(LetterCasing.AllCaps);
         public static StringConverter ToLower { get; } = new StringConverter(LetterCasing.LowerCase);
@@ -36,34 +35,35 @@ namespace MyNet.Wpf.Converters
                 return null;
             }
 
+            // Value
             var result = value switch
             {
                 Color color => color.ToName() == color.ToHex() ? color.ToHex() : $"{color.ToName()} ({color.ToHex()})",
-                Enum enumValue => enumValue.Humanize(_abbreviation),
-                IEnumeration enumValue => enumValue.Humanize(_abbreviation),
-                TimeSpan timespan => timespan.Humanize(1, TimeUnit.Year, TimeUnit.Day),
+                Enum enumValue => enumValue.Humanize(_abbreviate, culture),
+                IEnumeration enumValue => enumValue.Humanize(_abbreviate, culture),
+                TimeSpan timespan => timespan.Humanize(1, TimeUnit.Year, TimeUnit.Day, culture: culture),
                 _ => value.ToString(),
             };
 
+            // Format
             if (parameter is string p)
             {
                 if (double.TryParse(result, out var res) && !string.IsNullOrEmpty(result))
                 {
                     if (double.IsNaN(res)) return null;
 
-                    var format = _convertPlural ? p.Translate(res) : p.Translate(_abbreviation);
-                    result = res.ToString(format, CultureInfo.CurrentCulture);
+                    var format = _pluralize ? p.TranslateWithCount(res, _abbreviate, culture) : _abbreviate ? p.TranslateAbbreviated(culture) : p.Translate(culture);
+                    result = res.ToString(format, culture);
                 }
                 else if (value is string str && !string.IsNullOrEmpty((string)value))
                 {
-                    var format = p.Translate(_abbreviation);
-                    var translation = str.Translate() ?? string.Empty;
-                    result = format?.FormatWith(CultureInfo.CurrentCulture, translation);
+                    var format = _abbreviate ? p.TranslateAbbreviated(culture) : p.Translate(culture);
+                    var translation = str.Translate(culture);
+                    result = format.FormatWith(culture, translation);
                 }
                 else if (value is DateTime date)
                 {
-                    var format = p.TranslateDatePattern();
-                    result = date.ToString(format, culture);
+                    result = DateTimeToStringConverter.Default.Convert(date, targetType, p, culture)?.ToString();
                 }
                 else if (value is TimeSpan && int.TryParse(p, out var number))
                 {
@@ -75,9 +75,7 @@ namespace MyNet.Wpf.Converters
                 }
             }
 
-            if (_initials)
-                result = result?.GetInitials();
-
+            // Casing
             return result?.ApplyCase(_casing);
         }
 

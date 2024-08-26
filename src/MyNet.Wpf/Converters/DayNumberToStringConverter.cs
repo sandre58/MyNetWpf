@@ -25,15 +25,15 @@ namespace MyNet.Wpf.Converters
         {
             if (value is not DateTime date) return Binding.DoNothing;
 
-            var result = date.Day.ToString(CultureInfo.CurrentCulture.DateTimeFormat);
+            var result = date.Day.ToString(culture.DateTimeFormat);
             if (date == date.FirstDayOfMonth() || date == date.LastDayOfMonth())
             {
-                result += " " + date.ToMonthAbbreviated(CultureInfo.CurrentCulture)?.ApplyCase(_casing);
+                result += " " + date.ToMonthAbbreviated(culture)?.ApplyCase(_casing);
             }
 
             if (date == date.FirstDayOfYear())
             {
-                result += " " + date.Year.ToString(CultureInfo.CurrentCulture.DateTimeFormat);
+                result += " " + date.Year.ToString(culture.DateTimeFormat);
             }
 
             return result;
@@ -49,6 +49,6 @@ namespace MyNet.Wpf.Converters
         /// <returns>
         /// A converted value. If the method returns null, the valid null value is used.
         /// </returns>
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) => throw new NotSupportedException();
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => throw new NotSupportedException();
     }
 }

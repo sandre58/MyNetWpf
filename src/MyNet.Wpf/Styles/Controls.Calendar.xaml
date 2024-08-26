@@ -47,7 +47,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
+        <Setter Property="p:GlobalizationAssist.UpdateOnCultureChanged" Value="True" />
     </Style>
 
     <Style x:Key="MyNet.Styles.Button.Embedded.Calendar.Header" TargetType="{x:Type Button}">
@@ -549,6 +549,6 @@
         <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
         <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
+        <Setter Property="p:GlobalizationAssist.UpdateOnCultureChanged" Value="True" />
     </Style>
 </ResourceDictionary>

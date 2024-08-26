@@ -6,9 +6,10 @@ using System.Windows.Data;
 
 namespace MyNet.Wpf.MarkupExtensions
 {
-    public abstract class AbstractMultiTranslationExtension : TranslationExtensionBase<MultiBinding>
+    public abstract class AbstractMultiGlobalizationExtension : GlobalizationExtensionBase<MultiBinding>
     {
-        protected AbstractMultiTranslationExtension() : base() { }
+        protected AbstractMultiGlobalizationExtension(bool updateOnCultureChanged, bool updateOnTimeZoneChanged)
+            : base(updateOnCultureChanged, updateOnTimeZoneChanged) { }
 
         protected override MultiBinding CreateBinding() => new();
 

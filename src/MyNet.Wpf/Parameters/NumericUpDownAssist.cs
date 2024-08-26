@@ -30,7 +30,7 @@ public static class NumericUpDownAssist
                 numericUpDown.SetBinding(NumericUpDown.MaximumProperty, new Binding { Source = e.NewValue, Path = new PropertyPath(path: "Max"), Converter = NullableConverter.Default });
 
             if (e.NewValue.GetType().GetProperty("Unit") is not null)
-                numericUpDown.SetBinding(TextFieldAssist.SuffixTextProperty, new Binding { Source = e.NewValue, Path = new PropertyPath(path: "Unit"), Converter = new StringConverter(LetterCasing.Normal, false, true, false) });
+                numericUpDown.SetBinding(TextFieldAssist.SuffixTextProperty, new Binding { Source = e.NewValue, Path = new PropertyPath(path: "Unit"), Converter = new StringConverter(LetterCasing.Normal, false, true) });
         }
     }
 }

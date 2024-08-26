@@ -51,7 +51,7 @@ namespace MyNet.Wpf.Presentation.Converters
                     return country.GetDisplayName();
 
                 case Display.Iso:
-                    return country.Iso.ToString(CultureInfo.CurrentCulture);
+                    return country.Iso.ToString(culture);
 
                 default:
                     break;

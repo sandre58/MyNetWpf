@@ -7,15 +7,16 @@ using System.Windows.Data;
 
 namespace MyNet.Wpf.MarkupExtensions
 {
-    public abstract class AbstractTranslationExtension : TranslationExtensionBase<Binding>
+    public abstract class AbstractGlobalizationExtension : GlobalizationExtensionBase<Binding>
     {
-        protected AbstractTranslationExtension() : base() { }
+        protected AbstractGlobalizationExtension(bool updateOnCultureChanged, bool updateOnTimeZoneChanged) : base(updateOnCultureChanged, updateOnTimeZoneChanged) { }
 
-        protected AbstractTranslationExtension(string path) : this() => Path = path;
+        protected AbstractGlobalizationExtension(string path, bool updateOnCultureChanged, bool updateOnTimeZoneChanged) : this(updateOnCultureChanged, updateOnTimeZoneChanged)
+            => Path = Path = new PropertyPath(path);
 
         protected override Binding CreateBinding() => new() { UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
 
-        public string? Path { get => Binding?.Path?.Path; set => Binding.Path = new PropertyPath(path: value); }
+        public PropertyPath? Path { get => Binding?.Path; set => Binding.Path = value; }
 
         public string ElementName { get => Binding.ElementName; set => Binding.ElementName = value; }
 

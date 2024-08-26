@@ -519,7 +519,7 @@
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="Transparent" />
         <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border.Secondary}" />
-        <Setter Property="p:TranslationAssist.UpdateOnCultureChanged" Value="True" />
+        <Setter Property="p:GlobalizationAssist.UpdateOnCultureChanged" Value="True" />
         <Setter Property="p:ValidationAssist.Background" Value="Transparent" />
     </Style>
     <Style x:Key="MyNet.Styles.DatePicker.Foreground" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker}">

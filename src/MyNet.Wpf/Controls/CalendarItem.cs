@@ -80,8 +80,8 @@ namespace MyNet.Wpf.Controls
                 SetValue(IsBlackedOutPropertyKey, Owner.BlackoutDates.Contains(Date));
                 SetValue(IsInactivePropertyKey, Owner.IsInactive(Date));
                 SetValue(IsSelectedPropertyKey, Owner.SelectedDatesInternal.Contains(Date));
-                SetValue(IsTodayPropertyKey, Date.SameDay(DateTime.UtcNow));
-                SetValue(IsNowPropertyKey, Period.Contains(DateTime.UtcNow));
+                SetValue(IsTodayPropertyKey, Date.IsToday());
+                SetValue(IsNowPropertyKey, Period.IsCurrent());
                 SetValue(IsLastOfWeekPropertyKey, Date.IsLastDayOfWeek(Owner.FirstDayOfWeek));
                 SetValue(IsFirstOfWeekPropertyKey, Date.IsFirstDayOfWeek(Owner.FirstDayOfWeek));
                 SetValue(IsWeekendPropertyKey, Date.IsWeekend());

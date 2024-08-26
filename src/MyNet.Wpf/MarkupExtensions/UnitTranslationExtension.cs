@@ -5,14 +5,15 @@ using System;
 using System.Windows.Data;
 using MyNet.Wpf.Converters;
 using MyNet.Humanizer;
+using System.Windows;
 
 namespace MyNet.Wpf.MarkupExtensions
 {
-    public class UnitTranslationExtension : AbstractTranslationExtension
+    public class UnitTranslationExtension : AbstractGlobalizationExtension
     {
-        public UnitTranslationExtension() : base() { }
+        public UnitTranslationExtension() : base(true, false) { }
 
-        public UnitTranslationExtension(string path) : this() => Path = path;
+        public UnitTranslationExtension(string path) : this() => Path = new PropertyPath(path);
 
         protected override Binding CreateBinding() => new();
 

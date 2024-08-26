@@ -5,6 +5,7 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 using MyNet.Utilities;
+using MyNet.Utilities.Localization;
 
 namespace MyNet.Wpf.Converters
 {
@@ -13,32 +14,49 @@ namespace MyNet.Wpf.Converters
     /// </summary>
     public class TimeSpanToDateTimeConverter : IValueConverter
     {
-        public static readonly TimeSpanToDateTimeConverter Default = new();
+        private readonly DateTimeConverterKind _source;
+        private readonly DateTimeConverterKind _target;
 
-        /// <summary>
-        /// Converts a value.
-        /// </summary>
-        /// <param name="value">The value produced by the binding source.</param>
-        /// <param name="targetType">The type of the binding target property.</param>
-        /// <param name="parameter">The converter parameter to use.</param>
-        /// <param name="culture">The culture to use in the converter.</param>
-        /// <returns>
-        /// A converted value. If the method returns null, the valid null value is used.
-        /// </returns>
-        public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
-            => value is not TimeSpan ts || ts == TimeSpan.MinValue ? null : new DateTime(0, DateTimeKind.Local).ToLocalDateTime(ts);
+        public static readonly TimeSpanToDateTimeConverter Default = new(DateTimeConverterKind.Current, DateTimeConverterKind.Current);
+        public static readonly TimeSpanToDateTimeConverter CurrentToLocal = new(DateTimeConverterKind.Current, DateTimeConverterKind.Local);
+        public static readonly TimeSpanToDateTimeConverter CurrentToUtc = new(DateTimeConverterKind.Current, DateTimeConverterKind.Utc);
+        public static readonly TimeSpanToDateTimeConverter LocalToCurrent = new(DateTimeConverterKind.Local, DateTimeConverterKind.Current);
+        public static readonly TimeSpanToDateTimeConverter LocalToUtc = new(DateTimeConverterKind.Local, DateTimeConverterKind.Utc);
+        public static readonly TimeSpanToDateTimeConverter UtcToCurrent = new(DateTimeConverterKind.Utc, DateTimeConverterKind.Current);
+        public static readonly TimeSpanToDateTimeConverter UtcToLocal = new(DateTimeConverterKind.Utc, DateTimeConverterKind.Local);
 
-        /// <summary>
-        /// Converts a value.
-        /// </summary>
-        /// <param name="value">The value that is produced by the binding target.</param>
-        /// <param name="targetType">The type to convert to.</param>
-        /// <param name="parameter">The converter parameter to use.</param>
-        /// <param name="culture">The culture to use in the converter.</param>
-        /// <returns>
-        /// A converted value. If the method returns null, the valid null value is used.
-        /// </returns>
-        public object? ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => value is not DateTime date
-                || date == DateTime.MinValue ? null : (object)new TimeSpan(date.Hour, date.Minute, date.Second);
+        public TimeSpanToDateTimeConverter(DateTimeConverterKind source, DateTimeConverterKind target)
+        {
+            _source = source;
+            _target = target;
+        }
+
+        public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
+        {
+            if (value is not TimeSpan ts || ts == TimeSpan.MinValue) return null;
+
+            var utcDate = _source switch
+            {
+                DateTimeConverterKind.Local => DateTime.Today.ToUtc(ts),
+                DateTimeConverterKind.Utc => DateTime.UtcNow.ToUtc(ts),
+                _ => GlobalizationService.Current.ConvertToUtc(new DateTime(ts.Ticks, DateTimeKind.Unspecified)),
+            };
+
+            return new DateTimeConverter(DateTimeConverterKind.Utc, _target).Convert(utcDate, targetType, parameter, culture);
+        }
+
+        public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
+        {
+            if (value is not DateTime dt || dt == DateTime.MinValue) return null;
+
+            var utcDate = _target switch
+            {
+                DateTimeConverterKind.Local => dt.ToUtc(),
+                DateTimeConverterKind.Utc => dt.ToUtc(),
+                _ => GlobalizationService.Current.ConvertToUtc(dt),
+            };
+
+            return new DateTimeConverter(_source, DateTimeConverterKind.Utc).ConvertBack(utcDate, targetType, parameter, culture) is DateTime date ? date.TimeOfDay : Binding.DoNothing;
+        }
     }
 }

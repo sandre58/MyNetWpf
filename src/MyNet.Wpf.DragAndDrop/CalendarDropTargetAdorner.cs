@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Media;
 using GongSolutions.Wpf.DragDrop;
 using MahApps.Metro.Controls;
+using MyNet.Utilities.Localization;
 using MyNet.Wpf.Controls;
 using MyNet.Wpf.Helpers;
 
@@ -39,7 +40,7 @@ namespace MyNet.Wpf.DragAndDrop
         public CalendarDropTargetAdorner(UIElement adornedElement, DropInfo dropInfo)
             : base(adornedElement, dropInfo)
         {
-            DateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+            DateFormat = GlobalizationService.Current.Culture.DateTimeFormat.ShortTimePattern;
             FontStyle = FontStyles.Normal;
             FontWeight = FontWeights.Normal;
             FontStretch = FontStretches.Normal;

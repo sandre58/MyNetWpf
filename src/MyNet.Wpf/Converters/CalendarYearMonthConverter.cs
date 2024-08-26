@@ -24,17 +24,7 @@ namespace MyNet.Wpf.Converters
                 else if (value is XmlLanguage language)
                     culture = language.GetSpecificCulture();
             }
-            if (ticks == long.MaxValue)
-                return null;
-
-            try
-            {
-                return new DateTime(ticks, DateTimeKind.Local).ToString(CultureInfo.CurrentCulture.DateTimeFormat.YearMonthPattern, culture).ToTitle();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                return new DateTime(ticks, DateTimeKind.Local).ToString("Y", CultureInfo.InvariantCulture).ToTitle();
-            }
+            return ticks == long.MaxValue ? null : new DateTime(ticks).ToString(culture.DateTimeFormat.YearMonthPattern, culture).ToTitle();
         }
 
         public object?[]? ConvertBack(object? value, Type[] targetTypes, object? parameter, CultureInfo culture)

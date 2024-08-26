@@ -391,6 +391,7 @@
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="Transparent" />
         <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border.Secondary}" />
+        <Setter Property="p:GlobalizationAssist.UpdateOnCultureChanged" Value="True" />
         <Setter Property="p:ValidationAssist.Background" Value="Transparent" />
     </Style>
     <Style x:Key="MyNet.Styles.TextBox.Foreground" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyNet.Styles.TextBox}">

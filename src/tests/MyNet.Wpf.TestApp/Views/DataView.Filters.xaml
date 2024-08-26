@@ -268,7 +268,7 @@
                                               Margin="{StaticResource MyNet.Margins.Default}"
                                               HorizontalAlignment="Center"
                                               IsChecked="{Binding IsSelected}">
-                                    <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Principal}" Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" Text="{my:Translation Item.FullName, Casing=AllCaps, Initials=True}" />
+                                    <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Principal}" Foreground="{DynamicResource MyNet.Brushes.Primary.Foreground}" Text="{my:Translation Item.FullName, Casing=AllCaps}" />
                                 </ToggleButton>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>

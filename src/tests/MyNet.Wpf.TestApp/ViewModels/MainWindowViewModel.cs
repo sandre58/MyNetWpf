@@ -17,7 +17,7 @@ using MyNet.Wpf.TestApp.Resources;
 
 namespace MyNet.Wpf.TestApp.ViewModels
 {
-    internal class MainWindowViewModel : ObservableObject
+    internal class MainWindowViewModel : LocalizableObject
     {
         public bool IsDark { get; set; }
 
@@ -42,9 +42,9 @@ namespace MyNet.Wpf.TestApp.ViewModels
 
             using (PropertyChangedSuspender.Suspend())
             {
-                Cultures.AddRange(CultureInfoService.Current.SupportedCultures);
+                Cultures.AddRange(GlobalizationService.Current.SupportedCultures);
                 IsDark = ThemeManager.CurrentTheme?.Base == ThemeBase.Dark;
-                SelectedCulture = string.IsNullOrEmpty(TranslationService.Current.Culture.Name) ? null : GetSelectedCulture(CultureInfo.GetCultureInfo(TranslationService.Current.Culture.Name));
+                SelectedCulture = string.IsNullOrEmpty(GlobalizationService.Current.Culture.Name) ? null : GetSelectedCulture(CultureInfo.GetCultureInfo(GlobalizationService.Current.Culture.Name));
             }
         }
 
@@ -66,10 +66,16 @@ namespace MyNet.Wpf.TestApp.ViewModels
         protected virtual void OnSelectedCultureChanged()
         {
             var cultureInfo = SelectedCulture ?? CultureInfo.InstalledUICulture;
-            CultureInfoService.Current.SetCulture(cultureInfo);
+            GlobalizationService.Current.SetCulture(cultureInfo);
             Settings.Default.Language = cultureInfo.ToString();
 
             Settings.Default.Save();
+        }
+
+        protected override void OnCultureChanged()
+        {
+            base.OnCultureChanged();
+            SelectedCulture = string.IsNullOrEmpty(GlobalizationService.Current.Culture.Name) ? null : GetSelectedCulture(CultureInfo.GetCultureInfo(GlobalizationService.Current.Culture.Name));
         }
     }
 }

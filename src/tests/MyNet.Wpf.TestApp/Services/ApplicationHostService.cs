@@ -90,7 +90,7 @@ public class ApplicationHostService : IHostedService
     private static void InitializeAplication()
     {
         if (!string.IsNullOrEmpty(Settings.Default.Language))
-            CultureInfoService.Current.SetCulture(Settings.Default.Language);
+            GlobalizationService.Current.SetCulture(Settings.Default.Language);
 
         ThemeManager.ApplyTheme(new Theme
         {

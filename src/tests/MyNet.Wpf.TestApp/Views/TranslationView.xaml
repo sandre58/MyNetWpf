@@ -6,16 +6,307 @@
                    xmlns:my="http://mynet.com/xaml/themes"
                    xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
                    xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+                   xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                   xmlns:viewmodels="clr-namespace:MyNet.Wpf.TestApp.ViewModels"
                    Title="{my:Resource Translation}"
+                   d:DataContext="{d:DesignInstance Type=viewmodels:TranslationViewModel}"
                    d:DesignHeight="450"
                    d:DesignWidth="800"
                    my:ViewModelAssist.AutoWire="True"
                    mc:Ignorable="d">
+    <my:NavigationPage.Resources>
+
+        <DataTemplate x:Key="LanguageItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="16"
+                       Height="16"
+                       Margin="{StaticResource MyNet.Margins.Default.Horizontal}"
+                       VerticalAlignment="Center"
+                       Source="{Binding Converter={x:Static my:CultureToFlagConverter.Default}}" />
+                <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName, Converter={x:Static my:StringConverter.ToTitle}}" TextWrapping="Wrap" />
+            </StackPanel>
+        </DataTemplate>
+    </my:NavigationPage.Resources>
+
     <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}">
         <my:SimpleStackPanel>
-            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="Resources">
-                <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True" />
-            </Expander>
+
+            <!-- Language -->
+            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=Language}">
+                <my:SimpleStackPanel Orientation="Horizontal">
+                    <ComboBox Width="{StaticResource MyNet.Widths.Control.Large}"
+                              my:FocusAssist.IsDefault="True"
+                              my:HintAssist.Hint="{my:Resource Language}"
+                              my:HintAssist.IsFloating="True"
+                              ItemTemplate="{StaticResource LanguageItemTemplate}"
+                              ItemsSource="{Binding Cultures}"
+                              SelectedValue="{Binding SelectedCulture}" />
+                    <Button Command="{Binding SystemLanguageCommand}" Content="{my:Resource SystemLanguage}" />
+                </my:SimpleStackPanel>
+            </GroupBox>
+
+            <!-- TimeZone -->
+            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=Timezone}">
+                <my:SimpleStackPanel Orientation="Horizontal">
+                    <ComboBox Width="360"
+                              my:FocusAssist.IsDefault="True"
+                              my:HintAssist.Hint="{my:Resource Timezone}"
+                              my:HintAssist.IsFloating="True"
+                              ItemsSource="{Binding TimeZones}"
+                              SelectedValue="{Binding SelectedTimeZone}" />
+                    <Button Command="{Binding LocalTimeZoneCommand}" Content="{my:Resource LocalTimezone}" />
+                </my:SimpleStackPanel>
+            </GroupBox>
+
+            <my:SimpleStackPanel Orientation="Horizontal" Spacing="{StaticResource MyNet.Margin.VeryLarge}">
+                <my:SimpleStackPanel>
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.Name}"
+                              Header="Name" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.DisplayName}"
+                              Header="DisplayName" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.EnglishName}"
+                              Header="EnglishName" />
+                </my:SimpleStackPanel>
+                <my:SimpleStackPanel>
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.DateTimeFormat.ShortDatePattern}"
+                              Header="ShortDatePattern" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.DateTimeFormat.LongDatePattern}"
+                              Header="LongDatePattern" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.DateTimeFormat.YearMonthPattern}"
+                              Header="YearMonthPattern" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.DateTimeFormat.MonthDayPattern}"
+                              Header="MonthDayPattern" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.DateTimeFormat.LongTimePattern}"
+                              Header="LongTimePattern" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.DateTimeFormat.ShortTimePattern}"
+                              Header="ShortTimePattern" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.DateTimeFormat.AMDesignator}"
+                              Header="AMDesignator" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.DateTimeFormat.PMDesignator}"
+                              Header="PMDesignator" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.DateTimeFormat.DateSeparator}"
+                              Header="DateSeparator" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.DateTimeFormat.TimeSeparator}"
+                              Header="TimeSeparator" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.DateTimeFormat.FirstDayOfWeek}"
+                              Header="FirstDayOfWeek" />
+                </my:SimpleStackPanel>
+                <my:SimpleStackPanel>
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.NumberFormat.CurrencySymbol}"
+                              Header="CurrencySymbol" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.NumberFormat.NegativeSign}"
+                              Header="NegativeSign" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.NumberFormat.NumberDecimalDigits}"
+                              Header="NumberDecimalDigits" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.NumberFormat.NumberDecimalSeparator}"
+                              Header="NumberDecimalSeparator" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.NumberFormat.NumberGroupSeparator}"
+                              Header="NumberGroupSeparator" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.NumberFormat.PercentSymbol}"
+                              Header="PercentSymbol" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.NumberFormat.PositiveSign}"
+                              Header="PositiveSign" />
+                    <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}"
+                              my:HeaderAssist.Size="150"
+                              Content="{Binding Culture.NumberFormat.NegativeSign}"
+                              Header="NegativeSign" />
+                </my:SimpleStackPanel>
+            </my:SimpleStackPanel>
+
+            <my:SimpleStackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Column headers -->
+                    <TextBlock Grid.Column="1" Text="From Utc" />
+                    <TextBlock Grid.Column="2" Text="From Local" />
+                    <TextBlock Grid.Column="3" Text="From Current" />
+                    <TextBlock Grid.Column="4" Text="Live date time" />
+
+                    <!-- Row headers -->
+                    <TextBlock Grid.Row="1" FontWeight="Bold" Text="Default" />
+                    <TextBlock Grid.Row="2" FontWeight="Bold" Text="To Utc" />
+                    <TextBlock Grid.Row="3" FontWeight="Bold" Text="To Local" />
+                    <TextBlock Grid.Row="4" FontWeight="Bold" Text="To Current" />
+
+                    <!-- To Default -->
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{my:DisplayDateTime UtcDateTime, Kind=Default}" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="{my:DisplayDateTime LocalDateTime, Kind=Default}" />
+                    <TextBlock Grid.Row="1" Grid.Column="3" Text="{my:DisplayDateTime CurrentDateTime, Kind=Default}" />
+
+                    <!-- Utc => Utc -->
+                    <!--<my:SimpleStackPanel Grid.Row="2" Grid.Column="1">
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{my:DisplayDateTime UtcDateTime, Kind=Utc}" />
+                        <TextBlock Text="{Binding UtcDate}" />
+                        <DatePicker SelectedDate="{my:DateTime UtcDate, SourceKind=Utc, TargetKind=Utc}" />
+                        <my:TimePicker SelectedTime="{my:Time UtcTime, SourceKind=Utc, TargetKind=Utc}" />
+                    </my:SimpleStackPanel>-->
+
+                    <!-- Local => Utc -->
+                    <GroupBox Grid.Row="2" Grid.Column="2" Header="Local =&gt; UTC">
+                        <my:GroupBoxAssist.MoreContent>
+                            <TextBlock Text="{my:LiveDateTime Kind=Utc, Format=LongTimePattern}" />
+                        </my:GroupBoxAssist.MoreContent>
+                        <my:SimpleStackPanel>
+                            <my:SimpleStackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding LocalDateTime}" />
+                                <TextBlock Text="(Local)" />
+                                <TextBlock Text=" =&gt; " />
+                                <TextBlock Text="{my:DisplayDateTime LocalDateTime, Kind=Utc}" />
+                                <TextBlock Text="(UTC)" />
+                            </my:SimpleStackPanel>
+                            <my:SimpleStackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding LocalDate}" />
+                                <TextBlock Text="(Local)" />
+                                <TextBlock Text=" &lt;=&gt; " />
+                                <DatePicker SelectedDate="{my:DateTime LocalDate, SourceKind=Local, TargetKind=Utc}" />
+                                <TextBlock Text="(UTC)" />
+                            </my:SimpleStackPanel>
+                            <my:SimpleStackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding LocalTime}" />
+                                <TextBlock Text="(Local)" />
+                                <TextBlock Text=" &lt;=&gt; " />
+                                <my:TimePicker SelectedTime="{my:Time LocalTime, SourceKind=Local, TargetKind=Utc}" />
+                                <TextBlock Text="(UTC)" />
+                            </my:SimpleStackPanel>
+                        </my:SimpleStackPanel>
+
+                        <!-- Current => Utc -->
+                        <!--<my:SimpleStackPanel Grid.Row="2" Grid.Column="3">
+                        <TextBlock Grid.Row="2" Grid.Column="3" Text="{my:DisplayDateTime CurrentDateTime, Kind=Utc}" />
+                        <TextBlock Text="{Binding CurrentDate}" />
+                        <DatePicker SelectedDate="{my:DateTime CurrentDate, SourceKind=Current, TargetKind=Utc}" />
+                        <my:TimePicker SelectedTime="{my:Time CurrentTime, SourceKind=Current, TargetKind=Utc}" />
+                    </my:SimpleStackPanel>
+                        -->
+                    </GroupBox>
+
+                    <!-- To Local -->
+                    <!--<my:SimpleStackPanel Grid.Row="3" Grid.Column="1">
+                        <TextBlock Text="{my:DisplayDateTime UtcDateTime, Kind=Local}" />
+                        <TextBlock Text="{Binding UtcDate}" />
+                        <DatePicker SelectedDate="{my:DateTime UtcDate, SourceKind=Utc, TargetKind=Local}" />
+                        <my:TimePicker SelectedTime="{my:Time UtcTime, SourceKind=Utc, TargetKind=Local}" />
+                    </my:SimpleStackPanel>
+                    <my:SimpleStackPanel Grid.Row="3" Grid.Column="2">
+                        <TextBlock Text="{my:DisplayDateTime LocalDateTime, Kind=Local}" />
+                        <TextBlock Text="{Binding LocalDate}" />
+                        <DatePicker SelectedDate="{my:DateTime LocalDate, SourceKind=Local, TargetKind=Local}" />
+                        <my:TimePicker SelectedTime="{my:Time LocalTime, SourceKind=Local, TargetKind=Local}" />
+                    </my:SimpleStackPanel>
+                    <my:SimpleStackPanel Grid.Row="3" Grid.Column="3">
+                        <TextBlock Text="{my:DisplayDateTime CurrentDateTime, Kind=Local}" />
+                        <TextBlock Text="{Binding CurrentDate}" />
+                        <DatePicker SelectedDate="{my:DateTime CurrentDate, SourceKind=Current, TargetKind=Local}" />
+                        <my:TimePicker SelectedTime="{my:Time CurrentTime, SourceKind=Current, TargetKind=Local}" />
+                    </my:SimpleStackPanel>
+                    <TextBlock Grid.Row="3" Grid.Column="4" Text="{my:LiveDateTime Kind=Local, Format=LongTimePattern}" />-->
+
+                    <!-- To Current -->
+                    <!--<my:SimpleStackPanel Grid.Row="4" Grid.Column="1">
+                        <TextBlock Text="{my:DisplayDateTime UtcDateTime, Kind=Current}" />
+                        <TextBlock Text="{Binding UtcDate}" />
+                        <DatePicker SelectedDate="{my:DateTime UtcDate, SourceKind=Utc, TargetKind=Current}" />
+                        <my:TimePicker SelectedTime="{my:Time UtcTime, SourceKind=Utc, TargetKind=Current}" />
+                    </my:SimpleStackPanel>
+                    <my:SimpleStackPanel Grid.Row="4" Grid.Column="2">
+                        <TextBlock Text="{my:DisplayDateTime LocalDateTime, Kind=Current}" />
+                        <TextBlock Text="{Binding LocalDate}" />
+                        <DatePicker SelectedDate="{my:DateTime LocalDate, SourceKind=Local, TargetKind=Current}" />
+                        <my:TimePicker SelectedTime="{my:Time LocalTime, SourceKind=Local, TargetKind=Current}" />
+                    </my:SimpleStackPanel>
+                    <my:SimpleStackPanel Grid.Row="4" Grid.Column="3">
+                        <TextBlock Text="{my:DisplayDateTime CurrentDateTime, Kind=Current}" />
+                        <TextBlock Text="{Binding CurrentDate}" />
+                        <DatePicker SelectedDate="{my:DateTime CurrentDate, SourceKind=Current, TargetKind=Current}" />
+                        <my:TimePicker SelectedTime="{my:Time CurrentTime, SourceKind=Current, TargetKind=Current}" />
+                    </my:SimpleStackPanel>
+                    <TextBlock Grid.Row="4" Grid.Column="4" Text="{my:LiveDateTime Kind=Current, Format=LongTimePattern}" />-->
+                </Grid>
+            </my:SimpleStackPanel>
+
+            <!-- Resource -->
+            <my:SimpleStackPanel Margin="{StaticResource MyNet.Margins.Large.Top}" p:EnabledAssist.CanBeDisabled="True" Orientation="Horizontal">
+                <ListView ItemsSource="{Binding UiResources}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Key}" Header="Key" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Value}" Header="Value" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView ItemsSource="{Binding FormatResources}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Key}" Header="Key" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Value}" Header="Value" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView ItemsSource="{Binding MessageResources}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Key}" Header="Key" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Value}" Header="Value" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </my:SimpleStackPanel>
         </my:SimpleStackPanel>
     </my:DynamicScrollViewer>
 </my:NavigationPage>

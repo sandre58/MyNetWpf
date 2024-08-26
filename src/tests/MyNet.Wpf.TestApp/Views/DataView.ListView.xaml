@@ -128,13 +128,13 @@
                                                                    FontSize="{StaticResource MyNet.Font.Size}"
                                                                    Text="{my:Translation CountrieListViewModel.SelectedWrappers.Count,
                                                                                          Format=Item,
-                                                                                         Plural=True}"
+                                                                                         Pluralize=True}"
                                                                    Typography.Capitals="AllSmallCaps" />
                                                         <TextBlock HorizontalAlignment="Center"
                                                                    FontSize="{StaticResource MyNet.Font.Size}"
                                                                    Text="{my:Translation CountrieListViewModel.SelectedWrappers.Count,
                                                                                          Format=Selected,
-                                                                                         Plural=True,
+                                                                                         Pluralize=True,
                                                                                          Casing=LowerCase}"
                                                                    Typography.Capitals="AllSmallCaps" />
                                                     </StackPanel>
@@ -150,7 +150,7 @@
                                                       FontSize="25"
                                                       Header="{my:Translation CountrieListViewModel.WrappersSource.Count,
                                                                               Format=Item,
-                                                                              Plural=True}"
+                                                                              Pluralize=True}"
                                                       Visibility="{Binding CountrieListViewModel.SelectedWrappers.Count, Converter={x:Static my:CountToVisibilityConverter.CollapsedIfMany}}">
                                                 <StackPanel Orientation="Horizontal">
                                                     <TextBlock Text="{Binding CountrieListViewModel.Wrappers.Count}" Visibility="{Binding CountrieListViewModel.IsFiltered, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}" />

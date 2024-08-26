@@ -69,11 +69,11 @@ namespace MyNet.Wpf.Converters
             else
                 return Binding.DoNothing;
 
-            var dayStr = CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(day);
+            var dayStr = culture.DateTimeFormat.GetDayName(day);
 
             if (_type == NameType.Abbreviation)
             {
-                dayStr = CultureInfo.CurrentCulture.DateTimeFormat.GetShortestDayName(day);
+                dayStr = culture.DateTimeFormat.GetShortestDayName(day);
             }
 
             if (_type == NameType.FirstLetter)
