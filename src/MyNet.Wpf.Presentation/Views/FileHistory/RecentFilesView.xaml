@@ -12,19 +12,19 @@
     <UserControl.Resources>
         <my:BindingProxy x:Key="Proxy" Data="{Binding}" />
 
-        <Style x:Key="MyNet.Styles.TreeViewItem.RecentFiles.Header" BasedOn="{StaticResource {x:Type TreeViewItem}}" TargetType="{x:Type TreeViewItem}">
-            <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Large.Bottom}" />
+        <Style x:Key="MyNet.Styles.TreeViewItem.RecentFiles.Header" TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Large.Bottom}" />
         </Style>
 
-        <Style x:Key="MyNet.Styles.TreeViewItem.RecentFiles.File" BasedOn="{StaticResource {x:Type TreeViewItem}}" TargetType="{x:Type TreeViewItem}">
-            <Setter Property="my:CommandsAssist.ClickCommand" Value="{Binding OpenCommand}" />
-            <Setter Property="my:CommandsAssist.EnterCommand" Value="{Binding OpenCommand}" />
+        <Style x:Key="MyNet.Styles.TreeViewItem.RecentFiles.File" TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="ToolTip" Value="{my:Resource Open}" />
+            <Setter Property="my:CommandsAssist.ClickCommand" Value="{Binding OpenCommand}" />
+            <Setter Property="my:CommandsAssist.EnterCommand" Value="{Binding OpenCommand}" />
         </Style>
 
-        <Style x:Key="MyNet.Styles.TreeViewItem.RecentFiles.Pinned" BasedOn="{StaticResource MyNet.Styles.TreeViewItem.RecentFiles.File}" TargetType="{x:Type TreeViewItem}">
+        <Style x:Key="MyNet.Styles.TreeViewItem.RecentFiles.Pinned" TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource MyNet.Styles.TreeViewItem.RecentFiles.File}">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsPinned}" Value="False">
                     <Setter Property="Visibility" Value="Collapsed" />
@@ -32,7 +32,7 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="MyNet.Styles.TreeViewItem.RecentFiles.Recents" BasedOn="{StaticResource MyNet.Styles.TreeViewItem.RecentFiles.File}" TargetType="{x:Type TreeViewItem}">
+        <Style x:Key="MyNet.Styles.TreeViewItem.RecentFiles.Recents" TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource MyNet.Styles.TreeViewItem.RecentFiles.File}">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsPinned}" Value="True">
                     <Setter Property="Visibility" Value="Collapsed" />
@@ -48,7 +48,7 @@
                     <ColumnDefinition Width="60" />
                 </Grid.ColumnDefinitions>
 
-                <!--  Image  -->
+                <!-- Image -->
                 <Grid Width="25"
                       Height="25"
                       HorizontalAlignment="Left"
@@ -57,7 +57,7 @@
                       my:BusyAssist.Style="{StaticResource MyNet.Styles.BusyControl.Small}">
                     <ContentControl Content="{Binding}">
                         <ContentControl.Style>
-                            <Style BasedOn="{StaticResource {x:Type ContentControl}}" TargetType="{x:Type ContentControl}">
+                            <Style TargetType="{x:Type ContentControl}" BasedOn="{StaticResource {x:Type ContentControl}}">
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding Path, Converter={x:Static my:FileToBooleanConverter.TrueIfExist}}" Value="False">
                                         <Setter Property="ContentTemplate">
@@ -116,8 +116,9 @@
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Top"
                                    Opacity="{StaticResource MyNet.Opacity.Secondary}"
-                                   Text="{my:Translation LastAccessDate,
-                                                         Format=ShortDateTimeFormat}"
+                                   Text="{my:DisplayDateTime LastAccessDate,
+                                                             Kind=Current,
+                                                             Format=g}"
                                    Visibility="{Binding LastAccessDate, Converter={x:Static my:NullToVisibilityConverter.CollapsedIfNull}}" />
                     </DockPanel>
                     <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}" Text="{Binding Path}" Visibility="{Binding IsRecoveredFile, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
@@ -223,7 +224,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <!--  Filter And Sort  -->
+            <!-- Filter And Sort -->
             <ContentControl Margin="{StaticResource MyNet.Margins.Large.Right}" VerticalAlignment="Center" Content="{Binding Filters}" />
             <ContentControl Grid.Column="1"
                             VerticalAlignment="Center"

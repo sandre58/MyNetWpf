@@ -7,119 +7,115 @@
         <my:SharedResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Themes/MyNet.Styles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MyNet.Styles.TextBox.Edition" BasedOn="{StaticResource MyNet.Styles.TextBox}" TargetType="{x:Type TextBox}">
-        <Setter Property="my:HintAssist.IsFloating" Value="True" />
+    <Style x:Key="MyNet.Styles.TextBox.Edition" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyNet.Styles.TextBox}">
         <Setter Property="Width" Value="{StaticResource MyNet.Widths.Control.Large}" />
+        <Setter Property="my:HintAssist.IsFloating" Value="True" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.RevealPasswordBox.Edition" BasedOn="{StaticResource MyNet.Styles.RevealPasswordBox}" TargetType="{x:Type my:RevealPasswordBox}">
-        <Setter Property="my:HintAssist.IsFloating" Value="True" />
+    <Style x:Key="MyNet.Styles.RevealPasswordBox.Edition" TargetType="{x:Type my:RevealPasswordBox}" BasedOn="{StaticResource MyNet.Styles.RevealPasswordBox}">
         <Setter Property="Width" Value="{StaticResource MyNet.Widths.Control.Large}" />
+        <Setter Property="my:HintAssist.IsFloating" Value="True" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ComboBox.Edition" BasedOn="{StaticResource MyNet.Styles.ComboBox}" TargetType="{x:Type ComboBox}">
-        <Setter Property="my:HintAssist.IsFloating" Value="True" />
+    <Style x:Key="MyNet.Styles.ComboBox.Edition" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox}">
         <Setter Property="Width" Value="{StaticResource MyNet.Widths.Control.Large}" />
+        <Setter Property="my:HintAssist.IsFloating" Value="True" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.NumericUpDown.Edition" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}" TargetType="{x:Type my:NumericUpDown}">
-        <Setter Property="my:HintAssist.IsFloating" Value="True" />
+    <Style x:Key="MyNet.Styles.NumericUpDown.Edition" TargetType="{x:Type my:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}">
         <Setter Property="Width" Value="80" />
+        <Setter Property="my:HintAssist.IsFloating" Value="True" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ColorPicker.Edition" BasedOn="{StaticResource MyNet.Styles.ColorPicker}" TargetType="{x:Type my:ColorPicker}">
-        <Setter Property="my:HintAssist.IsFloating" Value="True" />
+    <Style x:Key="MyNet.Styles.ColorPicker.Edition" TargetType="{x:Type my:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker}">
         <Setter Property="Width" Value="{StaticResource MyNet.Widths.Control.Medium}" />
+        <Setter Property="my:HintAssist.IsFloating" Value="True" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.TimePicker.Edition" BasedOn="{StaticResource MyNet.Styles.TimePicker}" TargetType="{x:Type my:TimePicker}">
-        <Setter Property="my:HintAssist.IsFloating" Value="True" />
+    <Style x:Key="MyNet.Styles.TimePicker.Edition" TargetType="{x:Type my:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker}">
         <Setter Property="Width" Value="{StaticResource MyNet.Widths.Control.Medium}" />
+        <Setter Property="my:HintAssist.IsFloating" Value="True" />
         <Setter Property="my:ValidationAssist.UsePopup" Value="True" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.DatePicker.Edition" BasedOn="{StaticResource MyNet.Styles.DatePicker}" TargetType="{x:Type DatePicker}">
-        <Setter Property="my:HintAssist.IsFloating" Value="True" />
+    <Style x:Key="MyNet.Styles.DatePicker.Edition" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker}">
         <Setter Property="Width" Value="{StaticResource MyNet.Widths.Control.Medium}" />
+        <Setter Property="my:HintAssist.IsFloating" Value="True" />
         <Setter Property="my:ValidationAssist.UsePopup" Value="True" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ImagePicker.Edition" BasedOn="{StaticResource MyNet.Styles.ImagePicker}" TargetType="{x:Type my:ImagePicker}">
-        <Setter Property="my:HintAssist.IsFloating" Value="True" />
+    <Style x:Key="MyNet.Styles.ImagePicker.Edition" TargetType="{x:Type my:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker}">
         <Setter Property="Width" Value="{StaticResource MyNet.Widths.Control.Large}" />
+        <Setter Property="my:HintAssist.IsFloating" Value="True" />
         <Setter Property="my:ValidationAssist.UsePopup" Value="True" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.ToggleButton.Edition" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Switch}" TargetType="{x:Type ToggleButton}" />
+    <Style x:Key="MyNet.Styles.ToggleButton.Edition" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Switch}" />
 
-    <Style x:Key="MyNet.Styles.GroupBox.Edition" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Left}" TargetType="{x:Type GroupBox}">
+    <Style x:Key="MyNet.Styles.GroupBox.Edition" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Left}">
         <Style.Resources>
-            <Style BasedOn="{StaticResource MyNet.Styles.TextBox.Edition}" TargetType="{x:Type TextBox}" />
-            <Style BasedOn="{StaticResource MyNet.Styles.ComboBox.Edition}" TargetType="{x:Type ComboBox}" />
-            <Style BasedOn="{StaticResource MyNet.Styles.RevealPasswordBox.Edition}" TargetType="{x:Type my:RevealPasswordBox}" />
-            <Style BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Edition}" TargetType="{x:Type my:NumericUpDown}" />
-            <Style BasedOn="{StaticResource MyNet.Styles.ToggleButton.Edition}" TargetType="{x:Type ToggleButton}" />
-            <Style BasedOn="{StaticResource MyNet.Styles.ColorPicker.Edition}" TargetType="{x:Type my:ColorPicker}" />
-            <Style BasedOn="{StaticResource MyNet.Styles.TimePicker.Edition}" TargetType="{x:Type my:TimePicker}" />
-            <Style BasedOn="{StaticResource MyNet.Styles.DatePicker.Edition}" TargetType="{x:Type DatePicker}" />
-            <Style BasedOn="{StaticResource MyNet.Styles.ImagePicker.Edition}" TargetType="{x:Type my:ImagePicker}" />
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyNet.Styles.TextBox.Edition}" />
+            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Edition}" />
+            <Style TargetType="{x:Type my:RevealPasswordBox}" BasedOn="{StaticResource MyNet.Styles.RevealPasswordBox.Edition}" />
+            <Style TargetType="{x:Type my:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Edition}" />
+            <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Edition}" />
+            <Style TargetType="{x:Type my:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Edition}" />
+            <Style TargetType="{x:Type my:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Edition}" />
+            <Style TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.Edition}" />
+            <Style TargetType="{x:Type my:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Edition}" />
         </Style.Resources>
-        <Setter Property="my:HeaderAssist.Size" Value="80" />
         <Setter Property="my:HeaderAssist.HorizontalAlignment" Value="Center" />
+        <Setter Property="my:HeaderAssist.Size" Value="80" />
     </Style>
 
     <Style x:Key="MyNet.Styles.Button.Validate"
            x:Shared="False"
-           BasedOn="{StaticResource MyNet.Styles.Button.Elevation.Primary}"
-           TargetType="{x:Type Button}">
-        <Setter Property="ToolTip" Value="Ctrl+S" />
+           TargetType="{x:Type Button}"
+           BasedOn="{StaticResource MyNet.Styles.Button.Elevation.Primary}">
         <Setter Property="Content" Value="{my:Resource Validate}" />
+        <Setter Property="ToolTip" Value="Ctrl+S" />
         <Setter Property="my:IconAssist.Icon" Value="{my:Icon Kind=Check}" />
     </Style>
 
     <Style x:Key="MyNet.Styles.Button.Cancel"
            x:Shared="False"
-           BasedOn="{StaticResource MyNet.Styles.Button.Elevation}"
-           TargetType="{x:Type Button}">
-        <Setter Property="ToolTip" Value="Esc" />
+           TargetType="{x:Type Button}"
+           BasedOn="{StaticResource MyNet.Styles.Button.Elevation}">
         <Setter Property="Content" Value="{my:Resource Cancel}" />
+        <Setter Property="ToolTip" Value="Esc" />
         <Setter Property="my:IconAssist.Icon" Value="{my:Icon Kind=Cancel}" />
     </Style>
 
     <Style x:Key="MyNet.Styles.Button.Remove"
            x:Shared="False"
-           BasedOn="{StaticResource MyNet.Styles.Button.Elevation.Custom}"
-           TargetType="{x:Type Button}">
-        <Setter Property="ToolTip" Value="{my:Resource InputDelete}" />
-        <Setter Property="Content" Value="{my:Resource Remove}" />
-        <Setter Property="my:IconAssist.Icon" Value="{my:Icon Kind=Trash}" />
+           TargetType="{x:Type Button}"
+           BasedOn="{StaticResource MyNet.Styles.Button.Elevation.Custom}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Negative}" />
+        <Setter Property="Content" Value="{my:Resource Remove}" />
+        <Setter Property="ToolTip" Value="{my:Resource InputDelete}" />
+        <Setter Property="my:IconAssist.Icon" Value="{my:Icon Kind=Trash}" />
     </Style>
 
     <Style x:Key="MyNet.Styles.Button.Refresh"
            x:Shared="False"
-           BasedOn="{StaticResource MyNet.Styles.Button.Text}"
-           TargetType="{x:Type Button}">
-        <Setter Property="ToolTip" Value="F5" />
+           TargetType="{x:Type Button}"
+           BasedOn="{StaticResource MyNet.Styles.Button.Text}">
         <Setter Property="Content" Value="{my:Resource Refresh}" />
+        <Setter Property="ToolTip" Value="F5" />
         <Setter Property="my:IconAssist.Icon" Value="{my:Icon Kind=Refresh}" />
     </Style>
 
     <Style x:Key="MyNet.Styles.Button.Reset"
            x:Shared="False"
-           BasedOn="{StaticResource MyNet.Styles.Button.Text}"
-           TargetType="{x:Type Button}">
-        <Setter Property="ToolTip" Value="F5" />
+           TargetType="{x:Type Button}"
+           BasedOn="{StaticResource MyNet.Styles.Button.Text}">
         <Setter Property="Content" Value="{my:Resource Reset}" />
+        <Setter Property="ToolTip" Value="F5" />
         <Setter Property="my:IconAssist.Icon" Value="{my:Icon Kind=Restore}" />
     </Style>
 
-    <Style x:Key="MyNet.Styles.Label.Warning.Dialog" BasedOn="{StaticResource MyNet.Styles.Label.Elevation.Custom}" TargetType="{x:Type Label}">
+    <Style x:Key="MyNet.Styles.Label.Warning.Dialog" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation.Custom}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Warning}" />
-        <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="my:ThemeAssist.UniformCornerRadius" Value="0" />
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -135,6 +131,10 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
+        <Setter Property="my:ThemeAssist.UniformCornerRadius" Value="0" />
     </Style>
 
     <my:PackIcon x:Key="MyNet.PackIcon.ItemTraking"
@@ -177,12 +177,12 @@
                                          Margin="{StaticResource MyNet.Margins.Default.Horizontal}"
                                          Orientation="Horizontal"
                                          Spacing="{StaticResource MyNet.Margin.Default}">
-                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Principal}" Text="{my:Translation CreatedAt, Format=ShortDatePattern}" />
+                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Principal}" Text="{my:DisplayDateTime CreatedAt, Kind=Current, Format=d}" />
                         <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}"
                                    Margin="0"
                                    Padding="0"
                                    Text="{my:Resource To}" />
-                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Principal}" Text="{my:Translation CreatedAt, Format=ShortTimePattern}" />
+                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Principal}" Text="{my:DisplayDateTime CreatedAt, Kind=Current, Format=t}" />
                     </my:SimpleStackPanel>
 
                     <Separator Grid.Row="2" Grid.ColumnSpan="2" Margin="{StaticResource MyNet.Margins.Default.Vertical}" />
@@ -208,12 +208,12 @@
                                          Orientation="Horizontal"
                                          Spacing="{StaticResource MyNet.Margin.Default}"
                                          Visibility="{Binding ModifiedAt, Converter={x:Static my:NullToVisibilityConverter.CollapsedIfNull}}">
-                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Principal}" Text="{my:Translation ModifiedAt, Format=ShortDatePattern}" />
+                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Principal}" Text="{my:DisplayDateTime ModifiedAt, Kind=Current, Format=d}" />
                         <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}"
                                    Margin="0"
                                    Padding="0"
                                    Text="{my:Resource To}" />
-                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Principal}" Text="{my:Translation ModifiedAt, Format=ShortTimePattern}" />
+                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Principal}" Text="{my:DisplayDateTime ModifiedAt, Kind=Current, Format=t}" />
                     </my:SimpleStackPanel>
 
                     <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}"

@@ -23,7 +23,7 @@
         </DataTemplate>
     </UserControl.Resources>
 
-    <my:SimpleStackPanel Spacing="{StaticResource MyNet.Margin.Large}">
+    <my:SimpleStackPanel>
 
         <!-- Language -->
         <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Edition}" Header="{my:MediumIcon Kind=Language}">
