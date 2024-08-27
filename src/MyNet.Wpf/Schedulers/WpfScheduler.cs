@@ -7,6 +7,7 @@ using System.Reactive.Disposables;
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
+using MyNet.Utilities.Localization;
 
 namespace MyNet.Wpf.Schedulers
 {
@@ -90,6 +91,9 @@ namespace MyNet.Wpf.Schedulers
                 {
                     if (!d.IsDisposed)
                     {
+                        Thread.CurrentThread.CurrentCulture = GlobalizationService.Current.Culture;
+                        Thread.CurrentThread.CurrentUICulture = GlobalizationService.Current.Culture;
+
                         d.Disposable = action(this, state);
                     }
                 }
@@ -129,6 +133,9 @@ namespace MyNet.Wpf.Schedulers
                 {
                     try
                     {
+                        Thread.CurrentThread.CurrentCulture = GlobalizationService.Current.Culture;
+                        Thread.CurrentThread.CurrentUICulture = GlobalizationService.Current.Culture;
+
                         d.Disposable = action(this, state);
                     }
                     finally
@@ -176,7 +183,13 @@ namespace MyNet.Wpf.Schedulers
 
             var state1 = state;
 
-            timer.Tick += (s, e) => state1 = action(state1);
+            timer.Tick += (s, e) =>
+            {
+                Thread.CurrentThread.CurrentCulture = GlobalizationService.Current.Culture;
+                Thread.CurrentThread.CurrentUICulture = GlobalizationService.Current.Culture;
+
+                state1 = action(state1);
+            };
 
             timer.Interval = period;
             timer.Start();
