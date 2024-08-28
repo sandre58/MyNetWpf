@@ -41,12 +41,12 @@ namespace MyNet.Wpf.Converters
 
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
             => value is not DateTime date
-                ? Binding.DoNothing
+                ? null
                 : Convert(date, _conversion);
 
-        public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
+        public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
             => value is not DateTime date
-                ? Binding.DoNothing
+                ? null
                 : Convert(date, _conversion);
 
         private static DateTime Convert(DateTime date, DateTimeConversion conversion)
