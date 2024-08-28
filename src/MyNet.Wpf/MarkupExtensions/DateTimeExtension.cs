@@ -13,12 +13,8 @@ namespace MyNet.Wpf.MarkupExtensions
 
         public DateTimeExtension(string path) : this() => Path = new PropertyPath(path);
 
-        protected override Binding CreateBinding() => new();
+        public DateTimeConversion Conversion { get; set; } = DateTimeConversion.None;
 
-        public DateTimeConverterKind SourceKind { get; set; } = DateTimeConverterKind.Local;
-
-        public DateTimeConverterKind TargetKind { get; set; } = DateTimeConverterKind.Current;
-
-        protected override IValueConverter CreateConverter() => new DateTimeConverter(SourceKind, TargetKind);
+        protected override IValueConverter CreateConverter() => new DateTimeConverter(Conversion);
     }
 }

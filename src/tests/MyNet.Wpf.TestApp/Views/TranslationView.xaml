@@ -214,14 +214,14 @@
                                 <TextBlock Text="{Binding LocalDate}" />
                                 <TextBlock Text="(Local)" />
                                 <TextBlock Text=" &lt;=&gt; " />
-                                <DatePicker SelectedDate="{my:DateTime LocalDate, SourceKind=Local, TargetKind=Utc}" />
+                                <DatePicker SelectedDate="{my:DateTime LocalDate, Conversion=LocalToUtc}" />
                                 <TextBlock Text="(UTC)" />
                             </my:SimpleStackPanel>
                             <my:SimpleStackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding LocalTime}" />
                                 <TextBlock Text="(Local)" />
                                 <TextBlock Text=" &lt;=&gt; " />
-                                <my:TimePicker SelectedTime="{my:Time LocalTime, SourceKind=Local, TargetKind=Utc}" />
+                                <my:TimePicker SelectedTime="{my:Time LocalTime, Conversion=LocalToUtc}" />
                                 <TextBlock Text="(UTC)" />
                             </my:SimpleStackPanel>
                         </my:SimpleStackPanel>
@@ -237,46 +237,46 @@
                     </GroupBox>
 
                     <!-- To Local -->
-                    <!--<my:SimpleStackPanel Grid.Row="3" Grid.Column="1">
+                    <my:SimpleStackPanel Grid.Row="3" Grid.Column="1">
                         <TextBlock Text="{my:DisplayDateTime UtcDateTime, Kind=Local}" />
                         <TextBlock Text="{Binding UtcDate}" />
-                        <DatePicker SelectedDate="{my:DateTime UtcDate, SourceKind=Utc, TargetKind=Local}" />
-                        <my:TimePicker SelectedTime="{my:Time UtcTime, SourceKind=Utc, TargetKind=Local}" />
+                        <DatePicker SelectedDate="{my:DateTime UtcDate, Conversion=UtcToLocal}" />
+                        <my:TimePicker SelectedTime="{my:Time UtcTime, Conversion=UtcToLocal}" />
                     </my:SimpleStackPanel>
                     <my:SimpleStackPanel Grid.Row="3" Grid.Column="2">
                         <TextBlock Text="{my:DisplayDateTime LocalDateTime, Kind=Local}" />
                         <TextBlock Text="{Binding LocalDate}" />
-                        <DatePicker SelectedDate="{my:DateTime LocalDate, SourceKind=Local, TargetKind=Local}" />
-                        <my:TimePicker SelectedTime="{my:Time LocalTime, SourceKind=Local, TargetKind=Local}" />
+                        <DatePicker SelectedDate="{my:DateTime LocalDate}" />
+                        <my:TimePicker SelectedTime="{my:Time LocalTime}" />
                     </my:SimpleStackPanel>
                     <my:SimpleStackPanel Grid.Row="3" Grid.Column="3">
                         <TextBlock Text="{my:DisplayDateTime CurrentDateTime, Kind=Local}" />
                         <TextBlock Text="{Binding CurrentDate}" />
-                        <DatePicker SelectedDate="{my:DateTime CurrentDate, SourceKind=Current, TargetKind=Local}" />
-                        <my:TimePicker SelectedTime="{my:Time CurrentTime, SourceKind=Current, TargetKind=Local}" />
+                        <DatePicker SelectedDate="{my:DateTime CurrentDate, Conversion=CurrentToLocal}" />
+                        <my:TimePicker SelectedTime="{my:Time CurrentTime, Conversion=CurrentToLocal}" />
                     </my:SimpleStackPanel>
-                    <TextBlock Grid.Row="3" Grid.Column="4" Text="{my:LiveDateTime Kind=Local, Format=LongTimePattern}" />-->
+                    <TextBlock Grid.Row="3" Grid.Column="4" Text="{my:LiveDateTime Kind=Local, Format=LongTimePattern}" />
 
                     <!-- To Current -->
-                    <!--<my:SimpleStackPanel Grid.Row="4" Grid.Column="1">
+                    <my:SimpleStackPanel Grid.Row="4" Grid.Column="1">
                         <TextBlock Text="{my:DisplayDateTime UtcDateTime, Kind=Current}" />
                         <TextBlock Text="{Binding UtcDate}" />
-                        <DatePicker SelectedDate="{my:DateTime UtcDate, SourceKind=Utc, TargetKind=Current}" />
-                        <my:TimePicker SelectedTime="{my:Time UtcTime, SourceKind=Utc, TargetKind=Current}" />
+                        <DatePicker SelectedDate="{my:DateTime UtcDate, Conversion=UtcToCurrent}" />
+                        <my:TimePicker SelectedTime="{my:Time UtcTime, Conversion=UtcToCurrent}" />
                     </my:SimpleStackPanel>
                     <my:SimpleStackPanel Grid.Row="4" Grid.Column="2">
-                        <TextBlock Text="{my:DisplayDateTime LocalDateTime, Kind=Current}" />
+                        <TextBlock Text="{my:DisplayDateTime LocalDateTime, Kind=Current, Format=g}" />
                         <TextBlock Text="{Binding LocalDate}" />
-                        <DatePicker SelectedDate="{my:DateTime LocalDate, SourceKind=Local, TargetKind=Current}" />
-                        <my:TimePicker SelectedTime="{my:Time LocalTime, SourceKind=Local, TargetKind=Current}" />
+                        <DatePicker SelectedDate="{my:DateTime LocalDate, Conversion=LocalToCurrent}" />
+                        <my:TimePicker SelectedTime="{my:Time LocalTime, Conversion=LocalToCurrent}" />
                     </my:SimpleStackPanel>
                     <my:SimpleStackPanel Grid.Row="4" Grid.Column="3">
                         <TextBlock Text="{my:DisplayDateTime CurrentDateTime, Kind=Current}" />
                         <TextBlock Text="{Binding CurrentDate}" />
-                        <DatePicker SelectedDate="{my:DateTime CurrentDate, SourceKind=Current, TargetKind=Current}" />
-                        <my:TimePicker SelectedTime="{my:Time CurrentTime, SourceKind=Current, TargetKind=Current}" />
+                        <DatePicker SelectedDate="{my:DateTime CurrentDate}" />
+                        <my:TimePicker SelectedTime="{my:Time CurrentTime}" />
                     </my:SimpleStackPanel>
-                    <TextBlock Grid.Row="4" Grid.Column="4" Text="{my:LiveDateTime Kind=Current, Format=LongTimePattern}" />-->
+                    <TextBlock Grid.Row="4" Grid.Column="4" Text="{my:LiveDateTime Kind=Current, Format=LongTimePattern}" />
                 </Grid>
             </my:SimpleStackPanel>
 

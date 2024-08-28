@@ -10,6 +10,15 @@ using MyNet.Wpf.Converters;
 
 namespace MyNet.Wpf.MarkupExtensions
 {
+    public enum LiveDateTimeKind
+    {
+        Current,
+
+        Local,
+
+        Utc
+    }
+
     public class LiveDateTimeExtension : GlobalizationExtensionBase<Binding>
     {
         public virtual DateTime UtcDate => DateTime.UtcNow;
@@ -20,13 +29,14 @@ namespace MyNet.Wpf.MarkupExtensions
         {
             Source = this,
             Mode = BindingMode.OneWay,
+            UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
         };
 
         public string? Format { get => Binding.ConverterParameter?.ToString(); set => Binding.ConverterParameter = value; }
 
         public LetterCasing Casing { get; set; } = LetterCasing.Normal;
 
-        public DateTimeConverterKind Kind { get; set; } = DateTimeConverterKind.Current;
+        public LiveDateTimeKind Kind { get; set; } = LiveDateTimeKind.Current;
 
         public double Interval { get; set; } = 1;
 
@@ -34,8 +44,8 @@ namespace MyNet.Wpf.MarkupExtensions
         {
             Binding.Converter = new DateTimeToStringConverter(Kind switch
             {
-                DateTimeConverterKind.Utc => DateTimeToStringConverterKind.Utc,
-                DateTimeConverterKind.Local => DateTimeToStringConverterKind.Local,
+                LiveDateTimeKind.Utc => DateTimeToStringConverterKind.Utc,
+                LiveDateTimeKind.Local => DateTimeToStringConverterKind.Local,
                 _ => DateTimeToStringConverterKind.Current
             }, Casing);
 

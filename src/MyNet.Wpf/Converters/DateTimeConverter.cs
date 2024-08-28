@@ -8,63 +8,57 @@ using MyNet.Utilities.Localization;
 
 namespace MyNet.Wpf.Converters
 {
-    public enum DateTimeConverterKind
+    public enum DateTimeConversion
     {
-        Current,
+        None,
 
-        Local,
+        CurrentToLocal,
 
-        Utc,
+        CurrentToUtc,
+
+        LocalToCurrent,
+
+        LocalToUtc,
+
+        UtcToCurrent,
+
+        UtcToLocal,
     }
 
     public sealed class DateTimeConverter : IValueConverter
     {
-        private readonly DateTimeConverterKind _source;
-        private readonly DateTimeConverterKind _target;
+        private readonly DateTimeConversion _conversion;
 
-        public static readonly DateTimeConverter CurrentToLocal = new(DateTimeConverterKind.Current, DateTimeConverterKind.Local);
-        public static readonly DateTimeConverter CurrentToUtc = new(DateTimeConverterKind.Current, DateTimeConverterKind.Utc);
-        public static readonly DateTimeConverter LocalToCurrent = new(DateTimeConverterKind.Local, DateTimeConverterKind.Current);
-        public static readonly DateTimeConverter LocalToUtc = new(DateTimeConverterKind.Local, DateTimeConverterKind.Utc);
-        public static readonly DateTimeConverter UtcToCurrent = new(DateTimeConverterKind.Utc, DateTimeConverterKind.Current);
-        public static readonly DateTimeConverter UtcToLocal = new(DateTimeConverterKind.Utc, DateTimeConverterKind.Local);
+        public static readonly DateTimeConverter Default = new(DateTimeConversion.None);
+        public static readonly DateTimeConverter CurrentToLocal = new(DateTimeConversion.CurrentToLocal);
+        public static readonly DateTimeConverter CurrentToUtc = new(DateTimeConversion.CurrentToUtc);
+        public static readonly DateTimeConverter LocalToCurrent = new(DateTimeConversion.LocalToCurrent);
+        public static readonly DateTimeConverter LocalToUtc = new(DateTimeConversion.LocalToUtc);
+        public static readonly DateTimeConverter UtcToCurrent = new(DateTimeConversion.UtcToCurrent);
+        public static readonly DateTimeConverter UtcToLocal = new(DateTimeConversion.UtcToLocal);
 
-        public DateTimeConverter(DateTimeConverterKind source, DateTimeConverterKind target)
-        {
-            _source = source;
-            _target = target;
-        }
+        public DateTimeConverter(DateTimeConversion conversion) => _conversion = conversion;
 
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
             => value is not DateTime date
                 ? Binding.DoNothing
-                : Convert(date, _source, _target);
+                : Convert(date, _conversion);
 
         public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
             => value is not DateTime date
                 ? Binding.DoNothing
-                : Convert(date, _target, _source);
+                : Convert(date, _conversion);
 
-        private static DateTime Convert(DateTime date, DateTimeConverterKind source, DateTimeConverterKind target)
-            => target switch
+        private static DateTime Convert(DateTime date, DateTimeConversion conversion)
+            => conversion switch
             {
-                DateTimeConverterKind.Local => source switch
-                {
-                    DateTimeConverterKind.Local => date,
-                    DateTimeConverterKind.Utc => date.ToLocalTime(),
-                    _ => GlobalizationService.Current.ConvertToTimeZone(date, TimeZoneInfo.Local),
-                },
-                DateTimeConverterKind.Utc => source switch
-                {
-                    DateTimeConverterKind.Utc => date,
-                    DateTimeConverterKind.Local => date.ToUniversalTime(),
-                    _ => GlobalizationService.Current.ConvertToUtc(date),
-                },
-                _ => source switch
-                {
-                    DateTimeConverterKind.Current => date,
-                    _ => GlobalizationService.Current.Convert(date),
-                },
+                DateTimeConversion.CurrentToLocal => GlobalizationService.Current.ConvertToTimeZone(date, TimeZoneInfo.Local),
+                DateTimeConversion.CurrentToUtc => GlobalizationService.Current.ConvertToUtc(date),
+                DateTimeConversion.LocalToCurrent => GlobalizationService.Current.Convert(date),
+                DateTimeConversion.LocalToUtc => date.ToUniversalTime(),
+                DateTimeConversion.UtcToCurrent => GlobalizationService.Current.Convert(date),
+                DateTimeConversion.UtcToLocal => date.ToLocalTime(),
+                _ => date,
             };
     }
 }

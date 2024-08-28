@@ -24,6 +24,8 @@ namespace MyNet.Wpf.MarkupExtensions
 
         public object Source { get => Binding.Source; set => Binding.Source = value; }
 
+        public BindingMode Mode { get => Binding.Mode; set => Binding.Mode = value; }
+
         public object? ConverterParameter { get => Binding.ConverterParameter; set => Binding.ConverterParameter = value; }
 
         public IValueConverter Converter { get => Binding.Converter; set => Binding.Converter = value; }
