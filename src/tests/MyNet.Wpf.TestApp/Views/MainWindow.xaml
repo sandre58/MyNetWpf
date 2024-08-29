@@ -16,11 +16,18 @@
                    ShowIconOnTitleBar="True"
                    WindowState="Maximized"
                    mc:Ignorable="d">
-    <!--  Right Commands  -->
+    <!-- Right Commands -->
     <my:ExtendedWindow.RightWindowCommands>
         <mah:WindowCommands>
 
-            <!--  Language  -->
+            <!-- Time Zone -->
+            <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Outlined}"
+                      Margin="{StaticResource MyNet.Margins.Medium.Horizontal}"
+                      my:FocusAssist.IsDefault="True"
+                      ItemsSource="{Binding TimeZones}"
+                      SelectedValue="{Binding SelectedTimeZone}" />
+
+            <!-- Language -->
             <ListBox Style="{StaticResource MyNet.Styles.ListBox.Icon}"
                      Margin="{StaticResource MyNet.Margins.Medium.Horizontal}"
                      VerticalAlignment="Center"
@@ -43,7 +50,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <!--  Theme  -->
+            <!-- Theme -->
             <my:SimpleStackPanel Margin="{StaticResource MyNet.Margins.Medium.Horizontal}" VerticalAlignment="Center" Orientation="Horizontal">
                 <Button Style="{StaticResource MyNet.Styles.Button.Icon.Foreground}"
                         Command="{Binding IsLightCommand}"
@@ -61,7 +68,7 @@
     <Grid Margin="{StaticResource MyNet.Margins.Medium.Top}">
         <Grid x:Name="Root">
 
-            <!--  Menu  -->
+            <!-- Menu -->
             <my:NavigationView NavigationService="{Binding NavigationService}">
                 <my:NavigationView.HeaderTemplate>
                     <DataTemplate>

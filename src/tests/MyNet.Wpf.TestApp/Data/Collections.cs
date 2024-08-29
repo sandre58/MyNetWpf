@@ -25,6 +25,8 @@ namespace MyNet.Wpf.TestApp.Data
 
         public DateTime CreatedDate { get; set; }
 
+        public DateTime CurrentCreatedDate => CreatedDate.ToCurrentTime();
+
         public SelectedCountry(Country item, int order) : base(item)
         {
             DisplayName = item.GetDisplayName();

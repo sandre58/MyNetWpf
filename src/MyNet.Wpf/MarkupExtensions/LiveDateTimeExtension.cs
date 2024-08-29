@@ -49,14 +49,16 @@ namespace MyNet.Wpf.MarkupExtensions
                 _ => DateTimeToStringConverterKind.Current
             }, Casing);
 
+            var value = base.ProvideValue(serviceProvider);
+
             var timer = new DispatcherTimer(DispatcherPriority.Input)
             {
                 Interval = Interval.Seconds()
             };
-            timer.Tick += (sender, e) => UpdateTarget();
+            timer.Tick += UpdateTargetHandler;
             timer.Start();
 
-            return base.ProvideValue(serviceProvider);
+            return value;
         }
     }
 }

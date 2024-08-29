@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using MyNet.Observable;
@@ -29,6 +30,10 @@ namespace MyNet.Wpf.TestApp.ViewModels
 
         public ObservableCollection<CultureInfo?> Cultures { get; private set; } = [];
 
+        public TimeZoneInfo? SelectedTimeZone { get; set; }
+
+        public ObservableCollection<TimeZoneInfo?> TimeZones { get; private set; } = [];
+
         public ICommand IsDarkCommand { get; }
 
         public ICommand IsLightCommand { get; }
@@ -43,8 +48,10 @@ namespace MyNet.Wpf.TestApp.ViewModels
             using (PropertyChangedSuspender.Suspend())
             {
                 Cultures.AddRange(GlobalizationService.Current.SupportedCultures);
+                TimeZones.AddRange(GlobalizationService.Current.SupportedTimeZones);
                 IsDark = ThemeManager.CurrentTheme?.Base == ThemeBase.Dark;
                 SelectedCulture = string.IsNullOrEmpty(GlobalizationService.Current.Culture.Name) ? null : GetSelectedCulture(CultureInfo.GetCultureInfo(GlobalizationService.Current.Culture.Name));
+                SelectedTimeZone = GlobalizationService.Current.TimeZone;
             }
         }
 
@@ -72,10 +79,20 @@ namespace MyNet.Wpf.TestApp.ViewModels
             Settings.Default.Save();
         }
 
+        protected virtual void OnSelectedTimeZoneChanged()
+        {
+            var timeZoneInfo = SelectedTimeZone ?? TimeZoneInfo.Local;
+            GlobalizationService.Current.SetTimeZone(timeZoneInfo);
+            Settings.Default.TimeZone = timeZoneInfo.Id;
+
+            Settings.Default.Save();
+        }
+
         protected override void OnCultureChanged()
         {
             base.OnCultureChanged();
             SelectedCulture = string.IsNullOrEmpty(GlobalizationService.Current.Culture.Name) ? null : GetSelectedCulture(CultureInfo.GetCultureInfo(GlobalizationService.Current.Culture.Name));
+            SelectedTimeZone = GlobalizationService.Current.TimeZone;
         }
     }
 }

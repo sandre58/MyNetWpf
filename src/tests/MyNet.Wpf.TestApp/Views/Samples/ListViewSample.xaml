@@ -62,6 +62,13 @@
                     </DataTemplate>
                 </GridViewColumn.CellTemplate>
             </GridViewColumn>
+            <GridViewColumn my:GridViewColumnAssist.PropertyName="CurrentCreatedDate" my:GridViewColumnAssist.Width="*" Header="CurrentCreatedDate">
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{my:DisplayDateTime CurrentCreatedDate, Format=G}" />
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
         </GridView>
     </ListView.View>
 </ListView>

@@ -14,5 +14,8 @@
     <Setting Name="ThemeAccentColor" Type="System.String" Scope="User">
       <Value Profile="(Default)">#FF5EC509</Value>
     </Setting>
+    <Setting Name="TimeZone" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

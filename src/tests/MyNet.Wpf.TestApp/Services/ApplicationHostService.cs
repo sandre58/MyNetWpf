@@ -92,6 +92,9 @@ public class ApplicationHostService : IHostedService
         if (!string.IsNullOrEmpty(Settings.Default.Language))
             GlobalizationService.Current.SetCulture(Settings.Default.Language);
 
+        if (!string.IsNullOrEmpty(Settings.Default.TimeZone))
+            GlobalizationService.Current.SetTimeZone(TimeZoneInfo.FindSystemTimeZoneById(Settings.Default.TimeZone));
+
         ThemeManager.ApplyTheme(new Theme
         {
             Base = Settings.Default.ThemeBase.DehumanizeTo<ThemeBase>(),

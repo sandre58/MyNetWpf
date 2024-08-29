@@ -1,11 +1,10 @@
 ﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
 // See the LICENSE file in the project root for more information.
 
-using MyNet.Utilities.Localization;
 using System;
-using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
+using MyNet.Utilities.Localization;
 
 namespace MyNet.Wpf.MarkupExtensions
 {
@@ -14,16 +13,15 @@ namespace MyNet.Wpf.MarkupExtensions
         where T : BindingBase
     {
         private T? _binding;
-        private readonly bool _updateOnCultureChanged;
-        private readonly bool _updateOnTimeZoneChanged;
-        private Func<bool>? _updateTarget;
 
         protected GlobalizationExtensionBase(bool updateOnCultureChanged, bool updateOnTimeZoneChanged) : base()
         {
             ResourceLocator.Initialize();
-            _updateOnCultureChanged = updateOnCultureChanged;
-            _updateOnTimeZoneChanged = updateOnTimeZoneChanged;
+            UpdateOnCultureChanged = updateOnCultureChanged;
+            UpdateOnTimeZoneChanged = updateOnTimeZoneChanged;
         }
+
+        protected EventHandler? UpdateTargetHandler { get; private set; }
 
         protected T Binding
         {
@@ -43,40 +41,35 @@ namespace MyNet.Wpf.MarkupExtensions
 
         public object FallbackValue { get => Binding.FallbackValue; set => Binding.FallbackValue = value; }
 
-        protected virtual bool UpdateTarget() => _updateTarget?.Invoke() ?? false;
+        public bool UpdateOnCultureChanged { get; set; }
+
+        public bool UpdateOnTimeZoneChanged { get; set; }
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             if (Binding.ProvideValue(serviceProvider) is BindingExpressionBase expression)
             {
-                _updateTarget = () =>
+                void handler(object? o, EventArgs e)
                 {
                     var wr = new WeakReference<BindingExpressionBase>(expression);
                     if (wr.TryGetTarget(out var target))
                     {
-                        if (target is not BindingExpression bindinExpression || bindinExpression.Status != BindingStatus.Detached)
-                        {
-                            target.UpdateTarget();
-                            return true;
-                        }
+                        if (expression is not BindingExpression bindinExpression || bindinExpression.Status != BindingStatus.Detached)
+                            expression.UpdateTarget();
                     }
-
-                    return false;
-                };
-                void handler(object? o, EventArgs e)
-                {
-                    if (!UpdateTarget())
+                    else
                     {
-                        GlobalizationService.Current.CultureChanged -= handler;
-                        GlobalizationService.Current.TimeZoneChanged -= handler;
+                        GlobalizationService.Current.CultureChanged -= UpdateTargetHandler;
+                        GlobalizationService.Current.TimeZoneChanged -= UpdateTargetHandler;
                     }
-                }
+                };
+                UpdateTargetHandler = new(handler);
 
-                if (_updateOnCultureChanged)
-                    GlobalizationService.Current.CultureChanged += handler;
+                if (UpdateOnCultureChanged)
+                    GlobalizationService.Current.CultureChanged += UpdateTargetHandler;
 
-                if (_updateOnTimeZoneChanged)
-                    GlobalizationService.Current.TimeZoneChanged += handler;
+                if (UpdateOnTimeZoneChanged)
+                    GlobalizationService.Current.TimeZoneChanged += UpdateTargetHandler;
 
                 return expression;
             }
