@@ -192,15 +192,15 @@
                                           UniqueKey="cal_0_0_6"
                                           Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=6}">
                             <my:CalendarYearsByDecade AddCommand="{Binding Appointments.AddToDateCommand}"
-                                                     Appointments="{Binding Appointments.Items}"
-                                                     AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
-                                                     DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
-                                                     DisplayDate="{Binding DisplayDate}"
-                                                     FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek, Mode=OneWay}"
-                                                     MaximumDate="{Binding EndDate}"
-                                                     MinimumDate="{Binding StartDate}"
-                                                     SelectionMode="{Binding SelectedValue, ElementName=SelectionMode, Mode=OneWay}"
-                                                     ShowHeader="{Binding IsChecked, ElementName=showHeader, Mode=OneWay}" />
+                                                      Appointments="{Binding Appointments.Items}"
+                                                      AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
+                                                      DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
+                                                      DisplayDate="{Binding DisplayDate}"
+                                                      FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek, Mode=OneWay}"
+                                                      MaximumDate="{Binding EndDate}"
+                                                      MinimumDate="{Binding StartDate}"
+                                                      SelectionMode="{Binding SelectedValue, ElementName=SelectionMode, Mode=OneWay}"
+                                                      ShowHeader="{Binding IsChecked, ElementName=showHeader, Mode=OneWay}" />
                         </smtx:XamlDisplay>
 
                     </my:SimpleStackPanel>
@@ -302,8 +302,7 @@
                                           HorizontalAlignment="Stretch"
                                           UniqueKey="cal_1_0_1"
                                           Visibility="{Binding SelectedIndex, ElementName=mode2, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=1}">
-                            <my:CalendarDaysByMonth Style="{StaticResource MyNet.Styles.Calendar.DaysByMonth.Alternate}"
-                                                    AddCommand="{Binding Appointments.AddToDateCommand}"
+                            <my:CalendarDaysByMonth AddCommand="{Binding Appointments.AddToDateCommand}"
                                                     Appointments="{Binding Appointments.Items}"
                                                     AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
                                                     DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
@@ -312,7 +311,160 @@
                                                     MaximumDate="{Binding EndDate}"
                                                     MinimumDate="{Binding StartDate}"
                                                     SelectionMode="{Binding SelectedValue, ElementName=SelectionMode2, Mode=OneWay}"
-                                                    ShowHeader="{Binding IsChecked, ElementName=showHeader2, Mode=OneWay}" />
+                                                    ShowHeader="{Binding IsChecked, ElementName=showHeader2, Mode=OneWay}">
+                                <my:CalendarDaysByMonth.Style>
+                                    <Style TargetType="{x:Type my:CalendarDaysByMonth}" BasedOn="{StaticResource MyNet.Styles.Calendar.DaysByMonth.Alternate}">
+                                        <Setter Property="CalendarItemStyle">
+                                            <Setter.Value>
+                                                <Style TargetType="{x:Type my:CalendarItem}" BasedOn="{StaticResource MyNet.Styles.CalendarItem.DaysByMonth}">
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type my:CalendarItem}">
+                                                                <Border Margin="{TemplateBinding Margin}"
+                                                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                                                        ClipToBounds="{TemplateBinding ClipToBounds}">
+                                                                    <VisualStateManager.VisualStateGroups>
+                                                                        <VisualStateGroup Name="CommonStates">
+                                                                            <VisualStateGroup.Transitions>
+                                                                                <VisualTransition GeneratedDuration="0:0:0.3" To="Normal">
+                                                                                    <VisualTransition.GeneratedEasingFunction>
+                                                                                        <CircleEase EasingMode="EaseOut" />
+                                                                                    </VisualTransition.GeneratedEasingFunction>
+                                                                                </VisualTransition>
+                                                                            </VisualStateGroup.Transitions>
+                                                                            <VisualState Name="Normal" />
+                                                                            <VisualState Name="MouseOver">
+                                                                                <Storyboard>
+                                                                                    <DoubleAnimation Storyboard.TargetName="MouseOverBorder"
+                                                                                                     Storyboard.TargetProperty="Opacity"
+                                                                                                     To="{StaticResource MyNet.Opacity.Hovered}"
+                                                                                                     Duration="0" />
+                                                                                </Storyboard>
+                                                                            </VisualState>
+                                                                            <VisualState Name="Disabled" />
+                                                                        </VisualStateGroup>
+                                                                        <VisualStateGroup Name="SelectionStates">
+                                                                            <VisualStateGroup.Transitions>
+                                                                                <VisualTransition GeneratedDuration="0:0:0.3" />
+                                                                            </VisualStateGroup.Transitions>
+                                                                            <VisualState Name="Selected">
+                                                                                <Storyboard>
+                                                                                    <DoubleAnimation Storyboard.TargetName="SelectedBorder"
+                                                                                                     Storyboard.TargetProperty="Opacity"
+                                                                                                     To="{StaticResource MyNet.Opacity.Checked}"
+                                                                                                     Duration="0" />
+                                                                                </Storyboard>
+                                                                            </VisualState>
+                                                                            <VisualState Name="Unselected" />
+                                                                            <VisualState Name="SelectedUnfocused">
+                                                                                <Storyboard>
+                                                                                    <DoubleAnimation Storyboard.TargetName="SelectedBorder"
+                                                                                                     Storyboard.TargetProperty="Opacity"
+                                                                                                     To="0.03"
+                                                                                                     Duration="0" />
+                                                                                </Storyboard>
+                                                                            </VisualState>
+                                                                        </VisualStateGroup>
+                                                                    </VisualStateManager.VisualStateGroups>
+                                                                    <Grid x:Name="base">
+                                                                        <Border Background="{TemplateBinding Background}" />
+                                                                        <Border x:Name="MouseOverBorder" Background="{TemplateBinding Foreground}" Opacity="0" />
+
+                                                                        <Border x:Name="SelectedBorder"
+                                                                                Background="{TemplateBinding Foreground}"
+                                                                                Opacity="0"
+                                                                                RenderTransformOrigin="0.5,0.5">
+                                                                            <Border.RenderTransform>
+                                                                                <ScaleTransform ScaleX="1" />
+                                                                            </Border.RenderTransform>
+                                                                        </Border>
+                                                                        <my:Ripple Padding="{TemplateBinding Padding}"
+                                                                                   HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                                   VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                                                   Feedback="{TemplateBinding Foreground}"
+                                                                                   Focusable="False"
+                                                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                                                            <Grid>
+                                                                                <Grid.RowDefinitions>
+                                                                                    <RowDefinition Height="Auto" />
+                                                                                    <RowDefinition Height="*" />
+                                                                                </Grid.RowDefinitions>
+
+                                                                                <ContentPresenter x:Name="DayText"
+                                                                                                  HorizontalAlignment="Stretch"
+                                                                                                  VerticalAlignment="Stretch"
+                                                                                                  Content="{TemplateBinding Content}"
+                                                                                                  ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                                                                <Button x:Name="PART_AddButton"
+                                                                                        Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"
+                                                                                        HorizontalAlignment="Right"
+                                                                                        VerticalAlignment="Top"
+                                                                                        Content="{my:ToolIcon Kind=Plus}"
+                                                                                        Visibility="Hidden" />
+
+                                                                                <ItemsControl Grid.Row="1" ItemsSource="{Binding Appointments, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding AppointmentsDisplayMode, RelativeSource={RelativeSource AncestorType={x:Type my:CalendarBase}}, Converter={x:Static my:EnumToVisibilityConverter.CollapsedIfNotAny}, ConverterParameter={x:Static my:AppointmentsDisplayMode.Cell}}">
+                                                                                    <ItemsControl.ItemsPanel>
+                                                                                        <ItemsPanelTemplate>
+                                                                                            <my:SimpleStackPanel IsItemsHost="True" Spacing="{StaticResource MyNet.Margin.Small}" />
+                                                                                        </ItemsPanelTemplate>
+                                                                                    </ItemsControl.ItemsPanel>
+                                                                                    <ItemsControl.ItemTemplate>
+                                                                                        <DataTemplate>
+                                                                                            <Grid>
+                                                                                                <Grid.ColumnDefinitions>
+                                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                                    <ColumnDefinition Width="5" />
+                                                                                                    <ColumnDefinition Width="*" />
+                                                                                                </Grid.ColumnDefinitions>
+                                                                                                <TextBlock Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="{my:DisplayDateTime StartDate, Format=t}" />
+                                                                                                <TextBlock Grid.Column="1"
+                                                                                                           Margin="{StaticResource MyNet.Margins.Default.Horizontal}"
+                                                                                                           Opacity="{StaticResource MyNet.Opacity.Secondary}"
+                                                                                                           Text="-" />
+                                                                                                <TextBlock Grid.Column="2" Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="{my:DisplayDateTime EndDate, Format=t}" />
+                                                                                                <ContentPresenter Grid.Column="4" Content="{Binding}" />
+                                                                                            </Grid>
+                                                                                        </DataTemplate>
+                                                                                    </ItemsControl.ItemTemplate>
+                                                                                </ItemsControl>
+                                                                            </Grid>
+                                                                        </my:Ripple>
+                                                                    </Grid>
+                                                                </Border>
+
+                                                                <ControlTemplate.Triggers>
+                                                                    <DataTrigger Binding="{Binding Owner.DatesSelectionMode, RelativeSource={RelativeSource Self}}" Value="None">
+                                                                        <Setter Property="my:RippleAssist.IsDisabled" Value="True" />
+                                                                    </DataTrigger>
+                                                                    <Trigger Property="IsNow" Value="True">
+                                                                        <Setter TargetName="DayText" Property="TextElement.FontWeight" Value="Bold" />
+                                                                        <Setter TargetName="DayText" Property="TextElement.Foreground" Value="{Binding Path=(my:HeaderAssist.Foreground), RelativeSource={RelativeSource TemplatedParent}}" />
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsInactive" Value="True">
+                                                                        <Setter TargetName="base" Property="Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsEnabled" Value="False">
+                                                                        <Setter TargetName="base" Property="Opacity" Value="0" />
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter TargetName="PART_AddButton" Property="Visibility" Value="Visible" />
+                                                                    </Trigger>
+                                                                    <DataTrigger Binding="{Binding Owner.AddCommand, RelativeSource={RelativeSource Self}, Converter={x:Static my:NullToBooleanConverter.TrueIfNull}}" Value="True">
+                                                                        <Setter TargetName="PART_AddButton" Property="Visibility" Value="Collapsed" />
+                                                                    </DataTrigger>
+                                                                </ControlTemplate.Triggers>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </my:CalendarDaysByMonth.Style>
+                            </my:CalendarDaysByMonth>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay Height="850"
                                           HorizontalAlignment="Stretch"

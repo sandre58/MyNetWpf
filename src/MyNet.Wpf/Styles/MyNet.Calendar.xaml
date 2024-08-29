@@ -22,19 +22,19 @@
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="{me:Translation StartDate, Format=ShortTimePattern}" />
+            <TextBlock Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="{me:DisplayDateTime StartDate, Format=t}" />
             <TextBlock Grid.Column="1"
                        Margin="{StaticResource MyNet.Margins.Default.Horizontal}"
                        Opacity="{StaticResource MyNet.Opacity.Secondary}"
                        Text="-" />
-            <TextBlock Grid.Column="2" Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="{me:Translation EndDate, Format=ShortTimePattern}" />
+            <TextBlock Grid.Column="2" Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="{me:DisplayDateTime EndDate, Format=t}" />
             <ContentPresenter Grid.Column="4" Content="{Binding}" />
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="MyNet.DataTemplates.Calendar.Appointment.Day" DataType="{x:Type models:IAppointment}">
         <ctrl:SimpleStackPanel Orientation="Horizontal" Spacing="{StaticResource MyNet.Margin.Default}">
             <StackPanel Opacity="{StaticResource MyNet.Opacity.Secondary}" Orientation="Horizontal">
-                <TextBlock Text="{me:Translation StartDate, Format=DateDayNumberFormat}" />
+                <TextBlock Text="{me:DisplayDateTime StartDate, Format=dd}" />
             </StackPanel>
             <ContentPresenter Content="{Binding}" />
         </ctrl:SimpleStackPanel>
@@ -42,7 +42,7 @@
     <DataTemplate x:Key="MyNet.DataTemplates.Calendar.Appointment.DayAndMonth" DataType="{x:Type models:IAppointment}">
         <ctrl:SimpleStackPanel Orientation="Horizontal" Spacing="{StaticResource MyNet.Margin.Default}">
             <StackPanel Opacity="{StaticResource MyNet.Opacity.Secondary}" Orientation="Horizontal">
-                <TextBlock Text="{me:Translation StartDate, Format='d MMM'}" />
+                <TextBlock Text="{me:DisplayDateTime StartDate, Format=M}" />
             </StackPanel>
             <ContentPresenter Content="{Binding}" />
         </ctrl:SimpleStackPanel>
@@ -461,7 +461,7 @@
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="{me:Translation Format='MMM', Casing=Title}" />
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="{me:DisplayDateTime Format=MMM, Casing=Title}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
@@ -470,7 +470,7 @@
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="{me:Translation Format='yyyy', Casing=Title}" />
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="{me:DisplayDateTime Format=yyyy, Casing=Title}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
@@ -497,8 +497,8 @@
                                            VerticalAlignment="Center"
                                            Orientation="Horizontal"
                                            Spacing="{StaticResource MyNet.Margin.Default}">
-                        <TextBlock Text="{me:Translation Format='dd'}" />
-                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}" Text="{me:Translation Format='ddd', Casing=Title}" Typography.Capitals="AllSmallCaps" />
+                        <TextBlock Text="{me:DisplayDateTime Format=dd}" />
+                        <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}" Text="{me:DisplayDateTime Format=ddd, Casing=Title}" Typography.Capitals="AllSmallCaps" />
                     </ctrl:SimpleStackPanel>
                 </DataTemplate>
             </Setter.Value>
@@ -509,7 +509,7 @@
             <Setter.Value>
                 <DataTemplate>
                     <ctrl:SimpleStackPanel Orientation="Horizontal" Spacing="{StaticResource MyNet.Margin.Default}">
-                        <TextBlock Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="{me:Translation Format=ddd}" Typography.Capitals="AllSmallCaps" />
+                        <TextBlock Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="{me:DisplayDateTime Format=ddd}" Typography.Capitals="AllSmallCaps" />
                         <TextBlock Text="{Binding Converter={x:Static c:DayNumberToStringConverter.ToTitle}}" />
                     </ctrl:SimpleStackPanel>
                 </DataTemplate>
@@ -562,7 +562,7 @@
                 <DataTemplate>
                     <Grid>
                         <Rectangle Height="2" VerticalAlignment="Top" Fill="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-                        <TextBlock Margin="0 -15 0 0" VerticalAlignment="Top" Text="{me:Translation Format='HH:mm'}" />
+                        <TextBlock Margin="0 -15 0 0" VerticalAlignment="Top" Text="{me:DisplayDateTime Format=t}" />
                     </Grid>
                 </DataTemplate>
             </Setter.Value>
@@ -578,7 +578,7 @@
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock Text="{me:Translation Casing=AllCaps, Format='MMMM yyyy'}" />
+                    <TextBlock Text="{me:DisplayDateTime Casing=AllCaps, Format=Y}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
@@ -811,7 +811,7 @@
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock Text="{me:Translation Casing=AllCaps, Format='yyyy'}" />
+                    <TextBlock Text="{me:DisplayDateTime Casing=AllCaps, Format=yyyy}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
@@ -834,7 +834,7 @@
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock Text="{me:Translation Casing=AllCaps, Format='yyyy'}" />
+                    <TextBlock Text="{me:DisplayDateTime Casing=AllCaps, Format=yyyy}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
@@ -872,9 +872,9 @@
             <Setter.Value>
                 <DataTemplate>
                     <ctrl:SimpleStackPanel Orientation="Horizontal">
-                        <TextBlock Tag="{Binding Converter={x:Static c:DateToWeekConverter.ToStartWeek}}" Text="{me:Translation Path=Tag, RelativeSource={RelativeSource Self}, Casing=Title, Format='dd MMMM'}" />
+                        <TextBlock Tag="{Binding Converter={x:Static c:DateToWeekConverter.ToStartWeek}}" Text="{me:DisplayDateTime Path=Tag, RelativeSource={RelativeSource Self}, Casing=Title, Format=M}" />
                         <TextBlock Text="-" />
-                        <TextBlock Tag="{Binding Converter={x:Static c:DateToWeekConverter.ToEndWeek}}" Text="{me:Translation Path=Tag, RelativeSource={RelativeSource Self}, Casing=Title, Format='dd MMMM yyyy'}" />
+                        <TextBlock Tag="{Binding Converter={x:Static c:DateToWeekConverter.ToEndWeek}}" Text="{me:DisplayDateTime Path=Tag, RelativeSource={RelativeSource Self}, Casing=Title, Format='dd MMMM yyyy'}" />
                     </ctrl:SimpleStackPanel>
                 </DataTemplate>
             </Setter.Value>
@@ -886,7 +886,7 @@
                     <TextBlock Margin="{StaticResource MyNet.Margins.Default}"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Top"
-                               Text="{me:DisplayDateTime Format='HH:mm'}" />
+                               Text="{me:DisplayDateTime Format=t}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
@@ -923,9 +923,9 @@
             <Setter.Value>
                 <DataTemplate>
                     <ctrl:SimpleStackPanel Orientation="Horizontal">
-                        <TextBlock Text="{me:Translation Path=DisplayDateStart, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}, Casing=Title, Format='dd MMMM'}" />
+                        <TextBlock Text="{me:DisplayDateTime Path=DisplayDateStart, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}, Casing=Title, Format=M}" />
                         <TextBlock Text="-" />
-                        <TextBlock Text="{me:Translation Path=DisplayDateEnd, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}, Casing=Title, Format='dd MMMM yyyy'}" />
+                        <TextBlock Text="{me:DisplayDateTime Path=DisplayDateEnd, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}, Casing=Title, Format='dd MMMM yyyy'}" />
                     </ctrl:SimpleStackPanel>
                 </DataTemplate>
             </Setter.Value>
@@ -937,7 +937,7 @@
                     <TextBlock Margin="{StaticResource MyNet.Margins.Default}"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Top"
-                               Text="{me:DisplayDateTime Format='HH:mm'}" />
+                               Text="{me:DisplayDateTime Format=t}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
@@ -959,14 +959,14 @@
         <Setter Property="ColumnHeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock Margin="{StaticResource MyNet.Margins.Default}" Text="{me:Translation Format='MMMM', Casing=AllCaps}" />
+                    <TextBlock Margin="{StaticResource MyNet.Margins.Default}" Text="{me:DisplayDateTime Format=MMMM, Casing=AllCaps}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock Text="{me:Translation Casing=AllCaps, Format='yyyy'}" />
+                    <TextBlock Text="{me:DisplayDateTime Casing=AllCaps, Format=yyyy}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>

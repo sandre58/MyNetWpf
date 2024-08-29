@@ -814,7 +814,7 @@
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock Text="{me:DisplayDateTime Format='HH:mm'}" />
+                    <TextBlock Text="{me:DisplayDateTime Format=t}" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
