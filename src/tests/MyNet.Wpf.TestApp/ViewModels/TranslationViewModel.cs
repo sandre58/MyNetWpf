@@ -32,17 +32,17 @@ namespace MyNet.Wpf.TestApp.ViewModels
 
         public DateTime CurrentDateTime { get; set; } = GlobalizationService.Current.Convert(DateTime.UtcNow);
 
-        public DateTime LocalDate { get; set; } = DateTime.Today;
+        public DateOnly LocalDate { get; set; } = DateTime.Today.ToDate();
 
-        public DateTime UtcDate { get; set; } = DateTime.UtcNow.Date;
+        public DateOnly UtcDate { get; set; } = DateTime.UtcNow.Date.ToDate();
 
-        public DateTime CurrentDate { get; set; } = GlobalizationService.Current.Convert(DateTime.UtcNow.Date);
+        public DateOnly CurrentDate { get; set; } = GlobalizationService.Current.Convert(DateTime.UtcNow.Date).ToDate();
 
-        public TimeSpan LocalTime { get; set; } = DateTime.Now.TimeOfDay;
+        public TimeOnly LocalTime { get; set; } = DateTime.Now.ToTime();
 
-        public TimeSpan UtcTime { get; set; } = DateTime.UtcNow.TimeOfDay;
+        public TimeOnly UtcTime { get; set; } = DateTime.UtcNow.ToTime();
 
-        public TimeSpan CurrentTime { get; set; } = GlobalizationService.Current.Convert(DateTime.UtcNow).TimeOfDay;
+        public TimeOnly CurrentTime { get; set; } = GlobalizationService.Current.Convert(DateTime.UtcNow).ToTime();
 
         public ICommand SystemLanguageCommand { get; private set; }
 

@@ -4,6 +4,7 @@
 using System;
 using System.Globalization;
 using System.Windows.Data;
+using MyNet.Utilities;
 using MyNet.Utilities.Localization;
 
 namespace MyNet.Wpf.Converters
@@ -40,14 +41,16 @@ namespace MyNet.Wpf.Converters
         public DateTimeConverter(DateTimeConversion conversion) => _conversion = conversion;
 
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
-            => value is not DateTime date
-                ? null
-                : Convert(date, _conversion);
+            => value is DateTime date
+                ? Convert(date, _conversion)
+                : value is DateOnly dateOnly
+                ? dateOnly.BeginningOfDay()
+                : null;
 
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
-            => value is not DateTime date
-                ? null
-                : Convert(date, _conversion);
+            => value is DateTime date
+                ? (targetType == typeof(DateOnly) ? date.ToDate() : Convert(date, _conversion))
+                : null;
 
         private static DateTime Convert(DateTime date, DateTimeConversion conversion)
             => conversion switch

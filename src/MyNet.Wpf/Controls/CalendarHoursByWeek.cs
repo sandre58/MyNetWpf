@@ -89,7 +89,7 @@ namespace MyNet.Wpf.Controls
         }
 
         protected override IEnumerable<object> GetRowHeaders()
-            => DateTimeHelper.Range(DateTime.Today.BeginningOfDay(), DateTime.Today.EndOfDay(), 1, TimeUnit.Hour).Where(x => x.IsBetween(DateTime.Today.SetTime(DisplayTimeStart), DateTime.Today.SetTime(DisplayTimeEnd))).Select(x => x.TimeOfDay).OfType<object>().ToList();
+            => DateTimeHelper.Range(DateTime.Today.BeginningOfDay(), DateTime.Today.EndOfDay(), 1, TimeUnit.Hour).Where(x => x.IsBetween(DateTime.Today.At(DisplayTimeStart), DateTime.Today.At(DisplayTimeEnd))).Select(x => x.TimeOfDay).OfType<object>().ToList();
 
         protected override IEnumerable<(DateTime date, int row, int column)> GetDisplayDates()
         {
@@ -97,9 +97,9 @@ namespace MyNet.Wpf.Controls
             var end = DisplayDateInternal.EndOfWeek(FirstDayOfWeek).DiscardTime();
 
             var columnHeaders = DateTimeHelper.Range(start, end, 1, TimeUnit.Day).ToList();
-            var rowHeaders = DateTimeHelper.Range(DateTime.Today.BeginningOfDay(), DateTime.Today.EndOfDay(), 1, TimeUnit.Hour).Where(x => x.IsBetween(DateTime.Today.SetTime(DisplayTimeStart), DateTime.Today.SetTime(DisplayTimeEnd))).Select(x => x.TimeOfDay).ToList();
+            var rowHeaders = DateTimeHelper.Range(DateTime.Today.BeginningOfDay(), DateTime.Today.EndOfDay(), 1, TimeUnit.Hour).Where(x => x.IsBetween(DateTime.Today.At(DisplayTimeStart), DateTime.Today.At(DisplayTimeEnd))).Select(x => x.TimeOfDay).ToList();
 
-            return columnHeaders.SelectMany((x, columnIndex) => rowHeaders.Select((y, rowIndex) => (x.SetTime(y), rowIndex, columnIndex)))
+            return columnHeaders.SelectMany((x, columnIndex) => rowHeaders.Select((y, rowIndex) => (x.At(y), rowIndex, columnIndex)))
                                 .Where(x => x.Item1.IsBetween(MinimumDateInternal, MaximumDateInternal))
                                 .ToList();
         }

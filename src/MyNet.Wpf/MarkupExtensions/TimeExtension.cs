@@ -12,6 +12,6 @@ namespace MyNet.Wpf.MarkupExtensions
 
         public TimeExtension(string path) : base(path) { }
 
-        protected override IValueConverter CreateConverter() => new TimeSpanToDateTimeConverter(Conversion);
+        protected override IValueConverter CreateConverter() => new TimeConverter(Conversion);
     }
 }

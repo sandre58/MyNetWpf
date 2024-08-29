@@ -44,8 +44,14 @@ namespace MyNet.Wpf.Converters
             if (value is DateTime date)
                 dateToConvert = date;
 
+            if (value is DateOnly date1)
+                dateToConvert = date1.BeginningOfDay();
+
             if (value is TimeSpan time)
-                dateToConvert = DateTime.Today.ToLocal(time);
+                dateToConvert = DateTime.Today.At(time);
+
+            if (value is TimeOnly time1)
+                dateToConvert = DateTime.Today.At(time1);
 
             if (!dateToConvert.HasValue) return Binding.DoNothing;
 
