@@ -27,6 +27,7 @@ using MyNet.UI.Busy.Models;
 using MyNet.Utilities;
 using MyNet.Utilities.DateTimes;
 using MyNet.Utilities.Helpers;
+using MyNet.Utilities.Localization;
 using MyNet.Utilities.Threading;
 using MyNet.Utilities.Units;
 using MyNet.Wpf.Busy;
@@ -116,13 +117,18 @@ namespace MyNet.Wpf.Controls
             SetCurrentValue(DisplayDateProperty, DateTime.Now);
             ItemsSource = _appointments;
             BusyService = new BusyService();
+
+            GlobalizationService.Current.TimeZoneChanged += OnTimeZoneChangedCallback;
         }
 
         ~CalendarBase()
         {
+            GlobalizationService.Current.TimeZoneChanged -= OnTimeZoneChangedCallback;
             _updateAppointments.Dispose();
             _build.Dispose();
         }
+
+        private void OnTimeZoneChangedCallback(object? sender, EventArgs e) => UpdateAppointments();
 
         #region Orientation
 

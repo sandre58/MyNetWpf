@@ -62,17 +62,20 @@ namespace MyNet.Wpf.TestApp.ViewModels
 
     internal class AppointmentSample : EditableObject, IAppointment
     {
+        private readonly DateTime _utcStartDate;
+        private readonly DateTime _utcEndDate;
+
         public string Title { get; }
 
-        public DateTime StartDate { get; }
+        public DateTime StartDate => _utcStartDate.ToCurrentTime();
 
-        public DateTime EndDate { get; }
+        public DateTime EndDate => _utcEndDate.ToCurrentTime();
 
         public AppointmentSample(string title, DateTime date, TimeSpan duration)
         {
             Title = title;
-            StartDate = date;
-            EndDate = date.AddFluentTimeSpan(new FluentTimeSpan().Add(duration));
+            _utcStartDate = date;
+            _utcEndDate = date.AddFluentTimeSpan(new FluentTimeSpan().Add(duration));
         }
 
         public override string ToString() => Title;
