@@ -60,7 +60,7 @@ namespace MyNet.Wpf.Converters
                 _ => DateTimeConversion.None
             };
 
-            return new DateTimeConverter(conversion).ConvertBack(date, targetType, parameter, culture) is DateTime convertedDate ? (targetType == typeof(TimeOnly) ? convertedDate.ToTime() : convertedDate.TimeOfDay) : null;
+            return new DateTimeConverter(conversion).ConvertBack(date, targetType, parameter, culture) is DateTime convertedDate ? (targetType == typeof(TimeOnly) || targetType == typeof(TimeOnly?) ? convertedDate.ToTime() : convertedDate.TimeOfDay) : null;
         }
     }
 }

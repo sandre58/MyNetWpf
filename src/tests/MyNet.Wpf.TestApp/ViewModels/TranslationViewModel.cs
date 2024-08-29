@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Resources;
+using MyNet.Observable;
 using MyNet.Observable.Attributes;
 using MyNet.Observable.Translatables;
 using MyNet.UI.Commands;
@@ -32,17 +33,11 @@ namespace MyNet.Wpf.TestApp.ViewModels
 
         public DateTime CurrentDateTime { get; set; } = GlobalizationService.Current.Convert(DateTime.UtcNow);
 
-        public DateOnly LocalDate { get; set; } = DateTime.Today.ToDate();
+        public EditableDateTime LocalDate { get; set; } = new();
 
-        public DateOnly UtcDate { get; set; } = DateTime.UtcNow.Date.ToDate();
+        public EditableDateTime UtcDate { get; set; } = new();
 
-        public DateOnly CurrentDate { get; set; } = GlobalizationService.Current.Convert(DateTime.UtcNow.Date).ToDate();
-
-        public TimeOnly LocalTime { get; set; } = DateTime.Now.ToTime();
-
-        public TimeOnly UtcTime { get; set; } = DateTime.UtcNow.ToTime();
-
-        public TimeOnly CurrentTime { get; set; } = GlobalizationService.Current.Convert(DateTime.UtcNow).ToTime();
+        public EditableDateTime CurrentDate { get; set; } = new();
 
         public ICommand SystemLanguageCommand { get; private set; }
 

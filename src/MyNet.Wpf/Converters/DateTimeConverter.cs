@@ -49,7 +49,7 @@ namespace MyNet.Wpf.Converters
 
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
             => value is DateTime date
-                ? (targetType == typeof(DateOnly) ? date.ToDate() : Convert(date, _conversion))
+                ? (targetType == typeof(DateOnly) || targetType == typeof(DateOnly?) ? date.ToDate() : Convert(date, _conversion))
                 : null;
 
         private static DateTime Convert(DateTime date, DateTimeConversion conversion)
