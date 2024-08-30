@@ -4,7 +4,6 @@
     <Description>A comprehensive collection of controls, graphical elements, and views designed for accelerating WPF application development.</Description>
     <PackageTags>MyNet;UI;Xaml;Presentation;Wpf</PackageTags>
     <VersionPrefix>6.0.0</VersionPrefix>
-    <Version>6.0.0-alpha.6</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,8 +15,8 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="gong-wpf-dragdrop" Version="3.2.1" />
-    <PackageReference Include="MyNet.Utilities.Geography.Extensions" Version="5.0.0-alpha" />
-    <PackageReference Include="MyNet.Utilities.Localization.Extensions" Version="5.0.0-alpha" />
+    <PackageReference Include="MyNet.Utilities.Geography.Extensions" Version="5.0.0-pre" />
+    <PackageReference Include="MyNet.Utilities.Localization.Extensions" Version="5.0.0-pre" />
     <PackageReference Include="MyNet.Xaml.Merger.MSBuild" Version="2.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

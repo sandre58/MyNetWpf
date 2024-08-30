@@ -32,7 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_github", "_github", "{E1FD
 		..\.github\GitVersion.yml = ..\.github\GitVersion.yml
 		..\.github\workflows\git_version.yml = ..\.github\workflows\git_version.yml
 		..\.github\workflows\publish_release.yml = ..\.github\workflows\publish_release.yml
-		..\.github\workflows\publish_private.yml = ..\.github\workflows\publish_private.yml
+		..\.github\workflows\publish_packages.yml = ..\.github\workflows\publish_packages.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Wpf.DragAndDrop", "MyNet.Wpf.DragAndDrop\MyNet.Wpf.DragAndDrop.csproj", "{674B37E5-8DBE-41FC-A9CF-164A78073BAE}"
