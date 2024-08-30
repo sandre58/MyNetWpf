@@ -24,7 +24,7 @@ jobs:
     runs-on: windows-latest
     outputs:
       full_version: ${{ steps.gitversion.outputs.SemVer }}
-      suffix_label: ${{ steps.gitversion.outputs.PreReleaseLabel }}
+      suffix_label: ${{ steps.gitversion.outputs.PreReleaseTag }}
 
     steps:
 
@@ -86,19 +86,19 @@ jobs:
         run: dotnet restore .\src\MyNetWpf.sln
 
       - name: Build Packages
-        run: dotnet build .\src\MyNetWpf.sln -c Release /p:GitVersion=${{ needs.gitversion.outputs.full_version }} /p:VersionSuffix=${{ needs.gitversion.outputs.suffix_label }}
+        run: dotnet build .\src\MyNetWpf.sln -c Release /p:DebugType=embedded /p:GitVersion=${{ needs.gitversion.outputs.full_version }} /p:VersionSuffix=${{ needs.gitversion.outputs.suffix_label }}
 
       - name: Run Tests
         run: dotnet test .\src\MyNetWpf.sln --configuration Release --logger GitHubActions --no-build --no-restore --blame-crash --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover --no-build
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: NuGet
           path: ./Artifacts/
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: TestApp
           path: |

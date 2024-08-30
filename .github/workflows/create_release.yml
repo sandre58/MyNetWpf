@@ -20,7 +20,7 @@ jobs:
     runs-on: windows-latest
     outputs:
       full_version: ${{ steps.gitversion.outputs.SemVer }}
-      suffix_label: ${{ steps.gitversion.outputs.PreReleaseLabel }}
+      suffix_label: ${{ steps.gitversion.outputs.PreReleaseTag }}
 
     steps:
 
@@ -89,13 +89,13 @@ jobs:
         run: dotnet test .\src\MyNetWpf.sln --configuration Release --logger GitHubActions --no-build --no-restore --blame-crash --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover --no-build
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: NuGet
           path: ./Artifacts/
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: TestApp
           path: |
@@ -143,13 +143,13 @@ jobs:
           file_pattern: CHANGELOG.md
 
       # Download artifacts
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: NuGet
           path: Artifacts/
 
       # Download artifacts
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: TestApp
           path: TestApp/

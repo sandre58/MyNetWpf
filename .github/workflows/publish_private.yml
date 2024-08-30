@@ -17,7 +17,7 @@ jobs:
     runs-on: windows-latest
     outputs:
       full_version: ${{ steps.gitversion.outputs.SemVer }}
-      suffix_label: ${{ steps.gitversion.outputs.PreReleaseLabel }}
+      suffix_label: ${{ steps.gitversion.outputs.PreReleaseTag }}
 
     steps:
 
@@ -48,7 +48,7 @@ jobs:
     needs: [ gitversion ]
     with:
       name: Build all projects
-      build-args: '/p:GitVersion=${{ needs.gitversion.outputs.full_version }} /p:VersionSuffix=${{ needs.gitversion.outputs.suffix_label }}'
+      build-args: '/p:DebugType=embedded /p:GitVersion=${{ needs.gitversion.outputs.full_version }} /p:VersionSuffix=${{ needs.gitversion.outputs.suffix_label }}'
       dotnet-test-logger: GitHubActions --no-build --no-restore
       solution-path: .\src\MyNetWpf.sln
       nugetFeedUrl: ${{ vars.PRIVATE_NUGET_API_SOURCE }}

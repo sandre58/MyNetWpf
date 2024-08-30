@@ -4,6 +4,7 @@
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using MyNet.Observable;
 using MyNet.UI.Commands;
 using MyNet.UI.Dialogs;
@@ -19,7 +20,7 @@ namespace MyNet.Wpf.TestApp.ViewModels
 {
     internal class AppointmentsListViewModel : ListViewModel<AppointmentSample>
     {
-        public AppointmentsListViewModel(DateTime startDate, DateTime endDate) : base(RandomGenerator.Int(150, 300).Range().Select(x => new AppointmentSample($"Birthday n° {x}", RandomGenerator.Date(startDate, endDate).ToLocalTime(), new TimeSpan(RandomGenerator.Int(1, 8), RandomGenerator.Int(0, 59), 0))).ToList())
+        public AppointmentsListViewModel(DateTime startDate, DateTime endDate) : base(RandomGenerator.Int(200, 500).Range().Select(x => new AppointmentSample($"Birthday n° {x}", RandomGenerator.Date(startDate, endDate).ToLocalTime(), new TimeSpan(RandomGenerator.Int(1, 8), RandomGenerator.Int(0, 59), 0))).ToList())
             => AddToDateCommand = CommandsManager.Create<DateTime>(async x =>
                {
                    var vm = new PickTimeViewModel() { Time = x.AddHours(16) };
@@ -34,6 +35,19 @@ namespace MyNet.Wpf.TestApp.ViewModels
                });
 
         public ICommand AddToDateCommand { get; }
+
+        public override async Task EditAsync(AppointmentSample? oldItem)
+        {
+            if (oldItem is null) return;
+
+            var vm = new PickTimeViewModel() { Time = oldItem.StartDate };
+            var result = await DialogManager.ShowDialogAsync(vm);
+
+            if (result.IsTrue())
+            {
+                oldItem.SetDate(vm.Time);
+            }
+        }
     }
 
     internal class CalendarsCalendarsViewModel : NavigableWorkspaceViewModel
@@ -48,8 +62,8 @@ namespace MyNet.Wpf.TestApp.ViewModels
 
         public CalendarsCalendarsViewModel()
         {
-            StartDate = DateTime.Today.AddYears(-10).BeginningOfYear();
-            EndDate = DateTime.Today.AddYears(10).EndOfYear();
+            StartDate = DateTime.Today.AddYears(-5).BeginningOfYear();
+            EndDate = DateTime.Today.AddYears(5).EndOfYear();
             DisplayDate = DateTime.Today;
             Appointments = new(StartDate, EndDate);
         }
@@ -62,14 +76,22 @@ namespace MyNet.Wpf.TestApp.ViewModels
 
     internal class AppointmentSample : EditableObject, IAppointment
     {
-        private readonly DateTime _utcStartDate;
-        private readonly DateTime _utcEndDate;
+        private DateTime _utcStartDate;
+        private DateTime _utcEndDate;
 
         public string Title { get; }
 
         public DateTime StartDate => _utcStartDate.ToCurrentTime();
 
         public DateTime EndDate => _utcEndDate.ToCurrentTime();
+
+        public void SetDate(DateTime utcStartDate)
+        {
+            _utcStartDate = utcStartDate;
+            _utcEndDate = utcStartDate.AddHours(2);
+
+            RaisePropertyChanged(nameof(StartDate));
+        }
 
         public AppointmentSample(string title, DateTime date, TimeSpan duration)
         {

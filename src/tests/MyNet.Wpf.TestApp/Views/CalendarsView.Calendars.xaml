@@ -92,6 +92,7 @@
 
                     <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
 
+                        <Button Command="{Binding Appointments.EditCommand}" CommandParameter="{Binding SelectedItem.DataContext, ElementName=CalendarDaysByMonth}" Content="{my:Resource Edit}" />
                         <smtx:XamlDisplay Height="850"
                                           HorizontalAlignment="Stretch"
                                           UniqueKey="cal_0_0_0"
@@ -111,7 +112,8 @@
                                           HorizontalAlignment="Stretch"
                                           UniqueKey="cal_0_0_1"
                                           Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=1}">
-                            <my:CalendarDaysByMonth AddCommand="{Binding Appointments.AddToDateCommand}"
+                            <my:CalendarDaysByMonth x:Name="CalendarDaysByMonth"
+                                                    AddCommand="{Binding Appointments.AddToDateCommand}"
                                                     Appointments="{Binding Appointments.Items}"
                                                     AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
                                                     DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
