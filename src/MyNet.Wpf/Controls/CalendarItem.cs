@@ -440,7 +440,8 @@ namespace MyNet.Wpf.Controls
 
         private void ManageAppointment(IAppointment appointment)
         {
-            if (IsMatch(appointment))
+            var isMatch = Dispatcher.Invoke(() => IsMatch(appointment));
+            if (isMatch)
             {
                 if (!_appointments.Contains(appointment))
                     _appointments.Add(appointment);
