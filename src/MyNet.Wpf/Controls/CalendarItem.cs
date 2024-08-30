@@ -2,22 +2,19 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using System.Collections;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using System.Reactive.Concurrency;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
-using DynamicData;
 using MyNet.Observable;
-using MyNet.UI.Collections;
+using MyNet.Observable.Collections;
 using MyNet.Utilities;
 using MyNet.Utilities.DateTimes;
 using MyNet.Utilities.Units;
+using MyNet.Wpf.Schedulers;
 
 namespace MyNet.Wpf.Controls
 {
@@ -29,9 +26,7 @@ namespace MyNet.Wpf.Controls
     {
         private const string PartAddButton = "PART_AddButton";
 
-        private readonly CollectionViewSource _collectionViewSource = new();
-        private ICollectionView? _collectionView;
-        private readonly UiObservableCollection<IAppointment> _appointments = [];
+        private readonly ExtendedCollection<IAppointment> _appointments = new(WpfScheduler.Current);
 
         public DateTime Date { get; internal set; }
 
@@ -58,7 +53,9 @@ namespace MyNet.Wpf.Controls
 
         public CalendarItem(CalendarBase owner, DateTime date, TimeUnit unit)
         {
-            SetValue(AppointmentsPropertyKey, new ReadOnlyObservableCollection<IAppointment>(_appointments));
+            _appointments.SortingProperties.Add(nameof(IAppointment.StartDate));
+
+            SetValue(AppointmentsPropertyKey, _appointments.Items);
             Owner = owner;
             Unit = unit;
             Date = date;
@@ -380,35 +377,23 @@ namespace MyNet.Wpf.Controls
 
         internal virtual void UpdateAppointments()
         {
-            if (_collectionView is not null)
-                _collectionView.CollectionChanged -= CollectionView_CollectionChanged;
-
             if (Owner != null && Owner.Appointments != null)
             {
-                var source = Owner.Appointments is ICollectionView collectionView ? collectionView.SourceCollection : Owner.Appointments;
-                _collectionViewSource.Source = source;
-                _collectionView = _collectionViewSource.View;
-
-                _collectionView.CollectionChanged += CollectionView_CollectionChanged;
-
-                _collectionView.Filter = x => (Owner.Appointments is not ICollectionView collectionView || collectionView.Filter == null || collectionView.Filter.Invoke(x)) && x is IAppointment appointment && IsMatch(appointment);
-                _collectionView.SortDescriptions.Add(new SortDescription(nameof(IAppointment.StartDate), ListSortDirection.Ascending));
-
-                _appointments.Set(_collectionView.OfType<IAppointment>() ?? []);
+                Owner.Appointments.OfType<IAppointment>().ForEach(ManageAppointment);
 
                 foreach (var item in Owner.Appointments)
                 {
                     if (item is INotifyPropertyChanged npc)
                     {
-                        npc.PropertyChanged -= Item_PropertyChanged;
-                        npc.PropertyChanged += Item_PropertyChanged;
+                        npc.PropertyChanged -= OnItemPropertyChangedCallback;
+                        npc.PropertyChanged += OnItemPropertyChangedCallback;
                     }
                 }
 
                 if (Owner.Appointments is INotifyCollectionChanged ncc)
                 {
-                    ncc.CollectionChanged -= ItemsSource_CollectionChanged;
-                    ncc.CollectionChanged += ItemsSource_CollectionChanged;
+                    ncc.CollectionChanged -= OnOwnerAppointmentsCollectionChangedCallback;
+                    ncc.CollectionChanged += OnOwnerAppointmentsCollectionChangedCallback;
                 }
             }
             else
@@ -417,26 +402,7 @@ namespace MyNet.Wpf.Controls
             }
         }
 
-        private void CollectionView_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
-        {
-            switch (e.Action)
-            {
-                case NotifyCollectionChangedAction.Add:
-                    _appointments.AddRange(e.NewItems?.OfType<IAppointment>() ?? []);
-                    break;
-                case NotifyCollectionChangedAction.Remove:
-                    _appointments.RemoveMany(e.OldItems?.OfType<IAppointment>() ?? []);
-                    break;
-                case NotifyCollectionChangedAction.Reset:
-                    if (_collectionView is CollectionView list && list.Count == 0)
-                        _appointments.Clear();
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        private void ItemsSource_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        private void OnOwnerAppointmentsCollectionChangedCallback(object? sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
             {
@@ -444,10 +410,12 @@ namespace MyNet.Wpf.Controls
                 {
                     if (item is INotifyPropertyChanged npc)
                     {
-                        npc.PropertyChanged -= Item_PropertyChanged;
-                        npc.PropertyChanged += Item_PropertyChanged;
+                        npc.PropertyChanged -= OnItemPropertyChangedCallback;
+                        npc.PropertyChanged += OnItemPropertyChangedCallback;
                     }
                 }
+
+                e.NewItems.OfType<IAppointment>().ForEach(ManageAppointment);
             }
 
             if (e.OldItems != null)
@@ -455,20 +423,31 @@ namespace MyNet.Wpf.Controls
                 foreach (var item in e.OldItems)
                 {
                     if (item is INotifyPropertyChanged npc)
-                        npc.PropertyChanged -= Item_PropertyChanged;
+                        npc.PropertyChanged -= OnItemPropertyChangedCallback;
                 }
+
+                _appointments.RemoveMany(e.OldItems.OfType<IAppointment>());
             }
         }
 
-        private void Item_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        private void OnItemPropertyChangedCallback(object? sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName is (nameof(IAppointment.StartDate)) or (nameof(IAppointment.EndDate)))
+            if (sender is IAppointment appointment && e.PropertyName is (nameof(IAppointment.StartDate)) or (nameof(IAppointment.EndDate)))
             {
-                Schedulers.WpfScheduler.Current.Schedule(() =>
-                {
-                    if ((Owner?.IsLoaded ?? false) && _collectionView?.SourceCollection is not null)
-                        _collectionView.Refresh();
-                });
+                ManageAppointment(appointment);
+            }
+        }
+
+        private void ManageAppointment(IAppointment appointment)
+        {
+            if (IsMatch(appointment))
+            {
+                if (!_appointments.Contains(appointment))
+                    _appointments.Add(appointment);
+            }
+            else
+            {
+                _appointments.Remove(appointment);
             }
         }
 
