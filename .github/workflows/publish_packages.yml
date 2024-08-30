@@ -48,7 +48,7 @@ jobs:
     needs: [ gitversion ]
     with:
       name: Build all projects
-      build-args: '/debug:embedded /p:GitVersion=${{ needs.gitversion.outputs.full_version }} /p:VersionSuffix=${{ needs.gitversion.outputs.suffix_label }}'
+      build-args: '/p:DebugType=embedded /p:GitVersion=${{ needs.gitversion.outputs.full_version }} /p:VersionSuffix=${{ needs.gitversion.outputs.suffix_label }}'
       dotnet-test-logger: GitHubActions --no-build --no-restore
       solution-path: .\src\MyNetWpf.sln
       nugetFeedUrl: ${{ vars.PRIVATE_NUGET_API_SOURCE }}

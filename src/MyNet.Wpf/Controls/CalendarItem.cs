@@ -16,6 +16,7 @@ using MyNet.Observable;
 using MyNet.UI.Collections;
 using MyNet.Utilities;
 using MyNet.Utilities.DateTimes;
+using MyNet.Utilities.Suspending;
 using MyNet.Utilities.Units;
 
 namespace MyNet.Wpf.Controls
@@ -31,6 +32,7 @@ namespace MyNet.Wpf.Controls
         private readonly CollectionViewSource _collectionViewSource = new();
         private ICollectionView? _collectionView;
         private readonly UiObservableCollection<IAppointment> _appointments = [];
+        private readonly Suspender _clearSuspender = new();
 
         public DateTime Date { get; internal set; }
 
@@ -427,7 +429,8 @@ namespace MyNet.Wpf.Controls
                     _appointments.RemoveMany(e.OldItems?.OfType<IAppointment>() ?? []);
                     break;
                 case NotifyCollectionChangedAction.Reset:
-                    _appointments.Clear();
+                    if (!_clearSuspender.IsSuspended)
+                        _appointments.Clear();
                     break;
                 default:
                     break;
@@ -465,7 +468,8 @@ namespace MyNet.Wpf.Controls
                 Schedulers.WpfScheduler.Current.Schedule(() =>
                 {
                     if ((Owner?.IsLoaded ?? false) && _collectionView?.SourceCollection is not null)
-                        _collectionView.Refresh();
+                        using (_clearSuspender.Suspend())
+                            _collectionView.Refresh();
                 });
             }
         }
