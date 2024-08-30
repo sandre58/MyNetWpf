@@ -2,6 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -16,7 +17,6 @@ using MyNet.Observable;
 using MyNet.UI.Collections;
 using MyNet.Utilities;
 using MyNet.Utilities.DateTimes;
-using MyNet.Utilities.Suspending;
 using MyNet.Utilities.Units;
 
 namespace MyNet.Wpf.Controls
@@ -32,7 +32,6 @@ namespace MyNet.Wpf.Controls
         private readonly CollectionViewSource _collectionViewSource = new();
         private ICollectionView? _collectionView;
         private readonly UiObservableCollection<IAppointment> _appointments = [];
-        private readonly Suspender _clearSuspender = new();
 
         public DateTime Date { get; internal set; }
 
@@ -429,7 +428,7 @@ namespace MyNet.Wpf.Controls
                     _appointments.RemoveMany(e.OldItems?.OfType<IAppointment>() ?? []);
                     break;
                 case NotifyCollectionChangedAction.Reset:
-                    if (!_clearSuspender.IsSuspended)
+                    if (_collectionView is CollectionView list && list.Count == 0)
                         _appointments.Clear();
                     break;
                 default:
@@ -468,8 +467,7 @@ namespace MyNet.Wpf.Controls
                 Schedulers.WpfScheduler.Current.Schedule(() =>
                 {
                     if ((Owner?.IsLoaded ?? false) && _collectionView?.SourceCollection is not null)
-                        using (_clearSuspender.Suspend())
-                            _collectionView.Refresh();
+                        _collectionView.Refresh();
                 });
             }
         }
