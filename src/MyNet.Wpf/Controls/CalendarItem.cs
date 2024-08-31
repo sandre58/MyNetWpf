@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -375,22 +376,24 @@ namespace MyNet.Wpf.Controls
                 : VisualStateManager.GoToState(this, "Unselected", useTransitions);
         }
 
-        internal virtual void UpdateAppointments()
+        internal virtual void UpdateAppointments(CancellationToken cancellationToken)
         {
             if (Owner != null && Owner.Appointments != null)
             {
-                Owner.Appointments.OfType<IAppointment>().ForEach(ManageAppointment);
-
-                foreach (var item in Owner.Appointments)
+                var appointments = Owner.Appointments.OfType<IAppointment>().ToList();
+                appointments.ForEach(x =>
                 {
-                    if (item is INotifyPropertyChanged npc)
+                    cancellationToken.ThrowIfCancellationRequested();
+                    ManageAppointment(x);
+
+                    if (x is INotifyPropertyChanged npc)
                     {
                         npc.PropertyChanged -= OnItemPropertyChangedCallback;
                         npc.PropertyChanged += OnItemPropertyChangedCallback;
                     }
-                }
+                });
 
-                if (Owner.Appointments is INotifyCollectionChanged ncc)
+                if (appointments is INotifyCollectionChanged ncc)
                 {
                     ncc.CollectionChanged -= OnOwnerAppointmentsCollectionChangedCallback;
                     ncc.CollectionChanged += OnOwnerAppointmentsCollectionChangedCallback;

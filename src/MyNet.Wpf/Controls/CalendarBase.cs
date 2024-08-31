@@ -4,7 +4,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -1838,7 +1837,10 @@ namespace MyNet.Wpf.Controls
                 {
                     var calendarItems = GetCalendarItems().ToList();
                     foreach (var item in calendarItems)
-                        await Dispatcher.BeginInvoke(() => item.UpdateAppointments());
+                    {
+                        cancellationToken.ThrowIfCancellationRequested();
+                        await Dispatcher.BeginInvoke(() => item.UpdateAppointments(cancellationToken));
+                    }
                 }
             }
             catch (OperationCanceledException)
