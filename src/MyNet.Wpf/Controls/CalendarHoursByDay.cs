@@ -90,7 +90,7 @@ namespace MyNet.Wpf.Controls
 
         public override TimeUnit IntervalUnit => TimeUnit.Hour;
 
-        protected override bool MustBeRebuild(DateTime oldDate, DateTime newDate) => !DisplayDateStart.HasValue || !DisplayDateEnd.HasValue || !newDate.IsBetween(DisplayDateStart.Value, DisplayDateEnd.Value);
+        protected override bool MustBeRebuild(DateTime oldDate, DateTime newDate) => !DisplayDateStart.HasValue || !DisplayDateEnd.HasValue || !newDate.SameDay(DisplayDateStart.Value);
 
         protected override IEnumerable<object> GetColumnHeaders()
         {

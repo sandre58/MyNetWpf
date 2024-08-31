@@ -1835,8 +1835,11 @@ namespace MyNet.Wpf.Controls
                 var calendarAppointments = appointments.SelectMany(x => Dispatcher.Invoke(() => CreateCalendarAppointments(x).ToList())).ToList();
 
                 if (await AddAppointmentsAsync(calendarAppointments, cancellationToken).ConfigureAwait(false))
-                    foreach (var item in GetCalendarItems().ToList())
+                {
+                    var calendarItems = GetCalendarItems().ToList();
+                    foreach (var item in calendarItems)
                         await Dispatcher.BeginInvoke(() => item.UpdateAppointments());
+                }
             }
             catch (OperationCanceledException)
             {
