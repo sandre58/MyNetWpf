@@ -9762,7 +9762,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         </ItemsPanelTemplate>
       </Setter.Value>
     </Setter>
-    <Setter Property="Padding" Value="5 3" />
+    <Setter Property="Padding" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
     <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
     <Setter Property="ScrollViewer.PanningMode" Value="Both" />

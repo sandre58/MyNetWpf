@@ -19,6 +19,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
+using System.Windows.Threading;
 using DynamicData;
 using MyNet.Observable;
 using MyNet.UI.Busy;
@@ -1763,8 +1764,12 @@ namespace MyNet.Wpf.Controls
         {
             foreach (var item in toRemove)
             {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Dispatcher.BeginInvoke(() => _appointments.Remove(item));
+                Dispatcher.Invoke(() =>
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                    _appointments.Remove(item);
+                }, DispatcherPriority.Input, cancellationToken);
+                await Task.Delay(5.Milliseconds(), cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -1772,8 +1777,11 @@ namespace MyNet.Wpf.Controls
         {
             foreach (var item in appointments)
             {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Dispatcher.BeginInvoke(() => _appointments.Add(item));
+                Dispatcher.Invoke(() =>
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                    _appointments.Add(item);
+                }, DispatcherPriority.Input, cancellationToken);
                 await Task.Delay(5.Milliseconds(), cancellationToken).ConfigureAwait(false);
             }
 
