@@ -1,5 +1,10 @@
 # Changelog
 
+## [v6.0.0] - 2024-09-02
+### :sparkles: New Features
+- [`6c69bdb`](https://github.com/sandre58/MyNetWpf/commit/6c69bdb4aea04447a2ad1ac035d9f4e89029ae00) - add globalization
+
+
 ## [v5.1.0] - 2024-08-17
 ### :sparkles: New Features
 - [`cbff89c`](https://github.com/sandre58/MyNetWpf/commit/cbff89cb92640b24457e8f87f5ff883faf7fa04d) - add new features for overlay dialog
@@ -317,3 +322,4 @@
 [v5.0.11]: https://github.com/sandre58/MyNetWpf/compare/v5.0.10...v5.0.11
 [v5.0.12]: https://github.com/sandre58/MyNetWpf/compare/v5.0.11...v5.0.12
 [v5.1.0]: https://github.com/sandre58/MyNetWpf/compare/v5.0.12...v5.1.0
+[v6.0.0]: https://github.com/sandre58/MyNetWpf/compare/v5.1.0...v6.0.0
