@@ -15,20 +15,21 @@ using MyNet.UI.ViewModels.Workspace;
 using MyNet.Utilities;
 using MyNet.Utilities.DateTimes;
 using MyNet.Utilities.Generator;
+using MyNet.Utilities.Localization;
 
 namespace MyNet.Wpf.TestApp.ViewModels
 {
     internal class AppointmentsListViewModel : ListViewModel<AppointmentSample>
     {
-        public AppointmentsListViewModel(DateTime startDate, DateTime endDate) : base(RandomGenerator.Int(200, 500).Range().Select(x => new AppointmentSample($"Birthday n° {x}", RandomGenerator.Date(startDate, endDate).ToLocalTime(), new TimeSpan(RandomGenerator.Int(1, 8), RandomGenerator.Int(0, 59), 0))).ToList())
+        public AppointmentsListViewModel(DateTime startDate, DateTime endDate) : base(RandomGenerator.Int(500, 1000).Range().Select(x => new AppointmentSample($"Birthday n° {x}", RandomGenerator.Date(startDate, endDate).ToLocalTime(), new TimeSpan(RandomGenerator.Int(1, 8), RandomGenerator.Int(0, 59), 0))).ToList())
             => AddToDateCommand = CommandsManager.Create<DateTime>(async x =>
                {
-                   var vm = new PickTimeViewModel() { Time = x.AddHours(16) };
+                   var vm = new PickTimeViewModel() { Time = x.AddHours(16).ToTime() };
                    var result = await DialogManager.ShowDialogAsync(vm);
 
                    if (result.IsTrue())
                    {
-                       AddItemCore(new AppointmentSample("Event n°" + (Items.Count + 1), vm.Time, new TimeSpan(2, 0, 0)));
+                       AddItemCore(new AppointmentSample("Event n°" + (Items.Count + 1), x.At(vm.Time.GetValueOrDefault()), new TimeSpan(2, 0, 0)));
 
                        ToasterManager.ShowSuccess("Event added to " + Items[Items.Count - 1].StartDate.ToString(CultureInfo.CurrentCulture));
                    }
@@ -40,12 +41,12 @@ namespace MyNet.Wpf.TestApp.ViewModels
         {
             if (oldItem is null) return;
 
-            var vm = new PickTimeViewModel() { Time = oldItem.StartDate };
+            var vm = new PickTimeViewModel() { Time = oldItem.StartDate.ToTime() };
             var result = await DialogManager.ShowDialogAsync(vm);
 
             if (result.IsTrue())
             {
-                oldItem.SetDate(vm.Time);
+                oldItem.SetDate(GlobalizationService.Current.ConvertToUtc(oldItem.StartDate.At(vm.Time.GetValueOrDefault())));
             }
         }
     }
@@ -71,7 +72,7 @@ namespace MyNet.Wpf.TestApp.ViewModels
 
     internal class PickTimeViewModel : DialogViewModel
     {
-        public DateTime Time { get; set; }
+        public TimeOnly? Time { get; set; }
     }
 
     internal class AppointmentSample : EditableObject, IAppointment

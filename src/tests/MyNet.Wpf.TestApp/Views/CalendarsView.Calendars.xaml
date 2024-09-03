@@ -92,7 +92,7 @@
 
                     <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
 
-                        <Button Command="{Binding Appointments.EditCommand}" CommandParameter="{Binding SelectedItem.DataContext, ElementName=CalendarDaysByMonth}" Content="{my:Resource Edit}" />
+                        <Button Command="{Binding Appointments.EditCommand}" CommandParameter="{Binding SelectedItem.Item, ElementName=CalendarDaysByMonth}" Content="{my:Resource Edit}" />
                         <smtx:XamlDisplay Height="850"
                                           HorizontalAlignment="Stretch"
                                           UniqueKey="cal_0_0_0"

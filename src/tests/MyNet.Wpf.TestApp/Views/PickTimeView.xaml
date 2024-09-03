@@ -31,6 +31,6 @@
                   Background="Transparent"
                   HeaderBackground="Transparent"
                   HeaderForeground="{DynamicResource MyNet.Brushes.Application.Foreground}"
-                  Time="{Binding Time, Mode=TwoWay}" />
+                  Time="{my:Time Time}" />
     </DockPanel>
 </UserControl>

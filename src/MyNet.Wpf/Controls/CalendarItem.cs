@@ -59,9 +59,6 @@ namespace MyNet.Wpf.Controls
             SetValue(AppointmentsPropertyKey, _appointments.Items);
             Owner = owner;
             Unit = unit;
-            Date = date;
-            Content = date;
-            DataContext = date;
             var d = DependencyPropertyDescriptor.FromProperty(IsKeyboardFocusedProperty, typeof(CalendarItem));
             d.AddValueChanged(this, OnVisualStatePropertyChanged);
 
@@ -70,6 +67,15 @@ namespace MyNet.Wpf.Controls
 
             var d2 = DependencyPropertyDescriptor.FromProperty(IsEnabledProperty, typeof(CalendarItem));
             d2.AddValueChanged(this, OnVisualStatePropertyChanged);
+
+            SetDate(date);
+        }
+
+        public void SetDate(DateTime date)
+        {
+            Date = date;
+            Content = date;
+            DataContext = date;
 
             if (Date.IsBefore(Owner.MinimumDateInternal) || Date.IsAfter(Owner.MaximumDateInternal))
                 IsEnabled = false;
@@ -85,6 +91,8 @@ namespace MyNet.Wpf.Controls
                 SetValue(IsFirstOfWeekPropertyKey, Date.IsFirstDayOfWeek(Owner.FirstDayOfWeek));
                 SetValue(IsWeekendPropertyKey, Date.IsWeekend());
             }
+
+            _appointments.Clear();
         }
 
         #region AddCommand
@@ -384,7 +392,7 @@ namespace MyNet.Wpf.Controls
                 appointments.ForEach(x =>
                 {
                     cancellationToken.ThrowIfCancellationRequested();
-                    ManageAppointment(x);
+                    SynchronizeAppointment(x);
 
                     if (x is INotifyPropertyChanged npc)
                     {
@@ -418,7 +426,7 @@ namespace MyNet.Wpf.Controls
                     }
                 }
 
-                e.NewItems.OfType<IAppointment>().ForEach(ManageAppointment);
+                e.NewItems.OfType<IAppointment>().ForEach(SynchronizeAppointment);
             }
 
             if (e.OldItems != null)
@@ -437,11 +445,11 @@ namespace MyNet.Wpf.Controls
         {
             if (sender is IAppointment appointment && e.PropertyName is (nameof(IAppointment.StartDate)) or (nameof(IAppointment.EndDate)))
             {
-                ManageAppointment(appointment);
+                SynchronizeAppointment(appointment);
             }
         }
 
-        private void ManageAppointment(IAppointment appointment)
+        private void SynchronizeAppointment(IAppointment appointment)
         {
             var isMatch = Dispatcher.Invoke(() => IsMatch(appointment));
             if (isMatch)
