@@ -1,5 +1,10 @@
 # Changelog
 
+## [v6.0.2] - 2024-09-03
+### :bug: Bug Fixes
+- [`d2e6c96`](https://github.com/sandre58/MyNetWpf/commit/d2e6c96cafa33d9445cafaeb9e0e1693e9788bb0) - change management of appointments
+
+
 ## [v6.0.1] - 2024-09-02
 ### :sparkles: New Features
 - [`085d1d2`](https://github.com/sandre58/MyNetWpf/commit/085d1d23e89d38f8006ca6e44543c1a24dc61203) - fix lock between update appointments in calendar
@@ -329,3 +334,4 @@
 [v5.1.0]: https://github.com/sandre58/MyNetWpf/compare/v5.0.12...v5.1.0
 [v6.0.0]: https://github.com/sandre58/MyNetWpf/compare/v5.1.0...v6.0.0
 [v6.0.1]: https://github.com/sandre58/MyNetWpf/compare/v6.0.0...v6.0.1
+[v6.0.2]: https://github.com/sandre58/MyNetWpf/compare/v6.0.1...v6.0.2
