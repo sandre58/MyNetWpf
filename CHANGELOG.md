@@ -1,5 +1,10 @@
 # Changelog
 
+## [v6.0.3] - 2024-09-04
+### :bug: Bug Fixes
+- [`41ac0f3`](https://github.com/sandre58/MyNetWpf/commit/41ac0f39886ea7078c236b5c0cb7c8ea3f707e98) - change appointments loading management
+
+
 ## [v6.0.2] - 2024-09-03
 ### :bug: Bug Fixes
 - [`d2e6c96`](https://github.com/sandre58/MyNetWpf/commit/d2e6c96cafa33d9445cafaeb9e0e1693e9788bb0) - change management of appointments
@@ -335,3 +340,4 @@
 [v6.0.0]: https://github.com/sandre58/MyNetWpf/compare/v5.1.0...v6.0.0
 [v6.0.1]: https://github.com/sandre58/MyNetWpf/compare/v6.0.0...v6.0.1
 [v6.0.2]: https://github.com/sandre58/MyNetWpf/compare/v6.0.1...v6.0.2
+[v6.0.3]: https://github.com/sandre58/MyNetWpf/compare/v6.0.2...v6.0.3
