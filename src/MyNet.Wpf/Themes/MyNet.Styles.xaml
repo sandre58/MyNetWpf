@@ -13424,8 +13424,19 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
               </Border>
               <ctrl:Ripple Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Feedback="{TemplateBinding Foreground}" Focusable="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                 <Grid>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                  </Grid.RowDefinitions>
                   <ContentPresenter x:Name="DayText" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
                   <Button x:Name="PART_AddButton" Style="{StaticResource MyNet.Styles.Button.Icon.Tool}" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Content="{me:ToolIcon Kind=Plus}" Visibility="Hidden" />
+                  <ItemsControl Grid.Row="1" ItemTemplate="{Binding ItemTemplate, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}" ItemTemplateSelector="{Binding ItemTemplateSelector, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}}" ItemsSource="{Binding Appointments, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding AppointmentsDisplayMode, RelativeSource={RelativeSource AncestorType={x:Type ctrl:CalendarBase}}, Converter={x:Static c:EnumToVisibilityConverter.CollapsedIfNotAny}, ConverterParameter={x:Static ctrl:AppointmentsDisplayMode.Cell}}">
+                    <ItemsControl.ItemsPanel>
+                      <ItemsPanelTemplate>
+                        <ctrl:SimpleStackPanel IsItemsHost="True" Spacing="{StaticResource MyNet.Margin.Small}" />
+                      </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                  </ItemsControl>
                 </Grid>
               </ctrl:Ripple>
             </Grid>

@@ -92,7 +92,7 @@
 
                     <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
 
-                        <Button Command="{Binding Appointments.EditCommand}" CommandParameter="{Binding SelectedItem.Item, ElementName=CalendarDaysByMonth}" Content="{my:Resource Edit}" />
+                        <Button Command="{Binding Appointments.EditCommand}" CommandParameter="{Binding SelectedItem.DataContext, ElementName=CalendarDaysByMonth}" Content="{my:Resource Edit}" />
                         <smtx:XamlDisplay Height="850"
                                           HorizontalAlignment="Stretch"
                                           UniqueKey="cal_0_0_0"
@@ -147,14 +147,14 @@
                                           Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=3}">
                             <my:CalendarDaysRange AddCommand="{Binding Appointments.AddToDateCommand}"
                                                   Appointments="{Binding Appointments.Items}"
-                                                  AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode2, Mode=OneWay}"
-                                                  DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode2, Mode=OneWay}"
+                                                  AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
+                                                  DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
                                                   DisplayDate="{Binding DisplayDate}"
-                                                  FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek2, Mode=OneWay}"
+                                                  FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek, Mode=OneWay}"
                                                   MaximumDate="{Binding EndDate}"
                                                   MinimumDate="{Binding StartDate}"
-                                                  SelectionMode="{Binding SelectedValue, ElementName=SelectionMode2, Mode=OneWay}"
-                                                  ShowHeader="{Binding IsChecked, ElementName=showHeader2, Mode=OneWay}" />
+                                                  SelectionMode="{Binding SelectedValue, ElementName=SelectionMode, Mode=OneWay}"
+                                                  ShowHeader="{Binding IsChecked, ElementName=showHeader, Mode=OneWay}" />
                         </smtx:XamlDisplay>
 
                         <smtx:XamlDisplay Height="850"
