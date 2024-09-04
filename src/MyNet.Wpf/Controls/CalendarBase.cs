@@ -1203,7 +1203,7 @@ namespace MyNet.Wpf.Controls
                 _displayDates.Set(dates.Select(x =>
                 {
                     cancellationToken.ThrowIfCancellationRequested();
-                    var item = new CalendarItem(this, x.date, IntervalUnit);
+                    var item = new CalendarItem(this, x.date, IntervalUnit, _appointments);
                     Grid.SetRow(item, x.row);
                     Grid.SetColumn(item, x.column);
                     item.AddHandler(MouseDownEvent, new MouseButtonEventHandler(Cell_MouseDown), true);
@@ -1866,17 +1866,6 @@ namespace MyNet.Wpf.Controls
                 {
                     cancellationToken.ThrowIfCancellationRequested();
                     await SynchronizeAppointmentAsync(item, cancellationToken).ConfigureAwait(false);
-                }
-
-                if (Dispatcher.Invoke(() => AppointmentsDisplayMode == AppointmentsDisplayMode.Cell))
-                {
-                    var calendarItems = GetCalendarItems().ToList();
-                    foreach (var item in calendarItems)
-                    {
-                        cancellationToken.ThrowIfCancellationRequested();
-                        Dispatcher.Invoke(() => item.UpdateAppointments(cancellationToken), DispatcherPriority.Input, cancellationToken);
-                        await Task.Delay(1.Milliseconds(), cancellationToken).ConfigureAwait(false);
-                    }
                 }
             }
             catch (OperationCanceledException)

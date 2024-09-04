@@ -6,12 +6,16 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading;
+using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using DynamicData;
+using DynamicData.Binding;
 using MyNet.Observable;
 using MyNet.Observable.Collections;
+using MyNet.UI.Collections;
+using MyNet.UI.Threading;
 using MyNet.Utilities;
 using MyNet.Utilities.DateTimes;
 using MyNet.Utilities.Units;
@@ -27,7 +31,8 @@ namespace MyNet.Wpf.Controls
     {
         private const string PartAddButton = "PART_AddButton";
 
-        private readonly ExtendedCollection<IAppointment> _appointments = new(WpfScheduler.Current);
+        private readonly ReadOnlyObservableCollection<IAppointment> _appointments;
+        private readonly IDisposable _disposable;
 
         public DateTime Date { get; internal set; }
 
@@ -52,11 +57,8 @@ namespace MyNet.Wpf.Controls
             EventManager.RegisterClassHandler(typeof(CalendarItem), MouseLeaveEvent, new RoutedEventHandler(OnVisualStateChanged));
         }
 
-        public CalendarItem(CalendarBase owner, DateTime date, TimeUnit unit)
+        public CalendarItem(CalendarBase owner, DateTime date, TimeUnit unit, ObservableCollection<CalendarAppointment> appointments)
         {
-            _appointments.SortingProperties.Add(nameof(IAppointment.StartDate));
-
-            SetValue(AppointmentsPropertyKey, _appointments.Items);
             Owner = owner;
             Unit = unit;
             var d = DependencyPropertyDescriptor.FromProperty(IsKeyboardFocusedProperty, typeof(CalendarItem));
@@ -69,7 +71,20 @@ namespace MyNet.Wpf.Controls
             d2.AddValueChanged(this, OnVisualStatePropertyChanged);
 
             SetDate(date);
+
+            _disposable = appointments.ToObservableChangeSet()
+                                      .Transform(x => (IAppointment)x.DataContext)
+                                      .AutoRefresh(x => x.StartDate)
+                                      .AutoRefresh(x => Date)
+                                      .Filter(x => Owner.AppointmentsDisplayMode == AppointmentsDisplayMode.Cell && IsMatch(x))
+                                      .Sort(SortExpressionComparer<IAppointment>.Ascending(x => x.StartDate))
+                                      .ObserveOn(Scheduler.UI)
+                                      .Bind(out _appointments)
+                                      .Subscribe();
+            SetValue(AppointmentsPropertyKey, _appointments);
         }
+
+        ~CalendarItem() => _disposable.Dispose();
 
         public void SetDate(DateTime date)
         {
@@ -91,8 +106,6 @@ namespace MyNet.Wpf.Controls
                 SetValue(IsFirstOfWeekPropertyKey, Date.IsFirstDayOfWeek(Owner.FirstDayOfWeek));
                 SetValue(IsWeekendPropertyKey, Date.IsWeekend());
             }
-
-            _appointments.Clear();
         }
 
         #region AddCommand
@@ -384,84 +397,73 @@ namespace MyNet.Wpf.Controls
                 : VisualStateManager.GoToState(this, "Unselected", useTransitions);
         }
 
-        internal virtual void UpdateAppointments(CancellationToken cancellationToken)
-        {
-            if (Owner != null && Owner.Appointments != null)
-            {
-                var appointments = Owner.Appointments.OfType<IAppointment>().ToList();
-                appointments.ForEach(x =>
-                {
-                    cancellationToken.ThrowIfCancellationRequested();
-                    SynchronizeAppointment(x);
+        //internal virtual void UpdateAppointments(ObservableCollection<CalendarAppointment> appointments)
+        //{
+        //    appointments.ForEach(x =>
+        //    {
+        //        if (x.DataContext is not IAppointment appointment) return;
 
-                    if (x is INotifyPropertyChanged npc)
-                    {
-                        npc.PropertyChanged -= OnItemPropertyChangedCallback;
-                        npc.PropertyChanged += OnItemPropertyChangedCallback;
-                    }
-                });
+        //        SynchronizeAppointment(appointment);
 
-                if (appointments is INotifyCollectionChanged ncc)
-                {
-                    ncc.CollectionChanged -= OnOwnerAppointmentsCollectionChangedCallback;
-                    ncc.CollectionChanged += OnOwnerAppointmentsCollectionChangedCallback;
-                }
-            }
-            else
-            {
-                _appointments.Clear();
-            }
-        }
+        //        appointment.PropertyChanged -= OnItemPropertyChangedCallback;
+        //        appointment.PropertyChanged += OnItemPropertyChangedCallback;
+        //    });
 
-        private void OnOwnerAppointmentsCollectionChangedCallback(object? sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-            {
-                foreach (var item in e.NewItems)
-                {
-                    if (item is INotifyPropertyChanged npc)
-                    {
-                        npc.PropertyChanged -= OnItemPropertyChangedCallback;
-                        npc.PropertyChanged += OnItemPropertyChangedCallback;
-                    }
-                }
+        //    appointments.CollectionChanged -= OnOwnerAppointmentsCollectionChangedCallback;
+        //    appointments.CollectionChanged += OnOwnerAppointmentsCollectionChangedCallback;
+        //}
 
-                e.NewItems.OfType<IAppointment>().ForEach(SynchronizeAppointment);
-            }
+        //private void OnOwnerAppointmentsCollectionChangedCallback(object? sender, NotifyCollectionChangedEventArgs e)
+        //{
+        //    if (e.NewItems != null)
+        //    {
+        //        foreach (var item in e.NewItems)
+        //        {
+        //            if (item is INotifyPropertyChanged npc)
+        //            {
+        //                npc.PropertyChanged -= OnItemPropertyChangedCallback;
+        //                npc.PropertyChanged += OnItemPropertyChangedCallback;
+        //            }
+        //        }
 
-            if (e.OldItems != null)
-            {
-                foreach (var item in e.OldItems)
-                {
-                    if (item is INotifyPropertyChanged npc)
-                        npc.PropertyChanged -= OnItemPropertyChangedCallback;
-                }
+        //        e.NewItems.OfType<IAppointment>().ForEach(SynchronizeAppointment);
+        //    }
 
-                _appointments.RemoveMany(e.OldItems.OfType<IAppointment>());
-            }
-        }
+        //    if (e.OldItems != null)
+        //    {
+        //        foreach (var item in e.OldItems)
+        //        {
+        //            if (item is INotifyPropertyChanged npc)
+        //                npc.PropertyChanged -= OnItemPropertyChangedCallback;
+        //        }
 
-        private void OnItemPropertyChangedCallback(object? sender, PropertyChangedEventArgs e)
-        {
-            if (sender is IAppointment appointment && e.PropertyName is (nameof(IAppointment.StartDate)) or (nameof(IAppointment.EndDate)))
-            {
-                SynchronizeAppointment(appointment);
-            }
-        }
+        //        _appointments.RemoveMany(e.OldItems.OfType<IAppointment>());
+        //    }
+        //}
 
-        private void SynchronizeAppointment(IAppointment appointment)
-        {
-            var isMatch = Dispatcher.Invoke(() => IsMatch(appointment));
-            if (isMatch)
-            {
-                if (!_appointments.Contains(appointment))
-                    _appointments.Add(appointment);
-            }
-            else
-            {
-                _appointments.Remove(appointment);
-            }
-        }
+        //private void OnItemPropertyChangedCallback(object? sender, PropertyChangedEventArgs e)
+        //{
+        //    if (sender is IAppointment appointment && e.PropertyName is (nameof(IAppointment.StartDate)) or (nameof(IAppointment.EndDate)))
+        //    {
+        //        SynchronizeAppointment(appointment);
+        //    }
+        //}
+
+        //private void SynchronizeAppointment(IAppointment appointment)
+        //{
+        //    Dispatcher.Invoke(() =>
+        //    {
+        //        if (IsMatch(appointment))
+        //        {
+        //            if (!_appointments.Contains(appointment))
+        //                _appointments.Add(appointment);
+        //        }
+        //        else
+        //        {
+        //            _appointments.Remove(appointment);
+        //        }
+        //    });
+        //}
 
         protected bool IsMatch(IAppointment appointment) => Period.Start < appointment.StartDate && Period.End > appointment.EndDate
                                                     || appointment.StartDate < Period.Start && appointment.EndDate > Period.End
