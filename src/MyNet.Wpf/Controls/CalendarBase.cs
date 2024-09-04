@@ -118,7 +118,7 @@ namespace MyNet.Wpf.Controls
             BlackoutDates = new BlackoutDatesCollection(this);
             SelectedDatesInternal = new Calendars.SelectedDatesCollection(this);
             SetCurrentValue(DisplayDateProperty, DateTime.Now);
-            SetCurrentValue(ItemsSourceProperty, _appointments);
+            ItemsSource = _appointments;
             BusyService = new BusyService();
 
             GlobalizationService.Current.TimeZoneChanged += OnTimeZoneChangedCallback;
