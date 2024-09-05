@@ -69,11 +69,11 @@ namespace MyNet.Wpf.Controls
 
             _disposable = appointments.ToObservableChangeSet()
                                       .Transform(x => (IAppointment)x.DataContext)
+                                      .ObserveOn(Scheduler.UI)
                                       .AutoRefresh(x => x.StartDate)
                                       .AutoRefresh(x => Date)
-                                      .Filter(x => Owner.AppointmentsDisplayMode == AppointmentsDisplayMode.Cell && IsMatch(x))
+                                      .Filter(x => Dispatcher.Invoke(() => Owner.AppointmentsDisplayMode == AppointmentsDisplayMode.Cell) && IsMatch(x))
                                       .Sort(SortExpressionComparer<IAppointment>.Ascending(x => x.StartDate))
-                                      .ObserveOn(Scheduler.UI)
                                       .Bind(out _appointments)
                                       .Subscribe();
             SetValue(AppointmentsPropertyKey, _appointments);
