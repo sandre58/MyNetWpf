@@ -1,5 +1,10 @@
 # Changelog
 
+## [v6.0.5] - 2024-09-04
+### :bug: Bug Fixes
+- [`02b7fd2`](https://github.com/sandre58/MyNetWpf/commit/02b7fd24efa6266cfcd39ba8e2a4e6d4203a1486) - fix appointments by cell
+
+
 ## [v6.0.4] - 2024-09-04
 ### :bug: Bug Fixes
 - [`337eb63`](https://github.com/sandre58/MyNetWpf/commit/337eb638958cb018a2bceaa8dc18a1385eaa3b7f) - fix ItemsSource
@@ -347,3 +352,4 @@
 [v6.0.2]: https://github.com/sandre58/MyNetWpf/compare/v6.0.1...v6.0.2
 [v6.0.3]: https://github.com/sandre58/MyNetWpf/compare/v6.0.2...v6.0.3
 [v6.0.4]: https://github.com/sandre58/MyNetWpf/compare/v6.0.3...v6.0.4
+[v6.0.5]: https://github.com/sandre58/MyNetWpf/compare/v6.0.4...v6.0.5
