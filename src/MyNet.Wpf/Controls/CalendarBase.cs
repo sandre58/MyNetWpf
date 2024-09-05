@@ -343,7 +343,7 @@ namespace MyNet.Wpf.Controls
 
         private async void OnAppointmentsCollectionChangedCallbackAsync(object? sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.NewItems != null)
+            if (e.Action == NotifyCollectionChangedAction.Add && e.NewItems != null)
             {
                 foreach (var item in e.NewItems.OfType<IAppointment>())
                 {
@@ -356,7 +356,7 @@ namespace MyNet.Wpf.Controls
                 }
             }
 
-            if (e.OldItems != null)
+            if (e.Action == NotifyCollectionChangedAction.Remove && e.OldItems != null)
             {
                 foreach (var item in e.OldItems)
                 {
