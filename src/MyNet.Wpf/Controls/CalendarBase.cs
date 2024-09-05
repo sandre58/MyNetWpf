@@ -30,7 +30,6 @@ using MyNet.Utilities;
 using MyNet.Utilities.DateTimes;
 using MyNet.Utilities.Helpers;
 using MyNet.Utilities.Localization;
-using MyNet.Utilities.Logging;
 using MyNet.Utilities.Threading;
 using MyNet.Utilities.Units;
 using MyNet.Wpf.Busy;
@@ -375,6 +374,23 @@ namespace MyNet.Wpf.Controls
         }
 
         #endregion Appointments
+
+        #region AutoUpdateAppointments
+
+        public bool AutoUpdateAppointments
+        {
+            get => (bool)GetValue(AutoUpdateAppointmentsProperty);
+            set => SetValue(AutoUpdateAppointmentsProperty, value);
+        }
+
+        public static readonly DependencyProperty AutoUpdateAppointmentsProperty =
+            DependencyProperty.Register(
+            nameof(AutoUpdateAppointments),
+            typeof(bool),
+            typeof(CalendarBase),
+            new FrameworkPropertyMetadata(true));
+
+        #endregion AutoUpdateAppointments
 
         #region BlackoutDates
 
@@ -1006,7 +1022,9 @@ namespace MyNet.Wpf.Controls
         private static void OnAppointmentsDisplayModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var c = d as CalendarBase;
-            c?.UpdateAppointments();
+
+            if (c?.AutoUpdateAppointments ?? false)
+                c?.UpdateAppointments();
         }
 
         #endregion AppointmentsDisplayMode
@@ -1248,7 +1266,8 @@ namespace MyNet.Wpf.Controls
 
                 SetValue(DisplayDateStartPropertyKey, _displayDates.MinOrDefault(x => x.Date));
                 SetValue(DisplayDateEndPropertyKey, _displayDates.MaxOrDefault(x => x.Date));
-                UpdateAppointments();
+                if (AutoUpdateAppointments)
+                    UpdateAppointments();
                 RefreshAccurateDateControl();
                 RefreshAccurateDatePreviewControl();
             }
@@ -1846,7 +1865,7 @@ namespace MyNet.Wpf.Controls
             }
         }
 
-        protected void UpdateAppointments()
+        public void UpdateAppointments()
         {
             _updateAppointments.Cancel();
             _updateAppointments.Run();

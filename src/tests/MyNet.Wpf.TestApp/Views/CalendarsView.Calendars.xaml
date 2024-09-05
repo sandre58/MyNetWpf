@@ -108,7 +108,7 @@
                                                     SelectionMode="{Binding SelectedValue, ElementName=SelectionMode, Mode=OneWay}"
                                                     ShowHeader="{Binding IsChecked, ElementName=showHeader, Mode=OneWay}" />
                         </smtx:XamlDisplay>
-                        <smtx:XamlDisplay Height="850"
+                        <!--<smtx:XamlDisplay Height="850"
                                           HorizontalAlignment="Stretch"
                                           UniqueKey="cal_0_0_1"
                                           Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=1}">
@@ -155,25 +155,25 @@
                                                   MinimumDate="{Binding StartDate}"
                                                   SelectionMode="{Binding SelectedValue, ElementName=SelectionMode, Mode=OneWay}"
                                                   ShowHeader="{Binding IsChecked, ElementName=showHeader, Mode=OneWay}" />
-                        </smtx:XamlDisplay>
+                        </smtx:XamlDisplay>-->
 
                         <smtx:XamlDisplay Height="850"
                                           HorizontalAlignment="Stretch"
                                           UniqueKey="cal_0_0_4"
                                           Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=4}">
-                            <my:CalendarHoursByWeek AddCommand="{Binding Appointments.AddToDateCommand}"
-                                                    Appointments="{Binding Appointments.Items}"
-                                                    AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
-                                                    DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
-                                                    DisplayDate="{Binding DisplayDate}"
-                                                    FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek, Mode=OneWay}"
-                                                    MaximumDate="{Binding EndDate}"
-                                                    MinimumDate="{Binding StartDate}"
-                                                    SelectionMode="{Binding SelectedValue, ElementName=SelectionMode, Mode=OneWay}"
-                                                    ShowHeader="{Binding IsChecked, ElementName=showHeader, Mode=OneWay}" />
+                            <my:CalendarHoursByDay AddCommand="{Binding Appointments.AddToDateCommand}"
+                                                   Appointments="{Binding Appointments.Items}"
+                                                   AppointmentsDisplayMode="{Binding SelectedValue, ElementName=DisplayMode, Mode=OneWay}"
+                                                   DatesSelectionMode="{Binding SelectedValue, ElementName=DatesSelectionMode, Mode=OneWay}"
+                                                   DisplayDate="{Binding DisplayDate}"
+                                                   FirstDayOfWeek="{Binding SelectedValue, ElementName=FirstDayOfWeek, Mode=OneWay}"
+                                                   MaximumDate="{Binding EndDate}"
+                                                   MinimumDate="{Binding StartDate}"
+                                                   SelectionMode="{Binding SelectedValue, ElementName=SelectionMode, Mode=OneWay}"
+                                                   ShowHeader="{Binding IsChecked, ElementName=showHeader, Mode=OneWay}" />
                         </smtx:XamlDisplay>
 
-                        <smtx:XamlDisplay Height="850"
+                        <!--<smtx:XamlDisplay Height="850"
                                           HorizontalAlignment="Stretch"
                                           UniqueKey="cal_0_0_5"
                                           Visibility="{Binding SelectedIndex, ElementName=mode, Converter={x:Static my:EqualityToVisibilityConverter.CollapsedIfNotEqual}, ConverterParameter=5}">
@@ -203,13 +203,13 @@
                                                       MinimumDate="{Binding StartDate}"
                                                       SelectionMode="{Binding SelectedValue, ElementName=SelectionMode, Mode=OneWay}"
                                                       ShowHeader="{Binding IsChecked, ElementName=showHeader, Mode=OneWay}" />
-                        </smtx:XamlDisplay>
+                        </smtx:XamlDisplay>-->
 
                     </my:SimpleStackPanel>
                 </DockPanel>
             </Expander>
 
-            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="Alternate">
+            <!--<Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="Alternate">
                 <DockPanel>
                     <GroupBox Width="300"
                               Margin="{StaticResource MyNet.Margins.Medium}"
@@ -556,7 +556,7 @@
 
                     </my:SimpleStackPanel>
                 </DockPanel>
-            </Expander>
+            </Expander>-->
         </my:SimpleStackPanel>
     </my:DynamicScrollViewer>
 </my:NavigationPage>
