@@ -75,8 +75,6 @@ namespace MyNet.Wpf.Controls
         private readonly UiObservableCollection<CalendarAppointment> _appointments = [];
         private readonly SingleTaskRunner _updateAppointments;
         private readonly SingleTaskRunner _build;
-        private bool _updatingAppointments;
-        private CancellationTokenSource _appointmentsCollectionChangedCancellationTokenSource = new();
 
         protected Grid? Grid { get; private set; }
 
@@ -116,7 +114,7 @@ namespace MyNet.Wpf.Controls
         protected CalendarBase()
         {
             _build = new(async x => await Dispatcher.BeginInvoke(() => Build(x)));
-            _updateAppointments = new(async x => await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ => await UpdateAppointmentsAsync(x).ConfigureAwait(false)), x => _updatingAppointments = x, () => _updatingAppointments = false);
+            _updateAppointments = new(async x => await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ => await UpdateAppointmentsAsync(x).ConfigureAwait(false)));
             BlackoutDates = new BlackoutDatesCollection(this);
             SelectedDatesInternal = new Calendars.SelectedDatesCollection(this);
             SetCurrentValue(DisplayDateProperty, DateTime.Now);
@@ -364,13 +362,13 @@ namespace MyNet.Wpf.Controls
 
             if (e.Action == NotifyCollectionChangedAction.Reset)
                 UpdateAppointments();
-            else if (!_updatingAppointments)
+            else
             {
-                _appointmentsCollectionChangedCancellationTokenSource = new();
                 await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ =>
                 {
                     try
                     {
+                        _updateAppointments.Cancel();
                         if (e.Action == NotifyCollectionChangedAction.Remove && e.OldItems != null)
                         {
                             foreach (var item in e.OldItems)
@@ -383,7 +381,7 @@ namespace MyNet.Wpf.Controls
                         {
                             foreach (var item in e.NewItems.OfType<IAppointment>())
                             {
-                                await SynchronizeAppointmentAsync(item, _appointmentsCollectionChangedCancellationTokenSource.Token).ConfigureAwait(false);
+                                await SynchronizeAppointmentAsync(item, CancellationToken.None).ConfigureAwait(false);
                             }
                         }
                     }
@@ -1875,7 +1873,6 @@ namespace MyNet.Wpf.Controls
 
         public void UpdateAppointments()
         {
-            _appointmentsCollectionChangedCancellationTokenSource.Cancel();
             _updateAppointments.Cancel();
             _updateAppointments.Run();
         }
