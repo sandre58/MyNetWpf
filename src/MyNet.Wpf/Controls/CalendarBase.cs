@@ -362,34 +362,37 @@ namespace MyNet.Wpf.Controls
                 }
             }
 
-            if (_updatingAppointments) return;
-
-            _appointmentsCollectionChangedCancellationTokenSource = new();
-            await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ =>
+            if (e.Action == NotifyCollectionChangedAction.Reset)
+                UpdateAppointments();
+            else if (!_updatingAppointments)
             {
-                try
+                _appointmentsCollectionChangedCancellationTokenSource = new();
+                await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ =>
                 {
-                    if (e.Action == NotifyCollectionChangedAction.Remove && e.OldItems != null)
+                    try
                     {
-                        foreach (var item in e.OldItems)
+                        if (e.Action == NotifyCollectionChangedAction.Remove && e.OldItems != null)
                         {
-                            _appointments.RemoveMany(_appointments.Where(x => x.DataContext == item).ToList());
+                            foreach (var item in e.OldItems)
+                            {
+                                _appointments.RemoveMany(_appointments.Where(x => x.DataContext == item).ToList());
+                            }
                         }
-                    }
 
-                    if (e.Action == NotifyCollectionChangedAction.Add && e.NewItems != null)
-                    {
-                        foreach (var item in e.NewItems.OfType<IAppointment>())
+                        if (e.Action == NotifyCollectionChangedAction.Add && e.NewItems != null)
                         {
-                            await SynchronizeAppointmentAsync(item, _appointmentsCollectionChangedCancellationTokenSource.Token).ConfigureAwait(false);
+                            foreach (var item in e.NewItems.OfType<IAppointment>())
+                            {
+                                await SynchronizeAppointmentAsync(item, _appointmentsCollectionChangedCancellationTokenSource.Token).ConfigureAwait(false);
+                            }
                         }
                     }
-                }
-                catch (OperationCanceledException)
-                {
-                    // Nothing
-                }
-            });
+                    catch (OperationCanceledException)
+                    {
+                        // Nothing
+                    }
+                });
+            }
         }
 
         private async void OnItemPropertyChangedCallbackAsync(object? sender, PropertyChangedEventArgs e)
