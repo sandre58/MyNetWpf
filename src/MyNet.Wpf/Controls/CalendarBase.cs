@@ -30,6 +30,7 @@ using MyNet.Utilities;
 using MyNet.Utilities.DateTimes;
 using MyNet.Utilities.Helpers;
 using MyNet.Utilities.Localization;
+using MyNet.Utilities.Suspending;
 using MyNet.Utilities.Threading;
 using MyNet.Utilities.Units;
 using MyNet.Wpf.Busy;
@@ -74,6 +75,8 @@ namespace MyNet.Wpf.Controls
         private readonly UiObservableCollection<CalendarAppointment> _appointments = [];
         private readonly SingleTaskRunner _updateAppointments;
         private readonly SingleTaskRunner _build;
+        private bool _updatingAppointments;
+        private CancellationTokenSource _appointmentsCollectionChangedCancellationTokenSource = new();
 
         protected Grid? Grid { get; private set; }
 
@@ -113,7 +116,7 @@ namespace MyNet.Wpf.Controls
         protected CalendarBase()
         {
             _build = new(async x => await Dispatcher.BeginInvoke(() => Build(x)));
-            _updateAppointments = new(async x => await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ => await UpdateAppointmentsAsync(x).ConfigureAwait(false)));
+            _updateAppointments = new(async x => await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ => await UpdateAppointmentsAsync(x).ConfigureAwait(false)), x => _updatingAppointments = x, () => _updatingAppointments = false);
             BlackoutDates = new BlackoutDatesCollection(this);
             SelectedDatesInternal = new Calendars.SelectedDatesCollection(this);
             SetCurrentValue(DisplayDateProperty, DateTime.Now);
@@ -342,55 +345,60 @@ namespace MyNet.Wpf.Controls
 
         private async void OnAppointmentsCollectionChangedCallbackAsync(object? sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.Action == NotifyCollectionChangedAction.Add && e.NewItems != null)
-            {
-                foreach (var item in e.NewItems.OfType<IAppointment>())
-                {
-                    if (item is INotifyPropertyChanged npc)
-                    {
-                        npc.PropertyChanged -= OnItemPropertyChangedCallbackAsync;
-                        npc.PropertyChanged += OnItemPropertyChangedCallbackAsync;
-                    }
-                    await SynchronizeAppointmentAsync(item, CancellationToken.None).ConfigureAwait(false);
-                }
-            }
-
             if (e.Action == NotifyCollectionChangedAction.Remove && e.OldItems != null)
             {
-                foreach (var item in e.OldItems)
+                foreach (var item in e.OldItems.OfType<INotifyPropertyChanged>())
                 {
-                    if (item is INotifyPropertyChanged npc)
-                        npc.PropertyChanged -= OnItemPropertyChangedCallbackAsync;
-
-                    _appointments.RemoveMany(_appointments.Where(x => x.DataContext == item).ToList());
+                    item.PropertyChanged -= OnItemPropertyChangedCallbackAsync;
                 }
             }
+
+            if (e.Action == NotifyCollectionChangedAction.Add && e.NewItems != null)
+            {
+                foreach (var item in e.NewItems.OfType<INotifyPropertyChanged>())
+                {
+                    item.PropertyChanged -= OnItemPropertyChangedCallbackAsync;
+                    item.PropertyChanged += OnItemPropertyChangedCallbackAsync;
+                }
+            }
+
+            if (_updatingAppointments) return;
+
+            _appointmentsCollectionChangedCancellationTokenSource = new();
+            await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ =>
+            {
+                try
+                {
+                    if (e.Action == NotifyCollectionChangedAction.Remove && e.OldItems != null)
+                    {
+                        foreach (var item in e.OldItems)
+                        {
+                            _appointments.RemoveMany(_appointments.Where(x => x.DataContext == item).ToList());
+                        }
+                    }
+
+                    if (e.Action == NotifyCollectionChangedAction.Add && e.NewItems != null)
+                    {
+                        foreach (var item in e.NewItems.OfType<IAppointment>())
+                        {
+                            await SynchronizeAppointmentAsync(item, _appointmentsCollectionChangedCancellationTokenSource.Token).ConfigureAwait(false);
+                        }
+                    }
+                }
+                catch (OperationCanceledException)
+                {
+                    // Nothing
+                }
+            });
         }
 
         private async void OnItemPropertyChangedCallbackAsync(object? sender, PropertyChangedEventArgs e)
         {
             if (sender is IAppointment appointment && e.PropertyName is (nameof(IAppointment.StartDate)) /* or (nameof(IAppointment.EndDate)) */)
-                await SynchronizeAppointmentAsync(appointment, CancellationToken.None).ConfigureAwait(false);
+                await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ => await SynchronizeAppointmentAsync(appointment, CancellationToken.None).ConfigureAwait(false));
         }
 
         #endregion Appointments
-
-        #region AutoUpdateAppointments
-
-        public bool AutoUpdateAppointments
-        {
-            get => (bool)GetValue(AutoUpdateAppointmentsProperty);
-            set => SetValue(AutoUpdateAppointmentsProperty, value);
-        }
-
-        public static readonly DependencyProperty AutoUpdateAppointmentsProperty =
-            DependencyProperty.Register(
-            nameof(AutoUpdateAppointments),
-            typeof(bool),
-            typeof(CalendarBase),
-            new FrameworkPropertyMetadata(true));
-
-        #endregion AutoUpdateAppointments
 
         #region BlackoutDates
 
@@ -1022,9 +1030,7 @@ namespace MyNet.Wpf.Controls
         private static void OnAppointmentsDisplayModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var c = d as CalendarBase;
-
-            if (c?.AutoUpdateAppointments ?? false)
-                c?.UpdateAppointments();
+            c?.UpdateAppointments();
         }
 
         #endregion AppointmentsDisplayMode
@@ -1266,8 +1272,7 @@ namespace MyNet.Wpf.Controls
 
                 SetValue(DisplayDateStartPropertyKey, _displayDates.MinOrDefault(x => x.Date));
                 SetValue(DisplayDateEndPropertyKey, _displayDates.MaxOrDefault(x => x.Date));
-                if (AutoUpdateAppointments)
-                    UpdateAppointments();
+                UpdateAppointments();
                 RefreshAccurateDateControl();
                 RefreshAccurateDatePreviewControl();
             }
@@ -1867,6 +1872,7 @@ namespace MyNet.Wpf.Controls
 
         public void UpdateAppointments()
         {
+            _appointmentsCollectionChangedCancellationTokenSource.Cancel();
             _updateAppointments.Cancel();
             _updateAppointments.Run();
         }
