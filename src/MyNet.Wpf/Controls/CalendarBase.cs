@@ -1882,11 +1882,11 @@ namespace MyNet.Wpf.Controls
 
         private async Task UpdateAppointmentsAsync(CancellationToken cancellationToken)
         {
-            var appointments = Dispatcher.Invoke(() => Appointments?.OfType<IAppointment>().ToList());
-
             try
             {
                 _appointments.Clear();
+
+                var appointments = Dispatcher.Invoke(() => Appointments?.OfType<IAppointment>().ToList());
 
                 if (appointments is null) return;
 
