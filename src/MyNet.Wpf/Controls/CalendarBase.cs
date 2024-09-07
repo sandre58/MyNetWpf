@@ -368,7 +368,6 @@ namespace MyNet.Wpf.Controls
                 {
                     try
                     {
-                        _updateAppointments.Cancel();
                         if (e.Action == NotifyCollectionChangedAction.Remove && e.OldItems != null)
                         {
                             foreach (var item in e.OldItems)
