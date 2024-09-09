@@ -73,8 +73,9 @@ namespace MyNet.Wpf.Controls
         private readonly UiObservableCollection<object> _rowHeaders = [];
         private readonly UiObservableCollection<CalendarItem> _displayDates = [];
         private readonly UiObservableCollection<CalendarAppointment> _appointments = [];
-        private readonly SingleTaskRunner _updateAppointments;
+        private readonly SingleTaskRunner _refreshAppointments;
         private readonly SingleTaskRunner _build;
+        private readonly Suspender _refreshAppointmentsSuspender = new();
 
         protected Grid? Grid { get; private set; }
 
@@ -114,7 +115,7 @@ namespace MyNet.Wpf.Controls
         protected CalendarBase()
         {
             _build = new(async x => await Dispatcher.BeginInvoke(() => Build(x)));
-            _updateAppointments = new(async x => await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ => await UpdateAppointmentsAsync(x).ConfigureAwait(false)));
+            _refreshAppointments = new(async x => await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ => await RefreshAppointmentsAsync(x).ConfigureAwait(false)));
             BlackoutDates = new BlackoutDatesCollection(this);
             SelectedDatesInternal = new Calendars.SelectedDatesCollection(this);
             SetCurrentValue(DisplayDateProperty, DateTime.Now);
@@ -127,11 +128,11 @@ namespace MyNet.Wpf.Controls
         ~CalendarBase()
         {
             GlobalizationService.Current.TimeZoneChanged -= OnTimeZoneChangedCallback;
-            _updateAppointments.Dispose();
+            _refreshAppointments.Dispose();
             _build.Dispose();
         }
 
-        private void OnTimeZoneChangedCallback(object? sender, EventArgs e) => UpdateAppointments();
+        private void OnTimeZoneChangedCallback(object? sender, EventArgs e) => RefreshAppointments();
 
         #region Orientation
 
@@ -309,7 +310,7 @@ namespace MyNet.Wpf.Controls
         private static void OnAppointmentsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             (d as CalendarBase)?.OnAppointmentsChanged(e);
-            (d as CalendarBase)?.UpdateAppointments();
+            (d as CalendarBase)?.RefreshAppointments();
         }
 
         private void OnAppointmentsChanged(DependencyPropertyChangedEventArgs e)
@@ -360,8 +361,10 @@ namespace MyNet.Wpf.Controls
                 }
             }
 
+            if (_refreshAppointmentsSuspender.IsSuspended) return;
+
             if (e.Action == NotifyCollectionChangedAction.Reset)
-                UpdateAppointments();
+                RefreshAppointments();
             else
             {
                 await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ =>
@@ -1030,7 +1033,7 @@ namespace MyNet.Wpf.Controls
         private static void OnAppointmentsDisplayModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var c = d as CalendarBase;
-            c?.UpdateAppointments();
+            c?.RefreshAppointments();
         }
 
         #endregion AppointmentsDisplayMode
@@ -1272,7 +1275,7 @@ namespace MyNet.Wpf.Controls
 
                 SetValue(DisplayDateStartPropertyKey, _displayDates.MinOrDefault(x => x.Date));
                 SetValue(DisplayDateEndPropertyKey, _displayDates.MaxOrDefault(x => x.Date));
-                UpdateAppointments();
+                RefreshAppointments();
                 RefreshAccurateDateControl();
                 RefreshAccurateDatePreviewControl();
             }
@@ -1870,31 +1873,36 @@ namespace MyNet.Wpf.Controls
             }
         }
 
-        public void UpdateAppointments()
+        public void RefreshAppointments()
         {
-            _updateAppointments.Cancel();
-            _updateAppointments.Run();
+            _refreshAppointments.Cancel();
+            _refreshAppointments.Run();
         }
 
-        private async Task UpdateAppointmentsAsync(CancellationToken cancellationToken)
+        private async Task RefreshAppointmentsAsync(CancellationToken cancellationToken)
         {
-            try
+            if (_refreshAppointmentsSuspender.IsSuspended) return;
+
+            using (_refreshAppointmentsSuspender.Suspend())
             {
-                _appointments.Clear();
-
-                var appointments = Dispatcher.Invoke(() => Appointments?.OfType<IAppointment>().ToList());
-
-                if (appointments is null) return;
-
-                foreach (var item in appointments)
+                try
                 {
-                    cancellationToken.ThrowIfCancellationRequested();
-                    await SynchronizeAppointmentAsync(item, cancellationToken).ConfigureAwait(false);
+                    _appointments.Clear();
+
+                    var appointments = Dispatcher.Invoke(() => Appointments?.OfType<IAppointment>().ToList());
+
+                    if (appointments is null) return;
+
+                    foreach (var item in appointments)
+                    {
+                        cancellationToken.ThrowIfCancellationRequested();
+                        await SynchronizeAppointmentAsync(item, cancellationToken).ConfigureAwait(false);
+                    }
                 }
-            }
-            catch (OperationCanceledException)
-            {
-                // Nothing
+                catch (OperationCanceledException)
+                {
+                    // Nothing
+                }
             }
         }
 
