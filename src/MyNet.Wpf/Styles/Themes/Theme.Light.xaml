@@ -3,7 +3,7 @@
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
 
     <!-- Application -->
-    <Color x:Key="MyNet.Colors.Application.Background">#F3F3F3</Color>
+    <Color x:Key="MyNet.Colors.Application.Background">#EBEBEB</Color>
     <Color x:Key="MyNet.Colors.Application.Background.Light">#FFFFFF</Color>
     <Color x:Key="MyNet.Colors.Application.Background.Dark">#F5F5F5</Color>
     <Color x:Key="MyNet.Colors.Application.Border">#B7B7B7</Color>
@@ -16,9 +16,9 @@
     <Color x:Key="MyNet.Colors.Control.Background">#E7E7E7</Color>
     <Color x:Key="MyNet.Colors.Control.Background.Secondary">#D5D5D5</Color>
     <Color x:Key="MyNet.Colors.Control.Background.Inverse">#4F4F4F</Color>
-    <Color x:Key="MyNet.Colors.Control.Border">#E0E0E0</Color>
+    <Color x:Key="MyNet.Colors.Control.Border">#C5C5C5</Color>
     <Color x:Key="MyNet.Colors.Control.Border.Secondary">#999999</Color>
-    <Color x:Key="MyNet.Colors.Control.Border.Focus">#3F3F3F</Color>
+    <Color x:Key="MyNet.Colors.Control.Border.Focus">#646464</Color>
 
     <!-- Popup -->
     <Color x:Key="MyNet.Colors.Popup.Background">#FFFFFF</Color>

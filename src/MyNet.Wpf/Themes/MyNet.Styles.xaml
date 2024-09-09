@@ -17166,7 +17166,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-    <Setter Property="FrameBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="FrameBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
     <Setter Property="FrameCornerRadius" Value="15,0,0,0" />
     <Setter Property="HeaderForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     <Setter Property="HeaderTemplate">
@@ -20256,7 +20256,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       <Style TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.ToolBar}" />
       <Style TargetType="{x:Type Separator}" BasedOn="{StaticResource MyNet.Styles.Separator.Vertical}" />
     </Style.Resources>
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
     <Setter Property="ClipToBounds" Value="False" />
     <Setter Property="FocusManager.IsFocusScope" Value="False" />
     <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size}" />
