@@ -210,6 +210,16 @@
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Application.Light" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Application.Dark" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    </Style>
     <Style x:Key="MyNet.Styles.GroupBox.Elevation.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
@@ -240,6 +250,16 @@
     </Style>
     <Style x:Key="MyNet.Styles.GroupBox.Outlined.Application" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.GroupBox.Outlined.Application.Light" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.GroupBox.Outlined.Application.Dark" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
         <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
@@ -386,6 +406,14 @@
         <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Application.Light" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}">
+        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Application.Dark" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}">
+        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    </Style>
     <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}">
         <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
@@ -516,6 +544,12 @@
     </Style>
     <Style x:Key="MyNet.Styles.GroupBox.Bordered.Application" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.GroupBox.Bordered.Application.Light" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}">
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.GroupBox.Bordered.Application.Dark" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}">
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
     </Style>
     <Style x:Key="MyNet.Styles.GroupBox.Bordered.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />

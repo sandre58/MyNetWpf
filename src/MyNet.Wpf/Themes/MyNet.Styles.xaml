@@ -6141,6 +6141,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
   </Style>
+  <Style x:Key="MyNet.Styles.Card.Elevation.Application.Dark" TargetType="{x:Type ctrl:Card}" BasedOn="{StaticResource MyNet.Styles.Card.Elevation}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Card.Elevation.Application.Light" TargetType="{x:Type ctrl:Card}" BasedOn="{StaticResource MyNet.Styles.Card.Elevation}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+  </Style>
   <Style x:Key="MyNet.Styles.Card.Elevation.Primary" TargetType="{x:Type ctrl:Card}" BasedOn="{StaticResource MyNet.Styles.Card.Elevation}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
@@ -6398,12 +6406,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </ctrl:SimpleStackPanel>
   </DataTemplate>
   <Style x:Key="MyNet.Styles.DrawerHost" TargetType="{x:Type ctrl:DrawerHost}">
-    <Setter Property="BottomDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+    <Setter Property="BottomDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
     <Setter Property="ClipToBounds" Value="True" />
     <Setter Property="IsTabStop" Value="False" />
-    <Setter Property="LeftDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+    <Setter Property="LeftDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
     <Setter Property="OverlayBackground" Value="{DynamicResource MyNet.Brushes.Overlay}" />
-    <Setter Property="RightDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+    <Setter Property="RightDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ctrl:DrawerHost}">
@@ -6785,7 +6793,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         </ControlTemplate>
       </Setter.Value>
     </Setter>
-    <Setter Property="TopDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+    <Setter Property="TopDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
     <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
     <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Popup}" />
   </Style>
@@ -6937,10 +6945,10 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Style.Triggers>
   </Style>
   <Style x:Key="MyNet.Styles.ExtendedWindowDialog" TargetType="{x:Type ctrl:ExtendedWindowDialog}" BasedOn="{StaticResource MyNet.Styles.ExtendedWindow}">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
-    <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
     <Setter Property="ShowTitleBar" Value="False" />
-    <Setter Property="WindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+    <Setter Property="WindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
   </Style>
   <Style x:Key="MyNet.Styles.Flipper" TargetType="{x:Type ctrl:Flipper}">
     <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
@@ -7628,7 +7636,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </ControlTemplate.Triggers>
   </ControlTemplate>
   <Style x:Key="MyNet.Styles.OverlayDialogControl" TargetType="{x:Type ctrl:OverlayDialogControl}">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
     <Setter Property="Focusable" Value="False" />
     <Setter Property="FontFamily" Value="{me:RobotoFont}" />
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -10606,6 +10614,16 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
   </Style>
+  <Style x:Key="MyNet.Styles.GroupBox.Elevation.Application.Light" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.GroupBox.Elevation.Application.Dark" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+  </Style>
   <Style x:Key="MyNet.Styles.GroupBox.Elevation.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
@@ -10635,6 +10653,16 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.GroupBox.Outlined.Application" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+    <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+    <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.GroupBox.Outlined.Application.Light" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
+    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+    <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.GroupBox.Outlined.Application.Dark" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
+    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
     <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
     <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
   </Style>
@@ -10738,6 +10766,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
     <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
   </Style>
+  <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Application.Light" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}">
+    <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Application.Dark" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}">
+    <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
+    <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+  </Style>
   <Style x:Key="MyNet.Styles.GroupBox.Elevation.Header.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Header}">
     <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
@@ -10832,6 +10868,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.GroupBox.Bordered.Application" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.GroupBox.Bordered.Application.Light" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}">
+    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.GroupBox.Bordered.Application.Dark" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}">
+    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
   </Style>
   <Style x:Key="MyNet.Styles.GroupBox.Bordered.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Bordered}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -11751,6 +11793,15 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ShadowAssist.ShadowEdges" Value="Bottom" />
     <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.TabControl.Filled.Application" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}">
+    <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.TabControl.Filled.Application.Dark" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}">
+    <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.TabControl.Filled.Application.Light" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}">
+    <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
   </Style>
   <Style x:Key="MyNet.Styles.TabControl.Filled.Primary" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}">
     <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -17115,7 +17166,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-    <Setter Property="FrameBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+    <Setter Property="FrameBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
     <Setter Property="FrameCornerRadius" Value="15,0,0,0" />
     <Setter Property="HeaderForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     <Setter Property="HeaderTemplate">

@@ -4,18 +4,19 @@
 
     <!-- Application -->
     <Color x:Key="MyNet.Colors.Application.Background">#202020</Color>
-    <Color x:Key="MyNet.Colors.Application.Background.Secondary">#303030</Color>
-    <Color x:Key="MyNet.Colors.Application.Border">#4F4F4F</Color>
-    <Color x:Key="MyNet.Colors.Application.Border.Inactive">#2D2D2D</Color>
+    <Color x:Key="MyNet.Colors.Application.Background.Light">#292929</Color>
+    <Color x:Key="MyNet.Colors.Application.Background.Dark">#141414</Color>
+    <Color x:Key="MyNet.Colors.Application.Border">#393939</Color>
+    <Color x:Key="MyNet.Colors.Application.Border.Inactive">#333333</Color>
     <Color x:Key="MyNet.Colors.Application.Foreground">#FFFFFF</Color>
-    <Color x:Key="MyNet.Colors.Application.Foreground.Secondary">#DFDFDF</Color>
-    <Color x:Key="MyNet.Colors.Application.Foreground.Tertiary">#A0A0A0</Color>
+    <Color x:Key="MyNet.Colors.Application.Foreground.Secondary">#D6D6D6</Color>
+    <Color x:Key="MyNet.Colors.Application.Foreground.Tertiary">#999999</Color>
 
     <!-- Controls -->
     <Color x:Key="MyNet.Colors.Control.Background">#404040</Color>
-    <Color x:Key="MyNet.Colors.Control.Background.Secondary">#626262</Color>
+    <Color x:Key="MyNet.Colors.Control.Background.Secondary">#808080</Color>
     <Color x:Key="MyNet.Colors.Control.Background.Inverse">#E8E8E8</Color>
-    <Color x:Key="MyNet.Colors.Control.Border">#656565</Color>
+    <Color x:Key="MyNet.Colors.Control.Border">#525252</Color>
     <Color x:Key="MyNet.Colors.Control.Border.Secondary">#777777</Color>
     <Color x:Key="MyNet.Colors.Control.Border.Focus">#BFBFBF</Color>
 
@@ -23,7 +24,7 @@
     <Color x:Key="MyNet.Colors.Overlay">#66999999</Color>
 
     <!-- Popup -->
-    <Color x:Key="MyNet.Colors.Popup.Background">#282828</Color>
+    <Color x:Key="MyNet.Colors.Popup.Background">#292929</Color>
 
     <!-- Shadows -->
     <Color x:Key="MyNet.Colors.Shadow">#000000</Color>
@@ -40,7 +41,8 @@
 
     <!-- Brushes -->
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Background" Color="{StaticResource MyNet.Colors.Application.Background}" po:Freeze="true" />
-    <SolidColorBrush x:Key="MyNet.Brushes.Application.Background.Secondary" Color="{StaticResource MyNet.Colors.Application.Background.Secondary}" po:Freeze="true" />
+    <SolidColorBrush x:Key="MyNet.Brushes.Application.Background.Light" Color="{StaticResource MyNet.Colors.Application.Background.Light}" po:Freeze="true" />
+    <SolidColorBrush x:Key="MyNet.Brushes.Application.Background.Dark" Color="{StaticResource MyNet.Colors.Application.Background.Dark}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Border" Color="{StaticResource MyNet.Colors.Application.Border}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Border.Inactive" Color="{StaticResource MyNet.Colors.Application.Border.Inactive}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Foreground" Color="{StaticResource MyNet.Colors.Application.Foreground}" po:Freeze="true" />

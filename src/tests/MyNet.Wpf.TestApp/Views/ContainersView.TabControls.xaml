@@ -162,6 +162,57 @@
                     </smtx:XamlDisplay>
 
                     <smtx:XamlDisplay UniqueKey="tc_1_0_1">
+                        <TabControl Style="{StaticResource MyNet.Styles.TabControl.Filled.Application}" SelectedIndex="0">
+                            <TabItem my:IconAssist.Icon="{my:Icon Kind=Number1Circle}" Header="TAB 1">
+                                <contents:LargeContent1 HorizontalAlignment="Left" />
+                            </TabItem>
+                            <TabItem my:IconAssist.Icon="{my:Icon Kind=Number2Circle}" Header="TAB 2">
+                                <contents:LargeContent2 HorizontalAlignment="Left" />
+                            </TabItem>
+                            <TabItem my:IconAssist.Icon="{my:Icon Kind=Number3Circle}" Header="TAB 3">
+                                <contents:LargeContent3 HorizontalAlignment="Left" />
+                            </TabItem>
+                            <my:TabControlAssist.MoreContent>
+                                <Button Content="{my:MediumIcon Kind=Settings}" />
+                            </my:TabControlAssist.MoreContent>
+                        </TabControl>
+                    </smtx:XamlDisplay>
+                    
+                    <smtx:XamlDisplay UniqueKey="tc_1_0_2">
+                        <TabControl Style="{StaticResource MyNet.Styles.TabControl.Filled.Application.Dark}" SelectedIndex="0">
+                            <TabItem my:IconAssist.Icon="{my:Icon Kind=Number1Circle}" Header="TAB 1">
+                                <contents:LargeContent1 HorizontalAlignment="Left" />
+                            </TabItem>
+                            <TabItem my:IconAssist.Icon="{my:Icon Kind=Number2Circle}" Header="TAB 2">
+                                <contents:LargeContent2 HorizontalAlignment="Left" />
+                            </TabItem>
+                            <TabItem my:IconAssist.Icon="{my:Icon Kind=Number3Circle}" Header="TAB 3">
+                                <contents:LargeContent3 HorizontalAlignment="Left" />
+                            </TabItem>
+                            <my:TabControlAssist.MoreContent>
+                                <Button Content="{my:MediumIcon Kind=Settings}" />
+                            </my:TabControlAssist.MoreContent>
+                        </TabControl>
+                    </smtx:XamlDisplay>
+
+                    <smtx:XamlDisplay UniqueKey="tc_1_0_3">
+                        <TabControl Style="{StaticResource MyNet.Styles.TabControl.Filled.Application.Light}" SelectedIndex="0">
+                            <TabItem my:IconAssist.Icon="{my:Icon Kind=Number1Circle}" Header="TAB 1">
+                                <contents:LargeContent1 HorizontalAlignment="Left" />
+                            </TabItem>
+                            <TabItem my:IconAssist.Icon="{my:Icon Kind=Number2Circle}" Header="TAB 2">
+                                <contents:LargeContent2 HorizontalAlignment="Left" />
+                            </TabItem>
+                            <TabItem my:IconAssist.Icon="{my:Icon Kind=Number3Circle}" Header="TAB 3">
+                                <contents:LargeContent3 HorizontalAlignment="Left" />
+                            </TabItem>
+                            <my:TabControlAssist.MoreContent>
+                                <Button Content="{my:MediumIcon Kind=Settings}" />
+                            </my:TabControlAssist.MoreContent>
+                        </TabControl>
+                    </smtx:XamlDisplay>
+
+                    <smtx:XamlDisplay UniqueKey="tc_1_0_4">
                         <TabControl Style="{StaticResource MyNet.Styles.TabControl.Filled.Accent}" SelectedIndex="0">
                             <TabItem my:IconAssist.Icon="{my:Icon Kind=Number1Circle}" Header="TAB 1">
                                 <contents:LargeContent1 HorizontalAlignment="Left" />
@@ -178,7 +229,7 @@
                         </TabControl>
                     </smtx:XamlDisplay>
 
-                    <smtx:XamlDisplay UniqueKey="tc_1_0_2">
+                    <smtx:XamlDisplay UniqueKey="tc_1_0_5">
                         <TabControl Style="{StaticResource MyNet.Styles.TabControl.Filled.Foreground}" SelectedIndex="0">
                             <TabItem my:IconAssist.Icon="{my:Icon Kind=Number1Circle}" Header="TAB 1">
                                 <contents:LargeContent1 HorizontalAlignment="Left" />

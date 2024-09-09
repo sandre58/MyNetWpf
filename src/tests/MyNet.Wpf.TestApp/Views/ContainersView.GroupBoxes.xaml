@@ -36,7 +36,7 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_0_0_2">
-                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Primary}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Application.Dark}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
                                 <my:GroupBoxAssist.MoreContent>
                                     <Button Content="{my:Icon Kind=Settings}" />
                                 </my:GroupBoxAssist.MoreContent>
@@ -44,7 +44,7 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_0_0_3">
-                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Accent}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Application.Light}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
                                 <my:GroupBoxAssist.MoreContent>
                                     <Button Content="{my:Icon Kind=Settings}" />
                                 </my:GroupBoxAssist.MoreContent>
@@ -52,7 +52,7 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_0_0_4">
-                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Foreground}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Primary}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
                                 <my:GroupBoxAssist.MoreContent>
                                     <Button Content="{my:Icon Kind=Settings}" />
                                 </my:GroupBoxAssist.MoreContent>
@@ -60,6 +60,22 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_0_0_5">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Accent}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                                <my:GroupBoxAssist.MoreContent>
+                                    <Button Content="{my:Icon Kind=Settings}" />
+                                </my:GroupBoxAssist.MoreContent>
+                                <contents:SmallContent />
+                            </GroupBox>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="gb_0_0_6">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Foreground}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                                <my:GroupBoxAssist.MoreContent>
+                                    <Button Content="{my:Icon Kind=Settings}" />
+                                </my:GroupBoxAssist.MoreContent>
+                                <contents:SmallContent />
+                            </GroupBox>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="gb_0_0_7">
                             <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Custom}"
                                       my:IconAssist.Icon="{my:Icon Kind=Soccer}"
                                       Background="{DynamicResource MyNet.Brushes.Positive}"
@@ -90,7 +106,7 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_0_1_2">
-                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Header.Primary}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Header.Application.Dark}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
                                 <my:GroupBoxAssist.MoreContent>
                                     <Button Content="{my:Icon Kind=Settings}" />
                                 </my:GroupBoxAssist.MoreContent>
@@ -98,7 +114,7 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_0_1_3">
-                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Header.Accent}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Header.Application.Light}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
                                 <my:GroupBoxAssist.MoreContent>
                                     <Button Content="{my:Icon Kind=Settings}" />
                                 </my:GroupBoxAssist.MoreContent>
@@ -106,7 +122,7 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_0_1_4">
-                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Header.Foreground}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Header.Primary}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
                                 <my:GroupBoxAssist.MoreContent>
                                     <Button Content="{my:Icon Kind=Settings}" />
                                 </my:GroupBoxAssist.MoreContent>
@@ -114,6 +130,22 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_0_1_5">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Header.Accent}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                                <my:GroupBoxAssist.MoreContent>
+                                    <Button Content="{my:Icon Kind=Settings}" />
+                                </my:GroupBoxAssist.MoreContent>
+                                <contents:SmallContent />
+                            </GroupBox>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="gb_0_1_6">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Header.Foreground}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                                <my:GroupBoxAssist.MoreContent>
+                                    <Button Content="{my:Icon Kind=Settings}" />
+                                </my:GroupBoxAssist.MoreContent>
+                                <contents:SmallContent />
+                            </GroupBox>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="gb_0_1_7">
                             <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Elevation.Header.Custom}"
                                       my:HeaderAssist.Background="{DynamicResource MyNet.Brushes.Positive}"
                                       my:IconAssist.Icon="{my:Icon Kind=Soccer}"
@@ -148,7 +180,7 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_1_0_2">
-                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Outlined.Primary}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Outlined.Application.Dark}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
                                 <my:GroupBoxAssist.MoreContent>
                                     <Button Content="{my:Icon Kind=Settings}" />
                                 </my:GroupBoxAssist.MoreContent>
@@ -156,7 +188,7 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_1_0_3">
-                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Outlined.Accent}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Outlined.Application.Light}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
                                 <my:GroupBoxAssist.MoreContent>
                                     <Button Content="{my:Icon Kind=Settings}" />
                                 </my:GroupBoxAssist.MoreContent>
@@ -164,7 +196,7 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_1_0_4">
-                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Outlined.Foreground}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Outlined.Primary}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
                                 <my:GroupBoxAssist.MoreContent>
                                     <Button Content="{my:Icon Kind=Settings}" />
                                 </my:GroupBoxAssist.MoreContent>
@@ -172,6 +204,22 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_1_0_5">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Outlined.Accent}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                                <my:GroupBoxAssist.MoreContent>
+                                    <Button Content="{my:Icon Kind=Settings}" />
+                                </my:GroupBoxAssist.MoreContent>
+                                <contents:SmallContent />
+                            </GroupBox>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="gb_1_0_6">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Outlined.Foreground}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                                <my:GroupBoxAssist.MoreContent>
+                                    <Button Content="{my:Icon Kind=Settings}" />
+                                </my:GroupBoxAssist.MoreContent>
+                                <contents:SmallContent />
+                            </GroupBox>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="gb_1_0_7">
                             <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Outlined.Custom}"
                                       my:IconAssist.Icon="{my:Icon Kind=Soccer}"
                                       BorderBrush="{DynamicResource MyNet.Brushes.Positive}"
@@ -207,7 +255,7 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_2_0_2">
-                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered.Primary}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered.Application.Dark}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
                                 <my:GroupBoxAssist.MoreContent>
                                     <Button Content="{my:Icon Kind=Settings}" />
                                 </my:GroupBoxAssist.MoreContent>
@@ -215,7 +263,7 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_2_0_3">
-                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered.Accent}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered.Application.Light}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
                                 <my:GroupBoxAssist.MoreContent>
                                     <Button Content="{my:Icon Kind=Settings}" />
                                 </my:GroupBoxAssist.MoreContent>
@@ -223,7 +271,7 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_2_0_4">
-                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered.Foreground}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered.Primary}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
                                 <my:GroupBoxAssist.MoreContent>
                                     <Button Content="{my:Icon Kind=Settings}" />
                                 </my:GroupBoxAssist.MoreContent>
@@ -231,6 +279,22 @@
                             </GroupBox>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="gb_2_0_5">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered.Accent}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                                <my:GroupBoxAssist.MoreContent>
+                                    <Button Content="{my:Icon Kind=Settings}" />
+                                </my:GroupBoxAssist.MoreContent>
+                                <contents:SmallContent />
+                            </GroupBox>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="gb_2_0_6">
+                            <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered.Foreground}" my:IconAssist.Icon="{my:Icon Kind=Soccer}" Header="Header">
+                                <my:GroupBoxAssist.MoreContent>
+                                    <Button Content="{my:Icon Kind=Settings}" />
+                                </my:GroupBoxAssist.MoreContent>
+                                <contents:SmallContent />
+                            </GroupBox>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="gb_2_0_7">
                             <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Bordered}"
                                       my:IconAssist.Icon="{my:Icon Kind=Soccer}"
                                       BorderBrush="{DynamicResource MyNet.Brushes.Positive}"

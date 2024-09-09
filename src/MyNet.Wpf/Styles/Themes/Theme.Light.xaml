@@ -3,24 +3,25 @@
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
 
     <!-- Application -->
-    <Color x:Key="MyNet.Colors.Application.Background">#F5F5F5</Color>
-    <Color x:Key="MyNet.Colors.Application.Background.Secondary">#FDFDFD</Color>
-    <Color x:Key="MyNet.Colors.Application.Border">#AAAAAA</Color>
-    <Color x:Key="MyNet.Colors.Application.Border.Inactive">#DDDDDD</Color>
-    <Color x:Key="MyNet.Colors.Application.Foreground">#1F1F1F</Color>
-    <Color x:Key="MyNet.Colors.Application.Foreground.Secondary">#4F4F4F</Color>
-    <Color x:Key="MyNet.Colors.Application.Foreground.Tertiary">#777777</Color>
+    <Color x:Key="MyNet.Colors.Application.Background">#F3F3F3</Color>
+    <Color x:Key="MyNet.Colors.Application.Background.Light">#FFFFFF</Color>
+    <Color x:Key="MyNet.Colors.Application.Background.Dark">#F5F5F5</Color>
+    <Color x:Key="MyNet.Colors.Application.Border">#B7B7B7</Color>
+    <Color x:Key="MyNet.Colors.Application.Border.Inactive">#D1D1D1</Color>
+    <Color x:Key="MyNet.Colors.Application.Foreground">#242424</Color>
+    <Color x:Key="MyNet.Colors.Application.Foreground.Secondary">#424242</Color>
+    <Color x:Key="MyNet.Colors.Application.Foreground.Tertiary">#707070</Color>
 
     <!-- Controls -->
     <Color x:Key="MyNet.Colors.Control.Background">#E7E7E7</Color>
-    <Color x:Key="MyNet.Colors.Control.Background.Secondary">#BFBFBF</Color>
+    <Color x:Key="MyNet.Colors.Control.Background.Secondary">#D5D5D5</Color>
     <Color x:Key="MyNet.Colors.Control.Background.Inverse">#4F4F4F</Color>
-    <Color x:Key="MyNet.Colors.Control.Border">#BABABA</Color>
+    <Color x:Key="MyNet.Colors.Control.Border">#E0E0E0</Color>
     <Color x:Key="MyNet.Colors.Control.Border.Secondary">#999999</Color>
     <Color x:Key="MyNet.Colors.Control.Border.Focus">#3F3F3F</Color>
 
     <!-- Popup -->
-    <Color x:Key="MyNet.Colors.Popup.Background">#DEDEDE</Color>
+    <Color x:Key="MyNet.Colors.Popup.Background">#FFFFFF</Color>
 
     <!-- Overlay -->
     <Color x:Key="MyNet.Colors.Overlay">#22000000</Color>
@@ -40,7 +41,8 @@
 
     <!-- Brushes -->
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Background" Color="{StaticResource MyNet.Colors.Application.Background}" po:Freeze="true" />
-    <SolidColorBrush x:Key="MyNet.Brushes.Application.Background.Secondary" Color="{StaticResource MyNet.Colors.Application.Background.Secondary}" po:Freeze="true" />
+    <SolidColorBrush x:Key="MyNet.Brushes.Application.Background.Light" Color="{StaticResource MyNet.Colors.Application.Background.Light}" po:Freeze="true" />
+    <SolidColorBrush x:Key="MyNet.Brushes.Application.Background.Dark" Color="{StaticResource MyNet.Colors.Application.Background.Dark}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Border" Color="{StaticResource MyNet.Colors.Application.Border}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Border.Inactive" Color="{StaticResource MyNet.Colors.Application.Border.Inactive}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Foreground" Color="{StaticResource MyNet.Colors.Application.Foreground}" po:Freeze="true" />

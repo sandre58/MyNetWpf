@@ -10,7 +10,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.OverlayDialogControl" TargetType="{x:Type ctrl:OverlayDialogControl}">
-        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="FontFamily" Value="{me:RobotoFont}" />
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />

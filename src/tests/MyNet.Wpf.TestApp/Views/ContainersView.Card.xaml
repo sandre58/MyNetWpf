@@ -31,21 +31,31 @@
                             </my:Card>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="c_0_0_2">
-                            <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Primary}">
+                            <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Application.Dark}">
                                 <contents:SmallContent />
                             </my:Card>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="c_0_0_3">
-                            <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Accent}">
+                            <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Application.Light}">
                                 <contents:SmallContent />
                             </my:Card>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="c_0_0_4">
-                            <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Foreground}">
+                            <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Primary}">
                                 <contents:SmallContent />
                             </my:Card>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="c_0_0_5">
+                            <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Accent}">
+                                <contents:SmallContent />
+                            </my:Card>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="c_0_0_6">
+                            <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Foreground}">
+                                <contents:SmallContent />
+                            </my:Card>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="c_0_0_7">
                             <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Custom}" Background="{DynamicResource MyNet.Brushes.Positive}">
                                 <contents:SmallContent />
                             </my:Card>

@@ -331,6 +331,15 @@
         <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
         <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
     </Style>
+    <Style x:Key="MyNet.Styles.TabControl.Filled.Application" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}">
+        <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.TabControl.Filled.Application.Dark" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}">
+        <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.TabControl.Filled.Application.Light" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}">
+        <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    </Style>
     <Style x:Key="MyNet.Styles.TabControl.Filled.Primary" TargetType="{x:Type TabControl}" BasedOn="{StaticResource MyNet.Styles.TabControl.Filled}">
         <Setter Property="p:TabControlAssist.HeaderBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:TabControlAssist.HeaderForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />

@@ -67,7 +67,8 @@ namespace MyNet.Wpf.TestApp.ViewModels
         private static readonly ObservableCollection<BrushData> ThemeBrushesCollection =
         [
             new BrushData("Application.Background", "Application.Foreground"),
-            new BrushData("Application.Background.Secondary"),
+            new BrushData("Application.Background.Light"),
+            new BrushData("Application.Background.Dark"),
             new BrushData("Application.Border"),
             new BrushData("Application.Border.Inactive"),
             new BrushData("Application.Foreground"),

@@ -599,7 +599,7 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
-        <Setter Property="FrameBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+        <Setter Property="FrameBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
         <Setter Property="FrameCornerRadius" Value="15,0,0,0" />
         <Setter Property="HeaderForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="HeaderTemplate">

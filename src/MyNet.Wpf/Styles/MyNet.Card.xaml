@@ -67,6 +67,14 @@
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
+    <Style x:Key="MyNet.Styles.Card.Elevation.Application.Dark" TargetType="{x:Type ctrl:Card}" BasedOn="{StaticResource MyNet.Styles.Card.Elevation}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.Card.Elevation.Application.Light" TargetType="{x:Type ctrl:Card}" BasedOn="{StaticResource MyNet.Styles.Card.Elevation}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    </Style>
     <Style x:Key="MyNet.Styles.Card.Elevation.Primary" TargetType="{x:Type ctrl:Card}" BasedOn="{StaticResource MyNet.Styles.Card.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />

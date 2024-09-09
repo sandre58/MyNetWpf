@@ -300,9 +300,9 @@
     </Style>
 
     <Style x:Key="MyNet.Styles.ExtendedWindowDialog" TargetType="{x:Type ctrl:ExtendedWindowDialog}" BasedOn="{StaticResource MyNet.Styles.ExtendedWindow}">
-        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
-        <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+        <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
         <Setter Property="ShowTitleBar" Value="False" />
-        <Setter Property="WindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Secondary}" />
+        <Setter Property="WindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
     </Style>
 </ResourceDictionary>
