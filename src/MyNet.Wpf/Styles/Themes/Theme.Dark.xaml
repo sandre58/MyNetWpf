@@ -6,6 +6,7 @@
     <Color x:Key="MyNet.Colors.Application.Background">#202020</Color>
     <Color x:Key="MyNet.Colors.Application.Background.Light">#292929</Color>
     <Color x:Key="MyNet.Colors.Application.Background.Dark">#141414</Color>
+    <Color x:Key="MyNet.Colors.Application.Background.Inverse">#E8E8E8</Color>
     <Color x:Key="MyNet.Colors.Application.Border">#393939</Color>
     <Color x:Key="MyNet.Colors.Application.Border.Inactive">#333333</Color>
     <Color x:Key="MyNet.Colors.Application.Foreground">#FFFFFF</Color>
@@ -14,8 +15,6 @@
 
     <!-- Controls -->
     <Color x:Key="MyNet.Colors.Control.Background">#404040</Color>
-    <Color x:Key="MyNet.Colors.Control.Background.Secondary">#808080</Color>
-    <Color x:Key="MyNet.Colors.Control.Background.Inverse">#E8E8E8</Color>
     <Color x:Key="MyNet.Colors.Control.Border">#525252</Color>
     <Color x:Key="MyNet.Colors.Control.Border.Secondary">#777777</Color>
     <Color x:Key="MyNet.Colors.Control.Border.Focus">#BFBFBF</Color>
@@ -26,6 +25,9 @@
     <!-- Popup -->
     <Color x:Key="MyNet.Colors.Popup.Background">#292929</Color>
 
+    <!-- ScrollBar -->
+    <Color x:Key="MyNet.Colors.ScrollBar.Background">#858585</Color>
+    
     <!-- Shadows -->
     <Color x:Key="MyNet.Colors.Shadow">#000000</Color>
 
@@ -43,6 +45,7 @@
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Background" Color="{StaticResource MyNet.Colors.Application.Background}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Background.Light" Color="{StaticResource MyNet.Colors.Application.Background.Light}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Background.Dark" Color="{StaticResource MyNet.Colors.Application.Background.Dark}" po:Freeze="true" />
+    <SolidColorBrush x:Key="MyNet.Brushes.Application.Background.Inverse" Color="{StaticResource MyNet.Colors.Application.Background.Inverse}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Border" Color="{StaticResource MyNet.Colors.Application.Border}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Border.Inactive" Color="{StaticResource MyNet.Colors.Application.Border.Inactive}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Foreground" Color="{StaticResource MyNet.Colors.Application.Foreground}" po:Freeze="true" />
@@ -50,13 +53,13 @@
     <SolidColorBrush x:Key="MyNet.Brushes.Application.Foreground.Tertiary" Color="{StaticResource MyNet.Colors.Application.Foreground.Tertiary}" po:Freeze="true" />
 
     <SolidColorBrush x:Key="MyNet.Brushes.Control.Background" Color="{StaticResource MyNet.Colors.Control.Background}" po:Freeze="true" />
-    <SolidColorBrush x:Key="MyNet.Brushes.Control.Background.Secondary" Color="{StaticResource MyNet.Colors.Control.Background.Secondary}" po:Freeze="true" />
-    <SolidColorBrush x:Key="MyNet.Brushes.Control.Background.Inverse" Color="{StaticResource MyNet.Colors.Control.Background.Inverse}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Control.Border" Color="{StaticResource MyNet.Colors.Control.Border}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Control.Border.Secondary" Color="{StaticResource MyNet.Colors.Control.Border.Secondary}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Control.Border.Focus" Color="{StaticResource MyNet.Colors.Control.Border.Focus}" po:Freeze="true" />
 
     <SolidColorBrush x:Key="MyNet.Brushes.Popup.Background" Color="{StaticResource MyNet.Colors.Popup.Background}" po:Freeze="true" />
+
+    <SolidColorBrush x:Key="MyNet.Brushes.ScrollBar.Background" Color="{StaticResource MyNet.Colors.ScrollBar.Background}" po:Freeze="true" />
 
     <SolidColorBrush x:Key="MyNet.Brushes.Overlay" Color="{StaticResource MyNet.Colors.Overlay}" po:Freeze="true" />
 
@@ -81,7 +84,7 @@
                         <RectangleGeometry Rect="0,0,20,20" />
                     </GeometryDrawing.Geometry>
                 </GeometryDrawing>
-                <GeometryDrawing Brush="{StaticResource MyNet.Brushes.Control.Background.Secondary}">
+                <GeometryDrawing Brush="{StaticResource MyNet.Brushes.Control.Border}">
                     <GeometryDrawing.Geometry>
                         <GeometryGroup>
                             <RectangleGeometry Rect="0,0,10,10" />
@@ -103,7 +106,7 @@
                         <RectangleGeometry Rect="0,0,8,8" />
                     </GeometryDrawing.Geometry>
                 </GeometryDrawing>
-                <GeometryDrawing Brush="{StaticResource MyNet.Brushes.Control.Background.Secondary}">
+                <GeometryDrawing Brush="{StaticResource MyNet.Brushes.Control.Border}">
                     <GeometryDrawing.Geometry>
                         <GeometryGroup>
                             <RectangleGeometry Rect="0,0,4,4" />

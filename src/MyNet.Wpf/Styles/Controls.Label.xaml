@@ -121,6 +121,14 @@
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
+    <Style x:Key="MyNet.Styles.Label.Elevation.Application.Light" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.Label.Elevation.Application.Dark" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    </Style>
     <Style x:Key="MyNet.Styles.Label.Elevation.Primary" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />

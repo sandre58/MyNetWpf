@@ -139,6 +139,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <sys:Double x:Key="MyNet.Opacity.Disabled">0.40</sys:Double>
   <sys:Double x:Key="MyNet.Opacity.Border">0.35</sys:Double>
   <sys:Double x:Key="MyNet.Opacity.Checked">0.18</sys:Double>
+  <sys:Double x:Key="MyNet.Opacity.Focused">0.15</sys:Double>
   <sys:Double x:Key="MyNet.Opacity.Hovered">0.12</sys:Double>
   <sys:Double x:Key="MyNet.Opacity.Filled">0.10</sys:Double>
   <sys:Double x:Key="MyNet.Margin.Small">2</sys:Double>
@@ -2778,7 +2779,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Style.Triggers>
   </Style>
   <Style x:Key="MyNet.Styles.ListBoxItem.Card" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="BorderThickness" Value="2" />
     <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -3221,6 +3222,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <Grid>
             <!-- Mouse Over -->
             <Border x:Name="mouseOver" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+            <!-- Focus -->
+            <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Ripple on focus -->
             <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
               <Border.RenderTransform>
@@ -3376,7 +3379,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
       </MultiTrigger>
@@ -5032,6 +5035,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <Grid>
             <!-- Mouse Over -->
             <Border x:Name="mouseOver" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+            <!-- Focus -->
+            <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Ripple on focus -->
             <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
               <Border.RenderTransform>
@@ -5187,9 +5192,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
       </MultiTrigger>
       <!-- Validation.HasError -->
       <Trigger Property="Validation.HasError" Value="true">
@@ -5323,7 +5328,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToolTip" TargetType="{x:Type ToolTip}">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background.Inverse}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Inverse}" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="FontFamily" Value="{me:RobotoFont}" />
@@ -7360,6 +7365,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <Grid>
             <!-- Mouse Over -->
             <Border x:Name="mouseOver" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+            <!-- Focus -->
+            <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Ripple on focus -->
             <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
               <Border.RenderTransform>
@@ -7591,7 +7598,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition SourceName="PART_TextBox" Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
       </MultiTrigger>
@@ -8064,6 +8071,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <Grid>
             <!-- Mouse Over -->
             <Border x:Name="mouseOver" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+            <!-- Focus -->
+            <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Ripple on focus -->
             <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
               <Border.RenderTransform>
@@ -8229,7 +8238,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
       </MultiTrigger>
@@ -9449,6 +9458,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             </Grid.ColumnDefinitions>
             <!-- Mouse Over -->
             <Border x:Name="mouseOver" Grid.ColumnSpan="2" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+            <!-- Focus -->
+            <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Ripple on focus -->
             <Border Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
               <Border.RenderTransform>
@@ -9701,7 +9712,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
         <Setter TargetName="toggleButton" Property="BorderBrush" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
@@ -9711,7 +9722,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsDropDownOpen" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
         <Setter TargetName="toggleButton" Property="BorderBrush" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
@@ -9824,7 +9835,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ComboBox.Filled.Foreground" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Filled}">
@@ -9832,7 +9843,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -9848,7 +9858,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -9897,7 +9906,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ComboBox.Alternate.Filled.Foreground" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Alternate.Filled}">
@@ -9905,7 +9914,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -9921,7 +9929,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -9947,7 +9954,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ComboBox.Hour.Filled.Foreground" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Hour.Filled}">
@@ -9955,7 +9962,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -9971,7 +9977,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -10067,6 +10072,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <Grid>
             <!-- Mouse Over -->
             <Border x:Name="mouseOver" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+            <!-- Focus -->
+            <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Ripple on focus -->
             <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
               <Border.RenderTransform>
@@ -10285,7 +10292,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition SourceName="PART_TextBox" Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
       </MultiTrigger>
@@ -10294,7 +10301,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition SourceName="PART_Popup" Property="IsOpen" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="PART_Button" Property="Foreground" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
         <Setter TargetName="PART_Button" Property="Opacity" Value="1" />
@@ -10400,7 +10407,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.DatePicker.Filled.Foreground" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.Filled}">
@@ -10408,7 +10415,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -10424,7 +10430,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -10455,7 +10460,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.DatePicker.Alternate.Filled.Foreground" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.Alternate.Filled}">
@@ -10463,7 +10468,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -10479,7 +10483,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -10658,12 +10661,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.GroupBox.Outlined.Application.Light" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
-    <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+    <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
     <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.GroupBox.Outlined.Application.Dark" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
-    <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+    <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
     <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.GroupBox.Outlined.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
@@ -10966,6 +10969,16 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
   </Style>
+  <Style x:Key="MyNet.Styles.GroupBox.Label.Application.Light" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.GroupBox.Label.Application.Dark" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+  </Style>
   <Style x:Key="MyNet.Styles.GroupBox.Label.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
@@ -11034,6 +11047,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.Label.Elevation.Application" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Elevation.Application.Light" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Elevation.Application.Dark" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.Label.Elevation.Primary" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
@@ -11441,7 +11462,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.PasswordBox.Filled.Foreground" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MyNet.Styles.PasswordBox.Filled}">
@@ -11449,7 +11470,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -11465,7 +11485,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -11567,7 +11586,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Grid>
   </ControlTemplate>
   <Style x:Key="MyNet.Styles.ScrollBar" TargetType="{x:Type ScrollBar}">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.ScrollBar.Background}" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
@@ -11888,7 +11907,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.TextBox.Filled.Foreground" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyNet.Styles.TextBox.Filled}">
@@ -11896,7 +11915,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -11912,7 +11930,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -12887,6 +12904,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             <Grid>
               <!-- Mouse Over -->
               <Border x:Name="mouseOver" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+              <!-- Focus -->
+              <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
               <!-- Ripple on focus -->
               <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
                 <Border.RenderTransform>
@@ -13044,7 +13063,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
       </MultiTrigger>
@@ -13145,7 +13164,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.AutoSuggestBox.Filled.Foreground" TargetType="{x:Type ctrl:AutoSuggestBox}" BasedOn="{StaticResource MyNet.Styles.AutoSuggestBox.Filled}">
@@ -13153,7 +13172,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -13169,7 +13187,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -15177,7 +15194,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </ControlTemplate.Triggers>
   </ControlTemplate>
   <Style x:Key="MyNet.Styles.DynamicScrollBar" TargetType="{x:Type ctrl:DynamicScrollBar}">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.ScrollBar.Background}" />
     <Setter Property="Margin" Value="0" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -15238,6 +15255,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <Grid>
             <!-- Mouse Over -->
             <Border x:Name="mouseOver" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+            <!-- Focus -->
+            <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Ripple on focus -->
             <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
               <Border.RenderTransform>
@@ -15427,7 +15446,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition SourceName="PART_TextBox" Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
       </MultiTrigger>
@@ -15540,7 +15559,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ImagePicker.Filled.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Filled}">
@@ -15548,7 +15567,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -15564,7 +15582,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -15666,7 +15683,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ImagePicker.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Alternate.Filled}">
@@ -15674,7 +15691,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -15690,7 +15706,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -15987,6 +16002,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <Grid>
             <!-- Mouse Over -->
             <Border x:Name="mouseOver" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+            <!-- Focus -->
+            <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Ripple on focus -->
             <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
               <Border.RenderTransform>
@@ -16193,7 +16210,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition SourceName="PART_Popup" Property="IsOpen" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="PART_Button" Property="Foreground" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
         <Setter TargetName="PART_Button" Property="Opacity" Value="1" />
@@ -16293,7 +16310,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.MonthPicker.Filled.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Filled}">
@@ -16301,7 +16318,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -16317,7 +16333,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -16347,7 +16362,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.MonthPicker.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Alternate.Filled}">
@@ -16355,7 +16370,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -16371,7 +16385,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -16469,6 +16482,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             </Grid.ColumnDefinitions>
             <!-- Mouse Over -->
             <Border x:Name="mouseOver" Grid.ColumnSpan="2" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+            <!-- Focus -->
+            <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Ripple on focus -->
             <Border Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
               <Border.RenderTransform>
@@ -16729,7 +16744,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
         <Setter TargetName="toggleButton" Property="BorderBrush" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
@@ -16739,7 +16754,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsDropDownOpen" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
         <Setter TargetName="toggleButton" Property="BorderBrush" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
@@ -16851,7 +16866,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.MultiComboBox.Filled.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Filled}">
@@ -16859,7 +16874,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -16875,7 +16889,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -16906,7 +16919,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.MultiComboBox.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Alternate.Filled}">
@@ -16914,7 +16927,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -16930,7 +16942,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -17489,7 +17500,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.NumericUpDown.Filled.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Filled}">
@@ -17497,7 +17508,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -17513,7 +17523,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -17544,7 +17553,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.NumericUpDown.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Filled}">
@@ -17552,7 +17561,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -17568,7 +17576,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -17588,7 +17595,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.RevealPasswordBox.Filled.Foreground" TargetType="{x:Type ctrl:RevealPasswordBox}" BasedOn="{StaticResource MyNet.Styles.RevealPasswordBox.Filled}">
@@ -17596,7 +17603,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -17612,7 +17618,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -17938,6 +17943,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <Grid>
             <!-- Mouse Over -->
             <Border x:Name="mouseOver" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+            <!-- Focus -->
+            <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Ripple on focus -->
             <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
               <Border.RenderTransform>
@@ -18156,7 +18163,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition SourceName="PART_TextBox" Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
       </MultiTrigger>
@@ -18165,7 +18172,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition SourceName="PART_Popup" Property="IsOpen" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="PART_Button" Property="Foreground" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
         <Setter TargetName="PART_Button" Property="Opacity" Value="1" />
@@ -18271,7 +18278,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.TimePicker.Filled.Foreground" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Filled}">
@@ -18279,7 +18286,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -18295,7 +18301,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -18326,7 +18331,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.TimePicker.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Alternate.Filled}">
@@ -18334,7 +18339,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -18350,13 +18354,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToastItem" TargetType="{x:Type ctrl:ToastItem}">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Small}" />
@@ -19783,6 +19786,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <Grid>
             <!-- Mouse Over -->
             <Border x:Name="mouseOver" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+            <!-- Focus -->
+            <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Ripple on focus -->
             <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
               <Border.RenderTransform>
@@ -19974,7 +19979,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition SourceName="PART_TextBox" Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
       </MultiTrigger>
@@ -19983,7 +19988,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition SourceName="PART_Popup" Property="IsOpen" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Self}}" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="PART_Button" Property="Foreground" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
         <Setter TargetName="PART_Button" Property="Opacity" Value="1" />
@@ -20112,7 +20117,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ColorPicker.Filled.Foreground" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Filled}">
@@ -20120,7 +20125,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -20136,7 +20140,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -20164,7 +20167,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ColorPicker.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Alternate.Filled}">
@@ -20172,7 +20175,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
@@ -20188,7 +20190,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>

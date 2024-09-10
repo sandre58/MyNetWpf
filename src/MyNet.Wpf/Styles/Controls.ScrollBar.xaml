@@ -167,7 +167,7 @@
     </ControlTemplate>
 
     <Style x:Key="MyNet.Styles.ScrollBar" TargetType="{x:Type ScrollBar}">
-        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.ScrollBar.Background}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="false" />

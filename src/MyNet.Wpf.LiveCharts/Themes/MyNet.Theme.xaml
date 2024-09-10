@@ -13,7 +13,7 @@
   <my:ParticipationVisibilityConverter x:Key="ParticipationVisibilityConverter" />
 
   <Style TargetType="my:DefaultTooltip">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background.Inverse}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Inverse}" />
     <Setter Property="FontFamily" Value="{my:RobotoFont}" />
     <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />

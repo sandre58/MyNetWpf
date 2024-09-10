@@ -69,6 +69,7 @@ namespace MyNet.Wpf.TestApp.ViewModels
             new BrushData("Application.Background", "Application.Foreground"),
             new BrushData("Application.Background.Light"),
             new BrushData("Application.Background.Dark"),
+            new BrushData("Application.Background.Inverse"),
             new BrushData("Application.Border"),
             new BrushData("Application.Border.Inactive"),
             new BrushData("Application.Foreground"),
@@ -76,10 +77,9 @@ namespace MyNet.Wpf.TestApp.ViewModels
             new BrushData("Application.Foreground.Tertiary"),
 
             new BrushData("Popup.Background"),
+            new BrushData("ScrollBar.Background"),
 
             new BrushData("Control.Background", "Application.Foreground", 1),
-            new BrushData("Control.Background.Secondary", "Application.Foreground"),
-            new BrushData("Control.Background.Inverse"),
             new BrushData("Control.Border"),
             new BrushData("Control.Border.Secondary"),
             new BrushData("Control.Border.Focus"),

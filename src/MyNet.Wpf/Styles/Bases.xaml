@@ -55,6 +55,7 @@
     <sys:Double x:Key="MyNet.Opacity.Disabled">0.40</sys:Double>
     <sys:Double x:Key="MyNet.Opacity.Border">0.35</sys:Double>
     <sys:Double x:Key="MyNet.Opacity.Checked">0.18</sys:Double>
+    <sys:Double x:Key="MyNet.Opacity.Focused">0.15</sys:Double>
     <sys:Double x:Key="MyNet.Opacity.Hovered">0.12</sys:Double>
     <sys:Double x:Key="MyNet.Opacity.Filled">0.10</sys:Double>
 

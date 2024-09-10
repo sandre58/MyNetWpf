@@ -7,7 +7,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.ToolTip" TargetType="{x:Type ToolTip}">
-        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background.Inverse}" />
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Inverse}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontFamily" Value="{me:RobotoFont}" />

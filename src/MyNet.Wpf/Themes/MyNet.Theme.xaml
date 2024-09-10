@@ -10,7 +10,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <!-- Default -->
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}" />
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MyNet.Styles.Button.Elevation}" />
     <Style TargetType="{x:Type Calendar}" BasedOn="{StaticResource MyNet.Styles.Calendar.Portrait}" />
     <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox}" />
     <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox}" />
@@ -26,7 +26,7 @@
     <Style TargetType="{x:Type Expander}" BasedOn="{StaticResource MyNet.Styles.Expander}" />
     <Style TargetType="{x:Type GridSplitter}" BasedOn="{StaticResource MyNet.Styles.GridSplitter}" />
     <Style TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource MyNet.Styles.GridViewColumnHeader}" />
-    <Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation}" />
+    <Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Elevation.Application.Light}" />
     <Style TargetType="{x:Type Image}" BasedOn="{StaticResource MyNet.Styles.Image}" />
     <Style TargetType="{x:Type ItemsControl}" BasedOn="{StaticResource MyNet.Styles.ItemsControl.Scrollable}" />
     <Style TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}" />

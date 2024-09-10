@@ -259,7 +259,7 @@
     </ControlTemplate>
 
     <Style x:Key="MyNet.Styles.DynamicScrollBar" TargetType="{x:Type ctrl:DynamicScrollBar}">
-        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background.Secondary}" />
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.ScrollBar.Background}" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="SnapsToDevicePixels" Value="True" />

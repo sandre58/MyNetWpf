@@ -255,12 +255,12 @@
     </Style>
     <Style x:Key="MyNet.Styles.GroupBox.Outlined.Application.Light" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
-        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.GroupBox.Outlined.Application.Dark" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
-        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+        <Setter Property="p:HeaderAssist.Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.GroupBox.Outlined.Primary" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Outlined}">
@@ -653,6 +653,16 @@
     </Style>
     <Style x:Key="MyNet.Styles.GroupBox.Label.Application" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.GroupBox.Label.Application.Light" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+        <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.GroupBox.Label.Application.Dark" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Label}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="p:HeaderAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     </Style>
