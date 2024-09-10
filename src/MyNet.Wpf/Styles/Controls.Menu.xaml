@@ -279,7 +279,7 @@
                     <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
                         <Grid>
                             <Border Background="White" Opacity="0.002" />
-                            <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Popup}" Background="{TemplateBinding Background}">
+                            <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Popup}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}">
                                 <ctrl:DynamicScrollViewer x:Name="SubMenuScrollViewer">
                                     <Grid Margin="0 8">
                                         <ItemsPresenter x:Name="ItemsPresenter"

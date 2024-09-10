@@ -146,6 +146,7 @@
                                    Background="{Binding Path=(p:TabControlAssist.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}}"
                                    DockPanel.Dock="Top"
                                    Focusable="False"
+                                   Foreground="{TemplateBinding Foreground}"
                                    UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}"
                                    Visibility="{Binding Path=(p:TabControlAssist.ShowHeader), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                             <Grid>

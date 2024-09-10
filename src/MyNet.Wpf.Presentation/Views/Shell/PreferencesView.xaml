@@ -17,7 +17,7 @@
                              HorizontalAlignment="Right"
                              DockPanel.Dock="Top"
                              Orientation="Horizontal">
-            <Button Style="{StaticResource MyNet.Styles.Button.Elevation.Foreground}"
+            <Button Style="{StaticResource MyNet.Styles.Button.Filled.Foreground}"
                     my:IconAssist.Icon="{my:ToolIcon Kind=Refresh}"
                     Command="{Binding RefreshCommand}"
                     Content="{my:Resource Refresh}" />

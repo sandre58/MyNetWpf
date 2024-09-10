@@ -309,7 +309,8 @@
                                Background="{TemplateBinding Background}"
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
-                               ClipToBounds="False">
+                               ClipToBounds="False"
+                               Foreground="{TemplateBinding Foreground}">
                         <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </ctrl:Card>
                     <ControlTemplate.Triggers>
@@ -641,6 +642,7 @@
                                BorderThickness="{TemplateBinding BorderThickness}"
                                DockPanel.Dock="Top"
                                Focusable="False"
+                               Foreground="{TemplateBinding Foreground}"
                                SnapsToDevicePixels="true"
                                UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
                         <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}"
@@ -702,6 +704,7 @@
                                Background="{TemplateBinding Background}"
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
+                               Foreground="{TemplateBinding Foreground}"
                                UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup Name="CommonStates">

@@ -231,6 +231,7 @@
                         <ctrl:Card Padding="0 -1 0 0"
                                    p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}"
                                    Background="{TemplateBinding Background}"
+                                   Foreground="{TemplateBinding Foreground}"
                                    ClipContent="True">
 
                             <Grid RenderOptions.ClearTypeHint="Enabled">

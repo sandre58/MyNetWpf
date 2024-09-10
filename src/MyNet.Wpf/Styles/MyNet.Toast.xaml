@@ -78,6 +78,7 @@
                                Background="{TemplateBinding Background}"
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
+                               Foreground="{TemplateBinding Foreground}"
                                UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
                         <Grid>
 

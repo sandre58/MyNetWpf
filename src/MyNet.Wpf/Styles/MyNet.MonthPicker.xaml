@@ -54,6 +54,7 @@
                                            Padding="0"
                                            p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}"
                                            Background="{TemplateBinding Background}"
+                                           Foreground="{TemplateBinding Foreground}"
                                            BorderBrush="{TemplateBinding BorderBrush}"
                                            BorderThickness="{TemplateBinding BorderThickness}"
                                            UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
@@ -170,6 +171,7 @@
                     <ctrl:Card Padding="0 -1 0 0"
                                p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}"
                                Background="{TemplateBinding Background}"
+                               Foreground="{TemplateBinding Foreground}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                ClipContent="True">
                         <DockPanel Margin="{TemplateBinding Padding}">

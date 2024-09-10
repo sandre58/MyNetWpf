@@ -69,6 +69,7 @@
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                ClipContent="False"
+                               Foreground="{TemplateBinding Foreground}"
                                UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
                         <Grid KeyboardNavigation.TabIndex="1" KeyboardNavigation.TabNavigation="Local">
                             <Grid.ColumnDefinitions>

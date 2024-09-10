@@ -21,6 +21,7 @@
                                p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}"
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
+                               Foreground="{TemplateBinding Foreground}"
                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                UniformCornerRadius="{TemplateBinding p:ThemeAssist.CornerRadius}">
                         <Grid>

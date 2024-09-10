@@ -18,7 +18,8 @@
                                 Height="150"
                                 HorizontalAlignment="Center"
                                 Background="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}"
-                                Foreground="{DynamicResource MyNet.Brushes.Accent}" />
+                                Foreground="{DynamicResource MyNet.Brushes.Accent}"
+                                TextForeground="{DynamicResource MyNet.Brushes.Accent}" />
             <TextBlock Margin="{StaticResource MyNet.Margins.Large.Horizontal}"
                        VerticalAlignment="Center"
                        FontFamily="{StaticResource MyNet.Font.Family.Nuvel}"

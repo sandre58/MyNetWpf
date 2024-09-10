@@ -357,9 +357,9 @@
                 <MultiTrigger.Conditions>
                     <Condition SourceName="PART_TextBox" Property="IsKeyboardFocused" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="focus" Property="Visibility" Value="Visible" />
                 <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
                 <Setter TargetName="Underline" Property="IsActive" Value="True" />
+                <Setter TargetName="focus" Property="Visibility" Value="Visible" />
             </MultiTrigger>
 
             <!-- Validation.HasError -->
@@ -535,6 +535,7 @@
                                    Background="{TemplateBinding Background}"
                                    BorderBrush="{TemplateBinding BorderBrush}"
                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                   Foreground="{TemplateBinding Foreground}"
                                    UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
                             <Grid>
                                 <ContentControl HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -629,8 +630,8 @@
         <Setter Property="p:TextFieldAssist.ButtonStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text.Foreground}">
-                    <Setter Property="Padding" Value="3 0" />
                     <Setter Property="Focusable" Value="False" />
+                    <Setter Property="Padding" Value="3 0" />
                 </Style>
             </Setter.Value>
         </Setter>

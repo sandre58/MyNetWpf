@@ -91,6 +91,7 @@
                                Padding="0"
                                p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource TemplatedParent}}"
                                Background="{TemplateBinding Background}"
+                               Foreground="{TemplateBinding Foreground}"
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
@@ -307,6 +308,7 @@
                                        Padding="{Binding Path=(p:HeaderAssist.Padding), RelativeSource={RelativeSource TemplatedParent}}"
                                        p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource TemplatedParent}}"
                                        Background="{Binding Path=(p:HeaderAssist.Background), RelativeSource={RelativeSource TemplatedParent}}"
+                                       Foreground="{TemplateBinding Foreground}"
                                        BorderBrush="{TemplateBinding BorderBrush}"
                                        BorderThickness="{TemplateBinding BorderThickness}"
                                        DockPanel.Dock="Top"

@@ -122,7 +122,8 @@
                                p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}"
                                Background="{TemplateBinding Background}"
                                BorderThickness="{TemplateBinding BorderThickness}"
-                               ClipContent="True">
+                               ClipContent="True"
+                               Foreground="{TemplateBinding Foreground}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="DisplayModeStates">
                                 <VisualStateGroup.Transitions>

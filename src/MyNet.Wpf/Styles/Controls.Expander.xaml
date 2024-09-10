@@ -64,6 +64,7 @@
                     <ctrl:Card Padding="{Binding Path=(p:ExpanderAssist.HorizontalHeaderPadding), RelativeSource={RelativeSource AncestorType=Expander, AncestorLevel=1}}"
                                p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource AncestorType=Expander, AncestorLevel=1}}"
                                Background="{TemplateBinding Background}"
+                               Foreground="{TemplateBinding Foreground}"
                                UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource AncestorType=Expander, AncestorLevel=1}}">
                         <Grid>
                             <Grid.ColumnDefinitions>

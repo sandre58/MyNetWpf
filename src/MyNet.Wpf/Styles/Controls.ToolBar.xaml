@@ -564,6 +564,7 @@
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                ClipContent="False"
+                               Foreground="{TemplateBinding Foreground}"
                                UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
                         <DockPanel x:Name="Grid">
                             <Grid x:Name="OverflowGrid" HorizontalAlignment="Right" DockPanel.Dock="Right">

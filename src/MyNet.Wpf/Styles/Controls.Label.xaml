@@ -98,6 +98,7 @@
                                Padding="{TemplateBinding Padding}"
                                p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource TemplatedParent}}"
                                Background="{TemplateBinding Background}"
+                               Foreground="{TemplateBinding Foreground}"
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
