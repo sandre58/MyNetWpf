@@ -9459,7 +9459,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             <!-- Mouse Over -->
             <Border x:Name="mouseOver" Grid.ColumnSpan="2" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Focus -->
-            <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+            <Border x:Name="focus" Grid.ColumnSpan="2" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Ripple on focus -->
             <Border Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
               <Border.RenderTransform>
@@ -9712,9 +9712,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter TargetName="toggleButton" Property="BorderBrush" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
       </MultiTrigger>
       <!-- IsDropDownOpen -->
@@ -9722,9 +9722,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsDropDownOpen" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter TargetName="toggleButton" Property="BorderBrush" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
       </MultiTrigger>
       <!-- Validation.HasError -->
@@ -9900,6 +9900,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:TextFieldAssist.ButtonStyle">
       <Setter.Value>
         <Style TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text.Foreground}">
+          <Setter Property="Focusable" Value="False" />
           <Setter Property="Padding" Value="3 0" />
         </Style>
       </Setter.Value>
@@ -10455,6 +10456,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       <Setter.Value>
         <Style TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text.Foreground}">
           <Setter Property="Padding" Value="3 0" />
+          <Setter Property="Focusable" Value="False" />
         </Style>
       </Setter.Value>
     </Setter>
@@ -15678,6 +15680,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       <Setter.Value>
         <Style TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text.Foreground}">
           <Setter Property="Padding" Value="3 0" />
+          <Setter Property="Focusable" Value="False" />
         </Style>
       </Setter.Value>
     </Setter>
@@ -16483,7 +16486,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             <!-- Mouse Over -->
             <Border x:Name="mouseOver" Grid.ColumnSpan="2" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Focus -->
-            <Border x:Name="focus" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+            <Border x:Name="focus" Grid.ColumnSpan="2" Background="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
             <!-- Ripple on focus -->
             <Border Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5" Visibility="{Binding Path=(p:TextFieldAssist.RippleOnFocusEnabled), Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}, RelativeSource={RelativeSource TemplatedParent}}">
               <Border.RenderTransform>
@@ -16744,9 +16747,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter TargetName="toggleButton" Property="BorderBrush" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
       </MultiTrigger>
       <!-- IsDropDownOpen -->
@@ -16754,9 +16757,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsDropDownOpen" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter TargetName="toggleButton" Property="BorderBrush" Value="{Binding Path=(p:TextFieldAssist.UnderlineBrush), RelativeSource={RelativeSource TemplatedParent}}" />
       </MultiTrigger>
       <!-- Validation.HasError -->
@@ -16913,6 +16916,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:TextFieldAssist.ButtonStyle">
       <Setter.Value>
         <Style TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text.Foreground}">
+          <Setter Property="Focusable" Value="False" />
           <Setter Property="Padding" Value="3 0" />
         </Style>
       </Setter.Value>
@@ -17548,6 +17552,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       <Setter.Value>
         <Style TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text.Foreground}">
           <Setter Property="Padding" Value="3 0" />
+          <Setter Property="Focusable" Value="False" />
         </Style>
       </Setter.Value>
     </Setter>
@@ -18326,6 +18331,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       <Setter.Value>
         <Style TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text.Foreground}">
           <Setter Property="Padding" Value="3 0" />
+          <Setter Property="Focusable" Value="False" />
         </Style>
       </Setter.Value>
     </Setter>
@@ -20162,6 +20168,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       <Setter.Value>
         <Style TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text.Foreground}">
           <Setter Property="Padding" Value="3 0" />
+          <Setter Property="Focusable" Value="False" />
         </Style>
       </Setter.Value>
     </Setter>

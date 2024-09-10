@@ -71,7 +71,7 @@
     <Style x:Key="MyNet.Styles.Button.Validate"
            x:Shared="False"
            TargetType="{x:Type Button}"
-           BasedOn="{StaticResource MyNet.Styles.Button.Elevation.Primary}">
+           BasedOn="{StaticResource MyNet.Styles.Button.Filled.Primary}">
         <Setter Property="Content" Value="{my:Resource Validate}" />
         <Setter Property="ToolTip" Value="Ctrl+S" />
         <Setter Property="my:IconAssist.Icon" Value="{my:Icon Kind=Check}" />
@@ -80,7 +80,7 @@
     <Style x:Key="MyNet.Styles.Button.Cancel"
            x:Shared="False"
            TargetType="{x:Type Button}"
-           BasedOn="{StaticResource MyNet.Styles.Button.Elevation}">
+           BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
         <Setter Property="Content" Value="{my:Resource Cancel}" />
         <Setter Property="ToolTip" Value="Esc" />
         <Setter Property="my:IconAssist.Icon" Value="{my:Icon Kind=Cancel}" />
@@ -89,7 +89,7 @@
     <Style x:Key="MyNet.Styles.Button.Remove"
            x:Shared="False"
            TargetType="{x:Type Button}"
-           BasedOn="{StaticResource MyNet.Styles.Button.Elevation.Custom}">
+           BasedOn="{StaticResource MyNet.Styles.Button.Filled.Custom}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Negative}" />
         <Setter Property="Content" Value="{my:Resource Remove}" />
         <Setter Property="ToolTip" Value="{my:Resource InputDelete}" />

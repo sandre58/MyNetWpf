@@ -149,6 +149,23 @@
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
+    <Style x:Key="MyNet.Styles.Button.ToolBar.Filled" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
+        <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="FontWeight" Value="{Binding Path=(TextElement.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="MinWidth" Value="46" />
+        <Setter Property="Padding" Value="{Binding Path=(p:LayoutAssist.InnerPadding), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.Button.ToolBar.Filled.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.ToolBar.Filled}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.ToolBar" TargetType="ToggleButton" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Text}">
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="FontWeight" Value="{Binding Path=(TextElement.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -195,6 +212,24 @@
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
+    <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Filled" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
+        <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="FontWeight" Value="{Binding Path=(TextElement.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="MinWidth" Value="46" />
+        <Setter Property="Padding" Value="{Binding Path=(p:LayoutAssist.InnerPadding), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Filled.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.ToolBar.Filled}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    </Style>
     <Style x:Key="MyNet.Styles.SplitButton.ToolBar" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Text}">
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="FontWeight" Value="{Binding Path=(TextElement.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -225,6 +260,26 @@
         <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Elevation.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar.Elevation}">
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Filled" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
+        <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="FontWeight" Value="{Binding Path=(TextElement.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="MinWidth" Value="46" />
+        <Setter Property="Padding" Value="{Binding Path=(p:LayoutAssist.InnerPadding), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Filled.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar.Filled}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />

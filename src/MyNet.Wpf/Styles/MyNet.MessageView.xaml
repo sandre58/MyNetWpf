@@ -112,19 +112,19 @@
                     </ctrl:SimpleStackPanel>
                     <DataTemplate.Triggers>
                         <DataTrigger Binding="{Binding DefaultResult, RelativeSource={RelativeSource AncestorType={x:Type ctrl:MessageView}}}" Value="OK">
-                            <Setter TargetName="PART_OkButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Elevation.Primary}" />
+                            <Setter TargetName="PART_OkButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Filled.Primary}" />
                             <Setter TargetName="PART_OkButton" Property="p:FocusAssist.IsDefault" Value="True" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding DefaultResult, RelativeSource={RelativeSource AncestorType={x:Type ctrl:MessageView}}}" Value="Cancel">
-                            <Setter TargetName="PART_CancelButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Elevation.Primary}" />
+                            <Setter TargetName="PART_CancelButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Filled.Primary}" />
                             <Setter TargetName="PART_CancelButton" Property="p:FocusAssist.IsDefault" Value="True" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding DefaultResult, RelativeSource={RelativeSource AncestorType={x:Type ctrl:MessageView}}}" Value="Yes">
-                            <Setter TargetName="PART_YesButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Elevation.Primary}" />
+                            <Setter TargetName="PART_YesButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Filled.Primary}" />
                             <Setter TargetName="PART_YesButton" Property="p:FocusAssist.IsDefault" Value="True" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding DefaultResult, RelativeSource={RelativeSource AncestorType={x:Type ctrl:MessageView}}}" Value="No">
-                            <Setter TargetName="PART_NoButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Elevation.Primary}" />
+                            <Setter TargetName="PART_NoButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Filled.Primary}" />
                             <Setter TargetName="PART_NoButton" Property="p:FocusAssist.IsDefault" Value="True" />
                         </DataTrigger>
                     </DataTemplate.Triggers>
