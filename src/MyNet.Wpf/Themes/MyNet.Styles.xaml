@@ -9837,7 +9837,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Alignment" Value="Left" />
     <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
     <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
-    <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:PopupAssist.Foreground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
@@ -12833,6 +12833,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.ToolBar.Filled" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -12850,6 +12851,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.ToolBar" TargetType="ToggleButton" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Text}">
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -19408,7 +19410,11 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Elevation.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.ToolBar.Elevation}">
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Filled" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
@@ -19426,7 +19432,11 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Filled.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.ToolBar.Filled}">
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.ToolBar" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Text}">
@@ -19459,10 +19469,13 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Elevation.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar.Elevation}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Background, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Filled" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -19479,10 +19492,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Filled.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar.Filled}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.ListBox.ToolBar" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
     <Setter Property="Background" Value="Transparent" />
@@ -20809,11 +20824,11 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <Button MinWidth="30" Command="EditingCommands.ToggleItalic" Content="{me:ToolIcon Kind=FormatItalic}" ToolTip="{me:ShortcutResource Italic,                                                                       ShortcutKey='Ctrl+I'}" />
                 <Button MinWidth="30" Command="EditingCommands.ToggleUnderline" Content="{me:ToolIcon Kind=FormatUnderline}" ToolTip="{me:ShortcutResource Underline,                                                                       ShortcutKey='Ctrl+U'}" />
                 <Separator />
-                <ComboBox x:Name="PART_FontSizeComboBox" Style="{StaticResource MyNet.Styles.ComboBox.Numeric}" Width="60" />
+                <ComboBox x:Name="PART_FontSizeComboBox" Style="{StaticResource MyNet.Styles.ComboBox.Numeric}" Width="60" p:TextFieldAssist.NextButtonContent="{StaticResource MyNet.Icons.Plus.Tool}" p:TextFieldAssist.PreviousButtonContent="{StaticResource MyNet.Icons.Minus.Tool}" />
                 <Button MinWidth="25" Command="EditingCommands.DecreaseFontSize" Content="{me:ToolIcon Kind=FormatFontSizeDecrease}" ToolTip="{me:ShortcutResource DecreaseFontSize,                                                                       ShortcutKey='Ctrl+OemOpenBrackets'}" />
                 <Button MinWidth="25" Command="EditingCommands.IncreaseFontSize" Content="{me:ToolIcon Kind=FormatFontSizeIncrease}" ToolTip="{me:ShortcutResource IncreaseFontSize,                                                                       ShortcutKey='Ctrl+OemCloseBrackets'}" />
                 <Separator />
-                <ctrl:DropDownButton ToggleContent="{me:ToolIcon Kind=FormatFont}" ToolTip="{me:Resource FontFamily}">
+                <ctrl:DropDownButton PopupPadding="0" ToggleContent="{me:ToolIcon Kind=FormatFont}" ToolTip="{me:Resource FontFamily}">
                   <ctrl:Submenu x:Name="PART_FontFamilyMenu" MaxHeight="300">
                     <ctrl:Submenu.ItemContainerStyle>
                       <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MyNet.Styles.MenuItem}">
@@ -20823,7 +20838,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                     </ctrl:Submenu.ItemContainerStyle>
                   </ctrl:Submenu>
                 </ctrl:DropDownButton>
-                <ctrl:DropDownButton ToggleContent="{me:ToolIcon Kind=FormatColorHighlight}" ToolTip="{me:Resource Foreground}">
+                <ctrl:DropDownButton PopupPadding="0" ToggleContent="{me:ToolIcon Kind=FormatColorHighlight}" ToolTip="{me:Resource Foreground}">
                   <ctrl:Submenu x:Name="PART_ColorMenu" MaxHeight="300">
                     <ctrl:Submenu.ItemContainerStyle>
                       <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MyNet.Styles.MenuItem}">

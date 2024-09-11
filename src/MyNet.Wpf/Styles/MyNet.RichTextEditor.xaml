@@ -7,6 +7,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Bases.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Base.Icons.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.TextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MyNet.Wpf;component/Styles/Controls.Menu.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -46,7 +47,11 @@
                                         ToolTip="{me:ShortcutResource Underline,
                                                                       ShortcutKey='Ctrl+U'}" />
                                 <Separator />
-                                <ComboBox x:Name="PART_FontSizeComboBox" Style="{StaticResource MyNet.Styles.ComboBox.Numeric}" Width="60" />
+                                <ComboBox x:Name="PART_FontSizeComboBox"
+                                          Style="{StaticResource MyNet.Styles.ComboBox.Numeric}"
+                                          Width="60"
+                                          p:TextFieldAssist.NextButtonContent="{StaticResource MyNet.Icons.Plus.Tool}"
+                                          p:TextFieldAssist.PreviousButtonContent="{StaticResource MyNet.Icons.Minus.Tool}" />
                                 <Button MinWidth="25"
                                         Command="EditingCommands.DecreaseFontSize"
                                         Content="{me:ToolIcon Kind=FormatFontSizeDecrease}"
@@ -58,7 +63,7 @@
                                         ToolTip="{me:ShortcutResource IncreaseFontSize,
                                                                       ShortcutKey='Ctrl+OemCloseBrackets'}" />
                                 <Separator />
-                                <ctrl:DropDownButton ToggleContent="{me:ToolIcon Kind=FormatFont}" ToolTip="{me:Resource FontFamily}">
+                                <ctrl:DropDownButton PopupPadding="0" ToggleContent="{me:ToolIcon Kind=FormatFont}" ToolTip="{me:Resource FontFamily}">
                                     <ctrl:Submenu x:Name="PART_FontFamilyMenu" MaxHeight="300">
                                         <ctrl:Submenu.ItemContainerStyle>
                                             <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MyNet.Styles.MenuItem}">
@@ -68,7 +73,7 @@
                                         </ctrl:Submenu.ItemContainerStyle>
                                     </ctrl:Submenu>
                                 </ctrl:DropDownButton>
-                                <ctrl:DropDownButton ToggleContent="{me:ToolIcon Kind=FormatColorHighlight}" ToolTip="{me:Resource Foreground}">
+                                <ctrl:DropDownButton PopupPadding="0" ToggleContent="{me:ToolIcon Kind=FormatColorHighlight}" ToolTip="{me:Resource Foreground}">
                                     <ctrl:Submenu x:Name="PART_ColorMenu" MaxHeight="300">
                                         <ctrl:Submenu.ItemContainerStyle>
                                             <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MyNet.Styles.MenuItem}">

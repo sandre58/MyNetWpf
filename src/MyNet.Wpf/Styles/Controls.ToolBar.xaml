@@ -148,6 +148,7 @@
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.ToolBar.Filled" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -165,6 +166,7 @@
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.ToolBar" TargetType="ToggleButton" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Text}">
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -209,7 +211,11 @@
         <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Elevation.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.ToolBar.Elevation}">
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Filled" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
@@ -227,7 +233,11 @@
         <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Filled.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.ToolBar.Filled}">
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.ToolBar" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Text}">
@@ -260,10 +270,13 @@
         <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Elevation.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar.Elevation}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Background, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Filled" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -280,10 +293,12 @@
         <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Filled.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar.Filled}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.ComboBox.ToolBar" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox}">
         <Setter Property="Background" Value="Transparent" />

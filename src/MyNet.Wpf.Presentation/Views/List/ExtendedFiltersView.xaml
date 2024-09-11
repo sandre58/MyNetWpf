@@ -156,13 +156,13 @@
                                 Command="{Binding RefreshCommand}"
                                 Content="{my:Resource Refresh}"
                                 Visibility="{Binding AutoFilter, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
-                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation.Custom}"
+                        <Button Style="{StaticResource MyNet.Styles.Button.Filled.Custom}"
                                 my:IconAssist.Icon="{my:Icon Kind=FilterRemove}"
                                 Background="{DynamicResource MyNet.Brushes.Negative}"
                                 Command="{Binding ClearDirtyFiltersCommand}"
                                 Content="{my:Resource Clear}"
                                 Visibility="{Binding HasDefaultFilters, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfTrue}}" />
-                        <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Elevation.Custom}"
+                        <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}"
                                         my:IconAssist.Icon="{my:Icon Kind=FilterRemove}"
                                         Background="{DynamicResource MyNet.Brushes.Negative}"
                                         Command="{Binding ClearDirtyFiltersCommand}"
@@ -173,7 +173,7 @@
                                 <MenuItem Command="{Binding ResetCommand}" Header="{my:Resource Reset}" Icon="{my:Icon Kind=Reload}" />
                             </my:Submenu>
                         </my:SplitButton>
-                        <Button Style="{StaticResource MyNet.Styles.Button.Elevation.Primary}"
+                        <Button Style="{StaticResource MyNet.Styles.Button.Filled.Primary}"
                                 my:IconAssist.Icon="{my:Icon Kind=Check}"
                                 Command="{Binding ApplyCommand}"
                                 Content="{my:Resource Apply}"

@@ -672,7 +672,7 @@
         <Setter Property="p:IconAssist.Alignment" Value="Left" />
         <Setter Property="p:IconAssist.Margin" Value="{StaticResource MyNet.Margins.Default.Right}" />
         <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
-        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ListBoxItemAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:PopupAssist.Foreground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
