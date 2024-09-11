@@ -2231,7 +2231,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ToggleButton}">
-          <ctrl:Card Padding="{Binding Path=(p:ExpanderAssist.HorizontalHeaderPadding), RelativeSource={RelativeSource AncestorType=Expander, AncestorLevel=1}}" p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource AncestorType=Expander, AncestorLevel=1}}" Background="{TemplateBinding Background}" UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource AncestorType=Expander, AncestorLevel=1}}">
+          <ctrl:Card Padding="{Binding Path=(p:ExpanderAssist.HorizontalHeaderPadding), RelativeSource={RelativeSource AncestorType=Expander, AncestorLevel=1}}" p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource AncestorType=Expander, AncestorLevel=1}}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource AncestorType=Expander, AncestorLevel=1}}">
             <Grid>
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -2787,7 +2787,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ListBoxItem}">
-          <ctrl:Card x:Name="Card" Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
+          <ctrl:Card x:Name="Card" Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Foreground="{TemplateBinding Foreground}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
             <VisualStateManager.VisualStateGroups>
               <VisualStateGroup Name="CommonStates">
                 <VisualStateGroup.Transitions>
@@ -6260,7 +6260,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ctrl:ColorHSVPicker}">
-          <ctrl:Card Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.CornerRadius}">
+          <ctrl:Card Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Foreground="{TemplateBinding Foreground}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.CornerRadius}">
             <Grid>
               <Rectangle>
                 <Rectangle.Fill>
@@ -7790,7 +7790,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ctrl:PictureControl}">
-          <ctrl:Card Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
+          <ctrl:Card Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Foreground="{TemplateBinding Foreground}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
             <Grid>
               <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
               <Image HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Source="{TemplateBinding Image}" Stretch="{TemplateBinding Stretch}" Visibility="{Binding Image, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
@@ -8643,8 +8643,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsMouseOverForeground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     <Style.Triggers>
       <Trigger Property="IsMouseOver" Value="true">
         <Setter Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsMouseOverForeground), RelativeSource={RelativeSource Mode=Self}}" />
@@ -8655,26 +8655,31 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Filled.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Filled.Custom" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Filled.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
     <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Filled.Foreground.SemiTransparent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
     <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Outlined" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
     <Setter Property="Background" Value="Transparent" />
@@ -8682,36 +8687,37 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.Button.Outlined.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Outlined}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Outlined.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Outlined}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Outlined.Custom" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Outlined}">
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=BorderBrush}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Outlined.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Outlined}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=BorderBrush}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=BorderBrush}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=BorderBrush}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Text" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
     <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Text.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text}">
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Text.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text}">
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Text.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text}">
     <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Elevation" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
     <Setter Property="Template">
@@ -8721,6 +8727,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
               <Grid>
                 <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" />
+                <Border x:Name="mouseOver" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
               </Grid>
             </AdornerDecorator>
             <ctrl:Ripple Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" Focusable="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
@@ -8737,6 +8744,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
               <Setter TargetName="border" Property="p:ShadowAssist.Darken" Value="True" />
+              <Setter TargetName="mouseOver" Property="Visibility" Value="Visible" />
             </Trigger>
             <Trigger Property="IsKeyboardFocused" Value="true">
               <Setter TargetName="border" Property="p:ShadowAssist.Darken" Value="True" />
@@ -8754,20 +8762,24 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Elevation.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Elevation}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Elevation.Custom" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Elevation}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Elevation.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Elevation}">
     <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Filled" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
     <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rounded.Margin}" />
@@ -8777,7 +8789,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ButtonBase}">
           <Grid>
-            <Ellipse x:Name="border" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}" />
+            <Ellipse x:Name="border" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:ThicknessToDoubleConverter.Left}}" />
             <Ellipse x:Name="mouseOver" Fill="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" Visibility="Collapsed" />
             <ctrl:Ripple Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Clip="{Binding ElementName=GeometryEllipse, Path=RenderedGeometry}" ClipToBounds="True" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" Focusable="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             <Ellipse x:Name="GeometryEllipse" Fill="Transparent" Focusable="False" IsHitTestVisible="False" />
@@ -8800,19 +8812,33 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Filled.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Filled.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Filled.Custom" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Filled.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
     <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Button.Rounded.Filled.Foreground.SemiTransparent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
+    <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Outlined" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
     <Setter Property="Background" Value="Transparent" />
@@ -8820,36 +8846,38 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.Button.Rounded.Outlined.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Outlined}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Outlined.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Outlined}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Outlined.Custom" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Outlined}">
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=BorderBrush}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Outlined.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Outlined}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=BorderBrush}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=BorderBrush}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=BorderBrush}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Text" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
     <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Text.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Text}">
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Text.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Text}">
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Text.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Text}">
+    <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Elevation" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
     <Setter Property="Template">
@@ -8883,20 +8911,24 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Elevation.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Elevation}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Elevation.Custom" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Elevation}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Elevation.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Elevation}">
     <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Icon" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
     <Setter Property="FocusVisualStyle">
@@ -8936,12 +8968,15 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.Button.Icon.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Icon}">
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Icon.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Icon}">
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Icon.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Icon}">
     <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.HyperLink" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -8982,14 +9017,17 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.Button.HyperLink.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.HyperLink}">
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Light}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Light}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.HyperLink.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.HyperLink}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Light}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Light}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.HyperLink.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.HyperLink}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=BorderBrush}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=BorderBrush}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Icon.Remove" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Icon.Foreground}">
     <Setter Property="ContentTemplate">
@@ -9000,6 +9038,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Negative}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Negative}" />
     <Setter Property="ToolTip" Value="{me:Resource Remove}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Icon.Tool" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Icon.Foreground}">
@@ -9126,7 +9165,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             </DataTemplate>
           </ControlTemplate.Resources>
           <Grid x:Name="PART_Root">
-            <ctrl:Card Padding="0 -1 0 0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" ClipContent="True">
+            <ctrl:Card Padding="0 -1 0 0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" ClipContent="True">
               <Grid RenderOptions.ClearTypeHint="Enabled">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="auto" />
@@ -10537,7 +10576,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type GroupBox}">
-          <ctrl:Card Style="{Binding Path=(p:CardAssist.Style), RelativeSource={RelativeSource TemplatedParent}}" Padding="0" p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+          <ctrl:Card Style="{Binding Path=(p:CardAssist.Style), RelativeSource={RelativeSource TemplatedParent}}" Padding="0" p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
             <Grid>
               <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="Col1" Width="*" />
@@ -10705,7 +10744,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 <RowDefinition x:Name="Row2" Height="*" />
               </Grid.RowDefinitions>
               <!-- Header -->
-              <ctrl:Card x:Name="Header" Style="{Binding Path=(p:CardAssist.Style), RelativeSource={RelativeSource TemplatedParent}}" Padding="{Binding Path=(p:HeaderAssist.Padding), RelativeSource={RelativeSource TemplatedParent}}" p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource TemplatedParent}}" Background="{Binding Path=(p:HeaderAssist.Background), RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" DockPanel.Dock="Top" UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+              <ctrl:Card x:Name="Header" Style="{Binding Path=(p:CardAssist.Style), RelativeSource={RelativeSource TemplatedParent}}" Padding="{Binding Path=(p:HeaderAssist.Padding), RelativeSource={RelativeSource TemplatedParent}}" p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource TemplatedParent}}" Background="{Binding Path=(p:HeaderAssist.Background), RelativeSource={RelativeSource TemplatedParent}}" Foreground="{TemplateBinding Foreground}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" DockPanel.Dock="Top" UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
                 <Grid>
                   <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -11035,7 +11074,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type Label}">
-          <ctrl:Card Style="{Binding Path=(p:CardAssist.Style), RelativeSource={RelativeSource TemplatedParent}}" Padding="{TemplateBinding Padding}" p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+          <ctrl:Card Style="{Binding Path=(p:CardAssist.Style), RelativeSource={RelativeSource TemplatedParent}}" Padding="{TemplateBinding Padding}" p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
           </ctrl:Card>
         </ControlTemplate>
@@ -11361,7 +11400,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
             <Grid>
               <Border Background="White" Opacity="0.002" />
-              <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Popup}" Background="{TemplateBinding Background}">
+              <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Popup}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}">
                 <ctrl:DynamicScrollViewer x:Name="SubMenuScrollViewer">
                   <Grid Margin="0 8">
                     <ItemsPresenter x:Name="ItemsPresenter" Grid.IsSharedSizeScope="True" KeyboardNavigation.DirectionalNavigation="Cycle" KeyboardNavigation.TabNavigation="Cycle" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
@@ -11673,7 +11712,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type TabControl}">
           <DockPanel KeyboardNavigation.TabNavigation="Local">
-            <ctrl:Card x:Name="PART_HeaderCard" Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" p:ShadowAssist.ShadowEdges="{TemplateBinding p:ShadowAssist.ShadowEdges}" Background="{Binding Path=(p:TabControlAssist.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}}" DockPanel.Dock="Top" Focusable="False" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}" Visibility="{Binding Path=(p:TabControlAssist.ShowHeader), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+            <ctrl:Card x:Name="PART_HeaderCard" Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" p:ShadowAssist.ShadowEdges="{TemplateBinding p:ShadowAssist.ShadowEdges}" Background="{Binding Path=(p:TabControlAssist.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}}" DockPanel.Dock="Top" Focusable="False" Foreground="{TemplateBinding Foreground}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}" Visibility="{Binding Path=(p:TabControlAssist.ShowHeader), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
               <Grid>
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="*" />
@@ -11979,11 +12018,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Style.Triggers>
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Filled.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled}">
-    <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
-    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Filled.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Custom}">
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -11994,7 +12034,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Filled.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Custom}">
-    <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
   </Style>
@@ -12004,18 +12043,22 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.ToggleButton.Outlined.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Primary}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Outlined.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Accent}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Outlined.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Custom}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Outlined.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Foreground}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Text" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled}">
     <Setter Property="Background" Value="Transparent" />
@@ -12026,21 +12069,25 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Text.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Accent}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Text.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Custom}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Text.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Foreground}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Elevation" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled}">
     <Setter Property="Template">
@@ -12050,6 +12097,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
               <Grid>
                 <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" />
+                <Border x:Name="mouseOver" Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
               </Grid>
             </AdornerDecorator>
             <ctrl:Ripple Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" Focusable="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
@@ -12066,6 +12114,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
               <Setter TargetName="border" Property="p:ShadowAssist.Darken" Value="True" />
+              <Setter TargetName="mouseOver" Property="Visibility" Value="Visible" />
             </Trigger>
             <Trigger Property="IsKeyboardFocused" Value="true">
               <Setter TargetName="border" Property="p:ShadowAssist.Darken" Value="True" />
@@ -12073,6 +12122,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             <Trigger Property="IsChecked" Value="true">
               <Setter TargetName="border" Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
               <Setter TargetName="border" Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+              <Setter TargetName="mouseOver" Property="Visibility" Value="Collapsed" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
               <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
@@ -12085,10 +12135,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Elevation.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Elevation}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Elevation.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Elevation.Custom}">
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -12099,7 +12151,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Elevation.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Elevation.Custom}">
-    <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
   </Style>
@@ -12158,7 +12209,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
                 </VisualState>
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Ellipse x:Name="HoverEllipse" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static c:ThicknessToDoubleConverter.Top}}" />
+            <Ellipse x:Name="ellipse" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static c:ThicknessToDoubleConverter.Top}}" />
+            <Ellipse x:Name="mouseOver" Fill="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" Visibility="Collapsed" />
             <Ellipse x:Name="CheckedEllipse" Fill="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" RenderTransformOrigin="0.5, 0.5">
               <Ellipse.RenderTransform>
                 <ScaleTransform x:Name="CheckedEllipseScale" CenterX="0.5" CenterY="0.5" ScaleX="1.0" ScaleY="1.0" />
@@ -12168,7 +12220,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           </Grid>
           <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
-              <Setter TargetName="HoverEllipse" Property="Fill" Value="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+              <Setter TargetName="mouseOver" Property="Visibility" Value="Visible" />
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
@@ -12184,11 +12236,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Style.Triggers>
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Filled.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled}">
-    <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
-    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Filled.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Custom}">
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -12199,7 +12252,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Filled.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Custom}">
-    <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
   </Style>
@@ -12209,18 +12261,22 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Outlined.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Primary}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Outlined.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Accent}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Outlined.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Custom}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Outlined.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Foreground}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Text" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled}">
     <Setter Property="Background" Value="Transparent" />
@@ -12246,6 +12302,113 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Elevation" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled}">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ToggleButton}">
+          <Grid>
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal" />
+                <VisualState x:Name="Disabled">
+                  <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.Opacity)" To="{StaticResource MyNet.Opacity.Disabled}" Duration="0" />
+                  </Storyboard>
+                </VisualState>
+              </VisualStateGroup>
+              <VisualStateGroup x:Name="CheckStates">
+                <VisualStateGroup.Transitions>
+                  <VisualTransition From="*" To="Checked">
+                    <Storyboard>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckedEllipseScale" Storyboard.TargetProperty="ScaleX" Duration="0:0:0.2">
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.0" Value="0" />
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="1.0" />
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckedEllipseScale" Storyboard.TargetProperty="ScaleY" Duration="0:0:0.2">
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.0" Value="0" />
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="1.0" />
+                      </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                  </VisualTransition>
+                  <VisualTransition From="Checked" To="Unchecked">
+                    <Storyboard>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckedEllipseScale" Storyboard.TargetProperty="ScaleX" Duration="0:0:0.2">
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.0" Value="1.0" />
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="0" />
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckedEllipseScale" Storyboard.TargetProperty="ScaleY" Duration="0:0:0.2">
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.0" Value="1.0" />
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="0" />
+                      </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                  </VisualTransition>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="Checked">
+                  <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="CheckedEllipseScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0" />
+                    <DoubleAnimation Storyboard.TargetName="CheckedEllipseScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0" />
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Unchecked">
+                  <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="CheckedEllipseScale" Storyboard.TargetProperty="ScaleX" To="0" Duration="0" />
+                    <DoubleAnimation Storyboard.TargetName="CheckedEllipseScale" Storyboard.TargetProperty="ScaleY" To="0" Duration="0" />
+                  </Storyboard>
+                </VisualState>
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
+              <Grid>
+                <Ellipse x:Name="border" Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}" />
+                <Ellipse x:Name="mouseOver" Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" Fill="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" Visibility="Collapsed" />
+                <Ellipse x:Name="CheckedEllipse" Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" Fill="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" RenderTransformOrigin="0.5, 0.5">
+                  <Ellipse.RenderTransform>
+                    <ScaleTransform x:Name="CheckedEllipseScale" CenterX="0.5" CenterY="0.5" ScaleX="1.0" ScaleY="1.0" />
+                  </Ellipse.RenderTransform>
+                </Ellipse>
+              </Grid>
+            </AdornerDecorator>
+            <ctrl:Ripple Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Clip="{Binding ElementName=GeometryEllipse, Path=RenderedGeometry}" ClipToBounds="True" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" Focusable="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+            <Ellipse x:Name="GeometryEllipse" Fill="Transparent" Focusable="False" IsHitTestVisible="False" />
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+              <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="border" Property="p:ShadowAssist.Darken" Value="True" />
+              <Setter TargetName="mouseOver" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="true">
+              <Setter TargetName="border" Property="p:ShadowAssist.Darken" Value="True" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="p:ElevationAssist.Elevation" Value="Dp5" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Elevation.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation}">
+    <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Elevation.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation.Custom}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Elevation.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation.Custom}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Elevation.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation.Custom}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Icon" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.Button.Icon}">
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -12369,24 +12532,27 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         </ControlTemplate>
       </Setter.Value>
     </Setter>
-    <Setter Property="p:ElevationAssist.Elevation" Value="Dp0" />
     <Setter Property="p:ToggleButtonAssist.OnContent" Value="{StaticResource MyNet.PackIcons.Check}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Action.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Action}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Action.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Action}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Action.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Action}">
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Action.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Action}">
     <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="Foreground" Value="{me:BrushBinding Path=Background, RelativeSource={RelativeSource Self}, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding Path=Background, RelativeSource={RelativeSource Self}, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Switch" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
@@ -12668,6 +12834,23 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
+  <Style x:Key="MyNet.Styles.Button.ToolBar.Filled" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
+    <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+    <Setter Property="FontWeight" Value="{Binding Path=(TextElement.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="MinWidth" Value="46" />
+    <Setter Property="Padding" Value="{Binding Path=(p:LayoutAssist.InnerPadding), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="VerticalAlignment" Value="Stretch" />
+    <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Button.ToolBar.Filled.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.ToolBar.Filled}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+  </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.ToolBar" TargetType="ToggleButton" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Text}">
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
     <Setter Property="FontWeight" Value="{Binding Path=(TextElement.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -12848,16 +13031,15 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="Focusable" Value="False" />
     <Setter Property="FontFamily" Value="{StaticResource MyNet.Font.Family.Nuvel}" />
-    <Setter Property="TextSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.58}" />
     <Setter Property="FontSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:FontSizeConverter.Default}, ConverterParameter=0.51}" />
-    <Setter Property="IconSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.98}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="IconSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.98}" />
     <Setter Property="IsTabStop" Value="False" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ctrl:ApplicationIcon}">
           <Grid>
-            <ctrl:Card p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" UniformCornerRadius="{TemplateBinding UniformCornerRadius}">
+            <ctrl:Card p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" UniformCornerRadius="{TemplateBinding UniformCornerRadius}">
               <ctrl:GeometryIcon Width="{TemplateBinding IconSize}" Height="{TemplateBinding IconSize}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{TemplateBinding Data}" Foreground="{TemplateBinding Foreground}" />
             </ctrl:Card>
             <Canvas Visibility="{Binding ShowText, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
@@ -12869,6 +13051,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Setter>
     <Setter Property="TextBackground" Value="{Binding Background, RelativeSource={RelativeSource Self}, Converter={x:Static c:BrushConverter.Darken}}" />
     <Setter Property="TextForeground" Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+    <Setter Property="TextSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.58}" />
     <Setter Property="TextSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={x:Static c:MathConverter.Multiply}, ConverterParameter=0.55}" />
     <Setter Property="p:ElevationAssist.Elevation" Value="Dp4" />
   </Style>
@@ -14080,7 +14263,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ctrl:Clock}">
-          <ctrl:Card Padding="0 -1 0 0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" ClipContent="True">
+          <ctrl:Card Padding="0 -1 0 0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" ClipContent="True" Foreground="{TemplateBinding Foreground}">
             <VisualStateManager.VisualStateGroups>
               <VisualStateGroup x:Name="DisplayModeStates">
                 <VisualStateGroup.Transitions>
@@ -14835,7 +15018,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsMouseOverForeground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     <Style.Triggers>
       <Trigger Property="IsPopupOpen" Value="true">
         <Setter Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=Self}}" />
@@ -14843,100 +15027,148 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Style.Triggers>
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Filled.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
-    <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
-    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Filled.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}">
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Filled.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}">
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Filled.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}">
-    <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Filled.Alternate" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}" />
+  <Style x:Key="MyNet.Styles.DropDownButton.Filled.Alternate.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Filled.Alternate.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Custom}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Filled.Alternate.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Custom}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Filled.Alternate.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Custom}">
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Filled.Foreground.SemiTransparent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}">
-    <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
-    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
-    <Setter Property="BorderThickness" Value="0" />
-    <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Checked}}" />
-    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Outlined" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Outlined" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate}">
     <Setter Property="Background" Value="Transparent" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Primary}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Primary}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Accent}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Accent}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Custom}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Foreground}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Foreground}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Text" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Text" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Text.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Primary}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Text.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Primary}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Text.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Accent}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Text.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Accent}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Text.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Text.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Custom}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Text.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Foreground}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Text.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Foreground}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Elevation" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
     <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
     <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation}">
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}">
+    <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Alternate" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate}">
+    <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Alternate.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Alternate.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate.Custom}">
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Alternate.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate.Custom}">
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}">
-    <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
+  <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Alternate.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate.Custom}">
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
   </Style>
@@ -14953,70 +15185,150 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Style.Triggers>
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}">
-    <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
-    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}">
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}">
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}">
-    <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Alternate" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}" />
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Custom}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Custom}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Custom}">
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}">
     <Setter Property="Background" Value="Transparent" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Primary}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Primary}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Accent}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Accent}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Custom}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Foreground}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Foreground}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Primary}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Primary}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Accent}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Accent}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Custom}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Foreground}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Text.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Foreground}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.Icon" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}">
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}">
+    <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation}">
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Custom}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Custom}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Custom}">
+    <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate}">
+    <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Custom}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Custom}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Custom}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.Icon" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate}">
     <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Icon}" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -15448,9 +15760,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         <MultiTrigger.Conditions>
           <Condition SourceName="PART_TextBox" Property="IsKeyboardFocused" Value="True" />
         </MultiTrigger.Conditions>
-        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter TargetName="Underline" Property="IsActive" Value="True" />
+        <Setter TargetName="focus" Property="Visibility" Value="Visible" />
       </MultiTrigger>
       <!-- Validation.HasError -->
       <Trigger Property="Validation.HasError" Value="true">
@@ -15608,7 +15920,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ctrl:ImagePicker}">
           <Grid>
-            <ctrl:Card Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
+            <ctrl:Card Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Foreground="{TemplateBinding Foreground}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
               <Grid>
                 <ContentControl HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding p:IconAssist.Icon}" Visibility="{Binding SelectedImage, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNotNull}}" />
                 <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding SelectedImage}" ContentTemplate="{TemplateBinding SelectedImageTemplate}" />
@@ -15679,8 +15991,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:TextFieldAssist.ButtonStyle">
       <Setter.Value>
         <Style TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text.Foreground}">
-          <Setter Property="Padding" Value="3 0" />
           <Setter Property="Focusable" Value="False" />
+          <Setter Property="Padding" Value="3 0" />
         </Style>
       </Setter.Value>
     </Setter>
@@ -15787,19 +16099,19 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           </ctrl:SimpleStackPanel>
           <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding DefaultResult, RelativeSource={RelativeSource AncestorType={x:Type ctrl:MessageView}}}" Value="OK">
-              <Setter TargetName="PART_OkButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Elevation.Primary}" />
+              <Setter TargetName="PART_OkButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Filled.Primary}" />
               <Setter TargetName="PART_OkButton" Property="p:FocusAssist.IsDefault" Value="True" />
             </DataTrigger>
             <DataTrigger Binding="{Binding DefaultResult, RelativeSource={RelativeSource AncestorType={x:Type ctrl:MessageView}}}" Value="Cancel">
-              <Setter TargetName="PART_CancelButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Elevation.Primary}" />
+              <Setter TargetName="PART_CancelButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Filled.Primary}" />
               <Setter TargetName="PART_CancelButton" Property="p:FocusAssist.IsDefault" Value="True" />
             </DataTrigger>
             <DataTrigger Binding="{Binding DefaultResult, RelativeSource={RelativeSource AncestorType={x:Type ctrl:MessageView}}}" Value="Yes">
-              <Setter TargetName="PART_YesButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Elevation.Primary}" />
+              <Setter TargetName="PART_YesButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Filled.Primary}" />
               <Setter TargetName="PART_YesButton" Property="p:FocusAssist.IsDefault" Value="True" />
             </DataTrigger>
             <DataTrigger Binding="{Binding DefaultResult, RelativeSource={RelativeSource AncestorType={x:Type ctrl:MessageView}}}" Value="No">
-              <Setter TargetName="PART_NoButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Elevation.Primary}" />
+              <Setter TargetName="PART_NoButton" Property="Style" Value="{StaticResource MyNet.Styles.Button.Filled.Primary}" />
               <Setter TargetName="PART_NoButton" Property="p:FocusAssist.IsDefault" Value="True" />
             </DataTrigger>
           </DataTemplate.Triggers>
@@ -15825,7 +16137,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <Setter Property="Template">
             <Setter.Value>
               <ControlTemplate TargetType="{x:Type ctrl:CalendarItem}">
-                <ctrl:Card x:Name="Card" Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
+                <ctrl:Card x:Name="Card" Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
                   <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup Name="CommonStates">
                       <VisualStateGroup.Transitions>
@@ -15909,7 +16221,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ctrl:CalendarMonthsByYear}">
-          <ctrl:Card Padding="0 -1 0 0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" ClipContent="True">
+          <ctrl:Card Padding="0 -1 0 0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" BorderThickness="{TemplateBinding BorderThickness}" ClipContent="True">
             <DockPanel Margin="{TemplateBinding Padding}">
               <!-- Header -->
               <ctrl:SimpleStackPanel Margin="{StaticResource MyNet.Margins.Medium.Bottom}" HorizontalAlignment="Right" DockPanel.Dock="Top" Orientation="Horizontal" Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
@@ -17651,14 +17963,16 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
           <Grid>
             <Grid.ColumnDefinitions>
               <ColumnDefinition x:Name="Col0" Width="*" />
-              <ColumnDefinition x:Name="Col1" Width="*" />
+              <ColumnDefinition x:Name="Col1" Width="{TemplateBinding InnerSpacing}" />
+              <ColumnDefinition x:Name="Col2" Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
               <RowDefinition x:Name="Row0" Height="*" />
-              <RowDefinition x:Name="Row1" Height="*" />
+              <RowDefinition x:Name="Row1" Height="{TemplateBinding InnerSpacing}" />
+              <RowDefinition x:Name="Row2" Height="*" />
             </Grid.RowDefinitions>
             <ToggleButton Name="PART_Button" Style="{TemplateBinding ButtonStyle}" Padding="{TemplateBinding Padding}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" p:IconAssist.Alignment="{TemplateBinding p:IconAssist.Alignment}" p:IconAssist.Icon="{TemplateBinding p:IconAssist.Icon}" p:IconAssist.Margin="{TemplateBinding p:IconAssist.Margin}" p:IconAssist.Opacity="{TemplateBinding p:IconAssist.Opacity}" p:RippleAssist.Feedback="{TemplateBinding p:RippleAssist.Feedback}" p:ThemeAssist.CornerRadius="{StaticResource MyNet.CornerRadius.Control.Left}" p:ThemeAssist.IsCheckedBackground="{TemplateBinding p:ThemeAssist.IsCheckedBackground}" p:ThemeAssist.IsCheckedBorderBrush="{TemplateBinding p:ThemeAssist.IsCheckedBorderBrush}" p:ThemeAssist.IsCheckedForeground="{TemplateBinding p:ThemeAssist.IsCheckedForeground}" p:ThemeAssist.IsMouseOverBackground="{TemplateBinding p:ThemeAssist.IsMouseOverBackground}" p:ThemeAssist.IsMouseOverBorderBrush="{TemplateBinding p:ThemeAssist.IsMouseOverBorderBrush}" p:ThemeAssist.IsMouseOverForeground="{TemplateBinding p:ThemeAssist.IsMouseOverForeground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Command="{TemplateBinding Command}" CommandParameter="{TemplateBinding CommandParameter}" Content="{TemplateBinding ToggleContent}" ContentTemplate="{TemplateBinding ToggleContentTemplate}" ContentTemplateSelector="{TemplateBinding ToggleContentTemplateSelector}" Cursor="{TemplateBinding Cursor}" Focusable="{TemplateBinding Focusable}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding IsChecked, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" IsTabStop="False" TabIndex="{TemplateBinding TabIndex}" />
-            <ToggleButton Name="PART_Toggle" Style="{TemplateBinding ButtonStyle}" Grid.Column="1" Width="Auto" Height="Auto" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" p:RippleAssist.Feedback="{TemplateBinding p:RippleAssist.Feedback}" p:ThemeAssist.CornerRadius="{StaticResource MyNet.CornerRadius.Control.Right}" p:ThemeAssist.IsCheckedBackground="{TemplateBinding p:ThemeAssist.IsCheckedBackground}" p:ThemeAssist.IsCheckedBorderBrush="{TemplateBinding p:ThemeAssist.IsCheckedBorderBrush}" p:ThemeAssist.IsCheckedForeground="{TemplateBinding p:ThemeAssist.IsCheckedForeground}" p:ThemeAssist.IsMouseOverBackground="{TemplateBinding p:ThemeAssist.IsMouseOverBackground}" p:ThemeAssist.IsMouseOverBorderBrush="{TemplateBinding p:ThemeAssist.IsMouseOverBorderBrush}" p:ThemeAssist.IsMouseOverForeground="{TemplateBinding p:ThemeAssist.IsMouseOverForeground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{x:Null}" Cursor="{TemplateBinding Cursor}" Focusable="{TemplateBinding Focusable}" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsPopupOpen, Mode=TwoWay}" IsTabStop="False" TabIndex="{TemplateBinding TabIndex}" Visibility="{Binding ShowDropDownButton, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+            <ToggleButton Name="PART_Toggle" Style="{TemplateBinding ButtonStyle}" Grid.Column="2" Width="Auto" Height="Auto" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" p:RippleAssist.Feedback="{TemplateBinding p:RippleAssist.Feedback}" p:ThemeAssist.CornerRadius="{StaticResource MyNet.CornerRadius.Control.Right}" p:ThemeAssist.IsCheckedBackground="{TemplateBinding p:ThemeAssist.IsCheckedBackground}" p:ThemeAssist.IsCheckedBorderBrush="{TemplateBinding p:ThemeAssist.IsCheckedBorderBrush}" p:ThemeAssist.IsCheckedForeground="{TemplateBinding p:ThemeAssist.IsCheckedForeground}" p:ThemeAssist.IsMouseOverBackground="{TemplateBinding p:ThemeAssist.IsMouseOverBackground}" p:ThemeAssist.IsMouseOverBorderBrush="{TemplateBinding p:ThemeAssist.IsMouseOverBorderBrush}" p:ThemeAssist.IsMouseOverForeground="{TemplateBinding p:ThemeAssist.IsMouseOverForeground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{x:Null}" Cursor="{TemplateBinding Cursor}" Focusable="{TemplateBinding Focusable}" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsPopupOpen, Mode=TwoWay}" IsTabStop="False" TabIndex="{TemplateBinding TabIndex}" Visibility="{Binding ShowDropDownButton, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
               <Grid>
                 <ctrl:PackIcon x:Name="Caret" Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="ChevronDown" RenderTransformOrigin="0.5, 0.5">
                   <ctrl:PackIcon.RenderTransform>
@@ -17685,43 +17999,47 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             </Trigger>
             <Trigger Property="DropDownButtonPosition" Value="Top">
               <Setter TargetName="Col0" Property="Width" Value="*" />
-              <Setter TargetName="Col1" Property="Width" Value="Auto" />
+              <Setter TargetName="Col2" Property="Width" Value="Auto" />
               <Setter TargetName="PART_Button" Property="Grid.Column" Value="0" />
-              <Setter TargetName="PART_Button" Property="Grid.Row" Value="1" />
+              <Setter TargetName="PART_Button" Property="Grid.Row" Value="2" />
               <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="0" />
               <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="0" />
               <Setter TargetName="Row0" Property="Height" Value="Auto" />
-              <Setter TargetName="Row1" Property="Height" Value="*" />
+              <Setter TargetName="Row2" Property="Height" Value="*" />
+              <Setter TargetName="Col1" Property="Width" Value="0" />
             </Trigger>
             <Trigger Property="DropDownButtonPosition" Value="Right">
               <Setter TargetName="Col0" Property="Width" Value="*" />
-              <Setter TargetName="Col1" Property="Width" Value="Auto" />
+              <Setter TargetName="Col2" Property="Width" Value="Auto" />
               <Setter TargetName="PART_Button" Property="Grid.Column" Value="0" />
               <Setter TargetName="PART_Button" Property="Grid.Row" Value="0" />
-              <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="1" />
+              <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="2" />
               <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="0" />
               <Setter TargetName="Row0" Property="Height" Value="*" />
-              <Setter TargetName="Row1" Property="Height" Value="Auto" />
+              <Setter TargetName="Row2" Property="Height" Value="Auto" />
+              <Setter TargetName="Row1" Property="Height" Value="0" />
             </Trigger>
             <Trigger Property="DropDownButtonPosition" Value="Bottom">
               <Setter TargetName="Col0" Property="Width" Value="*" />
-              <Setter TargetName="Col1" Property="Width" Value="Auto" />
+              <Setter TargetName="Col2" Property="Width" Value="Auto" />
               <Setter TargetName="PART_Button" Property="Grid.Column" Value="0" />
               <Setter TargetName="PART_Button" Property="Grid.Row" Value="0" />
               <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="0" />
-              <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="1" />
+              <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="2" />
               <Setter TargetName="Row0" Property="Height" Value="*" />
-              <Setter TargetName="Row1" Property="Height" Value="Auto" />
+              <Setter TargetName="Row2" Property="Height" Value="Auto" />
+              <Setter TargetName="Col1" Property="Width" Value="0" />
             </Trigger>
             <Trigger Property="DropDownButtonPosition" Value="Left">
               <Setter TargetName="Col0" Property="Width" Value="Auto" />
-              <Setter TargetName="Col1" Property="Width" Value="*" />
-              <Setter TargetName="PART_Button" Property="Grid.Column" Value="1" />
+              <Setter TargetName="Col2" Property="Width" Value="*" />
+              <Setter TargetName="PART_Button" Property="Grid.Column" Value="2" />
               <Setter TargetName="PART_Button" Property="Grid.Row" Value="0" />
               <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="0" />
               <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="0" />
               <Setter TargetName="Row0" Property="Height" Value="*" />
-              <Setter TargetName="Row1" Property="Height" Value="Auto" />
+              <Setter TargetName="Row2" Property="Height" Value="Auto" />
+              <Setter TargetName="Row1" Property="Height" Value="0" />
             </Trigger>
             <Trigger Property="DropDownButtonOrientation" Value="Up">
               <Setter TargetName="Caret" Property="Kind" Value="ChevronUp" />
@@ -17768,78 +18086,110 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsMouseOverForeground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Filled.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
-    <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
-    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
-    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Filled.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}">
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Filled.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}">
-    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Filled.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}">
-    <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.SplitButton.Filled.Alternate" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}" />
+  <Style x:Key="MyNet.Styles.SplitButton.Filled.Alternate.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.SplitButton.Filled.Alternate.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Custom}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.SplitButton.Filled.Alternate.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Custom}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.SplitButton.Filled.Alternate.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Custom}">
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
   </Style>
-  <Style x:Key="MyNet.Styles.SplitButton.Outlined" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
+  <Style x:Key="MyNet.Styles.SplitButton.Outlined" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate}">
     <Setter Property="Background" Value="Transparent" />
   </Style>
-  <Style x:Key="MyNet.Styles.SplitButton.Outlined.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Primary}">
+  <Style x:Key="MyNet.Styles.SplitButton.Outlined.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Primary}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
-  <Style x:Key="MyNet.Styles.SplitButton.Outlined.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Accent}">
+  <Style x:Key="MyNet.Styles.SplitButton.Outlined.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Accent}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
-  <Style x:Key="MyNet.Styles.SplitButton.Outlined.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}">
+  <Style x:Key="MyNet.Styles.SplitButton.Outlined.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Custom}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.SplitButton.Outlined.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Foreground}">
+  <Style x:Key="MyNet.Styles.SplitButton.Outlined.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Foreground}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.SplitButton.Text" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
+  <Style x:Key="MyNet.Styles.SplitButton.Text" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
   </Style>
-  <Style x:Key="MyNet.Styles.SplitButton.Text.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Primary}">
+  <Style x:Key="MyNet.Styles.SplitButton.Text.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Primary}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
-  <Style x:Key="MyNet.Styles.SplitButton.Text.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Accent}">
+  <Style x:Key="MyNet.Styles.SplitButton.Text.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Accent}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
-  <Style x:Key="MyNet.Styles.SplitButton.Text.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}">
+  <Style x:Key="MyNet.Styles.SplitButton.Text.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Custom}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.SplitButton.Text.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Foreground}">
+  <Style x:Key="MyNet.Styles.SplitButton.Text.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Foreground}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Elevation" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
-    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
     <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Elevation.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation}">
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
@@ -17851,27 +18201,28 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Elevation.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Custom}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Elevation.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Custom}">
     <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
   </Style>
-  <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
+  <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate}">
     <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
     <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate.Custom}">
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -17882,7 +18233,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate.Custom}">
-    <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
   </Style>
@@ -18405,7 +18755,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
               </DataTemplate.Triggers>
             </DataTemplate>
           </ControlTemplate.Resources>
-          <ctrl:Card Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
+          <ctrl:Card Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Foreground="{TemplateBinding Foreground}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
             <Grid>
               <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding Notification}" />
               <Button x:Name="CloseButton" Style="{StaticResource MyNet.Styles.Button.Icon.Tool}" Margin="{StaticResource MyNet.Margins.Default}" HorizontalAlignment="Right" VerticalAlignment="Top" Content="{me:ToolIcon Kind=Close}" ToolTip="{me:Resource Close}" />
@@ -18637,7 +18987,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ListBox}">
-          <ctrl:Card Padding="0" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ClipToBounds="False">
+          <ctrl:Card Padding="0" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" p:ElevationAssist.Elevation="{Binding Path=(p:ElevationAssist.Elevation), RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ClipToBounds="False" Foreground="{TemplateBinding Foreground}">
             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
           </ctrl:Card>
           <ControlTemplate.Triggers>
@@ -18799,7 +19149,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
               <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
             </MultiTrigger>
           </ControlTemplate.Triggers>
-          <ctrl:Card Padding="{TemplateBinding Padding}" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" p:ShadowAssist.ShadowEdges="{TemplateBinding p:ShadowAssist.ShadowEdges}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" DockPanel.Dock="Top" Focusable="False" SnapsToDevicePixels="true" UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+          <ctrl:Card Padding="{TemplateBinding Padding}" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" p:ShadowAssist.ShadowEdges="{TemplateBinding p:ShadowAssist.ShadowEdges}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" DockPanel.Dock="Top" Focusable="False" Foreground="{TemplateBinding Foreground}" SnapsToDevicePixels="true" UniformCornerRadius="{Binding Path=(p:ThemeAssist.UniformCornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
             <ctrl:DynamicScrollViewer Padding="{TemplateBinding Padding}" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
               <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             </ctrl:DynamicScrollViewer>
@@ -19043,7 +19393,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Elevation" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation}">
+  <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Elevation" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate}">
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
     <Setter Property="FontWeight" Value="{Binding Path=(TextElement.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
     <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -19058,6 +19408,24 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Elevation.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.ToolBar.Elevation}">
+    <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Filled" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
+    <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+    <Setter Property="FontWeight" Value="{Binding Path=(TextElement.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="MinWidth" Value="46" />
+    <Setter Property="Padding" Value="{Binding Path=(p:LayoutAssist.InnerPadding), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="VerticalAlignment" Value="Stretch" />
+    <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Filled.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.ToolBar.Filled}">
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
@@ -19091,6 +19459,26 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Elevation.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar.Elevation}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Filled" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
+    <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+    <Setter Property="FontWeight" Value="{Binding Path=(TextElement.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="MinWidth" Value="46" />
+    <Setter Property="Padding" Value="{Binding Path=(p:LayoutAssist.InnerPadding), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="VerticalAlignment" Value="Stretch" />
+    <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Filled.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar.Filled}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
@@ -20274,7 +20662,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ToolBar}">
-          <ctrl:Card Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ClipContent="False" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
+          <ctrl:Card Padding="0" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ClipContent="False" Foreground="{TemplateBinding Foreground}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
             <DockPanel x:Name="Grid">
               <Grid x:Name="OverflowGrid" HorizontalAlignment="Right" DockPanel.Dock="Right">
                 <ToggleButton x:Name="OverflowButton" Style="{StaticResource MyNet.Styles.ToggleButton.Embedded.ToolBar.Overflow.Horizontal}" Background="{TemplateBinding Background}" ClickMode="Press" FocusVisualStyle="{x:Null}" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding IsOverflowOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HasOverflowItems, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
@@ -20581,7 +20969,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ctrl:SelectionCommandsBar}">
-          <ctrl:Card Padding="{TemplateBinding Padding}" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ClipContent="False" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
+          <ctrl:Card Padding="{TemplateBinding Padding}" p:ElevationAssist.Elevation="{TemplateBinding p:ElevationAssist.Elevation}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ClipContent="False" Foreground="{TemplateBinding Foreground}" UniformCornerRadius="{TemplateBinding p:ThemeAssist.UniformCornerRadius}">
             <Grid KeyboardNavigation.TabIndex="1" KeyboardNavigation.TabNavigation="Local">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />

@@ -194,7 +194,7 @@
         <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
     </Style>
-    <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Elevation" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation}">
+    <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Elevation" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate}">
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="FontWeight" Value="{Binding Path=(TextElement.FontWeight), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />

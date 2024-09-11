@@ -81,5 +81,17 @@ namespace MyNet.Wpf.Controls
         }
 
         #endregion IsCheckedEnabled
+
+        #region InnerSpacing
+
+        public static readonly DependencyProperty InnerSpacingProperty = DependencyProperty.Register(nameof(InnerSpacing), typeof(GridLength), typeof(SplitButton), new UIPropertyMetadata(new GridLength(1)));
+
+        public GridLength InnerSpacing
+        {
+            get => (GridLength)GetValue(InnerSpacingProperty);
+            set => SetValue(InnerSpacingProperty, value);
+        }
+
+        #endregion InnerSpacing
     }
 }

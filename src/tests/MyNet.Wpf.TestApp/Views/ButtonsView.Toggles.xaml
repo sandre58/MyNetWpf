@@ -14,6 +14,38 @@
 
             <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.ToggleButton">
                 <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="tg_0_3_0">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Elevation}" Content="{my:Resource Cancel, Casing=AllCaps}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tg_0_3_1">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Elevation.Primary}" my:IconAssist.Icon="{my:Icon Kind=ContentSave}" Content="{my:Resource Save, Casing=AllCaps}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tg_0_3_2">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Elevation.Accent}" Content="{my:Resource Apply, Casing=AllCaps}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tg_0_3_3">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Elevation.Foreground}" Content="{my:MediumIcon Kind=Settings}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tg_0_3_4">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Elevation.Custom}"
+                                          my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
+                                          my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Positive}"
+                                          Content="{my:Resource Save,
+                                                                Casing=AllCaps}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tg_0_3_5">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Elevation.Custom}"
+                                          my:IconAssist.Alignment="Right"
+                                          my:IconAssist.Icon="{my:Icon Kind=Close}"
+                                          my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Left}"
+                                          my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Negative}"
+                                          Content="{my:Resource Close,
+                                                                Casing=AllCaps}" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
                     <my:SimpleStackPanel Orientation="Horizontal">
                         <smtx:XamlDisplay UniqueKey="tg_0_0_0">
                             <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Filled}" Content="{my:Resource Cancel, Casing=AllCaps}" />
@@ -107,43 +139,50 @@
                         </smtx:XamlDisplay>
                     </my:SimpleStackPanel>
 
-                    <my:SimpleStackPanel Orientation="Horizontal">
-                        <smtx:XamlDisplay UniqueKey="tg_0_3_0">
-                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Elevation}" Content="{my:Resource Cancel, Casing=AllCaps}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="tg_0_3_1">
-                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Elevation.Primary}" my:IconAssist.Icon="{my:Icon Kind=ContentSave}" Content="{my:Resource Save, Casing=AllCaps}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="tg_0_3_2">
-                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Elevation.Accent}" Content="{my:Resource Apply, Casing=AllCaps}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="tg_0_3_3">
-                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Elevation.Foreground}" Content="{my:MediumIcon Kind=Settings}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="tg_0_3_4">
-                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Elevation.Custom}"
-                                          my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
-                                          my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Positive}"
-                                          Content="{my:Resource Save,
-                                                                Casing=AllCaps}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="tg_0_3_5">
-                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Elevation.Custom}"
-                                          my:IconAssist.Alignment="Right"
-                                          my:IconAssist.Icon="{my:Icon Kind=Close}"
-                                          my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Left}"
-                                          my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Negative}"
-                                          Content="{my:Resource Close,
-                                                                Casing=AllCaps}" />
-                        </smtx:XamlDisplay>
-                    </my:SimpleStackPanel>
-
                 </my:SimpleStackPanel>
             </Expander>
 
             <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.ToggleButton.Rounded">
                 <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
 
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="tg_1_3_0">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation}" Content="OK" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tg_1_3_1">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation.Primary}" Content="{my:MediumIcon Kind=ContentSave}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tg_1_3_2">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation.Accent}"
+                                          Width="50"
+                                          Height="50"
+                                          Margin="5"
+                                          my:IconAssist.Alignment="Bottom"
+                                          my:IconAssist.Icon="{my:Icon Kind=Filter}"
+                                          my:IconAssist.Margin="{StaticResource MyNet.Margins.Small.Top}"
+                                          Content="{my:Resource Filter}"
+                                          FontSize="12" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tg_1_3_3">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation.Foreground}" Content="{my:MediumIcon Kind=Settings}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tg_1_3_4">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation.Custom}"
+                                          Width="50"
+                                          Height="50"
+                                          Margin="5"
+                                          my:IconAssist.Alignment="Top"
+                                          my:IconAssist.Icon="{my:Icon Kind=Check}"
+                                          my:IconAssist.Margin="{StaticResource MyNet.Margins.Small.Bottom}"
+                                          my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Positive}"
+                                          Content="{my:Resource Validate}"
+                                          FontSize="12" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tg_1_3_5">
+                            <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation.Custom}" my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Negative}" Content="{my:MediumIcon Kind=Close}" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+                    
                     <my:SimpleStackPanel Orientation="Horizontal">
                         <smtx:XamlDisplay UniqueKey="tg_1_0_0">
                             <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled}" Content="OK" />

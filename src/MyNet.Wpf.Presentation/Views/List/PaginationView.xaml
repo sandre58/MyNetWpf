@@ -24,7 +24,7 @@
     </UserControl.Resources>
 
     <DockPanel>
-        <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation}" Margin="{StaticResource MyNet.Margins.Medium.Left}"
+        <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate}" Margin="{StaticResource MyNet.Margins.Medium.Left}"
                            VerticalAlignment="Stretch"
                            DockPanel.Dock="Right"
                            PopupPadding="0"

@@ -78,11 +78,12 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Filled.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled}">
-        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
-        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Filled.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Custom}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -93,7 +94,6 @@
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Filled.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Custom}">
-        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
     </Style>
@@ -105,18 +105,22 @@
     <Style x:Key="MyNet.Styles.ToggleButton.Outlined.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Primary}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Outlined.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Accent}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Outlined.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Custom}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Outlined.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Foreground}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
 
     <!-- Text -->
@@ -129,21 +133,25 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Text.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Accent}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Text.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Custom}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Text.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Foreground}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
 
     <!-- Elevation -->
@@ -160,6 +168,11 @@
                                         BorderThickness="{TemplateBinding BorderThickness}"
                                         CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                         Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" />
+                                <Border x:Name="mouseOver"
+                                        Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                        Visibility="Collapsed" />
                             </Grid>
                         </AdornerDecorator>
                         <ctrl:Ripple Padding="{TemplateBinding Padding}"
@@ -183,6 +196,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter TargetName="border" Property="p:ShadowAssist.Darken" Value="True" />
+                            <Setter TargetName="mouseOver" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="true">
                             <Setter TargetName="border" Property="p:ShadowAssist.Darken" Value="True" />
@@ -190,6 +204,7 @@
                         <Trigger Property="IsChecked" Value="true">
                             <Setter TargetName="border" Property="Background" Value="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                             <Setter TargetName="border" Property="BorderBrush" Value="{Binding Path=(p:ThemeAssist.IsCheckedBorderBrush), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="mouseOver" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
@@ -202,10 +217,12 @@
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Elevation.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Elevation}">
         <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Elevation.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Elevation.Custom}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -216,7 +233,6 @@
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Elevation.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Elevation.Custom}">
-        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
     </Style>
@@ -289,10 +305,11 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Ellipse x:Name="HoverEllipse"
+                        <Ellipse x:Name="ellipse"
                                  Fill="{TemplateBinding Background}"
                                  Stroke="{TemplateBinding BorderBrush}"
                                  StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={x:Static c:ThicknessToDoubleConverter.Top}}" />
+                        <Ellipse x:Name="mouseOver" Fill="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" Visibility="Collapsed" />
                         <Ellipse x:Name="CheckedEllipse" Fill="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" RenderTransformOrigin="0.5, 0.5">
                             <Ellipse.RenderTransform>
                                 <ScaleTransform x:Name="CheckedEllipseScale" CenterX="0.5" CenterY="0.5" ScaleX="1.0" ScaleY="1.0" />
@@ -307,7 +324,7 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="HoverEllipse" Property="Fill" Value="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="mouseOver" Property="Visibility" Value="Visible" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -323,11 +340,12 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Filled.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled}">
-        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
-        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Filled.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Custom}">
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -338,7 +356,6 @@
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Filled.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Custom}">
-        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
     </Style>
@@ -350,18 +367,22 @@
     <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Outlined.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Primary}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Outlined.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Accent}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Outlined.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Custom}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Outlined.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Foreground}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
 
     <!-- Rounded Text -->
@@ -389,6 +410,150 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <!-- Rounded Elevation -->
+    <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Elevation" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.Opacity)" To="{StaticResource MyNet.Opacity.Disabled}" Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition From="*" To="Checked">
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckedEllipseScale" Storyboard.TargetProperty="ScaleX" Duration="0:0:0.2">
+                                                <LinearDoubleKeyFrame KeyTime="0:0:0.0" Value="0" />
+                                                <LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="1.0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckedEllipseScale" Storyboard.TargetProperty="ScaleY" Duration="0:0:0.2">
+                                                <LinearDoubleKeyFrame KeyTime="0:0:0.0" Value="0" />
+                                                <LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="1.0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="Checked" To="Unchecked">
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckedEllipseScale" Storyboard.TargetProperty="ScaleX" Duration="0:0:0.2">
+                                                <LinearDoubleKeyFrame KeyTime="0:0:0.0" Value="1.0" />
+                                                <LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckedEllipseScale" Storyboard.TargetProperty="ScaleY" Duration="0:0:0.2">
+                                                <LinearDoubleKeyFrame KeyTime="0:0:0.0" Value="1.0" />
+                                                <LinearDoubleKeyFrame KeyTime="0:0:0.1" Value="0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualTransition>
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="CheckedEllipseScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="1.0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="CheckedEllipseScale"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="1.0"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="CheckedEllipseScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="CheckedEllipseScale"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="0"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
+                            <Grid>
+                                <Ellipse x:Name="border"
+                                         Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}"
+                                         Fill="{TemplateBinding Background}"
+                                         Stroke="{TemplateBinding BorderBrush}"
+                                         StrokeThickness="{TemplateBinding BorderThickness}" />
+                                <Ellipse x:Name="mouseOver"
+                                         Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}"
+                                         Fill="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Visibility="Collapsed" />
+                                <Ellipse x:Name="CheckedEllipse"
+                                         Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}"
+                                         Fill="{Binding Path=(p:ThemeAssist.IsCheckedBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         RenderTransformOrigin="0.5, 0.5">
+                                    <Ellipse.RenderTransform>
+                                        <ScaleTransform x:Name="CheckedEllipseScale" CenterX="0.5" CenterY="0.5" ScaleX="1.0" ScaleY="1.0" />
+                                    </Ellipse.RenderTransform>
+                                </Ellipse>
+                            </Grid>
+                        </AdornerDecorator>
+                        
+                        <ctrl:Ripple Padding="{TemplateBinding Padding}"
+                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                     Clip="{Binding ElementName=GeometryEllipse, Path=RenderedGeometry}"
+                                     ClipToBounds="True"
+                                     Content="{TemplateBinding Content}"
+                                     ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                     ContentTemplate="{TemplateBinding ContentTemplate}"
+                                     Focusable="False"
+                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        <Ellipse x:Name="GeometryEllipse"
+                                 Fill="Transparent"
+                                 Focusable="False"
+                                 IsHitTestVisible="False" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="{StaticResource MyNet.Opacity.Disabled}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="p:ShadowAssist.Darken" Value="True" />
+                            <Setter TargetName="mouseOver" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter TargetName="border" Property="p:ShadowAssist.Darken" Value="True" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="p:ElevationAssist.Elevation" Value="Dp5" />
+    </Style>
+    <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Elevation.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation}">
+        <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Elevation.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation.Custom}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Elevation.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation.Custom}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Elevation.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation.Custom}">
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Contrast=True}" />
     </Style>
 
     <!-- Icon -->
@@ -551,24 +716,27 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="p:ElevationAssist.Elevation" Value="Dp0" />
         <Setter Property="p:ToggleButtonAssist.OnContent" Value="{StaticResource MyNet.PackIcons.Check}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Action.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Action}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Action.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Action}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Action.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Action}">
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Action.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Action}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="Foreground" Value="{me:BrushBinding Path=Background, RelativeSource={RelativeSource Self}, Contrast=True}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding Path=Background, RelativeSource={RelativeSource Self}, Contrast=True}" />
     </Style>
 
     <!-- Switch -->

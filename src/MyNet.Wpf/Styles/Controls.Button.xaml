@@ -152,8 +152,8 @@
         <Setter Property="p:IconAssist.Opacity" Value="{StaticResource MyNet.Opacity.Secondary}" />
         <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=Foreground}" />
         <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsMouseOverForeground), Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsMouseOverForeground), RelativeSource={RelativeSource Mode=Self}}" />
@@ -164,26 +164,31 @@
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Filled.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Filled.Custom" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Filled.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Filled.Foreground.SemiTransparent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
     <!-- Outlined -->
@@ -193,38 +198,39 @@
     <Style x:Key="MyNet.Styles.Button.Outlined.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Outlined}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Outlined.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Outlined}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Outlined.Custom" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Outlined}">
         <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=BorderBrush}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Outlined.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Outlined}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=BorderBrush}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=BorderBrush}" />
         <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=BorderBrush}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
 
     <!-- Text -->
     <Style x:Key="MyNet.Styles.Button.Text" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Text.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text}">
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Text.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text}">
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Text.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text}">
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
     <!-- Elevation -->
@@ -241,6 +247,11 @@
                                         BorderThickness="{TemplateBinding BorderThickness}"
                                         CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                         Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}" />
+                                <Border x:Name="mouseOver"
+                                        Background="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{Binding Path=(p:ThemeAssist.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                        Visibility="Collapsed" />
                             </Grid>
                         </AdornerDecorator>
                         <ctrl:Ripple Padding="{TemplateBinding Padding}"
@@ -264,6 +275,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter TargetName="border" Property="p:ShadowAssist.Darken" Value="True" />
+                            <Setter TargetName="mouseOver" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="true">
                             <Setter TargetName="border" Property="p:ShadowAssist.Darken" Value="True" />
@@ -281,20 +293,24 @@
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Elevation.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Elevation.Custom" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Elevation}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Elevation.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Elevation}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
 
     <!-- Rounded Filled -->
@@ -309,7 +325,7 @@
                         <Ellipse x:Name="border"
                                  Fill="{TemplateBinding Background}"
                                  Stroke="{TemplateBinding BorderBrush}"
-                                 StrokeThickness="{TemplateBinding BorderThickness}" />
+                                 StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:ThicknessToDoubleConverter.Left}}" />
                         <Ellipse x:Name="mouseOver" Fill="{Binding Path=(p:ThemeAssist.IsMouseOverBackground), RelativeSource={RelativeSource Mode=TemplatedParent}}" Visibility="Collapsed" />
                         <ctrl:Ripple Padding="{TemplateBinding Padding}"
                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -344,19 +360,33 @@
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Filled.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Filled.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Filled.Custom" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
+        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Filled.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    </Style>
+    <Style x:Key="MyNet.Styles.Button.Rounded.Filled.Foreground.SemiTransparent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
+        <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
     <!-- Rounded Outlined -->
@@ -366,38 +396,40 @@
     <Style x:Key="MyNet.Styles.Button.Rounded.Outlined.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Outlined}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Outlined.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Outlined}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Outlined.Custom" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Outlined}">
         <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=BorderBrush}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Outlined.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Outlined}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=BorderBrush}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=BorderBrush}" />
         <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=BorderBrush}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
 
     <!-- Rouned Text -->
     <Style x:Key="MyNet.Styles.Button.Rounded.Text" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Text.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Text}">
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Text.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Text}">
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Text.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Text}">
+        <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
 
     <!-- Rounded Elevation -->
@@ -449,20 +481,24 @@
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Elevation.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Elevation.Custom" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Elevation}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Elevation.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Elevation}">
         <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
 
     <!-- Icon -->
@@ -515,12 +551,15 @@
     </Style>
     <Style x:Key="MyNet.Styles.Button.Icon.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Icon}">
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Icon.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Icon}">
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Icon.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Icon}">
         <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
     <!-- Hyper link -->
@@ -563,14 +602,17 @@
     </Style>
     <Style x:Key="MyNet.Styles.Button.HyperLink.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.HyperLink}">
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Light}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Primary.Light}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.HyperLink.Accent" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.HyperLink}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Light}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Accent.Light}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.HyperLink.Foreground" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.HyperLink}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=BorderBrush}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=BorderBrush}" />
     </Style>
 
     <!-- Specifics -->
@@ -583,6 +625,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Negative}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{DynamicResource MyNet.Brushes.Negative}" />
         <Setter Property="ToolTip" Value="{me:Resource Remove}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Icon.Tool" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Icon.Foreground}">

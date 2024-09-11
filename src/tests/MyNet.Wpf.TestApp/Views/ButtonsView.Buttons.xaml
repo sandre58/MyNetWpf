@@ -78,40 +78,8 @@
                                     Content="{my:Resource Close,
                                                           Casing=AllCaps}" />
                         </smtx:XamlDisplay>
-                    </my:SimpleStackPanel>
-
-                    <my:SimpleStackPanel Orientation="Horizontal">
-                        <smtx:XamlDisplay UniqueKey="bt_0_2_0">
-                            <Button Style="{StaticResource MyNet.Styles.Button.Filled}" Content="{my:Resource Cancel, Casing=AllCaps}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="bt_0_2_1">
-                            <Button Style="{StaticResource MyNet.Styles.Button.Filled}"
-                                    my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
-                                    Content="{my:Resource Save,
-                                                          Casing=AllCaps}"
-                                    Foreground="{DynamicResource MyNet.Brushes.Primary}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="bt_0_2_2">
-                            <Button Style="{StaticResource MyNet.Styles.Button.Filled}" Content="{my:Resource Apply, Casing=AllCaps}" Foreground="{DynamicResource MyNet.Brushes.Accent}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="bt_0_2_3">
-                            <Button Style="{StaticResource MyNet.Styles.Button.Filled}" Content="{my:MediumIcon Kind=Settings}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="bt_0_2_4">
-                            <Button Style="{StaticResource MyNet.Styles.Button.Filled}"
-                                    my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
-                                    Content="{my:Resource Save,
-                                                          Casing=AllCaps}"
-                                    Foreground="{DynamicResource MyNet.Brushes.Positive}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="bt_0_2_5">
-                            <Button Style="{StaticResource MyNet.Styles.Button.Filled}"
-                                    my:IconAssist.Alignment="Right"
-                                    my:IconAssist.Icon="{my:Icon Kind=Close}"
-                                    my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Left}"
-                                    Content="{my:Resource Close,
-                                                          Casing=AllCaps}"
-                                    Foreground="{DynamicResource MyNet.Brushes.Negative}" />
+                        <smtx:XamlDisplay UniqueKey="bt_0_1_6">
+                            <Button Style="{StaticResource MyNet.Styles.Button.Filled.Foreground.SemiTransparent}" my:IconAssist.Icon="{my:Icon Kind=Close}" Content="{my:Resource Close, Casing=AllCaps}" />
                         </smtx:XamlDisplay>
                     </my:SimpleStackPanel>
 
@@ -257,44 +225,8 @@
                         <smtx:XamlDisplay UniqueKey="bt_1_1_5">
                             <Button Style="{StaticResource MyNet.Styles.Button.Rounded.Filled.Custom}" Background="{DynamicResource MyNet.Brushes.Negative}" Content="{my:MediumIcon Kind=Close}" />
                         </smtx:XamlDisplay>
-                    </my:SimpleStackPanel>
-
-                    <my:SimpleStackPanel Orientation="Horizontal">
-                        <smtx:XamlDisplay UniqueKey="bt_1_2_0">
-                            <Button Style="{StaticResource MyNet.Styles.Button.Rounded.Filled}" Content="OK" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="bt_1_2_1">
-                            <Button Style="{StaticResource MyNet.Styles.Button.Rounded.Filled}" Content="{my:MediumIcon Kind=ContentSave}" Foreground="{DynamicResource MyNet.Brushes.Primary}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="bt_1_2_2">
-                            <Button Style="{StaticResource MyNet.Styles.Button.Rounded.Filled}"
-                                    Width="50"
-                                    Height="50"
-                                    Margin="5"
-                                    my:IconAssist.Alignment="Bottom"
-                                    my:IconAssist.Icon="{my:Icon Kind=Filter}"
-                                    my:IconAssist.Margin="{StaticResource MyNet.Margins.Small.Top}"
-                                    Content="{my:Resource Filter}"
-                                    FontSize="12"
-                                    Foreground="{DynamicResource MyNet.Brushes.Accent}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="bt_1_2_3">
-                            <Button Style="{StaticResource MyNet.Styles.Button.Rounded.Filled}" Content="{my:MediumIcon Kind=Settings}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="bt_1_2_4">
-                            <Button Style="{StaticResource MyNet.Styles.Button.Rounded.Filled}"
-                                    Width="50"
-                                    Height="50"
-                                    Margin="5"
-                                    my:IconAssist.Alignment="Top"
-                                    my:IconAssist.Icon="{my:Icon Kind=Check}"
-                                    my:IconAssist.Margin="{StaticResource MyNet.Margins.Small.Bottom}"
-                                    Content="{my:Resource Validate}"
-                                    FontSize="12"
-                                    Foreground="{DynamicResource MyNet.Brushes.Positive}" />
-                        </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="bt_1_2_5">
-                            <Button Style="{StaticResource MyNet.Styles.Button.Rounded.Filled}" Content="{my:MediumIcon Kind=Close}" Foreground="{DynamicResource MyNet.Brushes.Negative}" />
+                        <smtx:XamlDisplay UniqueKey="bt_1_1_6">
+                            <Button Style="{StaticResource MyNet.Styles.Button.Rounded.Filled.Foreground.SemiTransparent}" Content="{my:MediumIcon Kind=Close}" />
                         </smtx:XamlDisplay>
                     </my:SimpleStackPanel>
 

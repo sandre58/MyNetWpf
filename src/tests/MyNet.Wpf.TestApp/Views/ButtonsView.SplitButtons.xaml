@@ -19,15 +19,12 @@
                     <my:SimpleStackPanel Orientation="Horizontal">
 
                         <smtx:XamlDisplay UniqueKey="sb_0_0_0">
-
-                            <my:Badged Badge="{my:Resource Default}">
-                                <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Elevation}"
-                                                IsCheckedEnabled="True"
-                                                PopupMode="Click"
-                                                ToggleContent="CLICK">
-                                    <contents:SmallContent />
-                                </my:SplitButton>
-                            </my:Badged>
+                            <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Elevation}"
+                                            IsCheckedEnabled="True"
+                                            PopupMode="Click"
+                                            ToggleContent="CLICK">
+                                <contents:SmallContent />
+                            </my:SplitButton>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="sb_0_0_1">
                             <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Elevation.Primary}"
@@ -74,14 +71,12 @@
 
                         <smtx:XamlDisplay UniqueKey="sb_0_3_0">
 
-                            <my:Badged Badge="{my:Resource Default}">
-                                <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate}"
+                            <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate}"
                                                 IsCheckedEnabled="True"
                                                 PopupMode="Click"
                                                 ToggleContent="CLICK">
-                                    <contents:SmallContent />
-                                </my:SplitButton>
-                            </my:Badged>
+                                <contents:SmallContent />
+                            </my:SplitButton>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="sb_0_3_1">
                             <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate.Primary}"
@@ -112,6 +107,110 @@
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="sb_0_3_5">
                             <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate.Custom}"
+                                            my:IconAssist.Alignment="Right"
+                                            my:IconAssist.Icon="{my:Icon Kind=Close}"
+                                            my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Left}"
+                                            my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Negative}"
+                                            IsCheckedEnabled="True"
+                                            PopupAnimation="Scroll"
+                                            ToggleContent="SCROLL">
+                                <contents:SmallContent />
+                            </my:SplitButton>
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+
+                        <smtx:XamlDisplay UniqueKey="sb_0_4_0">
+                            <my:Badged Badge="{my:Resource Default}">
+                                <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Filled}"
+                                            IsCheckedEnabled="True"
+                                            PopupMode="Click"
+                                            ToggleContent="CLICK">
+                                    <contents:SmallContent />
+                                </my:SplitButton>
+                            </my:Badged>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="sb_0_4_1">
+                            <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Filled.Primary}"
+                                            my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
+                                            PopupMode="Click"
+                                            ToggleContent="CLICK">
+                                <contents:SmallContent />
+                            </my:SplitButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="sb_0_4_2">
+                            <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Filled.Accent}" PopupMode="MouseOverEager" ToggleContent="MOUSEOVEREAGER">
+                                <contents:SmallContent />
+                            </my:SplitButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="sb_0_4_3">
+                            <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Filled.Foreground}" PopupAnimation="None" ToggleContent="{my:MediumIcon Kind=Settings}">
+                                <contents:SmallContent />
+                            </my:SplitButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="sb_0_4_4">
+                            <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}"
+                                            my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
+                                            Background="{DynamicResource MyNet.Brushes.Positive}"
+                                            PopupAnimation="Fade"
+                                            ToggleContent="FADE">
+                                <contents:SmallContent />
+                            </my:SplitButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="sb_0_4_5">
+                            <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Filled.Custom}"
+                                            my:IconAssist.Alignment="Right"
+                                            my:IconAssist.Icon="{my:Icon Kind=Close}"
+                                            my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Left}"
+                                            Background="{DynamicResource MyNet.Brushes.Negative}"
+                                            IsCheckedEnabled="True"
+                                            PopupAnimation="Scroll"
+                                            ToggleContent="SCROLL">
+                                <contents:SmallContent />
+                            </my:SplitButton>
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+
+                        <smtx:XamlDisplay UniqueKey="sb_0_5_0">
+                            <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate}"
+                                            IsCheckedEnabled="True"
+                                            PopupMode="Click"
+                                            ToggleContent="CLICK">
+                                <contents:SmallContent />
+                            </my:SplitButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="sb_0_5_1">
+                            <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Primary}"
+                                            my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
+                                            PopupMode="Click"
+                                            ToggleContent="CLICK">
+                                <contents:SmallContent />
+                            </my:SplitButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="sb_0_5_2">
+                            <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Accent}" PopupMode="MouseOverEager" ToggleContent="MOUSEOVEREAGER">
+                                <contents:SmallContent />
+                            </my:SplitButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="sb_0_5_3">
+                            <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Foreground}" PopupAnimation="None" ToggleContent="{my:MediumIcon Kind=Settings}">
+                                <contents:SmallContent />
+                            </my:SplitButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="sb_0_5_4">
+                            <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Custom}"
+                                            my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
+                                            my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Positive}"
+                                            PopupAnimation="Fade"
+                                            ToggleContent="FADE">
+                                <contents:SmallContent />
+                            </my:SplitButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="sb_0_5_5">
+                            <my:SplitButton Style="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Custom}"
                                             my:IconAssist.Alignment="Right"
                                             my:IconAssist.Icon="{my:Icon Kind=Close}"
                                             my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Left}"

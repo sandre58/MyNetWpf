@@ -18,15 +18,12 @@
 
                     <my:SimpleStackPanel Orientation="Horizontal">
 
-                        <smtx:XamlDisplay UniqueKey="ddb_0_0_0">
-
-                            <my:Badged Badge="{my:Resource Default}">
-                                <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation}" PopupMode="Click" ToggleContent="CLICK">
-                                    <contents:SmallContent />
-                                </my:DropDownButton>
-                            </my:Badged>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_5_0">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation}" PopupMode="Click" ToggleContent="CLICK">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
                         </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="ddb_0_0_1">
+                        <smtx:XamlDisplay UniqueKey="ddb_0_5_1">
                             <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation.Primary}"
                                                my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
                                                PopupMode="MouseOver"
@@ -34,18 +31,65 @@
                                 <contents:SmallContent />
                             </my:DropDownButton>
                         </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="ddb_0_0_2">
+                        <smtx:XamlDisplay UniqueKey="ddb_0_5_2">
                             <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation.Accent}" PopupMode="MouseOverEager" ToggleContent="MOUSEOVEREAGER">
                                 <contents:SmallContent />
                             </my:DropDownButton>
                         </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="ddb_0_0_3">
+                        <smtx:XamlDisplay UniqueKey="ddb_0_5_3">
                             <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation.Foreground}" PopupAnimation="None" ToggleContent="{my:MediumIcon Kind=Settings}">
                                 <contents:SmallContent />
                             </my:DropDownButton>
                         </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="ddb_0_0_4">
+                        <smtx:XamlDisplay UniqueKey="ddb_0_5_4">
                             <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}"
+                                               my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
+                                               Background="{DynamicResource MyNet.Brushes.Positive}"
+                                               PopupAnimation="Fade"
+                                               ToggleContent="FADE">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_5_5">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}"
+                                               my:IconAssist.Alignment="Right"
+                                               my:IconAssist.Icon="{my:Icon Kind=Close}"
+                                               my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Left}"
+                                               Background="{DynamicResource MyNet.Brushes.Negative}"
+                                               PopupAnimation="Scroll"
+                                               ToggleContent="SCROLL">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+
+                        <smtx:XamlDisplay UniqueKey="ddb_0_0_0">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate}" PopupMode="Click" ToggleContent="CLICK">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_0_1">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate.Primary}"
+                                               my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
+                                               PopupMode="MouseOver"
+                                               ToggleContent="MOUSEOVER">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_0_2">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate.Accent}" PopupMode="MouseOverEager" ToggleContent="MOUSEOVEREAGER">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_0_3">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate.Foreground}" PopupAnimation="None" ToggleContent="{my:MediumIcon Kind=Settings}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_0_4">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate.Custom}"
                                                my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
                                                my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Positive}"
                                                PopupAnimation="Fade"
@@ -54,7 +98,105 @@
                             </my:DropDownButton>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="ddb_0_0_5">
-                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation.Custom}"
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate.Custom}"
+                                               my:IconAssist.Alignment="Right"
+                                               my:IconAssist.Icon="{my:Icon Kind=Close}"
+                                               my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Left}"
+                                               my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Negative}"
+                                               PopupAnimation="Scroll"
+                                               ToggleContent="SCROLL">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+
+                        <smtx:XamlDisplay UniqueKey="ddb_0_4_0">
+
+                            <my:Badged Badge="{my:Resource Default}">
+                                <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Filled}" PopupMode="Click" ToggleContent="CLICK">
+                                    <contents:SmallContent />
+                                </my:DropDownButton>
+                            </my:Badged>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_4_1">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Filled.Primary}"
+                                               my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
+                                               PopupMode="Click"
+                                               ToggleContent="CLICK">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_4_2">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Filled.Accent}" PopupMode="MouseOverEager" ToggleContent="MOUSEOVEREAGER">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_4_3">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Filled.Foreground}" PopupAnimation="None" ToggleContent="{my:MediumIcon Kind=Settings}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_4_4">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}"
+                                               my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
+                                               Background="{DynamicResource MyNet.Brushes.Positive}"
+                                               PopupAnimation="Fade"
+                                               ToggleContent="FADE">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_4_5">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Filled.Custom}"
+                                               my:IconAssist.Alignment="Right"
+                                               my:IconAssist.Icon="{my:Icon Kind=Close}"
+                                               my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Left}"
+                                               Background="{DynamicResource MyNet.Brushes.Negative}"
+                                               PopupAnimation="Scroll"
+                                               ToggleContent="SCROLL">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+
+                        <smtx:XamlDisplay UniqueKey="ddb_0_3_0">
+
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate}" PopupMode="Click" ToggleContent="CLICK">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_3_1">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Primary}"
+                                               my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
+                                               PopupMode="MouseOver"
+                                               ToggleContent="MOUSEOVER">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_3_2">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Accent}" PopupMode="MouseOverEager" ToggleContent="MOUSEOVEREAGER">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_3_3">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Foreground}" PopupAnimation="None" ToggleContent="{my:MediumIcon Kind=Settings}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_3_4">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Custom}"
+                                               my:IconAssist.Icon="{my:Icon Kind=ContentSave}"
+                                               my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Positive}"
+                                               PopupAnimation="Fade"
+                                               ToggleContent="FADE">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_0_3_5">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Custom}"
                                                my:IconAssist.Alignment="Right"
                                                my:IconAssist.Icon="{my:Icon Kind=Close}"
                                                my:IconAssist.Margin="{StaticResource MyNet.Margins.Default.Left}"
@@ -173,7 +315,123 @@
                 <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
 
                     <my:SimpleStackPanel Orientation="Horizontal">
-                        <smtx:XamlDisplay UniqueKey="ddb_1_0_0">
+                        <smtx:XamlDisplay UniqueKey="ddb_1_5_0">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation}"
+                                               DropDownButtonPosition="Bottom"
+                                               PlacementMode="BottomAndAlignCentres"
+                                               ToggleContent="OK">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_5_1">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Primary}"
+                                               DropDownButtonPosition="Top"
+                                               PlacementMode="TopAndAlignCentres"
+                                               ToggleContent="{my:MediumIcon Kind=ContentSave}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_5_2">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Accent}"
+                                               Width="50"
+                                               Height="50"
+                                               Margin="5"
+                                               my:IconAssist.Alignment="Bottom"
+                                               my:IconAssist.Icon="{my:Icon Kind=Filter}"
+                                               my:IconAssist.Margin="{StaticResource MyNet.Margins.Small.Top}"
+                                               FontSize="12"
+                                               ShowDropDownButton="False"
+                                               ToggleContent="{my:Resource Filter}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_5_3">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Foreground}" ToggleContent="{my:MediumIcon Kind=Settings}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_5_4">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Custom}"
+                                               Width="50"
+                                               Height="50"
+                                               Margin="5"
+                                               my:IconAssist.Alignment="Top"
+                                               my:IconAssist.Icon="{my:Icon Kind=Check}"
+                                               my:IconAssist.Margin="{StaticResource MyNet.Margins.Small.Bottom}"
+                                               Background="{DynamicResource MyNet.Brushes.Positive}"
+                                               FontSize="12"
+                                               ShowDropDownButton="False"
+                                               ToggleContent="{my:Resource Validate}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_5_5">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Custom}" Background="{DynamicResource MyNet.Brushes.Negative}" ToggleContent="{my:MediumIcon Kind=Close}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="ddb_1_3_0">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate}"
+                                               DropDownButtonPosition="Bottom"
+                                               PlacementMode="BottomAndAlignCentres"
+                                               ToggleContent="OK">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_3_1">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Primary}"
+                                               DropDownButtonPosition="Top"
+                                               PlacementMode="TopAndAlignCentres"
+                                               ToggleContent="{my:MediumIcon Kind=ContentSave}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_3_2">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Accent}"
+                                               Width="50"
+                                               Height="50"
+                                               Margin="5"
+                                               my:IconAssist.Alignment="Bottom"
+                                               my:IconAssist.Icon="{my:Icon Kind=Filter}"
+                                               my:IconAssist.Margin="{StaticResource MyNet.Margins.Small.Top}"
+                                               FontSize="12"
+                                               ShowDropDownButton="False"
+                                               ToggleContent="{my:Resource Filter}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_3_3">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Foreground}" ToggleContent="{my:MediumIcon Kind=Settings}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_3_4">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Custom}"
+                                               Width="50"
+                                               Height="50"
+                                               Margin="5"
+                                               my:IconAssist.Alignment="Top"
+                                               my:IconAssist.Icon="{my:Icon Kind=Check}"
+                                               my:IconAssist.Margin="{StaticResource MyNet.Margins.Small.Bottom}"
+                                               my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Positive}"
+                                               FontSize="12"
+                                               ShowDropDownButton="False"
+                                               ToggleContent="{my:Resource Validate}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_3_5">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Custom}" my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Negative}" ToggleContent="{my:MediumIcon Kind=Close}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="ddb_1_6_0">
                             <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}"
                                                DropDownButtonPosition="Bottom"
                                                PlacementMode="BottomAndAlignCentres"
@@ -181,7 +439,7 @@
                                 <contents:SmallContent />
                             </my:DropDownButton>
                         </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="ddb_1_0_1">
+                        <smtx:XamlDisplay UniqueKey="ddb_1_6_1">
                             <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Primary}"
                                                DropDownButtonPosition="Top"
                                                PlacementMode="TopAndAlignCentres"
@@ -189,7 +447,7 @@
                                 <contents:SmallContent />
                             </my:DropDownButton>
                         </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="ddb_1_0_2">
+                        <smtx:XamlDisplay UniqueKey="ddb_1_6_2">
                             <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Accent}"
                                                Width="50"
                                                Height="50"
@@ -203,13 +461,71 @@
                                 <contents:SmallContent />
                             </my:DropDownButton>
                         </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="ddb_1_0_3">
+                        <smtx:XamlDisplay UniqueKey="ddb_1_6_3">
                             <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Foreground}" ToggleContent="{my:MediumIcon Kind=Settings}">
                                 <contents:SmallContent />
                             </my:DropDownButton>
                         </smtx:XamlDisplay>
-                        <smtx:XamlDisplay UniqueKey="ddb_1_0_4">
+                        <smtx:XamlDisplay UniqueKey="ddb_1_6_4">
                             <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}"
+                                               Width="50"
+                                               Height="50"
+                                               Margin="5"
+                                               my:IconAssist.Alignment="Top"
+                                               my:IconAssist.Icon="{my:Icon Kind=Check}"
+                                               my:IconAssist.Margin="{StaticResource MyNet.Margins.Small.Bottom}"
+                                               Background="{DynamicResource MyNet.Brushes.Positive}"
+                                               FontSize="12"
+                                               ShowDropDownButton="False"
+                                               ToggleContent="{my:Resource Validate}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_6_5">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}" Background="{DynamicResource MyNet.Brushes.Negative}" ToggleContent="{my:MediumIcon Kind=Close}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="ddb_1_0_0">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate}"
+                                               DropDownButtonPosition="Bottom"
+                                               PlacementMode="BottomAndAlignCentres"
+                                               ToggleContent="OK">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_0_1">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Primary}"
+                                               DropDownButtonPosition="Top"
+                                               PlacementMode="TopAndAlignCentres"
+                                               ToggleContent="{my:MediumIcon Kind=ContentSave}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_0_2">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Accent}"
+                                               Width="50"
+                                               Height="50"
+                                               Margin="5"
+                                               my:IconAssist.Alignment="Bottom"
+                                               my:IconAssist.Icon="{my:Icon Kind=Filter}"
+                                               my:IconAssist.Margin="{StaticResource MyNet.Margins.Small.Top}"
+                                               FontSize="12"
+                                               ShowDropDownButton="False"
+                                               ToggleContent="{my:Resource Filter}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_0_3">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Foreground}" ToggleContent="{my:MediumIcon Kind=Settings}">
+                                <contents:SmallContent />
+                            </my:DropDownButton>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="ddb_1_0_4">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Custom}"
                                                Width="50"
                                                Height="50"
                                                Margin="5"
@@ -224,7 +540,7 @@
                             </my:DropDownButton>
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="ddb_1_0_5">
-                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Custom}" my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Negative}" ToggleContent="{my:MediumIcon Kind=Close}">
+                            <my:DropDownButton Style="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Custom}" my:ThemeAssist.IsCheckedBackground="{DynamicResource MyNet.Brushes.Negative}" ToggleContent="{my:MediumIcon Kind=Close}">
                                 <contents:SmallContent />
                             </my:DropDownButton>
                         </smtx:XamlDisplay>
