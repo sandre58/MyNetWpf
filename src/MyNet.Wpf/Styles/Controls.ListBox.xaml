@@ -690,7 +690,7 @@
     </Style>
 
     <Style x:Key="MyNet.Styles.ListBoxItem.Card" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
-        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
