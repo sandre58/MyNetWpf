@@ -23,7 +23,7 @@
     <Color x:Key="MyNet.Colors.Overlay">#66999999</Color>
 
     <!-- Popup -->
-    <Color x:Key="MyNet.Colors.Popup.Background">#292929</Color>
+    <Color x:Key="MyNet.Colors.Popup.Background">#232323</Color>
 
     <!-- ScrollBar -->
     <Color x:Key="MyNet.Colors.ScrollBar.Background">#858585</Color>

@@ -229,6 +229,7 @@
 
     <Style x:Key="MyNet.Styles.NavigationViewItem.Compact" TargetType="{x:Type ctrl:NavigationViewItem}" BasedOn="{StaticResource MyNet.Styles.NavigationViewItem}">
         <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size.Secondary}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="RightAndAlignMiddles" />
         <Setter Property="Height" Value="60" />
         <Setter Property="Padding" Value="4" />
         <Setter Property="Template">
