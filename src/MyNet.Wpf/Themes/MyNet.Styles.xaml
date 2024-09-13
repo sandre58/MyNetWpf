@@ -159,8 +159,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <HorizontalAlignment x:Key="MyNet.HorizontalAlignment.Control">Left</HorizontalAlignment>
   <VerticalAlignment x:Key="MyNet.VerticalAlignment.Container">Stretch</VerticalAlignment>
   <HorizontalAlignment x:Key="MyNet.HorizontalAlignment.Container">Stretch</HorizontalAlignment>
+  <p:Elevation x:Key="MyNet.Elevation.Button">Dp2</p:Elevation>
   <p:Elevation x:Key="MyNet.Elevation.Container">Dp1</p:Elevation>
-  <p:Elevation x:Key="MyNet.Elevation.Control">Dp2</p:Elevation>
+  <p:Elevation x:Key="MyNet.Elevation.Control">Dp0</p:Elevation>
   <p:Elevation x:Key="MyNet.Elevation.Popup">Dp2</p:Elevation>
   <Style x:Key="MyNet.Styles.ToggleButton.Embedded.ComboBox" TargetType="{x:Type ToggleButton}">
     <Setter Property="Background" Value="Transparent" />
@@ -2589,6 +2590,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </DataTrigger>
     </DataTemplate.Triggers>
   </DataTemplate>
+  <Style x:Key="MyNet.Styles.Label.Elevation.Application.Light" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Application.light}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+  </Style>
   <DataTemplate x:Key="MyNet.DataTemplates.Icon.ListBoxItem">
     <DataTemplate.Resources>
       <Style TargetType="{x:Type ctrl:PackIcon}" BasedOn="{StaticResource MyNet.Styles.PackIcon}">
@@ -2779,7 +2783,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Style.Triggers>
   </Style>
   <Style x:Key="MyNet.Styles.ListBoxItem.Card" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="BorderThickness" Value="2" />
     <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -2854,7 +2858,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
     <Setter Property="VerticalContentAlignment" Value="Top" />
-    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
     <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
   </Style>
   <Style x:Key="MyNet.Styles.ListBoxItem.Chip" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
@@ -5326,27 +5330,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.Label.ToolBar" TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
-  </Style>
-  <Style x:Key="MyNet.Styles.ToolTip" TargetType="{x:Type ToolTip}">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Inverse}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-    <Setter Property="BorderThickness" Value="0" />
-    <Setter Property="FontFamily" Value="{me:RobotoFont}" />
-    <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size}" />
-    <Setter Property="FontWeight" Value="{StaticResource MyNet.Font.Weight.ToolTip}" />
-    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
-    <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Default}" />
-    <Setter Property="SnapsToDevicePixels" Value="True" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="ToolTip">
-          <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{StaticResource MyNet.CornerRadius.Container}" SnapsToDevicePixels="True">
-            <ContentPresenter x:Name="ContentPresenter" Content="{TemplateBinding ContentControl.Content}" ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" />
-          </Border>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.TreeViewItem" TargetType="{x:Type TreeViewItem}">
     <Setter Property="Background" Value="Transparent" />
@@ -8756,7 +8740,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         </ControlTemplate>
       </Setter.Value>
     </Setter>
-    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Elevation.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Elevation}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -11063,7 +11047,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Elevation" TargetType="{x:Type Label}">
+  <Style x:Key="MyNet.Styles.Label" TargetType="{x:Type Label}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
@@ -11083,63 +11067,102 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="p:CardAssist.Style" Value="{StaticResource MyNet.Styles.Card.Elevation}" />
-    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
     <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Elevation.Application" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
+  <Style x:Key="MyNet.Styles.Label.Application" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Elevation.Application.Light" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
+  <Style x:Key="MyNet.Styles.Label.Application.Light" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Elevation.Application.Dark" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
+  <Style x:Key="MyNet.Styles.Label.Application.Dark" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Dark}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Elevation.Primary" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
+  <Style x:Key="MyNet.Styles.Label.Primary" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Elevation.Accent" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
+  <Style x:Key="MyNet.Styles.Label.Accent" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Elevation.Custom" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
+  <Style x:Key="MyNet.Styles.Label.Custom" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label}">
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Elevation.Foreground" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation.Custom}">
+  <Style x:Key="MyNet.Styles.Label.Foreground" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Custom}">
     <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Elevation" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Elevation.Application" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Application}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Elevation.Application.Dark" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Application.Dark}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Elevation.Primary" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Primary}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Elevation.Accent" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Accent}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Elevation.Custom" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Custom}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Elevation.Foreground" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Foreground}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
   </Style>
   <Style x:Key="MyNet.Styles.Label.Outlined" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="p:CardAssist.Style" Value="{StaticResource MyNet.Styles.Card.Outlined}" />
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Rounded.Elevation" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation}">
+  <Style x:Key="MyNet.Styles.Label.Rounded" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label}">
     <Setter Property="Height" Value="35" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="Width" Value="35" />
     <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="100" />
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Application" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation}">
+  <Style x:Key="MyNet.Styles.Label.Rounded.Application" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Primary" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation}">
+  <Style x:Key="MyNet.Styles.Label.Rounded.Primary" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Accent" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation}">
+  <Style x:Key="MyNet.Styles.Label.Rounded.Accent" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Custom" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation}">
+  <Style x:Key="MyNet.Styles.Label.Rounded.Custom" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded}">
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
-  <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Foreground" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Elevation.Custom}">
+  <Style x:Key="MyNet.Styles.Label.Rounded.Foreground" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Custom}">
     <Setter Property="Background" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Rounded.Elevation" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Application" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Application}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Primary" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Primary}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Accent" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Accent}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Custom" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Custom}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.Label.Rounded.Elevation.Foreground" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Rounded.Foreground}">
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
   </Style>
   <Style x:Key="MyNet.Styles.Label.Message" TargetType="{x:Type Label}" BasedOn="{StaticResource MyNet.Styles.Label.Elevation.Custom}">
     <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Icon.Label}" />
@@ -11217,6 +11240,194 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.Card.Popup" TargetType="{x:Type ctrl:Card}" BasedOn="{StaticResource MyNet.Styles.Card.Elevation}">
     <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Default}" />
     <Setter Property="Padding" Value="0" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ctrl:Card}">
+          <Grid Background="Transparent">
+            <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
+              <AdornerDecorator.OpacityMask>
+                <MultiBinding Converter="{x:Static c:ShadowEdgeConverter.Default}">
+                  <Binding Path="ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" />
+                  <Binding Path="ActualHeight" RelativeSource="{RelativeSource TemplatedParent}" />
+                  <Binding Path="(p:ElevationAssist.Elevation)" RelativeSource="{RelativeSource TemplatedParent}" />
+                  <Binding Path="(p:ShadowAssist.ShadowEdges)" RelativeSource="{RelativeSource TemplatedParent}" />
+                </MultiBinding>
+              </AdornerDecorator.OpacityMask>
+              <Grid>
+                <Border x:Name="background" CornerRadius="{Binding UniformCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:DoubleToCornerRadiusConverter.All}}" Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}">
+                  <Border x:Name="PART_ClipBorder" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Clip="{TemplateBinding ContentClip}" CornerRadius="{Binding UniformCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:DoubleToCornerRadiusConverter.All}}" />
+                </Border>
+                <Path x:Name="path" Fill="{TemplateBinding Background}" Visibility="Collapsed" />
+              </Grid>
+            </AdornerDecorator>
+            <Grid x:Name="content">
+              <ContentPresenter x:Name="ContentPresenter" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding ContentControl.Content}" ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" ContentTemplateSelector="{TemplateBinding ContentControl.ContentTemplateSelector}" />
+            </Grid>
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="ClipContent" Value="True">
+              <Setter TargetName="ContentPresenter" Property="Clip" Value="{Binding ContentClip, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Trigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                <Condition Property="p:PopupAssist.PlacementMode" Value="BottomAndAlignLeftEdges" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="background" Property="Margin" Value="3 8 3 3" />
+              <Setter TargetName="content" Property="Margin" Value="3 8 3 3" />
+              <Setter TargetName="path" Property="Data" Value="M 16 8 L 8,0 L 0,8 Z" />
+              <Setter TargetName="path" Property="HorizontalAlignment" Value="Left" />
+              <Setter TargetName="path" Property="Margin" Value="15 0 0 0" />
+              <Setter TargetName="path" Property="VerticalAlignment" Value="Top" />
+              <Setter TargetName="path" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                <Condition Property="p:PopupAssist.PlacementMode" Value="BottomAndAlignRightEdges" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="background" Property="Margin" Value="3 8 3 3" />
+              <Setter TargetName="content" Property="Margin" Value="3 8 3 3" />
+              <Setter TargetName="path" Property="Data" Value="M 16 8 L 8,0 L 0,8 Z" />
+              <Setter TargetName="path" Property="HorizontalAlignment" Value="Right" />
+              <Setter TargetName="path" Property="Margin" Value="0 0 15 0" />
+              <Setter TargetName="path" Property="VerticalAlignment" Value="Top" />
+              <Setter TargetName="path" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                <Condition Property="p:PopupAssist.PlacementMode" Value="BottomAndAlignCentres" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="background" Property="Margin" Value="3 8 3 3" />
+              <Setter TargetName="content" Property="Margin" Value="3 8 3 3" />
+              <Setter TargetName="path" Property="Data" Value="M 16 8 L 8,0 L 0,8 Z" />
+              <Setter TargetName="path" Property="HorizontalAlignment" Value="Center" />
+              <Setter TargetName="path" Property="Margin" Value="0" />
+              <Setter TargetName="path" Property="VerticalAlignment" Value="Top" />
+              <Setter TargetName="path" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                <Condition Property="p:PopupAssist.PlacementMode" Value="TopAndAlignLeftEdges" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="background" Property="Margin" Value="3 3 3 8" />
+              <Setter TargetName="content" Property="Margin" Value="3 3 3 8" />
+              <Setter TargetName="path" Property="Data" Value="M 8 8 L 16,0 L 0,0 Z" />
+              <Setter TargetName="path" Property="HorizontalAlignment" Value="Left" />
+              <Setter TargetName="path" Property="Margin" Value="15 0 0 0" />
+              <Setter TargetName="path" Property="VerticalAlignment" Value="Bottom" />
+              <Setter TargetName="path" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                <Condition Property="p:PopupAssist.PlacementMode" Value="TopAndAlignRightEdges" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="background" Property="Margin" Value="3 3 3 8" />
+              <Setter TargetName="content" Property="Margin" Value="3 3 3 8" />
+              <Setter TargetName="path" Property="Data" Value="M 8 8 L 16,0 L 0,0 Z" />
+              <Setter TargetName="path" Property="HorizontalAlignment" Value="Right" />
+              <Setter TargetName="path" Property="Margin" Value="0 0 15 0" />
+              <Setter TargetName="path" Property="VerticalAlignment" Value="Bottom" />
+              <Setter TargetName="path" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                <Condition Property="p:PopupAssist.PlacementMode" Value="TopAndAlignCentres" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="background" Property="Margin" Value="3 3 3 8" />
+              <Setter TargetName="content" Property="Margin" Value="3 3 3 8" />
+              <Setter TargetName="path" Property="Data" Value="M 8 8 L 16,0 L 0,0 Z" />
+              <Setter TargetName="path" Property="HorizontalAlignment" Value="Center" />
+              <Setter TargetName="path" Property="Margin" Value="0" />
+              <Setter TargetName="path" Property="VerticalAlignment" Value="Bottom" />
+              <Setter TargetName="path" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                <Condition Property="p:PopupAssist.PlacementMode" Value="LeftAndAlignTopEdges" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="background" Property="Margin" Value="3 3 8 3" />
+              <Setter TargetName="content" Property="Margin" Value="3 3 8 3" />
+              <Setter TargetName="path" Property="Data" Value="M 8 8 L 0,16 L 0,0 Z" />
+              <Setter TargetName="path" Property="HorizontalAlignment" Value="Right" />
+              <Setter TargetName="path" Property="Margin" Value="0 15 0 0" />
+              <Setter TargetName="path" Property="VerticalAlignment" Value="Top" />
+              <Setter TargetName="path" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                <Condition Property="p:PopupAssist.PlacementMode" Value="LeftAndAlignBottomEdges" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="background" Property="Margin" Value="3 3 8 3" />
+              <Setter TargetName="content" Property="Margin" Value="3 3 8 3" />
+              <Setter TargetName="path" Property="Data" Value="M 8 8 L 0,16 L 0,0 Z" />
+              <Setter TargetName="path" Property="HorizontalAlignment" Value="Right" />
+              <Setter TargetName="path" Property="Margin" Value="0 0 0 15" />
+              <Setter TargetName="path" Property="VerticalAlignment" Value="Bottom" />
+              <Setter TargetName="path" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                <Condition Property="p:PopupAssist.PlacementMode" Value="LeftAndAlignMiddles" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="background" Property="Margin" Value="3 3 8 3" />
+              <Setter TargetName="content" Property="Margin" Value="3 3 8 3" />
+              <Setter TargetName="path" Property="Data" Value="M 8 8 L 0,16 L 0,0 Z" />
+              <Setter TargetName="path" Property="HorizontalAlignment" Value="Right" />
+              <Setter TargetName="path" Property="Margin" Value="0" />
+              <Setter TargetName="path" Property="VerticalAlignment" Value="Center" />
+              <Setter TargetName="path" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                <Condition Property="p:PopupAssist.PlacementMode" Value="RightAndAlignTopEdges" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="background" Property="Margin" Value="8 3 3 3" />
+              <Setter TargetName="content" Property="Margin" Value="8 3 3 3" />
+              <Setter TargetName="path" Property="Data" Value="M 8 0 L 8,16 L 0,8 Z" />
+              <Setter TargetName="path" Property="HorizontalAlignment" Value="Left" />
+              <Setter TargetName="path" Property="Margin" Value="0 15 0 0" />
+              <Setter TargetName="path" Property="VerticalAlignment" Value="Top" />
+              <Setter TargetName="path" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                <Condition Property="p:PopupAssist.PlacementMode" Value="RightAndAlignBottomEdges" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="background" Property="Margin" Value="8 3 3 3" />
+              <Setter TargetName="content" Property="Margin" Value="8 3 3 3" />
+              <Setter TargetName="path" Property="Data" Value="M 8 0 L 8,16 L 0,8 Z" />
+              <Setter TargetName="path" Property="HorizontalAlignment" Value="Left" />
+              <Setter TargetName="path" Property="Margin" Value="0 0 0 15" />
+              <Setter TargetName="path" Property="VerticalAlignment" Value="Bottom" />
+              <Setter TargetName="path" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                <Condition Property="p:PopupAssist.PlacementMode" Value="RightAndAlignMiddles" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="background" Property="Margin" Value="8 3 3 3" />
+              <Setter TargetName="content" Property="Margin" Value="8 3 3 3" />
+              <Setter TargetName="path" Property="Data" Value="M 8 0 L 8,16 L 0,8 Z" />
+              <Setter TargetName="path" Property="HorizontalAlignment" Value="Left" />
+              <Setter TargetName="path" Property="Margin" Value="0" />
+              <Setter TargetName="path" Property="VerticalAlignment" Value="Center" />
+              <Setter TargetName="path" Property="Visibility" Value="Visible" />
+            </MultiTrigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
     <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Popup}" />
   </Style>
   <Style x:Key="MyNet.Styles.MenuItem" TargetType="{x:Type MenuItem}">
@@ -12131,7 +12342,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         </ControlTemplate>
       </Setter.Value>
     </Setter>
-    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Elevation.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Elevation}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
@@ -12816,6 +13027,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.ToolBar.Elevation" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Elevation}">
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -12828,6 +13040,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.ToolBar.Elevation.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.ToolBar.Elevation}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -12846,6 +13059,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.ToolBar.Filled.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.ToolBar.Filled}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -12865,6 +13079,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ComboBox.ToolBar" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox}">
     <Setter Property="Background" Value="Transparent" />
@@ -12961,6 +13176,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Style.Triggers>
       <Trigger Property="IsDropDownOpen" Value="true">
         <Setter Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=Self}}" />
@@ -12969,15 +13185,19 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.CheckBox.ToolBar" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox}">
     <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.RadioButton.ToolBar" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource MyNet.Styles.RadioButton}">
     <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.DatePicker.ToolBar" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker}">
     <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.TextBox.ToolBar" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyNet.Styles.TextBox}">
     <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.GroupBox.ToolBar" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Caption}">
     <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -13026,6 +13246,39 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.Button.ToolBar.Open" TargetType="{x:Type Button}" BasedOn="{StaticResource MyNet.Styles.Button.ToolBar}">
     <Setter Property="Content" Value="{me:Resource Open}" />
     <Setter Property="p:IconAssist.Icon" Value="{me:MediumIcon Kind=Eye}" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ToolTip" TargetType="{x:Type ToolTip}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="FontFamily" Value="{me:RobotoFont}" />
+    <Setter Property="FontSize" Value="{StaticResource MyNet.Font.Size}" />
+    <Setter Property="FontWeight" Value="{StaticResource MyNet.Font.Weight.ToolTip}" />
+    <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
+    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Default}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="ToolTip">
+          <ctrl:Card x:Name="card" Style="{StaticResource MyNet.Styles.Card.Popup}" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" p:PopupAssist.PlacementMode="{Binding Path=(p:PopupAssist.PlacementMode), RelativeSource={RelativeSource TemplatedParent}}" p:PopupAssist.ShowIndicator="True" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Foreground="{TemplateBinding Foreground}">
+            <ctrl:SimpleStackPanel Spacing="{StaticResource MyNet.Margin.Default}">
+              <ContentControl Content="{Binding Path=(p:HeaderAssist.Header), RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{Binding Path=(p:HeaderAssist.HeaderTemplate), RelativeSource={RelativeSource TemplatedParent}}" TextElement.FontSize="{Binding Path=(p:HeaderAssist.FontSize), RelativeSource={RelativeSource TemplatedParent}}" TextElement.FontWeight="{Binding Path=(p:HeaderAssist.FontWeight), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:HeaderAssist.Header), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
+              <ContentPresenter>
+                <ContentPresenter.Resources>
+                  <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MyNet.Styles.TextBlock}">
+                    <Setter Property="TextAlignment" Value="Justify" />
+                    <Setter Property="TextWrapping" Value="Wrap" />
+                  </Style>
+                </ContentPresenter.Resources>
+              </ContentPresenter>
+            </ctrl:SimpleStackPanel>
+          </ctrl:Card>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="p:HeaderAssist.FontSize" Value="{StaticResource MyNet.Font.Size.Caption}" />
+    <Setter Property="p:HeaderAssist.FontWeight" Value="{StaticResource MyNet.Font.Weight.Header}" />
   </Style>
   <Style x:Key="MyNet.Styles.ApplicationIcon" TargetType="{x:Type ctrl:ApplicationIcon}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -14936,7 +15189,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             <ctrl:PopupEx x:Name="PART_Popup" CustomPopupPlacementCallback="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PopupPlacementMethod}" HorizontalOffset="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PopupHorizontalOffset}" IsOpen="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsPopupOpen, Mode=TwoWay}" PlacementTarget="{Binding ElementName=PART_Toggle}" PopupAnimation="{TemplateBinding PopupAnimation}" VerticalOffset="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PopupVerticalOffset}">
               <Grid>
                 <Border Background="White" Opacity="0.002" />
-                <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Popup}" MaxWidth="{TemplateBinding MaxPopupWidth}" MaxHeight="{TemplateBinding MaxPopupHeight}" Padding="{TemplateBinding PopupPadding}" Background="{TemplateBinding p:PopupAssist.Background}" FontSize="{StaticResource MyNet.Font.Size}" FontWeight="{StaticResource MyNet.Font.Weight.ToolTip}" Foreground="{TemplateBinding p:PopupAssist.Foreground}">
+                <ctrl:Card Style="{StaticResource MyNet.Styles.Card.Popup}" MaxWidth="{TemplateBinding MaxPopupWidth}" MaxHeight="{TemplateBinding MaxPopupHeight}" Padding="{TemplateBinding PopupPadding}" p:PopupAssist.PlacementMode="{TemplateBinding PlacementMode}" p:PopupAssist.ShowIndicator="{Binding Path=(p:PopupAssist.ShowIndicator), RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding p:PopupAssist.Background}" FontSize="{StaticResource MyNet.Font.Size}" FontWeight="{StaticResource MyNet.Font.Weight.ToolTip}" Foreground="{TemplateBinding p:PopupAssist.Foreground}">
                   <ContentControl Content="{TemplateBinding PopupContent}" ContentTemplate="{TemplateBinding PopupContentTemplate}" />
                 </ctrl:Card>
               </Grid>
@@ -15125,7 +15378,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Elevation" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
     <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
-    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
@@ -15151,7 +15404,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Alternate" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate}">
     <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
-    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Alternate.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
@@ -15280,7 +15533,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}">
     <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation}" />
-    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
@@ -15307,7 +15560,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate}">
     <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation}" />
-    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
@@ -15383,6 +15636,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="StaysOpen" Value="True" />
     <Setter Property="p:HeaderAssist.FontSize" Value="{StaticResource MyNet.Font.Size}" />
     <Setter Property="p:HeaderAssist.FontWeight" Value="Bold" />
+    <Setter Property="p:PopupAssist.ShowIndicator" Value="True" />
   </Style>
   <ControlTemplate x:Key="MyNet.Templates.DynamicScrollBar.Vertical" TargetType="{x:Type ctrl:DynamicScrollBar}">
     <Grid>
@@ -18188,7 +18442,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Elevation" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
     <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
-    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Elevation.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
@@ -18215,7 +18469,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate}">
     <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
-    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
@@ -19006,7 +19260,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Setter>
     <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
-    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+    <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
     <Setter Property="p:ListBoxAssist.IsToggle" Value="False" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
     <Style.Triggers>
@@ -19394,6 +19648,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Elevation" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate}">
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -19408,14 +19663,16 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Elevation.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.ToolBar.Elevation}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Filled" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -19430,14 +19687,16 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Filled.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.ToolBar.Filled}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.ToolBar" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Text}">
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -19453,6 +19712,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Elevation" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation}">
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -19467,15 +19727,17 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Elevation.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar.Elevation}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Background, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
-    <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Filled" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -19490,14 +19752,16 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Filled.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar.Filled}">
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
+    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
-    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
-    <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
   </Style>
   <Style x:Key="MyNet.Styles.ListBox.ToolBar" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Toggle}">
     <Setter Property="Background" Value="Transparent" />
@@ -19525,15 +19789,19 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.MultiComboBox.ToolBar" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox}">
     <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.TimePicker.ToolBar" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker}">
     <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.NumericUpDown.ToolBar" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}">
     <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ListBox.Embedded.ColorCanvas" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Cards}">
     <Setter Property="ItemContainerStyle">
@@ -20647,6 +20915,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.ColorPicker.ToolBar" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker}">
     <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToolBar" TargetType="{x:Type ToolBar}">
     <Style.Resources>
@@ -20746,6 +21015,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
     <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
+    <Setter Property="p:ToolTipAssist.PlacementMode" Value="BottomAndAlignCentres" />
   </Style>
   <Style x:Key="MyNet.Styles.ToolBar.Transparent" TargetType="{x:Type ToolBar}" BasedOn="{StaticResource MyNet.Styles.ToolBar}">
     <Setter Property="Background" Value="Transparent" />
@@ -20774,15 +21044,19 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.ToolBar.FileMenu" TargetType="{x:Type ToolBar}" BasedOn="{StaticResource MyNet.Styles.ToolBar}">
     <Style.Resources>
       <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MyNet.Styles.Button.ToolBar}">
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
       </Style>
       <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.ToolBar}">
+        <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
       </Style>
       <Style TargetType="{x:Type Separator}" BasedOn="{StaticResource MyNet.Styles.Separator.Horizontal}" />
     </Style.Resources>

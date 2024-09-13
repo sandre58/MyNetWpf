@@ -18,7 +18,7 @@
         <ControlTemplate>
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border Padding="{StaticResource MyNet.Margins.Default}"
-                        Background="{DynamicResource MyNet.Brushes.Application.Background.Inverse}"
+                        Background="{DynamicResource MyNet.Brushes.Popup.Background}"
                         CornerRadius="{StaticResource MyNet.CornerRadius.Container}"
                         TextElement.Foreground="{my:BrushBinding SelfPath=Background,
                                                                  Contrast=True}">

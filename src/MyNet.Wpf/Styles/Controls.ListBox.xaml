@@ -76,6 +76,7 @@
         </DataTemplate.Triggers>
     </DataTemplate>
 
+    <!-- Default -->
     <Style x:Key="MyNet.Styles.ListBoxItem" TargetType="{x:Type ListBoxItem}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
@@ -284,6 +285,7 @@
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
+    <!-- Toggle -->
     <Style x:Key="MyNet.Styles.ListBoxItem.Toggle" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
         <Setter Property="Padding" Value="6 4" />
     </Style>
@@ -327,7 +329,7 @@
         </Setter>
         <Setter Property="VerticalAlignment" Value="{StaticResource MyNet.VerticalAlignment.Control}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
         <Setter Property="p:ListBoxAssist.IsToggle" Value="False" />
         <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
         <Style.Triggers>
@@ -358,6 +360,7 @@
         <Setter Property="p:ListBoxItemAssist.IsSelectedBackground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Opacity={StaticResource MyNet.Opacity.Checked}}" />
     </Style>
 
+    <!-- Icon -->
     <Style x:Key="MyNet.Styles.ListBoxItem.Icon" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
         <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Default}" />
         <Setter Property="Template">
@@ -440,6 +443,7 @@
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
+    <!-- Tab -->
     <Style x:Key="MyNet.Styles.ListBoxItem.Tab" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
         <Setter Property="BorderBrush" Value="{Binding Path=(p:ListBoxItemAssist.IsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="BorderThickness" Value="0 0 0 2" />
@@ -689,6 +693,7 @@
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding SelfPath=Foreground}" />
     </Style>
 
+    <!-- Card -->
     <Style x:Key="MyNet.Styles.ListBoxItem.Card" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
@@ -800,7 +805,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="VerticalContentAlignment" Value="Top" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Container}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
         <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Control}" />
     </Style>
     <Style x:Key="MyNet.Styles.ListBox.Cards" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox}">
@@ -870,6 +875,7 @@
         <Setter Property="p:ListBoxItemAssist.IsSelectedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     </Style>
 
+    <!-- Chips -->
     <Style x:Key="MyNet.Styles.ListBoxItem.Chip" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
@@ -1030,7 +1036,6 @@
         <Setter Property="p:CheckBoxAssist.ShowCheck" Value="{Binding Path=(p:CheckBoxAssist.ShowCheck), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="p:ThemeAssist.CornerRadius" Value="16" />
     </Style>
-
     <Style x:Key="MyNet.Styles.ListBox.Chips" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Tab}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.ListBoxItem.Chip}" />
         <Setter Property="SelectionMode" Value="Multiple" />
@@ -1052,6 +1057,7 @@
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground), Contrast=True}" />
     </Style>
 
+    <!-- Chips Alternate -->
     <Style x:Key="MyNet.Styles.ListBox.Chips.Alternate" TargetType="{x:Type ListBox}" BasedOn="{StaticResource MyNet.Styles.ListBox.Chips}">
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
@@ -1071,6 +1077,7 @@
         <Setter Property="p:ListBoxItemAssist.IsSelectedForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
     </Style>
 
+    <!-- Navigation -->
     <Style x:Key="MyNet.Styles.ListBoxItem.Navigation" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MyNet.Styles.ListBoxItem}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush">

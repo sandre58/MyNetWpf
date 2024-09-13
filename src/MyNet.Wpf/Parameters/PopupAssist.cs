@@ -3,6 +3,7 @@
 
 using System.Windows;
 using System.Windows.Media;
+using MaterialDesignThemes.Wpf;
 
 namespace MyNet.Wpf.Parameters
 {
@@ -69,5 +70,33 @@ namespace MyNet.Wpf.Parameters
         public static void SetContentTemplate(UIElement item, DataTemplate value) => item.SetValue(ContentProperty, value);
 
         #endregion Content
+
+        #region PlacementMode
+
+        public static readonly DependencyProperty PlacementModeProperty = DependencyProperty.RegisterAttached(
+            "PlacementMode",
+            typeof(PopupBoxPlacementMode?),
+            typeof(PopupAssist),
+            new PropertyMetadata(null));
+
+        public static PopupBoxPlacementMode? GetPlacementMode(UIElement item) => (PopupBoxPlacementMode?)item.GetValue(PlacementModeProperty);
+
+        public static void SetPlacementMode(UIElement item, PopupBoxPlacementMode? value) => item.SetValue(PlacementModeProperty, value);
+
+        #endregion PlacementMode
+
+        #region ShowIndicator
+
+        public static readonly DependencyProperty ShowIndicatorProperty = DependencyProperty.RegisterAttached(
+            "ShowIndicator",
+            typeof(bool),
+            typeof(PopupAssist),
+            new PropertyMetadata(false));
+
+        public static bool GetShowIndicator(UIElement item) => (bool)item.GetValue(ShowIndicatorProperty);
+
+        public static void SetShowIndicator(UIElement item, bool? value) => item.SetValue(ShowIndicatorProperty, value);
+
+        #endregion ShowIndicator
     }
 }

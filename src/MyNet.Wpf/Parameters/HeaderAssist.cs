@@ -213,9 +213,9 @@ namespace MyNet.Wpf.Parameters
             typeof(HeaderAssist),
             new PropertyMetadata(null));
 
-        public static DataTemplate GetHeaderTemplate(UIElement item) => (DataTemplate)item.GetValue(HeaderProperty);
+        public static DataTemplate GetHeaderTemplate(UIElement item) => (DataTemplate)item.GetValue(HeaderTemplateProperty);
 
-        public static void SetHeaderTemplate(UIElement item, DataTemplate value) => item.SetValue(HeaderProperty, value);
+        public static void SetHeaderTemplate(UIElement item, DataTemplate value) => item.SetValue(HeaderTemplateProperty, value);
 
         #endregion Header
     }

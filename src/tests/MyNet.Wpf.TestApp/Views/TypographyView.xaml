@@ -73,6 +73,35 @@
                             <Label Style="{StaticResource MyNet.Styles.Label.Elevation.Custom}" Background="{DynamicResource MyNet.Brushes.Information}" Content="Content" />
                         </smtx:XamlDisplay>
                     </my:SimpleStackPanel>
+                    
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="tb_1_2_0">
+                            <my:Badged Badge="{my:Resource Default}">
+                                <Label Style="{StaticResource MyNet.Styles.Label}" Content="Content" />
+                            </my:Badged>
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_2_1">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Application}" Content="Content" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_2_2">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Primary}" Content="Content" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_2_3">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Accent}" Content="Content" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_2_4">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Foreground}" Content="Content" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_2_5">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Custom}" Background="{DynamicResource MyNet.Brushes.Positive}" Content="Content" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_2_6">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Custom}" Background="{DynamicResource MyNet.Brushes.Negative}" Content="Content" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_1_2_7">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Custom}" Background="{DynamicResource MyNet.Brushes.Information}" Content="Content" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
 
                     <my:SimpleStackPanel Orientation="Horizontal">
                         <smtx:XamlDisplay UniqueKey="tb_1_1_0">
@@ -109,6 +138,33 @@
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="tb_2_0_7">
                             <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Elevation.Custom}" Background="{DynamicResource MyNet.Brushes.Information}" Content="{my:MediumIcon Kind=Information}" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+
+                    <my:SimpleStackPanel Orientation="Horizontal">
+                        <smtx:XamlDisplay UniqueKey="tb_2_1_0">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded}" Content="B" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_1_1">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Application}" Content="12" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_1_2">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Primary}" Content="{my:MediumIcon Kind=Heart}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_1_3">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Accent}" Content="{my:MediumIcon Kind=Heart}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_1_4">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Foreground}" Content="{my:MediumIcon Kind=Heart}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_1_5">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Custom}" Background="{DynamicResource MyNet.Brushes.Positive}" Content="{my:MediumIcon Kind=Success}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_1_6">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Custom}" Background="{DynamicResource MyNet.Brushes.Negative}" Content="{my:MediumIcon Kind=Cancel}" />
+                        </smtx:XamlDisplay>
+                        <smtx:XamlDisplay UniqueKey="tb_2_1_7">
+                            <Label Style="{StaticResource MyNet.Styles.Label.Rounded.Custom}" Background="{DynamicResource MyNet.Brushes.Information}" Content="{my:MediumIcon Kind=Information}" />
                         </smtx:XamlDisplay>
                     </my:SimpleStackPanel>
                 </my:SimpleStackPanel>

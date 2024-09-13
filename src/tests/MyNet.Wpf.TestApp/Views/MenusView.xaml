@@ -1,8 +1,10 @@
 ﻿<my:NavigationPage x:Class="MyNet.Wpf.TestApp.Views.MenusView"
                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:contents="clr-namespace:MyNet.Wpf.TestApp.Views.Contents"
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:md="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
                    xmlns:my="http://mynet.com/xaml/themes"
                    xmlns:p="clr-namespace:MyNet.Wpf.TestApp.Parameters"
                    xmlns:samplepages="clr-namespace:MyNet.Wpf.TestApp.Views.SamplePages"
@@ -14,6 +16,55 @@
                    mc:Ignorable="d">
     <my:DynamicScrollViewer Padding="{StaticResource MyNet.Margins.Large}">
         <my:SimpleStackPanel>
+
+            <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="ToolTip">
+
+                <DockPanel>
+                    <GroupBox Width="300"
+                              Margin="{StaticResource MyNet.Margins.Medium}"
+                              my:IconAssist.Icon="{my:Icon Kind=Settings}"
+                              DockPanel.Dock="Right"
+                              Header="{my:Resource Options}">
+                        <my:SimpleStackPanel>
+                            <ComboBox x:Name="position"
+                                      HorizontalAlignment="Stretch"
+                                      my:HintAssist.Hint="Position"
+                                      my:HintAssist.IsFloating="True"
+                                      DisplayMemberPath="Display"
+                                      ItemsSource="{my:EnumSource {x:Type md:PopupBoxPlacementMode}}"
+                                      SelectedIndex="0"
+                                      SelectedValuePath="Value" />
+                        </my:SimpleStackPanel>
+
+                    </GroupBox>
+
+                    <my:SimpleStackPanel p:EnabledAssist.CanBeDisabled="True">
+
+                        <smtx:XamlDisplay UniqueKey="m_3_0_0">
+                            <Button my:ToolTipAssist.PlacementMode="{Binding SelectedValue, ElementName=position}" Content="Large ToolTip">
+                                <my:ToolTipAssist.Content>
+                                    <contents:SmallContent />
+                                </my:ToolTipAssist.Content>
+                            </Button>
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="m_3_0_1">
+                            <Button my:ToolTipAssist.Content="Ceci est le texte"
+                                    my:ToolTipAssist.Header="Titre"
+                                    my:ToolTipAssist.PlacementMode="{Binding SelectedValue, ElementName=position}"
+                                    Content="Small ToolTip" />
+                        </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="m_3_0_2">
+                            <Button Content="Normal tooltip"
+                                    ToolTip="Ceci est le texte"
+                                    ToolTipService.InitialShowDelay="0"
+                                    ToolTipService.ShowOnDisabled="True"
+                                    ToolTipService.ShowsToolTipOnKeyboardFocus="True" />
+                        </smtx:XamlDisplay>
+                    </my:SimpleStackPanel>
+                </DockPanel>
+            </Expander>
 
             <Expander Style="{StaticResource MyTestApp.Styles.Expander}" Header="MyNet.Styles.Menu">
 

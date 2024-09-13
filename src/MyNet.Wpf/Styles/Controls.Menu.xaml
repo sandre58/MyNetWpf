@@ -13,6 +13,207 @@
     <Style x:Key="MyNet.Styles.Card.Popup" TargetType="{x:Type ctrl:Card}" BasedOn="{StaticResource MyNet.Styles.Card.Elevation}">
         <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Default}" />
         <Setter Property="Padding" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ctrl:Card}">
+                    <Grid Background="Transparent">
+                        <AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(p:ShadowAssist.CacheMode)}">
+                            <AdornerDecorator.OpacityMask>
+                                <MultiBinding Converter="{x:Static c:ShadowEdgeConverter.Default}">
+                                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="(p:ElevationAssist.Elevation)" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="(p:ShadowAssist.ShadowEdges)" RelativeSource="{RelativeSource TemplatedParent}" />
+                                </MultiBinding>
+                            </AdornerDecorator.OpacityMask>
+                            <Grid>
+                                <Border x:Name="background" CornerRadius="{Binding UniformCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:DoubleToCornerRadiusConverter.All}}" Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(p:ElevationAssist.Elevation), Converter={x:Static c:ShadowConverter.Default}}">
+                                    <Border x:Name="PART_ClipBorder"
+                                            Padding="{TemplateBinding Padding}"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            Clip="{TemplateBinding ContentClip}"
+                                            CornerRadius="{Binding UniformCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:DoubleToCornerRadiusConverter.All}}" />
+                                </Border>
+                                <Path x:Name="path" Fill="{TemplateBinding Background}" Visibility="Collapsed" />
+                            </Grid>
+                        </AdornerDecorator>
+                        <Grid x:Name="content">
+                            <ContentPresenter x:Name="ContentPresenter"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Content="{TemplateBinding ContentControl.Content}"
+                                              ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}"
+                                              ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ContentControl.ContentTemplateSelector}" />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ClipContent" Value="True">
+                            <Setter TargetName="ContentPresenter" Property="Clip" Value="{Binding ContentClip, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                                <Condition Property="p:PopupAssist.PlacementMode" Value="BottomAndAlignLeftEdges" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="background" Property="Margin" Value="3 8 3 3" />
+                            <Setter TargetName="content" Property="Margin" Value="3 8 3 3" />
+                            <Setter TargetName="path" Property="Data" Value="M 16 8 L 8,0 L 0,8 Z" />
+                            <Setter TargetName="path" Property="HorizontalAlignment" Value="Left" />
+                            <Setter TargetName="path" Property="Margin" Value="15 0 0 0" />
+                            <Setter TargetName="path" Property="VerticalAlignment" Value="Top" />
+                            <Setter TargetName="path" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                                <Condition Property="p:PopupAssist.PlacementMode" Value="BottomAndAlignRightEdges" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="background" Property="Margin" Value="3 8 3 3" />
+                            <Setter TargetName="content" Property="Margin" Value="3 8 3 3" />
+                            <Setter TargetName="path" Property="Data" Value="M 16 8 L 8,0 L 0,8 Z" />
+                            <Setter TargetName="path" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="path" Property="Margin" Value="0 0 15 0" />
+                            <Setter TargetName="path" Property="VerticalAlignment" Value="Top" />
+                            <Setter TargetName="path" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                                <Condition Property="p:PopupAssist.PlacementMode" Value="BottomAndAlignCentres" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="background" Property="Margin" Value="3 8 3 3" />
+                            <Setter TargetName="content" Property="Margin" Value="3 8 3 3" />
+                            <Setter TargetName="path" Property="Data" Value="M 16 8 L 8,0 L 0,8 Z" />
+                            <Setter TargetName="path" Property="HorizontalAlignment" Value="Center" />
+                            <Setter TargetName="path" Property="Margin" Value="0" />
+                            <Setter TargetName="path" Property="VerticalAlignment" Value="Top" />
+                            <Setter TargetName="path" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                                <Condition Property="p:PopupAssist.PlacementMode" Value="TopAndAlignLeftEdges" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="background" Property="Margin" Value="3 3 3 8" />
+                            <Setter TargetName="content" Property="Margin" Value="3 3 3 8" />
+                            <Setter TargetName="path" Property="Data" Value="M 8 8 L 16,0 L 0,0 Z" />
+                            <Setter TargetName="path" Property="HorizontalAlignment" Value="Left" />
+                            <Setter TargetName="path" Property="Margin" Value="15 0 0 0" />
+                            <Setter TargetName="path" Property="VerticalAlignment" Value="Bottom" />
+                            <Setter TargetName="path" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                                <Condition Property="p:PopupAssist.PlacementMode" Value="TopAndAlignRightEdges" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="background" Property="Margin" Value="3 3 3 8" />
+                            <Setter TargetName="content" Property="Margin" Value="3 3 3 8" />
+                            <Setter TargetName="path" Property="Data" Value="M 8 8 L 16,0 L 0,0 Z" />
+                            <Setter TargetName="path" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="path" Property="Margin" Value="0 0 15 0" />
+                            <Setter TargetName="path" Property="VerticalAlignment" Value="Bottom" />
+                            <Setter TargetName="path" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                                <Condition Property="p:PopupAssist.PlacementMode" Value="TopAndAlignCentres" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="background" Property="Margin" Value="3 3 3 8" />
+                            <Setter TargetName="content" Property="Margin" Value="3 3 3 8" />
+                            <Setter TargetName="path" Property="Data" Value="M 8 8 L 16,0 L 0,0 Z" />
+                            <Setter TargetName="path" Property="HorizontalAlignment" Value="Center" />
+                            <Setter TargetName="path" Property="Margin" Value="0" />
+                            <Setter TargetName="path" Property="VerticalAlignment" Value="Bottom" />
+                            <Setter TargetName="path" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                                <Condition Property="p:PopupAssist.PlacementMode" Value="LeftAndAlignTopEdges" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="background" Property="Margin" Value="3 3 8 3" />
+                            <Setter TargetName="content" Property="Margin" Value="3 3 8 3" />
+                            <Setter TargetName="path" Property="Data" Value="M 8 8 L 0,16 L 0,0 Z" />
+                            <Setter TargetName="path" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="path" Property="Margin" Value="0 15 0 0" />
+                            <Setter TargetName="path" Property="VerticalAlignment" Value="Top" />
+                            <Setter TargetName="path" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                                <Condition Property="p:PopupAssist.PlacementMode" Value="LeftAndAlignBottomEdges" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="background" Property="Margin" Value="3 3 8 3" />
+                            <Setter TargetName="content" Property="Margin" Value="3 3 8 3" />
+                            <Setter TargetName="path" Property="Data" Value="M 8 8 L 0,16 L 0,0 Z" />
+                            <Setter TargetName="path" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="path" Property="Margin" Value="0 0 0 15" />
+                            <Setter TargetName="path" Property="VerticalAlignment" Value="Bottom" />
+                            <Setter TargetName="path" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                                <Condition Property="p:PopupAssist.PlacementMode" Value="LeftAndAlignMiddles" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="background" Property="Margin" Value="3 3 8 3" />
+                            <Setter TargetName="content" Property="Margin" Value="3 3 8 3" />
+                            <Setter TargetName="path" Property="Data" Value="M 8 8 L 0,16 L 0,0 Z" />
+                            <Setter TargetName="path" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="path" Property="Margin" Value="0" />
+                            <Setter TargetName="path" Property="VerticalAlignment" Value="Center" />
+                            <Setter TargetName="path" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                                <Condition Property="p:PopupAssist.PlacementMode" Value="RightAndAlignTopEdges" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="background" Property="Margin" Value="8 3 3 3" />
+                            <Setter TargetName="content" Property="Margin" Value="8 3 3 3" />
+                            <Setter TargetName="path" Property="Data" Value="M 8 0 L 8,16 L 0,8 Z" />
+                            <Setter TargetName="path" Property="HorizontalAlignment" Value="Left" />
+                            <Setter TargetName="path" Property="Margin" Value="0 15 0 0" />
+                            <Setter TargetName="path" Property="VerticalAlignment" Value="Top" />
+                            <Setter TargetName="path" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                                <Condition Property="p:PopupAssist.PlacementMode" Value="RightAndAlignBottomEdges" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="background" Property="Margin" Value="8 3 3 3" />
+                            <Setter TargetName="content" Property="Margin" Value="8 3 3 3" />
+                            <Setter TargetName="path" Property="Data" Value="M 8 0 L 8,16 L 0,8 Z" />
+                            <Setter TargetName="path" Property="HorizontalAlignment" Value="Left" />
+                            <Setter TargetName="path" Property="Margin" Value="0 0 0 15" />
+                            <Setter TargetName="path" Property="VerticalAlignment" Value="Bottom" />
+                            <Setter TargetName="path" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="p:PopupAssist.ShowIndicator" Value="True" />
+                                <Condition Property="p:PopupAssist.PlacementMode" Value="RightAndAlignMiddles" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="background" Property="Margin" Value="8 3 3 3" />
+                            <Setter TargetName="content" Property="Margin" Value="8 3 3 3" />
+                            <Setter TargetName="path" Property="Data" Value="M 8 0 L 8,16 L 0,8 Z" />
+                            <Setter TargetName="path" Property="HorizontalAlignment" Value="Left" />
+                            <Setter TargetName="path" Property="Margin" Value="0" />
+                            <Setter TargetName="path" Property="VerticalAlignment" Value="Center" />
+                            <Setter TargetName="path" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Popup}" />
     </Style>
 

@@ -356,7 +356,7 @@
     <!-- Elevation -->
     <Style x:Key="MyNet.Styles.SplitButton.Elevation" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
         <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.Elevation.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
@@ -385,7 +385,7 @@
     <!-- Elevation Alternate -->
     <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate}">
         <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.Elevation.Alternate.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation.Alternate}">
         <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />

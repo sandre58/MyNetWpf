@@ -114,6 +114,8 @@
                                            MaxWidth="{TemplateBinding MaxPopupWidth}"
                                            MaxHeight="{TemplateBinding MaxPopupHeight}"
                                            Padding="{TemplateBinding PopupPadding}"
+                                           p:PopupAssist.PlacementMode="{TemplateBinding PlacementMode}"
+                                           p:PopupAssist.ShowIndicator="{Binding Path=(p:PopupAssist.ShowIndicator), RelativeSource={RelativeSource TemplatedParent}}"
                                            Background="{TemplateBinding p:PopupAssist.Background}"
                                            FontSize="{StaticResource MyNet.Font.Size}"
                                            FontWeight="{StaticResource MyNet.Font.Weight.ToolTip}"
@@ -322,7 +324,7 @@
     <!-- Elevation -->
     <Style x:Key="MyNet.Styles.DropDownButton.Elevation" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
         <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
     </Style>
     <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
@@ -350,7 +352,7 @@
     <!-- Elevation Alternate -->
     <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Alternate" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate}">
         <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Elevation}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
     </Style>
     <Style x:Key="MyNet.Styles.DropDownButton.Elevation.Alternate.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate}">
         <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
@@ -489,7 +491,7 @@
     <!-- Rounded Elevation -->
     <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}">
         <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
     </Style>
     <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation}">
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
@@ -518,7 +520,7 @@
     <!-- Rounded Elevation Alternate -->
     <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate}">
         <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Rounded.Elevation}" />
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
     </Style>
     <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Elevation.Alternate}">
         <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
@@ -602,6 +604,7 @@
         <Setter Property="StaysOpen" Value="True" />
         <Setter Property="p:HeaderAssist.FontSize" Value="{StaticResource MyNet.Font.Size}" />
         <Setter Property="p:HeaderAssist.FontWeight" Value="Bold" />
+        <Setter Property="p:PopupAssist.ShowIndicator" Value="True" />
     </Style>
 
 </ResourceDictionary>

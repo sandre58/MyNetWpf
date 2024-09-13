@@ -131,6 +131,7 @@
         <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.ToolBar.Elevation" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Elevation}">
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -143,6 +144,7 @@
         <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.ToolBar.Elevation.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.ToolBar.Elevation}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -161,6 +163,7 @@
         <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.ToolBar.Filled.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.ToolBar.Filled}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -180,6 +183,7 @@
         <Setter Property="p:IconAssist.Alignment" Value="{Binding Path=(p:IconAssist.Alignment), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.DropDownButton.ToolBar" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Text}">
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -195,6 +199,7 @@
         <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Elevation" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Elevation.Alternate}">
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -209,15 +214,16 @@
         <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Elevation.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.ToolBar.Elevation}">
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
     <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Filled" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled}">
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -232,15 +238,16 @@
         <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.DropDownButton.ToolBar.Filled.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.ToolBar.Filled}">
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.ToolBar" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Text}">
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -256,6 +263,7 @@
         <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Elevation" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Elevation}">
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -270,16 +278,17 @@
         <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Elevation.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar.Elevation}">
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Background, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Background, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Filled" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled}">
         <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -294,15 +303,16 @@
         <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:PopupAssist.Background" Value="{Binding Path=(p:PopupAssist.Background), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:PopupAssist.Foreground" Value="{Binding Path=(p:PopupAssist.Foreground), RelativeSource={RelativeSource AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.ToolBar.Filled.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.ToolBar.Filled}">
-        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
-        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
-        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="Foreground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Background}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Background}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     </Style>
     <Style x:Key="MyNet.Styles.ComboBox.ToolBar" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox}">
         <Setter Property="Background" Value="Transparent" />
@@ -472,6 +482,7 @@
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
         <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Style.Triggers>
             <Trigger Property="IsDropDownOpen" Value="true">
                 <Setter Property="Foreground" Value="{Binding Path=(p:ThemeAssist.IsCheckedForeground), RelativeSource={RelativeSource Mode=Self}}" />
@@ -504,30 +515,39 @@
         <Setter Property="p:IconAssist.Margin" Value="{Binding Path=(p:IconAssist.Margin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:IconAssist.Opacity" Value="{Binding Path=(p:IconAssist.Opacity), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
         <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.CheckBox.ToolBar" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MyNet.Styles.CheckBox}">
         <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.RadioButton.ToolBar" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource MyNet.Styles.RadioButton}">
         <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.MultiComboBox.ToolBar" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox}">
         <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.DatePicker.ToolBar" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker}">
         <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.TimePicker.ToolBar" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker}">
         <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.ColorPicker.ToolBar" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker}">
         <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.TextBox.ToolBar" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyNet.Styles.TextBox}">
         <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.NumericUpDown.ToolBar" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}">
         <Setter Property="Margin" Value="{Binding Path=(p:LayoutAssist.InnerMargin), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
     <Style x:Key="MyNet.Styles.GroupBox.ToolBar" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MyNet.Styles.GroupBox.Clean.Caption}">
         <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -546,6 +566,7 @@
     <Style x:Key="MyNet.Styles.Label.ToolBar" TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="{Binding Path=(p:ToolTipAssist.PlacementMode), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToolBar}}}" />
     </Style>
 
     <Style x:Key="MyNet.Styles.ToolBar" TargetType="{x:Type ToolBar}">
@@ -687,6 +708,7 @@
         <Setter Property="p:PopupAssist.Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
         <Setter Property="p:PopupAssist.Foreground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
+        <Setter Property="p:ToolTipAssist.PlacementMode" Value="BottomAndAlignCentres" />
     </Style>
 
     <Style x:Key="MyNet.Styles.Button.ToolBar.Validate" TargetType="{x:Type Button}" BasedOn="{StaticResource MyNet.Styles.Button.ToolBar}">
@@ -753,15 +775,19 @@
     <Style x:Key="MyNet.Styles.ToolBar.FileMenu" TargetType="{x:Type ToolBar}" BasedOn="{StaticResource MyNet.Styles.ToolBar}">
         <Style.Resources>
             <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MyNet.Styles.Button.ToolBar}">
+                <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
                 <Setter Property="HorizontalContentAlignment" Value="Left" />
                 <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
+                <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
             </Style>
             <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.ToolBar}">
+                <Setter Property="Foreground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
                 <Setter Property="HorizontalContentAlignment" Value="Left" />
                 <Setter Property="p:ThemeAssist.CornerRadius" Value="0" />
                 <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Accent}" />
                 <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
                 <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Accent.Foreground}" />
+                <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding InheritPath=(TextElement.Foreground)}" />
             </Style>
             <Style TargetType="{x:Type Separator}" BasedOn="{StaticResource MyNet.Styles.Separator.Horizontal}" />
         </Style.Resources>

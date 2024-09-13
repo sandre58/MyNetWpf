@@ -14,11 +14,11 @@
     </my:Badged>
     <Button my:IconAssist.Icon="{my:MediumIcon Kind=ContentSave}" Content="Save" Foreground="{DynamicResource MyNet.Brushes.Positive}" />
     <Button Content="Text" />
-    <Button Content="{my:MediumIcon Kind=Heart}" />
+    <Button Content="{my:MediumIcon Kind=Heart}" my:ToolTipAssist.Content="{my:Resource Copy}" />
     <Separator />
-    <ToggleButton my:IconAssist.Icon="{my:Icon Kind=FormatBold}" IsChecked="True" />
-    <ToggleButton my:IconAssist.Icon="{my:Icon Kind=FormatItalic}" />
-    <ToggleButton Content="{my:MediumIcon Kind=FormatUnderline}" />
+    <ToggleButton my:IconAssist.Icon="{my:Icon Kind=FormatBold}" my:ToolTipAssist.Content="{my:Resource Bold}" IsChecked="True" />
+    <ToggleButton my:IconAssist.Icon="{my:Icon Kind=FormatItalic}" my:ToolTipAssist.Content="{my:Resource Italic}" />
+    <ToggleButton Content="{my:MediumIcon Kind=FormatUnderline}" my:ToolTipAssist.Content="{my:Resource Underline}" />
     <ToggleButton Content="Text" />
     <ToggleButton my:IconAssist.Icon="{my:Icon Kind=Heart}" Content="Text" />
     <Separator />

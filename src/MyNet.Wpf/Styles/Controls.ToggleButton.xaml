@@ -213,7 +213,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Control}" />
+        <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Button}" />
     </Style>
     <Style x:Key="MyNet.Styles.ToggleButton.Elevation.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Elevation}">
         <Setter Property="Background" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground), Opacity={StaticResource MyNet.Opacity.Filled}}" />
