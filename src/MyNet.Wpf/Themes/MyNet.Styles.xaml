@@ -6934,10 +6934,10 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </Style.Triggers>
   </Style>
   <Style x:Key="MyNet.Styles.ExtendedWindowDialog" TargetType="{x:Type ctrl:ExtendedWindowDialog}" BasedOn="{StaticResource MyNet.Styles.ExtendedWindow}">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
-    <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Dialog.Background}" />
+    <!--<Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />-->
     <Setter Property="ShowTitleBar" Value="False" />
-    <Setter Property="WindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <!--<Setter Property="WindowTitleBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />-->
   </Style>
   <Style x:Key="MyNet.Styles.Flipper" TargetType="{x:Type ctrl:Flipper}">
     <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
@@ -7627,7 +7627,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </ControlTemplate.Triggers>
   </ControlTemplate>
   <Style x:Key="MyNet.Styles.OverlayDialogControl" TargetType="{x:Type ctrl:OverlayDialogControl}">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Dialog.Background}" />
     <Setter Property="Focusable" Value="False" />
     <Setter Property="FontFamily" Value="{me:RobotoFont}" />
     <Setter Property="FontSize" Value="{Binding Path=(TextElement.FontSize), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
@@ -15047,9 +15047,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="HeaderForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
     <Setter Property="HeaderHeight" Value="30" />
     <Setter Property="HeaderPadding" Value="{StaticResource MyNet.Margins.Default}" />
-    <Setter Property="VerticalAlignment" Value="Center" />
     <Setter Property="HorizontalAlignment" Value="Center" />
-    <Setter Property="VerticalContentAlignment" Value="Stretch" />
     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
     <Setter Property="IsTabStop" Value="False" />
     <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
@@ -15064,9 +15062,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             </Grid.RowDefinitions>
             <!-- Header -->
             <Grid DockPanel.Dock="Top">
-              <ctrl:Card Height="{TemplateBinding HeaderHeight}" Padding="{TemplateBinding HeaderPadding}" Background="{TemplateBinding HeaderBackground}" FontSize="{TemplateBinding HeaderFontSize}" Foreground="{TemplateBinding HeaderForeground}" UniformCornerRadius="0" Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
-                <ContentControl Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" Focusable="False" />
-              </ctrl:Card>
+              <Border Height="{TemplateBinding HeaderHeight}" Padding="{TemplateBinding HeaderPadding}" Background="{TemplateBinding HeaderBackground}" Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                <ContentControl Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" Focusable="False" FontSize="{TemplateBinding HeaderFontSize}" Foreground="{TemplateBinding HeaderForeground}" />
+              </Border>
               <!-- Close Button -->
               <Button Style="{StaticResource MyNet.Styles.Button.Text}" Width="20" Height="20" Margin="{StaticResource MyNet.Margins.Default}" Padding="0" HorizontalAlignment="Right" Command="{x:Static ctrl:OverlayDialogControl.CloseDialogCommand}" Content="{me:Icon Kind=Close}" Focusable="False" ToolTip="{me:Resource Close}" Visibility="{Binding ShowCloseButton, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}" />
             </Grid>
@@ -15078,6 +15076,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         </ControlTemplate>
       </Setter.Value>
     </Setter>
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Stretch" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Embedded.Expander.Horizontal.Alternate" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Text}">
     <Setter Property="ContentTemplate">

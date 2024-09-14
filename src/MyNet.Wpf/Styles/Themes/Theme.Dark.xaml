@@ -4,8 +4,8 @@
 
     <!-- Application -->
     <Color x:Key="MyNet.Colors.Application.Background">#202020</Color>
-    <Color x:Key="MyNet.Colors.Application.Background.Light">#292929</Color>
-    <Color x:Key="MyNet.Colors.Application.Background.Dark">#141414</Color>
+    <Color x:Key="MyNet.Colors.Application.Background.Light">#2C2C2C</Color>
+    <Color x:Key="MyNet.Colors.Application.Background.Dark">#1A1A1A</Color>
     <Color x:Key="MyNet.Colors.Application.Background.Inverse">#E8E8E8</Color>
     <Color x:Key="MyNet.Colors.Application.Border">#393939</Color>
     <Color x:Key="MyNet.Colors.Application.Border.Inactive">#333333</Color>
@@ -14,7 +14,7 @@
     <Color x:Key="MyNet.Colors.Application.Foreground.Tertiary">#999999</Color>
 
     <!-- Controls -->
-    <Color x:Key="MyNet.Colors.Control.Background">#404040</Color>
+    <Color x:Key="MyNet.Colors.Control.Background">#3F3F3F</Color>
     <Color x:Key="MyNet.Colors.Control.Border">#525252</Color>
     <Color x:Key="MyNet.Colors.Control.Border.Secondary">#777777</Color>
     <Color x:Key="MyNet.Colors.Control.Border.Focus">#BFBFBF</Color>
@@ -22,8 +22,11 @@
     <!-- Overlay -->
     <Color x:Key="MyNet.Colors.Overlay">#66999999</Color>
 
+    <!-- Dialog -->
+    <Color x:Key="MyNet.Colors.Dialog.Background">#292929</Color>
+
     <!-- Popup -->
-    <Color x:Key="MyNet.Colors.Popup.Background">#232323</Color>
+    <Color x:Key="MyNet.Colors.Popup.Background">#262626</Color>
 
     <!-- ScrollBar -->
     <Color x:Key="MyNet.Colors.ScrollBar.Background">#858585</Color>
@@ -56,6 +59,8 @@
     <SolidColorBrush x:Key="MyNet.Brushes.Control.Border" Color="{StaticResource MyNet.Colors.Control.Border}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Control.Border.Secondary" Color="{StaticResource MyNet.Colors.Control.Border.Secondary}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Control.Border.Focus" Color="{StaticResource MyNet.Colors.Control.Border.Focus}" po:Freeze="true" />
+
+    <SolidColorBrush x:Key="MyNet.Brushes.Dialog.Background" Color="{StaticResource MyNet.Colors.Dialog.Background}" po:Freeze="true" />
 
     <SolidColorBrush x:Key="MyNet.Brushes.Popup.Background" Color="{StaticResource MyNet.Colors.Popup.Background}" po:Freeze="true" />
 

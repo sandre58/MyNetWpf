@@ -80,7 +80,7 @@
     <Style x:Key="MyNet.Styles.Button.Cancel"
            x:Shared="False"
            TargetType="{x:Type Button}"
-           BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
+           BasedOn="{StaticResource MyNet.Styles.Button.Outlined}">
         <Setter Property="Content" Value="{my:Resource Cancel}" />
         <Setter Property="ToolTip" Value="Esc" />
         <Setter Property="my:IconAssist.Icon" Value="{my:Icon Kind=Cancel}" />

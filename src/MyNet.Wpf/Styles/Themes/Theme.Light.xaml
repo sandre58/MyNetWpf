@@ -14,11 +14,14 @@
     <Color x:Key="MyNet.Colors.Application.Foreground.Tertiary">#707070</Color>
 
     <!-- Controls -->
-    <Color x:Key="MyNet.Colors.Control.Background">#E7E7E7</Color>
+    <Color x:Key="MyNet.Colors.Control.Background">#E5E5E5</Color>
     <Color x:Key="MyNet.Colors.Control.Border">#C5C5C5</Color>
     <Color x:Key="MyNet.Colors.Control.Border.Secondary">#999999</Color>
     <Color x:Key="MyNet.Colors.Control.Border.Focus">#646464</Color>
 
+    <!-- Dialog -->
+    <Color x:Key="MyNet.Colors.Dialog.Background">#f6f6f6</Color>
+    
     <!-- Popup -->
     <Color x:Key="MyNet.Colors.Popup.Background">#FFFFFF</Color>
 
@@ -56,6 +59,8 @@
     <SolidColorBrush x:Key="MyNet.Brushes.Control.Border" Color="{StaticResource MyNet.Colors.Control.Border}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Control.Border.Secondary" Color="{StaticResource MyNet.Colors.Control.Border.Secondary}" po:Freeze="true" />
     <SolidColorBrush x:Key="MyNet.Brushes.Control.Border.Focus" Color="{StaticResource MyNet.Colors.Control.Border.Focus}" po:Freeze="true" />
+
+    <SolidColorBrush x:Key="MyNet.Brushes.Dialog.Background" Color="{StaticResource MyNet.Colors.Dialog.Background}" po:Freeze="true" />
 
     <SolidColorBrush x:Key="MyNet.Brushes.Popup.Background" Color="{StaticResource MyNet.Colors.Popup.Background}" po:Freeze="true" />
 

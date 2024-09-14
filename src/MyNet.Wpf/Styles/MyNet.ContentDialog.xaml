@@ -18,9 +18,7 @@
         <Setter Property="HeaderForeground" Value="{DynamicResource MyNet.Brushes.Application.Foreground}" />
         <Setter Property="HeaderHeight" Value="30" />
         <Setter Property="HeaderPadding" Value="{StaticResource MyNet.Margins.Default}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
@@ -36,18 +34,17 @@
 
                         <!-- Header -->
                         <Grid DockPanel.Dock="Top">
-                            <ctrl:Card Height="{TemplateBinding HeaderHeight}"
-                                       Padding="{TemplateBinding HeaderPadding}"
-                                       Background="{TemplateBinding HeaderBackground}"
-                                       FontSize="{TemplateBinding HeaderFontSize}"
-                                       Foreground="{TemplateBinding HeaderForeground}"
-                                       UniformCornerRadius="0"
-                                       Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
+                            <Border Height="{TemplateBinding HeaderHeight}"
+                                    Padding="{TemplateBinding HeaderPadding}"
+                                    Background="{TemplateBinding HeaderBackground}"
+                                    Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
                                 <ContentControl Content="{TemplateBinding Header}"
                                                 ContentTemplate="{TemplateBinding HeaderTemplate}"
                                                 ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
-                                                Focusable="False" />
-                            </ctrl:Card>
+                                                Focusable="False"
+                                                FontSize="{TemplateBinding HeaderFontSize}"
+                                                Foreground="{TemplateBinding HeaderForeground}" />
+                            </Border>
 
                             <!-- Close Button -->
                             <Button Style="{StaticResource MyNet.Styles.Button.Text}"
@@ -76,5 +73,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
     </Style>
 </ResourceDictionary>
