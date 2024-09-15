@@ -71,7 +71,7 @@
                     <GroupBox Style="{StaticResource MyNet.Styles.GroupBox.Clean.Left}" Header="MaxLength">
                         <Slider x:Name="MaxLength"
                                 HorizontalAlignment="Stretch"
-                                Background="{StaticResource MyNet.Brushes.Control.Border}"
+                                Background="{DynamicResource MyNet.Brushes.Control.Border}"
                                 Maximum="200"
                                 Minimum="0"
                                 Value="0" />

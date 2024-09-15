@@ -36,13 +36,12 @@ namespace MyNet.Wpf.Parameters
                 ContentTemplate = GetContentTemplate(target),
                 Placement = placementMode.HasValue ? PlacementMode.Custom : PlacementMode.Mouse,
             };
+            target.ToolTip = tooltip;
             HeaderAssist.SetHeader(tooltip, GetHeader(target));
             HeaderAssist.SetHeaderTemplate(tooltip, GetHeaderTemplate(target));
 
             if (placementMode.HasValue)
-                InitializePlacementMode(tooltip, placementMode.Value);
-
-            target.ToolTip = tooltip;
+                InitializePlacementMode(target, placementMode.Value);
         }
         #endregion Content
 

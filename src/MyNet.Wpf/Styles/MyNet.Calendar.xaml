@@ -600,11 +600,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
-        <Setter Property="InnerBorderBrush">
-            <Setter.Value>
-                <SolidColorBrush Opacity="{StaticResource MyNet.Opacity.Secondary}" Color="{DynamicResource MyNet.Colors.Control.Border}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="InnerBorderBrush" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Border}}" />
         <Setter Property="InnerBorderThickess" Value="1" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment}" />
         <Setter Property="ItemsPanel">
@@ -644,14 +640,12 @@
                                         Padding="6 1"
                                         VerticalAlignment="Stretch"
                                         p:ThemeAssist.CornerRadius="2 0 0 2"
-                                        BorderThickness="1 1 0 1"
                                         Content="{me:MediumIcon Kind=ChevronLeft}"
                                         ToolTip="{me:Resource Previous}" />
                                 <Button x:Name="PART_TodayButton"
                                         Style="{StaticResource MyNet.Styles.Button.Filled}"
                                         VerticalAlignment="Stretch"
                                         p:ThemeAssist.CornerRadius="0"
-                                        BorderThickness="0 1 0 1"
                                         Content="{me:Resource Today,
                                                               Casing=AllCaps}" />
                                 <Button x:Name="PART_NextButton"
@@ -659,7 +653,6 @@
                                         Padding="6 1"
                                         VerticalAlignment="Stretch"
                                         p:ThemeAssist.CornerRadius="0 2 2 0"
-                                        BorderThickness="0 1 1 1"
                                         Content="{me:MediumIcon Kind=ChevronRight}"
                                         ToolTip="{me:Resource Next}" />
                             </StackPanel>

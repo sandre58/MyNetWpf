@@ -140,8 +140,8 @@ Styles\MyNet.Edition.xaml
     <Setter Property="Padding" Value="{StaticResource MyNet.Margins.Medium}" />
     <Setter Property="my:ThemeAssist.UniformCornerRadius" Value="0" />
   </Style>
-  <my:PackIcon x:Key="MyNet.PackIcon.ItemTraking" Width="20" Height="20" x:Shared="False" Focusable="False" Kind="InformationCircle" Visibility="{Binding Mode, Converter={x:Static my:EnumToVisibilityConverter.CollapsedIfNotAny}, ConverterParameter={x:Static vm:ScreenMode.Edition}}">
-    <my:PackIcon.ToolTip>
+  <my:PackIcon x:Key="MyNet.PackIcon.ItemTraking" Width="20" Height="20" my:ToolTipAssist.PlacementMode="BottomAndAlignCentres" x:Shared="False" Focusable="False" Kind="InformationCircle" Visibility="{Binding Mode, Converter={x:Static my:EnumToVisibilityConverter.CollapsedIfNotAny}, ConverterParameter={x:Static vm:ScreenMode.Edition}}">
+    <my:ToolTipAssist.Content>
       <Grid>
         <Grid.RowDefinitions>
           <RowDefinition Height="*" />
@@ -180,6 +180,6 @@ Styles\MyNet.Edition.xaml
           <TextBlock Style="{StaticResource MyNet.Styles.TextBlock.Secondary}" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontStyle="Italic" Text="{my:Resource NoModifications}" Visibility="{Binding ModifiedAt, Converter={x:Static my:NullToVisibilityConverter.CollapsedIfNotNull}}" />
         </Grid>
       </Grid>
-    </my:PackIcon.ToolTip>
+    </my:ToolTipAssist.Content>
   </my:PackIcon>
 </ResourceDictionary>

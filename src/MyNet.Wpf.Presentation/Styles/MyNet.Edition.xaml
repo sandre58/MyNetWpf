@@ -140,11 +140,12 @@
     <my:PackIcon x:Key="MyNet.PackIcon.ItemTraking"
                  Width="20"
                  Height="20"
+                 my:ToolTipAssist.PlacementMode="BottomAndAlignCentres"
                  x:Shared="False"
                  Focusable="False"
                  Kind="InformationCircle"
                  Visibility="{Binding Mode, Converter={x:Static my:EnumToVisibilityConverter.CollapsedIfNotAny}, ConverterParameter={x:Static vm:ScreenMode.Edition}}">
-        <my:PackIcon.ToolTip>
+        <my:ToolTipAssist.Content>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -225,6 +226,6 @@
                                Visibility="{Binding ModifiedAt, Converter={x:Static my:NullToVisibilityConverter.CollapsedIfNotNull}}" />
                 </Grid>
             </Grid>
-        </my:PackIcon.ToolTip>
+        </my:ToolTipAssist.Content>
     </my:PackIcon>
 </ResourceDictionary>

@@ -9992,7 +9992,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.ComboBox.Hour.Filled" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Hour}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
@@ -10008,7 +10009,6 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ComboBox.Hour.Outlined.Foreground" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Hour.Outlined}">
@@ -14147,11 +14147,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
     <Setter Property="HorizontalAlignment" Value="{StaticResource MyNet.HorizontalAlignment.Container}" />
-    <Setter Property="InnerBorderBrush">
-      <Setter.Value>
-        <SolidColorBrush Opacity="{StaticResource MyNet.Opacity.Secondary}" Color="{DynamicResource MyNet.Colors.Control.Border}" />
-      </Setter.Value>
-    </Setter>
+    <Setter Property="InnerBorderBrush" Value="{me:BrushBinding SelfPath=BorderBrush, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="InnerBorderThickess" Value="1" />
     <Setter Property="ItemContainerStyle" Value="{StaticResource MyNet.Styles.CalendarAppointment}" />
     <Setter Property="ItemsPanel">
@@ -14172,9 +14168,9 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
             <ctrl:SimpleStackPanel Margin="{StaticResource MyNet.Margins.Medium.Bottom}" HorizontalAlignment="Right" DockPanel.Dock="Top" Orientation="Horizontal" Spacing="{StaticResource MyNet.Margin.Large}" Visibility="{Binding ShowHeader, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:BooleanToVisibilityConverter.CollapsedIfFalse}}">
               <ContentControl VerticalAlignment="Center" Content="{Binding DisplayDate, RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{TemplateBinding HeaderTemplate}" FontSize="{StaticResource MyNet.Font.Size.Caption}" FontWeight="DemiBold" />
               <StackPanel Orientation="Horizontal">
-                <Button x:Name="PART_PreviousButton" Style="{StaticResource MyNet.Styles.Button.Filled}" Padding="6 1" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="2 0 0 2" BorderThickness="1 1 0 1" Content="{me:MediumIcon Kind=ChevronLeft}" ToolTip="{me:Resource Previous}" />
-                <Button x:Name="PART_TodayButton" Style="{StaticResource MyNet.Styles.Button.Filled}" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" BorderThickness="0 1 0 1" Content="{me:Resource Today,                                                               Casing=AllCaps}" />
-                <Button x:Name="PART_NextButton" Style="{StaticResource MyNet.Styles.Button.Filled}" Padding="6 1" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0 2 2 0" BorderThickness="0 1 1 1" Content="{me:MediumIcon Kind=ChevronRight}" ToolTip="{me:Resource Next}" />
+                <Button x:Name="PART_PreviousButton" Style="{StaticResource MyNet.Styles.Button.Filled}" Padding="6 1" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="2 0 0 2" Content="{me:MediumIcon Kind=ChevronLeft}" ToolTip="{me:Resource Previous}" />
+                <Button x:Name="PART_TodayButton" Style="{StaticResource MyNet.Styles.Button.Filled}" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0" Content="{me:Resource Today,                                                               Casing=AllCaps}" />
+                <Button x:Name="PART_NextButton" Style="{StaticResource MyNet.Styles.Button.Filled}" Padding="6 1" VerticalAlignment="Stretch" p:ThemeAssist.CornerRadius="0 2 2 0" Content="{me:MediumIcon Kind=ChevronRight}" ToolTip="{me:Resource Next}" />
               </StackPanel>
             </ctrl:SimpleStackPanel>
             <!-- Calendar -->
@@ -19097,7 +19093,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
