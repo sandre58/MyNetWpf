@@ -27,9 +27,9 @@
                     <ctrl:Card x:Name="card"
                                Style="{StaticResource MyNet.Styles.Card.Popup}"
                                Padding="{TemplateBinding Padding}"
-                               Background="{TemplateBinding Background}"
                                p:PopupAssist.PlacementMode="{Binding Path=(p:PopupAssist.PlacementMode), RelativeSource={RelativeSource TemplatedParent}}"
                                p:PopupAssist.ShowIndicator="True"
+                               Background="{TemplateBinding Background}"
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                Foreground="{TemplateBinding Foreground}">
@@ -39,7 +39,7 @@
                                             TextElement.FontSize="{Binding Path=(p:HeaderAssist.FontSize), RelativeSource={RelativeSource TemplatedParent}}"
                                             TextElement.FontWeight="{Binding Path=(p:HeaderAssist.FontWeight), RelativeSource={RelativeSource TemplatedParent}}"
                                             Visibility="{Binding Path=(p:HeaderAssist.Header), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
-                            <ContentPresenter>
+                            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}">
                                 <ContentPresenter.Resources>
                                     <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MyNet.Styles.TextBlock}">
                                         <Setter Property="TextAlignment" Value="Justify" />

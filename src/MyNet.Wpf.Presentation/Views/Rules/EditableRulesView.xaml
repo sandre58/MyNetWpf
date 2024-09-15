@@ -43,7 +43,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Application}" Padding="{StaticResource MyNet.Margins.Default}">
+                    <my:Card Style="{StaticResource MyNet.Styles.Card.Elevation.Application}" Padding="{StaticResource MyNet.Margins.Default}" my:ElevationAssist.Elevation="Dp0">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />

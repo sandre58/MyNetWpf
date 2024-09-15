@@ -26,7 +26,7 @@
     <Color x:Key="MyNet.Colors.Dialog.Background">#292929</Color>
 
     <!-- Popup -->
-    <Color x:Key="MyNet.Colors.Popup.Background">#262626</Color>
+    <Color x:Key="MyNet.Colors.Popup.Background">#242424</Color>
 
     <!-- ScrollBar -->
     <Color x:Key="MyNet.Colors.ScrollBar.Background">#858585</Color>
