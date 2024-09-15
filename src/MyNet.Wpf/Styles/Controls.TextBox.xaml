@@ -411,7 +411,8 @@
     <Style x:Key="MyNet.Styles.TextBox.Filled" TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource MyNet.Styles.TextBox}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
         <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
         <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
         <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     </Style>
@@ -424,11 +425,23 @@
         <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
     </Style>
 
+    <Style x:Key="MyNet.Styles.TextBox.Filled.Alternate" TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource MyNet.Styles.TextBox.Filled}">
+        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+        <Setter Property="BorderThickness" Value="0 0 0 1" />
+    </Style>
+    <Style x:Key="MyNet.Styles.TextBox.Filled.Alternate.Foreground" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyNet.Styles.TextBox.Filled.Alternate}">
+        <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+        <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+        <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+        <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+        <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+    </Style>
+
     <Style x:Key="MyNet.Styles.TextBox.Outlined" TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource MyNet.Styles.TextBox.Filled}">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
         <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-        <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
         <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
     </Style>
     <Style x:Key="MyNet.Styles.TextBox.Outlined.Foreground" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyNet.Styles.TextBox.Outlined}">

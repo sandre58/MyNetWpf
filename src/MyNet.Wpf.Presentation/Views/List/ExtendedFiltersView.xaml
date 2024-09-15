@@ -25,7 +25,7 @@
                        FontSize="{StaticResource MyNet.Font.Size}"
                        PopupPadding="0"
                        StaysOpen="True"
-                       ToolTip="{my:Resource Filter}">
+                       my:ToolTipAssist.Content="{my:Resource Filter}">
         <my:DropDownButton.ToggleContent>
             <StackPanel Orientation="Horizontal">
                 <Button Style="{StaticResource MyNet.Styles.Button.Icon.Tool}"

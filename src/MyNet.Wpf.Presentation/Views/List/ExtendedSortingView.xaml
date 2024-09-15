@@ -19,7 +19,7 @@
                        Padding="7 4"
                        FontSize="{StaticResource MyNet.Font.Size}"
                        PopupPadding="0"
-                       ToolTip="{my:Translation ActiveSortingProperty.DisplayName.Value,
+                       my:ToolTipAssist.Content="{my:Translation ActiveSortingProperty.DisplayName.Value,
                                                 Format=ByX}">
         <my:DropDownButton.ToggleContent>
             <Grid>

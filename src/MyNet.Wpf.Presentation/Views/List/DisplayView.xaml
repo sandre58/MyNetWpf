@@ -18,7 +18,7 @@
                        FontSize="{StaticResource MyNet.Font.Size}"
                        PopupPadding="0"
                        ToggleContent="{Binding Mode}"
-                       ToolTip="{Binding Mode.Value}">
+                       my:ToolTipAssist.Content="{Binding Mode.Value}">
         <my:DropDownButton.Resources>
             <DataTemplate DataType="{x:Type displayVm:DisplayModeGrid}">
                 <my:PackIcon Width="24"

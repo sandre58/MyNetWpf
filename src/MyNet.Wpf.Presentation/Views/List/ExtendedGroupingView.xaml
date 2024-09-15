@@ -19,7 +19,7 @@
                        Padding="7 4"
                        FontSize="{StaticResource MyNet.Font.Size}"
                        PopupPadding="0"
-                       ToolTip="{my:Translation ActiveGroupingProperty.DisplayName.Value,
+                       my:ToolTipAssist.Content="{my:Translation ActiveGroupingProperty.DisplayName.Value,
                                                 Format=ByX}">
         <my:DropDownButton.ToggleContent>
             <StackPanel Orientation="Horizontal">

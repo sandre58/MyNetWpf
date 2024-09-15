@@ -91,7 +91,7 @@
     <Style x:Key="MyNet.Styles.Button.Filled" TargetType="{x:Type ButtonBase}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Icon}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
@@ -194,6 +194,7 @@
     <!-- Outlined -->
     <Style x:Key="MyNet.Styles.Button.Outlined" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Outlined.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Outlined}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -392,6 +393,7 @@
     <!-- Rounded Outlined -->
     <Style x:Key="MyNet.Styles.Button.Rounded.Outlined" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style x:Key="MyNet.Styles.Button.Rounded.Outlined.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Outlined}">
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />

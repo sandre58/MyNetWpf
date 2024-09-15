@@ -21,10 +21,10 @@
 
                     <my:SimpleStackPanel Orientation="Horizontal">
                         <smtx:XamlDisplay UniqueKey="dat_0_0_0">
-                            <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.Alternate.Outlined}" Width="300" SelectedDate="{x:Static sys:DateTime.Today}" />
+                            <DatePicker Style="{StaticResource MyNet.Styles.DatePicker.DropDown.Outlined}" Width="300" SelectedDate="{x:Static sys:DateTime.Today}" />
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="dat_0_0_1">
-                            <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.Alternate.Outlined}" Width="120" SelectedTime="{x:Static sys:DateTime.Today}" />
+                            <my:TimePicker Style="{StaticResource MyNet.Styles.TimePicker.DropDown.Outlined}" Width="120" SelectedTime="{x:Static sys:DateTime.Today}" />
                         </smtx:XamlDisplay>
                     </my:SimpleStackPanel>
 
@@ -42,21 +42,21 @@
 
                     <my:SimpleStackPanel Orientation="Horizontal">
                         <smtx:XamlDisplay UniqueKey="dat_0_2_0">
-                            <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Alternate}"
+                            <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.DropDown}"
                                       Width="100"
                                       ItemsSource="{my:IntegerRange Start=1,
                                                                     End=20}"
                                       SelectedIndex="0" />
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="dat_0_2_1">
-                            <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Alternate.Filled}"
+                            <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.DropDown.Filled}"
                                       Width="100"
                                       ItemsSource="{my:IntegerRange Start=1,
                                                                     End=20}"
                                       SelectedIndex="0" />
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="dat_0_2_2">
-                            <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.Alternate.Outlined}"
+                            <ComboBox Style="{StaticResource MyNet.Styles.ComboBox.DropDown.Outlined}"
                                       Width="100"
                                       ItemsSource="{my:IntegerRange Start=1,
                                                                     End=20}"
@@ -66,20 +66,20 @@
 
                     <my:SimpleStackPanel Orientation="Horizontal">
                         <smtx:XamlDisplay UniqueKey="dat_0_3_0">
-                            <my:MonthPicker Style="{StaticResource MyNet.Styles.MonthPicker.Alternate}" Width="200" SelectedMonth="{x:Static sys:DateTime.Today}" />
+                            <my:MonthPicker Style="{StaticResource MyNet.Styles.MonthPicker.DropDown}" Width="200" SelectedMonth="{x:Static sys:DateTime.Today}" />
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="dat_0_3_1">
-                            <my:MonthPicker Style="{StaticResource MyNet.Styles.MonthPicker.Alternate.Filled}" Width="200" SelectedMonth="{x:Static sys:DateTime.Today}" />
+                            <my:MonthPicker Style="{StaticResource MyNet.Styles.MonthPicker.DropDown.Filled}" Width="200" SelectedMonth="{x:Static sys:DateTime.Today}" />
                         </smtx:XamlDisplay>
                         <smtx:XamlDisplay UniqueKey="dat_0_3_2">
-                            <my:MonthPicker Style="{StaticResource MyNet.Styles.MonthPicker.Alternate.Outlined}" Width="300" SelectedMonth="{Binding Month, RelativeSource={RelativeSource AncestorType={x:Type local:InputsCalendarsView}}}" />
+                            <my:MonthPicker Style="{StaticResource MyNet.Styles.MonthPicker.DropDown.Outlined}" Width="300" SelectedMonth="{Binding Month, RelativeSource={RelativeSource AncestorType={x:Type local:InputsCalendarsView}}}" />
                         </smtx:XamlDisplay>
                         <TextBlock Text="{Binding Month, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource AncestorType={x:Type local:InputsCalendarsView}}}" />
                     </my:SimpleStackPanel>
 
                     <my:SimpleStackPanel Orientation="Horizontal">
                         <smtx:XamlDisplay UniqueKey="dat_0_4_0">
-                            <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Outlined}" Width="150" Value="{Binding Year, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type local:InputsCalendarsView}}, Converter={x:Static my:DateToYearConverter.Default}}" />
+                            <my:NumericUpDown Style="{StaticResource MyNet.Styles.NumericUpDown.DropDown.Outlined}" Width="150" Value="{Binding Year, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type local:InputsCalendarsView}}, Converter={x:Static my:DateToYearConverter.Default}}" />
                         </smtx:XamlDisplay>
                     </my:SimpleStackPanel>
                 </my:SimpleStackPanel>

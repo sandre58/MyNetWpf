@@ -8581,7 +8581,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.Button.Filled" TargetType="{x:Type ButtonBase}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="BorderThickness" Value="0" />
     <Setter Property="ContentTemplate" Value="{StaticResource MyNet.DataTemplates.Icon}" />
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
@@ -8667,6 +8667,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.Button.Outlined" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Filled}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Outlined.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Outlined}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -8826,6 +8827,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Outlined" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Filled}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
   </Style>
   <Style x:Key="MyNet.Styles.Button.Rounded.Outlined.Primary" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Rounded.Outlined}">
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
@@ -9857,7 +9859,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.ComboBox.Filled" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
@@ -9869,11 +9872,22 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
+  <Style x:Key="MyNet.Styles.ComboBox.Filled.Alternate" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Filled}">
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0 0 0 1" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ComboBox.Filled.Alternate.Foreground" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+  </Style>
   <Style x:Key="MyNet.Styles.ComboBox.Outlined" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ComboBox.Outlined.Foreground" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Outlined}">
@@ -9902,7 +9916,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ComboBoxAssist.ShowUpDownButton" Value="True" />
     <Setter Property="p:TextFieldAssist.Mask" Value="PositiveDecimal" />
   </Style>
-  <Style x:Key="MyNet.Styles.ComboBox.Alternate" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox}">
+  <Style x:Key="MyNet.Styles.ComboBox.DropDown" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox}">
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="p:ComboBoxAssist.ShowCaret" Value="False" />
@@ -9911,14 +9925,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:TextFieldAssist.PreviousCommand" Value="{x:Static cmd:AppCommands.ComboBoxDownCommand}" />
     <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ComboBox.Alternate.Foreground" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Alternate}">
+  <Style x:Key="MyNet.Styles.ComboBox.DropDown.Foreground" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.DropDown}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ComboBox.Alternate.Filled" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Alternate}">
+  <Style x:Key="MyNet.Styles.ComboBox.DropDown.Filled" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.DropDown}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.ButtonStyle">
       <Setter.Value>
@@ -9929,11 +9943,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ComboBox.Alternate.Filled.Foreground" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.ComboBox.DropDown.Filled.Foreground" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.DropDown.Filled}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -9941,14 +9956,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ComboBox.Alternate.Outlined" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.ComboBox.DropDown.Outlined" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.DropDown.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ComboBox.Alternate.Outlined.Foreground" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Alternate.Outlined}">
+  <Style x:Key="MyNet.Styles.ComboBox.DropDown.Outlined.Foreground" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.DropDown.Outlined}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -9956,7 +9971,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ComboBox.Hour" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Alternate}">
+  <Style x:Key="MyNet.Styles.ComboBox.Hour" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.DropDown}">
     <Setter Property="ItemTemplate">
       <Setter.Value>
         <DataTemplate>
@@ -10430,7 +10445,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.DatePicker.Filled" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
@@ -10442,11 +10458,22 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
+  <Style x:Key="MyNet.Styles.DatePicker.Filled.Alternate" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.Filled}">
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0 0 0 1" />
+  </Style>
+  <Style x:Key="MyNet.Styles.DatePicker.Filled.Alternate.Foreground" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+  </Style>
   <Style x:Key="MyNet.Styles.DatePicker.Outlined" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
   <Style x:Key="MyNet.Styles.DatePicker.Outlined.Foreground" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.Outlined}">
@@ -10457,7 +10484,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DatePicker.Alternate" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker}">
+  <Style x:Key="MyNet.Styles.DatePicker.DropDown" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker}">
     <Setter Property="Padding" Value="0" />
     <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -10466,14 +10493,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:TextFieldAssist.NextCommand" Value="{x:Static cmd:AppCommands.NextDayCommand}" />
     <Setter Property="p:TextFieldAssist.PreviousCommand" Value="{x:Static cmd:AppCommands.PreviousDayCommand}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DatePicker.Alternate.Foreground" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.Alternate}">
+  <Style x:Key="MyNet.Styles.DatePicker.DropDown.Foreground" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.DropDown}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DatePicker.Alternate.Filled" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.Alternate}">
+  <Style x:Key="MyNet.Styles.DatePicker.DropDown.Filled" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.DropDown}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.ButtonStyle">
       <Setter.Value>
@@ -10484,11 +10511,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DatePicker.Alternate.Filled.Foreground" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.DatePicker.DropDown.Filled.Foreground" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.DropDown.Filled}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -10496,14 +10524,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DatePicker.Alternate.Outlined" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.DatePicker.DropDown.Outlined" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.DropDown.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.DatePicker.Alternate.Outlined.Foreground" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.Alternate.Outlined}">
+  <Style x:Key="MyNet.Styles.DatePicker.DropDown.Outlined.Foreground" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource MyNet.Styles.DatePicker.DropDown.Outlined}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -11713,7 +11741,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.PasswordBox.Filled" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MyNet.Styles.PasswordBox}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
@@ -11725,11 +11754,22 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
+  <Style x:Key="MyNet.Styles.PasswordBox.Filled.Alternate" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MyNet.Styles.PasswordBox.Filled}">
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0 0 0 1" />
+  </Style>
+  <Style x:Key="MyNet.Styles.PasswordBox.Filled.Alternate.Foreground" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MyNet.Styles.PasswordBox.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+  </Style>
   <Style x:Key="MyNet.Styles.PasswordBox.Outlined" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MyNet.Styles.PasswordBox.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
   <Style x:Key="MyNet.Styles.PasswordBox.Outlined.Foreground" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MyNet.Styles.PasswordBox.Outlined}">
@@ -12158,7 +12198,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.TextBox.Filled" TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource MyNet.Styles.TextBox}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
@@ -12170,11 +12211,22 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
+  <Style x:Key="MyNet.Styles.TextBox.Filled.Alternate" TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource MyNet.Styles.TextBox.Filled}">
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0 0 0 1" />
+  </Style>
+  <Style x:Key="MyNet.Styles.TextBox.Filled.Alternate.Foreground" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyNet.Styles.TextBox.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+  </Style>
   <Style x:Key="MyNet.Styles.TextBox.Outlined" TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource MyNet.Styles.TextBox.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
   <Style x:Key="MyNet.Styles.TextBox.Outlined.Foreground" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyNet.Styles.TextBox.Outlined}">
@@ -12250,24 +12302,29 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Outlined" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Outlined.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Primary}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Outlined.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Accent}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Outlined.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Custom}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Outlined.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Filled.Foreground}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
@@ -12468,24 +12525,29 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Outlined" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Outlined.Primary" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Primary}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Outlined.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Accent}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Outlined.Custom" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Custom}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Rounded.Outlined.Foreground" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Rounded.Filled.Foreground}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
@@ -12866,6 +12928,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:ThemeAssist.IsCheckedForeground" Value="{DynamicResource MyNet.Brushes.Primary.Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding Foreground, RelativeSource={RelativeSource Mode=Self}, Opacity={StaticResource MyNet.Opacity.Hovered}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverForeground" Value="{me:BrushBinding Foreground, RelativeSource={RelativeSource Mode=Self}}" />
     <Setter Property="p:ToggleButtonAssist.OnContent" Value="{Binding Content, RelativeSource={RelativeSource Self}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToggleButton.Switch.Accent" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MyNet.Styles.ToggleButton.Switch}">
@@ -13261,10 +13324,10 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="ToolTip">
-          <ctrl:Card x:Name="card" Style="{StaticResource MyNet.Styles.Card.Popup}" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" p:PopupAssist.PlacementMode="{Binding Path=(p:PopupAssist.PlacementMode), RelativeSource={RelativeSource TemplatedParent}}" p:PopupAssist.ShowIndicator="True" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Foreground="{TemplateBinding Foreground}">
+          <ctrl:Card x:Name="card" Style="{StaticResource MyNet.Styles.Card.Popup}" Padding="{TemplateBinding Padding}" p:PopupAssist.PlacementMode="{Binding Path=(p:PopupAssist.PlacementMode), RelativeSource={RelativeSource TemplatedParent}}" p:PopupAssist.ShowIndicator="True" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Foreground="{TemplateBinding Foreground}">
             <ctrl:SimpleStackPanel Spacing="{StaticResource MyNet.Margin.Default}">
               <ContentControl Content="{Binding Path=(p:HeaderAssist.Header), RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{Binding Path=(p:HeaderAssist.HeaderTemplate), RelativeSource={RelativeSource TemplatedParent}}" TextElement.FontSize="{Binding Path=(p:HeaderAssist.FontSize), RelativeSource={RelativeSource TemplatedParent}}" TextElement.FontWeight="{Binding Path=(p:HeaderAssist.FontWeight), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(p:HeaderAssist.Header), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:NullToVisibilityConverter.CollapsedIfNull}}" />
-              <ContentPresenter>
+              <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}">
                 <ContentPresenter.Resources>
                   <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MyNet.Styles.TextBlock}">
                     <Setter Property="TextAlignment" Value="Justify" />
@@ -15148,7 +15211,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.DropDownButton.Filled" TargetType="{x:Type ctrl:DropDownButton}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="BorderThickness" Value="0" />
     <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Filled}" />
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
@@ -15326,24 +15389,29 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Outlined" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Primary}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Accent}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Custom}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Outlined.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Filled.Alternate.Foreground}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
@@ -15485,24 +15553,29 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Primary" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Primary}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Accent" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Accent}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Custom" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Custom}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.DropDownButton.Rounded.Outlined.Foreground" TargetType="{x:Type ctrl:DropDownButton}" BasedOn="{StaticResource MyNet.Styles.DropDownButton.Rounded.Filled.Alternate.Foreground}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
@@ -16128,7 +16201,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.ImagePicker.Filled" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
@@ -16140,11 +16214,22 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
+  <Style x:Key="MyNet.Styles.ImagePicker.Filled.Alternate" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Filled}">
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0 0 0 1" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ImagePicker.Filled.Alternate.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+  </Style>
   <Style x:Key="MyNet.Styles.ImagePicker.Outlined" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ImagePicker.Outlined.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Outlined}">
@@ -16229,20 +16314,20 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Background, Opacity={StaticResource MyNet.Opacity.Medium}}" />
     <Setter Property="p:ThemeAssist.UniformCornerRadius" Value="{StaticResource MyNet.UniformCornerRadius.Container}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ImagePicker.Alternate" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker}">
+  <Style x:Key="MyNet.Styles.ImagePicker.DropDown" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker}">
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
     <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ImagePicker.Alternate.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Alternate}">
+  <Style x:Key="MyNet.Styles.ImagePicker.DropDown.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.DropDown}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ImagePicker.Alternate.Filled" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Alternate}">
+  <Style x:Key="MyNet.Styles.ImagePicker.DropDown.Filled" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.DropDown}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.ButtonStyle">
       <Setter.Value>
@@ -16253,11 +16338,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ImagePicker.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.ImagePicker.DropDown.Filled.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.DropDown.Filled}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -16265,14 +16351,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ImagePicker.Alternate.Outlined" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.ImagePicker.DropDown.Outlined" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.DropDown.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ImagePicker.Alternate.Outlined.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.Alternate.Outlined}">
+  <Style x:Key="MyNet.Styles.ImagePicker.DropDown.Outlined.Foreground" TargetType="{x:Type ctrl:ImagePicker}" BasedOn="{StaticResource MyNet.Styles.ImagePicker.DropDown.Outlined}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -16880,7 +16966,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.MonthPicker.Filled" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
@@ -16892,11 +16979,22 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
+  <Style x:Key="MyNet.Styles.MonthPicker.Filled.Alternate" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Filled}">
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0 0 0 1" />
+  </Style>
+  <Style x:Key="MyNet.Styles.MonthPicker.Filled.Alternate.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+  </Style>
   <Style x:Key="MyNet.Styles.MonthPicker.Outlined" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
   <Style x:Key="MyNet.Styles.MonthPicker.Outlined.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Outlined}">
@@ -16907,7 +17005,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.MonthPicker.Alternate" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker}">
+  <Style x:Key="MyNet.Styles.MonthPicker.DropDown" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker}">
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
@@ -16915,14 +17013,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:TextFieldAssist.PreviousCommand" Value="{x:Static cmd:AppCommands.PreviousMonthCommand}" />
     <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
-  <Style x:Key="MyNet.Styles.MonthPicker.Alternate.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Alternate}">
+  <Style x:Key="MyNet.Styles.MonthPicker.DropDown.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.DropDown}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.MonthPicker.Alternate.Filled" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Alternate}">
+  <Style x:Key="MyNet.Styles.MonthPicker.DropDown.Filled" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.DropDown}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.ButtonStyle">
       <Setter.Value>
@@ -16932,11 +17030,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.MonthPicker.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.MonthPicker.DropDown.Filled.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.DropDown.Filled}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -16944,14 +17043,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.MonthPicker.Alternate.Outlined" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.MonthPicker.DropDown.Outlined" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.DropDown.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.MonthPicker.Alternate.Outlined.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.Alternate.Outlined}">
+  <Style x:Key="MyNet.Styles.MonthPicker.DropDown.Outlined.Foreground" TargetType="{x:Type ctrl:MonthPicker}" BasedOn="{StaticResource MyNet.Styles.MonthPicker.DropDown.Outlined}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -17436,7 +17535,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.MultiComboBox.Filled" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
@@ -17448,11 +17548,22 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
+  <Style x:Key="MyNet.Styles.MultiComboBox.Filled.Alternate" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Filled}">
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0 0 0 1" />
+  </Style>
+  <Style x:Key="MyNet.Styles.MultiComboBox.Filled.Alternate.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+  </Style>
   <Style x:Key="MyNet.Styles.MultiComboBox.Outlined" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="2" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
   <Style x:Key="MyNet.Styles.MultiComboBox.Outlined.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Outlined}">
@@ -17463,7 +17574,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.MultiComboBox.Alternate" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox}">
+  <Style x:Key="MyNet.Styles.MultiComboBox.DropDown" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox}">
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="p:ComboBoxAssist.ShowCaret" Value="False" />
@@ -17472,14 +17583,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:TextFieldAssist.PreviousCommand" Value="{x:Static cmd:AppCommands.ComboBoxDownCommand}" />
     <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
-  <Style x:Key="MyNet.Styles.MultiComboBox.Alternate.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Alternate}">
+  <Style x:Key="MyNet.Styles.MultiComboBox.DropDown.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.DropDown}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.MultiComboBox.Alternate.Filled" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Alternate}">
+  <Style x:Key="MyNet.Styles.MultiComboBox.DropDown.Filled" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.DropDown}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.ButtonStyle">
       <Setter.Value>
@@ -17490,11 +17601,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.MultiComboBox.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.MultiComboBox.DropDown.Filled.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.DropDown.Filled}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -17502,14 +17614,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.MultiComboBox.Alternate.Outlined" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.MultiComboBox.DropDown.Outlined" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.DropDown.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.MultiComboBox.Alternate.Outlined.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.Alternate.Outlined}">
+  <Style x:Key="MyNet.Styles.MultiComboBox.DropDown.Outlined.Foreground" TargetType="{x:Type ctrl:MultiComboBox}" BasedOn="{StaticResource MyNet.Styles.MultiComboBox.DropDown.Outlined}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -18072,7 +18184,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.NumericUpDown.Filled" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
@@ -18084,11 +18197,22 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
+  <Style x:Key="MyNet.Styles.NumericUpDown.Filled.Alternate" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Filled}">
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0 0 0 1" />
+  </Style>
+  <Style x:Key="MyNet.Styles.NumericUpDown.Filled.Alternate.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+  </Style>
   <Style x:Key="MyNet.Styles.NumericUpDown.Outlined" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
   <Style x:Key="MyNet.Styles.NumericUpDown.Outlined.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Outlined}">
@@ -18099,7 +18223,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.NumericUpDown.Alternate" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}">
+  <Style x:Key="MyNet.Styles.NumericUpDown.DropDown" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown}">
     <Setter Property="ButtonsAlignment" Value="Opposite" />
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="Padding" Value="0" />
@@ -18108,14 +18232,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:TextFieldAssist.PreviousButtonContent" Value="{StaticResource MyNet.Icons.ChevronLeft.Medium}" />
     <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
-  <Style x:Key="MyNet.Styles.NumericUpDown.Alternate.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Alternate}">
+  <Style x:Key="MyNet.Styles.NumericUpDown.DropDown.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.DropDown}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.NumericUpDown.Alternate.Filled" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Alternate}">
+  <Style x:Key="MyNet.Styles.NumericUpDown.DropDown.Filled" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.DropDown}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.ButtonStyle">
       <Setter.Value>
@@ -18126,11 +18250,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.NumericUpDown.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.NumericUpDown.DropDown.Filled.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.DropDown.Filled}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -18138,14 +18263,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.NumericUpDown.Alternate.Outlined" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.NumericUpDown.DropDown.Outlined" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.DropDown.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.NumericUpDown.Alternate.Outlined.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.Alternate.Outlined}">
+  <Style x:Key="MyNet.Styles.NumericUpDown.DropDown.Outlined.Foreground" TargetType="{x:Type ctrl:NumericUpDown}" BasedOn="{StaticResource MyNet.Styles.NumericUpDown.DropDown.Outlined}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -18168,7 +18293,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.RevealPasswordBox.Filled" TargetType="{x:Type ctrl:RevealPasswordBox}" BasedOn="{StaticResource MyNet.Styles.RevealPasswordBox}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
@@ -18180,11 +18306,22 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
+  <Style x:Key="MyNet.Styles.RevealPasswordBox.Filled.Alternate" TargetType="{x:Type ctrl:RevealPasswordBox}" BasedOn="{StaticResource MyNet.Styles.RevealPasswordBox.Filled}">
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0 0 0 1" />
+  </Style>
+  <Style x:Key="MyNet.Styles.RevealPasswordBox.Filled.Alternate.Foreground" TargetType="{x:Type ctrl:RevealPasswordBox}" BasedOn="{StaticResource MyNet.Styles.RevealPasswordBox.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+  </Style>
   <Style x:Key="MyNet.Styles.RevealPasswordBox.Outlined" TargetType="{x:Type ctrl:RevealPasswordBox}" BasedOn="{StaticResource MyNet.Styles.RevealPasswordBox.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
   <Style x:Key="MyNet.Styles.RevealPasswordBox.Outlined.Foreground" TargetType="{x:Type ctrl:RevealPasswordBox}" BasedOn="{StaticResource MyNet.Styles.RevealPasswordBox.Outlined}">
@@ -18198,7 +18335,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.SplitButton.Filled" TargetType="{x:Type ctrl:SplitButton}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Control.Border}" />
-    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="BorderThickness" Value="0" />
     <Setter Property="ButtonStyle" Value="{StaticResource MyNet.Styles.ToggleButton.Filled}" />
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="FocusVisualStyle" Value="{DynamicResource MyNet.Styles.FocusVisualStyle.Rectangle.Margin}" />
@@ -18391,24 +18528,29 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Outlined" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Outlined.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Primary}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Outlined.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Accent}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Outlined.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Custom}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
   <Style x:Key="MyNet.Styles.SplitButton.Outlined.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Foreground}">
     <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
   </Style>
@@ -18889,7 +19031,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.TimePicker.Filled" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
@@ -18901,11 +19044,22 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
+  <Style x:Key="MyNet.Styles.TimePicker.Filled.Alternate" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Filled}">
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0 0 0 1" />
+  </Style>
+  <Style x:Key="MyNet.Styles.TimePicker.Filled.Alternate.Foreground" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+  </Style>
   <Style x:Key="MyNet.Styles.TimePicker.Outlined" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
   <Style x:Key="MyNet.Styles.TimePicker.Outlined.Foreground" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Outlined}">
@@ -18916,7 +19070,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.TimePicker.Alternate" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker}">
+  <Style x:Key="MyNet.Styles.TimePicker.DropDown" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker}">
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="p:TextFieldAssist.Format" Value="HH:mm" />
@@ -18925,14 +19079,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:TextFieldAssist.PreviousCommand" Value="{x:Static cmd:AppCommands.PreviousHourCommand}" />
     <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
-  <Style x:Key="MyNet.Styles.TimePicker.Alternate.Foreground" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Alternate}">
+  <Style x:Key="MyNet.Styles.TimePicker.DropDown.Foreground" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.DropDown}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.TimePicker.Alternate.Filled" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Alternate}">
+  <Style x:Key="MyNet.Styles.TimePicker.DropDown.Filled" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.DropDown}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.ButtonStyle">
       <Setter.Value>
@@ -18947,7 +19101,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.TimePicker.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.TimePicker.DropDown.Filled.Foreground" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.DropDown.Filled}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -18955,14 +19109,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.TimePicker.Alternate.Outlined" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.TimePicker.DropDown.Outlined" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.DropDown.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.TimePicker.Alternate.Outlined.Foreground" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.Alternate.Outlined}">
+  <Style x:Key="MyNet.Styles.TimePicker.DropDown.Outlined.Foreground" TargetType="{x:Type ctrl:TimePicker}" BasedOn="{StaticResource MyNet.Styles.TimePicker.DropDown.Outlined}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -20794,7 +20948,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   <Style x:Key="MyNet.Styles.ColorPicker.Filled" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
@@ -20806,11 +20961,22 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
+  <Style x:Key="MyNet.Styles.ColorPicker.Filled.Alternate" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Filled}">
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0 0 0 1" />
+  </Style>
+  <Style x:Key="MyNet.Styles.ColorPicker.Filled.Alternate.Foreground" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Filled.Alternate}">
+    <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
+    <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
+    <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
+    <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
+  </Style>
   <Style x:Key="MyNet.Styles.ColorPicker.Outlined" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
   <Style x:Key="MyNet.Styles.ColorPicker.Outlined.Foreground" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Outlined}">
@@ -20821,20 +20987,20 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ColorPicker.Alternate" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker}">
+  <Style x:Key="MyNet.Styles.ColorPicker.DropDown" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker}">
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="p:TextFieldAssist.IsEditable" Value="False" />
     <Setter Property="p:TextFieldAssist.TextBoxViewMargin" Value="{StaticResource MyNet.Paddings.TextField.Default}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ColorPicker.Alternate.Foreground" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Alternate}">
+  <Style x:Key="MyNet.Styles.ColorPicker.DropDown.Foreground" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.DropDown}">
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:TextFieldAssist.UnderlineBrush" Value="{me:BrushBinding SelfPath=Foreground}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ColorPicker.Alternate.Filled" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Alternate}">
+  <Style x:Key="MyNet.Styles.ColorPicker.DropDown.Filled" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.DropDown}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
     <Setter Property="p:TextFieldAssist.ButtonStyle">
       <Setter.Value>
@@ -20845,11 +21011,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
       </Setter.Value>
     </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
-    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control.Top}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Focused}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBackground" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ColorPicker.Alternate.Filled.Foreground" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.ColorPicker.DropDown.Filled.Foreground" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.DropDown.Filled}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
@@ -20857,14 +21024,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ColorPicker.Alternate.Outlined" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Alternate.Filled}">
+  <Style x:Key="MyNet.Styles.ColorPicker.DropDown.Outlined" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.DropDown.Filled}">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="ctrl:BottomDashedLineAdorner.IsActive" Value="False" />
     <Setter Property="p:TextFieldAssist.DecorationVisibility" Value="Collapsed" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
     <Setter Property="p:ThemeAssist.IsCheckedBorderBrush" Value="{me:BrushBinding SelfPath=(p:TextFieldAssist.UnderlineBrush)}" />
   </Style>
-  <Style x:Key="MyNet.Styles.ColorPicker.Alternate.Outlined.Foreground" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.Alternate.Outlined}">
+  <Style x:Key="MyNet.Styles.ColorPicker.DropDown.Outlined.Foreground" TargetType="{x:Type ctrl:ColorPicker}" BasedOn="{StaticResource MyNet.Styles.ColorPicker.DropDown.Outlined}">
     <Setter Property="Background" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Filled}}" />
     <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Border}}" />
     <Setter Property="p:HintAssist.Foreground" Value="{me:BrushBinding SelfPath=Foreground}" />
