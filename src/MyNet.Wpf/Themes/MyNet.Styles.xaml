@@ -9991,6 +9991,14 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
   </Style>
   <Style x:Key="MyNet.Styles.ComboBox.Hour.Filled" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MyNet.Styles.ComboBox.Hour}">
     <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
+    <Setter Property="p:TextFieldAssist.ButtonStyle">
+      <Setter.Value>
+        <Style TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MyNet.Styles.Button.Text.Foreground}">
+          <Setter Property="Focusable" Value="False" />
+          <Setter Property="Padding" Value="3 0" />
+        </Style>
+      </Setter.Value>
+    </Setter>
     <Setter Property="p:TextFieldAssist.RippleOnFocusEnabled" Value="True" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="p:ThemeAssist.CornerRadius" Value="{StaticResource MyNet.CornerRadius.Control}" />
