@@ -65,6 +65,14 @@ namespace MyNet.Wpf.Converters
                 {
                     result = DateTimeToStringConverter.Default.Convert(date, targetType, p, culture)?.ToString();
                 }
+                else if (value is DateOnly date1)
+                {
+                    result = DateTimeToStringConverter.Default.Convert(date1, targetType, p, culture)?.ToString();
+                }
+                else if (value is TimeOnly time)
+                {
+                    result = DateTimeToStringConverter.Default.Convert(time, targetType, p, culture)?.ToString();
+                }
                 else if (value is TimeSpan && int.TryParse(p, out var number))
                 {
                     var split = result?.Split(" ");
