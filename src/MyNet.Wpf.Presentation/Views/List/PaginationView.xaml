@@ -37,7 +37,7 @@
                                              Orientation="Horizontal"
                                              Spacing="{StaticResource MyNet.Margin.Default}"
                                              Visibility="{Binding Converter={x:Static my:ComparaisonToVisibilityConverter.CollapsedIfIsEqualsTo}, ConverterParameter={StaticResource All}}">
-                            <TextBlock FontSize="{StaticResource MyNet.Font.Size.Caption}" Text="{Binding}" />
+                            <TextBlock Text="{Binding}" />
                             <TextBlock Opacity="{StaticResource MyNet.Opacity.Secondary}" Text="{my:Resource ItemsByPage}" />
                         </my:SimpleStackPanel>
 
@@ -59,11 +59,11 @@
             </my:Submenu>
         </my:DropDownButton>
 
-        <my:Card Padding="1"
+        <my:Card Padding="0"
+                 VerticalAlignment="Stretch"
                  my:ElevationAssist.Elevation="Dp0"
                  Background="{DynamicResource MyNet.Brushes.Control.Background}"
-                 BorderBrush="{DynamicResource MyNet.Brushes.Control.Border}"
-                 BorderThickness="0">
+                 UniformCornerRadius="{StaticResource MyNet.UniformCornerRadius.Control}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -75,14 +75,16 @@
 
                 <Button Style="{StaticResource MyNet.Styles.Button.Text}"
                         Grid.Column="0"
-                        Padding="5 3"
+                        Width="28"
+                        Padding="2"
                         VerticalAlignment="Stretch"
                         my:ThemeAssist.CornerRadius="0"
                         Command="{Binding MoveToFirstPageCommand}"
                         Content="{my:MediumIcon Kind=PageFirst}" />
                 <Button Style="{StaticResource MyNet.Styles.Button.Text}"
                         Grid.Column="1"
-                        Padding="5 3"
+                        Width="28"
+                        Padding="2"
                         VerticalAlignment="Stretch"
                         my:ThemeAssist.CornerRadius="0"
                         Command="{Binding MoveToPreviousPageCommand}"
@@ -91,14 +93,14 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <ToggleButton Style="{StaticResource MyNet.Styles.ToggleButton.Text}"
-                                          Width="34"
-                                          Padding="5 3"
+                                          Width="28"
+                                          Padding="2"
                                           VerticalAlignment="Stretch"
                                           my:ThemeAssist.CornerRadius="0"
                                           Command="{Binding Data.MoveToPageCommand, Source={StaticResource ProxyPagination}}"
                                           CommandParameter="{Binding}"
                                           Content="{Binding}"
-                                          FontSize="{StaticResource MyNet.Font.Size.Caption}"
+                                          FontSize="14"
                                           Opacity="{StaticResource MyNet.Opacity.Default}">
                                 <ToggleButton.IsChecked>
                                     <MultiBinding Converter="{x:Static my:EqualityToBooleanConverter.Default}" Mode="OneWay">
@@ -117,14 +119,16 @@
                 </ItemsControl>
                 <Button Style="{StaticResource MyNet.Styles.Button.Text}"
                         Grid.Column="3"
-                        Padding="5 3"
+                        Width="28"
+                        Padding="2"
                         VerticalAlignment="Stretch"
                         my:ThemeAssist.CornerRadius="0"
                         Command="{Binding MoveToNextPageCommand}"
                         Content="{my:MediumIcon Kind=ChevronRight}" />
                 <Button Style="{StaticResource MyNet.Styles.Button.Text}"
                         Grid.Column="4"
-                        Padding="5 3"
+                        Width="28"
+                        Padding="2"
                         VerticalAlignment="Stretch"
                         my:ThemeAssist.CornerRadius="0"
                         Command="{Binding MoveToLastPageCommand}"

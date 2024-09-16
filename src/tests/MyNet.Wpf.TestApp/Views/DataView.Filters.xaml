@@ -568,7 +568,7 @@
             <my:DisplayView DataContext="{Binding Display}" />
             <Separator />
             <ToggleButton Content="{my:MediumIcon Kind=BookOpenPageVariant}" IsChecked="{Binding CanPage}" />
-            <my:PaginationView DataContext="{Binding Paging}" IsEnabled="{Binding Data.CanPage, Source={StaticResource Proxy}}" />
+            <my:PaginationView VerticalAlignment="Center" DataContext="{Binding Paging}" IsEnabled="{Binding Data.CanPage, Source={StaticResource Proxy}}" />
         </ToolBar>
 
         <my:TransitioningContent Content="{Binding}" TriggerObject="{Binding Display.Mode}">
