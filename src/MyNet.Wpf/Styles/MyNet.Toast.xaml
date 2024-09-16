@@ -12,8 +12,8 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="MyNet.Styles.ToastItem" TargetType="{x:Type ctrl:ToastItem}">
-        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+        <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
         <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Small}" />
