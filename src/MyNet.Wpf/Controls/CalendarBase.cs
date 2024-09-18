@@ -23,6 +23,7 @@ using System.Windows.Threading;
 using DynamicData;
 using MyNet.DynamicData.Extensions;
 using MyNet.Observable;
+using MyNet.Observable.Deferrers;
 using MyNet.UI.Busy;
 using MyNet.UI.Busy.Models;
 using MyNet.UI.Collections;
@@ -73,8 +74,8 @@ namespace MyNet.Wpf.Controls
         private readonly UiObservableCollection<object> _rowHeaders = [];
         private readonly UiObservableCollection<CalendarItem> _displayDates = [];
         private readonly UiObservableCollection<CalendarAppointment> _appointments = [];
-        private readonly SingleTaskRunner _refreshAppointments;
-        private readonly SingleTaskRunner _build;
+        private readonly SingleTaskDeferrer _refreshAppointments;
+        private readonly SingleTaskDeferrer _build;
         private readonly Suspender _refreshAppointmentsSuspender = new();
 
         protected Grid? Grid { get; private set; }
@@ -1261,10 +1262,7 @@ namespace MyNet.Wpf.Controls
         protected void Rebuild()
         {
             if (IsInitialized)
-            {
-                _build.Cancel();
-                _build.Run();
-            }
+                _build.AskRefresh();
         }
 
         private void Build(CancellationToken cancellationToken)
@@ -1873,11 +1871,7 @@ namespace MyNet.Wpf.Controls
             }
         }
 
-        public void RefreshAppointments()
-        {
-            _refreshAppointments.Cancel();
-            _refreshAppointments.Run();
-        }
+        public void RefreshAppointments() => _refreshAppointments.AskRefresh();
 
         private async Task RefreshAppointmentsAsync(CancellationToken cancellationToken)
         {

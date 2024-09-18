@@ -6395,12 +6395,12 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     </ctrl:SimpleStackPanel>
   </DataTemplate>
   <Style x:Key="MyNet.Styles.DrawerHost" TargetType="{x:Type ctrl:DrawerHost}">
-    <Setter Property="BottomDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="BottomDrawerBackground" Value="{DynamicResource MyNet.Brushes.Dialog.Background}" />
     <Setter Property="ClipToBounds" Value="True" />
     <Setter Property="IsTabStop" Value="False" />
-    <Setter Property="LeftDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="LeftDrawerBackground" Value="{DynamicResource MyNet.Brushes.Dialog.Background}" />
     <Setter Property="OverlayBackground" Value="{DynamicResource MyNet.Brushes.Overlay}" />
-    <Setter Property="RightDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="RightDrawerBackground" Value="{DynamicResource MyNet.Brushes.Dialog.Background}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ctrl:DrawerHost}">
@@ -6782,7 +6782,7 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
         </ControlTemplate>
       </Setter.Value>
     </Setter>
-    <Setter Property="TopDrawerBackground" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="TopDrawerBackground" Value="{DynamicResource MyNet.Brushes.Dialog.Background}" />
     <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
     <Setter Property="p:ElevationAssist.Elevation" Value="{StaticResource MyNet.Elevation.Popup}" />
   </Style>
@@ -19130,8 +19130,8 @@ Styles\MyNet.VirtualizingWrapPanel.xaml
     <Setter Property="p:ThemeAssist.IsMouseOverBorderBrush" Value="{me:BrushBinding SelfPath=Foreground, Opacity={StaticResource MyNet.Opacity.Medium}}" />
   </Style>
   <Style x:Key="MyNet.Styles.ToastItem" TargetType="{x:Type ctrl:ToastItem}">
-    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Application.Background.Light}" />
+    <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Popup.Background}" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="Foreground" Value="{me:BrushBinding SelfPath=Background, Contrast=True}" />
     <Setter Property="Margin" Value="{StaticResource MyNet.Margins.Small}" />

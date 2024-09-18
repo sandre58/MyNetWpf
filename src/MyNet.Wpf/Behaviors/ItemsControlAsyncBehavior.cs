@@ -15,11 +15,11 @@ using System.Windows.Threading;
 using DynamicData;
 using DynamicData.Binding;
 using Microsoft.Xaml.Behaviors;
+using MyNet.Observable.Deferrers;
 using MyNet.UI.Busy;
 using MyNet.UI.Busy.Models;
 using MyNet.Utilities;
 using MyNet.Utilities.Collections;
-using MyNet.Utilities.Threading;
 using MyNet.Wpf.Busy;
 
 namespace MyNet.Wpf.Behaviors
@@ -29,12 +29,12 @@ namespace MyNet.Wpf.Behaviors
         private readonly IDisposable _disposable;
         private readonly ThreadSafeObservableCollection<object> _cacheItems = [];
         private readonly ObservableCollection<object> _items = [];
-        private readonly SingleTaskRunner _loadItems;
+        private readonly SingleTaskDeferrer _loadItemsDeferrer;
 
         public ItemsControlAsyncBehavior()
         {
-            _loadItems = new(async x => await SynchronizeItemsAsync(x).ConfigureAwait(false), null, () => Dispatcher.BeginInvoke(() => GetBusyService(AssociatedObject).Resume()));
-            _disposable = _cacheItems.ToObservableChangeSet().Throttle(200.Milliseconds()).Subscribe(_ => LoadItems());
+            _loadItemsDeferrer = new(async x => await SynchronizeItemsAsync(x).ConfigureAwait(false), null, () => Dispatcher.BeginInvoke(() => GetBusyService(AssociatedObject).Resume()));
+            _disposable = _cacheItems.ToObservableChangeSet().Throttle(200.Milliseconds()).Subscribe(_ => _loadItemsDeferrer.AskRefresh());
         }
 
         ~ItemsControlAsyncBehavior() => _disposable.Dispose();
@@ -91,12 +91,6 @@ namespace MyNet.Wpf.Behaviors
         }
 
         private void Items_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) => _cacheItems.Set(((IEnumerable?)sender)?.OfType<object>());
-
-        private void LoadItems()
-        {
-            _loadItems.Cancel();
-            _loadItems.Run();
-        }
 
         private async Task<bool> RemoveItemsAsync(IList items, CancellationToken cancellationToken)
         {
