@@ -129,7 +129,14 @@ namespace MyNet.Wpf.Presentation.Parameters
                 SetSortingProperties(listView, listViewModel.CurrentSorting);
 
                 if (listViewModel.Display.AllowedModes.OfType<DisplayModeList>().FirstOrDefault() is DisplayModeList displayModeList)
+                {
+                    var currentColumns = ListViewAssist.GetColumnLayouts(listView);
+
+                    if (currentColumns is not null)
+                        displayModeList.ColumnLayouts.AddRange(currentColumns.Where(x => !displayModeList.ColumnLayouts.Select(y => y.Identifier).Contains(x.Identifier)));
+
                     ListViewAssist.SetColumnLayouts(listView, displayModeList.ColumnLayouts);
+                }
             }
 
             if (listViewModel.CanGroup)
