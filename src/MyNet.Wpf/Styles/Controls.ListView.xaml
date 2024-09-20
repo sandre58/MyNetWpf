@@ -315,8 +315,7 @@
     <!-- Header -->
     <Style x:Key="MyNet.Styles.GridViewColumnHeader" TargetType="{x:Type GridViewColumnHeader}">
         <Setter Property="Background" Value="{DynamicResource MyNet.Brushes.Control.Background}" />
-        <Setter Property="Foreground" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
-        <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Path=(p:ListViewAssist.HeaderHeight)}" />
+        <Setter Property="Height" Value="{Binding FallbackValue=50, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Path=(p:ListViewAssist.HeaderHeight)}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Margin" Value="1 0" />
         <Setter Property="Opacity" Value="{DynamicResource MyNet.Opacity.Secondary}" />
