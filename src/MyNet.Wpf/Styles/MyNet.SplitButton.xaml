@@ -83,8 +83,8 @@
                         <ToggleButton Name="PART_Toggle"
                                       Style="{TemplateBinding ButtonStyle}"
                                       Grid.Column="2"
-                                      Width="Auto"
-                                      Height="Auto"
+                                      Width="{TemplateBinding ToggleButtonWidth}"
+                                      Height="{TemplateBinding ToggleButtonHeight}"
                                       Padding="0"
                                       HorizontalAlignment="Stretch"
                                       VerticalAlignment="Stretch"
@@ -153,6 +153,7 @@
                         </Trigger>
                         <Trigger Property="DropDownButtonPosition" Value="Top">
                             <Setter TargetName="Col0" Property="Width" Value="*" />
+                            <Setter TargetName="Col1" Property="Width" Value="0" />
                             <Setter TargetName="Col2" Property="Width" Value="Auto" />
                             <Setter TargetName="PART_Button" Property="Grid.Column" Value="0" />
                             <Setter TargetName="PART_Button" Property="Grid.Row" Value="2" />
@@ -160,7 +161,6 @@
                             <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="0" />
                             <Setter TargetName="Row0" Property="Height" Value="Auto" />
                             <Setter TargetName="Row2" Property="Height" Value="*" />
-                            <Setter TargetName="Col1" Property="Width" Value="0" />
                         </Trigger>
                         <Trigger Property="DropDownButtonPosition" Value="Right">
                             <Setter TargetName="Col0" Property="Width" Value="*" />
@@ -170,11 +170,12 @@
                             <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="2" />
                             <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="0" />
                             <Setter TargetName="Row0" Property="Height" Value="*" />
-                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
                             <Setter TargetName="Row1" Property="Height" Value="0" />
+                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
                         </Trigger>
                         <Trigger Property="DropDownButtonPosition" Value="Bottom">
                             <Setter TargetName="Col0" Property="Width" Value="*" />
+                            <Setter TargetName="Col1" Property="Width" Value="0" />
                             <Setter TargetName="Col2" Property="Width" Value="Auto" />
                             <Setter TargetName="PART_Button" Property="Grid.Column" Value="0" />
                             <Setter TargetName="PART_Button" Property="Grid.Row" Value="0" />
@@ -182,7 +183,6 @@
                             <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="2" />
                             <Setter TargetName="Row0" Property="Height" Value="*" />
                             <Setter TargetName="Row2" Property="Height" Value="Auto" />
-                            <Setter TargetName="Col1" Property="Width" Value="0" />
                         </Trigger>
                         <Trigger Property="DropDownButtonPosition" Value="Left">
                             <Setter TargetName="Col0" Property="Width" Value="Auto" />
@@ -192,8 +192,8 @@
                             <Setter TargetName="PART_Toggle" Property="Grid.Column" Value="0" />
                             <Setter TargetName="PART_Toggle" Property="Grid.Row" Value="0" />
                             <Setter TargetName="Row0" Property="Height" Value="*" />
-                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
                             <Setter TargetName="Row1" Property="Height" Value="0" />
+                            <Setter TargetName="Row2" Property="Height" Value="Auto" />
                         </Trigger>
                         <Trigger Property="DropDownButtonOrientation" Value="Up">
                             <Setter TargetName="Caret" Property="Kind" Value="ChevronUp" />
@@ -304,26 +304,26 @@
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.Outlined.Primary" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Primary}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Primary}" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Primary}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.Outlined.Accent" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Accent}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource MyNet.Brushes.Accent}" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="p:RippleAssist.Feedback" Value="{DynamicResource MyNet.Brushes.Accent}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.Outlined.Custom" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Custom}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
     <Style x:Key="MyNet.Styles.SplitButton.Outlined.Foreground" TargetType="{x:Type ctrl:SplitButton}" BasedOn="{StaticResource MyNet.Styles.SplitButton.Filled.Alternate.Foreground}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="p:RippleAssist.Feedback" Value="{me:BrushBinding SelfPath=(p:ThemeAssist.IsCheckedBackground)}" />
     </Style>
 

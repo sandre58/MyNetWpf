@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
 // See the LICENSE file in the project root for more information.
 
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
@@ -81,6 +82,32 @@ namespace MyNet.Wpf.Controls
         }
 
         #endregion IsCheckedEnabled
+
+        #region ToggleButtonWidth
+
+        public static readonly DependencyProperty ToggleButtonWidthProperty = DependencyProperty.Register(nameof(ToggleButtonWidth), typeof(double), typeof(SplitButton), new UIPropertyMetadata(double.NaN));
+
+        [TypeConverter(typeof(LengthConverter))]
+        public double ToggleButtonWidth
+        {
+            get => (double)GetValue(ToggleButtonWidthProperty);
+            set => SetValue(ToggleButtonWidthProperty, value);
+        }
+
+        #endregion ToggleButtonWidth
+
+        #region ToggleButtonHeight
+
+        public static readonly DependencyProperty ToggleButtonHeightProperty = DependencyProperty.Register(nameof(ToggleButtonHeight), typeof(double), typeof(SplitButton), new UIPropertyMetadata(double.NaN));
+
+        [TypeConverter(typeof(LengthConverter))]
+        public double ToggleButtonHeight
+        {
+            get => (double)GetValue(ToggleButtonHeightProperty);
+            set => SetValue(ToggleButtonHeightProperty, value);
+        }
+
+        #endregion ToggleButtonHeight
 
         #region InnerSpacing
 
