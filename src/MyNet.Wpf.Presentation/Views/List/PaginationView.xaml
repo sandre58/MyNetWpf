@@ -6,6 +6,7 @@
              xmlns:my="http://mynet.com/xaml/themes"
              xmlns:paging="clr-namespace:MyNet.UI.ViewModels.List.Paging;assembly=MyNet.UI"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Name="local"
              d:DataContext="{d:DesignInstance Type=paging:PagingViewModel}"
              mc:Ignorable="d">
     <UserControl.Resources>
@@ -29,7 +30,8 @@
                            VerticalAlignment="Stretch"
                            DockPanel.Dock="Right"
                            PopupPadding="0"
-                           ToggleContent="{Binding PageSize}">
+                           ToggleContent="{Binding PageSize}"
+                           Visibility="{Binding ShowPageSize, ElementName=local, Converter={x:Static my:BooleanToVisibilityConverter.CollapsedIfFalse}}">
             <my:DropDownButton.ToggleContentTemplate>
                 <DataTemplate>
                     <Grid>
