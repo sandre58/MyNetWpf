@@ -77,6 +77,7 @@ namespace MyNet.Wpf.Controls
         private readonly SingleTaskDeferrer _refreshAppointments;
         private readonly SingleTaskDeferrer _build;
         private readonly Suspender _refreshAppointmentsSuspender = new();
+        private readonly object _lock = new();
 
         protected Grid? Grid { get; private set; }
 
@@ -376,7 +377,7 @@ namespace MyNet.Wpf.Controls
                         {
                             foreach (var item in e.OldItems)
                             {
-                                _appointments.RemoveMany(_appointments.Where(x => x.DataContext == item).ToList());
+                                await RemoveAppointmentsAsync(_appointments.Where(x => x.DataContext == item).ToList(), CancellationToken.None).ConfigureAwait(false);
                             }
                         }
 
@@ -1814,18 +1815,44 @@ namespace MyNet.Wpf.Controls
             if (AppointmentMustBeDisplayed(appointment))
                 appointmentsToAdd = CreateAppointmentsWrapper(appointment).ToList();
 
-            foreach (var item in appointmentsToDelete)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                _appointments.Remove(item);
-                await Task.Delay(1.Milliseconds(), cancellationToken).ConfigureAwait(false);
-            }
+            await RemoveAppointmentsAsync(appointmentsToDelete, cancellationToken).ConfigureAwait(false);
 
+            await AddAppointmentsAsync(appointmentsToAdd, cancellationToken).ConfigureAwait(false);
+        }
+
+        private async Task AddAppointmentsAsync(List<CalendarAppointment> appointmentsToAdd, CancellationToken cancellationToken)
+        {
             foreach (var item in appointmentsToAdd)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                _appointments.Add(item);
+                AddAppointment(item);
                 await Task.Delay(1.Milliseconds(), cancellationToken).ConfigureAwait(false);
+            }
+        }
+
+        private async Task RemoveAppointmentsAsync(List<CalendarAppointment> appointmentsToDelete, CancellationToken cancellationToken)
+        {
+            foreach (var item in appointmentsToDelete)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                RemoveAppointment(item);
+                await Task.Delay(1.Milliseconds(), cancellationToken).ConfigureAwait(false);
+            }
+        }
+
+        private void RemoveAppointment(CalendarAppointment item)
+        {
+            lock (_lock)
+            {
+                _appointments.Remove(item);
+            }
+        }
+
+        private void AddAppointment(CalendarAppointment item)
+        {
+            lock (_lock)
+            {
+                _appointments.Add(item);
             }
         }
 
@@ -1881,7 +1908,8 @@ namespace MyNet.Wpf.Controls
             {
                 try
                 {
-                    _appointments.Clear();
+                    lock (_lock)
+                        _appointments.Clear();
 
                     var appointments = Dispatcher.Invoke(() => Appointments?.OfType<IAppointment>().ToList());
 
