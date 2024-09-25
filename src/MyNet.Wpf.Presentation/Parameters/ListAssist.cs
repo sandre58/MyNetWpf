@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using DynamicData.Binding;
@@ -15,6 +16,7 @@ using MyNet.UI.ViewModels.Display;
 using MyNet.UI.ViewModels.List.Grouping;
 using MyNet.Utilities;
 using MyNet.Wpf.Parameters;
+using MyNet.Wpf.Schedulers;
 
 namespace MyNet.Wpf.Presentation.Parameters
 {
@@ -35,7 +37,7 @@ namespace MyNet.Wpf.Presentation.Parameters
             if (e.NewValue is not ICollection<SortingProperty> sortDescriptions) return;
 
             if (e.NewValue is ObservableCollection<SortingProperty> sortingProperties)
-                _ = sortingProperties.ToObservableChangeSet().Subscribe(_ => ListViewAssist.UpdateSortDirections(element, sortingProperties.ToDictionary(x => x.PropertyName, x => x.Direction)));
+                _ = sortingProperties.ToObservableChangeSet().ObserveOn(WpfScheduler.Current).Subscribe(_ => ListViewAssist.UpdateSortDirections(element, sortingProperties.ToDictionary(x => x.PropertyName, x => x.Direction)));
 
             if (element.IsLoaded)
                 ListViewAssist.UpdateSortDirections(element, sortDescriptions.ToDictionary(x => x.PropertyName, x => x.Direction));
