@@ -291,7 +291,7 @@
                                 </Grid.RenderTransform>
                             </Grid>
                             <Grid x:Name="PathGrid" Margin="2" />
-                            <Grid x:Name="PathGrid2" Margin="{Binding Path=(p:ProgressBarAssist.InnerPadding), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:DoubleThicknessToConverter.All}}" />
+                            <Grid x:Name="PathGrid2" Margin="{Binding Path=(p:ProgressBarAssist.InnerPadding), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static c:DoubleToThicknessConverter.All}}" />
                             <Canvas>
                                 <Path x:Name="Path"
                                       Canvas.Left="2"

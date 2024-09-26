@@ -113,7 +113,7 @@
                                    Grid.Row="2"
                                    Width="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type tacticeditor:PositionItem}}, Converter={x:Static my:MathConverter.Multiply}, ConverterParameter=0.6}"
                                    MinWidth="40"
-                                   Margin="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={x:Static my:DoubleThicknessToConverter.Top}}"
+                                   Margin="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={x:Static my:DoubleToThicknessConverter.Top}}"
                                    Padding="0 2"
                                    HorizontalAlignment="Center"
                                    my:ThemeAssist.UniformCornerRadius="8"
