@@ -569,6 +569,7 @@
             <Separator />
             <ToggleButton Content="{my:MediumIcon Kind=BookOpenPageVariant}" IsChecked="{Binding CanPage}" />
             <my:PaginationView VerticalAlignment="Center" DataContext="{Binding Paging}" IsEnabled="{Binding Data.CanPage, Source={StaticResource Proxy}}" />
+            <my:SelectionCommandsBar Margin="{StaticResource MyNet.Margins.Large.Left}" Style="{StaticResource MyNet.Styles.SelectionCommandsBar}" SelectedCount="{Binding SelectedWrappers.Count}" UnselectAllCommand="{Binding ClearSelectionCommand}" />
         </ToolBar>
 
         <my:TransitioningContent Content="{Binding}" TriggerObject="{Binding Display.Mode}">

@@ -5,6 +5,7 @@ using System;
 using System.Windows;
 using System.Windows.Markup;
 using MyNet.Utilities.Localization;
+using MyNet.Wpf.Extensions;
 
 namespace MyNet.Wpf.Parameters
 {
@@ -26,20 +27,21 @@ namespace MyNet.Wpf.Parameters
 
             if ((bool)e.NewValue)
             {
-                UpdateControl(element);
-                GlobalizationService.Current.CultureChanged += onCultureChanged;
-                element.Loaded += Element_Loaded;
+
+                d.OnLoading<FrameworkElement>(x =>
+                {
+                    UpdateControl(x);
+                    GlobalizationService.Current.CultureChanged += onCultureChanged;
+                },
+                x => GlobalizationService.Current.CultureChanged -= onCultureChanged);
             }
             else
             {
                 GlobalizationService.Current.CultureChanged -= onCultureChanged;
-                element.Loaded -= Element_Loaded;
             }
 
             void onCultureChanged(object? sender, EventArgs e) => UpdateControl(element);
         }
-
-        private static void Element_Loaded(object? sender, RoutedEventArgs e) => UpdateControl((FrameworkElement?)sender);
 
         private static void UpdateControl(FrameworkElement? element)
         {

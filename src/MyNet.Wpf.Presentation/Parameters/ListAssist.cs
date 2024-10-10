@@ -15,6 +15,7 @@ using MyNet.UI.ViewModels;
 using MyNet.UI.ViewModels.Display;
 using MyNet.UI.ViewModels.List.Grouping;
 using MyNet.Utilities;
+using MyNet.Wpf.Extensions;
 using MyNet.Wpf.Parameters;
 using MyNet.Wpf.Schedulers;
 
@@ -32,23 +33,17 @@ namespace MyNet.Wpf.Presentation.Parameters
 
         private static void OnSortingPropertiesCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            if (dependencyObject is not ListView element) return;
+            IDisposable? disposable = null;
 
-            if (e.NewValue is not ICollection<SortingProperty> sortDescriptions) return;
-
-            if (e.NewValue is ObservableCollection<SortingProperty> sortingProperties)
-                _ = sortingProperties.ToObservableChangeSet().ObserveOn(WpfScheduler.Current).Subscribe(_ => ListViewAssist.UpdateSortDirections(element, sortingProperties.ToDictionary(x => x.PropertyName, x => x.Direction)));
-
-            if (element.IsLoaded)
-                ListViewAssist.UpdateSortDirections(element, sortDescriptions.ToDictionary(x => x.PropertyName, x => x.Direction));
-            else
-                element.Loaded += listView_Loaded;
-
-            void listView_Loaded(object sender, RoutedEventArgs e)
+            dependencyObject.OnLoading<ListView>(x =>
             {
-                ListViewAssist.UpdateSortDirections(element, sortDescriptions.ToDictionary(x => x.PropertyName, x => x.Direction));
-                element.Loaded -= listView_Loaded;
-            }
+                if (e.NewValue is not ICollection<SortingProperty> sortDescriptions) return;
+
+                if (sortDescriptions is ObservableCollection<SortingProperty> sortingProperties)
+                    disposable = sortingProperties.ToObservableChangeSet().ObserveOn(WpfScheduler.Current).Subscribe(_ => ListViewAssist.UpdateSortDirections(x, sortingProperties.ToDictionary(y => y.PropertyName, y => y.Direction)));
+                ListViewAssist.UpdateSortDirections(x, sortDescriptions.ToDictionary(y => y.PropertyName, y => y.Direction));
+            },
+            x => disposable?.Dispose());
         }
 
         #endregion SortingProperties
@@ -73,32 +68,17 @@ namespace MyNet.Wpf.Presentation.Parameters
 
         private static void OnGroupingPropertiesCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            if (dependencyObject is not ItemsControl element) return;
+            IDisposable? disposable = null;
 
-            if (e.NewValue is not ICollection<IGroupingPropertyViewModel> groupingCollection) return;
-
-            if (e.NewValue is ObservableCollection<IGroupingPropertyViewModel> groupingProperties)
+            dependencyObject.OnLoading<ItemsControl>(x =>
             {
-                groupingProperties.CollectionChanged -= groupingProperties_CollectionChanged;
-                groupingProperties.CollectionChanged += groupingProperties_CollectionChanged;
-            }
+                if (e.NewValue is not ICollection<IGroupingPropertyViewModel> groupingCollection) return;
 
-            if (element.IsLoaded)
-                UpdateGrouping(element, groupingCollection);
-            else
-            {
-                element.Loaded -= listView_Loaded;
-                element.Loaded += listView_Loaded;
-            }
-
-            void listView_Loaded(object sender, RoutedEventArgs e)
-            {
-                UpdateGrouping(element, groupingCollection);
-                element.Loaded -= listView_Loaded;
-            }
-
-            void groupingProperties_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => UpdateGrouping(element, (ObservableCollection<IGroupingPropertyViewModel>)sender!);
-
+                if (groupingCollection is ObservableCollection<IGroupingPropertyViewModel> groupingProperties)
+                    disposable = groupingProperties.ToObservableChangeSet().ObserveOn(WpfScheduler.Current).Subscribe(_ => UpdateGrouping(x, groupingCollection));
+                UpdateGrouping(x, groupingCollection);
+            },
+            x => disposable?.Dispose());
         }
 
         public static void UpdateGrouping(ItemsControl itemsControl, IEnumerable<IGroupingPropertyViewModel> groups)

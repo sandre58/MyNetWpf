@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
 // See the LICENSE file in the project root for more information.
 
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Xaml.Behaviors;
@@ -25,16 +24,7 @@ namespace MyNet.Wpf.Behaviors
         {
             base.OnAttached();
 
-            if (AssociatedObject.IsLoaded)
-                AddBehavior();
-            else
-                AssociatedObject.Loaded += AssociatedObject_Loaded;
-        }
-
-        private void AssociatedObject_Loaded(object sender, EventArgs e)
-        {
-            AssociatedObject.Loaded -= AssociatedObject_Loaded;
-            AddBehavior();
+            AssociatedObject.OnLoading<ListBox>(_ => AddBehavior());
         }
 
         private void AddBehavior()

@@ -1,15 +1,15 @@
 ﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
 // See the LICENSE file in the project root for more information.
 
-using Microsoft.Xaml.Behaviors;
-using MyNet.Wpf.Parameters;
-using MyNet.Utilities.Helpers;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
+using Microsoft.Xaml.Behaviors;
+using MyNet.Utilities.Helpers;
+using MyNet.Wpf.Extensions;
+using MyNet.Wpf.Parameters;
 
 namespace MyNet.Wpf.Behaviors
 {
@@ -19,14 +19,7 @@ namespace MyNet.Wpf.Behaviors
         {
             base.OnAttached();
 
-            if (AssociatedObject.IsLoaded)
-            {
-                AddBehavior();
-            }
-            else
-            {
-                AssociatedObject.Loaded += AssociatedObject_Loaded;
-            }
+            AssociatedObject.OnLoading<ListView>(_ => AddBehavior());
         }
 
         protected override void OnDetaching()
@@ -34,19 +27,6 @@ namespace MyNet.Wpf.Behaviors
             base.OnDetaching();
 
             RemoveBehavior();
-        }
-
-        private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (AssociatedObject.IsLoaded)
-            {
-                AssociatedObject.Loaded -= AssociatedObject_Loaded;
-
-                if (AssociatedObject.IsLoaded && VisualTreeHelper.GetChildrenCount(AssociatedObject) > 0)
-                    AddBehavior();
-                else
-                    AssociatedObject.Loaded += AssociatedObject_Loaded;
-            }
         }
 
         private void AddBehavior()
@@ -60,7 +40,6 @@ namespace MyNet.Wpf.Behaviors
 
         private void RemoveBehavior()
         {
-            AssociatedObject.Loaded -= AssociatedObject_Loaded;
             if (AssociatedObject.View is GridView gridView)
             {
                 gridView.Columns.CollectionChanged -= Columns_CollectionChanged;

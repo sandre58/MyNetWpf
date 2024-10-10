@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using MyNet.Wpf.Extensions;
 
 namespace MyNet.Wpf.Parameters
 {
@@ -85,15 +86,21 @@ new PropertyMetadata(false, OnIsSuspendedChanged));
 
             if ((bool)e.NewValue)
             {
-                element.Loaded += Element_Loaded;
-                element.Unloaded += Element_Unloaded;
-                element.IsEnabledChanged += Element_IsEnabledChanged;
-                element.IsVisibleChanged += Element_IsEnabledChanged;
+                d.OnLoading<FrameworkElement>(x =>
+                {
+                    AddBindingsFromElement(x);
+                    element.IsEnabledChanged += Element_IsEnabledChanged;
+                    element.IsVisibleChanged += Element_IsEnabledChanged;
+                }, x =>
+                {
+                    RemoveBindingsFromElement(x);
+                    element.IsEnabledChanged -= Element_IsEnabledChanged;
+                    element.IsVisibleChanged -= Element_IsEnabledChanged;
+                });
             }
             else
             {
-                element.Loaded -= Element_Loaded;
-                element.Unloaded -= Element_Unloaded;
+                RemoveBindingsFromElement(element);
                 element.IsEnabledChanged -= Element_IsEnabledChanged;
                 element.IsVisibleChanged -= Element_IsEnabledChanged;
             }
@@ -110,10 +117,6 @@ new PropertyMetadata(false, OnIsSuspendedChanged));
                 RemoveBindingsFromElement((FrameworkElement)sender);
             }
         }
-
-        private static void Element_Loaded(object sender, RoutedEventArgs e) => AddBindingsFromElement((FrameworkElement)sender);
-
-        private static void Element_Unloaded(object sender, RoutedEventArgs e) => RemoveBindingsFromElement((FrameworkElement)sender);
 
         private static void AddBindingsFromElement(FrameworkElement frameworkElement)
         {

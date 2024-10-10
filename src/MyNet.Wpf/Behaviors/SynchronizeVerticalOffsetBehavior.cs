@@ -70,19 +70,11 @@ namespace MyNet.Wpf.Behaviors
         protected override void OnAttached()
         {
             base.OnAttached();
-            AssociatedObject.Loaded += AssociatedObject_Loaded;
-        }
-
-        protected override void OnDetaching()
-        {
-            base.OnDetaching();
-            AssociatedObject.Loaded -= AssociatedObject_Loaded;
-        }
-
-        private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
-        {
-            AddBehavior(GetScrollViewer(AssociatedObject), GetScrollViewer(Source));
-            AddBehavior(GetScrollViewer(Source), GetScrollViewer(AssociatedObject));
+            AssociatedObject.OnLoading<FrameworkElement>(_ =>
+            {
+                AddBehavior(GetScrollViewer(AssociatedObject), GetScrollViewer(Source));
+                AddBehavior(GetScrollViewer(Source), GetScrollViewer(AssociatedObject));
+            });
         }
     }
 }

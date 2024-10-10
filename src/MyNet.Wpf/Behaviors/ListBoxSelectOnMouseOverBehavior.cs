@@ -27,14 +27,7 @@ namespace MyNet.Wpf.Behaviors
             base.OnAttached();
 
             ScrollViewer.SetCanContentScroll(AssociatedObject, false);
-            if (AssociatedObject.IsLoaded)
-                Register();
-            else
-            {
-                // We need to wait for it to be loaded so we can find the
-                // child controls.
-                AssociatedObject.Loaded += OnLoaded;
-            }
+            AssociatedObject.OnLoading<ListBox>(_ => Register());
         }
 
         /// <inheritdoc />
@@ -109,12 +102,6 @@ namespace MyNet.Wpf.Behaviors
             AssociatedObject.PreviewMouseLeftButtonDown -= OnPreviewMouseLeftButtonDown;
             AssociatedObject.PreviewMouseLeftButtonUp -= OnPreviewMouseLeftButtonUp;
             AssociatedObject.MouseMove -= OnMouseMove;
-        }
-
-        private void OnLoaded(object sender, EventArgs e)
-        {
-            Register();
-            AssociatedObject.Loaded -= OnLoaded;
         }
 
         private void OnScrollChanged(object sender, ScrollChangedEventArgs e)

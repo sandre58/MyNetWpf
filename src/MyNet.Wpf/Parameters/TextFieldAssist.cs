@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
@@ -9,6 +10,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using MyNet.Wpf.Controls;
+using MyNet.Wpf.Extensions;
 
 namespace MyNet.Wpf.Parameters
 {
@@ -520,24 +522,7 @@ namespace MyNet.Wpf.Parameters
         /// <param name="dependencyPropertyChangedEventArgs">The dependency property changed event args.</param>
         private static void TextBoxViewMarginPropertyChangedCallback(
             DependencyObject dependencyObject,
-            DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            if (dependencyObject is not Control box)
-            {
-                return;
-            }
-
-            if (box.IsLoaded)
-            {
-                ApplyTextBoxViewMargin(box, (Thickness)dependencyPropertyChangedEventArgs.NewValue);
-            }
-
-            box.Loaded += (sender, args) =>
-            {
-                var textBox = (Control)sender;
-                ApplyTextBoxViewMargin(textBox, GetTextBoxViewMargin(textBox));
-            };
-        }
+            DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs) => dependencyObject.OnLoading<Control>(x => ApplyTextBoxViewMargin(x, (Thickness)dependencyPropertyChangedEventArgs.NewValue));
 
         #endregion
     }

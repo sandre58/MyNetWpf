@@ -6,15 +6,19 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using DynamicData.Binding;
 using Microsoft.Xaml.Behaviors;
+using MyNet.Observable.Collections.Sorting;
 using MyNet.UI.Layout;
 using MyNet.Utilities;
 using MyNet.Wpf.Behaviors;
+using MyNet.Wpf.Extensions;
+using MyNet.Wpf.Schedulers;
 
 namespace MyNet.Wpf.Parameters
 {
@@ -199,35 +203,17 @@ namespace MyNet.Wpf.Parameters
 
         private static void OnSortDescriptionsCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            if (dependencyObject is not ListView element)
-            {
-                return;
-            }
+            IDisposable? disposable = null;
 
-            if (e.NewValue is not ICollection<SortDescription> sortDescriptions)
+            dependencyObject.OnLoading<ListView>(x =>
             {
-                return;
-            }
+                if (e.NewValue is not ICollection<SortDescription> sortDescriptions) return;
 
-            if (e.NewValue is ObservableCollection<SortDescription> sortProperties)
-            {
-                _ = sortProperties.ToObservableChangeSet().Subscribe(_ => UpdateSortDirections(element, sortProperties.ToDictionary(x => x.PropertyName, x => x.Direction)));
-            }
-
-            if (element.IsLoaded)
-            {
-                UpdateSortDirections(element, sortDescriptions.ToDictionary(x => x.PropertyName, x => x.Direction));
-            }
-            else
-            {
-                element.Loaded += listView_Loaded;
-            }
-
-            void listView_Loaded(object sender, RoutedEventArgs e)
-            {
-                UpdateSortDirections(element, sortDescriptions.ToDictionary(x => x.PropertyName, x => x.Direction));
-                element.Loaded -= listView_Loaded;
-            }
+                if (sortDescriptions is ObservableCollection<SortDescription> sortingProperties)
+                    disposable = sortingProperties.ToObservableChangeSet().ObserveOn(WpfScheduler.Current).Subscribe(_ => UpdateSortDirections(x, sortingProperties.ToDictionary(y => y.PropertyName, y => y.Direction)));
+                UpdateSortDirections(x, sortDescriptions.ToDictionary(y => y.PropertyName, y => y.Direction));
+            },
+            x => disposable?.Dispose());
         }
 
         public static void UpdateSortDirections(ListView listView, IReadOnlyDictionary<string, ListSortDirection> sortDescriptions)

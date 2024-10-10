@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using MyNet.Utilities;
+using MyNet.Wpf.Extensions;
 
 namespace MyNet.Wpf.Parameters
 {
@@ -86,24 +87,12 @@ namespace MyNet.Wpf.Parameters
         {
             if (d is not ItemsControl element || string.IsNullOrEmpty(GetSortingProperty(element))) return;
 
-            if (element.IsLoaded)
+            d.OnLoading<ItemsControl>(x =>
             {
-                var properties = GetSortingProperty(element).Split(";");
-                var sortDirection = GetSortDirection(element);
-                UpdateSort(element, properties.Select(x => (x, sortDirection)));
-            }
-            else
-            {
-                element.Loaded += listView_Loaded;
-            }
-
-            void listView_Loaded(object sender, RoutedEventArgs e)
-            {
-                var properties = GetSortingProperty(element).Split(";");
-                var sortDirection = GetSortDirection(element);
-                UpdateSort(element, properties.Select(x => (x, sortDirection)));
-                element.Loaded -= listView_Loaded;
-            }
+                var properties = GetSortingProperty(x).Split(";");
+                var sortDirection = GetSortDirection(x);
+                UpdateSort(x, properties.Select(y => (y, sortDirection)));
+            });
         }
 
         private static void UpdateSort(ItemsControl control, IEnumerable<(string property, ListSortDirection direction)> sorts)
@@ -133,22 +122,11 @@ namespace MyNet.Wpf.Parameters
         {
             if (d is not ItemsControl element) return;
 
-            if (element.IsLoaded)
+            d.OnLoading<ItemsControl>(x =>
             {
                 var groups = GetGroupingProperty(element)?.Split(";") ?? [];
-                UpdateGroups(element, groups);
-            }
-            else
-            {
-                element.Loaded += listView_Loaded;
-            }
-
-            void listView_Loaded(object sender, RoutedEventArgs e)
-            {
-                var groups = GetGroupingProperty(element)?.Split(";") ?? [];
-                UpdateGroups(element, groups);
-                element.Loaded -= listView_Loaded;
-            }
+                UpdateGroups(x, groups);
+            });
         }
 
         private static void UpdateGroups(ItemsControl control, IEnumerable<string> groups)
