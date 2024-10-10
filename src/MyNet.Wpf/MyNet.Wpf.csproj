@@ -11,9 +11,9 @@
     <PackageReference Include="MahApps.Metro" Version="3.0.0-alpha0492" />
     <PackageReference Include="MaterialDesignThemes" Version="5.1.1-ci780" />
     <PackageReference Include="MyNet.Humanizer" Version="2.0.0" />
-    <PackageReference Include="MyNet.Observable" Version="6.0.1-pre.6" />
-    <PackageReference Include="MyNet.UI" Version="5.0.1-pre.4" />
-    <PackageReference Include="MyNet.Utilities" Version="5.2.1-pre.4" />
+    <PackageReference Include="MyNet.Observable" Version="6.0.1-pre.7" />
+    <PackageReference Include="MyNet.UI" Version="5.0.1-pre.5" />
+    <PackageReference Include="MyNet.Utilities" Version="5.2.1-pre.6" />
     <PackageReference Include="MyNet.Xaml.Html" Version="1.0.0" />
     <PackageReference Include="MyNet.Xaml.Merger.MSBuild" Version="2.0.1">
       <PrivateAssets>all</PrivateAssets>

@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Windows.Controls;
+using MyNet.Utilities.Collections;
 
 namespace MyNet.Wpf.Controls.Calendars
 {
@@ -19,7 +20,7 @@ namespace MyNet.Wpf.Controls.Calendars
     /// Initializes a new instance of the SchedulerSelectedDatesCollection class.
     /// </remarks>
     /// <param name="owner"></param>
-    public sealed class SelectedDatesCollection(CalendarBase owner) : ObservableCollection<DateTime>
+    public sealed class SelectedDatesCollection(CalendarBase owner) : OptimizedObservableCollection<DateTime>
     {
         #region Data
 

@@ -2,13 +2,12 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using System.Threading;
 using MyNet.Utilities;
+using MyNet.Utilities.Collections;
 using PropertyChanged;
 
 namespace MyNet.Wpf.Controls.Calendars
@@ -17,7 +16,7 @@ namespace MyNet.Wpf.Controls.Calendars
     /// Initializes a new instance of the SchedulerBlackoutDatesCollection class.
     /// </summary>
     /// <param name="owner"></param>
-    public class BlackoutDatesCollection(CalendarBase owner) : ObservableCollection<DateRange>
+    public class BlackoutDatesCollection(CalendarBase owner) : OptimizedObservableCollection<DateRange>
     {
         #region Data
 
