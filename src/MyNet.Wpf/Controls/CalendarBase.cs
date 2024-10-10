@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -68,8 +69,8 @@ namespace MyNet.Wpf.Controls
         private DateTime? _currentDate;
         private ContentControl? _accurateDateControl;
         private ContentControl? _accurateDatePreviewControl;
-        private readonly UiObservableCollection<object> _columnHeaders = [];
-        private readonly UiObservableCollection<object> _rowHeaders = [];
+        private readonly ObservableCollection<object> _columnHeaders = [];
+        private readonly ObservableCollection<object> _rowHeaders = [];
         private readonly UiObservableCollection<CalendarItem> _displayDates = [];
         private readonly UiObservableCollection<CalendarAppointment> _appointments = [];
         private readonly SingleTaskDeferrer _refreshAppointments;
