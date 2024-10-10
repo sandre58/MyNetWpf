@@ -11,7 +11,6 @@ using System.Windows.Controls;
 using Microsoft.Xaml.Behaviors;
 using MyNet.UI.Layout;
 using MyNet.Utilities;
-using MyNet.Wpf.Extensions;
 using MyNet.Wpf.Parameters;
 
 namespace MyNet.Wpf.Behaviors
@@ -113,7 +112,14 @@ namespace MyNet.Wpf.Behaviors
         {
             base.OnAttached();
 
-            AssociatedObject.OnLoading<ListView>(_ => AddBehavior());
+            if (AssociatedObject.IsLoaded)
+            {
+                AddBehavior();
+            }
+            else
+            {
+                AssociatedObject.Loaded += AssociatedObject_Loaded;
+            }
         }
 
         protected override void OnDetaching()
@@ -121,6 +127,19 @@ namespace MyNet.Wpf.Behaviors
             base.OnDetaching();
 
             RemoveBehavior();
+        }
+
+        private void AssociatedObject_Loaded(object sender, EventArgs e)
+        {
+            if (AssociatedObject.IsLoaded)
+            {
+                AssociatedObject.Loaded -= AssociatedObject_Loaded;
+
+                if (AssociatedObject.IsLoaded)
+                    AddBehavior();
+                else
+                    AssociatedObject.Loaded += AssociatedObject_Loaded;
+            }
         }
 
         private void AddBehavior()
@@ -138,6 +157,7 @@ namespace MyNet.Wpf.Behaviors
 
         private void RemoveBehavior()
         {
+            AssociatedObject.Loaded -= AssociatedObject_Loaded;
             AssociatedObject.SizeChanged -= OnSizeChanged;
 
             if (ColumnLayouts is not null)
