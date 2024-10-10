@@ -49,11 +49,7 @@ namespace MyNet.Wpf.Behaviors
             }
             else
             {
-                ColumnLayouts.OfType<GridViewColumnLayout>().ForEach((x, index) =>
-                {
-                    if (index < columns.Count && index >= 0)
-                        x.Column = columns[index];
-                });
+                ColumnLayouts.OfType<GridViewColumnLayout>().ForEach((x, index) => x.Column = columns[index]);
 
                 Refresh();
             }
