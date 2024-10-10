@@ -1222,8 +1222,8 @@ namespace MyNet.Wpf.Controls
 
             cancellationToken.ThrowIfCancellationRequested();
 
-            _columnHeaders.Set(GetColumnHeaders());
-            _rowHeaders.Set(GetRowHeaders());
+            _columnHeaders.Set(GetColumnHeaders().ToList());
+            _rowHeaders.Set(GetRowHeaders().ToList());
 
             if (_displayDates.Count != dates.Count)
             {
