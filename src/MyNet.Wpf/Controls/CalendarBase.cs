@@ -366,7 +366,16 @@ namespace MyNet.Wpf.Controls
             if (_refreshAppointmentsSuspender.IsSuspended) return;
 
             if (e.Action == NotifyCollectionChangedAction.Reset)
+            {
+                if (sender is IEnumerable enumerable)
+                    foreach (var item in enumerable.OfType<INotifyPropertyChanged>())
+                    {
+                        item.PropertyChanged -= OnItemPropertyChangedCallbackAsync;
+                        item.PropertyChanged += OnItemPropertyChangedCallbackAsync;
+                    }
+
                 RefreshAppointments();
+            }
             else
             {
                 await Dispatcher.Invoke(() => BusyService).WaitAsync<IndeterminateBusy>(async _ =>
