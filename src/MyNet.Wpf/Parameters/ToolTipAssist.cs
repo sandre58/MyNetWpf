@@ -32,8 +32,11 @@ namespace MyNet.Wpf.Parameters
             var placementMode = GetPlacementMode(target);
             var tooltip = new ToolTip
             {
-                Content = e.NewValue,
-                ContentTemplate = GetContentTemplate(target),
+                Content = new ContentControl()
+                {
+                    Content = e.NewValue,
+                    ContentTemplate = GetContentTemplate(target)
+                },
                 Placement = placementMode.HasValue ? PlacementMode.Custom : PlacementMode.Mouse,
             };
             target.ToolTip = tooltip;
