@@ -62,6 +62,16 @@
                                     ToolTipService.ShowOnDisabled="True"
                                     ToolTipService.ShowsToolTipOnKeyboardFocus="True" />
                         </smtx:XamlDisplay>
+
+                        <smtx:XamlDisplay UniqueKey="m_3_0_0">
+                            <Button my:ToolTipAssist.PlacementMode="{Binding SelectedValue, ElementName=position}" Content="Content Template" my:ToolTipAssist.Content="Cououc">
+                                <my:ToolTipAssist.ContentTemplate>
+                                    <DataTemplate>
+                                        <contents:SmallContent />
+                                    </DataTemplate>
+                                </my:ToolTipAssist.ContentTemplate>
+                            </Button>
+                        </smtx:XamlDisplay>
                     </my:SimpleStackPanel>
                 </DockPanel>
             </Expander>

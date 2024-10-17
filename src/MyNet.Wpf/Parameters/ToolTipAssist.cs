@@ -29,14 +29,16 @@ namespace MyNet.Wpf.Parameters
             if (d is not FrameworkElement target) return;
             if (e.NewValue is null) return;
 
+            UpdateTooltip(target);
+        }
+
+        private static void UpdateTooltip(FrameworkElement target)
+        {
             var placementMode = GetPlacementMode(target);
             var tooltip = new ToolTip
             {
-                Content = new ContentControl()
-                {
-                    Content = e.NewValue,
-                    ContentTemplate = GetContentTemplate(target)
-                },
+                Content = GetContent(target),
+                ContentTemplate = GetContentTemplate(target),
                 Placement = placementMode.HasValue ? PlacementMode.Custom : PlacementMode.Mouse,
             };
             target.ToolTip = tooltip;
@@ -54,7 +56,7 @@ namespace MyNet.Wpf.Parameters
             "ContentTemplate",
             typeof(DataTemplate),
             typeof(ToolTipAssist),
-            new PropertyMetadata(null));
+            new PropertyMetadata(null, OnContentChangedCallback));
 
         public static DataTemplate GetContentTemplate(UIElement item) => (DataTemplate)item.GetValue(ContentTemplateProperty);
 
