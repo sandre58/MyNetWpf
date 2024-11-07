@@ -4,7 +4,6 @@
 using System;
 using System.Globalization;
 using System.Windows.Data;
-using Microsoft.VisualBasic;
 using MyNet.Utilities;
 using MyNet.Utilities.Localization;
 
@@ -29,7 +28,10 @@ namespace MyNet.Wpf.Converters
 
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            var time = value is TimeOnly timeOnly ? timeOnly : (TimeOnly?)(value is TimeSpan ts && ts != TimeSpan.MinValue ? TimeOnly.FromTimeSpan(ts) : null);
+            var time = value is TimeOnly timeOnly ? timeOnly
+                       : value is TimeSpan ts && ts != TimeSpan.MinValue ? TimeOnly.FromTimeSpan(ts)
+                       : value is DateTime dt && dt != DateTime.MinValue ? dt.ToTime()
+                       : (TimeOnly?)null;
 
             if (!time.HasValue) return null;
 
