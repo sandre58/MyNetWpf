@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
+using MyNet.Wpf.Commands;
 using MyNet.Wpf.Controls;
 using MyNet.Wpf.Extensions;
 
@@ -183,6 +184,21 @@ namespace MyNet.Wpf.Parameters
 
         #endregion
 
+        #region ClearControlCommand
+
+        public static readonly WpfCommand<UIElement> ClearControlCommand = new(x => Clear(x!));
+
+        public static bool GetClearControlParameter(DependencyObject obj)
+            => (bool)obj.GetValue(ClearControlParameterProperty);
+
+        public static void SetClearControlParameter(DependencyObject obj, bool value)
+            => obj.SetValue(ClearControlParameterProperty, value);
+
+        public static readonly DependencyProperty ClearControlParameterProperty =
+            DependencyProperty.RegisterAttached("ClearControlParameter", typeof(UIElement), typeof(TextFieldAssist), new PropertyMetadata(null));
+
+        #endregion
+
         #region ClearTextCommand
 
         public static readonly RoutedCommand ClearCommand = new();
@@ -218,48 +234,54 @@ namespace MyNet.Wpf.Parameters
 
             static void onClearCommand(object sender, ExecutedRoutedEventArgs e)
             {
-                switch (sender ?? e.Source)
-                {
-                    case DatePicker datePicker:
-                        datePicker.SetCurrentValue(DatePicker.SelectedDateProperty, null);
-                        break;
-                    case AutoSuggestBox autoSuggestBox:
-                        autoSuggestBox.SetCurrentValue(TextBox.TextProperty, null);
-                        break;
-                    case TextBox textBox:
-                        textBox.SetCurrentValue(TextBox.TextProperty, null);
-                        break;
-                    case ComboBox comboBox:
-                        comboBox.SetCurrentValue(ComboBox.TextProperty, null);
-                        comboBox.SetCurrentValue(Selector.SelectedItemProperty, null);
-                        break;
-                    case PasswordBox passwordBox:
-                        passwordBox.Password = null;
-                        break;
-                    case NumericUpDown numericUpDown:
-                        numericUpDown.SetCurrentValue(NumericUpDown.ValueProperty, null);
-                        break;
-                    case TimePicker timePicker:
-                        timePicker.SetCurrentValue(TimePicker.SelectedTimeProperty, null);
-                        break;
-                    case MonthPicker monthPicker:
-                        monthPicker.SetCurrentValue(MonthPicker.SelectedMonthProperty, null);
-                        break;
-                    case ColorPickerBase colorPicker:
-                        colorPicker.SetCurrentValue(ColorPickerBase.ColorNameProperty, null);
-                        break;
-                    case ImagePicker imagePicker:
-                        imagePicker.SetCurrentValue(ImagePicker.ImagePathProperty, null);
-                        imagePicker.SetCurrentValue(ImagePicker.SelectedImageProperty, null);
-                        break;
-                    case System.Windows.Controls.Calendar calendar:
-                        calendar.SetCurrentValue(System.Windows.Controls.Calendar.SelectedDateProperty, null);
-                        break;
-                    case Clock clock:
-                        clock.SetCurrentValue(MaterialDesignThemes.Wpf.Clock.TimeProperty, null);
-                        break;
-                }
+                Clear(sender ?? e.Source);
                 e.Handled = true;
+            }
+        }
+
+
+        private static void Clear(object source)
+        {
+            switch (source)
+            {
+                case DatePicker datePicker:
+                    datePicker.SetCurrentValue(DatePicker.SelectedDateProperty, null);
+                    break;
+                case AutoSuggestBox autoSuggestBox:
+                    autoSuggestBox.SetCurrentValue(TextBox.TextProperty, null);
+                    break;
+                case TextBox textBox:
+                    textBox.SetCurrentValue(TextBox.TextProperty, null);
+                    break;
+                case ComboBox comboBox:
+                    comboBox.SetCurrentValue(ComboBox.TextProperty, null);
+                    comboBox.SetCurrentValue(Selector.SelectedItemProperty, null);
+                    break;
+                case PasswordBox passwordBox:
+                    passwordBox.Password = null;
+                    break;
+                case NumericUpDown numericUpDown:
+                    numericUpDown.SetCurrentValue(NumericUpDown.ValueProperty, null);
+                    break;
+                case TimePicker timePicker:
+                    timePicker.SetCurrentValue(TimePicker.SelectedTimeProperty, null);
+                    break;
+                case MonthPicker monthPicker:
+                    monthPicker.SetCurrentValue(MonthPicker.SelectedMonthProperty, null);
+                    break;
+                case ColorPickerBase colorPicker:
+                    colorPicker.SetCurrentValue(ColorPickerBase.ColorNameProperty, null);
+                    break;
+                case ImagePicker imagePicker:
+                    imagePicker.SetCurrentValue(ImagePicker.ImagePathProperty, null);
+                    imagePicker.SetCurrentValue(ImagePicker.SelectedImageProperty, null);
+                    break;
+                case System.Windows.Controls.Calendar calendar:
+                    calendar.SetCurrentValue(System.Windows.Controls.Calendar.SelectedDateProperty, null);
+                    break;
+                case Clock clock:
+                    clock.SetCurrentValue(MaterialDesignThemes.Wpf.Clock.TimeProperty, null);
+                    break;
             }
         }
 
