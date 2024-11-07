@@ -50,6 +50,11 @@ namespace MyNet.Wpf.Converters
                 flag = arr.Length == 0;
             }
 
+            if (value is DateTime date)
+            {
+                flag = date == DateTime.MinValue;
+            }
+
             return flag ? _nullVisibility : _notNullVisibility;
         }
 

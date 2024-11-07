@@ -184,23 +184,9 @@ namespace MyNet.Wpf.Parameters
 
         #endregion
 
-        #region ClearControlCommand
-
-        public static readonly WpfCommand<UIElement> ClearControlCommand = new(x => Clear(x!));
-
-        public static bool GetClearControlParameter(DependencyObject obj)
-            => (bool)obj.GetValue(ClearControlParameterProperty);
-
-        public static void SetClearControlParameter(DependencyObject obj, bool value)
-            => obj.SetValue(ClearControlParameterProperty, value);
-
-        public static readonly DependencyProperty ClearControlParameterProperty =
-            DependencyProperty.RegisterAttached("ClearControlParameter", typeof(UIElement), typeof(TextFieldAssist), new PropertyMetadata(null));
-
-        #endregion
-
         #region ClearTextCommand
 
+        public static readonly WpfCommand<UIElement> ClearControlCommand = new(x => Clear(x!));
         public static readonly RoutedCommand ClearCommand = new();
 
         public static bool GetHandlesClearCommand(DependencyObject obj)
@@ -280,7 +266,7 @@ namespace MyNet.Wpf.Parameters
                     calendar.SetCurrentValue(System.Windows.Controls.Calendar.SelectedDateProperty, null);
                     break;
                 case Clock clock:
-                    clock.SetCurrentValue(MaterialDesignThemes.Wpf.Clock.TimeProperty, null);
+                    clock.SetCurrentValue(MaterialDesignThemes.Wpf.Clock.TimeProperty, DateTime.MinValue);
                     break;
             }
         }
