@@ -252,6 +252,12 @@ namespace MyNet.Wpf.Parameters
                         imagePicker.SetCurrentValue(ImagePicker.ImagePathProperty, null);
                         imagePicker.SetCurrentValue(ImagePicker.SelectedImageProperty, null);
                         break;
+                    case System.Windows.Controls.Calendar calendar:
+                        calendar.SetCurrentValue(System.Windows.Controls.Calendar.SelectedDateProperty, null);
+                        break;
+                    case Clock clock:
+                        clock.SetCurrentValue(MaterialDesignThemes.Wpf.Clock.TimeProperty, null);
+                        break;
                 }
                 e.Handled = true;
             }
